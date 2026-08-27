@@ -3,71 +3,91 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<meta name="robots" content="noindex, nofollow" />
-<title>Fold Companion — install</title>
+<meta name="description" content="Fold Companion — a private Android app to route work off your phone. Tap-to-call shortcuts, share-to-queue for your desktop agent, and a local mail list. No call recording. No tracking." />
+<title>Fold Companion — private call &amp; route-off-phone app for Android</title>
 <style>
   :root {
     --steel-900: #14181c; --steel-800: #1e242a; --steel-700: #2a323a;
-    --steel-600: #3a454f; --steel-accent: #8ca0b3; --cream: #e9e0cc; --cream-dim: #c9c0ac;
+    --steel-600: #3a454f; --steel-accent: #8ca0b3; --steel-light:#b8c2c9;
+    --cream: #e9e0cc; --cream-dim: #c9c0ac;
   }
   * { box-sizing: border-box; }
-  body {
-    margin: 0; background: var(--steel-900); color: var(--cream);
-    font-family: -apple-system, "Segoe UI", Roboto, sans-serif; line-height: 1.5;
-    display: flex; justify-content: center; padding: 24px;
-  }
-  .card { width: 100%; max-width: 560px; }
-  h1 { font-size: 1.9rem; margin: 0 0 4px; }
-  .sub { color: var(--cream-dim); margin: 0 0 24px; }
+  body { margin: 0; background: var(--steel-900); color: var(--cream);
+    font-family: -apple-system, "Segoe UI", Roboto, sans-serif; line-height: 1.55; }
+  .wrap { max-width: 860px; margin: 0 auto; padding: 40px 20px 64px; }
+  header { text-align: center; margin-bottom: 32px; }
+  h1 { font-size: 2.4rem; margin: 0 0 8px; }
+  .tag { color: var(--cream-dim); font-size: 1.15rem; margin: 0 auto 20px; max-width: 620px; }
+  .cta { display: inline-block; background: var(--cream); color: var(--steel-900);
+    text-decoration: none; font-weight: 700; padding: 14px 26px; border-radius: 14px; }
   .panel { background: var(--steel-800); border: 1px solid var(--steel-600);
-           border-radius: 18px; padding: 20px; margin-bottom: 16px; }
-  .download { display: block; text-align: center; background: var(--cream);
-    color: var(--steel-900); text-decoration: none; font-weight: 700; font-size: 1.15rem;
-    padding: 16px 20px; border-radius: 16px; margin: 8px 0 16px; }
-  .qr { display: block; margin: 8px auto 0; width: 200px; height: 200px;
-        background: #fff; padding: 10px; border-radius: 12px; }
-  .qr-cap { text-align: center; color: var(--cream-dim); font-size: .9rem; margin-top: 8px; }
-  ol { padding-left: 20px; } li { margin: 6px 0; }
-  code { background: var(--steel-700); padding: 1px 6px; border-radius: 6px; }
-  h2 { font-size: 1.05rem; color: var(--steel-accent); margin: 0 0 8px; }
-  .privacy li { color: var(--cream-dim); }
-  .foot { color: var(--cream-dim); font-size: .85rem; text-align: center; margin-top: 8px; }
+    border-radius: 18px; padding: 22px; margin: 16px 0; }
+  h2 { font-size: 1.25rem; color: var(--steel-accent); margin: 0 0 12px; }
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  @media (max-width: 620px){ .grid { grid-template-columns: 1fr; } }
+  .feat { background: var(--steel-700); border-radius: 14px; padding: 16px; }
+  .feat h3 { margin: 0 0 6px; font-size: 1.05rem; }
+  .feat p { margin: 0; color: var(--cream-dim); }
+  ul.privacy { margin: 0; padding-left: 20px; } ul.privacy li { color: var(--cream-dim); margin: 6px 0; }
+  .price { text-align: center; }
+  .price .amount { font-size: 2.6rem; font-weight: 800; }
+  .price .once { color: var(--cream-dim); }
+  .note { color: var(--cream-dim); font-size: .9rem; margin-top: 12px; }
+  .qr { display:block; width: 172px; height: 172px; background:#fff; padding:10px;
+    border-radius:12px; margin: 4px auto 0; }
+  .qr-cap { text-align:center; color: var(--cream-dim); font-size:.9rem; margin-top:8px; }
+  footer { text-align:center; color: var(--cream-dim); font-size:.85rem; margin-top: 28px; }
+  a { color: var(--steel-light); }
 </style>
 </head>
 <body>
-  <main class="card">
-    <h1>Fold Companion</h1>
-    <p class="sub">Private call &amp; route-off-phone app for Daniel's Galaxy Z Fold 7.</p>
+  <div class="wrap">
+    <header>
+      <h1>Fold Companion</h1>
+      <p class="tag">A private Android app that helps you route work off your phone —
+        tap‑to‑call shortcuts, share‑to‑queue for your desktop agent, and a local mail
+        list. Built for the Samsung Galaxy Z Fold 7 and other Android phones.</p>
+      <a class="cta" href="#pricing">Get the license — $19.99</a>
+    </header>
 
     <div class="panel">
-      <a class="download" href="FoldCompanion-release.apk" download>Download the app (.apk)</a>
-      <img class="qr" src="qr.png" alt="QR code to this page" />
-      <p class="qr-cap">On the Fold, scan this or open this page and tap Download.</p>
+      <div class="grid">
+        <div class="feat"><h3>Four tap‑to‑call buttons</h3><p>Label your own lines and tap to open the dialer. You press call — the app never dials for you.</p></div>
+        <div class="feat"><h3>Share to your agent</h3><p>Share a message or job listing in; it's saved locally and queued for your desktop agent.</p></div>
+        <div class="feat"><h3>Export, on your terms</h3><p>Write a JSON + text file to Downloads when you choose. Nothing uploads on its own.</p></div>
+        <div class="feat"><h3>Optional mail list</h3><p>Turn on a read‑only local list of new Gmail/Yahoo notifications. It never sends mail.</p></div>
+        <div class="feat"><h3>Folds with your phone</h3><p>Adaptive layout for the cover and inner screens. Dark cream/steel, no clutter.</p></div>
+        <div class="feat"><h3>No accounts, no tracking</h3><p>No sign‑in, no analytics, no ads. Your data stays on the device.</p></div>
+      </div>
     </div>
 
     <div class="panel">
-      <h2>Install</h2>
-      <ol>
-        <li>Open this page on the Fold and tap <strong>Download the app</strong>.</li>
-        <li>Open the downloaded file. If prompted, allow your browser to
-            <em>install unknown apps</em> (one-time Android setting).</li>
-        <li>Tap <strong>Install</strong>. It appears as <strong>Fold Companion</strong>.</li>
-        <li>Optional: in the app's <strong>Mail</strong> tab, enable the notification
-            listener yourself to see a local Gmail/Yahoo list.</li>
-      </ol>
-    </div>
-
-    <div class="panel privacy">
       <h2>What it will not do</h2>
-      <ul>
-        <li>This will not record calls. No background mic, no call audio, ever.</li>
-        <li>No internet permission — nothing leaves the phone unless you tap Export.</li>
+      <ul class="privacy">
+        <li>It will not record calls. No background microphone, no call audio — ever.</li>
+        <li>No internet permission: nothing leaves the phone unless you tap Export.</li>
         <li>No reading SMS, passwords, or other apps' screens.</li>
-        <li>No accessibility clicking, overlays, or device admin.</li>
+        <li>No accessibility clicking, no overlays, no device admin.</li>
       </ul>
+      <p class="note">Built for two‑party‑consent states: the app never records anyone.</p>
     </div>
 
-    <p class="foot">Personal build. Not listed on any store.</p>
-  </main>
+    <div class="panel price" id="pricing">
+      <h2>One‑time license</h2>
+      <div class="amount">$19.99</div>
+      <div class="once">Pay once. Yours to keep. Free updates.</div>
+      <p style="margin:16px 0 0;"><a class="cta" href="#pricing">Buy Fold Companion</a></p>
+      <p class="note">Checkout is wired separately — this button connects to secure checkout at launch.
+        After purchase you'll be taken to the download page.</p>
+    </div>
+
+    <div class="panel" style="text-align:center;">
+      <h2>Scan to open on your phone</h2>
+      <img class="qr" src="qr.png" alt="QR code linking to this page" />
+      <p class="qr-cap">https://fold-companion-install.netlify.app/</p>
+    </div>
+
+    <footer>Fold Companion · Android 8.0+ · dark cream/steel · no ads, no trackers.</footer>
+  </div>
 </body>
 </html>
