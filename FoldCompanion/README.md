@@ -83,6 +83,23 @@ adb install -r app/build/outputs/apk/debug/app-debug.apk
 
 The app appears as **Fold Companion**. Open it, and the four call buttons are on Home.
 
+### Release build (the one to keep on the phone)
+
+```bash
+./gradlew :app:assembleRelease
+adb install -r app/build/outputs/apk/release/app-release.apk
+```
+
+By default the release APK is signed with the Android debug key, which is fine for
+personal sideloading. To sign with your own key (recommended so future updates
+install over the top), copy `keystore.properties.template` to `keystore.properties`
+(gitignored), generate a keystore, and fill it in:
+
+```bash
+keytool -genkeypair -v -keystore fold-companion-release.jks \
+  -alias fold -keyalg RSA -keysize 2048 -validity 10000
+```
+
 To grant the optional mail list: open the app → **Mail** tab → **Open
 notification-access settings** → enable Fold Companion.
 
