@@ -1,0 +1,21 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <!-- Phone outline -->
+    <path
+        android:fillColor="#E9E0CC"
+        android:pathData="M42,30 L66,30 A6,6 0 0 1 72,36 L72,72 A6,6 0 0 1 66,78 L42,78 A6,6 0 0 1 36,72 L36,36 A6,6 0 0 1 42,30 Z" />
+    <path
+        android:fillColor="#1C2126"
+        android:pathData="M41,37 L67,37 L67,66 L41,66 Z" />
+    <!-- Fold seam -->
+    <path
+        android:fillColor="#8CA0B3"
+        android:pathData="M53.4,37 L54.6,37 L54.6,66 L53.4,66 Z" />
+    <!-- Arrow routing work off the phone (up and to the right) -->
+    <path
+        android:fillColor="#8CA0B3"
+        android:pathData="M60,52 L74,52 L74,48 L82,55 L74,62 L74,58 L60,58 Z" />
+</vector>

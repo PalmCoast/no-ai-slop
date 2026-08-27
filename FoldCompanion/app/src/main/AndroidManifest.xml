@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!--
+      Intentionally NO permissions requested here.
+      No INTERNET  -> the app physically cannot send data off the device.
+      No CALL_PHONE -> we open the dialer (ACTION_DIAL); the user taps call.
+      No RECORD_AUDIO, no READ_SMS, no accessibility, no device admin.
+      The notification listener below is bound only after the user enables it
+      manually in system Settings; it reads nothing until then.
+    -->
+
+    <!-- Dialing is optional; the phone is not required for the app to run. -->
+    <uses-feature
+        android:name="android.hardware.telephony"
+        android:required="false" />
+
+    <application
+        android:name=".FoldCompanionApp"
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.FoldCompanion">
+
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:resizeableActivity="true"
+            android:configChanges="orientation|screenSize|screenLayout|smallestScreenSize|keyboardHidden|density"
+            android:theme="@style/Theme.FoldCompanion">
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+            <!-- Share target: share a mail message or job listing into the app. -->
+            <intent-filter android:label="@string/share_label">
+                <action android:name="android.intent.action.SEND" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:mimeType="text/plain" />
+            </intent-filter>
+        </activity>
+
+        <!--
+          Optional. Disabled until the user turns it on in
+          Settings > Notifications > Device & app notifications.
+          Reads only Gmail/Yahoo mail notifications and keeps a local list.
+        -->
+        <service
+            android:name=".notify.MailNotificationListenerService"
+            android:exported="false"
+            android:label="@string/listener_label"
+            android:permission="android.permission.BIND_NOTIFICATION_LISTENER_SERVICE">
+            <intent-filter>
+                <action android:name="android.service.notification.NotificationListenerService" />
+            </intent-filter>
+        </service>
+    </application>
+
+</manifest>
