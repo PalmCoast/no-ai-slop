@@ -1,0 +1,16 @@
+{
+  "name": "no-ai-slop",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Dev tooling for the no-ai-slop skill repository (Markdown + YAML validation).",
+  "license": "MIT",
+  "scripts": {
+    "lint:md": "markdownlint \"**/*.md\" --ignore node_modules",
+    "validate:yaml": "node scripts/validate-yaml.mjs",
+    "validate": "npm run lint:md && npm run validate:yaml"
+  },
+  "devDependencies": {
+    "js-yaml": "4.1.0",
+    "markdownlint-cli": "0.42.0"
+  }
+}
