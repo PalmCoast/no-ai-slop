@@ -7,6 +7,7 @@ import androidx.compose.ui.test.onRoot
 import com.danielgraham.foldcompanion.data.MailNoticeEntity
 import com.danielgraham.foldcompanion.data.SavedItemEntity
 import com.danielgraham.foldcompanion.data.UserSettings
+import com.danielgraham.foldcompanion.domain.Contact
 import com.danielgraham.foldcompanion.ui.ForReedScreen
 import com.danielgraham.foldcompanion.ui.HomeScreen
 import com.danielgraham.foldcompanion.ui.MailScreen
@@ -49,6 +50,21 @@ class ScreenshotTest {
         ),
     )
 
+    private fun sampleContacts() = listOf(
+        Contact("First Deploy", "+1 320-335-6186"),
+        Contact("AgentHive", "+1 509-357-2230"),
+        Contact("Front desk", "+1 866-985-7234"),
+        Contact("Promoter", "+1 915-294-4711"),
+    )
+
+    private fun sampleSettings() = UserSettings(
+        name = "",
+        emails = listOf("you@example.com"),
+        agentName = "Reed",
+        agentNote = "Your desktop agent lives on the desktop, not on this phone.",
+        contacts = sampleContacts(),
+    )
+
     private fun sampleMail() = listOf(
         MailNoticeEntity(1, "com.google.android.gm", "Gmail", "New: interview confirmation", "Tuesday 2pm works.", 1_756_300_500_000),
         MailNoticeEntity(2, "com.yahoo.mobile.client.android.mail", "Yahoo Mail", "Invoice #4471 paid", "Payment received.", 1_756_260_000_000),
@@ -58,7 +74,7 @@ class ScreenshotTest {
     @Config(qualifiers = "w411dp-h914dp-xhdpi")
     fun home_folded() {
         compose.setContent {
-            FoldCompanionTheme { Surface { HomeScreen(WindowWidthSizeClass.Compact, {}) } }
+            FoldCompanionTheme { Surface { HomeScreen(WindowWidthSizeClass.Compact, sampleContacts(), {}) } }
         }
         compose.onRoot().captureRoboImage("$OUT/home_folded.png")
     }
@@ -67,7 +83,7 @@ class ScreenshotTest {
     @Config(qualifiers = "w900dp-h820dp-xhdpi")
     fun home_unfolded() {
         compose.setContent {
-            FoldCompanionTheme { Surface { HomeScreen(WindowWidthSizeClass.Expanded, {}) } }
+            FoldCompanionTheme { Surface { HomeScreen(WindowWidthSizeClass.Expanded, sampleContacts(), {}) } }
         }
         compose.onRoot().captureRoboImage("$OUT/home_unfolded.png")
     }
@@ -77,7 +93,7 @@ class ScreenshotTest {
     fun forReed_folded() {
         compose.setContent {
             FoldCompanionTheme {
-                Surface { ForReedScreen(items = sampleItems(), onExport = {}, onDelete = {}, onClear = {}) }
+                Surface { ForReedScreen(items = sampleItems(), agentName = "Reed", onExport = {}, onDelete = {}, onClear = {}) }
             }
         }
         compose.onRoot().captureRoboImage("$OUT/for_reed.png")
@@ -126,15 +142,7 @@ class ScreenshotTest {
             FoldCompanionTheme {
                 Surface {
                     SettingsScreen(
-                        settings = UserSettings(
-                            name = "Daniel Graham",
-                            emails = listOf(
-                                "Daniel@agenthiveinc.com",
-                                "coltsinsider@gmail.com",
-                                "coltsinsider@yahoo.com",
-                            ),
-                            reedNote = "Reed / Grok Bot lives on desktop, not on this phone.",
-                        ),
+                        settings = sampleSettings(),
                         listenerEnabled = false,
                         onSave = {},
                         onOpenListenerSettings = {},

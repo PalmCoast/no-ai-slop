@@ -38,7 +38,7 @@ import kotlinx.coroutines.launch
 
 private enum class Destination(val label: String, val icon: ImageVector) {
     HOME("Home", Icons.Filled.Home),
-    REED("For Reed", Icons.AutoMirrored.Filled.Send),
+    REED("Queue", Icons.AutoMirrored.Filled.Send),
     MAIL("Mail", Icons.Filled.Email),
     SETTINGS("Settings", Icons.Filled.Settings),
 }
@@ -79,9 +79,10 @@ fun AppRoot(
 
     val content: @Composable (Modifier) -> Unit = { modifier ->
         when (current) {
-            Destination.HOME -> HomeScreen(windowSizeClass.widthSizeClass, onDial, modifier)
+            Destination.HOME -> HomeScreen(windowSizeClass.widthSizeClass, settings.contacts, onDial, modifier)
             Destination.REED -> ForReedScreen(
                 items = savedItems,
+                agentName = settings.agentName,
                 onExport = viewModel::exportForReed,
                 onDelete = { viewModel.deleteItem(it) },
                 onClear = viewModel::clearItems,

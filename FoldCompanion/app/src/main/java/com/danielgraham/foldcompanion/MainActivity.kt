@@ -66,7 +66,11 @@ class MainActivity : ComponentActivity() {
 
     /** Open the dialer with the number pre-filled. The user taps call. */
     private fun dial(contact: Contact) {
-        val intent = Intent(Intent.ACTION_DIAL, Uri.parse(PhoneNumbers.telUri(contact.e164)))
+        if (contact.number.isBlank()) {
+            Toast.makeText(this, "Add a number for this button in Settings.", Toast.LENGTH_SHORT).show()
+            return
+        }
+        val intent = Intent(Intent.ACTION_DIAL, Uri.parse(PhoneNumbers.telUri(contact.number)))
         try {
             startActivity(intent)
         } catch (e: Exception) {

@@ -1,25 +1,26 @@
 # Fold Companion
 
-A private, single-purpose Android app for **Daniel Graham's Samsung Galaxy Z Fold 7**.
-It helps route work off the phone. It is not an assistant, it does not pretend to
-be you, and it does not touch anyone else's data.
+A private, configurable Android app that helps you route work off your phone.
+Built for the **Samsung Galaxy Z Fold 7** and other Android phones. It is not an
+assistant, it does not pretend to be you, and it does not touch anyone else's data.
 
 > **This will not record calls.** There is no call recording, no background
-> microphone, and no call-audio access anywhere in this app. Florida is a
-> two-party-consent state, and this app is built to stay on the right side of that.
+> microphone, and no call-audio access anywhere in this app. In two-party-consent
+> states (e.g. Florida), this app is built to stay on the right side of that line —
+> it never records anyone.
 
 ## What it does
 
-- **Home** — four tap-to-call buttons: First Deploy, AgentHive, Front desk, Promoter.
-  Tapping one opens the phone dialer with the number filled in. You press the green
-  call button. The app never places the call itself.
-- **For Reed** — a share target. Share a Gmail/Yahoo message or a job listing into
+- **Home** — four tap-to-call buttons you configure yourself. Tapping one opens the
+  phone dialer with the number filled in; you press the call button. The app never
+  places the call itself.
+- **Queue** — a share target. Share a Gmail/Yahoo message or a job listing into
   Fold Companion and it saves the subject, a snippet, and the first link locally,
-  marked "for Reed". Tap **Export for Reed** to write a JSON + text file to Downloads.
+  queued for your desktop agent. Tap **Export** to write a JSON + text file to Downloads.
 - **Mail** — an optional, read-only list of new Gmail/Yahoo notifications. Off until
   you turn it on yourself in system Settings.
-- **Settings** — your name, your emails, and a note that Reed / Grok Bot lives on the
-  desktop, not on this phone.
+- **Settings** — set the label + number for all four call buttons, your name and
+  emails, and your desktop agent's name (default "Reed"). Everything persists locally.
 
 The UI is dark cream/steel. No orange. No ads. No trackers.
 
@@ -35,7 +36,7 @@ The app adapts to the screen using window size classes:
 **Declared permissions: none.** The app requests no runtime permissions.
 
 - **No `INTERNET` permission.** The app literally cannot send data off the device.
-  The only way anything leaves the phone is the file you write with "Export for Reed".
+  The only way anything leaves the phone is the file you write with **Export**.
 - **No `CALL_PHONE`.** Calls use `ACTION_DIAL` (opens the dialer); the app can't dial
   on its own.
 - **No storage permission.** Export uses the scoped `MediaStore` Downloads API on
@@ -60,7 +61,7 @@ The app adapts to the screen using window size classes:
 | Screen-reading of other apps | The app never reads other apps' screens. |
 | System-alert-window / overlays | No drawing over other apps. |
 | Device Admin | No remote wipe / policy control on a personal phone. |
-| Auto-reply / send mail | The app sends nothing. Reed (desktop) handles replies. |
+| Auto-reply / send mail | The app sends nothing. Your desktop agent handles replies. |
 
 If a feature would need one of these, it was left out on purpose.
 
@@ -103,7 +104,7 @@ keytool -genkeypair -v -keystore fold-companion-release.jks \
 To grant the optional mail list: open the app → **Mail** tab → **Open
 notification-access settings** → enable Fold Companion.
 
-To find an export: **For Reed** tab → **Export for Reed** → files land in
+To find an export: **Queue** tab → **Export** → files land in
 `Downloads/FoldCompanion/`.
 
 ## Tech

@@ -12,6 +12,7 @@ class ReedExporterTest {
 
     private fun sample() = ReedExport(
         exportedAtIso = "2026-08-27T10:00:00Z",
+        agentName = "Reed",
         owner = ExportOwner(
             name = "Daniel Graham",
             emails = listOf("Daniel@agenthiveinc.com", "coltsinsider@gmail.com"),
@@ -42,9 +43,17 @@ class ReedExporterTest {
     fun jsonContainsOwnerAndSections() {
         val json = ReedExporter.toJson(sample())
         assertTrue(json.contains("\"name\": \"Daniel Graham\""))
+        assertTrue(json.contains("\"agent\": \"Reed\""))
+        assertTrue(json.contains("\"forAgent\""))
         assertTrue(json.contains("\"savedItems\""))
         assertTrue(json.contains("\"mailNotices\""))
         assertTrue(json.contains("\"link\": \"https://example.com/x\""))
+    }
+
+    @Test
+    fun usesCustomAgentNameInText() {
+        val text = ReedExporter.toPlainText(sample().copy(agentName = "Nova"))
+        assertTrue(text.contains("export for Nova"))
     }
 
     @Test

@@ -77,14 +77,15 @@ class CompanionViewModel(app: Application) : AndroidViewModel(app) {
         val notices = mailNoticeDao.getAllOnce().map { it.toExport() }
         val export = ReedExport(
             exportedAtIso = TimeUtil.iso(now),
-            owner = ExportOwner(current.name, current.emails, current.reedNote),
+            agentName = current.agentName,
+            owner = ExportOwner(current.name, current.emails, current.agentNote),
             savedItems = items,
             mailNotices = notices,
         )
         val stamp = TimeUtil.fileStamp(now)
         val app = getApplication<Application>()
-        val json = ExportWriter.write(app, "reed-export-$stamp.json", "application/json", ReedExporter.toJson(export))
-        ExportWriter.write(app, "reed-export-$stamp.txt", "text/plain", ReedExporter.toPlainText(export))
+        val json = ExportWriter.write(app, "fold-companion-export-$stamp.json", "application/json", ReedExporter.toJson(export))
+        ExportWriter.write(app, "fold-companion-export-$stamp.txt", "text/plain", ReedExporter.toPlainText(export))
         _exportStatus.value = "Exported ${items.size} item(s) to ${json.displayPath}"
     }
 

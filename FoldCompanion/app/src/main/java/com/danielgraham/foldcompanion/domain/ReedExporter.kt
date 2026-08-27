@@ -24,6 +24,8 @@ data class ExportMailNotice(
 
 data class ReedExport(
     val exportedAtIso: String,
+    /** The buyer's desktop agent name (default "Reed"). */
+    val agentName: String,
     val owner: ExportOwner,
     val savedItems: List<ExportSavedItem>,
     val mailNotices: List<ExportMailNotice>,
@@ -40,12 +42,13 @@ object ReedExporter {
         append("{\n")
         append("  \"exportedAt\": ").append(str(export.exportedAtIso)).append(",\n")
         append("  \"generatedBy\": ").append(str("Fold Companion")).append(",\n")
+        append("  \"agent\": ").append(str(export.agentName)).append(",\n")
         append("  \"owner\": {\n")
         append("    \"name\": ").append(str(export.owner.name)).append(",\n")
         append("    \"emails\": ").append(arr(export.owner.emails)).append(",\n")
         append("    \"note\": ").append(str(export.owner.note)).append("\n")
         append("  },\n")
-        append("  \"forReed\": {\n")
+        append("  \"forAgent\": {\n")
         append("    \"savedItems\": ")
         appendSavedItems(export.savedItems, indent = "    ")
         append(",\n")
@@ -56,7 +59,7 @@ object ReedExporter {
     }
 
     fun toPlainText(export: ReedExport): String = buildString {
-        append("Fold Companion — export for Reed\n")
+        append("Fold Companion — export for ").append(export.agentName).append("\n")
         append("Exported: ").append(export.exportedAtIso).append("\n")
         append("Owner: ").append(export.owner.name).append("\n")
         append("Emails: ").append(export.owner.emails.joinToString(", ")).append("\n")

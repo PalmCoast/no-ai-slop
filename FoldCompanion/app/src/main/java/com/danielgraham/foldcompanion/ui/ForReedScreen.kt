@@ -30,19 +30,21 @@ import com.danielgraham.foldcompanion.data.TimeUtil
 @Composable
 fun ForReedScreen(
     items: List<SavedItemEntity>,
+    agentName: String,
     onExport: () -> Unit,
     onDelete: (Long) -> Unit,
     onClear: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
+    val agent = agentName.ifBlank { "your agent" }
     Column(modifier.fillMaxSize().padding(horizontal = 20.dp)) {
         Text(
-            text = "For Reed",
+            text = "For $agent",
             style = MaterialTheme.typography.headlineMedium,
             modifier = Modifier.padding(top = 20.dp, bottom = 4.dp),
         )
         Text(
-            text = "Items you shared in, queued for the desktop bot. Export writes a JSON + text file to Downloads. Nothing uploads on its own.",
+            text = "Items you shared in, queued for your desktop agent. Export writes a JSON + text file to Downloads. Nothing uploads on its own.",
             style = MaterialTheme.typography.bodyMedium,
             color = MaterialTheme.colorScheme.onSurfaceVariant,
             modifier = Modifier.padding(bottom = 16.dp),
@@ -59,7 +61,7 @@ fun ForReedScreen(
             ) {
                 Icon(Icons.Filled.Upload, contentDescription = null)
                 Spacer(Modifier.width(8.dp))
-                Text("Export for Reed")
+                Text("Export for $agent")
             }
             OutlinedButton(onClick = onClear, enabled = items.isNotEmpty()) {
                 Text("Clear all")
@@ -78,7 +80,7 @@ fun ForReedScreen(
         } else {
             LazyColumn(verticalArrangement = Arrangement.spacedBy(12.dp)) {
                 items(items, key = { it.id }) { item ->
-                    SavedItemRow(item = item, onDelete = { onDelete(item.id) })
+                    SavedItemRow(item = item, agent = agent, onDelete = { onDelete(item.id) })
                 }
             }
         }
@@ -86,7 +88,7 @@ fun ForReedScreen(
 }
 
 @Composable
-private fun SavedItemRow(item: SavedItemEntity, onDelete: () -> Unit) {
+private fun SavedItemRow(item: SavedItemEntity, agent: String, onDelete: () -> Unit) {
     InfoCard {
         Row(Modifier.fillMaxWidth()) {
             Column(Modifier.weight(1f)) {
@@ -117,7 +119,7 @@ private fun SavedItemRow(item: SavedItemEntity, onDelete: () -> Unit) {
                     )
                 }
                 Text(
-                    "${item.source} · ${TimeUtil.readable(item.createdAt)} · for Reed",
+                    "${item.source} · ${TimeUtil.readable(item.createdAt)} · for $agent",
                     style = MaterialTheme.typography.labelMedium,
                     color = MaterialTheme.colorScheme.onSurfaceVariant,
                     modifier = Modifier.padding(top = 6.dp),
