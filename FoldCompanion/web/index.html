@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="robots" content="noindex, nofollow" />
+<title>Fold Companion — install</title>
+<style>
+  :root {
+    --steel-900: #14181c; --steel-800: #1e242a; --steel-700: #2a323a;
+    --steel-600: #3a454f; --steel-accent: #8ca0b3; --cream: #e9e0cc; --cream-dim: #c9c0ac;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--steel-900); color: var(--cream);
+    font-family: -apple-system, "Segoe UI", Roboto, sans-serif; line-height: 1.5;
+    display: flex; justify-content: center; padding: 24px;
+  }
+  .card { width: 100%; max-width: 560px; }
+  h1 { font-size: 1.9rem; margin: 0 0 4px; }
+  .sub { color: var(--cream-dim); margin: 0 0 24px; }
+  .panel { background: var(--steel-800); border: 1px solid var(--steel-600);
+           border-radius: 18px; padding: 20px; margin-bottom: 16px; }
+  .download { display: block; text-align: center; background: var(--cream);
+    color: var(--steel-900); text-decoration: none; font-weight: 700; font-size: 1.15rem;
+    padding: 16px 20px; border-radius: 16px; margin: 8px 0 16px; }
+  .qr { display: block; margin: 8px auto 0; width: 200px; height: 200px;
+        background: #fff; padding: 10px; border-radius: 12px; }
+  .qr-cap { text-align: center; color: var(--cream-dim); font-size: .9rem; margin-top: 8px; }
+  ol { padding-left: 20px; } li { margin: 6px 0; }
+  code { background: var(--steel-700); padding: 1px 6px; border-radius: 6px; }
+  h2 { font-size: 1.05rem; color: var(--steel-accent); margin: 0 0 8px; }
+  .privacy li { color: var(--cream-dim); }
+  .foot { color: var(--cream-dim); font-size: .85rem; text-align: center; margin-top: 8px; }
+</style>
+</head>
+<body>
+  <main class="card">
+    <h1>Fold Companion</h1>
+    <p class="sub">Private call &amp; route-off-phone app for Daniel's Galaxy Z Fold 7.</p>
+
+    <div class="panel">
+      <a class="download" href="FoldCompanion-release.apk" download>Download the app (.apk)</a>
+      <img class="qr" src="qr.png" alt="QR code to this page" />
+      <p class="qr-cap">On the Fold, scan this or open this page and tap Download.</p>
+    </div>
+
+    <div class="panel">
+      <h2>Install</h2>
+      <ol>
+        <li>Open this page on the Fold and tap <strong>Download the app</strong>.</li>
+        <li>Open the downloaded file. If prompted, allow your browser to
+            <em>install unknown apps</em> (one-time Android setting).</li>
+        <li>Tap <strong>Install</strong>. It appears as <strong>Fold Companion</strong>.</li>
+        <li>Optional: in the app's <strong>Mail</strong> tab, enable the notification
+            listener yourself to see a local Gmail/Yahoo list.</li>
+      </ol>
+    </div>
+
+    <div class="panel privacy">
+      <h2>What it will not do</h2>
+      <ul>
+        <li>This will not record calls. No background mic, no call audio, ever.</li>
+        <li>No internet permission — nothing leaves the phone unless you tap Export.</li>
+        <li>No reading SMS, passwords, or other apps' screens.</li>
+        <li>No accessibility clicking, overlays, or device admin.</li>
+      </ul>
+    </div>
+
+    <p class="foot">Personal build. Not listed on any store.</p>
+  </main>
+</body>
+</html>
