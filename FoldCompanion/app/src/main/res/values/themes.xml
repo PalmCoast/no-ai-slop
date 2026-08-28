@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--
+      Base platform theme. The live UI colours come from Compose (see ui/theme).
+      This only styles the window before Compose draws, so it stays dark steel
+      to avoid a white flash on launch.
+    -->
+    <style name="Theme.FoldCompanion" parent="android:Theme.Material.NoActionBar">
+        <item name="android:windowBackground">@color/steel_background</item>
+        <item name="android:statusBarColor">@color/steel_background</item>
+        <item name="android:navigationBarColor">@color/steel_background</item>
+    </style>
+</resources>
