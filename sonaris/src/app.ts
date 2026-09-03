@@ -193,9 +193,11 @@ function onStateChange(state: TurnState, prev: TurnState, event: string): void {
   if (state === TurnState.Interrupted) {
     interruptReply();
   }
-  if (state === TurnState.UserSpeaking && prev !== TurnState.UserSpeaking && prev !== TurnState.Interrupted) {
+  if (state === TurnState.UserSpeaking && prev === TurnState.Listening && event === "voice_start") {
     // A fresh utterance begins: clear the previous one from the You panel.
-    if (event === "voice_start" && !finalText && !interimText) renderYouCaption();
+    finalText = "";
+    interimText = "";
+    lastFinalAt = null;
   }
   if (state === TurnState.Idle) renderMeter(0, "");
   renderYouCaption();
@@ -451,13 +453,8 @@ function finishReply(interrupted: boolean): void {
   replyAbort = null;
   if (!interrupted) machine.send("reply_done");
   renderMeter(0, "");
-  if (machine.state === TurnState.Listening || machine.state === TurnState.Interrupted) {
-    // Ready for the next utterance.
-    finalText = "";
-    interimText = "";
-    lastFinalAt = null;
-    renderYouCaption();
-  }
+  // The user's last utterance stays on screen until they start the next one.
+  renderYouCaption();
 }
 
 /** Called when the machine enters `interrupted` (user barged in). */

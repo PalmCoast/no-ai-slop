@@ -19,6 +19,11 @@
   box-sizing: border-box;
 }
 
+/* Layout classes below set display: flex/grid; the hidden attribute must still win. */
+[hidden] {
+  display: none !important;
+}
+
 html {
   scroll-behavior: smooth;
 }
