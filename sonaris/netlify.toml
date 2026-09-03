@@ -1,7 +1,11 @@
 # Sonaris — Netlify configuration.
-# Deploy with the site's base directory set to `sonaris/` (or run from this folder).
+# Sonaris lives in a subfolder of the repository, so `base` is set here (it is
+# resolved relative to the repository root). The Netlify CLI and build system
+# then treat `sonaris/` as the project root for `publish`, `functions` and
+# `included_files`.
 
 [build]
+  base = "sonaris"
   command = "npm run build"
   publish = "dist"
   functions = "netlify/functions"
