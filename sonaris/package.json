@@ -1,0 +1,28 @@
+{
+  "name": "sonaris",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Sonaris: a real-time voice conversation layer for an AI assistant. Speak freely. Answer in any voice.",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "dev:netlify": "netlify dev",
+    "build": "vite build",
+    "preview": "vite preview",
+    "typecheck": "tsc --noEmit -p tsconfig.json",
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "dependencies": {
+    "@netlify/blobs": "^8.2.0",
+    "@netlify/functions": "^3.1.10",
+    "stripe": "^18.4.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.15.30",
+    "netlify-cli": "^22.1.3",
+    "typescript": "^5.8.3",
+    "vite": "^6.3.5",
+    "vitest": "^3.2.4"
+  }
+}
