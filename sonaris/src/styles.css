@@ -1,0 +1,263 @@
+/* Sonaris brand system. One accent colour, flat surfaces, no gradients, no shadows. */
+:root {
+  --navy: #0b1220;
+  --ink: #121a2b;
+  --gold: #c9a227;
+  --cream: #f1ead8;
+  --steel: #8a94a6;
+  --stroke: rgba(241, 234, 216, 0.12);
+  --stroke-strong: rgba(241, 234, 216, 0.24);
+  --gold-dim: rgba(201, 162, 39, 0.16);
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-display: Georgia, "Times New Roman", serif;
+  --radius: 14px;
+  --radius-sm: 8px;
+  --maxw: 1120px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--navy);
+  color: var(--cream);
+  font-family: var(--font-sans);
+  font-size: 17px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: var(--cream);
+  text-decoration-color: var(--stroke-strong);
+  text-underline-offset: 3px;
+}
+
+a:hover {
+  text-decoration-color: var(--gold);
+}
+
+h1,
+h2,
+h3 {
+  margin: 0 0 12px;
+  line-height: 1.15;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+h1 {
+  font-size: clamp(2.2rem, 5vw, 3.6rem);
+}
+
+h2 {
+  font-size: clamp(1.5rem, 3vw, 2.1rem);
+}
+
+h3 {
+  font-size: 1.15rem;
+}
+
+p {
+  margin: 0 0 14px;
+}
+
+.muted {
+  color: var(--steel);
+}
+
+.gold {
+  color: var(--gold);
+}
+
+.wrap {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.wordmark {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  color: var(--cream);
+}
+
+.wordmark img {
+  width: 34px;
+  height: 34px;
+  display: block;
+}
+
+.wordmark span {
+  font-family: var(--font-display);
+  letter-spacing: 0.28em;
+  font-size: 1.05rem;
+  padding-left: 0.28em;
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 20px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--stroke-strong);
+  background: transparent;
+  color: var(--cream);
+  font: inherit;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: border-color 120ms ease, background-color 120ms ease, color 120ms ease;
+}
+
+.btn:hover {
+  border-color: var(--gold);
+}
+
+.btn:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+}
+
+.btn-gold {
+  background: var(--gold);
+  border-color: var(--gold);
+  color: var(--navy);
+}
+
+.btn-gold:hover {
+  background: #d6b13a;
+  border-color: #d6b13a;
+}
+
+.btn-ghost {
+  border-color: transparent;
+  color: var(--steel);
+}
+
+.btn-ghost:hover {
+  color: var(--cream);
+  border-color: var(--stroke-strong);
+}
+
+.btn-sm {
+  padding: 7px 12px;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.btn[disabled],
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Panels */
+.panel {
+  background: var(--ink);
+  border: 1px solid var(--stroke);
+  border-radius: var(--radius);
+  padding: 22px;
+}
+
+.hairline {
+  border: 0;
+  border-top: 1px solid var(--stroke);
+  margin: 0;
+}
+
+.eyebrow {
+  color: var(--gold);
+  font-size: 0.8rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+pre,
+code,
+kbd {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.9em;
+}
+
+pre {
+  background: var(--navy);
+  border: 1px solid var(--stroke);
+  border-radius: var(--radius-sm);
+  padding: 16px;
+  overflow: auto;
+  color: var(--cream);
+  line-height: 1.5;
+  margin: 0;
+}
+
+kbd {
+  border: 1px solid var(--stroke-strong);
+  border-radius: 5px;
+  padding: 1px 6px;
+  color: var(--cream);
+  font-size: 0.8em;
+}
+
+/* Forms */
+input[type="text"],
+input[type="email"],
+input[type="url"],
+select,
+textarea {
+  width: 100%;
+  background: var(--navy);
+  color: var(--cream);
+  border: 1px solid var(--stroke-strong);
+  border-radius: var(--radius-sm);
+  padding: 10px 12px;
+  font: inherit;
+}
+
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 1px;
+  border-color: var(--gold);
+}
+
+label {
+  display: block;
+  color: var(--steel);
+  font-size: 0.9rem;
+  margin-bottom: 6px;
+}
+
+.field {
+  margin-bottom: 14px;
+}
+
+.visually-hidden {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+    animation: none !important;
+  }
+}
