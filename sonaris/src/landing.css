@@ -85,6 +85,29 @@
   border-top: 1px solid var(--stroke);
 }
 
+.companion-strip {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 40px;
+  align-items: center;
+}
+
+.companion-strip p {
+  max-width: 620px;
+  margin-bottom: 0;
+}
+
+.companion-portrait {
+  display: block;
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid var(--gold);
+  outline: 1px solid var(--stroke);
+  outline-offset: 8px;
+}
+
 .steps,
 .cards {
   display: grid;
@@ -319,6 +342,14 @@ ol.steps-list li {
   }
   .cards {
     grid-template-columns: 1fr 1fr;
+  }
+  .companion-strip {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  .companion-portrait {
+    width: 160px;
+    height: 160px;
   }
   .two-col,
   .skill-panel,
