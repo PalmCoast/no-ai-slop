@@ -3,13 +3,15 @@
  *
  * Wires the turn-taking state machine (turn.ts) to the microphone, live
  * captions, voice activity detection, the streaming chat reply, the sentence
- * playback queue, the memory panel, and the license gate.
+ * playback queue, the companion face, the conversation sheet, and the license
+ * gate.
  */
 import { api, ApiError, type ChatMessage, type MemoryEntry } from "./api";
 import { RecorderCaptions, WebSpeechCaptions, webSpeechSupported, type CaptionSource } from "./audio/captions";
 import { MicError, openMic, type MicHandle } from "./audio/mic";
 import { SpeechQueue, warmBrowserVoices } from "./audio/tts";
 import { createSentenceChunker } from "./chunker";
+import { CompanionFace } from "./companion";
 import { isPlausibleLicense, normalizeKey } from "./license";
 import { BUILTIN_PERSONAS, DEFAULT_PERSONA_ID, findPersona, type CustomPersonaInput, type Persona } from "./personas";
 import { TurnMachine, TurnState } from "./turn";
@@ -25,25 +27,26 @@ function $<T extends HTMLElement = HTMLElement>(id: string): T {
 }
 
 const els = {
-  persona: $<HTMLSelectElement>("persona"),
-  addVoiceBtn: $<HTMLButtonElement>("add-voice-btn"),
-  statePill: $("state-pill"),
   settingsBtn: $<HTMLButtonElement>("settings-btn"),
   memoryBtn: $<HTMLButtonElement>("memory-btn"),
   notice: $("notice"),
-  youCap: document.querySelector<HTMLElement>(".cap-you")!,
+  face: $("face"),
+  bubble: $("bubble"),
   youFinal: $("you-final"),
   youInterim: $("you-interim"),
-  sonarisLabel: $("sonaris-label"),
+  personaName: $("persona-name"),
+  stateLine: $("state-line"),
   interruptedBadge: $("interrupted-badge"),
   sonarisText: $("sonaris-text"),
-  meter: $("meter"),
+  personaChips: $("persona-chips"),
   micBtn: $<HTMLButtonElement>("mic-btn"),
+  typeToggle: $<HTMLButtonElement>("type-toggle"),
   typeForm: $<HTMLFormElement>("type-form"),
   typeInput: $<HTMLInputElement>("type-input"),
+  hint: $("hint"),
   demoBar: $("demo-bar"),
   demoRun: $<HTMLButtonElement>("demo-run"),
-  memoryPanel: $("memory-panel"),
+  conversation: $("conversation"),
   memoryMeta: $("memory-meta"),
   memoryClose: $<HTMLButtonElement>("memory-close"),
   dlMd: $<HTMLAnchorElement>("dl-md"),
@@ -55,6 +58,7 @@ const els = {
   silence: $<HTMLInputElement>("silence"),
   silenceVal: $("silence-val"),
   preferBrowser: $<HTMLInputElement>("prefer-browser"),
+  addVoiceBtn: $<HTMLButtonElement>("add-voice-btn"),
   licenseInfo: $("license-info"),
   licenseForget: $<HTMLButtonElement>("license-forget"),
   engineInfo: $("engine-info"),
@@ -127,6 +131,10 @@ let pttHeld = false;
 let replyAbort: AbortController | null = null;
 let replyQueue: SpeechQueue | null = null;
 let replyText = "";
+/** The part of the reply that has been spoken so far; this is what the subtitle shows. */
+let spokenText = "";
+
+const face = new CompanionFace(els.face);
 
 const machine = new TurnMachine({
   bargeInMs: 250,
@@ -137,17 +145,31 @@ const machine = new TurnMachine({
 // UI primitives
 
 const STATE_LABEL: Record<TurnState, string> = {
-  [TurnState.Idle]: "Idle",
+  [TurnState.Idle]: "Resting",
   [TurnState.Listening]: "Listening",
-  [TurnState.UserSpeaking]: "You're speaking",
+  [TurnState.UserSpeaking]: "You're talking",
   [TurnState.Thinking]: "Thinking",
   [TurnState.Speaking]: "Speaking",
   [TurnState.Interrupted]: "Paused. Go ahead.",
 };
 
-function setPill(state: TurnState): void {
-  els.statePill.dataset.state = state;
-  els.statePill.textContent = STATE_LABEL[state];
+/** Short, warm hints under the mic. `.kbd-only` parts hide on small screens; `.touch-only` parts show there instead. */
+const STATE_HINT: Record<TurnState, string> = {
+  [TurnState.Idle]: 'Press the microphone<span class="kbd-only">, hold <kbd>Space</kbd>,</span> or type. Take your time.',
+  [TurnState.Listening]: "I'm listening.",
+  [TurnState.UserSpeaking]: "Take your time. I won't talk over you.",
+  [TurnState.Thinking]: "One moment.",
+  [TurnState.Speaking]:
+    '<span class="kbd-only"><kbd>Esc</kbd> stops me. Hold <kbd>Space</kbd> or type to cut in.</span><span class="touch-only">Type to cut in.</span>',
+  [TurnState.Interrupted]: "Go ahead, I stopped.",
+};
+
+function setStateLine(state: TurnState): void {
+  document.body.dataset.state = state;
+  els.stateLine.dataset.state = state;
+  els.stateLine.textContent = STATE_LABEL[state];
+  els.hint.innerHTML = STATE_HINT[state];
+  face.setState(state);
 }
 
 let noticeTimer: number | null = null;
@@ -159,40 +181,70 @@ function notice(message: string, tone: "info" | "warn" = "info", ms = 8000): voi
   noticeTimer = ms > 0 ? window.setTimeout(() => (els.notice.hidden = true), ms) : null;
 }
 
-const METER_BARS = 28;
-for (let i = 0; i < METER_BARS; i++) els.meter.appendChild(document.createElement("i"));
-const bars = Array.from(els.meter.children) as HTMLElement[];
-function renderMeter(level: number, who: "user" | "assistant" | ""): void {
-  els.meter.dataset.who = who;
-  const mid = (METER_BARS - 1) / 2;
-  for (let i = 0; i < METER_BARS; i++) {
-    const dist = Math.abs(i - mid) / mid;
-    const shape = 1 - dist * 0.75;
-    const jitter = level > 0 ? 0.75 + Math.random() * 0.5 : 1;
-    const h = 4 + Math.round(level * shape * jitter * 30);
-    bars[i]!.style.height = `${Math.max(4, Math.min(34, h))}px`;
+/** 0..1 levels. The user's voice grows a ring around the mic button; the assistant's lights the face ring. */
+function renderLevel(level: number, who: "user" | "assistant" | ""): void {
+  if (who === "assistant") {
+    face.setLevel(level);
+    return;
+  }
+  face.setLevel(0);
+  if (who === "user" && level > 0) {
+    els.micBtn.dataset.level = "";
+    els.micBtn.style.setProperty("--level", String(Math.min(1, level)));
+  } else {
+    delete els.micBtn.dataset.level;
+    els.micBtn.style.removeProperty("--level");
   }
 }
-renderMeter(0, "");
 
-function renderYouCaption(): void {
+let bubbleFadeTimer: number | null = null;
+let bubbleShown = "";
+
+function renderBubble(): void {
   els.youFinal.textContent = finalText ? finalText + (interimText ? " " : "") : "";
   els.youInterim.textContent = interimText;
   const has = Boolean(finalText || interimText);
-  els.youCap.classList.toggle("has-text", has);
   const live = machine.state === TurnState.UserSpeaking || (machine.state === TurnState.Listening && Boolean(interimText));
-  els.youCap.classList.toggle("live", live || pttHeld);
+  els.bubble.classList.toggle("live", has && (live || pttHeld));
+  els.bubble.classList.toggle("final", Boolean(finalText) && !interimText);
+  // A faded bubble stays faded until the words change.
+  const shown = `${finalText}\u0000${interimText}`;
+  if (shown !== bubbleShown) {
+    bubbleShown = shown;
+    els.bubble.classList.remove("fade");
+  }
+  els.bubble.hidden = !has;
 }
 
-function setSonarisLabel(): void {
-  els.sonarisLabel.textContent = `Sonaris · ${activePersona.name}`;
+/** The user's words linger while the reply begins, then fade out of the way. */
+function scheduleBubbleFade(): void {
+  cancelBubbleFade();
+  bubbleFadeTimer = window.setTimeout(() => {
+    bubbleFadeTimer = null;
+    if (machine.state !== TurnState.Speaking) return;
+    els.bubble.classList.add("fade");
+  }, 1500);
+}
+
+function cancelBubbleFade(): void {
+  if (bubbleFadeTimer !== null) clearTimeout(bubbleFadeTimer);
+  bubbleFadeTimer = null;
+}
+
+function renderSubtitle(): void {
+  els.sonarisText.textContent = spokenText;
+  els.sonarisText.scrollTop = els.sonarisText.scrollHeight;
+}
+
+function setPersonaName(): void {
+  els.personaName.textContent = activePersona.name;
 }
 
 // ---------------------------------------------------------------------------
 // State changes
 
 function onStateChange(state: TurnState, prev: TurnState, event: string): void {
-  setPill(state);
+  setStateLine(state);
   els.micBtn.setAttribute("aria-pressed", String(state !== TurnState.Idle));
   els.micBtn.setAttribute("aria-label", state === TurnState.Idle ? "Start listening" : "Stop listening");
   els.interruptedBadge.hidden = state !== TurnState.Interrupted;
@@ -201,17 +253,19 @@ function onStateChange(state: TurnState, prev: TurnState, event: string): void {
   // (reply_done, reply_failed, stop, user_interrupt) unmutes.
   if (state === TurnState.Speaking) muteMicForPlayback();
   else if (micMuted) resumeMicAfterPlayback();
+  if (state === TurnState.Speaking) scheduleBubbleFade();
+  else cancelBubbleFade();
   if (state === TurnState.Interrupted) {
     interruptReply();
   }
   if (state === TurnState.UserSpeaking && prev === TurnState.Listening && event === "voice_start") {
-    // A fresh utterance begins: clear the previous one from the You panel.
+    // A fresh utterance begins: clear the previous one from the bubble.
     finalText = "";
     interimText = "";
     lastFinalAt = null;
   }
-  if (state === TurnState.Idle) renderMeter(0, "");
-  renderYouCaption();
+  if (state === TurnState.Idle) renderLevel(0, "");
+  renderBubble();
 }
 
 // ---------------------------------------------------------------------------
@@ -228,7 +282,7 @@ function muteMicForPlayback(): void {
   micMuted = true;
   mic?.mute();
   captions?.suspend();
-  renderMeter(0, "");
+  renderLevel(0, "");
 }
 
 /**
@@ -250,7 +304,7 @@ function resetUtterance(): void {
   interimText = "";
   lastVoiceAt = null;
   lastFinalAt = null;
-  renderYouCaption();
+  renderBubble();
 }
 
 function captionEvents() {
@@ -259,10 +313,10 @@ function captionEvents() {
       // The recognizer is suspended while we speak and drops results from the
       // instance that was running before suspend(); this is the second line
       // of defence for anything that still slips through, and it also keeps
-      // the panel still while we are thinking.
+      // the bubble still while we are thinking.
       if (micMuted || machine.state === TurnState.Speaking || machine.state === TurnState.Thinking) return;
       interimText = text;
-      renderYouCaption();
+      renderBubble();
     },
     onFinal(text: string) {
       if (micMuted || machine.state === TurnState.Speaking || machine.state === TurnState.Thinking) return;
@@ -274,7 +328,7 @@ function captionEvents() {
       finalText = finalText ? `${finalText} ${text}` : text;
       interimText = "";
       lastFinalAt = performance.now();
-      renderYouCaption();
+      renderBubble();
     },
     onStatus(status: string) {
       if (status === "transcribing") notice("Transcribing…", "info", 3000);
@@ -288,10 +342,12 @@ function captionEvents() {
       }
       if (code === "not-allowed") {
         notice("Speech recognition was blocked. You can still type to talk.", "warn");
+        showTypeForm();
         return;
       }
       if (code === "transcription_not_configured") {
         notice("Server transcription is not configured (OPENAI_API_KEY). Type to talk instead.", "warn", 12000);
+        showTypeForm();
         return;
       }
       notice(`Captions: ${message}`, "warn");
@@ -326,8 +382,8 @@ async function startListening(): Promise<void> {
       micUnavailable = err.message;
       els.micBtn.dataset.unavailable = "true";
       const why = err.code === "denied" ? "Microphone access was denied" : err.code === "notfound" ? "No microphone found" : err.message;
-      notice(`${why}. Type to talk: the text box below goes through the same turn pipeline.`, "warn", 0);
-      els.typeInput.focus();
+      notice(`${why}. You can type instead: typed words go through the same conversation.`, "warn", 0);
+      showTypeForm();
       updateEngineInfo();
       return;
     }
@@ -341,7 +397,7 @@ async function startListening(): Promise<void> {
   if (webSpeechSupported()) {
     captions = new WebSpeechCaptions(captionEvents());
   } else if (RecorderCaptions.supported()) {
-    notice("This browser has no live speech recognition. Captions arrive in ~4 s slices via server transcription.", "info", 10000);
+    notice("This browser has no live speech recognition. Your words arrive in ~4 s slices via server transcription.", "info", 10000);
     captions = new RecorderCaptions(mic.stream, captionEvents(), {
       transcribe: (blob) => api.transcribe(licenseKey, blob),
       isVoiced: () => machine.state === TurnState.UserSpeaking,
@@ -379,7 +435,7 @@ function onFrame(): void {
   if (voiced) lastVoiceAt = now;
   machine.onVoiceFrame(voiced, now);
   if (machine.state === TurnState.UserSpeaking || machine.state === TurnState.Listening) {
-    renderMeter(Math.min(1, (frame?.rms ?? 0) * 6), voiced ? "user" : "");
+    renderLevel(Math.min(1, (frame?.rms ?? 0) * 6), voiced ? "user" : "");
   }
 }
 
@@ -409,7 +465,7 @@ async function finishUtterance(): Promise<void> {
     return;
   }
   machine.send("end_of_utterance");
-  renderYouCaption();
+  renderBubble();
   await respond(text);
 }
 
@@ -421,7 +477,8 @@ async function respond(userText: string): Promise<void> {
   history = history.slice(-16);
   void recordMemory({ role: "user", text: userText, personaId: activePersona.id });
 
-  els.sonarisText.textContent = "";
+  spokenText = "";
+  renderSubtitle();
   replyText = "";
   const abort = new AbortController();
   replyAbort = abort;
@@ -437,11 +494,14 @@ async function respond(userText: string): Promise<void> {
       onStart() {
         if (machine.state === TurnState.Thinking) machine.send("reply_ready");
       },
-      onSentence() {
-        // Caption already streams in; nothing extra to render per sentence.
+      onSentence(text) {
+        // The subtitle follows the voice, one sentence at a time.
+        if (replyQueue !== queue) return;
+        spokenText = spokenText ? `${spokenText} ${text}` : text;
+        renderSubtitle();
       },
       onLevel(level) {
-        if (machine.state === TurnState.Speaking) renderMeter(level, "assistant");
+        if (machine.state === TurnState.Speaking) renderLevel(level, "assistant");
       },
       onDone() {
         if (replyQueue !== queue) return;
@@ -463,7 +523,6 @@ async function respond(userText: string): Promise<void> {
       (piece) => {
         if (abort.signal.aborted) return;
         replyText += piece;
-        els.sonarisText.textContent = replyText;
         for (const s of chunker.push(piece)) queue.enqueue(s);
       },
       abort.signal,
@@ -502,9 +561,9 @@ function finishReply(interrupted: boolean): void {
   replyText = "";
   replyAbort = null;
   if (!interrupted) machine.send("reply_done");
-  renderMeter(0, "");
-  // The user's last utterance stays on screen until they start the next one.
-  renderYouCaption();
+  renderLevel(0, "");
+  // The user's last words stay in the bubble until they start the next ones.
+  renderBubble();
 }
 
 /** Called when the machine enters `interrupted` (Esc, Space, typed text, or voice while thinking). */
@@ -514,7 +573,7 @@ function interruptReply(): void {
   finalText = "";
   interimText = "";
   lastFinalAt = null;
-  renderYouCaption();
+  renderBubble();
 }
 
 function stopReply(interrupted: boolean): void {
@@ -526,7 +585,7 @@ function stopReply(interrupted: boolean): void {
 }
 
 // ---------------------------------------------------------------------------
-// Memory
+// Memory (the conversation sheet)
 
 async function recordMemory(entry: Omit<MemoryEntry, "ts">): Promise<void> {
   const local: MemoryEntry = { ...entry, ts: new Date().toISOString() };
@@ -594,43 +653,46 @@ function renderMemory(): void {
   list.scrollTop = list.scrollHeight;
 }
 
-function toggleMemory(force?: boolean): void {
-  const show = force ?? els.memoryPanel.hidden;
-  els.memoryPanel.hidden = !show;
-  els.memoryBtn.setAttribute("aria-pressed", String(show));
+function toggleConversation(force?: boolean): void {
+  const show = force ?? els.conversation.hidden;
+  els.conversation.hidden = !show;
+  els.memoryBtn.setAttribute("aria-expanded", String(show));
   if (show) void loadMemory();
 }
 
 // ---------------------------------------------------------------------------
 // Personas
 
-function renderPersonaSelect(): void {
-  els.persona.textContent = "";
-  const groups: Array<[string, Persona[]]> = [
-    ["Default voices", personas.filter((p) => p.builtin && p.id !== "captain")],
-    ["Character voices", personas.filter((p) => p.id === "captain" || !p.builtin)],
-  ];
-  for (const [label, list] of groups) {
-    if (!list.length) continue;
-    const og = document.createElement("optgroup");
-    og.label = label;
-    for (const p of list) {
-      const o = document.createElement("option");
-      o.value = p.id;
-      o.textContent = p.builtin ? `${p.name} (${p.gender})` : `${p.name} (custom)`;
-      og.appendChild(o);
-    }
-    els.persona.appendChild(og);
+function renderPersonaChips(): void {
+  els.personaChips.textContent = "";
+  for (const p of personas) {
+    const b = document.createElement("button");
+    b.type = "button";
+    b.className = "chip";
+    b.dataset.persona = p.id;
+    b.textContent = p.name;
+    b.title = p.description;
+    b.setAttribute("aria-pressed", String(p.id === activePersona.id));
+    b.addEventListener("click", () => selectPersona(p.id));
+    els.personaChips.appendChild(b);
   }
-  els.persona.value = activePersona.id;
-  setSonarisLabel();
+  const add = document.createElement("button");
+  add.type = "button";
+  add.className = "chip chip-add";
+  add.id = "add-voice-chip";
+  add.textContent = "+ Add a voice";
+  add.addEventListener("click", openVoiceModal);
+  els.personaChips.appendChild(add);
+  setPersonaName();
 }
 
 function selectPersona(id: string): void {
   activePersona = findPersona(id, personas);
   localStorage.setItem(LS.persona, activePersona.id);
-  els.persona.value = activePersona.id;
-  setSonarisLabel();
+  els.personaChips.querySelectorAll<HTMLButtonElement>(".chip[data-persona]").forEach((chip) => {
+    chip.setAttribute("aria-pressed", String(chip.dataset.persona === activePersona.id));
+  });
+  setPersonaName();
   notice(`Voice: ${activePersona.name}. ${activePersona.description}`, "info", 4000);
 }
 
@@ -641,7 +703,7 @@ async function loadPersonas(): Promise<void> {
     personas = [...BUILTIN_PERSONAS];
   }
   activePersona = findPersona(activePersona.id, personas);
-  renderPersonaSelect();
+  renderPersonaChips();
 }
 
 function openVoiceModal(): void {
@@ -685,7 +747,7 @@ async function saveVoice(ev: Event): Promise<void> {
       persona = await api.addPersona(licenseKey, input);
     }
     personas.push(persona);
-    renderPersonaSelect();
+    renderPersonaChips();
     selectPersona(persona.id);
     els.voiceModal.hidden = true;
   } catch (e) {
@@ -703,6 +765,7 @@ function lockConsole(message = ""): void {
   els.lock.hidden = false;
   els.lockMsg.textContent = message;
   if (machine.state !== TurnState.Idle) stopListening();
+  face.sleep();
 }
 
 async function unlockWith(key: string, label: string): Promise<void> {
@@ -710,6 +773,7 @@ async function unlockWith(key: string, label: string): Promise<void> {
   localStorage.setItem(LS.license, key);
   els.lock.hidden = true;
   els.licenseInfo.textContent = `${label} · ${key}`;
+  face.preload();
   await Promise.all([loadPersonas(), loadMemory()]);
   if (DEMO_MODE) els.demoBar.hidden = false;
 }
@@ -787,8 +851,8 @@ async function runScriptedDemo(): Promise<void> {
       machine.onVoiceFrame(true, now);
       spoken = spoken ? `${spoken} ${words[i]}` : words[i]!;
       interimText = spoken;
-      renderYouCaption();
-      renderMeter(0.4 + Math.random() * 0.4, "user");
+      renderBubble();
+      renderLevel(0.4 + Math.random() * 0.4, "user");
       await sleep(170 + Math.random() * 90);
     }
     // Recognizer finalizes the utterance shortly after the last word.
@@ -796,8 +860,8 @@ async function runScriptedDemo(): Promise<void> {
     finalText = spoken;
     interimText = "";
     lastFinalAt = performance.now();
-    renderYouCaption();
-    renderMeter(0, "");
+    renderBubble();
+    renderLevel(0, "");
     // Silence: wait for the configured end-of-utterance window, then respond.
     await sleep(settings.silenceMs);
     if (machine.state === TurnState.UserSpeaking) await finishUtterance();
@@ -826,8 +890,21 @@ async function submitTyped(text: string): Promise<void> {
   interimText = "";
   lastVoiceAt = performance.now();
   lastFinalAt = lastVoiceAt;
-  renderYouCaption();
+  renderBubble();
   await finishUtterance();
+}
+
+function showTypeForm(focus = true): void {
+  els.typeForm.hidden = false;
+  els.typeToggle.hidden = true;
+  els.typeToggle.setAttribute("aria-expanded", "true");
+  if (focus) els.typeInput.focus();
+}
+
+function hideTypeForm(): void {
+  els.typeForm.hidden = true;
+  els.typeToggle.hidden = false;
+  els.typeToggle.setAttribute("aria-expanded", "false");
 }
 
 // ---------------------------------------------------------------------------
@@ -839,15 +916,25 @@ function bind(): void {
     else stopListening();
   });
 
+  els.typeToggle.addEventListener("click", () => showTypeForm());
   els.typeForm.addEventListener("submit", (e) => {
     e.preventDefault();
     const t = els.typeInput.value;
     els.typeInput.value = "";
     void submitTyped(t);
   });
+  els.typeInput.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && !els.typeInput.value) {
+      hideTypeForm();
+      e.stopPropagation();
+    }
+  });
 
-  els.persona.addEventListener("change", () => selectPersona(els.persona.value));
-  els.addVoiceBtn.addEventListener("click", openVoiceModal);
+  els.addVoiceBtn.addEventListener("click", () => {
+    els.settings.hidden = true;
+    els.settingsBtn.setAttribute("aria-expanded", "false");
+    openVoiceModal();
+  });
   els.voiceCancel.addEventListener("click", () => (els.voiceModal.hidden = true));
   els.voiceModal.addEventListener("click", (e) => {
     if (e.target === els.voiceModal) els.voiceModal.hidden = true;
@@ -855,8 +942,8 @@ function bind(): void {
   els.vProvider.addEventListener("change", syncProviderFields);
   els.voiceForm.addEventListener("submit", (e) => void saveVoice(e));
 
-  els.memoryBtn.addEventListener("click", () => toggleMemory());
-  els.memoryClose.addEventListener("click", () => toggleMemory(false));
+  els.memoryBtn.addEventListener("click", () => toggleConversation());
+  els.memoryClose.addEventListener("click", () => toggleConversation(false));
   els.memoryClear.addEventListener("click", async () => {
     if (!confirm("Delete the whole memory journal and MEMORY.md for this license?")) return;
     try {
@@ -905,13 +992,14 @@ function bind(): void {
 
   els.demoRun.addEventListener("click", () => void runScriptedDemo());
 
-  // Keyboard: Space = push-to-talk, Esc = stop speaking, M = memory panel.
+  // Keyboard: Space = push-to-talk, Esc = stop speaking, M = conversation.
   document.addEventListener("keydown", (e) => {
     const target = e.target as HTMLElement | null;
     const typing = target && (target.tagName === "INPUT" || target.tagName === "TEXTAREA" || target.tagName === "SELECT");
     if (e.key === "Escape") {
       if (!els.voiceModal.hidden) els.voiceModal.hidden = true;
       else if (!els.settings.hidden) els.settings.hidden = true;
+      else if (!els.conversation.hidden) toggleConversation(false);
       else if (machine.state === TurnState.Speaking || machine.state === TurnState.Thinking) {
         machine.send("user_interrupt");
         // Esc means "stop", not "I'm talking": return to listening.
@@ -932,17 +1020,17 @@ function bind(): void {
         if (machine.state === TurnState.Speaking || machine.state === TurnState.Thinking) machine.send("user_interrupt");
         machine.onVoiceFrame(true, performance.now());
       }
-      renderYouCaption();
+      renderBubble();
     } else if (e.key.toLowerCase() === "m") {
       e.preventDefault();
-      toggleMemory();
+      toggleConversation();
     }
   });
   document.addEventListener("keyup", (e) => {
     if (e.key === " " && pttHeld) {
       pttHeld = false;
       lastVoiceAt = performance.now();
-      renderYouCaption();
+      renderBubble();
       // Release ends the utterance after a short grace for the recognizer.
       window.setTimeout(() => {
         if (machine.state === TurnState.UserSpeaking) void finishUtterance();
@@ -957,9 +1045,9 @@ function bind(): void {
 
 async function init(): Promise<void> {
   bind();
-  setPill(TurnState.Idle);
-  setSonarisLabel();
-  renderPersonaSelect();
+  setStateLine(TurnState.Idle);
+  setPersonaName();
+  renderPersonaChips();
   warmBrowserVoices();
   updateEngineInfo();
   if (DEMO_MODE) {

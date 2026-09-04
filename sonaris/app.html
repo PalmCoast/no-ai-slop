@@ -2,93 +2,89 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <title>Sonaris console</title>
-  <meta name="description" content="The Sonaris voice console. Speak, see your words live, and hear the answer in the voice you chose." />
+  <meta name="description" content="The Sonaris voice console. Talk to a companion that listens, waits for you to finish, and answers in the voice you chose." />
   <meta name="robots" content="noindex" />
   <link rel="icon" href="/brand/favicon.svg" type="image/svg+xml" />
+  <link rel="preload" as="image" href="/companion/poster.jpg" />
   <link rel="stylesheet" href="/src/styles.css" />
   <link rel="stylesheet" href="/src/console.css" />
 </head>
-<body class="console">
+<body class="console" data-state="idle">
   <header class="bar">
     <a class="wordmark" href="/" aria-label="Sonaris home">
       <img src="/brand/logo.svg" alt="" width="34" height="34" />
       <span>SONARIS</span>
     </a>
-    <div class="bar-mid">
-      <label class="visually-hidden" for="persona">Voice</label>
-      <select id="persona" aria-label="Voice persona"></select>
-      <button id="add-voice-btn" class="btn btn-sm" type="button">Add a character voice</button>
-    </div>
     <div class="bar-right">
-      <span id="state-pill" class="pill" data-state="idle" role="status" aria-live="polite">Idle</span>
       <button id="settings-btn" class="btn btn-ghost btn-sm" type="button" aria-expanded="false" aria-controls="settings">Settings</button>
-      <button id="memory-btn" class="btn btn-ghost btn-sm" type="button" aria-pressed="false" aria-controls="memory-panel">Memory <kbd>M</kbd></button>
+      <button id="memory-btn" class="btn btn-ghost btn-sm" type="button" aria-expanded="false" aria-controls="conversation">Conversation <kbd>M</kbd></button>
     </div>
   </header>
 
   <div id="notice" class="notice" role="status" hidden></div>
 
-  <div class="layout">
-    <main class="stage" id="stage">
-      <section class="captions">
-        <div class="cap cap-you">
-          <div class="cap-label">You</div>
-          <div class="cap-text" id="you-text" aria-live="polite" aria-atomic="false">
-            <span id="you-final"></span><span id="you-interim" class="interim"></span><span id="caret" class="caret" aria-hidden="true"></span>
-            <span id="you-placeholder" class="placeholder">Press the microphone, hold <kbd>Space</kbd>, or type below. Your words appear here as you speak.</span>
-          </div>
+  <main class="stage" id="stage">
+    <section class="companion" aria-label="Companion">
+      <div class="face-wrap">
+        <div id="face" role="img" aria-label="Sonaris, a small blue creature that reacts as you talk"></div>
+        <div id="bubble" class="bubble" hidden>
+          <span id="you-final"></span><span id="you-interim" class="interim"></span><span id="caret" class="caret" aria-hidden="true"></span>
         </div>
-        <div class="cap cap-sonaris">
-          <div class="cap-label">
-            <span id="sonaris-label">Sonaris</span>
-            <span id="interrupted-badge" class="badge" hidden>Paused. Go ahead.</span>
-          </div>
-          <div class="cap-text" id="sonaris-text" aria-live="polite" aria-atomic="false"></div>
-        </div>
-      </section>
-
-      <section class="controls">
-        <div class="meter" id="meter" aria-hidden="true"></div>
-        <div class="mic-row">
-          <button id="mic-btn" class="mic" type="button" aria-pressed="false" aria-label="Start listening">
-            <svg viewBox="0 0 24 24" width="28" height="28" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-              <rect x="9" y="3" width="6" height="11" rx="3" />
-              <path d="M5 11a7 7 0 0 0 14 0" />
-              <path d="M12 18v3" />
-            </svg>
-          </button>
-          <form id="type-form" class="type-form" autocomplete="off">
-            <label class="visually-hidden" for="type-input">Type to talk</label>
-            <input id="type-input" type="text" placeholder="Type to talk…" maxlength="1200" />
-            <button class="btn btn-sm" type="submit">Send</button>
-          </form>
-        </div>
-        <p class="hint muted">Hold <kbd>Space</kbd> to talk · <kbd>Esc</kbd> stops speaking · <kbd>M</kbd> toggles memory</p>
-        <div id="demo-bar" class="demo-bar" hidden>
-          <span>Scripted demo: plays “Hello Sonaris, what can you do?” through the live-caption renderer, then answers.</span>
-          <button id="demo-run" class="btn btn-gold btn-sm" type="button">Run scripted demo</button>
-        </div>
-      </section>
-    </main>
-
-    <aside id="memory-panel" class="memory" aria-label="Memory" hidden>
-      <div class="memory-head">
-        <div>
-          <div class="eyebrow">Memory</div>
-          <div class="muted small" id="memory-meta">Loading…</div>
-        </div>
-        <button id="memory-close" class="btn btn-ghost btn-sm" type="button" aria-label="Close memory panel">Close</button>
       </div>
-      <div class="memory-actions">
-        <a id="dl-md" class="btn btn-sm" href="#" download>Download MEMORY.md</a>
-        <a id="dl-jsonl" class="btn btn-sm" href="#" download>Download journal.jsonl</a>
-        <button id="memory-clear" class="btn btn-ghost btn-sm" type="button">Delete all</button>
+      <div class="who">
+        <div id="persona-name" class="persona-name">Sonaris</div>
+        <div id="state-line" class="state-line" data-state="idle" role="status" aria-live="polite">Resting</div>
       </div>
-      <div id="memory-list" class="memory-list"></div>
-    </aside>
-  </div>
+    </section>
+
+    <section class="subtitle" aria-label="Reply">
+      <span id="interrupted-badge" class="badge" hidden>Paused. Go ahead.</span>
+      <div id="sonaris-text" class="subtitle-text" aria-live="polite" aria-atomic="false"></div>
+    </section>
+
+    <section class="controls">
+      <div id="persona-chips" class="chips" role="group" aria-label="Voice"></div>
+      <div class="mic-row">
+        <button id="type-toggle" class="type-pill" type="button" aria-expanded="false" aria-controls="type-form">Type to talk</button>
+        <form id="type-form" class="type-form" autocomplete="off" hidden>
+          <label class="visually-hidden" for="type-input">Type to talk</label>
+          <input id="type-input" type="text" placeholder="Say it in writing…" maxlength="1200" />
+          <button class="btn btn-sm" type="submit">Send</button>
+        </form>
+        <button id="mic-btn" class="mic" type="button" aria-pressed="false" aria-label="Start listening">
+          <svg viewBox="0 0 24 24" width="30" height="30" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="9" y="3" width="6" height="11" rx="3" />
+            <path d="M5 11a7 7 0 0 0 14 0" />
+            <path d="M12 18v3" />
+          </svg>
+        </button>
+        <span class="mic-spacer" aria-hidden="true"></span>
+      </div>
+      <p class="hint muted" id="hint">Press the microphone<span class="kbd-only">, hold <kbd>Space</kbd>,</span> or type. Take your time.</p>
+      <div id="demo-bar" class="demo-bar" hidden>
+        <span>Scripted demo: says “Hello Sonaris, what can you do?” for you, then answers.</span>
+        <button id="demo-run" class="btn btn-gold btn-sm" type="button">Run the demo</button>
+      </div>
+    </section>
+  </main>
+
+  <aside id="conversation" class="sheet" aria-label="Conversation" hidden>
+    <div class="sheet-head">
+      <div>
+        <div class="eyebrow">Conversation</div>
+        <div class="muted small" id="memory-meta">Loading…</div>
+      </div>
+      <button id="memory-close" class="btn btn-ghost btn-sm" type="button" aria-label="Close conversation">Close</button>
+    </div>
+    <div class="sheet-actions">
+      <a id="dl-md" class="btn btn-sm" href="#" download>Download MEMORY.md</a>
+      <a id="dl-jsonl" class="btn btn-sm" href="#" download>Download journal.jsonl</a>
+      <button id="memory-clear" class="btn btn-ghost btn-sm" type="button">Delete all</button>
+    </div>
+    <div id="memory-list" class="memory-list"></div>
+  </aside>
 
   <section id="settings" class="drawer" aria-label="Settings" hidden>
     <div class="drawer-head">
@@ -103,11 +99,19 @@
       <label>Interrupting</label>
       <div id="mute-info" class="small muted">The microphone mutes while Sonaris speaks, so it cannot hear itself through your speakers. To cut a reply short, press Esc, hold Space to talk, or type.</div>
     </div>
+    <div class="field">
+      <label>Keys</label>
+      <div class="small muted"><kbd>Space</kbd> hold to talk · <kbd>Esc</kbd> stop speaking · <kbd>M</kbd> conversation</div>
+    </div>
     <div class="field toggle">
       <input id="prefer-browser" type="checkbox" />
       <label for="prefer-browser">Use the browser voice even when a server voice is available.</label>
     </div>
     <hr class="hairline" />
+    <div class="field">
+      <label>Voices</label>
+      <button id="add-voice-btn" class="btn btn-sm" type="button">Add a character voice</button>
+    </div>
     <div class="field">
       <label>License</label>
       <div id="license-info" class="small"></div>
@@ -179,10 +183,10 @@
 
   <div id="lock" class="lock" role="dialog" aria-modal="true" aria-labelledby="lock-title">
     <div class="lock-card">
-      <img src="/brand/logo.svg" alt="" width="48" height="48" />
-      <h2 id="lock-title">Unlock Sonaris</h2>
-      <p class="muted">A license opens the voice console and the hosted Sonaris skill. One payment, no subscription.</p>
-      <button id="lock-buy" class="btn btn-gold" type="button">Unlock Sonaris — $29 one-time</button>
+      <img src="/brand/logo.svg" alt="" width="44" height="44" />
+      <h2 id="lock-title">Open Sonaris</h2>
+      <p class="muted">A license opens the voice console and the hosted Sonaris skill. One payment, no subscription. Your companion is resting behind this panel until then.</p>
+      <button id="lock-buy" class="btn btn-gold" type="button">Get a license — $29</button>
       <form id="lock-form" class="lock-form">
         <label for="lock-key">I have a key</label>
         <div class="lock-row">
