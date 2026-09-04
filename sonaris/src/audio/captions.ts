@@ -59,6 +59,14 @@ export interface CaptionSource {
   readonly kind: "web-speech" | "recorder";
   start(): void;
   stop(): void;
+  /**
+   * Stop hearing while the assistant speaks. No result produced by a
+   * recognizer that was running before suspend() may reach the events, even
+   * if it arrives after resume().
+   */
+  suspend(): void;
+  /** Start hearing again after playback; a no-op unless suspended. */
+  resume(): void;
   /** Called at end of utterance so the source can flush pending audio. */
   flush(): Promise<void>;
 }
@@ -70,7 +78,15 @@ export function webSpeechSupported(): boolean {
 export class WebSpeechCaptions implements CaptionSource {
   readonly kind = "web-speech" as const;
   private rec: SpeechRecognitionLike | null = null;
+  private ctor: SRConstructor | null = null;
   private active = false;
+  private suspended = false;
+  /**
+   * Bumped on every suspend(). Each recognizer instance remembers the
+   * generation it was spawned in and drops its results if that is stale, so a
+   * recognizer that heard the speakers cannot deliver a transcript later.
+   */
+  private generation = 0;
   private restartTimer: number | null = null;
 
   constructor(
@@ -85,18 +101,53 @@ export class WebSpeechCaptions implements CaptionSource {
       this.events.onError("unsupported", "Web Speech API is not available.");
       return;
     }
+    this.ctor = Ctor;
     this.active = true;
+    this.suspended = false;
     this.spawn(Ctor);
   }
 
+  suspend(): void {
+    if (this.suspended) return;
+    this.suspended = true;
+    this.generation++;
+    this.clearRestart();
+    const rec = this.rec;
+    this.rec = null;
+    try {
+      rec?.abort();
+    } catch {
+      // already ended
+    }
+    if (this.active) this.events.onStatus("muted");
+  }
+
+  resume(): void {
+    if (!this.suspended) return;
+    this.suspended = false;
+    if (this.active && this.ctor && !this.rec) this.spawn(this.ctor);
+  }
+
+  private clearRestart(): void {
+    if (this.restartTimer !== null) {
+      clearTimeout(this.restartTimer);
+      this.restartTimer = null;
+    }
+  }
+
   private spawn(Ctor: SRConstructor): void {
+    const gen = this.generation;
+    const live = () => this.active && !this.suspended && gen === this.generation;
     const rec = new Ctor();
     rec.continuous = true;
     rec.interimResults = true;
     rec.lang = this.lang;
     rec.maxAlternatives = 1;
-    rec.onstart = () => this.events.onStatus("listening");
+    rec.onstart = () => {
+      if (live()) this.events.onStatus("listening");
+    };
     rec.onresult = (e) => {
+      if (!live()) return;
       let interim = "";
       for (let i = e.resultIndex; i < e.results.length; i++) {
         const res = e.results[i];
@@ -114,18 +165,21 @@ export class WebSpeechCaptions implements CaptionSource {
     rec.onerror = (e) => {
       // 'no-speech' and 'aborted' are routine; everything else is reported.
       if (e.error === "no-speech" || e.error === "aborted") return;
+      if (!live()) return;
       this.events.onError(e.error, e.message || e.error);
       if (e.error === "not-allowed" || e.error === "service-not-allowed" || e.error === "network" || e.error === "audio-capture") {
         this.active = false;
       }
     };
     rec.onend = () => {
-      this.rec = null;
-      if (!this.active) return;
+      if (this.rec === rec) this.rec = null;
+      // A suspended or superseded recognizer must not respawn itself.
+      if (!live()) return;
       // Chrome ends sessions after silence or ~60 s; restart to stay live.
+      this.clearRestart();
       this.restartTimer = window.setTimeout(() => {
         this.restartTimer = null;
-        if (this.active) this.spawn(Ctor);
+        if (live() && !this.rec) this.spawn(Ctor);
       }, 150);
     };
     this.rec = rec;
@@ -139,10 +193,8 @@ export class WebSpeechCaptions implements CaptionSource {
 
   stop(): void {
     this.active = false;
-    if (this.restartTimer !== null) {
-      clearTimeout(this.restartTimer);
-      this.restartTimer = null;
-    }
+    this.suspended = false;
+    this.clearRestart();
     try {
       this.rec?.stop();
     } catch {
@@ -175,6 +227,7 @@ export class RecorderCaptions implements CaptionSource {
   private recorder: MediaRecorder | null = null;
   private timer: number | null = null;
   private active = false;
+  private suspended = false;
   private hadVoice = false;
   private pending: Promise<void> = Promise.resolve();
   private readonly sliceMs: number;
@@ -251,11 +304,35 @@ export class RecorderCaptions implements CaptionSource {
     if (!rec) return;
     this.recorder = null;
     if (rec.state !== "inactive") rec.stop();
-    if (this.active) this.beginSlice();
+    if (this.active && !this.suspended) this.beginSlice();
+  }
+
+  /** Drop the slice in progress (it would contain the speakers) and record nothing until resume(). */
+  suspend(): void {
+    if (!this.active || this.suspended) return;
+    this.suspended = true;
+    const rec = this.recorder;
+    this.recorder = null;
+    this.hadVoice = false;
+    if (rec) {
+      rec.onstop = null;
+      rec.ondataavailable = null;
+      if (rec.state !== "inactive") rec.stop();
+    }
+    this.events.onStatus("muted");
+  }
+
+  resume(): void {
+    if (!this.suspended) return;
+    this.suspended = false;
+    if (this.active && !this.recorder) {
+      this.beginSlice();
+      this.events.onStatus("listening");
+    }
   }
 
   async flush(): Promise<void> {
-    if (!this.active) return;
+    if (!this.active || this.suspended) return;
     this.hadVoice = true;
     await this.cutSlice();
     await this.pending;
@@ -263,6 +340,7 @@ export class RecorderCaptions implements CaptionSource {
 
   stop(): void {
     this.active = false;
+    this.suspended = false;
     if (this.timer !== null) {
       clearInterval(this.timer);
       this.timer = null;

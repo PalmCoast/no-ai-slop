@@ -6,7 +6,7 @@ The full skill lives in `SKILL.md` next to this file. It is not published with t
 
 1. Listen and show the user's words live, interim in grey and final in cream.
 2. Wait for a confirmed end of utterance (900 ms of silence by default, 400 to 2000 configurable) before answering.
-3. Stop at once if the user speaks while the agent is talking, and mark the reply interrupted.
+3. Mute the microphone while the agent speaks so it cannot hear itself; stop at once when the user presses Escape, Space or the stop button, and mark the reply interrupted.
 4. Speak in the active persona: Atlas, Aria, Captain Merriweather, or a custom character voice.
 5. Append a JSONL memory entry after every user utterance and every reply, and refresh a rolling `MEMORY.md`.
 6. Keep a persona registry and add character voices, including ElevenLabs instant cloning.

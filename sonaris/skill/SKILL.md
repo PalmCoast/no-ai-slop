@@ -1,6 +1,6 @@
 ---
 name: sonaris-voice
-description: Run a spoken conversation the Sonaris way. Use when the user talks to you by voice and expects live captions of their words, an answer only after they have finished, an instant stop if they interrupt, a reply spoken in a chosen persona voice, and a memory file updated after every turn.
+description: Run a spoken conversation the Sonaris way. Use when the user talks to you by voice and expects live captions of their words, an answer only after they have finished, a muted microphone while you speak, an instant stop when they ask for one, a reply spoken in a chosen persona voice, and a memory file updated after every turn.
 ---
 
 # Sonaris voice
@@ -31,16 +31,26 @@ Only send a request to the language model when the end of utterance has fired an
 
 Voice activity detection is root mean square energy over short frames against an adaptive noise floor. Require two consecutive frames above the threshold to start speech and four below to end it.
 
-## 3. Stop the moment the user speaks
+## 3. Mute the microphone while you speak; stop when the user asks
 
-While you are thinking or speaking, keep the detector running. If the user speaks for 250 ms or more:
+Your voice comes out of the user's speakers and straight back into their microphone. If the detector and the recognizer stay live while you speak, they hear you, decide the user is talking, and cut you off mid-sentence. So:
+
+1. The moment the first sentence starts playing, disable every audio track on the capture stream, stop feeding frames to the voice activity detector, and abort the speech recognizer.
+2. Drop any recognizer result that arrives after that point from the recognizer that was running before the mute. Engines deliver late results after `abort()`.
+3. When playback ends (the queue drains, the reply fails, or the user stops you), re-enable the tracks, reset the noise floor so the jump from silence to room noise is not read as speech, and start a fresh recognizer.
+
+Voice detected while you are speaking is never the user. Do not interrupt yourself because of it.
+
+Interrupting is an explicit action: the Escape key, the push-to-talk key, typed text, or the stop button. When one of those arrives while you are thinking or speaking:
 
 1. Pause or stop audio playback at once and cancel any queued sentences.
 2. Cancel browser speech synthesis if it is in use.
 3. Mark the reply `interrupted` and write it to memory with whatever text had been produced.
-4. Show "Paused. Go ahead." and treat the user's speech as a new utterance.
+4. Unmute the microphone. Show "Paused. Go ahead." and treat what the user says next as a new utterance.
 
-Do not finish the sentence. Do not say "sorry". A setting called "Never talk over me" controls this rule and is on by default. When it is off you may finish the current sentence, but still stop before the next one.
+Do not finish the sentence. Do not say "sorry".
+
+While you are still thinking and nothing is playing, the microphone is open. If the user speaks for 250 ms or more in that window, cancel the pending reply the same way and let them take the floor.
 
 ## 4. Speak in the active persona
 
@@ -132,8 +142,8 @@ idle → listening → user_speaking → thinking → speaking → listening
                                   ↘ interrupted ↗
 ```
 
-Text to speech may start only on the transition from `thinking` to `speaking`, and never while the state is `user_speaking` or `interrupted`.
+Text to speech may start only on the transition from `thinking` to `speaking`, and never while the state is `user_speaking` or `interrupted`. The microphone is muted for exactly the time the state is `speaking`. `interrupted` is reached only by an explicit user action, or by voice while `thinking`.
 
 ## Keyboard
 
-Space held is push to talk. Escape stops speech and returns to listening. M toggles the memory panel.
+Space held is push to talk; pressed while the assistant speaks, it stops the reply and opens the microphone. Escape stops speech and returns to listening. M toggles the memory panel.

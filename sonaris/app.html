@@ -99,9 +99,9 @@
       <label for="silence">End of utterance: wait <strong id="silence-val">900</strong> ms of silence before answering</label>
       <input id="silence" type="range" min="400" max="2000" step="50" value="900" />
     </div>
-    <div class="field toggle">
-      <input id="never-talk-over" type="checkbox" checked />
-      <label for="never-talk-over">Never talk over me. If I start speaking, Sonaris stops at once.</label>
+    <div class="field">
+      <label>Interrupting</label>
+      <div id="mute-info" class="small muted">The microphone mutes while Sonaris speaks, so it cannot hear itself through your speakers. To cut a reply short, press Esc, hold Space to talk, or type.</div>
     </div>
     <div class="field toggle">
       <input id="prefer-browser" type="checkbox" />

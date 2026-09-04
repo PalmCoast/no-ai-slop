@@ -3,10 +3,13 @@
  *
  *   idle → listening → user_speaking → thinking → speaking → listening
  *
- * `interrupted` is entered from `speaking` when the user starts talking; the
- * machine then continues to `listening`/`user_speaking`. The rule that matters:
- * text-to-speech may only start in `thinking` → `speaking`, and never while the
- * user is speaking.
+ * `interrupted` is entered from `thinking` or `speaking` on `user_interrupt`;
+ * the machine then continues to `listening`/`user_speaking`. Two rules matter:
+ * text-to-speech may only start on `thinking` → `speaking`, never while the
+ * user is speaking; and while the assistant speaks the microphone is muted, so
+ * voice activity reported in `speaking` is ignored (it would be the assistant's
+ * own voice coming back through the speakers). Interrupting playback is an
+ * explicit action: Esc, Space, the mic button, or typed text.
  */
 
 export enum TurnState {
@@ -27,7 +30,7 @@ export type TurnEvent =
   | "reply_ready" // first sentence of the reply is ready to play
   | "reply_done" // playback queue drained
   | "reply_failed" // chat/tts failed; go back to listening
-  | "user_barge_in"; // user spoke for >= barge-in threshold while we were speaking
+  | "user_interrupt"; // user cut the reply off (Esc, Space, typed text; or voice while thinking)
 
 const TRANSITIONS: Record<TurnState, Partial<Record<TurnEvent, TurnState>>> = {
   [TurnState.Idle]: { start: TurnState.Listening },
@@ -45,13 +48,14 @@ const TRANSITIONS: Record<TurnState, Partial<Record<TurnEvent, TurnState>>> = {
     reply_ready: TurnState.Speaking,
     reply_failed: TurnState.Listening,
     reply_done: TurnState.Listening, // text-only reply, nothing to play
-    user_barge_in: TurnState.Interrupted,
+    user_interrupt: TurnState.Interrupted,
   },
   [TurnState.Speaking]: {
     stop: TurnState.Idle,
     reply_done: TurnState.Listening,
     reply_failed: TurnState.Listening,
-    user_barge_in: TurnState.Interrupted,
+    user_interrupt: TurnState.Interrupted,
+    // No `voice_start` here on purpose: the mic is muted while we speak.
   },
   [TurnState.Interrupted]: {
     stop: TurnState.Idle,
@@ -75,29 +79,34 @@ export function userHasFloor(state: TurnState): boolean {
   return state === TurnState.UserSpeaking || state === TurnState.Interrupted;
 }
 
+/** True when the microphone must be muted: the assistant's voice is on the speakers. */
+export function micMuted(state: TurnState): boolean {
+  return state === TurnState.Speaking;
+}
+
 export interface TurnMachineOptions {
-  /** How long the user must be talking while we speak before we cut ourselves off. */
+  /**
+   * How long the user must be talking while we are still thinking (mic open,
+   * speakers silent) before the pending reply is cancelled.
+   */
   bargeInMs?: number;
-  /** When false, the assistant finishes its sentence even if the user talks. */
-  neverTalkOver?: boolean;
   onChange?: (state: TurnState, prev: TurnState, event: TurnEvent) => void;
 }
 
 /**
- * Small stateful wrapper around `nextState` that also implements the barge-in
- * timer: a user must be detected speaking for `bargeInMs` (default 250 ms)
- * before an active reply is interrupted.
+ * Small stateful wrapper around `nextState`. It owns the one acoustic
+ * interruption that remains: while `thinking`, a user detected speaking for
+ * `bargeInMs` (default 250 ms) cancels the reply before it starts. While
+ * `speaking`, voice frames are ignored; only `user_interrupt` cuts playback.
  */
 export class TurnMachine {
   private _state: TurnState = TurnState.Idle;
   private voiceSince: number | null = null;
   readonly bargeInMs: number;
-  neverTalkOver: boolean;
   private readonly onChange?: TurnMachineOptions["onChange"];
 
   constructor(opts: TurnMachineOptions = {}) {
     this.bargeInMs = opts.bargeInMs ?? 250;
-    this.neverTalkOver = opts.neverTalkOver ?? true;
     this.onChange = opts.onChange;
   }
 
@@ -110,10 +119,9 @@ export class TurnMachine {
     const next = nextState(prev, event);
     if (next !== prev) {
       this._state = next;
-      this.onChange?.(next, prev, event);
-    }
-    if (event === "stop" || event === "end_of_utterance" || event === "utterance_discarded") {
+      // The "held for" clock belongs to the state it started in.
       this.voiceSince = null;
+      this.onChange?.(next, prev, event);
     }
     return this._state;
   }
@@ -132,16 +140,18 @@ export class TurnMachine {
 
     switch (this._state) {
       case TurnState.Listening:
-        return this.send("voice_start");
       case TurnState.Interrupted:
         return this.send("voice_start");
-      case TurnState.Speaking:
       case TurnState.Thinking:
-        if (this.neverTalkOver && heldFor >= this.bargeInMs) {
-          this.send("user_barge_in");
-          // Barge-in already proves the user is talking; take the floor at once.
+        if (heldFor >= this.bargeInMs) {
+          this.send("user_interrupt");
+          // The user is already talking; take the floor at once.
           return this.send("voice_start");
         }
+        return this._state;
+      case TurnState.Speaking:
+        // Muted mic: whatever the detector reports is the assistant's own
+        // voice leaking back in. Never treat it as the user.
         return this._state;
       default:
         return this._state;
@@ -150,5 +160,9 @@ export class TurnMachine {
 
   canSpeak(): boolean {
     return canSpeak(this._state);
+  }
+
+  micMuted(): boolean {
+    return micMuted(this._state);
   }
 }

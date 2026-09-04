@@ -54,7 +54,6 @@ const els = {
   settingsClose: $<HTMLButtonElement>("settings-close"),
   silence: $<HTMLInputElement>("silence"),
   silenceVal: $("silence-val"),
-  neverTalkOver: $<HTMLInputElement>("never-talk-over"),
   preferBrowser: $<HTMLInputElement>("prefer-browser"),
   licenseInfo: $("license-info"),
   licenseForget: $<HTMLButtonElement>("license-forget"),
@@ -79,15 +78,15 @@ const LS = {
   license: "sonaris_license",
   persona: "sonaris_persona",
   silence: "sonaris_silence_ms",
-  neverTalkOver: "sonaris_never_talk_over",
   preferBrowser: "sonaris_prefer_browser_voice",
 };
 
 const settings = {
   silenceMs: clampSilence(Number(localStorage.getItem(LS.silence) ?? DEFAULT_SILENCE_MS)),
-  neverTalkOver: localStorage.getItem(LS.neverTalkOver) !== "false",
   preferBrowser: localStorage.getItem(LS.preferBrowser) === "true",
 };
+// Left over from the acoustic barge-in toggle that the muted mic replaced.
+localStorage.removeItem("sonaris_never_talk_over");
 
 const params = new URLSearchParams(location.search);
 const DEMO_MODE = params.get("demo") === "1";
@@ -108,6 +107,14 @@ let micUnavailable: string | null = null;
 const vad = new VoiceActivityDetector();
 let frameTimer: number | null = null;
 let eouTimer: number | null = null;
+/** True from entering `speaking` until playback ends: tracks disabled, VAD and captions paused. */
+let micMuted = false;
+/**
+ * After unmute the analyser still holds the tail of the speakers and the noise
+ * floor is stale; VAD frames are skipped until this timestamp.
+ */
+let vadResumeAt = 0;
+const VAD_SETTLE_MS = 200;
 
 // Current utterance
 let finalText = "";
@@ -123,7 +130,6 @@ let replyText = "";
 
 const machine = new TurnMachine({
   bargeInMs: 250,
-  neverTalkOver: settings.neverTalkOver,
   onChange: (state, prev, event) => onStateChange(state, prev, event),
 });
 
@@ -190,6 +196,11 @@ function onStateChange(state: TurnState, prev: TurnState, event: string): void {
   els.micBtn.setAttribute("aria-pressed", String(state !== TurnState.Idle));
   els.micBtn.setAttribute("aria-label", state === TurnState.Idle ? "Start listening" : "Stop listening");
   els.interruptedBadge.hidden = state !== TurnState.Interrupted;
+  // The mic is muted for exactly as long as the machine is in `speaking`.
+  // Entering (reply_ready from the queue's onStart) mutes; every way out
+  // (reply_done, reply_failed, stop, user_interrupt) unmutes.
+  if (state === TurnState.Speaking) muteMicForPlayback();
+  else if (micMuted) resumeMicAfterPlayback();
   if (state === TurnState.Interrupted) {
     interruptReply();
   }
@@ -206,6 +217,34 @@ function onStateChange(state: TurnState, prev: TurnState, event: string): void {
 // ---------------------------------------------------------------------------
 // Microphone + VAD loop
 
+/**
+ * Called on entering `speaking`. Disables the capture tracks so the analyser
+ * reads silence, pauses the recognizer so it cannot transcribe the speakers,
+ * and flags onFrame() to stop feeding the VAD and the turn machine. Every call
+ * is null-safe: the typed-input and ?demo=1 paths run with no mic at all.
+ */
+function muteMicForPlayback(): void {
+  if (micMuted) return;
+  micMuted = true;
+  mic?.mute();
+  captions?.suspend();
+  renderMeter(0, "");
+}
+
+/**
+ * Called on leaving `speaking`. Re-enables the tracks, restarts recognition,
+ * and resets the VAD so the jump from silence to room noise is not read as the
+ * user starting to talk; frames are skipped for a short settle window.
+ */
+function resumeMicAfterPlayback(): void {
+  if (!micMuted) return;
+  micMuted = false;
+  mic?.unmute();
+  vad.reset();
+  vadResumeAt = performance.now() + VAD_SETTLE_MS;
+  captions?.resume();
+}
+
 function resetUtterance(): void {
   finalText = "";
   interimText = "";
@@ -217,14 +256,16 @@ function resetUtterance(): void {
 function captionEvents() {
   return {
     onInterim(text: string) {
-      // Ignore the recognizer while the assistant holds the floor (echo of its
-      // own voice); the VAD barge-in path decides when the user takes over.
-      if (machine.state === TurnState.Speaking || machine.state === TurnState.Thinking) return;
+      // The recognizer is suspended while we speak and drops results from the
+      // instance that was running before suspend(); this is the second line
+      // of defence for anything that still slips through, and it also keeps
+      // the panel still while we are thinking.
+      if (micMuted || machine.state === TurnState.Speaking || machine.state === TurnState.Thinking) return;
       interimText = text;
       renderYouCaption();
     },
     onFinal(text: string) {
-      if (machine.state === TurnState.Speaking || machine.state === TurnState.Thinking) return;
+      if (micMuted || machine.state === TurnState.Speaking || machine.state === TurnState.Thinking) return;
       if (machine.state === TurnState.Listening) {
         // Recognizer heard speech the VAD missed (very quiet mic); take the floor.
         machine.send("voice_start");
@@ -291,6 +332,9 @@ async function startListening(): Promise<void> {
       return;
     }
   }
+  // A previous session can only have ended unmuted, but make it certain.
+  micMuted = false;
+  mic.unmute();
   vad.reset();
   resetUtterance();
   machine.send("start");
@@ -323,13 +367,19 @@ function stopListening(): void {
 
 function onFrame(): void {
   if (!mic) return;
+  // Speaking: the tracks are disabled and the analyser reads silence. Feeding
+  // that to the VAD would drag the noise floor to zero, so skip the frame.
+  if (micMuted) return;
   const now = performance.now();
-  const frame = vad.push(mic.readRms());
-  const voiced = frame.voiced || pttHeld;
+  // Just unmuted: let the analyser flush the speaker tail before trusting it.
+  // Push-to-talk still counts as voice during the settle window.
+  const settling = now < vadResumeAt;
+  const frame = settling ? null : vad.push(mic.readRms());
+  const voiced = (frame?.voiced ?? false) || pttHeld;
   if (voiced) lastVoiceAt = now;
   machine.onVoiceFrame(voiced, now);
   if (machine.state === TurnState.UserSpeaking || machine.state === TurnState.Listening) {
-    renderMeter(Math.min(1, frame.rms * 6), voiced ? "user" : "");
+    renderMeter(Math.min(1, (frame?.rms ?? 0) * 6), voiced ? "user" : "");
   }
 }
 
@@ -457,7 +507,7 @@ function finishReply(interrupted: boolean): void {
   renderYouCaption();
 }
 
-/** Called when the machine enters `interrupted` (user barged in). */
+/** Called when the machine enters `interrupted` (Esc, Space, typed text, or voice while thinking). */
 function interruptReply(): void {
   stopReply(true);
   // The user is talking: start a fresh utterance capture.
@@ -718,7 +768,8 @@ let demoRunning = false;
 
 async function runScriptedDemo(): Promise<void> {
   if (demoRunning) return;
-  if (machine.state === TurnState.Speaking || machine.state === TurnState.Thinking) stopReply(true);
+  // Running the demo over a reply is an explicit interruption, like Esc.
+  if (machine.state === TurnState.Speaking || machine.state === TurnState.Thinking) machine.send("user_interrupt");
   demoRunning = true;
   els.demoRun.disabled = true;
   try {
@@ -767,7 +818,7 @@ async function submitTyped(text: string): Promise<void> {
   const t = text.trim();
   if (!t) return;
   if (machine.state === TurnState.Speaking || machine.state === TurnState.Thinking) {
-    machine.send("user_barge_in");
+    machine.send("user_interrupt");
   }
   if (machine.state === TurnState.Idle) machine.send("start");
   if (machine.state === TurnState.Listening || machine.state === TurnState.Interrupted) machine.send("voice_start");
@@ -834,12 +885,6 @@ function bind(): void {
     els.silenceVal.textContent = String(settings.silenceMs);
     localStorage.setItem(LS.silence, String(settings.silenceMs));
   });
-  els.neverTalkOver.checked = settings.neverTalkOver;
-  els.neverTalkOver.addEventListener("change", () => {
-    settings.neverTalkOver = els.neverTalkOver.checked;
-    machine.neverTalkOver = settings.neverTalkOver;
-    localStorage.setItem(LS.neverTalkOver, String(settings.neverTalkOver));
-  });
   els.preferBrowser.checked = settings.preferBrowser;
   els.preferBrowser.addEventListener("change", () => {
     settings.preferBrowser = els.preferBrowser.checked;
@@ -868,7 +913,7 @@ function bind(): void {
       if (!els.voiceModal.hidden) els.voiceModal.hidden = true;
       else if (!els.settings.hidden) els.settings.hidden = true;
       else if (machine.state === TurnState.Speaking || machine.state === TurnState.Thinking) {
-        machine.send("user_barge_in");
+        machine.send("user_interrupt");
         // Esc means "stop", not "I'm talking": return to listening.
         machine.send("utterance_discarded");
         resetUtterance();
@@ -884,7 +929,7 @@ function bind(): void {
           if (pttHeld) machine.onVoiceFrame(true, performance.now());
         });
       } else {
-        if (machine.state === TurnState.Speaking || machine.state === TurnState.Thinking) machine.send("user_barge_in");
+        if (machine.state === TurnState.Speaking || machine.state === TurnState.Thinking) machine.send("user_interrupt");
         machine.onVoiceFrame(true, performance.now());
       }
       renderYouCaption();

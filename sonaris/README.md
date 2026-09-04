@@ -29,7 +29,13 @@ Sonaris is a real-time voice conversation layer for an AI assistant. You talk, y
  skill/SKILL.md  (bundled with functions via included_files; never in dist/)
 ```
 
+## Turn-taking
+
 Turn states: `idle → listening → user_speaking → thinking → speaking → listening`, plus `interrupted`. Speech may only start on `thinking → speaking`, never while the user holds the floor.
+
+The microphone is muted for the whole time the assistant speaks. On entering `speaking` the console disables every audio track on the capture stream, stops feeding frames to the voice activity detector, and aborts the speech recognizer; any result the recognizer still delivers from before that point is dropped. On `reply_done` (and on `reply_failed`, stop, or an interruption) the tracks are re-enabled, the noise floor is reset, and recognition restarts. Without this the recognizer and the detector hear the assistant through the speakers and cut it off mid-sentence.
+
+Because of the mute, voice detected during `speaking` is never treated as the user. Interrupting a reply is an explicit action: press Esc (stop and go back to listening), hold Space (stop and talk), submit typed text, or click the mic button. While the assistant is still `thinking` the microphone stays open, and speaking for 250 ms cancels the pending reply before it starts.
 
 ## Local development
 
@@ -119,4 +125,4 @@ Server voices play through an `<audio>` element. Without a TTS provider the brow
 npm test
 ```
 
-Vitest covers the turn state machine and interruption rule, the sentence chunker, VAD end-of-utterance timing, license key format and validation, and the memory JSONL append and summary functions using the file adapter in a temp directory.
+Vitest covers the turn state machine and interruption rule (voice while speaking is ignored, explicit interrupts stop playback, `reply_done` returns to listening), the mic track mute helper, the recognizer suspend and resume logic including late results, the sentence chunker, VAD end-of-utterance timing, license key format and validation, and the memory JSONL append and summary functions using the file adapter in a temp directory.
