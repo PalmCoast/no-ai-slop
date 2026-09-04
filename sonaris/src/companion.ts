@@ -160,6 +160,8 @@ export class CompanionFace {
     const prev = this.state;
     this.state = next;
     this.root.dataset.state = next;
+    // The level-driven opacity only applies while speaking; CSS owns the rest.
+    if (next !== TurnState.Speaking) this.ring.style.opacity = "";
     const plan = clipForState(prev, next);
     this.apply(plan);
   }
