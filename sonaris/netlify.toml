@@ -1,0 +1,57 @@
+# Sonaris — Netlify configuration.
+# Sonaris lives in a subfolder of the repository, so `base` is set here (it is
+# resolved relative to the repository root). The Netlify CLI and build system
+# then treat `sonaris/` as the project root for `publish`, `functions` and
+# `included_files`.
+
+[build]
+  base = "sonaris"
+  command = "npm run build"
+  publish = "dist"
+  functions = "netlify/functions"
+
+[build.environment]
+  NODE_VERSION = "22"
+
+[functions]
+  node_bundler = "esbuild"
+  # The paid skill is read from disk by netlify/functions/skill.ts. It is never
+  # copied into `dist/`, so it is only reachable through the license check.
+  included_files = ["skill/**"]
+
+[dev]
+  command = "npm run dev"
+  targetPort = 5173
+  port = 8888
+  framework = "#custom"
+  publish = "dist"
+
+# Every function declares its own `path` (e.g. /api/chat) in its Config export,
+# so no /api/* rewrite is needed here. The rules below give the pages clean URLs.
+
+[[redirects]]
+  from = "/app"
+  to = "/app.html"
+  status = 200
+
+[[redirects]]
+  from = "/skill"
+  to = "/skill.html"
+  status = 200
+
+[[redirects]]
+  from = "/thanks"
+  to = "/thanks.html"
+  status = 200
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "microphone=(self)"
+
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"

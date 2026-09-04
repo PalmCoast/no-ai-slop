@@ -1,0 +1,10 @@
+node_modules/
+dist/
+.netlify/
+.env
+.env.*
+!.env.example
+
+# Local memory files written by netlify/functions/memory.ts during development.
+memory/*.jsonl
+memory/MEMORY-*.md

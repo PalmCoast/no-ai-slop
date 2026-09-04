@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>The Sonaris Skill</title>
+  <meta name="description" content="The Sonaris Skill is a Markdown file that teaches an AI agent the Sonaris voice protocol: live captions, wait for end of utterance, stop when interrupted, persona voices, and a memory file after every turn. Download requires a license." />
+  <link rel="icon" href="/brand/favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="/src/styles.css" />
+  <link rel="stylesheet" href="/src/landing.css" />
+</head>
+<body>
+  <header class="nav">
+    <div class="wrap nav-inner">
+      <a class="wordmark" href="/" aria-label="Sonaris home">
+        <img src="/brand/logo.svg" alt="" width="34" height="34" />
+        <span>SONARIS</span>
+      </a>
+      <a class="btn btn-sm" href="/app.html">Open the console</a>
+    </div>
+  </header>
+
+  <main class="narrow">
+    <div class="eyebrow">The Sonaris Skill</div>
+    <h1>The voice protocol your agent can follow</h1>
+    <p class="lede">The skill is one Markdown file, <code>SKILL.md</code>, with YAML frontmatter, in the same format as other agent skills. Point your agent at it and it will run conversations the way the console does.</p>
+
+    <h2>What is in it</h2>
+    <ol class="steps-list">
+      <li><strong>Listen and caption.</strong> Show interim words as they arrive; set them once they are final.</li>
+      <li><strong>Wait for the end of the utterance.</strong> Do not begin speaking until at least 900 ms of silence follow the last final segment (configurable).</li>
+      <li><strong>Mute while speaking, stop when asked.</strong> The microphone is muted while the agent talks so it never hears itself. Escape, Space or the stop button cut the reply at once and mark it interrupted.</li>
+      <li><strong>Speak in the active persona.</strong> Voice provider, style prompt and browser fallback hint per persona.</li>
+      <li><strong>Write memory after every turn.</strong> Append a JSONL entry and refresh a rolling MEMORY.md of the last 50 turns.</li>
+      <li><strong>Persona registry.</strong> The JSON format and how to add a character voice, including cloning.</li>
+      <li><strong>License check.</strong> <code>GET /api/license?key=</code> before the skill runs.</li>
+    </ol>
+
+    <h2>Download</h2>
+    <p class="muted">The file is served by <code>/api/skill</code> and only to a valid license. Without one the endpoint answers <code>402 license_required</code>.</p>
+    <div id="have-key" hidden>
+      <p id="key-status" class="small"></p>
+      <div class="cta-row">
+        <a id="download" class="btn btn-gold" href="#" download="SKILL.md">Download SKILL.md</a>
+        <a id="view" class="btn" href="#" target="_blank" rel="noopener">View in browser</a>
+      </div>
+    </div>
+    <div id="no-key">
+      <form id="key-form" class="inline-form">
+        <label class="visually-hidden" for="key-input">License key</label>
+        <input id="key-input" type="text" placeholder="SONARIS-XXXX-XXXX-XXXX" autocomplete="off" spellcheck="false" />
+        <button class="btn" type="submit">Use this key</button>
+      </form>
+      <p id="key-msg" class="small muted" role="status"></p>
+      <div class="cta-row">
+        <a class="btn btn-gold" href="/#pricing">Get a license — $29</a>
+      </div>
+    </div>
+  </main>
+
+  <script type="module" src="/src/skill-page.ts"></script>
+</body>
+</html>

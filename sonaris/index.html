@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sonaris. Speak freely. Answer in any voice.</title>
+  <meta name="description" content="Sonaris is a real-time voice layer for an AI assistant. Your words appear on screen as you speak, it waits until you finish, then answers out loud in the voice you chose. Every exchange is written to a memory file you can read." />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Sonaris. Speak freely. Answer in any voice." />
+  <meta property="og:description" content="Live captions while you talk. It never talks over you. It answers in a persona voice, and writes every exchange to a memory file." />
+  <meta property="og:image" content="/brand/og.svg" />
+  <meta property="og:url" content="/" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Sonaris. Speak freely. Answer in any voice." />
+  <meta name="twitter:description" content="A real-time voice conversation layer for an AI assistant, with persona voices and a memory file you can read." />
+  <meta name="twitter:image" content="/brand/og.svg" />
+  <meta name="theme-color" content="#0B1220" />
+  <link rel="icon" href="/brand/favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="/src/styles.css" />
+  <link rel="stylesheet" href="/src/landing.css" />
+</head>
+<body>
+  <header class="nav">
+    <div class="wrap nav-inner">
+      <a class="wordmark" href="/" aria-label="Sonaris home">
+        <img src="/brand/logo.svg" alt="" width="34" height="34" />
+        <span>SONARIS</span>
+      </a>
+      <nav class="nav-links" aria-label="Sections">
+        <a href="#how">How it works</a>
+        <a href="#voices">Voices</a>
+        <a href="#memory">Memory</a>
+        <a href="#skill">Skill</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+      <a class="btn btn-sm" href="/app.html">Open the console</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero wrap">
+      <div class="hero-copy">
+        <div class="eyebrow">Voice layer for your AI assistant</div>
+        <h1>Speak freely.<br />Answer in any voice.</h1>
+        <p class="lede">You talk. Your words appear on screen as you say them. Sonaris waits until you finish, then answers out loud in the voice you chose: Atlas, Aria, a character like Captain Merriweather, or one you bring yourself. Every exchange is written to a memory file you can open and read.</p>
+        <div class="cta-row">
+          <a class="btn btn-gold" href="/app.html">Open the console</a>
+          <a class="btn" href="#pricing" data-checkout="one_time">Get a license — $29</a>
+        </div>
+        <p class="small muted">Works in Chrome, Edge and Safari with live captions. Firefox uses server transcription.</p>
+      </div>
+      <figure class="hero-figure">
+        <img src="/brand/founder.jpg" alt="Portrait of the Sonaris founder in a navy suit and blue tie, in front of a gold-lit interface" width="768" height="1024" />
+        <figcaption class="small muted">The founder. Sonaris started as his own tool for talking to an assistant without typing.</figcaption>
+      </figure>
+    </section>
+
+    <section id="how" class="section wrap">
+      <div class="eyebrow">How it works</div>
+      <h2>Three rules, applied on every turn</h2>
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">1</div>
+          <h3>You speak. Words appear live.</h3>
+          <p>The console listens with the browser's speech recognition and prints interim words in grey while you talk, then sets them in cream once they are final. You always see what it heard.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <h3>It waits. It never talks over you.</h3>
+          <p>A voice activity detector tracks your speech. Sonaris only answers after 900 ms of silence (you can set 400 to 2000 ms). If you start talking while it speaks, it stops within a quarter of a second and shows "Paused. Go ahead."</p>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <h3>It answers, in the voice you chose.</h3>
+          <p>The reply streams in sentence by sentence and speech starts on the first sentence, so you hear the answer while the rest is still arriving. Server voices from ElevenLabs or OpenAI, or the browser's own voice when neither is configured.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="companion" class="section wrap companion-strip">
+      <img class="companion-portrait" src="/companion/poster.jpg" alt="The Sonaris companion: a small, round, blue creature with large dark eyes and gold sparks in its fur, smiling" width="720" height="720" loading="lazy" />
+      <div>
+        <div class="eyebrow">Meet your companion</div>
+        <h2>A face that listens with you</h2>
+        <p>The console is built around this small blue creature. It rests until you press the mic, wakes when you start talking, smiles while it thinks about your words, and bounces while it answers. Your words appear in a bubble beside it; the reply runs as subtitles underneath.</p>
+      </div>
+    </section>
+
+    <section id="voices" class="section wrap">
+      <div class="eyebrow">Voices</div>
+      <h2>Two defaults, one character, and yours</h2>
+      <div class="cards">
+        <article class="card">
+          <h3>Atlas</h3>
+          <p class="muted small">Male default</p>
+          <p>Warm baritone, measured pace. Answers first, then adds one useful detail.</p>
+        </article>
+        <article class="card">
+          <h3>Aria</h3>
+          <p class="muted small">Female default</p>
+          <p>Bright and clear. Plain words, natural rhythm, brief unless you ask for more.</p>
+        </article>
+        <article class="card">
+          <h3>Captain Merriweather</h3>
+          <p class="muted small">Example character voice</p>
+          <p>A theatrical sea captain with weather metaphors and a dry sense of humour. The real answer is always underneath the theatre.</p>
+        </article>
+        <article class="card card-gold">
+          <h3>Bring your own character</h3>
+          <p class="muted small">Add in the console</p>
+          <p>Give it a name, a style prompt, and a voice: an ElevenLabs voice ID, an OpenAI voice, the browser voice, or a 30-second audio sample to clone. It is saved to your license and appears in the picker.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="memory" class="section wrap">
+      <div class="two-col">
+        <div>
+          <div class="eyebrow">Memory you can read</div>
+          <h2>Every exchange goes to a file</h2>
+          <p>Each time you finish speaking, and each time Sonaris finishes (or gets cut off), the console appends one line to a JSONL journal for your license. It then rewrites <code>MEMORY.md</code>, a plain-text summary of the last 50 turns grouped by day. Both files download from the memory panel, and you can delete everything with one button.</p>
+          <p>The last few turns are fed back into the assistant's prompt, so it remembers what you talked about yesterday without you repeating it.</p>
+        </div>
+        <pre><code>{"role":"user","text":"Remind me what we decided about the launch date.","personaId":"aria","ts":"2026-09-03T14:02:11.418Z"}
+{"role":"assistant","text":"You picked October 14th, and you wanted the pricing page live a week before.","personaId":"aria","ts":"2026-09-03T14:02:14.902Z"}
+{"role":"assistant","text":"One more thing about the email list","personaId":"aria","ts":"2026-09-03T14:02:19.110Z","interrupted":true}</code></pre>
+      </div>
+    </section>
+
+    <section id="skill" class="section wrap">
+      <div class="panel skill-panel">
+        <div>
+          <div class="eyebrow">The Sonaris Skill</div>
+          <h2>The voice protocol, as a skill for your own agent</h2>
+          <p>The paid skill is a Markdown file your AI agent reads. It defines the seven rules the console follows: render interim captions, wait for a confirmed end of utterance, stop the moment the user speaks, reply in the active persona's voice, append a memory entry after every utterance and reply, keep a persona registry, and check the license before running. It is hosted behind the license check and downloads from <code>/api/skill</code>.</p>
+          <a class="btn" href="/skill.html">About the skill</a>
+        </div>
+        <ul class="checklist">
+          <li>Listen and caption</li>
+          <li>Wait for end of utterance (900 ms, configurable)</li>
+          <li>Stop on interruption, mark the reply interrupted</li>
+          <li>Speak in the active persona</li>
+          <li>Append JSONL memory, refresh MEMORY.md</li>
+          <li>Persona registry and character voices</li>
+          <li>License check via <code>GET /api/license</code></li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="pricing" class="section wrap">
+      <div class="eyebrow">Pricing</div>
+      <h2>One payment. Yours to keep.</h2>
+      <div class="prices">
+        <article class="price panel price-main">
+          <h3>Sonaris license</h3>
+          <div class="amount">$29 <span class="muted once">one-time</span></div>
+          <ul class="plain">
+            <li>The voice console with live captions and turn-taking</li>
+            <li>Atlas, Aria, Captain Merriweather, and unlimited custom character voices</li>
+            <li>Persistent memory: JSONL journal and MEMORY.md per license</li>
+            <li>The Sonaris Skill file, downloadable while your key is valid</li>
+            <li>Bring your own OpenAI, ElevenLabs and Stripe keys; nothing is metered</li>
+          </ul>
+          <button class="btn btn-gold" type="button" data-checkout="one_time">Get a license — $29</button>
+          <p class="small muted" id="checkout-msg" role="status"></p>
+        </article>
+        <article class="price panel">
+          <h3>Monthly</h3>
+          <div class="amount">$9 <span class="muted once">per month</span></div>
+          <ul class="plain">
+            <li>Same console, voices and memory</li>
+            <li>Same skill download</li>
+            <li>Cancel any time</li>
+          </ul>
+          <button class="btn" type="button" disabled data-checkout="monthly">Coming soon</button>
+        </article>
+      </div>
+    </section>
+
+    <section id="faq" class="section wrap">
+      <div class="eyebrow">FAQ</div>
+      <h2>Questions people ask before buying</h2>
+      <div class="faq">
+        <details>
+          <summary>Is the microphone always on?</summary>
+          <p>No. The microphone opens when you press the mic button or hold Space in the console, and it closes when you stop or leave the page. The marketing page never asks for it.</p>
+        </details>
+        <details>
+          <summary>What is stored, and where?</summary>
+          <p>Your final transcript and the assistant's replies, with a timestamp and the persona name, in a journal keyed to your license. In production it lives in Netlify Blobs; when you run Sonaris locally it is a real file at <code>sonaris/memory/&lt;license&gt;.jsonl</code>. Audio is never stored. Custom voices are stored the same way. Payment details stay with Stripe.</p>
+        </details>
+        <details>
+          <summary>How do I delete my memory?</summary>
+          <p>Open the memory panel (press M) and click "Delete all". That removes the journal and MEMORY.md for your license. There is no copy elsewhere.</p>
+        </details>
+        <details>
+          <summary>Which browsers work?</summary>
+          <p>Chrome, Edge and Safari show live captions through the Web Speech API. Firefox has no Web Speech recognition, so the console records short slices and sends them to the transcription function (OpenAI Whisper, which needs an API key). Typing works everywhere.</p>
+        </details>
+        <details>
+          <summary>Do I need my own API keys?</summary>
+          <p>For real answers, yes: an OpenAI-compatible key, or Netlify AI enabled on the site. For server voices, an ElevenLabs or OpenAI key. Without them the console still runs, tells you what is missing, and speaks with the browser voice.</p>
+        </details>
+        <details>
+          <summary>What does the license unlock?</summary>
+          <p>The console and the skill download. The key is checked by <code>GET /api/license?key=</code> and stored in your browser. If Stripe is not configured on a deployment, checkout hands out a demo key that is clearly labelled.</p>
+        </details>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap footer-inner">
+      <a class="wordmark" href="/" aria-label="Sonaris home">
+        <img src="/brand/logo.svg" alt="" width="28" height="28" />
+        <span>SONARIS</span>
+      </a>
+      <div class="small muted">Speak freely. Answer in any voice. · <a href="/app.html">Console</a> · <a href="/skill.html">Skill</a> · <a href="#pricing">Pricing</a></div>
+    </div>
+  </footer>
+
+  <script type="module" src="/src/landing.ts"></script>
+</body>
+</html>
