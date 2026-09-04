@@ -2,7 +2,7 @@
 
 Speak freely. Answer in any voice.
 
-Sonaris is a real-time voice conversation layer for an AI assistant. You talk, your words appear on screen as you speak, the assistant waits until you finish, then answers out loud in a persona voice. Every spoken exchange is written to a memory file. The assistant's voice skill is hosted behind a paywall.
+Sonaris is a real-time voice conversation layer for an AI assistant. You talk to a small blue companion whose face reacts as you speak: your words appear in a bubble beside it, it waits until you finish, then answers out loud in a persona voice while the reply runs as subtitles under its face. Every spoken exchange is written to a memory file. The assistant's voice skill is hosted behind a paywall.
 
 ## Architecture
 
@@ -10,6 +10,7 @@ Sonaris is a real-time voice conversation layer for an AI assistant. You talk, y
  Browser (Vite, vanilla TS)                        Netlify
  ┌──────────────────────────────────────┐          ┌──────────────────────────────────────┐
  │ app.html  voice console              │          │ netlify/functions                    │
+ │  ├ companion.ts     face clips       │          │                                      │
  │  ├ audio/mic.ts     getUserMedia +   │  fetch   │  chat.ts        POST /api/chat  ───► │ OpenAI-compatible
  │  │                  AnalyserNode RMS │ ───────► │  tts.ts         POST /api/tts   ───► │ ElevenLabs / OpenAI TTS
  │  ├ vad.ts           noise floor, EOU │          │  transcribe.ts  POST /api/transcribe │ Whisper (fallback)
@@ -18,16 +19,63 @@ Sonaris is a real-time voice conversation layer for an AI assistant. You talk, y
  │  ├ turn.ts          state machine    │          │  checkout.ts    POST → Stripe        │
  │  ├ chunker.ts       sentence split   │          │  license.ts     GET ?key= ?session_id│
  │  ├ audio/tts.ts     playback queue   │          │  stripe-webhook.ts                   │
- │  └ memory panel, paywall, personas   │          │  skill.ts       GET /api/skill (402) │
- │ index.html  marketing + pricing      │          │ netlify/lib: auth, store, memory,    │
- │ thanks.html post-checkout key        │          │              personas, stripe        │
- │ skill.html  gated skill download     │          └──────────────┬───────────────────────┘
+ │  └ conversation sheet, paywall,      │          │  skill.ts       GET /api/skill (402) │
+ │    persona chips                     │          │ netlify/lib: auth, store, memory,    │
+ │ index.html  marketing + pricing      │          │              personas, stripe        │
+ │ thanks.html post-checkout key        │          └──────────────┬───────────────────────┘
+ │ skill.html  gated skill download     │                         │
  └──────────────────────────────────────┘                         │
                                                   Netlify Blobs: memory, personas, licenses
                                                   Local dev:     memory/<key>.jsonl, MEMORY-<key>.md,
                                                                  .netlify/sonaris-store/*
+ public/companion/*.webm|mp4|poster.jpg  (built by scripts/build-companion-clips.sh)
  skill/SKILL.md  (bundled with functions via included_files; never in dist/)
 ```
+
+## The console
+
+The console is one screen built around the companion's face. The face sits in the upper half inside a circular frame with a thin gold ring; the persona's name and a state line ("Resting", "Listening", "You're talking", "Thinking", "Speaking", "Paused. Go ahead.") are underneath. Your words appear live in a speech bubble beside the face, grey while interim and cream once final; the bubble fades about 1.5 s after the assistant starts to answer. The reply is shown as a subtitle band under the face, two to three lines at a time, one sentence at a time as the voice reaches it. The full history and the memory downloads live in the Conversation sheet (`M`, or the button in the bar). Voices are a chip row above the large round microphone button; "Type to talk" opens a text box that goes through the same turn pipeline. Settings (silence window, browser voice, license, add a character voice) are in a side drawer. The root `<body>` carries `data-state` with the current turn state, so headless checks can follow along.
+
+## Companion face
+
+`src/companion.ts` exports `CompanionFace`, which owns two stacked, muted `<video>` elements inside the circular frame. A clip change loads the next clip into the hidden buffer, starts it, then crossfades opacity over 250 ms, so the face never cuts. Each clip is offered as WebM (VP9) first and MP4 (H.264) second; the poster is `poster.jpg`.
+
+The pure function `clipForState(prev, next)` (unit-tested in `tests/companion.test.ts`) maps turn transitions to clips:
+
+| Turn state | Clip | Plays |
+|------------|------|-------|
+| `idle`, and behind the paywall | `sleep` | loop |
+| `listening` | `alert` | loop |
+| `user_speaking` from `idle` or `listening` | `wake`, then `alert` | once, then loop |
+| `user_speaking` from `interrupted` or `thinking` | `alert` | loop |
+| `thinking` | `smile` | once, holds the last frame |
+| `speaking` | `speak` | loop |
+| `interrupted` | current frame held 350 ms, then `alert` | loop |
+
+The gold ring around the face breathes slowly while listening, and while speaking its opacity follows the assistant's audio level (the same level that used to drive the bar meter). All clips are preloaded when the console opens. Videos are muted, so browsers allow autoplay; if `play()` still rejects, the poster is shown instead. With `prefers-reduced-motion: reduce` only the poster is shown and no clip is loaded.
+
+### Clips
+
+The clips live in `public/companion/` and are cut from one 10 s render of the creature (the original is 3840×2160 HEVC, which most browsers cannot play, and it is not in the repository). `scripts/build-companion-clips.sh` takes a square centre crop, scales it to 720×720 and writes each clip as `.webm` (VP9, CRF 36) and `.mp4` (H.264, CRF 26, `yuv420p`, faststart), both silent, plus `poster.jpg`. Ping-pong clips are the forward frames followed by the same frames reversed, so they loop without a cut.
+
+| Clip | Source time | Kind |
+|------|-------------|------|
+| `sleep` | 0.0 to 4.0 s | ping-pong, 8 s |
+| `wake` | 4.0 to 6.0 s | forward, 2 s |
+| `alert` | 5.6 to 6.0 s | ping-pong, 0.75 s |
+| `smile` | 6.0 to 8.0 s | forward, 2 s |
+| `speak` | 8.0 to 10.0 s | ping-pong, 4 s |
+| `poster.jpg` | 9.9 s | still |
+
+The whole folder is 1.4 MB. To regenerate from a new source file:
+
+```bash
+cd sonaris
+scripts/build-companion-clips.sh /path/to/companion-source.mp4             # 720 px into public/companion
+scripts/build-companion-clips.sh /path/to/source.mp4 public/companion 640  # smaller if the folder grows past 4 MB
+```
+
+The script needs `ffmpeg` with `libx264` and `libvpx-vp9`. If the timeline of a new render differs, change the five cut points at the bottom of the script.
 
 ## Turn-taking
 
@@ -50,7 +98,7 @@ npx netlify dev             # frontend + functions on http://localhost:8888
 
 Other scripts: `npm run typecheck`, `npm test` (Vitest), `npm run build` (writes `dist/`), `npm run preview`.
 
-Demo mode: with no Stripe keys, "Unlock Sonaris" returns a demo license (`SONARIS-DEMO-XXXX`), which is labelled as such in the console. `app.html?demo=1` adds a "Run scripted demo" button that plays a simulated utterance through the live-caption renderer and then answers, so the turn-taking can be shown without a microphone. If the browser has no microphone or permission is denied, the console shows "No microphone found" and the text box goes through the same pipeline.
+Demo mode: with no Stripe keys, "Get a license" returns a demo license (`SONARIS-DEMO-XXXX`), which is labelled as such in the console. `app.html?demo=1` adds a "Run the demo" button that plays a simulated utterance through the bubble and then answers, so the turn-taking and the face can be shown without a microphone. If the browser has no microphone or permission is denied, the console says so and opens the text box, which goes through the same pipeline.
 
 ## Environment variables
 
@@ -81,7 +129,7 @@ Functions read variables with `Netlify.env.get()`. Never commit real values; set
 
 ## How memory works
 
-Every final user utterance and every completed or interrupted assistant reply is `POST`ed to `/api/memory`. The function appends one JSON line to `journal/<licenseKey>.jsonl` in the `memory` Blobs store and rewrites `MEMORY-<licenseKey>.md`, a rolling summary of the last 50 turns grouped by day. When running locally (`NETLIFY_DEV=true`) or when Blobs is unavailable, the same two files are written to `sonaris/memory/` on disk (`memory/*.jsonl` and `MEMORY-*.md` are gitignored). The memory panel in the console lists the journal and offers both files for download. `/api/chat` reads the last 12 turns into the system prompt.
+Every final user utterance and every completed or interrupted assistant reply is `POST`ed to `/api/memory`. The function appends one JSON line to `journal/<licenseKey>.jsonl` in the `memory` Blobs store and rewrites `MEMORY-<licenseKey>.md`, a rolling summary of the last 50 turns grouped by day. When running locally (`NETLIFY_DEV=true`) or when Blobs is unavailable, the same two files are written to `sonaris/memory/` on disk (`memory/*.jsonl` and `MEMORY-*.md` are gitignored). The Conversation sheet in the console lists the journal and offers both files for download. `/api/chat` reads the last 12 turns into the system prompt.
 
 Entry shape:
 
@@ -92,14 +140,14 @@ Entry shape:
 
 ## How to add a character voice
 
-In the console, click "Add a character voice". Give it a name, a short description, a style prompt (how it talks), a gender for the browser fallback, and a voice provider:
+In the console, click the "+ Add a voice" chip (or "Add a character voice" in Settings). Give it a name, a short description, a style prompt (how it talks), a gender for the browser fallback, and a voice provider:
 
 - Browser voice: no keys needed.
 - OpenAI voice: one of `alloy, ash, ballad, coral, echo, fable, nova, onyx, sage, shimmer, verse`.
 - ElevenLabs voice ID: paste an ID from your ElevenLabs library.
 - Audio sample: attach 30 seconds to 2 minutes of speech and the server calls ElevenLabs instant cloning (`/v1/voices/add`). Needs `ELEVENLABS_API_KEY`.
 
-Custom personas are stored per license in the `personas` store and come back from `GET /api/personas?key=`. Built-ins are defined once in `src/personas.ts` and shared with the functions.
+Custom personas are stored per license in the `personas` store and come back from `GET /api/personas?key=`. Built-ins are defined once in `src/personas.ts` and shared with the functions. The chosen persona's name is shown under the companion's face; the face itself is the same for every voice.
 
 ## Paywall and skill gating
 
@@ -125,4 +173,4 @@ Server voices play through an `<audio>` element. Without a TTS provider the brow
 npm test
 ```
 
-Vitest covers the turn state machine and interruption rule (voice while speaking is ignored, explicit interrupts stop playback, `reply_done` returns to listening), the mic track mute helper, the recognizer suspend and resume logic including late results, the sentence chunker, VAD end-of-utterance timing, license key format and validation, and the memory JSONL append and summary functions using the file adapter in a temp directory.
+Vitest covers the turn state machine and interruption rule (voice while speaking is ignored, explicit interrupts stop playback, `reply_done` returns to listening), the companion's `clipForState` mapping, the mic track mute helper, the recognizer suspend and resume logic including late results, the sentence chunker, VAD end-of-utterance timing, license key format and validation, and the memory JSONL append and summary functions using the file adapter in a temp directory.
