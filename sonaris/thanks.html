@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Your Sonaris license</title>
+  <meta name="robots" content="noindex" />
+  <link rel="icon" href="/brand/favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="/src/styles.css" />
+  <link rel="stylesheet" href="/src/landing.css" />
+</head>
+<body>
+  <header class="nav">
+    <div class="wrap nav-inner">
+      <a class="wordmark" href="/" aria-label="Sonaris home">
+        <img src="/brand/logo.svg" alt="" width="34" height="34" />
+        <span>SONARIS</span>
+      </a>
+      <a class="btn btn-sm" href="/app.html">Open the console</a>
+    </div>
+  </header>
+
+  <main class="narrow">
+    <div class="eyebrow">Thank you</div>
+    <h1 id="title">Checking your payment…</h1>
+    <p id="intro" class="muted">This takes a second. Your key appears below.</p>
+
+    <div id="key" class="key-box" role="status" aria-live="polite">…</div>
+    <p id="plan" class="small muted"></p>
+
+    <div id="next" hidden>
+      <h2>Next steps</h2>
+      <ol class="steps-list">
+        <li>Save the key somewhere safe. It is the only thing that unlocks the console and the skill.</li>
+        <li><a id="open-console" href="/app.html">Open the console</a>. The key is already stored in this browser; on another device, paste it into "I have a key".</li>
+        <li>Download <a id="skill-link" href="/skill.html">the Sonaris Skill</a> to use the protocol with your own agent.</li>
+        <li>Optional: add your own OpenAI or ElevenLabs keys in Netlify for real answers and server voices. See the README.</li>
+      </ol>
+      <div class="cta-row">
+        <a id="console-btn" class="btn btn-gold" href="/app.html">Open the console</a>
+        <a class="btn" href="/skill.html">Get the skill</a>
+      </div>
+    </div>
+
+    <div id="manual" hidden>
+      <p>If you already paid and this page cannot find the session, paste the key from your Stripe receipt email:</p>
+      <form id="manual-form" class="inline-form">
+        <label class="visually-hidden" for="manual-key">License key</label>
+        <input id="manual-key" type="text" placeholder="SONARIS-XXXX-XXXX-XXXX" autocomplete="off" spellcheck="false" />
+        <button class="btn" type="submit">Continue</button>
+      </form>
+    </div>
+  </main>
+
+  <script type="module" src="/src/thanks.ts"></script>
+</body>
+</html>

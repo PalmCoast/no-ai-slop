@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 64" width="300" height="64" role="img" aria-label="Sonaris">
+  <g fill="none" stroke="#C9A227" stroke-linecap="round">
+    <path d="M41 23 A9 9 0 1 0 32 32 A9 9 0 1 1 23 41" stroke-width="4.5"/>
+    <path d="M17 23 A15 15 0 0 1 32 8 M47 41 A15 15 0 0 1 32 56" stroke-width="3"/>
+    <path d="M12 23 A20 20 0 0 1 32 3 M52 41 A20 20 0 0 1 32 61" stroke-width="2" opacity=".5"/>
+  </g>
+  <text x="76" y="41" fill="#F1EAD8" font-family="Georgia, 'Times New Roman', serif" font-size="27" letter-spacing="7">SONARIS</text>
+</svg>
