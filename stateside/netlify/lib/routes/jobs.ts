@@ -105,7 +105,7 @@ export function registerJobs(r: Router): void {
     }
     const { posted_by: _omit, ...rest } = job;
     const [decorated] = await decorate(q, [rest as Job], viewer);
-    return json({ job: decorated, is_poster: isPoster });
+    return json({ job: decorated, is_poster: isPoster, veteran_window_hours: veteranWindowHours() });
   });
 
   r.on("POST", "/api/jobs/:id/apply", async (req, { id }) => {
