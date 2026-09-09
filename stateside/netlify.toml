@@ -1,0 +1,44 @@
+# Stateside — Netlify configuration.
+# Stateside lives in a subfolder of the repository, so `base` is set here (it is
+# resolved relative to the repository root). Netlify then treats `stateside/` as
+# the project root for `publish`, `functions` and the database migrations folder.
+
+[build]
+  base = "stateside"
+  command = "npm run build"
+  publish = "dist"
+  functions = "netlify/functions"
+
+[build.environment]
+  NODE_VERSION = "22"
+
+[functions]
+  node_bundler = "esbuild"
+
+[dev]
+  command = "npm run dev"
+  targetPort = 5173
+  port = 8888
+  framework = "#custom"
+  publish = "dist"
+
+# Every function declares its own `path` (e.g. /api/jobs/*) in its Config export,
+# so no /api/* rewrite is needed. The SPA fallback below serves index.html for
+# every other route so React Router can handle client-side navigation.
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    X-Frame-Options = "DENY"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
