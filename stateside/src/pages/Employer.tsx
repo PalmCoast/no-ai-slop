@@ -52,7 +52,7 @@ function CompanyForm({ company, onSaved }: { company: Company | null; onSaved: (
         <span className="help">
           You are verified automatically when your account email is on this domain. Consumer mailboxes (gmail, yahoo, etc.) cannot self-verify.
         </span>
-        <input value={website} onChange={(e) => setWebsite(e.target.value)} placeholder="acme.com" required />
+        <input value={website} onChange={(e) => setWebsite(e.target.value)} placeholder="e.g. acme.com" required />
       </label>
       <label className="field">
         About the company <span className="help">Shown on every posting.</span>
@@ -334,7 +334,7 @@ export function PostJob() {
       </Alert>
       <label className="field">
         Job title
-        <input value={form.title} onChange={(e) => set("title", e.target.value)} required placeholder="Senior Network Engineer" />
+        <input value={form.title} onChange={(e) => set("title", e.target.value)} required placeholder="e.g. Senior Network Engineer" />
       </label>
       <div className="grid-3">
         <label className="field">
@@ -371,7 +371,7 @@ export function PostJob() {
       <div className="grid-2">
         <label className="field">
           City <span className="help">Required unless remote.</span>
-          <input value={form.city} onChange={(e) => set("city", e.target.value)} placeholder="Columbus" />
+          <input value={form.city} onChange={(e) => set("city", e.target.value)} placeholder="e.g. Columbus" />
         </label>
         <label className="field">
           State
@@ -390,7 +390,7 @@ export function PostJob() {
       </div>
       <label className="field">
         Skills <span className="help">Comma-separated, up to 20.</span>
-        <input value={skillsText} onChange={(e) => setSkillsText(e.target.value)} placeholder="Cisco, Palo Alto, BGP, Python" />
+        <input value={skillsText} onChange={(e) => setSkillsText(e.target.value)} placeholder="e.g. Cisco, Palo Alto, BGP, Python" />
       </label>
       <label className="field">
         Description <span className="help">At least 80 characters. What the job is, who it reports to, what a good first year looks like.</span>

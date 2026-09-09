@@ -142,7 +142,7 @@ export function ProfilePage() {
             </div>
             <label className="field">
               Skills <span className="help">Comma-separated. Up to 30.</span>
-              <input value={skills} onChange={(e) => setSkills(e.target.value)} placeholder="Windows Server, Azure, PowerShell, VMware" />
+              <input value={skills} onChange={(e) => setSkills(e.target.value)} placeholder="e.g. Windows Server, Azure, PowerShell, VMware" />
             </label>
             <label className="field">
               About you
