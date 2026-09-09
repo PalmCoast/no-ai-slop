@@ -42,7 +42,7 @@ Stateside is a LinkedIn alternative scoped to one thing: experienced IT people i
 
 - Frontend: React 18 + Vite + TypeScript, React Router. No component library; `src/styles.css` is the whole design system.
 - API: one Netlify Function (`netlify/functions/api.ts`) mounted on `/api/*` with a small router. Route modules live in `netlify/lib/routes/`.
-- Database: Netlify Database (Postgres) in production via `@netlify/database`; embedded Postgres (PGlite) for local development with no setup. Schema lives in `netlify/database/migrations/` and is applied by the Netlify deploy (hosted) or on first request (local).
+- Database: Netlify Database (Postgres) in production via `@netlify/database`; embedded Postgres (PGlite, served over the Postgres wire protocol by `scripts/dev.mjs`) for local development with no setup. Schema lives in `netlify/database/migrations/` and is applied by the Netlify deploy (hosted) or by `scripts/dev.mjs` on start (local).
 - Auth: email + password with scrypt hashes and server-side sessions in an HttpOnly cookie. Self-contained so the whole product runs and tests locally.
 - Payments: Stripe Checkout + webhook. Demo mode (no charge) only when `STRIPE_SECRET_KEY` is unset **and** `ALLOW_DEMO_PAYMENTS=true` **and** the deploy context is not production.
 - Chat: 3-second polling against the messages table. Works on serverless without a websocket layer.
@@ -56,7 +56,7 @@ cp .env.example .env          # set ADMIN_EMAILS to your address to get the admi
 npx netlify dev               # frontend + API on http://localhost:8888
 ```
 
-The first request creates `.data/pglite` and applies the migrations. `npm run dev` starts only the Vite frontend on port 5173 and proxies `/api/*` to 8888, so run it next to `netlify dev` if you want frontend hot reload.
+`netlify dev` runs `npm run dev` (`scripts/dev.mjs`), which starts an embedded Postgres on `127.0.0.1:54329` with data under `.data/pglite`, applies the migrations, and then starts Vite. Functions reach it through `DATABASE_URL` in `.env`, exactly as they would reach any Postgres. Delete `.data/` to start from an empty database.
 
 Payments run in demo mode locally (`ALLOW_DEMO_PAYMENTS=true` in `.env.example`): "Publish (demo)" publishes the posting without a charge and it's labelled as such.
 

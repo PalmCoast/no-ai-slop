@@ -52,17 +52,20 @@ export function registerGroups(r: Router): void {
     if (!base) throw new HttpError(422, "invalid", "Group name needs some letters or numbers.");
     const q = await db();
     await rateLimit(q, user.id, "create_group", 5, 24);
-    return q.transaction(async (tx) => {
-      let slug = base;
-      for (let i = 2; await one(tx, `SELECT 1 FROM groups WHERE slug = $1`, [slug]); i++) slug = `${base}-${i}`;
-      const created = await one<{ id: string }>(
-        tx,
-        `INSERT INTO groups (slug, name, description, created_by, is_private) VALUES ($1, $2, $3, $4, $5) RETURNING id`,
+    // Pick the first free slug; ON CONFLICT covers a race with another creator.
+    let slug = base;
+    let created: { id: string } | null = null;
+    for (let i = 2; !created && i < 50; i++) {
+      created = await one<{ id: string }>(
+        q,
+        `INSERT INTO groups (slug, name, description, created_by, is_private) VALUES ($1, $2, $3, $4, $5) ON CONFLICT (slug) DO NOTHING RETURNING id`,
         [slug, name, description, user.id, bool(body.is_private)],
       );
-      await tx.query(`INSERT INTO group_members (group_id, user_id, role) VALUES ($1, $2, 'owner')`, [created!.id, user.id]);
-      return json({ group: await loadGroup(tx, user, slug) }, { status: 201 });
-    });
+      if (!created) slug = `${base}-${i}`;
+    }
+    if (!created) throw new HttpError(409, "slug_taken", "Too many groups share that name. Try a more specific one.");
+    await q.query(`INSERT INTO group_members (group_id, user_id, role) VALUES ($1, $2, 'owner')`, [created.id, user.id]);
+    return json({ group: await loadGroup(q, user, slug) }, { status: 201 });
   });
 
   r.on("GET", "/api/groups/:slug", async (req, { slug }) => {

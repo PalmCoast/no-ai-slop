@@ -5,7 +5,8 @@
   "description": "Stateside: the job network for American IT professionals. Free for job seekers, veterans first, $10 per posting.",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "dev": "node scripts/dev.mjs",
+    "dev:db": "node scripts/dev.mjs --db-only",
     "dev:netlify": "netlify dev",
     "build": "vite build",
     "preview": "vite preview",
@@ -17,6 +18,7 @@
   "dependencies": {
     "@netlify/database": "^2.0.1",
     "@netlify/functions": "^6.0.0",
+    "pg": "^8.23.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-router-dom": "^7.18.3",
@@ -24,7 +26,9 @@
   },
   "devDependencies": {
     "@electric-sql/pglite": "^0.5.8",
+    "@electric-sql/pglite-socket": "^0.2.11",
     "@types/node": "^22.15.30",
+    "@types/pg": "^8.23.1",
     "@types/react": "^18.3.20",
     "@types/react-dom": "^18.3.6",
     "@vitejs/plugin-react": "^4.4.1",

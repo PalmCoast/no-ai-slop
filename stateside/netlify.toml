@@ -14,9 +14,6 @@
 
 [functions]
   node_bundler = "esbuild"
-  # PGlite is the embedded Postgres used only for local development. It is never
-  # loaded when NETLIFY_DB_URL is present, so keep it out of the function bundle.
-  external_node_modules = ["@electric-sql/pglite"]
 
 [dev]
   command = "npm run dev"
