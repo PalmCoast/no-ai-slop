@@ -1,0 +1,43 @@
+# Flick — Netlify configuration.
+# Flick lives in a subfolder of the repository, so `base` is set here (it is
+# resolved relative to the repository root). The Netlify CLI and build system
+# then treat `flick/` as the project root for `publish` and `functions`.
+
+[build]
+  base = "flick"
+  command = "npm run build"
+  publish = "dist"
+  functions = "netlify/functions"
+
+[build.environment]
+  NODE_VERSION = "22"
+
+[functions]
+  node_bundler = "esbuild"
+
+[dev]
+  command = "npm run dev"
+  targetPort = 5173
+  port = 8888
+  framework = "#custom"
+  publish = "dist"
+
+# Every function declares its own `path` in its Config export, so no /api/*
+# rewrite is needed. The SPA fallback serves index.html for every other route.
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(self), microphone=(self), display-capture=(self)"
+
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"

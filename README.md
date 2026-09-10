@@ -70,3 +70,7 @@ MIT
 ## Sonaris
 
 [Sonaris](sonaris/README.md) is a separate product in this repo: a real-time voice layer for an AI assistant with live captions, turn-taking that never talks over you, persona voices, a memory file per license, and a paid skill hosted behind a paywall. See [sonaris/README.md](sonaris/README.md) for setup and [sonaris/BRAND.md](sonaris/BRAND.md) for the brand.
+
+## Flick
+
+[Flick](flick/README.md) is a separate product in this repo: a Loom replacement that records screen, camera, or both in the browser and publishes a watch link. No account to view. Hosted on the default Netlify URL.

@@ -1,0 +1,33 @@
+{
+  "name": "flick",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Flick: skip the meeting. Record your screen, talk over it, send a link.",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "typecheck": "tsc --noEmit -p tsconfig.json",
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "dependencies": {
+    "@netlify/blobs": "^8.2.0",
+    "@netlify/functions": "^6.0.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^7.18.3"
+  },
+  "devDependencies": {
+    "@netlify/vite-plugin": "^2.7.15",
+    "@types/node": "^22.15.30",
+    "@types/react": "^18.3.20",
+    "@types/react-dom": "^18.3.6",
+    "@vitejs/plugin-react": "^4.4.1",
+    "netlify-cli": "^27.5.1",
+    "typescript": "^5.8.3",
+    "vite": "^6.3.5",
+    "vitest": "^3.2.4"
+  }
+}
