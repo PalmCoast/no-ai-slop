@@ -38,6 +38,15 @@ let recordingUrl;
 let chunks = [];
 let elapsedSeconds = 0;
 let isPaused = false;
+let sourceEnded = false;
+
+const debugLog = (hypothesisId, location, message, data) => {
+  fetch("/__debug-log", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ hypothesisId, location, message, data, timestamp: Date.now() }),
+  }).catch(() => {});
+};
 
 function supportsRecording() {
   return Boolean(
@@ -92,6 +101,19 @@ async function getUserMedia() {
       ? { width: { ideal: 1280 }, height: { ideal: 720 }, facingMode: "user" }
       : false,
   });
+}
+
+async function getOptionalUserMedia() {
+  try {
+    return await getUserMedia();
+  } catch (error) {
+    if (["NotAllowedError", "NotFoundError", "DevicesNotFoundError"].includes(error.name)) {
+      elements.micToggle.checked = false;
+      elements.cameraToggle.checked = false;
+      return null;
+    }
+    throw error;
+  }
 }
 
 function connectAudio(stream, destination) {
@@ -185,17 +207,8 @@ async function startRecording() {
       audio: true,
     });
 
-    try {
-      userStream = await getUserMedia();
-    } catch (error) {
-      if (error.name === "NotAllowedError") {
-        elements.micToggle.checked = false;
-        elements.cameraToggle.checked = false;
-        userStream = null;
-      } else {
-        throw error;
-      }
-    }
+    sourceEnded = false;
+    userStream = await getOptionalUserMedia();
 
     elements.screenPreview.srcObject = displayStream;
     await elements.screenPreview.play();
@@ -216,14 +229,42 @@ async function startRecording() {
       videoBitsPerSecond: 6_000_000,
     });
 
+    // #region agent log
+    debugLog("B,D", "app.js:startRecording", "MediaRecorder created", {
+      selectedMimeType: mimeType,
+      recorderMimeType: mediaRecorder.mimeType,
+      outputTracks: outputStream.getTracks().map((track) => ({
+        kind: track.kind,
+        readyState: track.readyState,
+        muted: track.muted,
+      })),
+    });
+    // #endregion
     mediaRecorder.addEventListener("dataavailable", (event) => {
+      // #region agent log
+      debugLog("A,B,C", "app.js:dataavailable", "Recorder emitted chunk", {
+        index: chunks.length,
+        size: event.data.size,
+        type: event.data.type,
+        timecode: event.timecode,
+        recorderState: mediaRecorder.state,
+      });
+      // #endregion
       if (event.data.size > 0) chunks.push(event.data);
     });
     mediaRecorder.addEventListener("stop", showResult, { once: true });
-    displayStream.getVideoTracks()[0].addEventListener("ended", stopRecording, { once: true });
+    displayStream.getVideoTracks()[0].addEventListener(
+      "ended",
+      () => {
+        sourceEnded = true;
+        stopRecording();
+      },
+      { once: true },
+    );
 
     setView("recording");
     await runCountdown();
+    if (sourceEnded) throw new DOMException("Screen sharing ended before recording began.", "AbortError");
     mediaRecorder.start(1000);
     isPaused = false;
     startTimer();
@@ -234,6 +275,8 @@ async function startRecording() {
     elements.permissionNote.textContent =
       error.name === "NotAllowedError"
         ? "Screen access was cancelled. Try again when you’re ready."
+        : error.name === "AbortError"
+          ? error.message
         : `Couldn’t start recording: ${error.message}`;
   } finally {
     elements.startButton.disabled = false;
@@ -244,12 +287,26 @@ function togglePause() {
   if (!mediaRecorder || mediaRecorder.state === "inactive") return;
 
   if (mediaRecorder.state === "recording") {
+    // #region agent log
+    debugLog("C,D", "app.js:togglePause", "Pause requested", {
+      recorderState: mediaRecorder.state,
+      chunkCount: chunks.length,
+      elapsedSeconds,
+    });
+    // #endregion
     mediaRecorder.pause();
     isPaused = true;
     elements.recordingState.textContent = "PAUSED";
     elements.pauseButton.innerHTML = '<span class="play-icon"></span>';
     elements.pauseButton.setAttribute("aria-label", "Resume recording");
   } else if (mediaRecorder.state === "paused") {
+    // #region agent log
+    debugLog("C,D", "app.js:togglePause", "Resume requested", {
+      recorderState: mediaRecorder.state,
+      chunkCount: chunks.length,
+      elapsedSeconds,
+    });
+    // #endregion
     mediaRecorder.resume();
     isPaused = false;
     elements.recordingState.textContent = "RECORDING";
@@ -259,6 +316,15 @@ function togglePause() {
 }
 
 function stopRecording() {
+  // #region agent log
+  debugLog("A,C,D", "app.js:stopRecording", "Stop requested", {
+    recorderState: mediaRecorder?.state ?? null,
+    chunkCount: chunks.length,
+    chunkBytes: chunks.reduce((total, chunk) => total + chunk.size, 0),
+    sourceEnded,
+    elapsedSeconds,
+  });
+  // #endregion
   if (mediaRecorder && mediaRecorder.state !== "inactive") {
     mediaRecorder.stop();
   }
@@ -275,9 +341,24 @@ function stopTracks() {
   elements.cameraPreview.srcObject = null;
 }
 
-function showResult() {
+async function showResult() {
   stopTracks();
   recordingBlob = new Blob(chunks, { type: mediaRecorder.mimeType || "video/webm" });
+  const header = Array.from(new Uint8Array(await recordingBlob.slice(0, 16).arrayBuffer()));
+  const tail = Array.from(
+    new Uint8Array(await recordingBlob.slice(Math.max(0, recordingBlob.size - 16)).arrayBuffer()),
+  );
+  // #region agent log
+  debugLog("A,B,C", "app.js:showResult", "Final blob created", {
+    size: recordingBlob.size,
+    type: recordingBlob.type,
+    chunkCount: chunks.length,
+    chunkBytes: chunks.reduce((total, chunk) => total + chunk.size, 0),
+    chunkTypes: [...new Set(chunks.map((chunk) => chunk.type))],
+    header,
+    tail,
+  });
+  // #endregion
   if (recordingUrl) URL.revokeObjectURL(recordingUrl);
   recordingUrl = URL.createObjectURL(recordingBlob);
   elements.resultVideo.src = recordingUrl;
@@ -345,6 +426,31 @@ elements.stopButton.addEventListener("click", stopRecording);
 elements.newButton.addEventListener("click", resetRecorder);
 elements.downloadButton.addEventListener("click", downloadRecording);
 elements.shareButton.addEventListener("click", shareRecording);
+
+elements.resultVideo.addEventListener("loadedmetadata", () => {
+  // #region agent log
+  debugLog("B,E", "app.js:resultVideo.loadedmetadata", "Result metadata loaded", {
+    duration: elements.resultVideo.duration,
+    videoWidth: elements.resultVideo.videoWidth,
+    videoHeight: elements.resultVideo.videoHeight,
+    readyState: elements.resultVideo.readyState,
+    networkState: elements.resultVideo.networkState,
+  });
+  // #endregion
+});
+
+elements.resultVideo.addEventListener("error", () => {
+  // #region agent log
+  debugLog("A,B,E", "app.js:resultVideo.error", "Result playback error", {
+    code: elements.resultVideo.error?.code ?? null,
+    message: elements.resultVideo.error?.message ?? null,
+    readyState: elements.resultVideo.readyState,
+    networkState: elements.resultVideo.networkState,
+    blobSize: recordingBlob?.size ?? null,
+    blobType: recordingBlob?.type ?? null,
+  });
+  // #endregion
+});
 
 window.addEventListener("keydown", (event) => {
   if ((event.metaKey || event.ctrlKey) && event.key === "Enter") {
