@@ -4,7 +4,6 @@
  */
 import { promises as fs } from "node:fs";
 import path from "node:path";
-import { fileURLToPath } from "node:url";
 import { getStore } from "@netlify/blobs";
 
 export interface BinaryStore {
@@ -149,30 +148,38 @@ class BlobStore implements BinaryStore {
 }
 
 function projectRoot(): string {
-  return path.resolve(path.dirname(fileURLToPath(import.meta.url)), "../..");
+  return process.cwd();
 }
 
 function useFileStore(): boolean {
   if (process.env.FLICK_FORCE_FILE_STORE === "true") return true;
   if (process.env.NETLIFY_DEV === "true") return true;
-  if (process.env.NETLIFY === "true") return false;
-  return process.env.NODE_ENV !== "production";
+  // Vite's Netlify plugin sets NETLIFY=true in local dev. Only use Blobs on
+  // a real production function invocation.
+  if (process.env.NETLIFY === "true" && process.env.CONTEXT === "production") return false;
+  if (process.env.NETLIFY === "true" && process.env.NODE_ENV === "production") return false;
+  return true;
 }
 
 let override: BinaryStore | null = null;
+let cached: BinaryStore | null = null;
 
 export function useStore(store: BinaryStore | null): void {
   override = store;
+  cached = null;
 }
 
 export function openStore(): BinaryStore {
   if (override) return override;
+  if (cached) return cached;
   if (useFileStore()) {
-    return new FileStore(path.join(projectRoot(), ".netlify", "flick-store"));
+    cached = new FileStore(path.join(projectRoot(), ".netlify", "flick-store"));
+    return cached;
   }
   try {
-    return new BlobStore("flick-clips");
+    cached = new BlobStore("flick-clips");
   } catch {
-    return new FileStore(path.join(projectRoot(), ".netlify", "flick-store"));
+    cached = new FileStore(path.join(projectRoot(), ".netlify", "flick-store"));
   }
+  return cached;
 }

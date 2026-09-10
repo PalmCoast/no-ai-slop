@@ -1,4 +1,4 @@
-import { chunkCountForSize, splitBytes } from "../shared/chunks";
+import { bytesToBase64, chunkCountForSize, splitBytes } from "../shared/chunks";
 import { MAX_CHUNK_BYTES, type ClipMeta, type CreateClipInput } from "../shared/types";
 
 export class ApiError extends Error {
@@ -39,12 +39,12 @@ export function videoUrl(id: string): string {
   return `/api/clips/${id}/video`;
 }
 
-export async function uploadChunk(id: string, index: number, chunk: Blob): Promise<void> {
+export async function uploadChunk(id: string, index: number, chunk: Uint8Array): Promise<void> {
   await parse(
     await fetch(`/api/clips/${id}/chunks/${index}`, {
       method: "PUT",
-      headers: { "Content-Type": "application/octet-stream" },
-      body: chunk,
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ data: bytesToBase64(chunk) }),
     }),
   );
 }
@@ -67,9 +67,7 @@ export async function publishRecording(
   });
   for (let i = 0; i < parts.length; i++) {
     const part = parts[i]!;
-    const copy = new Uint8Array(part.byteLength);
-    copy.set(part);
-    await uploadChunk(meta.id, i, new Blob([copy.buffer], { type: "application/octet-stream" }));
+    await uploadChunk(meta.id, i, part);
     onProgress?.((i + 1) / parts.length);
   }
   return completeClip(meta.id);

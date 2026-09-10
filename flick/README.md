@@ -47,7 +47,7 @@ npx netlify sites:create --name <unique-name>
 npx netlify deploy --prod --build
 ```
 
-`netlify.toml` sets `base = "flick"`. Leave the domain on `*.netlify.app`.
+`netlify.toml` lives in this folder. For a Git-connected site, set the Netlify **Base directory** to `flick`. Leave the domain on `*.netlify.app`.
 
 ## Layout
 

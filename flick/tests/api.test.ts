@@ -63,7 +63,11 @@ describe("clips API", () => {
     expect(hidden.status).toBe(404);
 
     const put = await router.handle(
-      req(`/api/clips/${meta.id}/chunks/0`, { method: "PUT", body: payload }),
+      req(`/api/clips/${meta.id}/chunks/0`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ data: Buffer.from(payload).toString("base64") }),
+      }),
     );
     expect(put.status).toBe(200);
 

@@ -1,5 +1,5 @@
 import type { Config } from "@netlify/functions";
-import { completeClip, createClip, getClip, putChunk, readClipBytes, validateCreate } from "../lib/clips";
+import { completeClip, createClip, getClip, putChunk, bytesFromChunkRequest, readClipBytes, validateCreate } from "../lib/clips";
 import { error, json, readJson, Router } from "../lib/http";
 import type { CreateClipInput } from "../../shared/types";
 
@@ -25,7 +25,7 @@ router.on("GET", "/api/clips/:id", async (_req, params) => {
 
 router.on("PUT", "/api/clips/:id/chunks/:n", async (req, params) => {
   const index = Number(params.n);
-  const buf = new Uint8Array(await req.arrayBuffer());
+  const buf = await bytesFromChunkRequest(req);
   await putChunk(params.id ?? "", index, buf);
   return json({ ok: true, index });
 });

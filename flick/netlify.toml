@@ -1,10 +1,9 @@
 # Flick — Netlify configuration.
-# Flick lives in a subfolder of the repository, so `base` is set here (it is
-# resolved relative to the repository root). The Netlify CLI and build system
-# then treat `flick/` as the project root for `publish` and `functions`.
+# This file lives in `flick/`. For a Git-connected site, set the Netlify
+# "Base directory" to `flick`. Do not also set `base` here — that path is
+# resolved from the current working directory and would become `flick/flick`.
 
 [build]
-  base = "flick"
   command = "npm run build"
   publish = "dist"
   functions = "netlify/functions"

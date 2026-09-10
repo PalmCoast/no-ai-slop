@@ -1,4 +1,4 @@
-import { assertChunkPlan } from "../../shared/chunks";
+import { assertChunkPlan, base64ToBytes } from "../../shared/chunks";
 import {
   type CaptureMode,
   type ClipMeta,
@@ -93,8 +93,22 @@ export async function putChunk(
   if (data.byteLength > MAX_CHUNK_BYTES) throw new HttpError(413, "chunk_too_large", "Chunk is too large.");
   const last = index === meta.chunkCount - 1;
   const expected = last ? meta.size - MAX_CHUNK_BYTES * (meta.chunkCount - 1) : MAX_CHUNK_BYTES;
-  if (data.byteLength !== expected) throw new HttpError(400, "bad_chunk_size", "Chunk size does not match the plan.");
+  if (data.byteLength !== expected) {
+    throw new HttpError(400, "bad_chunk_size", `Chunk size does not match the plan (got ${data.byteLength}, expected ${expected}).`);
+  }
   await store.setBytes(chunkKey(id, index), data, mimeFamily(meta.mimeType));
+}
+
+export async function bytesFromChunkRequest(req: Request): Promise<Uint8Array> {
+  const type = req.headers.get("content-type") ?? "";
+  if (type.includes("application/json")) {
+    const body = await req.json().catch(() => null);
+    if (!body || typeof body !== "object" || typeof (body as { data?: unknown }).data !== "string") {
+      throw new HttpError(400, "bad_json", "Chunk JSON must be { data: base64 }.");
+    }
+    return base64ToBytes((body as { data: string }).data);
+  }
+  return new Uint8Array(await req.arrayBuffer());
 }
 
 export async function completeClip(id: string, store: BinaryStore = openStore()): Promise<ClipMeta> {

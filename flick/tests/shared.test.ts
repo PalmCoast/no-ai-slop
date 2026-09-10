@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { chunkCountForSize, concatBytes, splitBytes, assertChunkPlan } from "../shared/chunks";
+import { chunkCountForSize, concatBytes, splitBytes, assertChunkPlan, bytesToBase64, base64ToBytes } from "../shared/chunks";
 import { isAllowedMime, isClipId, makeClipId, normalizeTitle } from "../shared/types";
 
 describe("clip ids", () => {
@@ -45,5 +45,10 @@ describe("chunking", () => {
     expect(chunkCountForSize(3_500_001)).toBe(2);
     expect(assertChunkPlan(100, 1)).toBeNull();
     expect(assertChunkPlan(100, 2)).toMatch(/does not match/);
+  });
+
+  it("round-trips bytes through base64", () => {
+    const data = new Uint8Array(256).map((_, i) => i);
+    expect(Array.from(base64ToBytes(bytesToBase64(data)))).toEqual(Array.from(data));
   });
 });
