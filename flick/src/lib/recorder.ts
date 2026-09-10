@@ -191,6 +191,7 @@ export class CaptureSession {
     if (!recorder || recorder.state === "inactive") {
       throw new Error("Not recording.");
     }
+    const durationMs = this.elapsedMs();
     const blob = await new Promise<Blob>((resolve, reject) => {
       recorder.addEventListener("error", () => reject(new Error("Recorder failed.")), { once: true });
       recorder.addEventListener(
@@ -200,7 +201,6 @@ export class CaptureSession {
       );
       recorder.stop();
     });
-    const durationMs = this.elapsedMs();
     this.recorder = null;
     return {
       blob,

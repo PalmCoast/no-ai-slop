@@ -3,8 +3,8 @@ export const CLIP_ID_ALPHABET = "abcdefghjkmnpqrstuvwxyz23456789";
 export const CLIP_ID_RE = /^[a-z0-9]{10}$/;
 
 export const MAX_TITLE = 120;
-export const MAX_CHUNKS = 40;
-export const MAX_CHUNK_BYTES = 3_500_000;
+export const MAX_CHUNKS = 260;
+export const MAX_CHUNK_BYTES = 400_000;
 export const MAX_BYTES = 100 * 1024 * 1024;
 export const MAX_DURATION_MS = 15 * 60 * 1000;
 export const MAX_WIDTH = 1920;

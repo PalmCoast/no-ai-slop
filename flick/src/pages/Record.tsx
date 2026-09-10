@@ -27,6 +27,7 @@ export function Record() {
   const [phase, setPhase] = useState<Phase>("setup");
   const [count, setCount] = useState(3);
   const [elapsed, setElapsed] = useState(0);
+  const elapsedRef = useRef(0);
   const [error, setError] = useState<string | null>(null);
   const [result, setResult] = useState<RecordingResult | null>(null);
   const [localId, setLocalId] = useState("");
@@ -52,6 +53,7 @@ export function Record() {
     if (phase !== "recording" && phase !== "paused") return;
     const id = window.setInterval(() => {
       const ms = sessionRef.current?.elapsedMs() ?? 0;
+      elapsedRef.current = ms;
       setElapsed(ms);
       if (ms >= MAX_DURATION_MS) void finish();
     }, 200);
@@ -144,6 +146,7 @@ export function Record() {
       const rec = await session.stop();
       session.dispose();
       sessionRef.current = null;
+      const durationMs = Math.max(rec.durationMs, elapsedRef.current, 400);
       const id = makeClipId();
       if (previewUrl) URL.revokeObjectURL(previewUrl);
       const url = URL.createObjectURL(rec.blob);
@@ -155,7 +158,7 @@ export function Record() {
         id,
         title: `Flick ${new Date().toLocaleString()}`,
         createdAt: new Date().toISOString(),
-        durationMs: rec.durationMs,
+        durationMs,
         width: rec.width,
         height: rec.height,
         mimeType: rec.mimeType,
@@ -163,6 +166,7 @@ export function Record() {
         mode: rec.mode,
         blob: rec.blob,
       });
+      setResult({ ...rec, durationMs });
       setPhase("review");
     } catch (e) {
       setError(e instanceof Error ? e.message : "Could not save the recording.");
@@ -274,6 +278,22 @@ export function Record() {
             </div>
           )}
         </div>
+        {(phase === "recording" || phase === "paused") && (
+          <div className="transport">
+            <span className="timer">
+              {phase === "paused" ? "Paused · " : "Recording · "}
+              {formatDuration(elapsed)}
+            </span>
+            <span className="row">
+              <button className="btn" type="button" onClick={togglePause}>
+                {phase === "paused" ? "Resume" : "Pause"}
+              </button>
+              <button className="btn danger" type="button" onClick={() => void finish()}>
+                Stop
+              </button>
+            </span>
+          </div>
+        )}
 
         {phase === "review" && result ? (
           <div className="card">

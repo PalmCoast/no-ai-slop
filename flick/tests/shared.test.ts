@@ -41,8 +41,8 @@ describe("chunking", () => {
   });
 
   it("counts chunks for a given size", () => {
-    expect(chunkCountForSize(3_500_000)).toBe(1);
-    expect(chunkCountForSize(3_500_001)).toBe(2);
+    expect(chunkCountForSize(400_000)).toBe(1);
+    expect(chunkCountForSize(400_001)).toBe(2);
     expect(assertChunkPlan(100, 1)).toBeNull();
     expect(assertChunkPlan(100, 2)).toMatch(/does not match/);
   });
