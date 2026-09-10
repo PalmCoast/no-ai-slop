@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f4f1ea" />
+    <meta
+      name="description"
+      content="Skiploom is a fast, private screen recorder that works in your browser. No account, watermark, or upload required."
+    />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <title>Skiploom — record, done.</title>
+  </head>
+  <body>
+    <div class="grain" aria-hidden="true"></div>
+    <header class="nav">
+      <a class="brand" href="#" aria-label="Skiploom home">
+        <span class="brand-mark"><span></span></span>
+        <span>skiploom</span>
+      </a>
+      <div class="nav-note"><span class="status-dot"></span> runs in your browser</div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="hero-copy">
+          <div class="eyebrow">Screen recording, minus the circus</div>
+          <h1>Record it.<br /><em>Send it.</em><br />Move on.</h1>
+          <p class="hero-sub">
+            No signup, no watermark, no “your free trial has ended.”
+            Your recording stays on your device until you decide otherwise.
+          </p>
+          <div class="proof-row">
+            <div><strong>0</strong><span>accounts</span></div>
+            <div><strong>0</strong><span>watermarks</span></div>
+            <div><strong>∞</strong><span>recording time</span></div>
+          </div>
+        </div>
+
+        <div class="recorder-card" id="recorderCard">
+          <div class="recorder-topbar">
+            <div class="window-dots" aria-hidden="true"><i></i><i></i><i></i></div>
+            <span id="recorderLabel">NEW RECORDING</span>
+            <span class="shortcut">⌘ ↵</span>
+          </div>
+
+          <div class="recorder-body" id="setupView">
+            <div class="mode-heading">
+              <span>What do you want to capture?</span>
+              <span class="step">01 / 01</span>
+            </div>
+
+            <div class="capture-option active">
+              <div class="option-icon screen-icon" aria-hidden="true"><span></span></div>
+              <div>
+                <strong>Screen</strong>
+                <small>Tab, window, or full display</small>
+              </div>
+              <span class="check">✓</span>
+            </div>
+
+            <div class="toggles">
+              <label class="toggle-row">
+                <span class="toggle-icon mic-icon" aria-hidden="true"></span>
+                <span><strong>Microphone</strong><small>Add your voice</small></span>
+                <input id="micToggle" type="checkbox" checked />
+                <span class="switch"></span>
+              </label>
+              <label class="toggle-row">
+                <span class="toggle-icon camera-icon" aria-hidden="true"></span>
+                <span><strong>Camera bubble</strong><small>Put a face to the voice</small></span>
+                <input id="cameraToggle" type="checkbox" />
+                <span class="switch"></span>
+              </label>
+            </div>
+
+            <div id="permissionNote" class="permission-note" role="status">
+              You’ll choose what to share in the next window.
+            </div>
+            <button class="record-button" id="startButton">
+              <span class="record-dot"></span>
+              Start recording
+              <span class="button-arrow">↗</span>
+            </button>
+          </div>
+
+          <div class="recording-view" id="recordingView" hidden>
+            <div class="recording-preview">
+              <video id="screenPreview" autoplay muted playsinline></video>
+              <video id="cameraPreview" autoplay muted playsinline hidden></video>
+              <div class="live-pill"><span></span> REC</div>
+            </div>
+            <div class="recording-status">
+              <div>
+                <span id="recordingState">RECORDING</span>
+                <strong id="timer">00:00</strong>
+              </div>
+              <div class="recording-actions">
+                <button id="pauseButton" class="round-button" aria-label="Pause recording">
+                  <span class="pause-icon"></span>
+                </button>
+                <button id="stopButton" class="stop-button">
+                  <span></span> Finish recording
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="result-view" id="resultView" hidden>
+            <video id="resultVideo" controls playsinline></video>
+            <div class="result-copy">
+              <div>
+                <span class="done-label">READY TO GO</span>
+                <input id="recordingTitle" value="My Skiploom" aria-label="Recording title" />
+              </div>
+              <button id="newButton" class="text-button">Record another ↗</button>
+            </div>
+            <div class="result-actions">
+              <button id="downloadButton" class="record-button">
+                <span class="download-icon">↓</span> Download video
+              </button>
+              <button id="shareButton" class="share-button">Share file</button>
+            </div>
+            <p class="privacy-line"><span>◆</span> This video never left your device.</p>
+          </div>
+
+          <div class="countdown" id="countdown" hidden><span>3</span></div>
+        </div>
+      </section>
+
+      <section class="manifesto">
+        <p class="section-kicker">THE SHORT VERSION</p>
+        <h2>Your recording tool should not be <span>another job.</span></h2>
+        <div class="feature-grid">
+          <article>
+            <span class="feature-number">01</span>
+            <div class="feature-symbol">↯</div>
+            <h3>One click in</h3>
+            <p>Open the page, choose your inputs, and record. No onboarding maze.</p>
+          </article>
+          <article>
+            <span class="feature-number">02</span>
+            <div class="feature-symbol">◇</div>
+            <h3>Private by default</h3>
+            <p>Processing happens locally. Nothing uploads behind your back.</p>
+          </article>
+          <article>
+            <span class="feature-number">03</span>
+            <div class="feature-symbol">→</div>
+            <h3>Your file, instantly</h3>
+            <p>Preview, download, or use your device’s share sheet as soon as you stop.</p>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <a class="brand footer-brand" href="#"><span class="brand-mark"><span></span></span>skiploom</a>
+      <p>Built for people with things to do.</p>
+      <span>LOCAL-FIRST · 2026</span>
+    </footer>
+
+    <canvas id="recordingCanvas" hidden></canvas>
+    <script type="module" src="/app.js"></script>
+  </body>
+</html>
