@@ -70,3 +70,7 @@ MIT
 ## Sonaris
 
 [Sonaris](sonaris/README.md) is a separate product in this repo: a real-time voice layer for an AI assistant with live captions, turn-taking that never talks over you, persona voices, a memory file per license, and a paid skill hosted behind a paywall. See [sonaris/README.md](sonaris/README.md) for setup and [sonaris/BRAND.md](sonaris/BRAND.md) for the brand.
+
+## Skiploom
+
+[Skiploom](skiploom/README.md) is a local-first browser screen recorder with optional microphone, system audio, and camera bubble capture. It supports pause and resume, instant playback, download, and native file sharing without an account or watermark.
