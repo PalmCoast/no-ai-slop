@@ -128,61 +128,87 @@ function connectAudio(stream, destination) {
 
 async function createOutputStream() {
   const screenTrack = displayStream.getVideoTracks()[0];
-  const settings = screenTrack.getSettings();
-  const width = settings.width || 1920;
-  const height = settings.height || 1080;
-  const context = elements.canvas.getContext("2d", { alpha: false });
+  const cameraTrack = userStream?.getVideoTracks()[0];
+  let videoTrack = screenTrack;
+  let videoMode = "direct-display";
 
-  elements.canvas.width = width;
-  elements.canvas.height = height;
+  if (elements.cameraToggle.checked && cameraTrack) {
+    const settings = screenTrack.getSettings();
+    const width = settings.width || 1920;
+    const height = settings.height || 1080;
+    const context = elements.canvas.getContext("2d", { alpha: false });
 
-  const draw = () => {
-    context.fillStyle = "#161814";
-    context.fillRect(0, 0, width, height);
-    context.drawImage(elements.screenPreview, 0, 0, width, height);
+    elements.canvas.width = width;
+    elements.canvas.height = height;
 
-    if (elements.cameraToggle.checked && elements.cameraPreview.readyState >= 2) {
-      const bubbleSize = Math.round(Math.min(width, height) * 0.19);
-      const inset = Math.round(bubbleSize * 0.22);
-      const x = width - bubbleSize - inset;
-      const y = height - bubbleSize - inset;
+    const draw = () => {
+      context.fillStyle = "#161814";
+      context.fillRect(0, 0, width, height);
+      context.drawImage(elements.screenPreview, 0, 0, width, height);
 
-      context.save();
-      context.beginPath();
-      context.arc(x + bubbleSize / 2, y + bubbleSize / 2, bubbleSize / 2, 0, Math.PI * 2);
-      context.clip();
-      context.translate(x + bubbleSize, y);
-      context.scale(-1, 1);
-      context.drawImage(elements.cameraPreview, 0, 0, bubbleSize, bubbleSize);
-      context.restore();
+      if (elements.cameraPreview.readyState >= 2) {
+        const bubbleSize = Math.round(Math.min(width, height) * 0.19);
+        const inset = Math.round(bubbleSize * 0.22);
+        const x = width - bubbleSize - inset;
+        const y = height - bubbleSize - inset;
 
-      context.beginPath();
-      context.arc(
-        x + bubbleSize / 2,
-        y + bubbleSize / 2,
-        bubbleSize / 2 - 3,
-        0,
-        Math.PI * 2,
-      );
-      context.lineWidth = Math.max(5, Math.round(bubbleSize * 0.025));
-      context.strokeStyle = "#ffffff";
-      context.stroke();
-    }
+        context.save();
+        context.beginPath();
+        context.arc(x + bubbleSize / 2, y + bubbleSize / 2, bubbleSize / 2, 0, Math.PI * 2);
+        context.clip();
+        context.translate(x + bubbleSize, y);
+        context.scale(-1, 1);
+        context.drawImage(elements.cameraPreview, 0, 0, bubbleSize, bubbleSize);
+        context.restore();
 
-    animationFrame = requestAnimationFrame(draw);
-  };
-  draw();
+        context.beginPath();
+        context.arc(
+          x + bubbleSize / 2,
+          y + bubbleSize / 2,
+          bubbleSize / 2 - 3,
+          0,
+          Math.PI * 2,
+        );
+        context.lineWidth = Math.max(5, Math.round(bubbleSize * 0.025));
+        context.strokeStyle = "#ffffff";
+        context.stroke();
+      }
 
-  const canvasStream = elements.canvas.captureStream(30);
-  audioContext = new AudioContext();
-  const destination = audioContext.createMediaStreamDestination();
-  connectAudio(displayStream, destination);
-  connectAudio(userStream, destination);
+      animationFrame = requestAnimationFrame(draw);
+    };
+    draw();
 
-  return new MediaStream([
-    ...canvasStream.getVideoTracks(),
-    ...destination.stream.getAudioTracks(),
-  ]);
+    videoTrack = elements.canvas.captureStream(30).getVideoTracks()[0];
+    videoMode = "canvas-composite";
+  }
+
+  const sourceAudioTracks = [
+    ...displayStream.getAudioTracks(),
+    ...(userStream?.getAudioTracks() || []),
+  ];
+  let audioTracks = sourceAudioTracks;
+  let audioMode = sourceAudioTracks.length === 1 ? "direct-source" : "none";
+
+  if (sourceAudioTracks.length > 1) {
+    audioContext = new AudioContext();
+    const destination = audioContext.createMediaStreamDestination();
+    connectAudio(displayStream, destination);
+    connectAudio(userStream, destination);
+    audioTracks = destination.stream.getAudioTracks();
+    audioMode = "mixed";
+  }
+
+  // #region agent log
+  debugLog("F", "app.js:createOutputStream", "Recording track topology selected", {
+    videoMode,
+    audioMode,
+    sourceAudioTrackCount: sourceAudioTracks.length,
+    cameraEnabled: Boolean(elements.cameraToggle.checked && cameraTrack),
+    screenSettings: screenTrack.getSettings(),
+  });
+  // #endregion
+
+  return new MediaStream([videoTrack, ...audioTracks]);
 }
 
 function startTimer() {
