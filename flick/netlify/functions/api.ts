@@ -1,12 +1,19 @@
 import type { Config } from "@netlify/functions";
 import { completeClip, createClip, getClip, putChunk, bytesFromChunkRequest, readClipBytes, validateCreate } from "../lib/clips";
 import { error, json, readJson, Router } from "../lib/http";
+import { openStore } from "../lib/store";
 import type { CreateClipInput } from "../../shared/types";
 
 const router = new Router();
 
 router.on("GET", "/api/health", async () =>
-  json({ ok: true, service: "flick", time: new Date().toISOString() }),
+  json({
+    ok: true,
+    service: "flick",
+    time: new Date().toISOString(),
+    storage: openStore().kind,
+    hosted: Boolean(process.env.AWS_LAMBDA_FUNCTION_NAME || process.env.NETLIFY_BLOBS_CONTEXT),
+  }),
 );
 
 router.on("POST", "/api/clips", async (req) => {

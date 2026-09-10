@@ -151,13 +151,15 @@ function projectRoot(): string {
   return process.cwd();
 }
 
+function isHostedFunction(): boolean {
+  return Boolean(process.env.AWS_LAMBDA_FUNCTION_NAME || process.env.NETLIFY_BLOBS_CONTEXT);
+}
+
 function useFileStore(): boolean {
   if (process.env.FLICK_FORCE_FILE_STORE === "true") return true;
   if (process.env.NETLIFY_DEV === "true") return true;
-  // Vite's Netlify plugin sets NETLIFY=true in local dev. Only use Blobs on
-  // a real production function invocation.
-  if (process.env.NETLIFY === "true" && process.env.CONTEXT === "production") return false;
-  if (process.env.NETLIFY === "true" && process.env.NODE_ENV === "production") return false;
+  if (isHostedFunction()) return false;
+  if (process.env.NETLIFY === "true") return false;
   return true;
 }
 
@@ -176,10 +178,6 @@ export function openStore(): BinaryStore {
     cached = new FileStore(path.join(projectRoot(), ".netlify", "flick-store"));
     return cached;
   }
-  try {
-    cached = new BlobStore("flick-clips");
-  } catch {
-    cached = new FileStore(path.join(projectRoot(), ".netlify", "flick-store"));
-  }
+  cached = new BlobStore("flick-clips");
   return cached;
 }

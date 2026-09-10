@@ -2,7 +2,7 @@
 
 Skip the meeting.
 
-Flick is a Loom replacement that records in the browser and gives you a shareable link. Watchers do not need an account, an extension, or a login wall. The live site uses the default Netlify URL — no custom domain.
+Flick is a Loom replacement that records in the browser and gives you a shareable link. Watchers do not need an account, an extension, or a login wall. Live at [https://useflick.netlify.app](https://useflick.netlify.app) — the default Netlify URL, no custom domain.
 
 ## What it does
 
@@ -41,9 +41,10 @@ Open `http://localhost:5173`. The demo scene records without screen or camera pe
 
 ## Deploy
 
+Live: [https://useflick.netlify.app](https://useflick.netlify.app)
+
 ```bash
 cd flick
-npx netlify sites:create --name <unique-name>
 npx netlify deploy --prod --build
 ```
 

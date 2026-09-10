@@ -70,7 +70,8 @@ export class Router {
       } catch (e) {
         if (e instanceof HttpError) return error(e.status, e.code, e.message);
         console.error(`[flick] ${req.method} ${url.pathname} failed`, e);
-        return error(500, "internal", "Something went wrong on our side. Please try again.");
+        const message = e instanceof Error ? e.message : "Something went wrong on our side. Please try again.";
+        return error(500, "internal", message);
       }
     }
     return pathMatched

@@ -73,4 +73,4 @@ MIT
 
 ## Flick
 
-[Flick](flick/README.md) is a separate product in this repo: a Loom replacement that records screen, camera, or both in the browser and publishes a watch link. No account to view. Hosted on the default Netlify URL.
+[Flick](flick/README.md) is a separate product in this repo: a Loom replacement that records screen, camera, or both in the browser and publishes a watch link. No account to view. Live at [https://useflick.netlify.app](https://useflick.netlify.app).

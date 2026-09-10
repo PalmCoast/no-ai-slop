@@ -13,8 +13,9 @@ describe("clips API", () => {
   it("reports health", async () => {
     const res = await router.handle(req("/api/health"));
     expect(res.status).toBe(200);
-    const body = (await res.json()) as { service: string };
+    const body = (await res.json()) as { service: string; storage?: string };
     expect(body.service).toBe("flick");
+    expect(body.storage).toBe("memory");
   });
 
   it("rejects a tiny recording", async () => {
