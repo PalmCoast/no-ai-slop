@@ -43,7 +43,7 @@ describe("clips API", () => {
     const created = await router.handle(
       req("/api/clips", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: { "Content-Type": "application/json", "X-Flick-Device": "vitestclip01" },
         body: JSON.stringify({
           title: "Demo",
           mimeType: "video/webm",

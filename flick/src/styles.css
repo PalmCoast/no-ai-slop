@@ -214,8 +214,190 @@ input[type="text"], input[type="search"] {
 .speed button.active { border-color: var(--amber); color: var(--amber); }
 
 @media (max-width: 860px) {
-  .hero, .modes, .pillars { grid-template-columns: 1fr; }
+  .hero, .modes, .pillars, .doors, .price-grid, .cue-grid { grid-template-columns: 1fr; }
   .hero { gap: 1.5rem; padding-top: 1rem; }
   h1 { font-size: 2.4rem; }
   main { padding: 1rem 1rem 3rem; }
+  .marquee-title { font-size: 22vw; }
+  .nav { flex-wrap: wrap; justify-content: flex-end; }
+}
+
+.footer-links { display: flex; gap: 1rem; flex-wrap: wrap; }
+.footer-links a { color: var(--amber-2); }
+
+main.marquee-main { max-width: 1200px; }
+.now-showing {
+  text-align: center;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  font-size: 0.72rem;
+  color: #ffd56a;
+  margin: 0.4rem 0 1rem;
+}
+.billboard {
+  position: relative;
+  border: 10px solid #1a1208;
+  border-radius: 28px;
+  padding: 2.4rem 1.4rem 2.6rem;
+  text-align: center;
+  background:
+    radial-gradient(120% 80% at 50% 0%, rgba(255, 90, 31, 0.22), transparent 55%),
+    linear-gradient(180deg, #140e0a, #090807);
+  box-shadow: 0 0 0 2px #5a3a12, 0 30px 80px rgba(255, 90, 31, 0.18);
+  margin-bottom: 2rem;
+  overflow: hidden;
+}
+.billboard.compact { padding: 1.6rem 1.2rem 1.8rem; }
+.chaser {
+  display: grid;
+  grid-template-columns: repeat(24, 1fr);
+  gap: 0.35rem;
+  margin: 0 0 1.2rem;
+}
+.chaser i {
+  width: 10px; height: 10px; border-radius: 50%;
+  justify-self: center;
+  background: #3a2a12;
+  box-shadow: 0 0 0 1px rgba(255, 213, 106, 0.15);
+  animation: bulb 1s ease-in-out infinite;
+}
+@keyframes bulb {
+  0%, 100% { background: #3a2a12; box-shadow: 0 0 0 1px rgba(255, 213, 106, 0.12); }
+  50% { background: #ffd56a; box-shadow: 0 0 14px #ffb020, 0 0 28px rgba(255, 90, 31, 0.55); }
+}
+.lights-kicker { color: #ffd56a; }
+.marquee-title {
+  font-family: "Bebas Neue", Impact, sans-serif;
+  font-size: clamp(5rem, 18vw, 11rem);
+  line-height: 0.82;
+  letter-spacing: 0.04em;
+  margin: 0.1rem 0 0.4rem;
+  color: #fff6e8;
+  text-shadow:
+    0 0 12px rgba(255, 213, 106, 0.7),
+    0 0 42px rgba(255, 90, 31, 0.45),
+    0 8px 0 #3a1608;
+}
+.marquee-title.smaller { font-size: clamp(3.6rem, 12vw, 8rem); }
+.marquee-title span { display: block; }
+.marquee-tag {
+  font-family: "Bebas Neue", Impact, sans-serif;
+  font-size: clamp(1.4rem, 4vw, 2.4rem);
+  letter-spacing: 0.16em;
+  color: #ffd56a;
+  margin: 0 0 1rem;
+}
+.billboard-lede { margin: 0 auto 0.4rem; max-width: 38rem; }
+.billboard-btn { padding: 1.05rem 1.7rem; font-size: 1.15rem; }
+
+.doors {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin: 0 0 2.2rem;
+}
+.door {
+  display: grid;
+  gap: 0.4rem;
+  padding: 1.4rem 1.3rem 1.2rem;
+  border-radius: 20px;
+  background: #16110c;
+  border: 1px solid var(--line);
+  min-height: 16rem;
+  color: var(--ink);
+}
+.door:hover { color: var(--ink); border-color: rgba(255, 213, 106, 0.55); transform: translateY(-2px); }
+.door.gold {
+  background: linear-gradient(180deg, #2a1608, #140e0a);
+  border-color: rgba(255, 213, 106, 0.45);
+  box-shadow: 0 0 40px rgba(255, 90, 31, 0.18);
+}
+.door h2 {
+  font-family: "Bebas Neue", Impact, sans-serif;
+  font-size: 2.4rem;
+  letter-spacing: 0.06em;
+}
+.door-label { color: #ffd56a; font-weight: 700; letter-spacing: 0.18em; font-size: 0.8rem; }
+.door-cta { color: var(--amber-2); font-weight: 700; margin-top: auto; }
+
+.underbill { text-align: center; padding: 1.5rem 0 2rem; }
+.display {
+  font-family: "Bebas Neue", Impact, sans-serif;
+  font-size: clamp(2.2rem, 6vw, 4rem);
+  letter-spacing: 0.06em;
+}
+.buy-row { display: flex; gap: 0.75rem; flex-wrap: wrap; justify-content: center; }
+.buy-stack { margin: 0.6rem 0; }
+.buy-stack.huge .buy-row { justify-content: center; }
+.center { text-align: center; }
+
+.price-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin: 0 0 1.5rem;
+}
+.price-card {
+  background: var(--bg-2);
+  border: 1px solid var(--line);
+  border-radius: 22px;
+  padding: 1.4rem 1.3rem 1.5rem;
+  display: grid;
+  gap: 0.5rem;
+  align-content: start;
+}
+.price-card.featured {
+  border-color: var(--amber);
+  box-shadow: 0 0 0 1px var(--amber) inset, 0 20px 50px rgba(255, 90, 31, 0.18);
+}
+.price-card.gold { border-color: rgba(255, 213, 106, 0.45); }
+.price-amt {
+  font-family: "Bebas Neue", Impact, sans-serif;
+  font-size: 3.4rem;
+  margin: 0;
+  line-height: 1;
+}
+.price-amt small { font-size: 1.1rem; letter-spacing: 0.08em; color: var(--muted); }
+.price-card ul { margin: 0.4rem 0 1rem; padding-left: 1.1rem; color: var(--muted); }
+.price-card li { margin: 0.25rem 0; }
+
+.program { list-style: none; padding: 0; display: grid; gap: 1rem; margin: 0 0 2rem; }
+.program-act {
+  padding: 1.3rem 1.4rem;
+  border-radius: 20px;
+  background: #14110c;
+  border: 1px solid var(--line);
+}
+.cue-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin: 0.8rem 0 1.6rem; }
+.copy-block blockquote {
+  margin: 0;
+  font-size: 1.25rem;
+  line-height: 1.45;
+  color: #fff6e8;
+}
+
+.seat-banner {
+  margin: 0;
+  padding: 0.7rem 0.9rem;
+  border-radius: 12px;
+  background: rgba(255, 213, 106, 0.08);
+  border: 1px solid rgba(255, 213, 106, 0.2);
+  color: #ffd56a;
+  font-size: 0.92rem;
+}
+.seat-banner.monthly, .seat-banner.founder, .seat-banner.demo {
+  background: rgba(62, 207, 142, 0.1);
+  border-color: rgba(62, 207, 142, 0.28);
+  color: var(--green);
+}
+.paywall-card { border-color: rgba(255, 213, 106, 0.4); }
+.license-show {
+  font-size: 1.05rem;
+  color: #ffd56a;
+}
+.license-show code {
+  font-size: 1.05rem;
+  padding: 0.15rem 0.4rem;
+  background: #1a1208;
+  border-radius: 8px;
 }

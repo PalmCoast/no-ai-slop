@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import type { ReactNode } from "react";
 
 export function Brand({ to = "/" }: { to?: string }) {
@@ -12,7 +12,15 @@ export function Brand({ to = "/" }: { to?: string }) {
   );
 }
 
-export function Layout({ children, wide = false }: { children: ReactNode; wide?: boolean }) {
+export function Layout({
+  children,
+  wide = false,
+  marquee = false,
+}: {
+  children: ReactNode;
+  wide?: boolean;
+  marquee?: boolean;
+}) {
   return (
     <>
       <a className="skip" href="#main">
@@ -21,21 +29,31 @@ export function Layout({ children, wide = false }: { children: ReactNode; wide?:
       <header className="site-header">
         <Brand />
         <nav className="nav" aria-label="Primary">
-          <NavLink to="/library" className={({ isActive }) => (isActive ? "active" : "")}>
-            Library
+          <NavLink to="/launch" className={({ isActive }) => (isActive ? "active" : "")}>
+            Launch
+          </NavLink>
+          <NavLink to="/marketing" className={({ isActive }) => (isActive ? "active" : "")}>
+            Marketing
+          </NavLink>
+          <NavLink to="/pricing" className={({ isActive }) => (isActive ? "active" : "")}>
+            Pricing
           </NavLink>
           <NavLink to="/record" className="btn amber">
             Record
           </NavLink>
         </nav>
       </header>
-      <main id="main" className={wide ? "wide" : undefined}>
+      <main id="main" className={`${wide ? "wide" : ""} ${marquee ? "marquee-main" : ""}`.trim()}>
         {children}
       </main>
       <footer className="site-footer">
         <div className="inner">
-          <span>Flick records in the browser and hosts the file on Netlify. Watchers do not need an account.</span>
-          <span>No custom domain. Default Netlify URL.</span>
+          <span>Watch is free. Publish is the gate. Recorded in the browser, hosted on Netlify.</span>
+          <span className="footer-links">
+            <Link to="/pricing">Payment gate</Link>
+            <Link to="/marketing">Marketing plan</Link>
+            <Link to="/launch">Launch plan</Link>
+          </span>
         </div>
       </footer>
     </>

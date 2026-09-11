@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { publishRecording } from "../api";
+import { ApiError, fetchMe, publishRecording, type Me } from "../api";
+import { BuyButtons } from "../components/BuyButtons";
 import { Layout } from "../components/Layout";
 import { formatBytes, formatDuration } from "../lib/format";
 import { markPublished, saveLocal } from "../lib/local";
@@ -37,8 +38,15 @@ export function Record() {
   const [progress, setProgress] = useState(0);
   const [remoteId, setRemoteId] = useState<string | null>(null);
   const [copied, setCopied] = useState(false);
-
+  const [me, setMe] = useState<Me | null>(null);
+  const [paywall, setPaywall] = useState(false);
   const usesCanvas = mode === "both" || mode === "demo";
+
+  useEffect(() => {
+    void fetchMe()
+      .then(setMe)
+      .catch(() => setMe(null));
+  }, [remoteId]);
 
   useEffect(() => {
     return () => {
@@ -203,8 +211,14 @@ export function Record() {
       );
       await markPublished(localId, remote.id);
       setRemoteId(remote.id);
+      setPaywall(false);
     } catch (e) {
-      setError(e instanceof Error ? e.message : "Upload failed. You can still download the file.");
+      if (e instanceof ApiError && e.status === 402) {
+        setPaywall(true);
+        setError(e.message);
+      } else {
+        setError(e instanceof Error ? e.message : "Upload failed. You can still download the file.");
+      }
     } finally {
       setPublishing(false);
     }
@@ -227,7 +241,25 @@ export function Record() {
           </div>
           <p className="muted small">Space pauses. Esc stops. 15 minutes max.</p>
         </div>
+        {me ? (
+          <p className={`seat-banner ${me.plan}`}>
+            {me.plan === "street"
+              ? me.freeRemaining
+                ? `Street pass: ${me.freeRemaining} publish left · 2 min max. Lights unlocks the marquee.`
+                : "Street pass is used. Download is still free. Publish needs Lights or Marquee."
+              : `${me.plan === "founder" ? "Marquee" : me.plan === "demo" ? "Rehearsal" : "Lights"} is on. Unlimited publish on this device.`}
+          </p>
+        ) : null}
         {error ? <div className="alert error">{error}</div> : null}
+        {paywall ? (
+          <div className="card paywall-card">
+            <p className="kicker">Payment gate</p>
+            <h2>The marquee is a paid seat.</h2>
+            <p className="muted">Download still works. Paying buys the share link. Watchers never see this wall.</p>
+            <BuyButtons size="huge" />
+            <Link to="/pricing">See the full house</Link>
+          </div>
+        ) : null}
 
         {phase === "setup" ? (
           <>
