@@ -18,5 +18,5 @@
     "skipLibCheck": true,
     "noEmit": true
   },
-  "include": ["src", "netlify", "shared", "tests", "vite.config.ts", "vitest.config.ts"]
+  "include": ["src", "netlify/functions", "netlify/lib", "shared", "tests", "vite.config.ts", "vitest.config.ts"]
 }

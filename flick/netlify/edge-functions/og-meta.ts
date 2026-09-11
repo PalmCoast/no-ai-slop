@@ -3,7 +3,7 @@
  * correctly. The SPA serves the same index.html for every route.
  */
 import type { Config, Context } from "@netlify/edge-functions";
-import { SITE_ORIGIN, metaForPath, type PageMeta } from "../../shared/meta";
+import { SITE_ORIGIN, metaForPath, type PageMeta } from "../../shared/meta.ts";
 
 function escapeAttr(value: string): string {
   return value.replace(/&/g, "&amp;").replace(/"/g, "&quot;");
