@@ -5,12 +5,12 @@ const ACTS = [
   {
     act: "Act I",
     title: "Ship the marquee",
-    body: "The product is live on the default Netlify URL. Record, publish, watch. No custom domain. The watch page has no login. That is the wedge and it stays that way.",
+    body: "Flick is live. Record, publish, watch. The watch page has no login. That is the wedge, and it stays that way.",
   },
   {
     act: "Act II",
     title: "Sell founder seats",
-    body: "Marquee is $99 once while the board is still dark enough to feel like opening night. Cap the window by copy, not by a fake countdown. When it stops feeling scarce, kill the SKU.",
+    body: "Marquee is $99 once while it still feels like opening night. Cap the window by copy, not a fake countdown.",
   },
   {
     act: "Act III",
@@ -20,7 +20,7 @@ const ACTS = [
 ];
 
 const CUE = [
-  { n: "01", title: "Stripe live", note: "STRIPE_SECRET_KEY, webhook on /api/stripe-webhook, SITE_URL=https://useflick.netlify.app." },
+  { n: "01", title: "Payments live", note: "Stripe Checkout is on. Watchers never see it. Street pass still works with no card." },
   { n: "02", title: "Founder blast", note: "Personal notes, not a product dump. One Flick that is the pitch. Link the Marquee card." },
   { n: "03", title: "Public board", note: "Home, Pricing, Launch, Marketing are the campaign. Product Hunt / X / communities get the same three sentences." },
   { n: "04", title: "Watch the gate", note: "Track publishes, checkout starts, paid licenses. If people download and never pay, the street pass is doing its job." },

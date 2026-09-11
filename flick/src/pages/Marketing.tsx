@@ -50,7 +50,7 @@ export function Marketing() {
       </section>
 
       <section>
-        <h2 className="display">Who it is for</h2>
+        <h2 className="display">Who it's for</h2>
         <p className="lede">
           People who owe someone an explanation and do not want another calendar hold: founders, PMs, support leads, anyone
           who currently records a Loom and apologizes for the login wall on the other end.

@@ -5,7 +5,7 @@ import { BuyButtons } from "../components/BuyButtons";
 export function Home() {
   return (
     <Layout marquee>
-      <p className="now-showing">Now showing · no custom domain · useflick.netlify.app</p>
+      <p className="now-showing">Now showing · watch is free · publish is the gate</p>
       <section className="billboard" aria-label="Flick marquee">
         <div className="chaser" aria-hidden="true">
           {Array.from({ length: 48 }, (_, i) => (
@@ -18,8 +18,8 @@ export function Home() {
         </h1>
         <p className="marquee-tag">SKIP THE MEETING.</p>
         <p className="lede billboard-lede">
-          Record your screen, talk over it, send a link. They hit play when they have five minutes. The watch page is always
-          free. The publish gate is Lights.
+          Record your screen, talk over it, send a link. They hit play when they have five minutes. Watch is always
+          free. Publish is Lights or Marquee.
         </p>
         <div className="hero-actions">
           <Link className="btn amber billboard-btn" to="/record">

@@ -32,7 +32,7 @@ export function Pricing() {
             <li>Watchers never need an account</li>
           </ul>
           <Link className="btn ghost big" to="/record">
-            Record on the street
+            Start free
           </Link>
         </article>
         <article className="price-card featured">
@@ -45,8 +45,8 @@ export function Pricing() {
           <ul>
             <li>Unlimited published Flicks</li>
             <li>Fifteen minutes / 100 MB</li>
-            <li>Cancel any time in the Stripe portal</li>
-            <li>The default seat after launch week</li>
+            <li>Cancel any time in Stripe</li>
+            <li>The house seat after launch</li>
           </ul>
           <BuyButtons highlight="monthly" only="monthly" />
         </article>
@@ -60,14 +60,14 @@ export function Pricing() {
           <ul>
             <li>Founder lifetime. Same limits as Lights</li>
             <li>Pay once during the opening window</li>
-            <li>No subscription. No portal to babysit</li>
+            <li>No subscription. Yours for good</li>
             <li>Your name on the opening-night board</li>
           </ul>
           <BuyButtons highlight="founder" only="founder" />
         </article>
       </section>
       <p className="fine center">
-        Stripe Checkout. No card form on this site. Demo licenses only when Stripe is off and this is not production.
+        Checkout is Stripe-hosted. No card form on this site. Street pass does not need a card.
       </p>
     </Layout>
   );

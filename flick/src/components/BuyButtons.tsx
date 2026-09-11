@@ -55,7 +55,7 @@ export function BuyButtons({
               disabled={busy !== null}
               onClick={() => void buy(plan)}
             >
-              {busy === plan ? "Opening the gate…" : `${spec.name} ${formatUsd(spec.cents)}${spec.cadence}`}
+              {busy === plan ? "Continue to Stripe…" : `Get ${spec.name} · ${formatUsd(spec.cents)}${spec.cadence}`}
             </button>
           );
         })}

@@ -16,7 +16,7 @@ Lights at $19/month is the house seat. Street pass stays as a taste: one short p
 
 ## Cue sheet
 
-1. **Stripe live** — `STRIPE_SECRET_KEY`, `STRIPE_WEBHOOK_SECRET`, webhook URL `https://useflick.netlify.app/api/stripe-webhook`, `SITE_URL=https://useflick.netlify.app`. Optional Price IDs: `STRIPE_PRICE_ID_MONTHLY`, `STRIPE_PRICE_ID_FOUNDER`. If those are unset, Checkout uses inline `price_data`.
+1. **Payments live** — Stripe Checkout is on. Street pass still works with no card. Webhook URL `https://useflick.netlify.app/api/stripe-webhook`. Checkout uses inline `price_data` unless Price IDs are set in Netlify.
 2. **Founder blast** — personal notes, not a product dump. One Flick that *is* the pitch. Link the Marquee card.
 3. **Public board** — Home, Pricing, Launch, Marketing are the campaign. Product Hunt / X / communities get the same three sentences.
 4. **Watch the gate** — publishes, checkout starts, paid licenses. If people download and never pay, the street pass is doing its job.

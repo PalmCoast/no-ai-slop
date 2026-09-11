@@ -37,6 +37,11 @@
     Permissions-Policy = "camera=(self), microphone=(self), display-capture=(self)"
 
 [[headers]]
+  for = "/og*.png"
+  [headers.values]
+    Cache-Control = "public, max-age=86400"
+
+[[headers]]
   for = "/assets/*"
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"

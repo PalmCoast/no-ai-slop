@@ -1,5 +1,6 @@
 import { Link, NavLink } from "react-router-dom";
 import type { ReactNode } from "react";
+import { PageMeta } from "./PageMeta";
 
 export function Brand({ to = "/" }: { to?: string }) {
   return (
@@ -23,6 +24,7 @@ export function Layout({
 }) {
   return (
     <>
+      <PageMeta />
       <a className="skip" href="#main">
         Skip to content
       </a>

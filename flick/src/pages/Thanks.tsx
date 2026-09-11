@@ -55,9 +55,9 @@ export function Thanks() {
             License <code>{key}</code>
           </p>
         ) : sessionId ? (
-          <p className="muted">Hanging the letters…</p>
+          <p className="muted">Unlocking your seat…</p>
         ) : (
-          <p className="muted">No checkout session on this page. If you already paid, open Pricing and we will not double-charge — paste is not needed; the key lives in this browser.</p>
+          <p className="muted">If you just paid, give this page a second. Your seat lives in this browser — then go record.</p>
         )}
         <div className="hero-actions">
           <Link className="btn amber billboard-btn" to="/record">
