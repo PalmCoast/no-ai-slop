@@ -59,6 +59,10 @@ You get every pattern it found each with the quoted line.
 
 This is one skill from my personal AI operating system. The full library, including my courses and workflows, lives at [Behind the Craft](https://behindthecraft.com).
 
+## First Deploy
+
+[First Deploy](firstdeploy/README.md) is the after-hours desk and live apps for field operators ([firstdeploy.ai](https://firstdeploy.ai)). Static marketing site in `firstdeploy/`. See [firstdeploy/README.md](firstdeploy/README.md) for the offer, local preview, and how to point the live Netlify site at this folder.
+
 ## License
 
 MIT
