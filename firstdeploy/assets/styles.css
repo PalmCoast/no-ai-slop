@@ -377,7 +377,7 @@ button.btn {
 
 .state.booked { color: var(--go); }
 .state.chase { color: var(--amber); }
-.state.wait { color: var(--warn); }
+.state.ok { color: #7ec8c4; }
 
 .desk-foot {
   margin: 8px 18px 18px;
@@ -466,7 +466,10 @@ button.btn {
 
 .how li {
   list-style: none;
-  padding: 8px 8px 8px 0;
+  background: var(--raised);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 24px 22px 26px;
 }
 
 .ledger {
@@ -689,8 +692,6 @@ footer {
 
   .btn, .btn-ghost { width: 100%; }
 
-  body.has-sticky-cta { padding-bottom: 84px; }
-
   .sticky-cta {
     display: flex;
     position: fixed;
@@ -700,9 +701,17 @@ footer {
     z-index: 80;
     gap: 8px;
     padding: 10px 16px calc(10px + env(safe-area-inset-bottom, 0px));
-    background: rgba(11, 10, 8, 0.94);
+    background: var(--ground);
     border-top: 1px solid var(--line);
   }
+
+  .price-chip {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+
+  body.has-sticky-cta { padding-bottom: 96px; }
 
   .sticky-cta .btn,
   .sticky-cta .btn-ghost {

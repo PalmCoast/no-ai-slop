@@ -4,6 +4,6 @@
   "type": "module",
   "scripts": {
     "check": "node scripts/check-clean.mjs",
-    "start": "python3 -m http.server 4173"
+    "start": "node scripts/dev.mjs"
   }
 }

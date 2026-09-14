@@ -21,8 +21,7 @@ Phones: First Deploy +1 320-335-6186 · AgentHive +1 509-357-2230.
 
 ```bash
 cd firstdeploy
-python3 -m http.server 4173
-# http://127.0.0.1:4173
+npm start                 # http://127.0.0.1:4173 with clean URLs
 node scripts/check-clean.mjs
 ```
 
