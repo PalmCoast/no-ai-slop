@@ -55,7 +55,7 @@ export function BuyButtons({
               disabled={busy !== null}
               onClick={() => void buy(plan)}
             >
-              {busy === plan ? "Opening checkout…" : `Get ${spec.name} · ${formatUsd(spec.cents)}${spec.cadence}`}
+              {busy === plan ? "Opening checkout…" : `${spec.name} ${formatUsd(spec.cents)}${spec.cadence}`}
             </button>
           );
         })}

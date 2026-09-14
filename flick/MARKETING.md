@@ -2,7 +2,7 @@
 
 Flick sells **skip the meeting**. Watching is free. Publishing is the product.
 
-Live board: [https://useflick.netlify.app/marketing](https://useflick.netlify.app/marketing)
+`/marketing` is retired and 301s to home. The live product is [https://useflick.netlify.app](https://useflick.netlify.app).
 
 ## Promise
 
@@ -37,7 +37,7 @@ Flick is a Loom that does not make your viewer sign up. Record in the browser, s
 1. **The pitch Flick** — a 90-second recording of the product, sent as the campaign. The medium is the message.
 2. **Founder notes** — twenty people who run meetings they hate. Personal. Link Marquee.
 3. **Public square** — X, Product Hunt, indie threads. Same three sentences. Link the Marquee plan, not a blog post.
-4. **In the product** — Home, Pricing, Launch, and Marketing are first-class routes.
+4. **In the product** — Home and Pricing are the public campaign. `/launch` and `/marketing` 301 home.
 
 ## Do not
 

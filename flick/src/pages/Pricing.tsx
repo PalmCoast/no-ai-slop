@@ -6,7 +6,7 @@ import { formatUsd, FREE_MAX_DURATION_MS, PAID_PLANS } from "../../shared/plans"
 export function Pricing() {
   return (
     <Layout marquee>
-      <p className="now-showing">Watch is free · you pay to publish</p>
+      <p className="now-showing">Pricing · watch free · pay to publish</p>
       <section className="billboard compact">
         <div className="chaser" aria-hidden="true">
           {Array.from({ length: 40 }, (_, i) => (

@@ -1,6 +1,6 @@
 # Launch plan
 
-How we ship. No fake calendar. The live rundown is [https://useflick.netlify.app/launch](https://useflick.netlify.app/launch).
+How we ship. No fake calendar. `/launch` is retired and 301s to home.
 
 ## 01 — Ship the product
 
@@ -18,12 +18,12 @@ Lights at $19/month is the default paid plan. Street stays as a taste: one short
 
 1. **Payments live** — Stripe Checkout is on. Street still works with no card. Webhook URL `https://useflick.netlify.app/api/stripe-webhook`. Checkout uses inline `price_data` unless Price IDs are set in Netlify.
 2. **Founder blast** — personal notes, not a product dump. One Flick that *is* the pitch. Link the Marquee card.
-3. **Public board** — Home, Pricing, Launch, Marketing are the campaign. Product Hunt / X / communities get the same three sentences.
+3. **Public board** — Home and Pricing are the campaign. Product Hunt / X / communities get the same three sentences.
 4. **Watch conversions** — publishes, checkout starts, paid licenses. If people download and never pay, Street is doing its job.
 
 ## Where checkout lives
 
-- **UI:** `/pricing` (also the three cards on `/`)
+- **UI:** `/pricing` (also the buy row on `/`)
 - **Studio:** Publish on `/record` returns **402** without a paid plan; the upgrade CTA is in-page
 - **API:** `POST /api/clips` checks `X-Flick-License` / Street (`X-Flick-Device`)
 - **Checkout:** `POST /api/checkout` → Stripe hosted Checkout (or a demo license when `ALLOW_DEMO_PAYMENTS=true` and this is not production)

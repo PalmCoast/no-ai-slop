@@ -7,8 +7,8 @@ Flick is a Loom replacement that records in the browser and gives you a shareabl
 **Watch is free. You pay to publish.**
 
 - Pricing: [https://useflick.netlify.app/pricing](https://useflick.netlify.app/pricing)
-- Marketing plan: [https://useflick.netlify.app/marketing](https://useflick.netlify.app/marketing) · [MARKETING.md](MARKETING.md)
-- Launch plan: [https://useflick.netlify.app/launch](https://useflick.netlify.app/launch) · [LAUNCH.md](LAUNCH.md)
+- Record: [https://useflick.netlify.app/record](https://useflick.netlify.app/record)
+- Internal notes: [MARKETING.md](MARKETING.md) · [LAUNCH.md](LAUNCH.md)
 
 ## What it does
 

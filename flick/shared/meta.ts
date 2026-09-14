@@ -25,16 +25,6 @@ export const PRICING_META: PageMeta = {
 };
 
 const OTHER: Record<string, PageMeta> = {
-  "/launch": {
-    title: "Flick launch — three steps, no fake timeline",
-    description: "Ship the product. Sell Marquee. Default to Lights. Watch stays free.",
-    image: OG_IMAGE,
-  },
-  "/marketing": {
-    title: "Flick — skip the meeting. Send a Flick.",
-    description: "The wedge is free watching. You pay to publish, never to watch.",
-    image: OG_IMAGE,
-  },
   "/thanks": {
     title: "You're in — Flick",
     description: "Publish is unlocked on this device. Go record.",

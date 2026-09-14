@@ -50,4 +50,35 @@ describe("buyer-facing copy", () => {
     }
     expect(hits).toEqual([]);
   });
+
+  it("does not put STRIPE_SECRET_KEY in client source", () => {
+    const hits: string[] = [];
+    for (const file of sourceFiles()) {
+      const text = readFileSync(file, "utf8");
+      if (text.includes("STRIPE_SECRET_KEY")) hits.push(file.replace(ROOT, "flick/"));
+    }
+    expect(hits).toEqual([]);
+  });
+
+  it("does not ship public /launch or /marketing routes", () => {
+    const main = readFileSync(join(ROOT, "src/main.tsx"), "utf8");
+    expect(main).not.toMatch(/path="\/launch"/);
+    expect(main).not.toMatch(/path="\/marketing"/);
+    expect(main).not.toMatch(/pages\/Launch/);
+    expect(main).not.toMatch(/pages\/Marketing/);
+  });
+
+  it("301s /launch and /marketing home before the SPA fallback", () => {
+    const toml = readFileSync(join(ROOT, "netlify.toml"), "utf8");
+    const launch = toml.indexOf('from = "/launch"');
+    const marketing = toml.indexOf('from = "/marketing"');
+    const spa = toml.indexOf('from = "/*"');
+    expect(launch).toBeGreaterThan(-1);
+    expect(marketing).toBeGreaterThan(-1);
+    expect(spa).toBeGreaterThan(-1);
+    expect(launch).toBeLessThan(spa);
+    expect(marketing).toBeLessThan(spa);
+    expect(toml).toMatch(/from = "\/launch"[\s\S]*?status = 301[\s\S]*?force = true/);
+    expect(toml).toMatch(/from = "\/marketing"[\s\S]*?status = 301[\s\S]*?force = true/);
+  });
 });

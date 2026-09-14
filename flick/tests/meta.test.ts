@@ -18,4 +18,9 @@ describe("share meta", () => {
     expect(PRICING_META.description).not.toMatch(/gate|ticket/i);
     expect(PRICING_META.image).toMatch(/og-pricing\.png$/);
   });
+
+  it("does not keep share meta for retired /launch and /marketing routes", () => {
+    expect(metaForPath("/launch")).toEqual(HOME_META);
+    expect(metaForPath("/marketing")).toEqual(HOME_META);
+  });
 });
