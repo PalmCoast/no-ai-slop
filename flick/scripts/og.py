@@ -60,7 +60,7 @@ def main() -> None:
         ROOT / "og.png",
         "FLICK",
         "SKIP THE MEETING.",
-        "Watch is free. Publish is the gate.",
+        "Watch is free. You pay to publish.",
     )
     card(
         ROOT / "og-pricing.png",

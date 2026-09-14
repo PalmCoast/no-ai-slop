@@ -6,14 +6,14 @@ import { formatUsd, FREE_MAX_DURATION_MS, PAID_PLANS } from "../../shared/plans"
 export function Pricing() {
   return (
     <Layout marquee>
-      <p className="now-showing">Payment gate · watch is free · publish is the ticket</p>
+      <p className="now-showing">Watch is free · you pay to publish</p>
       <section className="billboard compact">
         <div className="chaser" aria-hidden="true">
           {Array.from({ length: 40 }, (_, i) => (
             <i key={i} style={{ animationDelay: `${(i % 8) * 0.12}s` }} />
           ))}
         </div>
-        <p className="kicker lights-kicker">The house</p>
+        <p className="kicker lights-kicker">Plans</p>
         <h1 className="marquee-title smaller">
           <span>LIGHTS</span>
         </h1>
@@ -46,7 +46,7 @@ export function Pricing() {
             <li>Unlimited published Flicks</li>
             <li>Fifteen minutes / 100 MB</li>
             <li>Cancel any time in Stripe</li>
-            <li>The house seat after launch</li>
+            <li>The default paid plan after launch</li>
           </ul>
           <BuyButtons highlight="monthly" only="monthly" />
         </article>
@@ -59,15 +59,15 @@ export function Pricing() {
           </p>
           <ul>
             <li>Founder lifetime. Same limits as Lights</li>
-            <li>Pay once during the opening window</li>
+            <li>Pay once while the founder price is up</li>
             <li>No subscription. Yours for good</li>
-            <li>Your name on the opening-night board</li>
+            <li>Same 15-minute / 100 MB limits, forever</li>
           </ul>
           <BuyButtons highlight="founder" only="founder" />
         </article>
       </section>
       <p className="fine center">
-        Checkout is Stripe-hosted. No card form on this site. Street pass does not need a card.
+        Checkout is Stripe-hosted. No card form on this site. Street does not need a card.
       </p>
     </Layout>
   );

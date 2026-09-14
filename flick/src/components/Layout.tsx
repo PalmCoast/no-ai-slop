@@ -50,9 +50,9 @@ export function Layout({
       </main>
       <footer className="site-footer">
         <div className="inner">
-          <span>Watch is free. Publish is the gate. Recorded in the browser, hosted on Netlify.</span>
+          <span>Watch is free. You pay to publish. Recorded in the browser, hosted on Netlify.</span>
           <span className="footer-links">
-            <Link to="/pricing">Payment gate</Link>
+            <Link to="/pricing">Pricing</Link>
             <Link to="/marketing">Marketing plan</Link>
             <Link to="/launch">Launch plan</Link>
           </span>

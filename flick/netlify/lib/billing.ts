@@ -31,7 +31,7 @@ export async function handleCheckout(req: Request): Promise<Response> {
       return error(
         503,
         "payments_unconfigured",
-        "Stripe is not on this stage yet. Set STRIPE_SECRET_KEY to sell Lights and Marquee.",
+        "Stripe is not configured. Set STRIPE_SECRET_KEY to sell Lights and Marquee.",
       );
     }
     const licenseKey = generateDemoKey();
@@ -41,7 +41,7 @@ export async function handleCheckout(req: Request): Promise<Response> {
       licenseKey,
       plan: "demo",
       product: PAID_PLANS[plan].name,
-      message: "Stripe is dark, so this is a rehearsal license. It unlocks publish on this machine only.",
+      message: "Stripe is not configured, so this is a demo license. It unlocks publish on this machine only.",
     });
   }
 
@@ -98,7 +98,7 @@ export async function handlePortal(req: Request): Promise<Response> {
   const rec = key ? await getLicenseRecord(key) : null;
   if (!rec) return error(401, "bad_license", "Need a live Lights license to open the billing portal.");
   if (rec.plan !== "monthly" || !rec.customerId) {
-    return error(409, "no_portal", "Marquee is a one-time seat. There is nothing to manage in Stripe.");
+    return error(409, "no_portal", "Marquee is a one-time purchase. There is nothing to manage in Stripe.");
   }
   const s = stripe();
   if (!s) return error(503, "payments_unconfigured", "Stripe is not configured.");

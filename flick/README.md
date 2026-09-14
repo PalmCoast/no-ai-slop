@@ -4,9 +4,9 @@ Skip the meeting.
 
 Flick is a Loom replacement that records in the browser and gives you a shareable link. Watchers do not need an account, an extension, or a login wall. Live at [https://useflick.netlify.app](https://useflick.netlify.app) — the default Netlify URL, no custom domain.
 
-**Watch is free. Publish is the gate.**
+**Watch is free. You pay to publish.**
 
-- Payment gate: [https://useflick.netlify.app/pricing](https://useflick.netlify.app/pricing)
+- Pricing: [https://useflick.netlify.app/pricing](https://useflick.netlify.app/pricing)
 - Marketing plan: [https://useflick.netlify.app/marketing](https://useflick.netlify.app/marketing) · [MARKETING.md](MARKETING.md)
 - Launch plan: [https://useflick.netlify.app/launch](https://useflick.netlify.app/launch) · [LAUNCH.md](LAUNCH.md)
 
@@ -14,7 +14,7 @@ Flick is a Loom replacement that records in the browser and gives you a shareabl
 
 - **Screen, camera, both, or a demo scene.** Camera sits in a bubble on the recording when you combine it with the screen.
 - **Mic meter and pause.** Space pauses, Esc stops. Cap is 15 minutes / 100 MB.
-- **Publish a link.** Street pass: one clip, two minutes. Lights ($19/mo) and Marquee ($99 founder) unlock unlimited publish. Watchers never pay.
+- **Publish a link.** Street: one clip, two minutes. Lights ($19/mo) and Marquee ($99 founder) unlock unlimited publish. Watchers never pay.
 - **Keep a local copy.** Recordings are stored in IndexedDB on this device. You can download even if upload fails.
 
 ## Stack
@@ -30,7 +30,7 @@ Flick is a Loom replacement that records in the browser and gives you a shareabl
 cd flick
 npm install
 cp .env.example .env
-# ALLOW_DEMO_PAYMENTS=true issues a rehearsal license with no Stripe
+# ALLOW_DEMO_PAYMENTS=true issues a demo license with no Stripe
 npm run dev
 ```
 
@@ -65,7 +65,7 @@ Set `SITE_URL`, `STRIPE_SECRET_KEY`, and `STRIPE_WEBHOOK_SECRET` in the Netlify 
 
 ```
 flick/
-  src/                 UI, recorder, IndexedDB library, billboard pages
+  src/                 UI, recorder, IndexedDB library, marketing pages
   shared/              ids, chunking, licenses, plans
   netlify/functions    /api/* (clips, checkout, webhook, me)
   MARKETING.md

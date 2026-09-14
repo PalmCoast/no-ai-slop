@@ -5,6 +5,8 @@ describe("share meta", () => {
   it("uses the Loom-replacement promise on home", () => {
     expect(metaForPath("/")).toEqual(HOME_META);
     expect(HOME_META.description).toMatch(/doesn't make your viewer sign up/i);
+    expect(HOME_META.description).toMatch(/You pay to publish/);
+    expect(HOME_META.description).not.toMatch(/gate/i);
     expect(HOME_META.image).toMatch(/\/og\.png$/);
   });
 
@@ -12,6 +14,8 @@ describe("share meta", () => {
     expect(metaForPath("/pricing")).toEqual(PRICING_META);
     expect(metaForPath("/pricing/")).toEqual(PRICING_META);
     expect(PRICING_META.title).toMatch(/Street \$0/);
+    expect(PRICING_META.description).toMatch(/You pay to publish/);
+    expect(PRICING_META.description).not.toMatch(/gate|ticket/i);
     expect(PRICING_META.image).toMatch(/og-pricing\.png$/);
   });
 });

@@ -31,7 +31,7 @@ export function BuyButtons({
         window.location.assign(res.url);
         return;
       }
-      setError("Checkout did not return a door. Try again.");
+      setError("Checkout did not return a URL. Try again.");
     } catch (e) {
       setError(e instanceof Error ? e.message : "Checkout failed.");
     } finally {
@@ -55,7 +55,7 @@ export function BuyButtons({
               disabled={busy !== null}
               onClick={() => void buy(plan)}
             >
-              {busy === plan ? "Continue to Stripe…" : `Get ${spec.name} · ${formatUsd(spec.cents)}${spec.cadence}`}
+              {busy === plan ? "Opening checkout…" : `Get ${spec.name} · ${formatUsd(spec.cents)}${spec.cadence}`}
             </button>
           );
         })}

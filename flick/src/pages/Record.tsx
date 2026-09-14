@@ -245,19 +245,19 @@ export function Record() {
           <p className={`seat-banner ${me.plan}`}>
             {me.plan === "street"
               ? me.freeRemaining
-                ? `Street pass: ${me.freeRemaining} publish left · 2 min max. Lights unlocks the marquee.`
-                : "Street pass is used. Download is still free. Publish needs Lights or Marquee."
-              : `${me.plan === "founder" ? "Marquee" : me.plan === "demo" ? "Rehearsal" : "Lights"} is on. Unlimited publish on this device.`}
+                ? `Street: ${me.freeRemaining} free publish left · 2 min max. Lights unlocks unlimited links.`
+                : "Street is used. Download is still free. Publish needs Lights or Marquee."
+              : `${me.plan === "founder" ? "Marquee" : me.plan === "demo" ? "Demo" : "Lights"} is on. Unlimited publish on this device.`}
           </p>
         ) : null}
         {error ? <div className="alert error">{error}</div> : null}
         {paywall ? (
           <div className="card paywall-card">
-            <p className="kicker">Payment gate</p>
-            <h2>The marquee is a paid seat.</h2>
+            <p className="kicker">Publish</p>
+            <h2>A share link needs a plan.</h2>
             <p className="muted">Download still works. Paying buys the share link. Watchers never see this wall.</p>
             <BuyButtons size="huge" />
-            <Link to="/pricing">See the full house</Link>
+            <Link to="/pricing">See all plans</Link>
           </div>
         ) : null}
 

@@ -11,16 +11,16 @@ const PILLARS = [
     copy: "Watching is free forever and never asks for an account. Loom-class tools tax the viewer. Flick does not.",
   },
   {
-    title: "Gate",
-    copy: "You pay to publish, not to exist. Street pass is a taste. Lights is the house. Marquee is opening night.",
+    title: "Price",
+    copy: "You pay to publish. Street is one short link. Lights is $19/month. Marquee is $99 once.",
   },
 ];
 
 const CHANNELS = [
   { name: "The pitch Flick", note: "One 90-second clip of the product, sent as the campaign. The medium is the message." },
   { name: "Founder notes", note: "Twenty people who run meetings they hate. Personal. Marquee link. No newsletter yet." },
-  { name: "Public square", note: "X, Product Hunt, indie hacker threads. Same three sentences. Link the marquee, not a blog." },
-  { name: "In the product", note: "Home is a billboard. Pricing, Launch, and Marketing are first-class routes, not PDFs." },
+  { name: "Public square", note: "X, Product Hunt, indie hacker threads. Same three sentences. Link the Marquee plan, not a blog." },
+  { name: "In the product", note: "Home, Pricing, Launch, and Marketing are first-class routes, not PDFs." },
 ];
 
 export function Marketing() {
@@ -80,7 +80,7 @@ export function Marketing() {
 
       <div className="hero-actions">
         <Link className="btn amber billboard-btn" to="/pricing">
-          Payment gate
+          See pricing
         </Link>
         <Link className="btn ghost billboard-btn" to="/launch">
           Launch rundown
