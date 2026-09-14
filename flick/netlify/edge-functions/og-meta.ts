@@ -46,6 +46,6 @@ export default async (req: Request, context: Context) => {
 };
 
 export const config: Config = {
-  path: ["/", "/pricing", "/pricing/", "/launch", "/launch/", "/marketing", "/marketing/", "/thanks", "/thanks/", "/record", "/record/", "/v/:id"],
+  path: ["/", "/pricing", "/pricing/", "/thanks", "/thanks/", "/record", "/record/", "/v/:id"],
   onError: "bypass",
 };

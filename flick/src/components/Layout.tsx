@@ -31,14 +31,11 @@ export function Layout({
       <header className="site-header">
         <Brand />
         <nav className="nav" aria-label="Primary">
-          <NavLink to="/launch" className={({ isActive }) => (isActive ? "active" : "")}>
-            Launch
-          </NavLink>
-          <NavLink to="/marketing" className={({ isActive }) => (isActive ? "active" : "")}>
-            Marketing
-          </NavLink>
           <NavLink to="/pricing" className={({ isActive }) => (isActive ? "active" : "")}>
             Pricing
+          </NavLink>
+          <NavLink to="/library" className={({ isActive }) => (isActive ? "active" : "")}>
+            Library
           </NavLink>
           <NavLink to="/record" className="btn amber">
             Record
@@ -50,11 +47,10 @@ export function Layout({
       </main>
       <footer className="site-footer">
         <div className="inner">
-          <span>Watch is free. Publish is the gate. Recorded in the browser, hosted on Netlify.</span>
+          <span>Watch is free. You pay to publish. Recorded in the browser, hosted on Netlify.</span>
           <span className="footer-links">
-            <Link to="/pricing">Payment gate</Link>
-            <Link to="/marketing">Marketing plan</Link>
-            <Link to="/launch">Launch plan</Link>
+            <Link to="/pricing">Pricing</Link>
+            <Link to="/record">Record</Link>
           </span>
         </div>
       </footer>

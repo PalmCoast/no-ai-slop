@@ -22,7 +22,31 @@
   publish = "dist"
 
 # Every function declares its own `path` in its Config export, so no /api/*
-# rewrite is needed. The SPA fallback serves index.html for every other route.
+# rewrite is needed. Retired campaign routes 301 home before the SPA fallback.
+
+[[redirects]]
+  from = "/launch"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/launch/"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/marketing"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/marketing/"
+  to = "/"
+  status = 301
+  force = true
 
 [[redirects]]
   from = "/*"

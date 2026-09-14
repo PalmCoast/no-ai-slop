@@ -43,26 +43,26 @@ export async function assertCanPublish(req: Request, input: { durationMs: number
   const key = licenseFromRequest(req);
   if (key && isPlausible(key)) {
     if (isDemoLicense(key) && !demoPaymentsAllowed()) {
-      throw new HttpError(401, "demo_disabled", "Demo licenses stay in the rehearsal hall. Buy Lights or Marquee to publish for real.");
+      throw new HttpError(401, "demo_disabled", "Demo licenses only work in development. Buy Lights or Marquee to publish for real.");
     }
     const rec = await getLicenseRecord(key);
-    if (!rec) throw new HttpError(401, "bad_license", "That license is not on the board. Check the key, or buy Lights.");
+    if (!rec) throw new HttpError(401, "bad_license", "That license was not found. Check the key, or buy Lights.");
     return rec.plan === "demo" ? "monthly" : rec.plan;
   }
 
   if (input.durationMs > FREE_MAX_DURATION_MS) {
-    throw new HttpError(402, "paywall", "Street pass is two minutes. Lights and Marquee go to fifteen.");
+    throw new HttpError(402, "paywall", "Street is two minutes. Lights and Marquee go to fifteen.");
   }
   if (input.size > FREE_MAX_BYTES) {
-    throw new HttpError(402, "paywall", "Street pass is 25 MB. Lights and Marquee take the full 100 MB.");
+    throw new HttpError(402, "paywall", "Street is 25 MB. Lights and Marquee take the full 100 MB.");
   }
   const device = deviceFromRequest(req);
   if (!isDeviceId(device)) {
-    throw new HttpError(400, "need_device", "Missing device id for the free street pass.");
+    throw new HttpError(400, "need_device", "Missing device id for the free Street publish.");
   }
   const slot = await getFreeSlot(device);
   if (slot) {
-    throw new HttpError(402, "paywall", "You already used the free street pass on this device. Lights is $19/month. Marquee is $99 once.");
+    throw new HttpError(402, "paywall", "You already used the free Street publish on this device. Lights is $19/month. Marquee is $99 once.");
   }
   return "street";
 }
@@ -71,7 +71,7 @@ export async function consumeStreetPass(req: Request, clipId: string): Promise<v
   const device = deviceFromRequest(req);
   if (!isDeviceId(device)) return;
   const ok = await consumeFreeSlot(device, clipId);
-  if (!ok) throw new HttpError(402, "paywall", "You already used the free street pass on this device.");
+  if (!ok) throw new HttpError(402, "paywall", "You already used the free Street publish on this device.");
 }
 
 type LicensePlanPaid = "monthly" | "founder";

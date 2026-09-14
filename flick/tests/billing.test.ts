@@ -20,7 +20,7 @@ function clipBody(over: Record<string, unknown> = {}) {
   };
 }
 
-describe("payment gate", () => {
+describe("publish paywall", () => {
   const prevDemo = process.env.ALLOW_DEMO_PAYMENTS;
   const prevKey = process.env.STRIPE_SECRET_KEY;
   const prevContext = process.env.CONTEXT;
@@ -63,7 +63,7 @@ describe("payment gate", () => {
     expect(body.error).toBe("paywall");
   });
 
-  it("blocks a three-minute clip without a paid seat", async () => {
+  it("blocks a three-minute clip without a paid plan", async () => {
     const res = await router.handle(
       req("/api/clips", {
         method: "POST",
@@ -118,7 +118,7 @@ describe("payment gate", () => {
     expect([400, 409]).toContain(res.status);
   });
 
-  it("keeps the street pass when Stripe is configured", async () => {
+  it("keeps the Street publish when Stripe is configured", async () => {
     process.env.STRIPE_SECRET_KEY = "sk_test_placeholder_not_a_real_key";
     delete process.env.ALLOW_DEMO_PAYMENTS;
     const res = await router.handle(
@@ -136,7 +136,7 @@ describe("payment gate", () => {
     expect(body.freeRemaining).toBe(0);
   });
 
-  it("reports the seat on /api/me", async () => {
+  it("reports the plan on /api/me", async () => {
     const res = await router.handle(req("/api/me", { headers: { "X-Flick-Device": "streetpass01" } }));
     expect(res.status).toBe(200);
     const body = (await res.json()) as { plan: string; payments: string };

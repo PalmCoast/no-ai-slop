@@ -1,4 +1,4 @@
-/** Street (free) vs paid seats. Watch is always free. */
+/** Street (free) vs paid plans. Watch is always free. */
 
 export const FREE_CLIP_LIMIT = 1;
 export const FREE_MAX_DURATION_MS = 2 * 60 * 1000;
@@ -17,7 +17,7 @@ export const PAID_PLANS: Record<
   monthly: {
     id: "monthly",
     name: "Lights",
-    headline: "The house lights. Unlimited publish.",
+    headline: "Unlimited publish. $19 a month.",
     cents: MONTHLY_CENTS,
     cadence: "/mo",
     mode: "subscription",
@@ -25,7 +25,7 @@ export const PAID_PLANS: Record<
   founder: {
     id: "founder",
     name: "Marquee",
-    headline: "Founder lifetime. Your name on the board.",
+    headline: "Founder lifetime. Pay once.",
     cents: FOUNDER_CENTS,
     cadence: " once",
     mode: "payment",

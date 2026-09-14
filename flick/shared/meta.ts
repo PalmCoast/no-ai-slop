@@ -13,28 +13,18 @@ export interface PageMeta {
 export const HOME_META: PageMeta = {
   title: "Flick — skip the meeting",
   description:
-    "A Loom that doesn't make your viewer sign up. Record in the browser, send a link. Watch is free. Publish is the gate.",
+    "A Loom that doesn't make your viewer sign up. Record in the browser, send a link. Watch is free. You pay to publish.",
   image: OG_IMAGE,
 };
 
 export const PRICING_META: PageMeta = {
   title: "Flick pricing — Street $0, Lights $19/mo, Marquee $99",
   description:
-    "Watch is free. Publish is the gate. Street: one short link. Lights $19/month. Marquee $99 once.",
+    "Watch is free. You pay to publish. Street: one short link. Lights $19/month. Marquee $99 once.",
   image: OG_IMAGE_PRICING,
 };
 
 const OTHER: Record<string, PageMeta> = {
-  "/launch": {
-    title: "Flick launch — three acts, no fake timeline",
-    description: "Ship the marquee. Sell founder seats. Default to Lights. Watch stays free.",
-    image: OG_IMAGE,
-  },
-  "/marketing": {
-    title: "Flick — skip the meeting. Send a Flick.",
-    description: "The wedge is free watching. You pay to publish, never to watch.",
-    image: OG_IMAGE,
-  },
   "/thanks": {
     title: "You're in — Flick",
     description: "Publish is unlocked on this device. Go record.",
@@ -42,7 +32,7 @@ const OTHER: Record<string, PageMeta> = {
   },
   "/record": {
     title: "Record a Flick",
-    description: "Screen, camera, or both. Street pass is one short publish. Watchers never sign up.",
+    description: "Screen, camera, or both. Street is one short publish. Watchers never sign up.",
     image: OG_IMAGE,
   },
 };

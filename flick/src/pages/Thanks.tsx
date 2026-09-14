@@ -37,14 +37,14 @@ export function Thanks() {
 
   return (
     <Layout marquee>
-      <p className="now-showing">You are on the board</p>
+      <p className="now-showing">Publish is unlocked</p>
       <section className="billboard compact">
         <div className="chaser" aria-hidden="true">
           {Array.from({ length: 40 }, (_, i) => (
             <i key={i} style={{ animationDelay: `${(i % 8) * 0.12}s` }} />
           ))}
         </div>
-        <p className="kicker lights-kicker">{plan === "founder" ? "Marquee" : plan === "demo" ? "Rehearsal" : "Lights"}</p>
+        <p className="kicker lights-kicker">{plan === "founder" ? "Marquee" : plan === "demo" ? "Demo" : "Lights"}</p>
         <h1 className="marquee-title smaller">
           <span>YOU'RE IN</span>
         </h1>
@@ -55,16 +55,16 @@ export function Thanks() {
             License <code>{key}</code>
           </p>
         ) : sessionId ? (
-          <p className="muted">Unlocking your seat…</p>
+          <p className="muted">Unlocking your license…</p>
         ) : (
-          <p className="muted">If you just paid, give this page a second. Your seat lives in this browser — then go record.</p>
+          <p className="muted">If you just paid, give this page a second. Your license stays in this browser — then go record.</p>
         )}
         <div className="hero-actions">
           <Link className="btn amber billboard-btn" to="/record">
-            Record like a boss
+            Record a Flick
           </Link>
           <Link className="btn ghost billboard-btn" to="/pricing">
-            Back to the gate
+            Back to pricing
           </Link>
         </div>
       </section>
