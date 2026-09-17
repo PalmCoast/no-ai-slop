@@ -11,7 +11,7 @@ npm test
 npm run dev
 ```
 
-Vite serves the SPA at http://localhost:5174. `npm run build` writes `dist/`.
+Vite serves the SPA at http://localhost:5174. Functions (`/api/buzz`, `/api/rank`) run on Netlify; locally The Buzz and Rankings use the cited seed/catalog until you run `npx netlify dev`. `npm run build` writes `dist/`.
 
 ## Weekly Grok bots
 

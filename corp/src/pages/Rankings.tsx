@@ -92,7 +92,7 @@ export default function Rankings() {
               </div>
               <div style={{ textAlign: "right" }}>
                 <div className="score">{site.score}</div>
-                <div className="muted">{site.ms ? `${site.ms} ms` : site.statusLabel === "lab" ? "repo" : "queued"}</div>
+                <div className="muted">{site.ms ? `${site.ms} ms` : site.statusLabel === "lab" ? "repo" : "catalog"}</div>
               </div>
             </a>
           ))}
