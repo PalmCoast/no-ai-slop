@@ -1,0 +1,32 @@
+{
+  "name": "agenthiveinc-corp",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Flagship corporate site for AgentHive Inc — Palm Coast, Florida.",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit -p tsconfig.json && vite build",
+    "preview": "vite preview",
+    "typecheck": "tsc --noEmit -p tsconfig.json",
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "dependencies": {
+    "@netlify/blobs": "^10.0.8",
+    "@netlify/functions": "^6.0.0",
+    "openai": "^4.104.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^7.18.3"
+  },
+  "devDependencies": {
+    "@netlify/vite-plugin": "^2.7.11",
+    "@types/react": "^18.3.20",
+    "@types/react-dom": "^18.3.6",
+    "@vitejs/plugin-react": "^4.4.1",
+    "typescript": "^5.8.3",
+    "vite": "^6.3.5",
+    "vitest": "^3.2.4"
+  }
+}

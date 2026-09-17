@@ -67,6 +67,10 @@ MIT
 
 [Stateside](stateside/README.md) is a separate product in this repo: a job network for American IT professionals. Free for job seekers, veterans get first look at new postings, employers pay a flat $10 per posting, and members create their own groups with real-time chat. See [stateside/README.md](stateside/README.md) for setup and deployment.
 
+## AgentHive Inc
+
+[corp/](corp/README.md) is the flagship site for [agenthiveinc.com](https://agenthiveinc.com): Grok Bot roster, The Buzz (weekly AI/infra briefing), and a live ranking of the public Netlify portfolio. See [corp/README.md](corp/README.md).
+
 ## Sonaris
 
 [Sonaris](sonaris/README.md) is a separate product in this repo: a real-time voice layer for an AI assistant with live captions, turn-taking that never talks over you, persona voices, a memory file per license, and a paid skill hosted behind a paywall. See [sonaris/README.md](sonaris/README.md) for setup and [sonaris/BRAND.md](sonaris/BRAND.md) for the brand.
