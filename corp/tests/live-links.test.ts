@@ -13,6 +13,7 @@ describe("live catalog URLs", () => {
             const res = await fetch(site.url, {
               redirect: "follow",
               headers: { "User-Agent": "AgentHive-LinkCheck/1.0" },
+              signal: AbortSignal.timeout(8_000),
             });
             return {
               name: site.name,
