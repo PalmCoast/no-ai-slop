@@ -17,7 +17,7 @@ Pages:
 - `/buzz` The Buzz (weekly AI/infra briefing)
 - `/rankings` live app ranking (Netlify portfolio + custom domains)
 - `/build` First Deploy custom builds
-- `/consult` gold hive consult (Calendly + Stripe; do not send hive CTAs to the grey firstdeploy.ai/consult theme)
+- `/consult` gold hive consult (Calendly + Stripe). Unique HTML document so crawlers do not get the homepage shell.
 
 Redirects already in `corp/netlify.toml`:
 
@@ -25,6 +25,7 @@ Redirects already in `corp/netlify.toml`:
 - `/hive` and `/hive.html` → `/rankings`
 - `/apps` and `/portfolio` → `/rankings`
 - `/the-buzz` → `/buzz`
+- `/about`, `/buzz`, `/rankings`, `/build`, `/consult` force-rewrite to their own `index.html` (not the homepage shell)
 
 ## Hard constraints
 
@@ -138,7 +139,7 @@ Hit every URL. Expect 200 unless noted.
 - `https://agenthiveinc.com/api/rank` — JSON with `sites[]`
 - Click a Rankings row (First Deploy, Flick, WriteHive, Bot Lock, HiveBriefcase) and confirm the destination is live
 - Assign a bot on `/` (Netlify form `mission`) and confirm a submission lands in Netlify Forms
-- Phone `(509) 357-2230` and `coltsinsider@gmail.com` still in the footer
+- Phone `(509) 357-2230` and `daniel@agenthiveinc.com` in the footer. No `coltsinsider@gmail.com` on public pages.
 
 ### 5. What done looks like
 

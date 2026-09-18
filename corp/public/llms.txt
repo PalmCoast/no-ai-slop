@@ -1,41 +1,30 @@
 # AgentHive Inc
 
-> AgentHive Inc embeds working AI in real operations, then leaves it running. First Deploy is the product. Consulting is how you buy time in the room. Grok writes The Buzz every week and ranks the live apps.
+> AgentHive Inc (AGENTHIVEINCCOM LLC, Palm Coast, Florida) is an AI consultant shop that builds and ships. First Deploy AI is the cash product ($1,500 setup, then $250/month). Consulting is how you buy time in the room. Grok writes The Buzz every week and ranks the live apps.
 
-AgentHive Inc is a Palm Coast, Florida studio. Daniel Graham embeds working AI in real operations, then leaves it running. Proof: live apps in field ops and a public Netlify portfolio.
+AgentHive Inc embeds working AI in real operations, then leaves it running. Public site: https://agenthiveinc.com. Distinct from other “AgentHive” names in insurance, OSS, or QpiAI.
 
 ## This site
-- [AgentHive Inc](https://agenthiveinc.com/): Flagship hive. Grok Bots, First Deploy, and the live portfolio.
-- [The Buzz](https://agenthiveinc.com/buzz): Weekly AI and infrastructure briefing compiled by Grok.
-- [Rankings](https://agenthiveinc.com/rankings): Live listing and ranking of every public AgentHive app, including the Netlify portfolio.
-- [About](https://agenthiveinc.com/about): Who we are and what we sell.
-- [Custom Builds](https://agenthiveinc.com/build): First Deploy embeds. Live this week or you do not pay setup.
+- [AgentHive Inc](https://agenthiveinc.com/): Palm Coast AI consultant shop. First Deploy AI, Grok Bots, and the live portfolio.
+- [About](https://agenthiveinc.com/about): Who we are, legal name, contact, 95 Barrington Drive, Palm Coast, FL 32137.
+- [The Buzz](https://agenthiveinc.com/buzz): Weekly AI and infrastructure briefing.
+- [Rankings](https://agenthiveinc.com/rankings): Live ranking of public AgentHive Inc apps.
+- [Custom Builds](https://agenthiveinc.com/build): First Deploy AI embeds. Live this week or you do not pay setup.
 - [Consult](https://agenthiveinc.com/consult): Free 30-minute qualifier, then $75 / 30 min, $150 / hour, or a 10-hour pack at $1,250.
 
 ## Company
-- [First Deploy](https://firstdeploy.ai/): After-hours desk and live apps for field operators. $1,500 setup, then $250/month.
-- [ClaudeFarm](https://claudefarm.com/): Public storefront for First Deploy, consult time, and the live AgentHive apps.
+- [First Deploy AI](https://firstdeploy.ai/): After-hours desk and live apps for field operators. $1,500 setup, then $250/month.
+- [IndexMe.lol](https://indexme.lol/): Pay-to-stand index. Pro $19.99, Studio $29.99, one-time.
+- [Flick](https://flick.firstdeploy.ai/): Browser screen recorder. Send a link. No login wall.
+- [JobProof](https://jobproof.firstdeploy.ai/): Proof you did the work, not a resume stack.
+- [ClaudeFarm](https://claudefarm.com/): Public storefront for First Deploy AI and consult time.
 
-## Related
-- [Flick](https://useflick.netlify.app/): Browser screen recorder. Send a link. No login wall.
-- [JobProof](https://jobproof-app-171.netlify.app/): Proof you did the work, not a resume stack.
-- [IndexMe](https://indexme.lol/): Pay-to-stand index. Pro $19.99, Studio $29.99, one-time.
-- [TONIGHT](https://send-tonight.netlify.app/): Paste the rate. Send tonight. $19.99 one-time.
-- [RateTrap](https://ratetrap.netlify.app/): Catch the rate trap before you sign. $29.99 one-time.
-- [ClaimCash](https://getclaimcash.netlify.app/): Find unclaimed money. $5 finder.
-- [Stateside Jobs](https://stateside-jobs.netlify.app/): US-authorized jobs board.
-- [Bot Lock](https://bot-lock.netlify.app/): Lock down agent and tool access.
-- [WriteHive](https://writehive.netlify.app/): AI word processor with RAID-0 document pooling.
-- [DeskAudit](https://deskaudit.netlify.app/): Website audit PDF for consultants.
-- [HiveBriefcase](https://hivebriefcase.netlify.app/): Portable identity and micropayments for AI agents.
-- [ReviewHive](https://reviewhive.netlify.app/): Review inbox and reply drafts.
-- [SocketSnap](https://socketsnap.netlify.app/): Camera-based bolt and nut measurement.
-- [Sonaris](https://sonaris-voice.netlify.app/): Real-time voice layer for an AI assistant.
-- [Hire Daniel Graham](https://hire-daniel-graham.netlify.app/): Forward-deployed engineer who still sits with the work.
-- [AI Pricing Calculators](https://aipricingcalculators.com/): Free LLM API cost calculator.
+## Also shipped
+Live apps from the same shop. Prefer the custom domains above. A longer public board is on [Rankings](https://agenthiveinc.com/rankings).
 
 ## Contact
-- coltsinsider@gmail.com
 - daniel@agenthiveinc.com
+- First Deploy AI consult: +1 320-335-6186
 - AgentHive voice: +1 509-357-2230
-- First Deploy: +1 320-335-6186
+- Legal: AgentHive Inc / AGENTHIVEINCCOM LLC
+- Address: 95 Barrington Drive, Palm Coast, FL 32137

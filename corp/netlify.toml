@@ -51,10 +51,72 @@
   to = "/#roster"
   status = 302
 
+# Force unique HTML documents. A Netlify SPA 200 rewrite to /index.html
+# is what made /, /about, and /buzz byte-identical on the live site.
+[[redirects]]
+  from = "/about"
+  to = "/about/index.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/about/"
+  to = "/about/index.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/buzz"
+  to = "/buzz/index.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/buzz/"
+  to = "/buzz/index.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/rankings"
+  to = "/rankings/index.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/rankings/"
+  to = "/rankings/index.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/build"
+  to = "/build/index.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/build/"
+  to = "/build/index.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/consult"
+  to = "/consult/index.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/consult/"
+  to = "/consult/index.html"
+  status = 200
+  force = true
+
 [[redirects]]
   from = "/*"
-  to = "/index.html"
-  status = 200
+  to = "/404.html"
+  status = 404
 
 [[headers]]
   for = "/*"

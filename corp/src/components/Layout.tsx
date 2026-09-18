@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { Link, NavLink, Outlet } from "react-router-dom";
+import { CONTACT_EMAIL } from "../../shared/brand";
+import Seo from "./Seo";
 
 const NAV = [
   { to: "/#roster", label: "The Swarm", hash: true },
@@ -15,6 +17,7 @@ export default function Layout() {
 
   return (
     <div className="shell">
+      <Seo />
       <div className="honeycomb" aria-hidden="true" />
       <header className="topbar">
         <div className="container nav">
@@ -114,8 +117,7 @@ export default function Layout() {
           </div>
           <div>
             <strong>Contact</strong>
-            <a href="mailto:coltsinsider@gmail.com">coltsinsider@gmail.com</a>
-            <a href="mailto:daniel@agenthiveinc.com">daniel@agenthiveinc.com</a>
+            <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>
             <a href="tel:+15093572230">(509) 357-2230</a>
             <a href="tel:+13203356186">First Deploy (320) 335-6186</a>
             <a href="/llms.txt">llms.txt</a>
