@@ -1,4 +1,5 @@
 import { FormEvent, useMemo, useState } from "react";
+import AskAiBar from "../components/AskAiBar";
 import { HIVE_BOTS, type HiveBot } from "../../shared/bots";
 import { HIVE_SITES } from "../../shared/portfolio";
 
@@ -89,6 +90,8 @@ export default function Home() {
           ))}
         </div>
       </div>
+
+      <AskAiBar />
 
       <section className="section" id="roster">
         <div className="container">

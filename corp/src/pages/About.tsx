@@ -1,3 +1,5 @@
+import AskAiBar from "../components/AskAiBar";
+
 export default function About() {
   return (
     <>
@@ -25,6 +27,8 @@ export default function About() {
           </div>
         </div>
       </section>
+
+      <AskAiBar />
 
       <section className="section section-alt">
         <div className="container">
