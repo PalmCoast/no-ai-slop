@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
+import { FD_NAME, INDEXME_NAME } from "../../shared/brand";
 import { HIVE_SITES } from "../../shared/portfolio";
 import { rankSites, type RankedSite } from "../../shared/rank";
 
@@ -49,15 +50,13 @@ export default function Rankings() {
       <div className="container">
         <div className="buzz-hero">
           <div>
-            <div className="eyebrow">Grok Scout · live portfolio</div>
+            <div className="eyebrow">Live public board</div>
             <h1 className="display" style={{ fontSize: "clamp(2.2rem, 5vw, 3.8rem)" }}>
-              Every hive app,
-              <br />
-              <em>ranked.</em>
+              Live app rankings
             </h1>
             <p className="lede">
-              Full public portfolio, including every Netlify app we could verify live. Score = uptime + speed + custom
-              domain + whether someone can actually buy it. Grok re-probes the board every week.
+              Public AgentHive Inc apps, scored on uptime, speed, custom domain, and whether someone can buy them.{" "}
+              {FD_NAME} and {INDEXME_NAME} lead. The weekly scout re-probes the board.
             </p>
             <p className="fine">
               {liveCount} live · {netlifyCount} on Netlify · {sites.length} total

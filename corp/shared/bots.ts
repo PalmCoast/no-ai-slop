@@ -77,7 +77,7 @@ export const HIVE_BOTS: HiveBot[] = [
     role: "Legal / Compliance",
     initial: "L",
     tools: ["DocuSign", "Drive", "Notion"],
-    brief: "Contracts, Florida LLC filings, and agent permission scope.",
+    brief: "Contracts, Florida filings, and agent permission scope.",
   },
   {
     name: "Bea",

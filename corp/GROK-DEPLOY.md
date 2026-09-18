@@ -12,11 +12,11 @@ You are a Grok Bot (or Reed) finishing a deploy another agent already built. Do 
 
 Pages:
 
-- `/` swarm home
+- `/` consultant home (First Deploy AI + IndexMe.lol)
 - `/about`
 - `/buzz` The Buzz (weekly AI/infra briefing)
 - `/rankings` live app ranking (Netlify portfolio + custom domains)
-- `/build` First Deploy custom builds
+- `/build` First Deploy AI custom builds
 
 Redirects already in `corp/netlify.toml`:
 
@@ -124,7 +124,7 @@ curl -s https://agenthiveinc.com/api/rank | head
 
 Hit every URL. Expect 200 unless noted.
 
-- `https://agenthiveinc.com/` — queen hero, 12 Grok bots
+- `https://agenthiveinc.com/` — consultant hero, First Deploy AI + IndexMe.lol
 - `https://agenthiveinc.com/about`
 - `https://agenthiveinc.com/buzz`
 - `https://agenthiveinc.com/rankings`
@@ -135,9 +135,10 @@ Hit every URL. Expect 200 unless noted.
 - `https://agenthiveinc.com/hive.html` — 301 to `/rankings`
 - `https://agenthiveinc.com/api/buzz` — JSON
 - `https://agenthiveinc.com/api/rank` — JSON with `sites[]`
-- Click a Rankings row (First Deploy, Flick, WriteHive, Bot Lock, HiveBriefcase) and confirm the destination is live
-- Assign a bot on `/` (Netlify form `mission`) and confirm a submission lands in Netlify Forms
-- Phone `(509) 357-2230` and `coltsinsider@gmail.com` still in the footer
+- Click a Rankings row (First Deploy AI, IndexMe.lol, Flick, WriteHive, Bot Lock) and confirm the destination is live
+- Home hero CTAs go to firstdeploy.ai and indexme.lol
+- About `/about#contact` shows daniel@agenthiveinc.com and First Deploy AI +1 320-335-6186
+- Footer still has AgentHive voice +1 509-357-2230 and coltsinsider@gmail.com
 
 ### 5. What done looks like
 
@@ -160,4 +161,4 @@ Hit every URL. Expect 200 unless noted.
 
 - Daniel Graham — `coltsinsider@gmail.com` / `daniel@agenthiveinc.com` / +1 509-357-2230
 - Reed (CTO inbox) — `reedhive@agentmail.to`
-- First Deploy voice — +1 320-335-6186
+- First Deploy AI consult — +1 320-335-6186
