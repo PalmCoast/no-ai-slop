@@ -38,3 +38,5 @@ This folder is a separate Netlify site from Stateside/Sonaris. In the Netlify UI
 4. Enable AI Gateway if you want Grok's briefing summarized through `gpt-4o-mini`.
 
 `about.html` and `hive.html` 301 to `/about` and `/rankings`.
+
+Grok/Reed production handoff: [GROK-DEPLOY.md](GROK-DEPLOY.md).
