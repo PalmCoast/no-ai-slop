@@ -228,7 +228,7 @@ export default function Home() {
             <h2>Need a person in the room?</h2>
             <p>Free 30-minute qualifier. Then paid time — or a fixed deploy if the leak is clear.</p>
             <p style={{ margin: "1rem 0 1.4rem" }}>$75 / 30 min · $150 / hour · 10-hour pack $1,250 (half up front)</p>
-            <a className="btn btn-primary" href="https://firstdeploy.ai/consult">
+            <a className="btn btn-primary" href="/consult">
               Book the free 30
             </a>
             <p className="fine" style={{ marginTop: 12 }}>

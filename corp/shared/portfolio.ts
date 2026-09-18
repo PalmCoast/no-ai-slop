@@ -48,7 +48,7 @@ export const HIVE_SITES: HiveSite[] = [
   {
     slug: "consult",
     name: "Consult",
-    url: "https://firstdeploy.ai/consult",
+    url: "https://agenthiveinc.com/consult",
     description: "Free 30-minute qualifier, then paid time in the room.",
     price: "$75 / 30 min · $150 / hour · 10-hour pack $1,250",
     category: "ops",

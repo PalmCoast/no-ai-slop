@@ -62,7 +62,7 @@ export default function About() {
               <a className="btn btn-primary" href="https://hire-daniel-graham.netlify.app/">
                 Hire Daniel
               </a>
-              <a className="btn btn-outline" href="https://firstdeploy.ai/consult">
+              <a className="btn btn-outline" href="/consult">
                 Book a discovery call
               </a>
             </div>

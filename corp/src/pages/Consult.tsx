@@ -1,0 +1,144 @@
+import { CALENDLY_FREE_30, CONSULT_RATES, FIRST_DEPLOY_CHECK, FIRST_DEPLOY_PHONE } from "../../shared/consult";
+
+const CONSULT_SCHEMA = {
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  name: "AgentHive AI consulting",
+  url: "https://agenthiveinc.com/consult",
+  image: "https://agenthiveinc.com/brand/consult-boardroom.jpg",
+  provider: {
+    "@type": "Organization",
+    name: "AgentHive Inc",
+    url: "https://agenthiveinc.com/",
+    telephone: ["+1-320-335-6186", "+1-509-357-2230"],
+  },
+  description:
+    "AI consulting that ships. Free 30-minute qualifier, then $75 / 30 minutes, $150 / hour, or a 10-hour pack at $1,250.",
+  offers: [
+    { "@type": "Offer", name: "Free 30-minute qualifier", price: "0.00", priceCurrency: "USD" },
+    { "@type": "Offer", name: "30 minutes", price: "75.00", priceCurrency: "USD" },
+    { "@type": "Offer", name: "1 hour", price: "150.00", priceCurrency: "USD" },
+    { "@type": "Offer", name: "10-hour pack", price: "1250.00", priceCurrency: "USD" },
+  ],
+};
+
+export default function Consult() {
+  return (
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(CONSULT_SCHEMA) }} />
+      <section className="hero consult-hero">
+        <div className="hero-media">
+          <img
+            src="/brand/consult-boardroom.jpg"
+            alt="Gold honeycomb boardroom — AgentHive consult, Fortune-level operations desk"
+          />
+        </div>
+        <div className="hero-copy">
+          <div className="eyebrow">
+            <span className="dot" /> AI consulting that ships
+          </div>
+          <h1 className="display">
+            An operator
+            <br />
+            <em>in the room.</em>
+          </h1>
+          <p className="lede">
+            Not another deck. Free 30-minute qualifier. Then paid time — or a fixed deploy if the leak is
+            clear. Already done inside a live commercial earth-moving operation.
+          </p>
+          <div className="hero-actions">
+            <a className="btn btn-primary" href={CALENDLY_FREE_30} rel="noreferrer" target="_blank">
+              Book the free 30
+            </a>
+            <a className="btn btn-outline" href={`tel:${FIRST_DEPLOY_PHONE}`}>
+              Call (320) 335-6186
+            </a>
+          </div>
+          <p className="fine">$75 / 30 min · $150 / hour · 10-hour pack $1,250 — $625 up front.</p>
+        </div>
+      </section>
+
+      <section className="section">
+        <div className="container">
+          <div className="trust-grid consult-offers">
+            <article className="trust">
+              <p className="eyebrow">The door</p>
+              <h3>Free 30 on Calendly</h3>
+              <p className="muted">Then paid time, or a fixed deploy if the leak is clear. Book gold. Pay on Stripe.</p>
+            </article>
+            <article className="trust">
+              <p className="eyebrow">The rates</p>
+              <h3>$75 · $150 · $1,250</h3>
+              <p className="muted">Thirty minutes, an hour, or a 10-hour pack at $125/hour with half up front.</p>
+            </article>
+            <article className="trust">
+              <p className="eyebrow">Also paid</p>
+              <h3>Referrals &amp; alignment</h3>
+              <p className="muted">Referrals paid. LLM-alignment work paid. First Deploy and Flick stay as products.</p>
+            </article>
+            <article className="trust">
+              <p className="eyebrow">The product</p>
+              <h3>First Deploy</h3>
+              <p className="muted">After-hours desk and live apps. $1,500 setup, then $250/mo. Live this week or you don’t pay.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section className="section section-alt" id="rates">
+        <div className="container">
+          <div className="section-head">
+            <h2>Paid time, after the qualifier.</h2>
+            <p>The free 30 is how we see if there is paid work. 10-hour pack is $125/hour, half up front.</p>
+          </div>
+          <div className="rate-grid">
+            {CONSULT_RATES.map((rate) => (
+              <article key={rate.slug} className="rate-card">
+                <p className="eyebrow">{rate.name}</p>
+                <p className="rate-amt">{rate.amount}</p>
+                <p className="muted">{rate.note}</p>
+                <a className="btn btn-primary" href={rate.href} rel="noreferrer" target="_blank">
+                  {rate.cta}
+                </a>
+              </article>
+            ))}
+          </div>
+          <p className="fine" style={{ marginTop: 18 }}>
+            Stripe secured. Referrals paid. LLM-alignment work paid.
+          </p>
+        </div>
+      </section>
+
+      <section className="section">
+        <div className="container cta-split">
+          <div>
+            <div className="eyebrow">Book the free 30</div>
+            <h2 className="display" style={{ fontSize: "clamp(2.2rem, 5vw, 3.6rem)" }}>
+              Thirty minutes.
+              <br />
+              <em>Then you decide.</em>
+            </h2>
+            <p className="lede">
+              Calendly holds the qualifier. If we keep going, you pick paid time above. The First Deploy product — and
+              the 2-minute check — stay on the product site.
+            </p>
+            <div className="hero-actions">
+              <a className="btn btn-primary" href={CALENDLY_FREE_30} rel="noreferrer" target="_blank">
+                Book the free 30
+              </a>
+              <a className="btn btn-outline" href={FIRST_DEPLOY_CHECK} rel="noreferrer" target="_blank">
+                2-minute check
+              </a>
+            </div>
+          </div>
+          <div className="frame consult-frame">
+            <img
+              src="/brand/consult-boardroom.jpg"
+              alt="Executive honeycomb war room used for AgentHive consult sessions"
+            />
+          </div>
+        </div>
+      </section>
+    </>
+  );
+}

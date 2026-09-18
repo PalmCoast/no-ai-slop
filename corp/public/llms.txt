@@ -10,10 +10,10 @@ AgentHive Inc is a Palm Coast, Florida studio. Daniel Graham embeds working AI i
 - [Rankings](https://agenthiveinc.com/rankings): Live listing and ranking of every public AgentHive app, including the Netlify portfolio.
 - [About](https://agenthiveinc.com/about): Who we are and what we sell.
 - [Custom Builds](https://agenthiveinc.com/build): First Deploy embeds. Live this week or you do not pay setup.
+- [Consult](https://agenthiveinc.com/consult): Free 30-minute qualifier, then $75 / 30 min, $150 / hour, or a 10-hour pack at $1,250.
 
 ## Company
 - [First Deploy](https://firstdeploy.ai/): After-hours desk and live apps for field operators. $1,500 setup, then $250/month.
-- [Consult](https://firstdeploy.ai/consult): Free 30-minute qualifier, then $75 / 30 min, $150 / hour, or a 10-hour pack at $1,250.
 - [ClaudeFarm](https://claudefarm.com/): Public storefront for First Deploy, consult time, and the live AgentHive apps.
 
 ## Related

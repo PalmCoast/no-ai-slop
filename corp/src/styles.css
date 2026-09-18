@@ -367,6 +367,35 @@ button, input, textarea { font: inherit; }
 .pill.lab { color: var(--muted); }
 .score { font-variant-numeric: tabular-nums; color: var(--gold-bright); font-weight: 700; }
 
+.consult-hero .hero-media img { object-position: 50% 42%; }
+.consult-hero .hero-copy { max-width: 620px; }
+.consult-frame img { min-height: 360px; object-position: 50% 58%; }
+.consult-offers { grid-template-columns: repeat(4, 1fr); }
+.rate-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+.rate-card {
+  display: grid;
+  gap: 0.85rem;
+  padding: 1.4rem 1.25rem 1.3rem;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background:
+    radial-gradient(420px 140px at 50% 0%, rgba(240,165,0,0.16), transparent 62%),
+    linear-gradient(180deg, rgba(28, 22, 12, 0.96), rgba(12, 10, 7, 0.96));
+  box-shadow: var(--shadow);
+}
+.rate-card .btn { justify-self: start; margin-top: 0.4rem; }
+.rate-amt {
+  font-family: Cinzel, "Times New Roman", serif;
+  font-size: clamp(1.6rem, 3vw, 2.15rem);
+  color: var(--gold-bright);
+  letter-spacing: 0.02em;
+  line-height: 1.1;
+}
+
 .buzz-hero {
   display: grid;
   grid-template-columns: 1.1fr 0.9fr;
@@ -427,7 +456,7 @@ footer {
 @media (max-width: 960px) {
   .nav-links { display: none; }
   .menu-toggle, .mobile-nav { display: flex; }
-  .roster-grid, .card-grid, .trust-grid, .steps, .portrait-grid, .cta-split, .buzz-hero, .footer-grid, .notes {
+  .roster-grid, .card-grid, .trust-grid, .steps, .portrait-grid, .cta-split, .buzz-hero, .footer-grid, .notes, .rate-grid, .consult-offers {
     grid-template-columns: 1fr;
   }
   .rank-card { grid-template-columns: 52px 1fr; }
