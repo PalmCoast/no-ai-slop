@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
+import { FD_NAME, INDEXME_NAME } from "../../shared/brand";
 import { HIVE_SITES } from "../../shared/portfolio";
 import { rankSites, type RankedSite } from "../../shared/rank";
 
@@ -54,8 +55,8 @@ export default function Rankings() {
               Live app rankings
             </h1>
             <p className="lede">
-              Public AgentHive Inc apps, scored on uptime, speed, custom domain, and whether someone can buy them. First
-              Deploy AI and IndexMe.lol lead. The weekly scout re-probes the board.
+              Public AgentHive Inc apps, scored on uptime, speed, custom domain, and whether someone can buy them.{" "}
+              {FD_NAME} and {INDEXME_NAME} lead. The weekly scout re-probes the board.
             </p>
             <p className="fine">
               {liveCount} live · {netlifyCount} on Netlify · {sites.length} total

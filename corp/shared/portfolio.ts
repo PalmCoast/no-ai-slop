@@ -1,3 +1,5 @@
+import { FD_CONSULT_URL, FD_NAME, FD_PRICE, FD_URL } from "./brand.ts";
+
 export type SiteHost = "netlify" | "custom" | "github" | "vercel";
 export type SiteStatusHint = "live" | "lab";
 export type SiteCategory =
@@ -27,7 +29,7 @@ export const HIVE_SITES: HiveSite[] = [
     slug: "agenthive",
     name: "AgentHive Inc",
     url: "https://agenthiveinc.com/",
-    description: "Palm Coast AI consultant shop. First Deploy AI and the live portfolio.",
+    description: `Palm Coast AI consultant shop. ${FD_NAME} and the live portfolio.`,
     category: "flagship",
     host: "custom",
     statusHint: "live",
@@ -35,11 +37,11 @@ export const HIVE_SITES: HiveSite[] = [
   },
   {
     slug: "first-deploy",
-    name: "First Deploy AI",
-    url: "https://firstdeploy.ai/",
+    name: FD_NAME,
+    url: FD_URL,
     github: "https://github.com/PalmCoast/FirstDeploy",
     description: "After-hours desk and live apps for field operators. Live this week or you do not pay.",
-    price: "$1,500 setup, then $250/mo",
+    price: FD_PRICE,
     category: "ops",
     host: "custom",
     statusHint: "live",
@@ -48,7 +50,7 @@ export const HIVE_SITES: HiveSite[] = [
   {
     slug: "consult",
     name: "Consult",
-    url: "https://firstdeploy.ai/consult",
+    url: FD_CONSULT_URL,
     description: "Free 30-minute qualifier, then paid time in the room.",
     price: "$75 / 30 min · $150 / hour · 10-hour pack $1,250",
     category: "ops",
@@ -60,7 +62,7 @@ export const HIVE_SITES: HiveSite[] = [
     slug: "claudefarm",
     name: "ClaudeFarm",
     url: "https://claudefarm.com/",
-    description: "Public storefront for First Deploy AI, consult time, and live AgentHive Inc apps.",
+    description: `Public storefront for ${FD_NAME}, consult time, and live AgentHive Inc apps.`,
     category: "studio",
     host: "custom",
     statusHint: "live",

@@ -8,6 +8,7 @@ import {
   CONTACT_EMAIL,
   FD_CONSULT_URL,
   FD_NAME,
+  FD_URL,
   LEGAL_NAME,
   ADDRESS_LINE,
   VOICE_DISPLAY,
@@ -150,7 +151,7 @@ export default function About() {
               the control plane.
             </p>
             <div className="hero-actions">
-              <a className="btn btn-primary" href="https://firstdeploy.ai/">
+              <a className="btn btn-primary" href={FD_URL}>
                 {FD_NAME}
               </a>
               <a className="btn btn-outline" href="https://hivebriefcase.netlify.app/">

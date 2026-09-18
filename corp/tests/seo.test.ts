@@ -70,6 +70,8 @@ describe("per-route SEO", () => {
     expect(new Set(hashes).size).toBe(PAGE_SEO.length);
     expect(new Set(ids).size).toBe(PAGE_SEO.length);
     expect(pages[0]).toContain("$1,500");
+    expect(pages[0]).toContain("$250/mo");
+    expect(pages.join("")).not.toMatch(/\$2,?500|\$1,?500\s*\/\s*mo|firstdeploy\.dev/);
     expect(pages[1]).toContain("95 Barrington Drive");
     expect(pages[2]).toContain("briefing");
     expect(pages.join("")).not.toMatch(/14 apps|\$70k|coltsinsider@gmail/i);

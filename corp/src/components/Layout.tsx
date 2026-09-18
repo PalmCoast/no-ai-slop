@@ -7,6 +7,7 @@ import {
   CONSULT_DISPLAY,
   CONSULT_TEL,
   CONTACT_EMAIL,
+  FD_CONSULT_URL,
   FD_NAME,
   FD_URL,
   INDEXME_NAME,
@@ -125,7 +126,7 @@ export default function Layout() {
             <strong>Live work</strong>
             <a href={FD_URL}>{FD_NAME}</a>
             <a href={INDEXME_URL}>{INDEXME_NAME}</a>
-            <a href="https://firstdeploy.ai/consult">Consult</a>
+            <a href={FD_CONSULT_URL}>Consult</a>
             <a href="https://writehive.netlify.app/">WriteHive</a>
             <a href="https://bot-lock.netlify.app/">Bot Lock</a>
           </div>

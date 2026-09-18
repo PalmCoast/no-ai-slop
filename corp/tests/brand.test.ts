@@ -50,10 +50,40 @@ describe("AgentHive Inc brand facts", () => {
     const hits: string[] = [];
     for (const file of files) {
       const text = readFileSync(file, "utf8");
-      if (file.endsWith("tests/brand.test.ts")) continue;
-      if (/\$2,500/.test(text) || /\$1,500\s*\/\s*mo/.test(text) || /firstdeploy\.dev/.test(text)) {
+      if (file.includes("/tests/")) continue;
+      if (
+        /\$2,?500/.test(text) ||
+        /\$1,?500\s*\/\s*mo/.test(text) ||
+        /firstdeploy\.dev/.test(text)
+      ) {
         hits.push(file);
       }
+    }
+    expect(hits, hits.join("\n")).toEqual([]);
+  });
+
+  it("uses First Deploy AI on public marketing copy, not a bare First Deploy", () => {
+    const publicFiles = [
+      "src/pages/Home.tsx",
+      "src/pages/About.tsx",
+      "src/pages/Build.tsx",
+      "src/pages/Rankings.tsx",
+      "src/components/Layout.tsx",
+      "shared/seo.ts",
+      "shared/portfolio.ts",
+      "index.html",
+      "public/llms.txt",
+    ].map((rel) => join(fileURLToPath(new URL("..", import.meta.url)), rel));
+    const hits: string[] = [];
+    for (const file of publicFiles) {
+      const text = readFileSync(file, "utf8")
+        .replace(/https:\/\/firstdeploy\.ai[^\s"'`]*/g, "")
+        .replace(/firstdeploy\.ai/g, "")
+        .replace(/FD_NAME/g, "First Deploy AI")
+        .replace(/FD_URL/g, "")
+        .replace(/FD_CONSULT_URL/g, "")
+        .replace(/FD_PRICE/g, "");
+      if (/First Deploy(?! AI)/.test(text)) hits.push(file);
     }
     expect(hits, hits.join("\n")).toEqual([]);
   });
