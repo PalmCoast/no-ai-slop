@@ -50,7 +50,7 @@ export default function Home() {
     <>
       <section className="hero">
         <div className="hero-media">
-          <img src="/brand/queen-full.jpg" alt="AgentHive queen in gold honeycomb armor" />
+          <img src="/brand/consult-operator.jpg" alt="Male founder-operator in the gold honeycomb boardroom" />
         </div>
         <div className="hero-copy">
           <div className="eyebrow">

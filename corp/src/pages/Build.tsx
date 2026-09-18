@@ -28,7 +28,7 @@ export default function Build() {
           </div>
         </div>
         <div className="frame">
-          <img src="/brand/queen-full.jpg" alt="AgentHive queen standing in gold armor" />
+          <img src="/brand/consult-operator.jpg" alt="Male operator in the gold honeycomb boardroom" />
         </div>
       </div>
     </section>

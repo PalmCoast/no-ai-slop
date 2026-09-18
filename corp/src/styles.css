@@ -158,7 +158,7 @@ button, input, textarea { font: inherit; }
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: 62% 12%;
+  object-position: 50% 36%;
   filter: saturate(1.05) contrast(1.05);
 }
 .hero-media::after {
@@ -374,7 +374,7 @@ button, input, textarea { font: inherit; }
     linear-gradient(90deg, rgba(5,4,3,0.78) 0%, rgba(5,4,3,0.48) 36%, rgba(5,4,3,0.12) 68%, rgba(5,4,3,0.4) 100%),
     linear-gradient(180deg, rgba(5,4,3,0.12), rgba(5,4,3,0.58));
 }
-.consult-frame img { min-height: 360px; object-position: 50% 58%; }
+.consult-frame img { min-height: 360px; object-position: 50% 40%; }
 .consult-offers { grid-template-columns: repeat(4, 1fr); }
 .rate-grid {
   display: grid;
@@ -466,7 +466,7 @@ footer {
   }
   .rank-card { grid-template-columns: 52px 1fr; }
   .hero-copy { padding-top: 3rem; }
-  .hero-media img { object-position: 70% 10%; }
+  .hero-media img { object-position: 50% 38%; }
   .display { font-size: clamp(2.6rem, 12vw, 4.2rem); }
   .note { border-right: 0; }
   .consult-hero .hero-media img { object-position: 50% 40%; }

@@ -5,7 +5,7 @@ const CONSULT_SCHEMA = {
   "@type": "ProfessionalService",
   name: "AgentHive AI consulting",
   url: "https://agenthiveinc.com/consult",
-  image: "https://agenthiveinc.com/brand/consult-boardroom.jpg",
+  image: "https://agenthiveinc.com/brand/consult-operator.jpg",
   provider: {
     "@type": "Organization",
     name: "AgentHive Inc",
@@ -29,7 +29,7 @@ export default function Consult() {
       <section className="hero consult-hero">
         <div className="hero-media">
           <img
-            src="/brand/consult-boardroom.jpg"
+            src="/brand/consult-operator.jpg"
             alt="Male founder-operator at the gold honeycomb boardroom — signet ring and bee tattoo"
           />
         </div>
@@ -133,7 +133,7 @@ export default function Consult() {
           </div>
           <div className="frame consult-frame">
             <img
-              src="/brand/consult-boardroom.jpg"
+              src="/brand/consult-operator.jpg"
               alt="Male operator in the gold honeycomb war room, honeycomb signet and bee tattoo"
             />
           </div>

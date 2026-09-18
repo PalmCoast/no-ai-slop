@@ -4,7 +4,7 @@ export default function About() {
       <section className="section">
         <div className="container portrait-grid">
           <div className="frame">
-            <img src="/brand/queen-portrait.jpg" alt="AgentHive queen — gold honeycomb crown and armor" />
+            <img src="/brand/consult-operator.jpg" alt="Daniel Graham — operator in the gold honeycomb boardroom" />
           </div>
           <div>
             <div className="eyebrow">Florida LLC · Est. 2025 · Palm Coast</div>
