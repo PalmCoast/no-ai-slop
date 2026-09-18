@@ -33,6 +33,29 @@ Redirects already in `corp/netlify.toml`:
 4. Do not deploy from the repository root. Do not set base to `stateside` or `sonaris`.
 5. Scheduled functions only run on **published production** deploys. A draft preview is not enough for The Buzz bot.
 
+## Environment variables (Reed must set)
+
+Set these on the **agenthiveinc.com** site only (`d5d92fe5-eee9-482b-840c-b535a3333b42` / `dashing-cascaron-ddd950`). Do not add them to Stateside or Sonaris.
+
+| Variable | Required? | Value | Why |
+|---|---|---|---|
+| `HIVE_REFRESH_SECRET` | **Yes, production** | Random site-scoped secret (32+ bytes). Same value Reed sends as `x-hive-secret`. | Gates `POST /api/refresh`. If unset, that endpoint stays open. |
+
+**Do not set** any of these. Netlify AI Gateway injects them after AI is enabled and the site has had a production deploy. Setting your own key bypasses the gateway and is not required for The Buzz:
+
+- `OPENAI_API_KEY`
+- `OPENAI_BASE_URL`
+- `ANTHROPIC_API_KEY`
+- `ANTHROPIC_BASE_URL`
+- `GEMINI_API_KEY`
+- `GOOGLE_GEMINI_BASE_URL`
+- `NETLIFY_AI_GATEWAY_KEY`
+- `NETLIFY_AI_GATEWAY_BASE_URL`
+
+No `VITE_*` vars. Blobs and Functions use platform defaults (`agenthive-corp` store).
+
+UI toggle (not an env var): **Enable AI Gateway / AI** on this site so `buzz-weekly` can call `gpt-4o-mini` via `new OpenAI()` with zero constructor args. If the gateway is off, The Buzz still ships the cited seed / HN fallback.
+
 ## Deploy sequence
 
 ### 1. Confirm the code

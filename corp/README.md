@@ -24,7 +24,8 @@ Read paths:
 
 - `GET /api/buzz`
 - `GET /api/rank`
-- `POST /api/refresh` — optional `HIVE_REFRESH_SECRET` header `x-hive-secret`
+- `POST /api/refresh` — production must set `HIVE_REFRESH_SECRET`; send it as header `x-hive-secret`
+- Do **not** set `OPENAI_API_KEY`. Enable AI Gateway on the agenthiveinc.com site so Grok summaries use the injected key.
 
 The Buzz page always has a cited seed edition, so the room is never blank if Blobs or the gateway are cold.
 
