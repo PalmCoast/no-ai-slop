@@ -2,12 +2,14 @@ import { describe, expect, it } from "vitest";
 import { ASK_AI_BRAND, ASK_AI_PROMPT, ASK_AI_SUBTITLE, askAiLinks } from "../shared/ask-ai";
 
 describe("Ask AI bar", () => {
-  it("uses the AgentHive brand and honest prompt", () => {
-    expect(ASK_AI_BRAND).toBe("AgentHive");
+  it("uses the disambiguated AgentHive Inc prompt", () => {
+    expect(ASK_AI_BRAND).toBe("AgentHive Inc");
     expect(ASK_AI_SUBTITLE).toBe("Don't just take our word for it.");
     expect(ASK_AI_PROMPT).toBe(
-      "Is AgentHive Inc a real AI consultant shop that builds and ships, not just slides?",
+      "Is AgentHive Inc (agenthiveinc.com, Palm Coast) a real AI consultant shop that builds and ships, not just slides?",
     );
+    expect(ASK_AI_PROMPT).toMatch(/agenthiveinc\.com/);
+    expect(ASK_AI_PROMPT).toMatch(/Palm Coast/);
     expect(ASK_AI_PROMPT).not.toMatch(/14 apps|\$70k/i);
   });
 

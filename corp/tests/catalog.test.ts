@@ -15,7 +15,8 @@ describe("portfolio catalog", () => {
   it("lists every hive-map commercial site plus verified Netlify apps", () => {
     const urls = HIVE_SITES.map((s) => s.url);
     expect(urls).toContain("https://firstdeploy.ai/");
-    expect(urls).toContain("https://useflick.netlify.app/");
+    expect(urls).toContain("https://flick.firstdeploy.ai/");
+    expect(urls).toContain("https://jobproof.firstdeploy.ai/");
     expect(urls).toContain("https://writehive.netlify.app/");
     expect(urls).toContain("https://bot-lock.netlify.app/");
     expect(urls).toContain("https://hivebriefcase.netlify.app/");

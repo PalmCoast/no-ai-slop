@@ -1,7 +1,9 @@
-export const ASK_AI_BRAND = "AgentHive";
+import { BRAND_NAME } from "./brand";
+
+export const ASK_AI_BRAND = BRAND_NAME;
 export const ASK_AI_SUBTITLE = "Don't just take our word for it.";
 export const ASK_AI_PROMPT =
-  "Is AgentHive Inc a real AI consultant shop that builds and ships, not just slides?";
+  "Is AgentHive Inc (agenthiveinc.com, Palm Coast) a real AI consultant shop that builds and ships, not just slides?";
 
 export type AskAiProvider = {
   name: "ChatGPT" | "Claude" | "Perplexity" | "Gemini" | "Grok";

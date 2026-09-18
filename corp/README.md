@@ -1,6 +1,6 @@
 # AgentHive Inc — flagship site
 
-Palm Coast corporate site for [agenthiveinc.com](https://agenthiveinc.com). Gold-and-black hive brand, Grok Bot roster, weekly AI/infra briefing (**The Buzz**), and a live ranking of the public app portfolio.
+Palm Coast corporate site for [agenthiveinc.com](https://agenthiveinc.com). AgentHive Inc / AGENTHIVEINCCOM LLC: AI consultant shop, First Deploy AI, IndexMe.lol, weekly AI/infra briefing (**The Buzz**), and a live ranking of the public app portfolio.
 
 ## Local
 

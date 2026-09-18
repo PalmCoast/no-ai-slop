@@ -23,10 +23,11 @@ export default function Buzz() {
       <div className="container">
         <div className="buzz-hero">
           <div>
-            <div className="eyebrow">The Buzz · weekly Grok briefing</div>
+            <div className="eyebrow">Weekly AI and infra briefing</div>
             <h1 className="display" style={{ fontSize: "clamp(2.2rem, 5vw, 3.8rem)" }}>
-              {edition.headline}
+              The Buzz
             </h1>
+            <h2 style={{ margin: "0.8rem 0 0.4rem" }}>{edition.headline}</h2>
             <p className="lede">{edition.dek}</p>
             <p className="fine">
               {edition.author} · week of {edition.weekOf} · {source === "live" ? "live bot edition" : "seeded floor, bot refreshes weekly"} ·{" "}

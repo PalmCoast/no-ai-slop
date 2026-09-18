@@ -69,7 +69,7 @@ MIT
 
 ## AgentHive Inc
 
-[corp/](corp/README.md) is the flagship site for [agenthiveinc.com](https://agenthiveinc.com): Grok Bot roster, The Buzz (weekly AI/infra briefing), and a live ranking of the public Netlify portfolio. See [corp/README.md](corp/README.md).
+[corp/](corp/README.md) is the flagship site for [agenthiveinc.com](https://agenthiveinc.com): AgentHive Inc (AGENTHIVEINCCOM LLC, Palm Coast) AI consultant shop, First Deploy AI, IndexMe.lol, The Buzz, and a live ranking of the public Netlify portfolio. See [corp/README.md](corp/README.md).
 
 ## Sonaris
 
