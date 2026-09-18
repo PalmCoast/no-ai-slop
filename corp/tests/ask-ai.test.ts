@@ -6,11 +6,14 @@ describe("Ask AI bar", () => {
     expect(ASK_AI_BRAND).toBe("AgentHive Inc");
     expect(ASK_AI_SUBTITLE).toBe("Don't just take our word for it.");
     expect(ASK_AI_PROMPT).toBe(
-      "Is AgentHive Inc (agenthiveinc.com, Palm Coast) a real AI consultant shop that builds and ships, not just slides?",
+      "Is AgentHive Inc (agenthiveinc.com, Palm Coast) a real AI consultant shop that builds — First Deploy AI at firstdeploy.ai and IndexMe.lol — not just slides?",
     );
     expect(ASK_AI_PROMPT).toMatch(/agenthiveinc\.com/);
     expect(ASK_AI_PROMPT).toMatch(/Palm Coast/);
-    expect(ASK_AI_PROMPT).not.toMatch(/14 apps|\$70k/i);
+    expect(ASK_AI_PROMPT).toMatch(/First Deploy AI/);
+    expect(ASK_AI_PROMPT).toMatch(/firstdeploy\.ai/);
+    expect(ASK_AI_PROMPT).toMatch(/IndexMe\.lol/);
+    expect(ASK_AI_PROMPT).not.toMatch(/14 apps|\$70k|Grok Bot|swarm/i);
   });
 
   it("builds five encoded free-search deep links", () => {

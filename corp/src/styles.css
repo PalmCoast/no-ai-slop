@@ -5,7 +5,7 @@
   --line: rgba(228, 184, 74, 0.28);
   --gold: #e4b84a;
   --gold-bright: #ffd56a;
-  --amber: #f0a500;
+  --amber: #c4922a;
   --ink: #f6edd8;
   --muted: #a89472;
   --live: #5ee9a0;
@@ -39,7 +39,7 @@ button, input, textarea { font: inherit; }
   pointer-events: none;
   z-index: 0;
   background:
-    radial-gradient(1200px 600px at 80% -10%, rgba(240, 165, 0, 0.12), transparent 55%),
+    radial-gradient(1200px 600px at 80% -10%, rgba(228, 184, 74, 0.12), transparent 55%),
     radial-gradient(900px 500px at 0% 100%, rgba(228, 184, 74, 0.08), transparent 50%),
     repeating-linear-gradient(30deg, transparent 0 18px, rgba(228, 184, 74, 0.03) 18px 19px),
     repeating-linear-gradient(150deg, transparent 0 18px, rgba(228, 184, 74, 0.025) 18px 19px);
@@ -133,7 +133,7 @@ button, input, textarea { font: inherit; }
 .btn-primary {
   background: linear-gradient(180deg, var(--gold-bright), var(--amber));
   color: #1a1204;
-  box-shadow: 0 8px 24px rgba(240, 165, 0, 0.28);
+  box-shadow: 0 8px 24px rgba(228, 184, 74, 0.28);
 }
 .btn-outline {
   background: transparent;

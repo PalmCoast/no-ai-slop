@@ -3,10 +3,10 @@ import {
   BRAND_NAME,
   BRAND_PLACE,
   BRAND_URL,
+  CALENDLY_URL,
   CONSULT_DISPLAY,
   CONSULT_TEL,
   CONTACT_EMAIL,
-  FD_CONSULT_URL,
   FD_NAME,
   FD_URL,
   LEGAL_NAME,
@@ -36,8 +36,9 @@ export default function About() {
               buy time in the room.
             </p>
             <p className="muted">
-              Legal name {LEGAL_NAME}. Public site{" "}
-              <a href={BRAND_URL}>agenthiveinc.com</a>. {ADDRESS_LINE}.
+              Public brand {BRAND_NAME}. Legal name {LEGAL_NAME}. Site{" "}
+              <a href={BRAND_URL}>agenthiveinc.com</a>. {ADDRESS_LINE}. This is the Palm Coast shop behind {FD_NAME} —
+              not QpiAI, not an insurance hive, not an OSS org with a similar name.
             </p>
           </div>
         </div>
@@ -49,13 +50,15 @@ export default function About() {
         <div className="container">
           <div className="section-head">
             <h2>Contact</h2>
-            <p>Email, the consult line, and the Palm Coast shop address.</p>
+            <p>Book 30 minutes, call the consult line, or email the shop.</p>
           </div>
           <div className="trust-grid">
             <article className="trust">
-              <h3>Email</h3>
+              <h3>Book 30 minutes</h3>
               <p className="muted">
-                <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>
+                <a href={CALENDLY_URL} rel="noreferrer" target="_blank">
+                  calendly.com/coltsinsider/30min
+                </a>
               </p>
             </article>
             <article className="trust">
@@ -66,15 +69,23 @@ export default function About() {
               </p>
             </article>
             <article className="trust">
-              <h3>AgentHive voice</h3>
+              <h3>Email</h3>
               <p className="muted">
-                <a href={`tel:${VOICE_TEL}`}>{VOICE_DISPLAY}</a>
+                <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>
               </p>
             </article>
             <article className="trust">
               <h3>Address</h3>
               <p className="muted">{ADDRESS_LINE}</p>
             </article>
+          </div>
+          <div className="hero-actions" style={{ marginTop: 22 }}>
+            <a className="btn btn-primary" href={CALENDLY_URL} rel="noreferrer" target="_blank">
+              Book 30 minutes
+            </a>
+            <a className="btn btn-outline" href={`tel:${CONSULT_TEL}`}>
+              {CONSULT_DISPLAY}
+            </a>
           </div>
         </div>
       </section>
@@ -102,7 +113,7 @@ export default function About() {
           <article className="panel">
             <p className="eyebrow">DG</p>
             <h2>Daniel Graham</h2>
-            <p className="role">Chairman & Founder</p>
+            <p className="role">Chairman, {BRAND_NAME}</p>
             <p style={{ marginTop: 12 }}>
               25 years of enterprise IT across Eli Lilly, Humana, and Southwire. SAFe 5.1 certified. Built {BRAND_NAME}{" "}
               on a simple rule: AI should ship, earn, and solve a real leak.
@@ -112,8 +123,8 @@ export default function About() {
               audits.
             </p>
             <div className="hero-actions" style={{ marginTop: 18 }}>
-              <a className="btn btn-primary" href={FD_CONSULT_URL}>
-                Book a discovery call
+              <a className="btn btn-primary" href={CALENDLY_URL} rel="noreferrer" target="_blank">
+                Book 30 minutes
               </a>
               <a className="btn btn-outline" href={`mailto:${CONTACT_EMAIL}`}>
                 {CONTACT_EMAIL}
@@ -123,9 +134,16 @@ export default function About() {
           <article className="panel">
             <h2>The desk</h2>
             <p className="muted" style={{ margin: "0.6rem 0 1rem" }}>
-              Human founder. Daniel signs every contract. Named inboxes stay on {BRAND_URL.replace("https://", "")}.
+              Daniel signs every contract. Named inboxes stay on {BRAND_URL.replace("https://", "")}. AgentHive voice is
+              the shop line, not the {FD_NAME} consult line.
             </p>
             <ul className="takeaways">
+              <li>
+                Book —{" "}
+                <a href={CALENDLY_URL} rel="noreferrer" target="_blank">
+                  30-minute Calendly
+                </a>
+              </li>
               <li>
                 Daniel Graham — <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>
               </li>

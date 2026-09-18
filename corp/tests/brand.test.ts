@@ -6,9 +6,12 @@ import {
   BRAND_NAME,
   CONSULT_DISPLAY,
   CONTACT_EMAIL,
+  CALENDLY_URL,
   FD_NAME,
   FD_PRICE,
+  FD_PROMISE,
   FD_URL,
+  INDEXME_BLURB,
   INDEXME_NAME,
   INDEXME_URL,
   LEGAL_NAME,
@@ -33,16 +36,31 @@ describe("AgentHive Inc brand facts", () => {
     expect(FD_NAME).toBe("First Deploy AI");
     expect(FD_URL).toBe("https://firstdeploy.ai/");
     expect(FD_PRICE).toBe("$1,500 setup, then $250/mo");
+    expect(FD_PROMISE).toMatch(/Live this week/i);
     expect(INDEXME_NAME).toBe("IndexMe.lol");
     expect(INDEXME_URL).toBe("https://indexme.lol/");
+    expect(INDEXME_BLURB).toMatch(/IndexNow/);
+    expect(CALENDLY_URL).toBe("https://calendly.com/coltsinsider/30min");
   });
 
   it("homepage teaches the consultant shop, not the 12-bot swarm", () => {
     const home = readFileSync(join(fileURLToPath(new URL("../src/pages/Home.tsx", import.meta.url))), "utf8");
+    expect(home).toMatch(/AI consultant who builds/);
     expect(home).toMatch(/FD_NAME|First Deploy AI/);
     expect(home).toMatch(/INDEXME_NAME|IndexMe/);
-    expect(home).not.toMatch(/12 Grok Bots|The Swarm Roster|Recruit your first Grok Bot/);
+    expect(home).toMatch(/INDEXME_BLURB|IndexNow/);
+    expect(home).toMatch(/firstdeploy\.ai/);
+    expect(home).not.toMatch(/12 Grok Bots|The Swarm Roster|Recruit your first Grok Bot|bootstrapped/i);
     expect(home).not.toMatch(/14 apps|\$70k/i);
+  });
+
+  it("About keeps Inc vs LLC, Calendly, and the 320 consult line", () => {
+    const about = readFileSync(join(fileURLToPath(new URL("../src/pages/About.tsx", import.meta.url))), "utf8");
+    expect(about).toMatch(/CALENDLY_URL|calendly\.com\/coltsinsider\/30min/);
+    expect(about).toMatch(/CONSULT_DISPLAY|320-335-6186/);
+    expect(about).toMatch(/LEGAL_NAME|AGENTHIVEINCCOM LLC/);
+    expect(about).toMatch(/QpiAI|insurance hive|OSS/);
+    expect(about).not.toMatch(/14 apps|\$70k|bootstrapped/i);
   });
 
   it("does not ship stale First Deploy prices or firstdeploy.dev", () => {

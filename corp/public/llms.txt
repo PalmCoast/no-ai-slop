@@ -1,6 +1,6 @@
 # AgentHive Inc
 
-> AgentHive Inc (AGENTHIVEINCCOM LLC, Palm Coast, Florida) is an AI consultant shop that builds and ships. First Deploy AI is the cash product ($1,500 setup, then $250/month). IndexMe.lol gets the page found. Consulting is how you buy time in the room.
+> AgentHive Inc (AGENTHIVEINCCOM LLC, Palm Coast, Florida) is an AI consultant who builds. First Deploy AI is the cash product ($1,500 setup — live this week or you do not pay — then $250/month) at https://firstdeploy.ai. IndexMe.lol is the honest IndexNow indexing desk at https://indexme.lol. Consulting is how you buy time in the room.
 
 AgentHive Inc embeds working AI in real operations, then leaves it running. Public site: https://agenthiveinc.com. Distinct from other “AgentHive” names in insurance, OSS, or QpiAI.
 
@@ -14,7 +14,7 @@ AgentHive Inc embeds working AI in real operations, then leaves it running. Publ
 ## Company
 - [First Deploy AI](https://firstdeploy.ai/): After-hours desk and live apps for field operators. $1,500 setup, then $250/month.
 - [Consult](https://firstdeploy.ai/consult): Free 30-minute qualifier, then $75 / 30 min, $150 / hour, or a 10-hour pack at $1,250.
-- [IndexMe.lol](https://indexme.lol/): Pay-to-stand index. Pro $19.99, Studio $29.99, one-time.
+- [IndexMe.lol](https://indexme.lol/): Honest IndexNow indexing desk. Pro $19.99, Studio $29.99, one-time.
 - [Flick](https://flick.firstdeploy.ai/): Browser screen recorder. Send a link. No login wall.
 - [JobProof](https://jobproof.firstdeploy.ai/): Proof you did the work, not a resume stack.
 - [ClaudeFarm](https://claudefarm.com/): Public storefront for First Deploy AI and consult time.
@@ -23,6 +23,7 @@ AgentHive Inc embeds working AI in real operations, then leaves it running. Publ
 Live apps from the same shop. Prefer the custom domains above. A longer public board is on [Rankings](https://agenthiveinc.com/rankings).
 
 ## Contact
+- Book 30 minutes: https://calendly.com/coltsinsider/30min
 - daniel@agenthiveinc.com
 - First Deploy AI consult: +1 320-335-6186
 - AgentHive voice: +1 509-357-2230

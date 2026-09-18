@@ -1,4 +1,4 @@
-import { FD_CONSULT_URL, FD_NAME, FD_PRICE, FD_URL } from "./brand.ts";
+import { FD_CONSULT_URL, FD_NAME, FD_PRICE, FD_URL, INDEXME_BLURB, INDEXME_NAME, INDEXME_URL } from "./brand.ts";
 
 export type SiteHost = "netlify" | "custom" | "github" | "vercel";
 export type SiteStatusHint = "live" | "lab";
@@ -99,9 +99,9 @@ export const HIVE_SITES: HiveSite[] = [
   },
   {
     slug: "indexme",
-    name: "IndexMe.lol",
-    url: "https://indexme.lol/",
-    description: "Pay-to-stand index. Get the page found before you spend more on ads.",
+    name: INDEXME_NAME,
+    url: INDEXME_URL,
+    description: `The ${INDEXME_BLURB}. Get the page found before you spend more on ads.`,
     price: "Pro $19.99 · Studio $29.99 one-time",
     category: "saas",
     host: "custom",

@@ -3,12 +3,14 @@ import {
   BRAND_NAME,
   BRAND_PLACE,
   BRAND_URL,
+  CALENDLY_URL,
   CONSULT_DISPLAY,
   CONSULT_TEL,
-  FD_CONSULT_URL,
   FD_NAME,
   FD_PRICE,
+  FD_PROMISE,
   FD_URL,
+  INDEXME_BLURB,
   INDEXME_NAME,
   INDEXME_URL,
 } from "../../shared/brand";
@@ -27,7 +29,7 @@ export default function Home() {
         </div>
         <div className="hero-copy">
           <div className="eyebrow">
-            <span className="dot" /> {BRAND_NAME} · {BRAND_PLACE} · agenthiveinc.com
+            <span className="dot" /> AI consultant who builds · {BRAND_PLACE} · agenthiveinc.com
           </div>
           <h1 className="display">
             We ship the thing
@@ -35,9 +37,13 @@ export default function Home() {
             <em>you can sell.</em>
           </h1>
           <p className="lede">
-            {BRAND_NAME} is a Palm Coast AI consultant shop. We embed working software in the operation and leave it
-            running. {FD_NAME} is the after-hours desk: {FD_PRICE}. {INDEXME_NAME} gets the page found before you spend
-            more on ads.
+            {BRAND_NAME} is a Palm Coast AI consultant who builds. We embed working software in the operation and leave
+            it running. {FD_NAME} is $1,500 setup — {FD_PROMISE.toLowerCase()} — then $250/mo at{" "}
+            <a href={FD_URL}>firstdeploy.ai</a>. {INDEXME_NAME} is the {INDEXME_BLURB} at{" "}
+            <a href={INDEXME_URL} rel="noreferrer" target="_blank">
+              indexme.lol
+            </a>
+            .
           </p>
           <div className="hero-actions">
             <a className="btn btn-primary" href={FD_URL}>
@@ -48,7 +54,7 @@ export default function Home() {
             </a>
           </div>
           <p className="fine">
-            {FD_PRICE}. Live this week or you do not pay the setup. Consult:{" "}
+            {FD_PRICE}. {FD_PROMISE}. Consult:{" "}
             <a href={`tel:${CONSULT_TEL}`}>{CONSULT_DISPLAY}</a>
           </p>
         </div>
@@ -61,7 +67,7 @@ export default function Home() {
           <div className="section-head">
             <h2>What you can buy</h2>
             <p>
-              {BRAND_NAME} sells work that ships. {FD_NAME} is the cash product. {INDEXME_NAME} is the index desk.
+              {BRAND_NAME} sells work that ships. {FD_NAME} is the cash product. {INDEXME_NAME} is the IndexNow desk.
             </p>
           </div>
           <div className="cta-split">
@@ -69,8 +75,8 @@ export default function Home() {
               <p className="eyebrow">Cash product</p>
               <h2>{FD_NAME}</h2>
               <p style={{ marginTop: 12 }}>
-                After-hours desk plus the live apps for field operators. {FD_PRICE}. If it is not live this week, you do
-                not pay the setup.
+                After-hours desk plus the live apps for field operators. $1,500 setup — {FD_PROMISE.toLowerCase()} —
+                then $250/mo. {FD_PRICE}.
               </p>
               <div className="hero-actions" style={{ marginTop: 18 }}>
                 <a className="btn btn-primary" href={FD_URL}>
@@ -85,7 +91,7 @@ export default function Home() {
               <p className="eyebrow">Get found</p>
               <h2>{INDEXME_NAME}</h2>
               <p style={{ marginTop: 12 }}>
-                Pay-to-stand index. Pro $19.99 · Studio $29.99, one-time. Get the page found before you spend more on
+                The {INDEXME_BLURB}. Pro $19.99 · Studio $29.99, one-time. Get the page found before you spend more on
                 ads.
               </p>
               <div className="hero-actions" style={{ marginTop: 18 }}>
@@ -104,7 +110,7 @@ export default function Home() {
             <h2>Need a person in the room?</h2>
             <p>Free 30-minute qualifier. Then paid time — or a fixed deploy if the leak is clear.</p>
             <p style={{ margin: "1rem 0 1.4rem" }}>$75 / 30 min · $150 / hour · 10-hour pack $1,250 (half up front)</p>
-            <a className="btn btn-primary" href={FD_CONSULT_URL}>
+            <a className="btn btn-primary" href={CALENDLY_URL} rel="noreferrer" target="_blank">
               Book the free 30
             </a>
             <p className="fine" style={{ marginTop: 12 }}>
@@ -118,7 +124,7 @@ export default function Home() {
         <div className="container">
           <div className="section-head">
             <h2>Also shipped</h2>
-            <p>A few live apps from the same shop. The full public board is on Rankings.</p>
+            <p>A few live apps from the same shop. The full public board is on Rankings — not the homepage hero.</p>
           </div>
           <div className="card-grid" style={{ gridTemplateColumns: "repeat(2, 1fr)" }}>
             {shipped.map((site) => (
@@ -152,6 +158,10 @@ export default function Home() {
             </a>
             <p className="fine" style={{ marginTop: 16 }}>
               Consult: <a href={`tel:${CONSULT_TEL}`}>{CONSULT_DISPLAY}</a>
+              {" · "}
+              <a href={CALENDLY_URL} rel="noreferrer" target="_blank">
+                Book 30 minutes
+              </a>
             </p>
           </div>
         </div>

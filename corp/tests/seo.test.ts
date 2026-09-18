@@ -46,6 +46,9 @@ describe("per-route SEO", () => {
     expect(home).toContain('id="route-home"');
     expect(home).toContain("First Deploy AI");
     expect(home).toContain("IndexMe.lol");
+    expect(home).toContain("AI consultant who builds");
+    expect(home).toContain("IndexNow");
+    expect(about).toContain("calendly.com/coltsinsider/30min");
     expect(home).toContain('rel="canonical" href="https://agenthiveinc.com/"');
     expect(about).not.toContain('rel="canonical" href="https://agenthiveinc.com/" />');
     expect(about).toContain("application/ld+json");
@@ -97,6 +100,8 @@ describe("per-route SEO", () => {
     expect(txt).toContain("https://flick.firstdeploy.ai/");
     expect(txt).toContain("https://jobproof.firstdeploy.ai/");
     expect(txt).toContain("https://firstdeploy.ai/");
+    expect(txt).toContain("https://calendly.com/coltsinsider/30min");
+    expect(txt).toContain("IndexNow");
   });
 
   it("keeps sitemap.xml to agenthiveinc.com HTML routes only", () => {
