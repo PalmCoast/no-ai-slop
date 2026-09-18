@@ -48,7 +48,7 @@
 
 [[redirects]]
   from = "/swarm"
-  to = "/#work"
+  to = "/about"
   status = 302
 
 # Force unique HTML documents. A Netlify SPA 200 rewrite to /index.html

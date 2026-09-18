@@ -69,7 +69,7 @@ describe("AgentHive Inc brand facts", () => {
     expect(home).toMatch(/BOOK_CTA_LABEL|Book the free 30/);
     expect(home).toMatch(/INDEXME_NAME|IndexMe/);
     expect(home).toMatch(/INDEXME_BLURB|IndexNow/);
-    expect(home).toMatch(/firstdeploy\.ai/);
+    expect(home).toMatch(/FD_URL|firstdeploy\.ai/);
     expect(home).toMatch(/commercial earth mover|dirty physical businesses/);
     expect(home).not.toMatch(/12 Grok Bots|The Swarm Roster|Recruit your first Grok Bot|bootstrapped/i);
     expect(home).not.toMatch(/14 apps|\$70k/i);
