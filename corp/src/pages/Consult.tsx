@@ -30,7 +30,7 @@ export default function Consult() {
         <div className="hero-media">
           <img
             src="/brand/consult-boardroom.jpg"
-            alt="Gold honeycomb boardroom — AgentHive consult, Fortune-level operations desk"
+            alt="Male founder-operator at the gold honeycomb boardroom — signet ring and bee tattoo"
           />
         </div>
         <div className="hero-copy">
@@ -134,7 +134,7 @@ export default function Consult() {
           <div className="frame consult-frame">
             <img
               src="/brand/consult-boardroom.jpg"
-              alt="Executive honeycomb war room used for AgentHive consult sessions"
+              alt="Male operator in the gold honeycomb war room, honeycomb signet and bee tattoo"
             />
           </div>
         </div>
