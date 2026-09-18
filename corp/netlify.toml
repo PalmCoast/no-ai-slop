@@ -1,0 +1,80 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+  functions = "netlify/functions"
+
+[build.environment]
+  NODE_VERSION = "22"
+
+[functions]
+  node_bundler = "esbuild"
+
+[dev]
+  command = "npm run dev"
+  targetPort = 5174
+  port = 8888
+  framework = "#custom"
+
+# Clean URL aliases from the previous static site.
+[[redirects]]
+  from = "/about.html"
+  to = "/about"
+  status = 301
+
+[[redirects]]
+  from = "/hive.html"
+  to = "/rankings"
+  status = 301
+
+[[redirects]]
+  from = "/hive"
+  to = "/rankings"
+  status = 301
+
+[[redirects]]
+  from = "/apps"
+  to = "/rankings"
+  status = 301
+
+[[redirects]]
+  from = "/portfolio"
+  to = "/rankings"
+  status = 301
+
+[[redirects]]
+  from = "/the-buzz"
+  to = "/buzz"
+  status = 301
+
+[[redirects]]
+  from = "/swarm"
+  to = "/#roster"
+  status = 302
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    X-Frame-Options = "DENY"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=()"
+
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/brand/*"
+  [headers.values]
+    Cache-Control = "public, max-age=86400"
+
+[[headers]]
+  for = "/llms.txt"
+  [headers.values]
+    Content-Type = "text/plain; charset=utf-8"
