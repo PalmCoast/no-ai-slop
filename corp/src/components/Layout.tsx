@@ -132,7 +132,6 @@ export default function Layout() {
           <div>
             <strong>Contact</strong>
             <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>
-            <a href="mailto:coltsinsider@gmail.com">coltsinsider@gmail.com</a>
             <a href={`tel:${CONSULT_TEL}`}>
               {FD_NAME} {CONSULT_DISPLAY}
             </a>

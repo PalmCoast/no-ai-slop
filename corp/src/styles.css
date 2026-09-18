@@ -231,7 +231,7 @@ button, input, textarea { font: inherit; }
   padding: 1.4rem 0 0.4rem;
 }
 .ask-ai-bar {
-  --ask-accent: var(--amber);
+  --ask-accent: var(--gold);
   box-sizing: border-box;
   width: 100%;
   padding: 1rem 1.15rem;
