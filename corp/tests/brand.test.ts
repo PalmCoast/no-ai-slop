@@ -9,12 +9,16 @@ import {
   CONSULT_RATES,
   CONTACT_EMAIL,
   CALENDLY_URL,
+  FD_CHECK_LABEL,
+  FD_CHECK_URL,
+  FD_CONSULT_URL,
   FD_CTA_LABEL,
   FD_NAME,
   FD_PRICE,
   FD_PROMISE,
   FD_URL,
   FOOTER_LINE,
+  FREE_30_LABEL,
   HERO_H1,
   HERO_WHAT,
   HERO_WHY,
@@ -22,7 +26,10 @@ import {
   INDEXME_NAME,
   INDEXME_URL,
   LEGAL_NAME,
+  MONEY_FOOTER_LINKS,
   OTHER_HIVES,
+  SEAT_CIRCUIT_NAME,
+  SEAT_CIRCUIT_URL,
 } from "../shared/brand";
 
 function walk(dir: string, acc: string[] = []): string[] {
@@ -43,6 +50,8 @@ describe("AgentHive Inc brand facts", () => {
     expect(CONSULT_DISPLAY).toBe("+1 320-335-6186");
     expect(FD_NAME).toBe("First Deploy AI");
     expect(FD_URL).toBe("https://firstdeploy.ai/");
+    expect(FD_CHECK_URL).toBe("https://firstdeploy.ai/#check");
+    expect(FD_CONSULT_URL).toBe("https://firstdeploy.ai/consult");
     expect(FD_PRICE).toBe("$1,500 setup, then $250/mo");
     expect(FD_PROMISE).toMatch(/Live this week/i);
     expect(INDEXME_NAME).toBe("IndexMe.lol");
@@ -51,6 +60,10 @@ describe("AgentHive Inc brand facts", () => {
     expect(CALENDLY_URL).toBe("https://calendly.com/coltsinsider/30min");
     expect(FD_CTA_LABEL).toBe("Start First Deploy");
     expect(BOOK_CTA_LABEL).toBe("Book the free 30");
+    expect(FREE_30_LABEL).toBe("Free 30");
+    expect(FD_CHECK_LABEL).toBe("2-minute check");
+    expect(SEAT_CIRCUIT_NAME).toBe("Seat & Circuit");
+    expect(SEAT_CIRCUIT_URL).toBe("https://infrastructure.agenthiveinc.com/");
     expect(CONSULT_RATES).toBe("$75 / 30 min · $150 / hour");
     expect(HERO_H1).toMatch(/field operations/);
     expect(HERO_WHAT).toMatch(/dirt, plants, and shops/);
@@ -96,6 +109,29 @@ describe("AgentHive Inc brand facts", () => {
     expect(layout).toMatch(/OTHER_HIVES/);
   });
 
+  it("footer ships the FD-first money links and no netlify.app destinations", () => {
+    const layout = readFileSync(join(fileURLToPath(new URL("../src/components/Layout.tsx", import.meta.url))), "utf8");
+    expect(layout).toMatch(/MONEY_FOOTER_LINKS/);
+    expect(layout).not.toMatch(/netlify\.app/);
+    expect(layout).not.toMatch(/INDEXME_|Live work|WriteHive|Bot Lock/);
+    expect(MONEY_FOOTER_LINKS).toHaveLength(5);
+    expect(MONEY_FOOTER_LINKS.map((link) => link.href)).toEqual([
+      "https://firstdeploy.ai/",
+      "https://firstdeploy.ai/#check",
+      "https://calendly.com/coltsinsider/30min",
+      "https://firstdeploy.ai/consult",
+      "https://infrastructure.agenthiveinc.com/",
+    ]);
+    expect(MONEY_FOOTER_LINKS.map((link) => link.label)).toEqual([
+      "First Deploy AI",
+      "2-minute check",
+      "Free 30",
+      "Consult",
+      "Seat & Circuit",
+    ]);
+    expect(MONEY_FOOTER_LINKS.every((link) => !link.href.includes("netlify.app"))).toBe(true);
+  });
+
   it("does not ship stale First Deploy prices or firstdeploy.dev", () => {
     const files = walk(join(fileURLToPath(new URL("..", import.meta.url))));
     const hits: string[] = [];
@@ -132,9 +168,12 @@ describe("AgentHive Inc brand facts", () => {
         .replace(/firstdeploy\.ai/g, "")
         .replace(/FD_NAME/g, "First Deploy AI")
         .replace(/FD_URL/g, "")
+        .replace(/FD_CHECK_URL/g, "")
         .replace(/FD_CONSULT_URL/g, "")
         .replace(/FD_PRICE/g, "")
         .replace(/FD_CTA_LABEL/g, "")
+        .replace(/FD_CHECK_LABEL/g, "")
+        .replace(/MONEY_FOOTER_LINKS/g, "")
         .replace(/Start First Deploy(?! AI)/g, "");
       if (/First Deploy(?! AI)/.test(text)) hits.push(file);
     }

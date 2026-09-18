@@ -8,14 +8,12 @@ import {
   CONSULT_DISPLAY,
   CONSULT_TEL,
   CONTACT_EMAIL,
-  FD_CONSULT_URL,
   FD_NAME,
   FD_URL,
-  INDEXME_NAME,
-  INDEXME_URL,
   LEGAL_NAME,
   ADDRESS_LINE,
   FOOTER_LINE,
+  MONEY_FOOTER_LINKS,
   OTHER_HIVES,
   VOICE_DISPLAY,
   VOICE_TEL,
@@ -128,12 +126,18 @@ export default function Layout() {
             <Link to="/build">Custom Builds</Link>
           </div>
           <div>
-            <strong>Live work</strong>
-            <a href={FD_URL}>{FD_NAME}</a>
-            <a href={INDEXME_URL}>{INDEXME_NAME}</a>
-            <a href={FD_CONSULT_URL}>Consult</a>
-            <a href="https://writehive.netlify.app/">WriteHive</a>
-            <a href="https://bot-lock.netlify.app/">Bot Lock</a>
+            <strong>Start</strong>
+            {MONEY_FOOTER_LINKS.map((link) =>
+              "external" in link && link.external ? (
+                <a key={link.href} href={link.href} rel="noreferrer" target="_blank">
+                  {link.label}
+                </a>
+              ) : (
+                <a key={link.href} href={link.href}>
+                  {link.label}
+                </a>
+              ),
+            )}
           </div>
           <div>
             <strong>Contact</strong>
