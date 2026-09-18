@@ -36,7 +36,7 @@ export default function Home() {
           <div className="eyebrow">
             <span className="dot" /> {BRAND_NAME} · {BRAND_PLACE} · AI consultant who builds
           </div>
-          <h1 className="display" style={{ fontSize: "clamp(2.1rem, 5vw, 3.6rem)", lineHeight: 1.08 }}>
+          <h1 className="display" style={{ fontSize: "clamp(1.85rem, 4.2vw, 3.1rem)", lineHeight: 1.12 }}>
             {HERO_H1}
           </h1>
           <p className="lede">{HERO_WHAT}</p>
@@ -44,7 +44,7 @@ export default function Home() {
             {HERO_WHY}
           </p>
           <p className="fine" style={{ marginBottom: "1rem", color: "var(--ink)" }}>
-            {FD_NAME}: $1,500 setup — {FD_PROMISE.toLowerCase()} — then $250/mo. {FD_PRICE}.
+            {FD_NAME}: {FD_PRICE}. {FD_PROMISE}.
           </p>
           <div className="hero-actions">
             <a className="btn btn-primary" href={FD_URL}>
