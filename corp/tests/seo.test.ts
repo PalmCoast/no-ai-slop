@@ -47,6 +47,9 @@ describe("per-route SEO", () => {
     expect(home).toContain("First Deploy AI");
     expect(home).toContain("IndexMe.lol");
     expect(home).toContain("AI consultant who builds");
+    expect(home).toContain("field operations");
+    expect(home).toContain("Start First Deploy");
+    expect(home).toContain("Book the free 30");
     expect(home).toContain("IndexNow");
     expect(about).toContain("calendly.com/coltsinsider/30min");
     expect(home).toContain('rel="canonical" href="https://agenthiveinc.com/"');
@@ -102,6 +105,14 @@ describe("per-route SEO", () => {
     expect(txt).toContain("https://firstdeploy.ai/");
     expect(txt).toContain("https://calendly.com/coltsinsider/30min");
     expect(txt).toContain("IndexNow");
+    expect(txt).toContain("field operations");
+    expect(txt).toContain("$1,500");
+    expect(txt).toContain("$250");
+    expect(txt).toContain("https://firstdeploy.ai");
+    expect(txt).toContain("https://calendly.com/coltsinsider/30min");
+    expect(txt).toContain("agenthive.io");
+    expect(txt).toContain("agenthive.co");
+    expect(txt).toContain("AgentHive Inc · Palm Coast, FL · firstdeploy.ai");
   });
 
   it("keeps sitemap.xml to agenthiveinc.com HTML routes only", () => {

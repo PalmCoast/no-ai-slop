@@ -1,26 +1,26 @@
 # AgentHive Inc
 
-> AgentHive Inc (AGENTHIVEINCCOM LLC, Palm Coast, Florida) is an AI consultant who builds. First Deploy AI is the cash product ($1,500 setup — live this week or you do not pay — then $250/month) at https://firstdeploy.ai. IndexMe.lol is the honest IndexNow indexing desk at https://indexme.lol. Consulting is how you buy time in the room.
+> AgentHive Inc (AGENTHIVEINCCOM LLC, Palm Coast, Florida) embeds working AI in field operations. First Deploy AI is the cash product: $1,500 setup — live this week or you do not pay the setup — then $250/month at https://firstdeploy.ai. Book a free 30-minute qualifier at https://calendly.com/coltsinsider/30min, then $75 / 30 min or $150 / hour. IndexMe.lol is the honest IndexNow indexing desk at https://indexme.lol.
 
-AgentHive Inc embeds working AI in real operations, then leaves it running. Public site: https://agenthiveinc.com. Distinct from other “AgentHive” names in insurance, OSS, or QpiAI.
+AgentHive Inc is a Palm Coast consultant who builds: after-hours booking plus live apps for dirt, plants, and shops. Why it matters: night calls go unanswered, quotes live on a whiteboard, and the crew waits on the owner. Public site: https://agenthiveinc.com. AgentHive Inc · Palm Coast, FL · firstdeploy.ai. Not agenthive.io (insurance) or agenthive.co. Distinct from other “AgentHive” names in insurance, OSS, or QpiAI.
 
 ## This site
-- [AgentHive Inc](https://agenthiveinc.com/): Palm Coast AI consultant shop. First Deploy AI and IndexMe.lol.
-- [About](https://agenthiveinc.com/about): Who we are, legal name, contact, 95 Barrington Drive, Palm Coast, FL 32137.
+- [AgentHive Inc](https://agenthiveinc.com/): Palm Coast AI consultant who builds. Start First Deploy or book the free 30.
+- [About](https://agenthiveinc.com/about): Who we are, legal name, contact, 95 Barrington Drive, Palm Coast, FL 32137. Grok Bot / swarm lore lives here, not on the money homepage.
 - [The Buzz](https://agenthiveinc.com/buzz): Weekly AI and infrastructure briefing.
 - [Rankings](https://agenthiveinc.com/rankings): Live ranking of public AgentHive Inc apps.
 - [Custom Builds](https://agenthiveinc.com/build): First Deploy AI embeds. Live this week or you do not pay setup.
 
 ## Company
-- [First Deploy AI](https://firstdeploy.ai/): After-hours desk and live apps for field operators. $1,500 setup, then $250/month.
-- [Consult](https://firstdeploy.ai/consult): Free 30-minute qualifier, then $75 / 30 min, $150 / hour, or a 10-hour pack at $1,250.
+- [First Deploy AI](https://firstdeploy.ai/): After-hours desk and live apps for field operators. $1,500 setup, then $250/month. Live this week or you do not pay the setup.
+- [Consult](https://calendly.com/coltsinsider/30min): Free 30-minute qualifier, then $75 / 30 min or $150 / hour. 10-hour pack $1,250.
 - [IndexMe.lol](https://indexme.lol/): Honest IndexNow indexing desk. Pro $19.99, Studio $29.99, one-time.
 - [Flick](https://flick.firstdeploy.ai/): Browser screen recorder. Send a link. No login wall.
 - [JobProof](https://jobproof.firstdeploy.ai/): Proof you did the work, not a resume stack.
 - [ClaudeFarm](https://claudefarm.com/): Public storefront for First Deploy AI and consult time.
 
 ## Also shipped
-Live apps from the same shop. Prefer the custom domains above. A longer public board is on [Rankings](https://agenthiveinc.com/rankings).
+Live apps from the same shop. Prefer the custom domains above. A longer public board is on [Rankings](https://agenthiveinc.com/rankings). Shipped for field operators in dirty physical businesses — including a commercial earth mover. No client names.
 
 ## Contact
 - Book 30 minutes: https://calendly.com/coltsinsider/30min
@@ -29,3 +29,4 @@ Live apps from the same shop. Prefer the custom domains above. A longer public b
 - AgentHive voice: +1 509-357-2230
 - Legal: AgentHive Inc / AGENTHIVEINCCOM LLC
 - Address: 95 Barrington Drive, Palm Coast, FL 32137
+- Disambiguation: AgentHive Inc · Palm Coast, FL · firstdeploy.ai. Not agenthive.io (insurance) or agenthive.co.

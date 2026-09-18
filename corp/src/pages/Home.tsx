@@ -1,25 +1,30 @@
 import AskAiBar from "../components/AskAiBar";
 import {
+  BOOK_CTA_LABEL,
   BRAND_NAME,
   BRAND_PLACE,
-  BRAND_URL,
   CALENDLY_URL,
   CONSULT_DISPLAY,
+  CONSULT_RATES,
   CONSULT_TEL,
+  FD_CTA_LABEL,
   FD_NAME,
   FD_PRICE,
   FD_PROMISE,
   FD_URL,
+  HERO_H1,
+  HERO_WHAT,
+  HERO_WHY,
   INDEXME_BLURB,
   INDEXME_NAME,
   INDEXME_URL,
 } from "../../shared/brand";
 import { HIVE_SITES } from "../../shared/portfolio";
 
-const ALSO_SHIPPED = ["flick", "jobproof", "bot-lock", "writehive"];
+const PROOF_SLUGS = ["flick", "jobproof", "indexme", "claudefarm"];
 
 export default function Home() {
-  const shipped = HIVE_SITES.filter((site) => ALSO_SHIPPED.includes(site.slug));
+  const proof = HIVE_SITES.filter((site) => PROOF_SLUGS.includes(site.slug));
 
   return (
     <>
@@ -29,33 +34,29 @@ export default function Home() {
         </div>
         <div className="hero-copy">
           <div className="eyebrow">
-            <span className="dot" /> AI consultant who builds · {BRAND_PLACE} · agenthiveinc.com
+            <span className="dot" /> {BRAND_NAME} · {BRAND_PLACE} · AI consultant who builds
           </div>
-          <h1 className="display">
-            We ship the thing
-            <br />
-            <em>you can sell.</em>
+          <h1 className="display" style={{ fontSize: "clamp(1.85rem, 4.2vw, 3.1rem)", lineHeight: 1.12 }}>
+            {HERO_H1}
           </h1>
-          <p className="lede">
-            {BRAND_NAME} is a Palm Coast AI consultant who builds. We embed working software in the operation and leave
-            it running. {FD_NAME} is $1,500 setup — {FD_PROMISE.toLowerCase()} — then $250/mo at{" "}
-            <a href={FD_URL}>firstdeploy.ai</a>. {INDEXME_NAME} is the {INDEXME_BLURB} at{" "}
-            <a href={INDEXME_URL} rel="noreferrer" target="_blank">
-              indexme.lol
-            </a>
-            .
+          <p className="lede">{HERO_WHAT}</p>
+          <p className="lede" style={{ marginTop: "-0.6rem" }}>
+            {HERO_WHY}
+          </p>
+          <p className="fine" style={{ marginBottom: "1rem", color: "var(--ink)" }}>
+            {FD_NAME}: {FD_PRICE}. {FD_PROMISE}.
           </p>
           <div className="hero-actions">
             <a className="btn btn-primary" href={FD_URL}>
-              Start {FD_NAME}
+              {FD_CTA_LABEL}
             </a>
-            <a className="btn btn-outline" href={INDEXME_URL} rel="noreferrer" target="_blank">
-              Open {INDEXME_NAME}
+            <a className="btn btn-primary" href={CALENDLY_URL} rel="noreferrer" target="_blank">
+              {BOOK_CTA_LABEL}
             </a>
           </div>
           <p className="fine">
-            {FD_PRICE}. {FD_PROMISE}. Consult:{" "}
-            <a href={`tel:${CONSULT_TEL}`}>{CONSULT_DISPLAY}</a>
+            Free 30-minute qualifier, then {CONSULT_RATES}. Phone{" "}
+            <a href={`tel:${CONSULT_TEL}`}>{CONSULT_DISPLAY}</a>.
           </p>
         </div>
       </section>
@@ -65,103 +66,104 @@ export default function Home() {
       <section className="section" id="work">
         <div className="container">
           <div className="section-head">
-            <h2>What you can buy</h2>
+            <h2>Why field owners buy</h2>
             <p>
-              {BRAND_NAME} sells work that ships. {FD_NAME} is the cash product. {INDEXME_NAME} is the IndexNow desk.
+              {BRAND_NAME} embeds the after-hours desk and the live apps so the shop keeps moving when the owner is
+              off the phone.
             </p>
+          </div>
+          <div className="trust-grid" style={{ gridTemplateColumns: "repeat(3, 1fr)" }}>
+            <article className="trust">
+              <h3>Missed night calls</h3>
+              <p className="muted">The phone rings after hours. Nobody books the job. That leak is the desk.</p>
+            </article>
+            <article className="trust">
+              <h3>Whiteboard quotes</h3>
+              <p className="muted">The number lives on a wall, not in a link the customer can pay.</p>
+            </article>
+            <article className="trust">
+              <h3>Crew waiting on the owner</h3>
+              <p className="muted">Dirt, plants, and shops stall when only one person can say yes.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section className="section section-alt" id="buy">
+        <div className="container">
+          <div className="section-head">
+            <h2>What you can buy</h2>
+            <p>Prices stay on this page. {FD_NAME} is the cash product. {INDEXME_NAME} is a secondary money tool.</p>
           </div>
           <div className="cta-split">
             <article className="panel">
               <p className="eyebrow">Cash product</p>
               <h2>{FD_NAME}</h2>
               <p style={{ marginTop: 12 }}>
-                After-hours desk plus the live apps for field operators. $1,500 setup — {FD_PROMISE.toLowerCase()} —
-                then $250/mo. {FD_PRICE}.
+                After-hours booking plus live apps for dirt, plants, and shops. $1,500 setup —{" "}
+                {FD_PROMISE.toLowerCase()} — then $250/mo.
               </p>
-              <div className="hero-actions" style={{ marginTop: 18 }}>
-                <a className="btn btn-primary" href={FD_URL}>
-                  firstdeploy.ai
-                </a>
-                <a className="btn btn-outline" href={`tel:${CONSULT_TEL}`}>
-                  {CONSULT_DISPLAY}
-                </a>
-              </div>
+              <p className="muted" style={{ marginTop: 12 }}>
+                Consult: free 30-minute qualifier, then {CONSULT_RATES}. 10-hour pack $1,250 (half up front).
+              </p>
             </article>
             <article className="panel">
-              <p className="eyebrow">Get found</p>
+              <p className="eyebrow">Secondary</p>
               <h2>{INDEXME_NAME}</h2>
               <p style={{ marginTop: 12 }}>
                 The {INDEXME_BLURB}. Pro $19.99 · Studio $29.99, one-time. Get the page found before you spend more on
                 ads.
               </p>
-              <div className="hero-actions" style={{ marginTop: 18 }}>
-                <a className="btn btn-primary" href={INDEXME_URL} rel="noreferrer" target="_blank">
+              <p className="muted" style={{ marginTop: 12 }}>
+                <a href={INDEXME_URL} rel="noreferrer" target="_blank">
                   indexme.lol
                 </a>
-              </div>
+              </p>
             </article>
           </div>
         </div>
       </section>
 
-      <section className="section section-alt" id="consult">
-        <div className="container">
-          <div className="pricing-box">
-            <h2>Need a person in the room?</h2>
-            <p>Free 30-minute qualifier. Then paid time — or a fixed deploy if the leak is clear.</p>
-            <p style={{ margin: "1rem 0 1.4rem" }}>$75 / 30 min · $150 / hour · 10-hour pack $1,250 (half up front)</p>
-            <a className="btn btn-primary" href={CALENDLY_URL} rel="noreferrer" target="_blank">
-              Book the free 30
-            </a>
-            <p className="fine" style={{ marginTop: 12 }}>
-              {FD_NAME} consult line: <a href={`tel:${CONSULT_TEL}`}>{CONSULT_DISPLAY}</a>
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <section className="section" id="also-shipped">
+      <section className="section" id="proof">
         <div className="container">
           <div className="section-head">
-            <h2>Also shipped</h2>
-            <p>A few live apps from the same shop. The full public board is on Rankings — not the homepage hero.</p>
+            <h2>Shipped for field operators</h2>
+            <p>
+              Built for field operators in dirty physical businesses — including a commercial earth mover. Public apps
+              below. No client names.
+            </p>
           </div>
           <div className="card-grid" style={{ gridTemplateColumns: "repeat(2, 1fr)" }}>
-            {shipped.map((site) => (
+            {proof.map((site) => (
               <a key={site.slug} className="card" href={site.url} rel="noreferrer" target="_blank">
                 <h3>{site.name}</h3>
                 <p className="muted">{site.description}</p>
               </a>
             ))}
           </div>
-          <div className="hero-actions" style={{ marginTop: 18 }}>
-            <a className="btn btn-outline" href="/rankings">
-              Open Rankings
-            </a>
-            <a className="btn btn-outline" href="/buzz">
-              Read The Buzz
-            </a>
-          </div>
+          <p className="fine" style={{ marginTop: 18 }}>
+            Full public board on <a href="/rankings">Rankings</a>. Weekly briefing on <a href="/buzz">The Buzz</a>.
+          </p>
         </div>
       </section>
 
       <section className="section section-alt">
         <div className="container">
           <div className="cta-box">
-            <h2>Ready to ship?</h2>
+            <h2>Start this week</h2>
             <p>
-              {BRAND_NAME} · {BRAND_PLACE} ·{" "}
-              <a href={BRAND_URL}>agenthiveinc.com</a>
+              {FD_NAME}: {FD_PRICE}. {FD_PROMISE}.
             </p>
-            <a className="btn btn-primary" href={FD_URL} style={{ marginTop: 16 }}>
-              Start {FD_NAME}
-            </a>
-            <p className="fine" style={{ marginTop: 16 }}>
-              Consult: <a href={`tel:${CONSULT_TEL}`}>{CONSULT_DISPLAY}</a>
-              {" · "}
-              <a href={CALENDLY_URL} rel="noreferrer" target="_blank">
-                Book 30 minutes
+            <div className="hero-actions" style={{ justifyContent: "center", marginTop: 18, marginBottom: 0 }}>
+              <a className="btn btn-primary" href={FD_URL}>
+                {FD_CTA_LABEL}
               </a>
+              <a className="btn btn-primary" href={CALENDLY_URL} rel="noreferrer" target="_blank">
+                {BOOK_CTA_LABEL}
+              </a>
+            </div>
+            <p className="fine" style={{ marginTop: 16 }}>
+              Phone <a href={`tel:${CONSULT_TEL}`}>{CONSULT_DISPLAY}</a>
             </p>
           </div>
         </div>
