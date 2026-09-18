@@ -64,7 +64,7 @@ export default function Consult() {
             <article className="trust">
               <p className="eyebrow">The door</p>
               <h3>Free 30 on Calendly</h3>
-              <p className="muted">Then paid time, or a fixed deploy if the leak is clear. Book gold. Pay on Stripe.</p>
+              <p className="muted">Then paid time, or a fixed deploy if the leak is clear. Book the free 30. Pay on Stripe.</p>
             </article>
             <article className="trust">
               <p className="eyebrow">The rates</p>

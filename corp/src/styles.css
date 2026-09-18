@@ -369,6 +369,11 @@ button, input, textarea { font: inherit; }
 
 .consult-hero .hero-media img { object-position: 50% 42%; }
 .consult-hero .hero-copy { max-width: 620px; }
+.consult-hero .hero-media::after {
+  background:
+    linear-gradient(90deg, rgba(5,4,3,0.78) 0%, rgba(5,4,3,0.48) 36%, rgba(5,4,3,0.12) 68%, rgba(5,4,3,0.4) 100%),
+    linear-gradient(180deg, rgba(5,4,3,0.12), rgba(5,4,3,0.58));
+}
 .consult-frame img { min-height: 360px; object-position: 50% 58%; }
 .consult-offers { grid-template-columns: repeat(4, 1fr); }
 .rate-grid {
@@ -464,4 +469,9 @@ footer {
   .hero-media img { object-position: 70% 10%; }
   .display { font-size: clamp(2.6rem, 12vw, 4.2rem); }
   .note { border-right: 0; }
+  .consult-hero .hero-media img { object-position: 50% 40%; }
+  .consult-hero .hero-media::after {
+    background: linear-gradient(180deg, rgba(5,4,3,0.28) 0%, rgba(5,4,3,0.5) 46%, rgba(5,4,3,0.9) 100%);
+  }
+  .consult-hero .hero-copy { max-width: none; }
 }
