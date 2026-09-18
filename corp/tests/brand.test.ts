@@ -3,18 +3,26 @@ import { join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { describe, expect, it } from "vitest";
 import {
+  BOOK_CTA_LABEL,
   BRAND_NAME,
   CONSULT_DISPLAY,
+  CONSULT_RATES,
   CONTACT_EMAIL,
   CALENDLY_URL,
+  FD_CTA_LABEL,
   FD_NAME,
   FD_PRICE,
   FD_PROMISE,
   FD_URL,
+  FOOTER_LINE,
+  HERO_H1,
+  HERO_WHAT,
+  HERO_WHY,
   INDEXME_BLURB,
   INDEXME_NAME,
   INDEXME_URL,
   LEGAL_NAME,
+  OTHER_HIVES,
 } from "../shared/brand";
 
 function walk(dir: string, acc: string[] = []): string[] {
@@ -41,17 +49,33 @@ describe("AgentHive Inc brand facts", () => {
     expect(INDEXME_URL).toBe("https://indexme.lol/");
     expect(INDEXME_BLURB).toMatch(/IndexNow/);
     expect(CALENDLY_URL).toBe("https://calendly.com/coltsinsider/30min");
+    expect(FD_CTA_LABEL).toBe("Start First Deploy");
+    expect(BOOK_CTA_LABEL).toBe("Book the free 30");
+    expect(CONSULT_RATES).toBe("$75 / 30 min · $150 / hour");
+    expect(HERO_H1).toMatch(/field operations/);
+    expect(HERO_WHAT).toMatch(/dirt, plants, and shops/);
+    expect(HERO_WHY).toMatch(/whiteboard/);
+    expect(FOOTER_LINE).toBe("AgentHive Inc · Palm Coast, FL · firstdeploy.ai");
+    expect(OTHER_HIVES).toMatch(/agenthive\.io/);
+    expect(OTHER_HIVES).toMatch(/agenthive\.co/);
   });
 
   it("homepage teaches the consultant shop, not the 12-bot swarm", () => {
     const home = readFileSync(join(fileURLToPath(new URL("../src/pages/Home.tsx", import.meta.url))), "utf8");
     expect(home).toMatch(/AI consultant who builds/);
+    expect(home).toMatch(/HERO_H1|field operations/);
     expect(home).toMatch(/FD_NAME|First Deploy AI/);
+    expect(home).toMatch(/FD_CTA_LABEL|Start First Deploy/);
+    expect(home).toMatch(/BOOK_CTA_LABEL|Book the free 30/);
     expect(home).toMatch(/INDEXME_NAME|IndexMe/);
     expect(home).toMatch(/INDEXME_BLURB|IndexNow/);
     expect(home).toMatch(/firstdeploy\.ai/);
+    expect(home).toMatch(/commercial earth mover|dirty physical businesses/);
     expect(home).not.toMatch(/12 Grok Bots|The Swarm Roster|Recruit your first Grok Bot|bootstrapped/i);
     expect(home).not.toMatch(/14 apps|\$70k/i);
+    expect(home).not.toMatch(/netlify\.app/);
+    const primaryHrefs = [...home.matchAll(/className="btn btn-primary"[^>]*href=\{([^}]+)\}/g)].map((m) => m[1]);
+    expect(new Set(primaryHrefs)).toEqual(new Set(["FD_URL", "CALENDLY_URL"]));
   });
 
   it("About keeps Inc vs LLC, Calendly, and the 320 consult line", () => {
@@ -60,7 +84,16 @@ describe("AgentHive Inc brand facts", () => {
     expect(about).toMatch(/CONSULT_DISPLAY|320-335-6186/);
     expect(about).toMatch(/LEGAL_NAME|AGENTHIVEINCCOM LLC/);
     expect(about).toMatch(/QpiAI|insurance hive|OSS/);
+    expect(about).toMatch(/agenthive\.io|agenthive\.co|OTHER_HIVES/);
+    expect(about).toMatch(/Grok Bots|The hive/);
     expect(about).not.toMatch(/14 apps|\$70k|bootstrapped/i);
+    expect(about).not.toMatch(/hivebriefcase\.netlify\.app/);
+  });
+
+  it("footer disambiguates AgentHive Inc from other AgentHives", () => {
+    const layout = readFileSync(join(fileURLToPath(new URL("../src/components/Layout.tsx", import.meta.url))), "utf8");
+    expect(layout).toMatch(/FOOTER_LINE/);
+    expect(layout).toMatch(/OTHER_HIVES/);
   });
 
   it("does not ship stale First Deploy prices or firstdeploy.dev", () => {
@@ -100,7 +133,9 @@ describe("AgentHive Inc brand facts", () => {
         .replace(/FD_NAME/g, "First Deploy AI")
         .replace(/FD_URL/g, "")
         .replace(/FD_CONSULT_URL/g, "")
-        .replace(/FD_PRICE/g, "");
+        .replace(/FD_PRICE/g, "")
+        .replace(/FD_CTA_LABEL/g, "")
+        .replace(/Start First Deploy(?! AI)/g, "");
       if (/First Deploy(?! AI)/.test(text)) hits.push(file);
     }
     expect(hits, hits.join("\n")).toEqual([]);

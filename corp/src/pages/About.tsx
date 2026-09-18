@@ -11,6 +11,7 @@ import {
   FD_URL,
   LEGAL_NAME,
   ADDRESS_LINE,
+  OTHER_HIVES,
   VOICE_DISPLAY,
   VOICE_TEL,
 } from "../../shared/brand";
@@ -31,14 +32,14 @@ export default function About() {
               About {BRAND_NAME}
             </h1>
             <p className="lede">
-              {BRAND_NAME} is a Palm Coast AI consultant shop. Daniel Graham embeds working AI in real operations —
+              {BRAND_NAME} is a Palm Coast AI consultant shop. Daniel Graham embeds working AI in field operations —
               prompts, stack, and hard code — then leaves it running. {FD_NAME} is the product. Consulting is how you
               buy time in the room.
             </p>
             <p className="muted">
               Public brand {BRAND_NAME}. Legal name {LEGAL_NAME}. Site{" "}
               <a href={BRAND_URL}>agenthiveinc.com</a>. {ADDRESS_LINE}. This is the Palm Coast shop behind {FD_NAME} —
-              not QpiAI, not an insurance hive, not an OSS org with a similar name.
+              not QpiAI, not agenthive.io (insurance), not agenthive.co, not an OSS org with a similar name.
             </p>
           </div>
         </div>
@@ -163,19 +164,23 @@ export default function About() {
       <section className="section">
         <div className="container cta-split">
           <div>
-            <h2>What {BRAND_NAME} is building now</h2>
+            <h2>The hive, off the money page</h2>
             <p className="muted" style={{ margin: "0.8rem 0 1rem" }}>
-              {FD_NAME} is the cash product. HiveBriefcase is portable identity and micropayments for agents. Bot Lock is
-              the control plane.
+              Twelve named Grok Bots write The Buzz and rank live apps. That lore stays here — not on the homepage a
+              field owner uses to buy. {FD_NAME} is the cash product. HiveBriefcase and Bot Lock are infra, listed on
+              Rankings.
             </p>
             <div className="hero-actions">
               <a className="btn btn-primary" href={FD_URL}>
                 {FD_NAME}
               </a>
-              <a className="btn btn-outline" href="https://hivebriefcase.netlify.app/">
-                HiveBriefcase
+              <a className="btn btn-outline" href="/rankings">
+                Open Rankings
               </a>
             </div>
+            <p className="fine" style={{ marginTop: 16 }}>
+              {OTHER_HIVES}
+            </p>
           </div>
           <div className="frame">
             <img src="/brand/hive-fleet.jpg" alt="Gold honeycomb tunnel with a swarm of craft" />

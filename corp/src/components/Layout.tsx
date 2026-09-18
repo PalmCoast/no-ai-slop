@@ -15,6 +15,8 @@ import {
   INDEXME_URL,
   LEGAL_NAME,
   ADDRESS_LINE,
+  FOOTER_LINE,
+  OTHER_HIVES,
   VOICE_DISPLAY,
   VOICE_TEL,
 } from "../../shared/brand";
@@ -106,7 +108,9 @@ export default function Layout() {
               <br />
               AI consultant shop. {ADDRESS_LINE}.
               <br />
-              Ship fast. Learn in public. Build AI that earns while you sleep.
+              {FOOTER_LINE}
+              <br />
+              {OTHER_HIVES}
             </p>
             <p>
               Consult:{" "}
@@ -148,7 +152,7 @@ export default function Layout() {
           <div>
             © 2026 {BRAND_NAME} · {LEGAL_NAME} · {BRAND_PLACE}
           </div>
-          <div>agenthiveinc.com</div>
+          <div>{FOOTER_LINE}</div>
         </div>
       </footer>
     </div>
