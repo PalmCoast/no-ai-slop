@@ -218,7 +218,16 @@ input {
   padding: 0.9rem 1rem;
   cursor: pointer;
 }
-.choice strong { display: block; margin-bottom: 0.2rem; }
+.choice strong { display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; margin-bottom: 0.2rem; }
+.on-tag {
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #1a1204;
+  background: var(--gold);
+  border-radius: 999px;
+  padding: 0.12rem 0.45rem;
+}
 .choice span { color: var(--muted); font-size: 0.88rem; }
 .choice.on { border-color: var(--gold); background: #1a140c; }
 .takeaways { padding-left: 1.1rem; color: #e7d9b8; }

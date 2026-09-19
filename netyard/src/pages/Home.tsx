@@ -142,7 +142,7 @@ export default function Home() {
                         setAnswers({
                           ...answers,
                           headcount: band,
-                          peopleCount: clampPeople(band, meta.defaultPeople),
+                          peopleCount: meta.defaultPeople,
                         })
                       }
                     >
@@ -175,9 +175,13 @@ export default function Home() {
                       type="button"
                       key={need}
                       className={on ? "choice on" : "choice"}
+                      aria-pressed={on}
                       onClick={() => toggleNeed(answers, setAnswers, need)}
                     >
-                      <strong>{meta.label}</strong>
+                      <strong>
+                        {meta.label}
+                        {on ? <span className="on-tag">On</span> : null}
+                      </strong>
                       <span>{meta.hint}</span>
                     </button>
                   );

@@ -9,7 +9,7 @@ export default function Compare() {
         <p className="lede">
           A 12-person shop used to buy Windows Small Business Server. That product is gone. Essentials is gone. What is
           left is Windows Server Standard at about ${WINDOWS_SERVER_STANDARD_USD.toLocaleString()} plus about $
-          {WINDOWS_USER_CAL_USD} per person in User CALs — and you still buy a box, a switch, and a UPS.
+          {WINDOWS_USER_CAL_USD} per person in User CALs, and you still buy a box, a switch, and a UPS.
         </p>
 
         <div className="card-grid plan-grid">
