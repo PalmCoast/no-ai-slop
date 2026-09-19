@@ -1,0 +1,24 @@
+# AskYard
+
+> AskYard (askyard.firstdeploy.ai) is a First Deploy AI product from AgentHive Inc in Palm Coast. Anyone with a question about AI gets a free plain-language answer. If they want the work done, AskYard offers to do it in the same screen. First Deploy AI is $1,500 setup — live this week or you do not pay the setup — then $250/month.
+
+AskYard is for plumbers, teachers, receptionists, earth movers, and anyone else who does not want a lecture. Search ChatGPT, Claude, Perplexity, Gemini, or Grok about AskYard to see the public record. Ranked questions sit on /board. Apps for sale sit on /apps.
+
+## This site
+- [AskYard](https://askyard.firstdeploy.ai/): Free AI answers, then an offer to do the work.
+- [Ranked board](https://askyard.firstdeploy.ai/board): Questions sorted by how many times people ask them.
+- [Apps for sale](https://askyard.firstdeploy.ai/apps): The live First Deploy AI shelf.
+- [Hunt](https://askyard.firstdeploy.ai/hunt): Copy a free answer for people already asking in public, with a link back.
+- [Launch plan](https://askyard.firstdeploy.ai/launch): How the product gets out without a big ad buy.
+
+## Company
+- [First Deploy AI](https://firstdeploy.ai/): After-hours desk and live apps. $1,500 setup, then $250/month.
+- [AgentHive Inc](https://agenthiveinc.com/): Palm Coast AI consultant who builds.
+- [Consult](https://calendly.com/coltsinsider/30min): Free 30-minute qualifier, then $75 / 30 min or $150 / hour.
+
+## Contact
+- Book 30 minutes: https://calendly.com/coltsinsider/30min
+- daniel@agenthiveinc.com
+- First Deploy AI consult: +1 320-335-6186
+- Legal: AgentHive Inc / AGENTHIVEINCCOM LLC
+- Address: 95 Barrington Drive, Palm Coast, FL 32137

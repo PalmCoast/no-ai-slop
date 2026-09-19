@@ -111,6 +111,7 @@ describe("per-route SEO", () => {
     expect(txt).not.toMatch(/coltsinsider@gmail\.com/);
     expect(txt).toContain("https://flick.firstdeploy.ai/");
     expect(txt).toContain("https://jobproof.firstdeploy.ai/");
+    expect(txt).toContain("https://askyard.firstdeploy.ai/");
     expect(txt).toContain("https://firstdeploy.ai/");
     expect(txt).toContain("https://calendly.com/coltsinsider/30min");
     expect(txt).toContain("IndexNow");

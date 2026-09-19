@@ -71,6 +71,10 @@ MIT
 
 [corp/](corp/README.md) is the flagship site for [agenthiveinc.com](https://agenthiveinc.com): AgentHive Inc (AGENTHIVEINCCOM LLC, Palm Coast) AI consultant shop, First Deploy AI, IndexMe.lol, The Buzz, and a live ranking of the public Netlify portfolio. See [corp/README.md](corp/README.md).
 
+## AskYard
+
+[AskYard](askyard/README.md) is a First Deploy AI product at [askyard.firstdeploy.ai](https://askyard.firstdeploy.ai): free AI answers for plumbers, teachers, receptionists, earth movers, and anyone else with a question. Ranked by how often people ask. Apps for sale on the same site. See [askyard/README.md](askyard/README.md).
+
 ## Sonaris
 
 [Sonaris](sonaris/README.md) is a separate product in this repo: a real-time voice layer for an AI assistant with live captions, turn-taking that never talks over you, persona voices, a memory file per license, and a paid skill hosted behind a paywall. See [sonaris/README.md](sonaris/README.md) for setup and [sonaris/BRAND.md](sonaris/BRAND.md) for the brand.

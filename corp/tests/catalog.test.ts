@@ -21,6 +21,7 @@ describe("portfolio catalog", () => {
     expect(HIVE_SITES.find((s) => s.slug === "first-deploy")?.name).toBe("First Deploy AI");
     expect(urls).toContain("https://flick.firstdeploy.ai/");
     expect(urls).toContain("https://jobproof.firstdeploy.ai/");
+    expect(urls).toContain("https://askyard.firstdeploy.ai/");
     expect(urls).toContain("https://writehive.netlify.app/");
     expect(urls).toContain("https://bot-lock.netlify.app/");
     expect(urls).toContain("https://hivebriefcase.netlify.app/");
