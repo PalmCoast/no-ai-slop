@@ -51,6 +51,11 @@ export default function Board() {
               <div className="ask-count">
                 {item.asks.toLocaleString()}
                 <small>asks</small>
+                {typeof item.helpful === "number" ? (
+                  <small>
+                    {item.helpful} helpful
+                  </small>
+                ) : null}
               </div>
             </Link>
           ))}

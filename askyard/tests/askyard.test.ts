@@ -96,6 +96,8 @@ describe("seo", () => {
       expect(canonicalFor(page.path)).toMatch(/^https:\/\/askyard\.firstdeploy\.ai/);
     }
     expect(sitemapXml()).toContain("https://askyard.firstdeploy.ai/board");
+    expect(sitemapXml()).toContain("https://askyard.firstdeploy.ai/rep");
+    expect(sitemapXml()).toContain("https://askyard.firstdeploy.ai/marquee");
     expect(sitemapXml()).toContain("https://askyard.firstdeploy.ai/q/stop-missing-night-calls");
     expect(sitemapXml()).not.toContain("https://askyard.firstdeploy.ai/launch");
     expect(PAGE_SEO.some((page) => page.path === "/launch")).toBe(false);

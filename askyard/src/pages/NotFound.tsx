@@ -13,8 +13,11 @@ export default function NotFound() {
           <Link className="btn btn-outline" to="/board">
             Board
           </Link>
-          <Link className="btn btn-outline" to="/apps">
-            Apps
+          <Link className="btn btn-outline" to="/rep">
+            Reputation meter
+          </Link>
+          <Link className="btn btn-outline" to="/marquee">
+            Marquee lights
           </Link>
         </div>
       </div>

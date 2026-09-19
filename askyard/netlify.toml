@@ -70,6 +70,42 @@
   force = true
 
 [[redirects]]
+  from = "/rep"
+  to = "/rep/index.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/rep/"
+  to = "/rep/index.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/marquee"
+  to = "/marquee/index.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/marquee/"
+  to = "/marquee/index.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/marquee/thanks"
+  to = "/marquee/thanks/index.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/marquee/thanks/"
+  to = "/marquee/thanks/index.html"
+  status = 200
+  force = true
+
+[[redirects]]
   from = "/q/*"
   to = "/index.html"
   status = 200
@@ -101,3 +137,13 @@
   for = "/llms.txt"
   [headers.values]
     Content-Type = "text/plain; charset=utf-8"
+
+[[headers]]
+  for = "/api/rep"
+  [headers.values]
+    Access-Control-Allow-Origin = "*"
+    Access-Control-Allow-Methods = "GET, OPTIONS"
+
+[[edge_functions]]
+  function = "marquee-host"
+  path = "/*"

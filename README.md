@@ -73,7 +73,7 @@ MIT
 
 ## AskYard
 
-[AskYard](askyard/README.md) is a First Deploy AI product at [askyard.firstdeploy.ai](https://askyard.firstdeploy.ai): free AI answers for plumbers, teachers, receptionists, earth movers, and anyone else with a question. Ranked by how often people ask. Apps for sale on the same site. See [askyard/README.md](askyard/README.md).
+[AskYard](askyard/README.md) is a First Deploy AI product at [askyard.firstdeploy.ai](https://askyard.firstdeploy.ai): free AI answers for plumbers, teachers, receptionists, earth movers, and anyone else with a question. Ranked by how often people ask. Reputation meter on `/rep`. Marquee lights on the same site at [marquee.firstdeploy.ai](https://marquee.firstdeploy.ai/). Apps for sale on the same site. See [askyard/README.md](askyard/README.md).
 
 ## Sonaris
 

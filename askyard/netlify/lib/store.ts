@@ -7,6 +7,7 @@ import {
   type YardTotals,
 } from "../../shared/ask.ts";
 import type { HuntHit } from "../../shared/hunt.ts";
+import { rankMarquee, SEED_MARQUEE, type MarqueeListing } from "../../shared/marquee.ts";
 
 type BoardState = {
   questions: YardQuestion[];
@@ -67,4 +68,18 @@ function mergeSeed(stored: YardQuestion[]): YardQuestion[] {
     });
   }
   return [...bySlug.values()];
+}
+
+export async function readMarquee(): Promise<MarqueeListing[]> {
+  try {
+    const data = (await store().get("marquee.json", { type: "json" })) as { listings?: MarqueeListing[] } | null;
+    if (data?.listings?.length) return rankMarquee(data.listings);
+  } catch {
+    // seed
+  }
+  return rankMarquee(SEED_MARQUEE);
+}
+
+export async function writeMarquee(listings: MarqueeListing[]): Promise<void> {
+  await store().setJSON("marquee.json", { listings: rankMarquee(listings), updatedAt: new Date().toISOString() });
 }

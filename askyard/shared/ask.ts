@@ -9,6 +9,8 @@ export type YardQuestion = {
   asks: number;
   offerSlug: string;
   updatedAt: string;
+  helpful?: number;
+  missed?: number;
 };
 
 export type YardOffer = {
@@ -228,6 +230,8 @@ export const SEED_QUESTIONS: YardQuestion[] = [
     asks: 186,
     offerSlug: "first-deploy",
     updatedAt: seedDate(),
+    helpful: 74,
+    missed: 6,
     answer:
       "Put one number on the truck, the yard sign, and Google. After hours, that number should text the caller back in under a minute with two questions: what broke, and when can we come. A human reviews the thread in the morning. You do not need a new receptionist. You need the phone to catch the job while you sleep. First Deploy AI stands that desk up this week for $1,500 setup, then $250/month. If it is not live this week, you do not pay the setup.",
   },
@@ -238,6 +242,8 @@ export const SEED_QUESTIONS: YardQuestion[] = [
     asks: 142,
     offerSlug: "consult",
     updatedAt: seedDate(),
+    helpful: 51,
+    missed: 4,
     answer:
       "Yes. The receptionist should never have to open ChatGPT. Give them one page with a search bar, three buttons (book, reschedule, send the quote), and a script they already know. The model sits behind the buttons. If they have to prompt, the tool failed. AskYard is that page. If you want it wired into your real calendar and phone, book the free 30 and we do it on First Deploy AI.",
   },
@@ -248,6 +254,8 @@ export const SEED_QUESTIONS: YardQuestion[] = [
     asks: 128,
     offerSlug: "jobproof",
     updatedAt: seedDate(),
+    helpful: 48,
+    missed: 5,
     answer:
       "Photos with time and a pin beat a status meeting. The crew takes two shots: arrival and done. The customer gets a link. If someone later says nobody showed, you have the pictures. JobProof does this for Solo $49/month or Crew $99/month. Do not buy a full GPS suite for a proof problem.",
   },
