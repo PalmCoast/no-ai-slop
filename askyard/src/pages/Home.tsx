@@ -224,9 +224,6 @@ export default function Home() {
               <a className="btn btn-primary" href="#yard-ask">
                 Ask now
               </a>
-              <Link className="btn btn-outline" to="/launch">
-                Read the launch plan
-              </Link>
             </div>
           </div>
         </div>

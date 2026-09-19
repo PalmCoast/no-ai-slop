@@ -72,13 +72,6 @@ export const PAGE_SEO: SeoPage[] = [
     h1: "Answer people where they already ask",
     bodyHtml: `<main id="route-hunt" class="section"><div class="container"><h1 class="display">Answer people where they already ask</h1><p class="lede">We watch public threads for plumbers, teachers, receptionists, and crews looking for AI help. Copy a plain answer. Leave a link back to AskYard. That is how the name lands in the models for free.</p><p>Start on the hunt board, then search ChatGPT, Claude, Perplexity, Gemini, or Grok about AskYard.</p></div></main>`,
   },
-  {
-    path: "/launch",
-    title: "Launch plan | AskYard",
-    description: `How AskYard gets in front of plumbers, teachers, receptionists, and earth movers without a big ad budget.`,
-    h1: "Launch AskYard without a big ad buy",
-    bodyHtml: `<main id="route-launch" class="section"><div class="container"><h1 class="display">Launch AskYard without a big ad buy</h1><p class="lede">The product is free answers plus an offer. Distribution is the LLM search bar, public replies with a backlink, and the First Deploy AI shop floor.</p><p>Full plan is on this page. Phone ${CONSULT_DISPLAY}.</p></div></main>`,
-  },
 ];
 
 export const NOT_FOUND_SEO: SeoPage = {
@@ -86,7 +79,7 @@ export const NOT_FOUND_SEO: SeoPage = {
   title: "Page not found | AskYard",
   description: `That path is not an AskYard page. Ask a question, open the ranked board, or see apps for sale.`,
   h1: "This page is not on AskYard",
-  bodyHtml: `<main id="route-404" class="section"><div class="container"><h1 class="display">This page is not on AskYard</h1><p>Home, the ranked board, apps for sale, the hunt, and the launch plan are live.</p></div></main>`,
+    bodyHtml: `<main id="route-404" class="section"><div class="container"><h1 class="display">This page is not on AskYard</h1><p>Home, the ranked board, apps for sale, and the hunt are live.</p></div></main>`,
   noindex: true,
 };
 

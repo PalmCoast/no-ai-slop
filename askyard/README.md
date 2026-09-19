@@ -11,7 +11,6 @@ Free AI answers for anyone with a question. Then an offer to do the work.
 - Ranked board: questions sorted by how many times people ask them, with a running public total.
 - Apps for sale: the live First Deploy AI shelf.
 - Hunt: copy a free reply with a link back for people already asking in public. No auto-posting.
-- Launch plan: the distribution checklist lives at `/launch`.
 
 ## Local
 

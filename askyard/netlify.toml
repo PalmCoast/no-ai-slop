@@ -59,14 +59,14 @@
 
 [[redirects]]
   from = "/launch"
-  to = "/launch/index.html"
-  status = 200
+  to = "/"
+  status = 301
   force = true
 
 [[redirects]]
   from = "/launch/"
-  to = "/launch/index.html"
-  status = 200
+  to = "/"
+  status = 301
   force = true
 
 [[redirects]]

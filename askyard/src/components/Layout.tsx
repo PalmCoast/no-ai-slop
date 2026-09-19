@@ -20,7 +20,6 @@ const NAV = [
   { to: "/board", label: "Board" },
   { to: "/apps", label: "Apps" },
   { to: "/hunt", label: "Hunt" },
-  { to: "/launch", label: "Launch" },
 ];
 
 export default function Layout() {
@@ -97,7 +96,6 @@ export default function Layout() {
             <Link to="/board">Ranked board</Link>
             <Link to="/apps">Apps for sale</Link>
             <Link to="/hunt">Hunt</Link>
-            <Link to="/launch">Launch plan</Link>
           </div>
           <div>
             <strong>Buy</strong>
