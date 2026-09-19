@@ -19,6 +19,9 @@ import {
   HERO_WHAT,
   LEGAL_NAME,
   LINKEDIN_URL,
+  MARQUEE_NAME,
+  MARQUEE_TAGLINE,
+  MARQUEE_URL,
   PARENT_URL,
   POSTAL_CODE,
   STREET_ADDRESS,
@@ -26,6 +29,7 @@ import {
 } from "./brand.ts";
 import { SALE_APPS } from "./catalog.ts";
 import { SEED_QUESTIONS } from "./ask.ts";
+import { MARQUEE_FLOOR_CENTS } from "./marquee.ts";
 
 export type SeoPage = {
   path: string;
@@ -79,6 +83,28 @@ export const PAGE_SEO: SeoPage[] = [
     h1: "Launch AskYard without a big ad buy",
     bodyHtml: `<main id="route-launch" class="section"><div class="container"><h1 class="display">Launch AskYard without a big ad buy</h1><p class="lede">The product is free answers plus an offer. Distribution is the LLM search bar, public replies with a backlink, and the First Deploy AI shop floor.</p><p>Full plan is on this page. Phone ${CONSULT_DISPLAY}.</p></div></main>`,
   },
+  {
+    path: "/rep",
+    title: "Reputation meter | AskYard",
+    description: `Search a name. See the AskYard meter. Public HN hits plus helpful/missed votes on answers. Chrome toolbar for instant lookup if something rough is posted about you.`,
+    h1: "Search a name. See the meter.",
+    bodyHtml: `<main id="route-rep" class="section"><div class="container"><h1 class="display">Search a name. See the meter.</h1><p class="lede">Instant lookup if something rough is posted in public. AskYard votes plus public HN hits. A lookup, not a verdict. Chrome load-unpacked toolbar at /extension.</p><p>Then buy the lights on <a href="${MARQUEE_URL}">${MARQUEE_NAME}</a> if you want the paid crown.</p></div></main>`,
+  },
+  {
+    path: "/marquee",
+    title: `${MARQUEE_NAME} — ${MARQUEE_TAGLINE}`,
+    description: `${MARQUEE_TAGLINE} Name-your-price bid, floor $20. Highest sits at #1. The next bid takes the crown. No refunds. ${MARQUEE_URL}`,
+    h1: MARQUEE_TAGLINE,
+    bodyHtml: `<main id="route-marquee" class="section"><div class="container"><h1 class="display">${MARQUEE_TAGLINE}</h1><p class="lede">Founders would die for the name in lights. You type the dollar amount. Checkout charges that amount. Floor $${MARQUEE_FLOOR_CENTS / 100}. The next bid knocks you off. No refunds.</p><p>Lookup is free on <a href="${BRAND_URL}/rep">/rep</a>. The chart is paid vanity.</p></div></main>`,
+  },
+  {
+    path: "/marquee/thanks",
+    title: `Thanks | ${MARQUEE_NAME}`,
+    description: `Your name is on the ${MARQUEE_NAME} lights. The next bid can take the crown.`,
+    h1: "You bought the lights.",
+    bodyHtml: `<main id="route-marquee-thanks" class="section"><div class="container"><h1 class="display">You bought the lights.</h1><p>The next founder who wants it more can take the crown.</p></div></main>`,
+    noindex: true,
+  },
 ];
 
 export const NOT_FOUND_SEO: SeoPage = {
@@ -91,7 +117,7 @@ export const NOT_FOUND_SEO: SeoPage = {
 };
 
 export function sitemapXml(): string {
-  const staticUrls = PAGE_SEO.map((page) => `  <url><loc>${canonicalFor(page.path)}</loc></url>`);
+  const staticUrls = PAGE_SEO.filter((page) => !page.noindex).map((page) => `  <url><loc>${canonicalFor(page.path)}</loc></url>`);
   const questionUrls = SEED_QUESTIONS.map((q) => `  <url><loc>${canonicalFor(`/q/${q.slug}`)}</loc></url>`);
   return `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${[...staticUrls, ...questionUrls].join("\n")}\n</urlset>\n`;
 }

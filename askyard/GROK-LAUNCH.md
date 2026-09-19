@@ -20,10 +20,13 @@ Pages:
 
 - `/` hero ask + LLM reputation bar + running totals + most-asked
 - `/board` questions ranked by ask count
+- `/rep` reputation meter (search a name, helpful/missed + public HN hits)
+- `/marquee` name-in-lights auction (you type the bid)
 - `/apps` apps for sale
 - `/hunt` copy-paste public replies with a backlink
 - `/launch` the public launch plan
 - `/q/:slug` one answer
+- `/extension` Chrome load-unpacked toolbar
 - `/llms.txt` machine-readable record
 
 APIs:
@@ -32,6 +35,11 @@ APIs:
 - `GET /api/board`
 - `GET /api/hunt`
 - `POST /api/tally`
+- `GET /api/rep`
+- `POST /api/rate`
+- `GET|POST /api/marquee` (POST is name-your-price Checkout via `price_data.unit_amount`)
+- `GET /api/marquee/confirm`
+- `POST /api/stripe-webhook`
 - `hunt-weekly` scheduled `@daily`
 
 ## Hard constraints
@@ -42,7 +50,7 @@ APIs:
 4. **Do not set** `OPENAI_API_KEY` (or any other provider key). Enable AI Gateway on the new site so `/api/ask` can draft with `gpt-4o-mini`. Gateway only activates after a production deploy.
 5. Do not auto-post into Facebook groups, Reddit, or HN comment threads as if you were a plumber. A human (Daniel) pastes `/hunt` replies. You may post as AgentHive Inc / First Deploy AI on X and LinkedIn with the copy below.
 6. Do not redesign, add guessed `*.netlify.app` hosts to the corp catalog, force-push, enable auto-merge, or commit secrets.
-7. Prices stay on the page: answers are free. First Deploy AI is $1,500 setup, then $250/month. Live this week or they do not pay the setup. Consult is a free 30, then $75 / 30 min or $150 / hour.
+7. Prices stay on the page: answers are free. First Deploy AI is $1,500 setup, then $250/month. Live this week or they do not pay the setup. Consult is a free 30, then $75 / 30 min or $150 / hour. Marquee is you-name-the-bid, floor $20, not a fixed Stripe Price.
 
 ## Deploy sequence
 
@@ -71,7 +79,8 @@ In the Netlify UI:
    - Publish directory: `dist`
    - Functions directory: `netlify/functions` (relative to `askyard/`)
 4. Enable **AI Gateway / AI** on this site. Do not paste a provider key.
-5. Publish a production deploy. Scheduled `hunt-weekly` only runs on published production.
+5. For live Marquee bids set `STRIPE_SECRET_KEY` and `STRIPE_WEBHOOK_SECRET` on this site only. Webhook URL: `https://askyard.firstdeploy.ai/api/stripe-webhook`. Never create a fixed Stripe Price. Checkout builds `price_data.unit_amount` from the bid they typed. Without the key, demo bids still move the chart.
+6. Publish a production deploy. Scheduled `hunt-weekly` only runs on published production.
 
 ### 3. Attach askyard.firstdeploy.ai
 
@@ -84,25 +93,32 @@ DNS (pick the one that matches how firstdeploy.ai is hosted):
 
 Do not add a 301 from firstdeploy.ai `/` to AskYard. First Deploy AI stays the cash product. AskYard is the free desk.
 
+Also attach **marquee.firstdeploy.ai** as a domain alias on the **same** AskYard site. The edge function `marquee-host` rewrites that host’s `/` to `/marquee`. Do not create a second Netlify site for Marquee.
+
 ### 4. Production smoke check
 
 Expect 200 unless noted.
 
 - `https://askyard.firstdeploy.ai/` — hero “Ask about AI. Get a free answer.” Search bar. LLM buttons for ChatGPT, Claude, Perplexity, Gemini, Grok.
 - `https://askyard.firstdeploy.ai/board`
-- `https://askyard.firstdeploy.ai/apps` — First Deploy AI listed at $1,500 setup, then $250/mo
+- `https://askyard.firstdeploy.ai/rep?q=AskYard` — meter, not a roast wall
+- `https://askyard.firstdeploy.ai/marquee` — bid field is a dollar amount, not a fixed price button
+- `https://askyard.firstdeploy.ai/apps` — First Deploy AI listed at $1,500 setup, then $250/mo; Marquee is you-name-the-bid, floor $20
 - `https://askyard.firstdeploy.ai/hunt` — replies include `askyard.firstdeploy.ai`
 - `https://askyard.firstdeploy.ai/launch`
-- `https://askyard.firstdeploy.ai/q/stop-missing-night-calls`
+- `https://askyard.firstdeploy.ai/q/stop-missing-night-calls` — helpful / missed
+- `https://askyard.firstdeploy.ai/extension/manifest.json`
 - `https://askyard.firstdeploy.ai/llms.txt`
 - `https://askyard.firstdeploy.ai/og.jpg`
 - `POST https://askyard.firstdeploy.ai/api/ask` with `{"question":"How do I stop missing night calls?"}` — JSON, not `index.html`
 - `GET https://askyard.firstdeploy.ai/api/board` — JSON with `questions[]` and `totals`
 - `GET https://askyard.firstdeploy.ai/api/hunt` — JSON with `hits[]`
+- `GET https://askyard.firstdeploy.ai/api/rep?q=AskYard` — JSON with `score` and CORS `*`
+- `GET https://askyard.firstdeploy.ai/api/marquee` — JSON with `listings[]` and `minNextBid`
 
 If `/api/*` returns HTML, function routes lost to the SPA catch-all. Check that each function `path` config deployed.
 
-Ask one new question on the live hero. Confirm an answer and a priced offer come back. Confirm the ask count on `/board` moved.
+Ask one new question on the live hero. Confirm an answer and a priced offer come back. Confirm the ask count on `/board` moved. On `/rep` look up AskYard. On `/marquee` type a bid at or above `minNextBid` (demo if Stripe is off) and confirm the name sits at #1.
 
 ### 5. Flip the corp catalog from lab to live
 
@@ -139,6 +155,8 @@ Use IndexMe.lol (Pro/Studio if the shop already has a key) to ping:
 - `https://askyard.firstdeploy.ai/`
 - `https://askyard.firstdeploy.ai/board`
 - `https://askyard.firstdeploy.ai/apps`
+- `https://askyard.firstdeploy.ai/rep`
+- `https://askyard.firstdeploy.ai/marquee`
 - `https://askyard.firstdeploy.ai/hunt`
 - `https://askyard.firstdeploy.ai/launch`
 - every URL in `https://askyard.firstdeploy.ai/sitemap.xml` (the top 12 `/q/` answers are already in it)

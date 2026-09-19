@@ -6,6 +6,9 @@ import Apps from "./pages/Apps";
 import Hunt from "./pages/Hunt";
 import Launch from "./pages/Launch";
 import Answer from "./pages/Answer";
+import Rep from "./pages/Rep";
+import Marquee from "./pages/Marquee";
+import MarqueeThanks from "./pages/MarqueeThanks";
 import NotFound from "./pages/NotFound";
 
 export default function App() {
@@ -17,6 +20,9 @@ export default function App() {
         <Route path="/apps" element={<Apps />} />
         <Route path="/hunt" element={<Hunt />} />
         <Route path="/launch" element={<Launch />} />
+        <Route path="/rep" element={<Rep />} />
+        <Route path="/marquee" element={<Marquee />} />
+        <Route path="/marquee/thanks" element={<MarqueeThanks />} />
         <Route path="/q/:slug" element={<Answer />} />
         <Route path="/shop" element={<Navigate to="/apps" replace />} />
         <Route path="*" element={<NotFound />} />

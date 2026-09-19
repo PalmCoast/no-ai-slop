@@ -1,4 +1,5 @@
 import { useMemo, useState } from "react";
+import { Link } from "react-router-dom";
 import { ASK_AI_PROMPT, ASK_AI_SUBTITLE, BRAND_NAME } from "../../shared/brand";
 import { askAiLinks, reputationPrompt } from "../../shared/reputation";
 
@@ -26,6 +27,9 @@ export default function ReputationBar() {
             <div>
               <p className="ask-ai-bar__title">Search every major LLM about us</p>
               <p className="ask-ai-bar__sub">{ASK_AI_SUBTITLE}</p>
+              <p className="ask-ai-bar__sub">
+                Look yourself up on the <Link to="/rep">reputation meter</Link>. Chrome toolbar if you want it in one click.
+              </p>
             </div>
           </div>
           <div className="rep-search">

@@ -162,6 +162,16 @@ export const SALE_APPS: SaleApp[] = [
     category: "studio",
   },
   {
+    slug: "marquee",
+    name: "Marquee",
+    url: "https://marquee.firstdeploy.ai/",
+    price: "You name the bid · floor $20",
+    blurb: "Your name in lights. Type the dollar amount. Highest bid sits at #1. The next founder who wants it more buys the crown.",
+    who: "Founders who would die for the name in lights",
+    category: "studio",
+    featured: true,
+  },
+  {
     slug: "claudefarm",
     name: "ClaudeFarm",
     url: "https://claudefarm.com/",

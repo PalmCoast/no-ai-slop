@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AskYard Rep</title>
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <header>
+      <strong>ASK<span>YARD</span> REP</strong>
+      <p>Instant lookup. Not a roast wall.</p>
+    </header>
+    <form id="lookup">
+      <label for="q">Name, shop, or rumor</label>
+      <div class="row">
+        <input id="q" name="q" maxlength="80" placeholder="Your name" autocomplete="off" />
+        <button type="submit">Look up</button>
+      </div>
+    </form>
+    <p id="status" class="fine">Type a name. The meter uses AskYard votes plus public HN hits.</p>
+    <section id="report" hidden>
+      <div class="score-row">
+        <div id="score">—</div>
+        <span id="label" class="pill"></span>
+      </div>
+      <div class="track"><div id="fill"></div></div>
+      <p id="summary"></p>
+      <p id="stats" class="fine"></p>
+      <ul id="hits"></ul>
+    </section>
+    <footer>
+      <a id="full" href="https://askyard.firstdeploy.ai/rep" target="_blank" rel="noreferrer">Open the meter</a>
+      <a href="https://marquee.firstdeploy.ai/" target="_blank" rel="noreferrer">Buy the lights</a>
+    </footer>
+    <script src="popup.js"></script>
+  </body>
+</html>

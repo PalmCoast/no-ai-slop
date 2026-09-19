@@ -48,10 +48,15 @@ export default function Board() {
                 </div>
                 <p className="muted">{item.answer.slice(0, 180)}…</p>
               </div>
-              <div className="ask-count">
-                {item.asks.toLocaleString()}
-                <small>asks</small>
-              </div>
+                <div className="ask-count">
+                  {item.asks.toLocaleString()}
+                  <small>asks</small>
+                  {typeof item.helpful === "number" ? (
+                    <small>
+                      {item.helpful} helpful
+                    </small>
+                  ) : null}
+                </div>
             </Link>
           ))}
         </div>

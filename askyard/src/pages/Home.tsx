@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState, type FormEvent } from "react";
 import { Link } from "react-router-dom";
 import ReputationBar from "../components/ReputationBar";
 import OfferPanel from "../components/OfferPanel";
+import RateAnswer from "../components/RateAnswer";
 import { fetchBoard, submitQuestion } from "../api";
 import {
   BRAND_NAME,
@@ -13,6 +14,7 @@ import {
   FD_PROMISE,
   HERO_H1,
   HERO_WHAT,
+  MARQUEE_NAME,
   TAGLINE,
 } from "../../shared/brand";
 import { FEATURED_APPS } from "../../shared/catalog";
@@ -90,16 +92,50 @@ export default function Home() {
             {error ? <p className="fine">{error}</p> : <p className="fine">Then we make an offer to do it. No account.</p>}
           </form>
           {current ? (
-            <OfferPanel
-              question={current}
-              offer={offerFor(current.offerSlug)}
-              onTally={() => setTotals((t) => ({ ...t, offersStarted: t.offersStarted + 1 }))}
-            />
+            <>
+              <OfferPanel
+                question={current}
+                offer={offerFor(current.offerSlug)}
+                onTally={() => setTotals((t) => ({ ...t, offersStarted: t.offersStarted + 1 }))}
+              />
+              <RateAnswer slug={current.slug} helpful={current.helpful} missed={current.missed} />
+            </>
           ) : null}
         </div>
       </section>
 
       <ReputationBar />
+
+      <section className="section" style={{ paddingTop: "2rem" }}>
+        <div className="container">
+          <div className="card-grid">
+            <Link className="card" to="/rep">
+              <p className="eyebrow">Instant lookup</p>
+              <h3>Reputation meter</h3>
+              <p className="muted">
+                Search a name. See if something rough landed in public. Chrome toolbar if you want it in the address bar.
+              </p>
+              <p className="price">Free lookup</p>
+            </Link>
+            <Link className="card" to="/marquee">
+              <p className="eyebrow">{MARQUEE_NAME}</p>
+              <h3>Your name in lights</h3>
+              <p className="muted">
+                Pay to sit at #1. You type the bid. The next founder who wants it more buys the crown. You drop.
+              </p>
+              <p className="price">You name the bid · floor $20</p>
+            </Link>
+            <a className="card" href="/extension/popup.html">
+              <p className="eyebrow">Chrome</p>
+              <h3>Toolbar for your name</h3>
+              <p className="muted">
+                Load unpacked. Look yourself up. If a new public hit appears, the meter moves the next time you search.
+              </p>
+              <p className="price">Free extension</p>
+            </a>
+          </div>
+        </div>
+      </section>
 
       <section className="section">
         <div className="container">

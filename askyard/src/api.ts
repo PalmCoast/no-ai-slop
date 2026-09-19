@@ -8,6 +8,16 @@ import {
   type YardQuestion,
   type YardTotals,
 } from "../shared/ask";
+import { applyVote, buildReport, type RepReport } from "../shared/rep";
+import {
+  applyBid,
+  minNextBidCents,
+  centsToDollars,
+  parseBid,
+  rankMarquee,
+  SEED_MARQUEE,
+  type MarqueeListing,
+} from "../shared/marquee";
 
 export type AskResponse = {
   question: YardQuestion;
@@ -89,4 +99,127 @@ export async function tally(kind: "offer" | "copy"): Promise<YardTotals | null> 
     return null;
   }
   return null;
+}
+
+export async function lookupRep(query: string): Promise<RepReport> {
+  try {
+    const res = await fetch(`/api/rep?q=${encodeURIComponent(query)}`);
+    if (res.ok) return (await res.json()) as RepReport;
+  } catch {
+    // local seed
+  }
+  const { questions } = await fetchBoard();
+  return buildReport({ query, board: questions });
+}
+
+export async function rateAnswer(
+  slug: string,
+  vote: "helpful" | "missed",
+): Promise<{ helpful: number; missed: number }> {
+  try {
+    const res = await fetch("/api/rate", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ slug, vote }),
+    });
+    if (res.ok) return (await res.json()) as { helpful: number; missed: number };
+  } catch {
+    // local seed
+  }
+  const board = applyVote(rankedSeed(), slug, vote);
+  const item = board.find((row) => row.slug === slug);
+  return { helpful: item?.helpful ?? 0, missed: item?.missed ?? 0 };
+}
+
+const MARQUEE_KEY = "askyard-marquee";
+
+function localMarquee(): MarqueeListing[] {
+  try {
+    const raw = localStorage.getItem(MARQUEE_KEY);
+    if (raw) {
+      const parsed = JSON.parse(raw) as { listings?: MarqueeListing[] };
+      if (parsed.listings?.length) return rankMarquee(parsed.listings);
+    }
+  } catch {
+    // seed
+  }
+  return rankMarquee(SEED_MARQUEE);
+}
+
+export type MarqueeState = {
+  listings: MarqueeListing[];
+  minNextBidCents: number;
+  minNextBid: string;
+};
+
+export async function fetchMarquee(): Promise<MarqueeState> {
+  try {
+    const res = await fetch("/api/marquee");
+    if (res.ok) {
+      const data = (await res.json()) as MarqueeState;
+      if (data.listings?.length) return data;
+    }
+  } catch {
+    // local seed
+  }
+  const listings = localMarquee();
+  const min = minNextBidCents(listings);
+  return { listings, minNextBidCents: min, minNextBid: centsToDollars(min) };
+}
+
+export async function placeBid(
+  name: string,
+  bid: string,
+): Promise<{ url: string; demo?: boolean; listings?: MarqueeListing[]; error?: string; message?: string }> {
+  try {
+    const res = await fetch("/api/marquee", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ name, bid }),
+    });
+    const data = (await res.json()) as {
+      url?: string;
+      demo?: boolean;
+      listings?: MarqueeListing[];
+      error?: string;
+      message?: string;
+    };
+    if (res.ok && data.url) return data as { url: string; demo?: boolean; listings?: MarqueeListing[] };
+    if (data.error) return { url: "", error: data.error, message: data.message };
+  } catch {
+    // local demo
+  }
+  const listings = localMarquee();
+  const parsed = parseBid(bid, listings);
+  if ("error" in parsed) return { url: "", error: "bid_too_low", message: parsed.error };
+  const next = applyBid(listings, { name, bidCents: parsed.cents, demo: true });
+  try {
+    localStorage.setItem(MARQUEE_KEY, JSON.stringify({ listings: next }));
+  } catch {
+    // ignore
+  }
+  return {
+    demo: true,
+    url: `/marquee/thanks?demo=1&name=${encodeURIComponent(name)}`,
+    listings: next,
+  };
+}
+
+export async function confirmMarquee(sessionId: string | null, demo: boolean): Promise<MarqueeState> {
+  try {
+    const params = new URLSearchParams();
+    if (demo) params.set("demo", "1");
+    if (sessionId) params.set("session_id", sessionId);
+    const res = await fetch(`/api/marquee/confirm?${params.toString()}`);
+    if (res.ok) {
+      const data = (await res.json()) as { listings?: MarqueeListing[] };
+      if (data.listings?.length) {
+        const min = minNextBidCents(data.listings);
+        return { listings: data.listings, minNextBidCents: min, minNextBid: centsToDollars(min) };
+      }
+    }
+  } catch {
+    // local
+  }
+  return fetchMarquee();
 }

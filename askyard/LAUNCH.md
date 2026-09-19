@@ -9,8 +9,9 @@ Ship the subdomain, then spend time answering people, not writing slogans.
 1. Create a Netlify site from `askyard/` in this repo.
 2. Attach `askyard.firstdeploy.ai`.
 3. Enable AI Gateway. Do not set an OpenAI key.
-4. Ping IndexMe.lol on `/`, `/board`, `/apps`, `/hunt`, `/launch`, and the top 12 `/q/` answers.
+4. Ping IndexMe.lol on `/`, `/board`, `/apps`, `/rep`, `/marquee`, `/hunt`, `/launch`, and the top 12 `/q/` answers.
 5. Confirm `https://askyard.firstdeploy.ai/llms.txt` is public.
+6. Attach `marquee.firstdeploy.ai` on the same Netlify site. The edge function sends that host's `/` to `/marquee`.
 
 ## Week 1 — put the name in the models
 
@@ -27,6 +28,10 @@ Open `/hunt`. Paste the copied reply into:
 - HN threads that already ask "how do I use AI for a small shop"
 
 A person pastes. No bots. Each paste increments the public-replies total.
+
+## Week 1 — meter and lights
+
+Look your own shop up on `/rep`. Load the Chrome toolbar from `/extension`. Bid a demo name on `/marquee` so the chart moves. Live card charges use Stripe Checkout with the dollar amount they typed, not a fixed Price. Floor $20. Next bid is $1 over the crown. Cap $50,000. No refunds when they get knocked off.
 
 ## Week 2 — walk the yard you already have
 

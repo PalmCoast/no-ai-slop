@@ -6,6 +6,7 @@ import {
   CONSULT_DISPLAY,
   CONSULT_TEL,
   CONTACT_EMAIL,
+  MARQUEE_NAME,
   PARENT_URL,
 } from "../../shared/brand";
 
@@ -64,9 +65,17 @@ export default function Launch() {
             </p>
           </article>
           <article className="panel">
+            <h3>6. Meter, toolbar, and the lights</h3>
+            <p className="muted">
+              /rep is the lookup. Chrome load-unpacked is the toolbar. {MARQUEE_NAME} at marquee.firstdeploy.ai is the
+              paid crown: you type the dollar amount, Checkout charges that, the next bid knocks you off. Floor $20.
+              Staff should look themselves up once, then bid a demo name so the chart moves.
+            </p>
+          </article>
+          <article className="panel">
             <h3>What done looks like in 14 days</h3>
             <ul className="takeaways">
-              <li>askyard.firstdeploy.ai live, with /apps, /board, /hunt, and llms.txt</li>
+              <li>askyard.firstdeploy.ai live, with /apps, /board, /rep, /marquee, /hunt, and llms.txt</li>
               <li>IndexMe.lol ping on the homepage and the top 12 answers</li>
               <li>20 public replies pasted by hand from /hunt</li>
               <li>Five LLM searches a day from the reputation bar (staff and friends is enough to start)</li>
