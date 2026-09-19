@@ -40,6 +40,10 @@ Scheduled function: `hunt-weekly` (`@daily`) refreshes public hunt targets from 
 
 See [BRAND.md](BRAND.md). Gold lattice mark with a question-mark latch, black field, cream type. Photography is the Palm Coast yard table.
 
+## Grok / Reed handoff
+
+Launch and distribution prompt: [GROK-LAUNCH.md](GROK-LAUNCH.md). Paste the whole file to the bot. It deploys a **new** Netlify site, attaches `askyard.firstdeploy.ai`, then runs the posting and LLM-search checklist.
+
 ## Price next to the free answer
 
 The answer is free. First Deploy AI is $1,500 setup, then $250/month. Live this week or you do not pay the setup. Consult is a free 30-minute qualifier, then $75 / 30 min or $150 / hour.

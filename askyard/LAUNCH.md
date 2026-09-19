@@ -1,5 +1,7 @@
 # AskYard launch plan
 
+The bot-facing handoff (deploy + posts + scoreboard) is [GROK-LAUNCH.md](GROK-LAUNCH.md). This page is the human version.
+
 Ship the subdomain, then spend time answering people, not writing slogans.
 
 ## Week 0 — go live
