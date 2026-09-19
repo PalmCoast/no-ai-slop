@@ -5,7 +5,7 @@ export default function NotFound() {
     <section className="section">
       <div className="container pricing-box">
         <h1>This cell is empty.</h1>
-        <p className="muted">That path is not an AgentHive Inc page. Home, The Buzz, and Rankings are live.</p>
+        <p className="muted">That path is not an AgentHive Inc page. Home, The Buzz, Rankings, and Consult are live.</p>
         <div className="hero-actions" style={{ justifyContent: "center", marginTop: 18 }}>
           <Link className="btn btn-primary" to="/">
             Home

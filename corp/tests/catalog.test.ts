@@ -2,6 +2,8 @@ import { describe, expect, it } from "vitest";
 import { HIVE_SITES } from "../shared/portfolio";
 import { HIVE_BOTS } from "../shared/bots";
 import { BUZZ_SEED } from "../shared/buzz-seed";
+import { CONSULT_STRIPE_RATES } from "../shared/consult";
+import { CALENDLY_URL } from "../shared/brand";
 
 describe("portfolio catalog", () => {
   it("has unique slugs and https urls", () => {
@@ -40,6 +42,18 @@ describe("swarm roster", () => {
   it("keeps twelve named Grok bots", () => {
     expect(HIVE_BOTS).toHaveLength(12);
     expect(HIVE_BOTS.some((b) => b.name === "Grok" && b.featured)).toBe(true);
+  });
+});
+
+describe("consult rails", () => {
+  it("keeps Calendly and Stripe buy links, not a grey embed", () => {
+    expect(CALENDLY_URL).toBe("https://calendly.com/coltsinsider/30min");
+    expect(CONSULT_STRIPE_RATES.map((rate) => rate.href)).toEqual([
+      "https://buy.stripe.com/fZufZh92Qf9p5eB2XU2ZO1h",
+      "https://buy.stripe.com/eVq9ATbaY6CT6iF7ea2ZO1g",
+      "https://buy.stripe.com/7sY9ATenabXd7mJ7ea2ZO1i",
+    ]);
+    expect(CONSULT_STRIPE_RATES.map((rate) => rate.amount)).toEqual(["$75", "$150", "$625 of $1,250"]);
   });
 });
 

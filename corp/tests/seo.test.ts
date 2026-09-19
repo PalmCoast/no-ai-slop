@@ -22,6 +22,9 @@ describe("per-route SEO", () => {
       expect(page.h1.length).toBeGreaterThan(3);
       expect(page.title).not.toMatch(/THE HIVE|We SWARM/i);
     }
+    expect(PAGE_SEO.map((page) => page.path)).toEqual(
+      expect.arrayContaining(["/", "/about", "/buzz", "/rankings", "/build", "/consult"]),
+    );
   });
 
   it("writes distinct head tags and a server h1 into HTML", () => {
@@ -52,6 +55,11 @@ describe("per-route SEO", () => {
     expect(home).toContain("Book the free 30");
     expect(home).toContain("IndexNow");
     expect(about).toContain("calendly.com/coltsinsider/30min");
+    const consult = applyRouteHtml(shell, PAGE_SEO.find((page) => page.path === "/consult")!);
+    expect(consult).toContain('id="route-consult"');
+    expect(consult).toContain('rel="canonical" href="https://agenthiveinc.com/consult"');
+    expect(consult).toContain("<h1 class=\"display\">An operator in the room.</h1>");
+    expect(consult).toContain("$75");
     expect(home).toContain('rel="canonical" href="https://agenthiveinc.com/"');
     expect(about).not.toContain('rel="canonical" href="https://agenthiveinc.com/" />');
     expect(about).toContain("application/ld+json");
@@ -93,6 +101,7 @@ describe("per-route SEO", () => {
     expect(json).toContain(LINKEDIN_URL);
     expect(json).toContain("https://firstdeploy.ai/");
     expect(json).toContain("https://indexme.lol/");
+    expect(json).toContain("https://agenthiveinc.com/consult");
     expect(json).not.toMatch(/USPTO|14 apps|\$70k/i);
   });
 
@@ -109,6 +118,7 @@ describe("per-route SEO", () => {
     expect(txt).toContain("$1,500");
     expect(txt).toContain("$250");
     expect(txt).toContain("https://firstdeploy.ai");
+    expect(txt).toContain("https://agenthiveinc.com/consult");
     expect(txt).toContain("https://calendly.com/coltsinsider/30min");
     expect(txt).toContain("agenthive.io");
     expect(txt).toContain("agenthive.co");
@@ -123,6 +133,7 @@ describe("per-route SEO", () => {
     expect(xml).toContain("https://agenthiveinc.com/buzz");
     expect(xml).toContain("https://agenthiveinc.com/rankings");
     expect(xml).toContain("https://agenthiveinc.com/build");
+    expect(xml).toContain("https://agenthiveinc.com/consult");
     expect(xml).not.toContain("firstdeploy.ai");
     expect(xml).not.toContain("llms.txt");
   });
