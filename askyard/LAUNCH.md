@@ -1,6 +1,6 @@
 # AskYard launch plan
 
-The bot-facing handoff (deploy + posts + scoreboard) is [GROK-LAUNCH.md](GROK-LAUNCH.md). This page is the human version.
+The bot-facing handoff is [GROK-LAUNCH.md](GROK-LAUNCH.md) (Reed only). Public mouth is [MARKETING.md](MARKETING.md). Job ticket: [REED-ASSIGNMENT.md](REED-ASSIGNMENT.md). This page is the human version.
 
 Ship the subdomain, then spend time answering people, not writing slogans.
 

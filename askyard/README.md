@@ -44,7 +44,7 @@ See [BRAND.md](BRAND.md). Gold lattice mark with a question-mark latch, black fi
 
 ## Grok / Reed handoff
 
-Launch and distribution prompt: [GROK-LAUNCH.md](GROK-LAUNCH.md). Paste the whole file to the bot. It deploys a **new** Netlify site, attaches `askyard.firstdeploy.ai`, then runs the posting and LLM-search checklist.
+Launch and distribution: [GROK-LAUNCH.md](GROK-LAUNCH.md) (Reed only). Public mouth: [MARKETING.md](MARKETING.md). Job ticket: [REED-ASSIGNMENT.md](REED-ASSIGNMENT.md).
 
 ## Price next to the free answer
 

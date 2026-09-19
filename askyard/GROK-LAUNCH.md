@@ -1,6 +1,8 @@
 # Grok / Reed — launch AskYard and get the word out
 
-You are a Grok Bot (or Reed) finishing a launch another agent already built. Do not redesign AskYard. Do not rewrite the copy. Do not touch Stateside, Sonaris, or the Netlify site that currently serves **firstdeploy.ai** or **agenthiveinc.com**. Stand up a **new** Netlify site for `askyard/`, attach **askyard.firstdeploy.ai**, then run the distribution checklist until people are actually asking.
+**Assigned to Reed.** Daniel wants this live, then loud. You own deploy and the marketing kit. Do not redesign AskYard. Do not rewrite the public copy in `MARKETING.md`. Do not touch Stateside, Sonaris, or the Netlify site that currently serves **firstdeploy.ai** or **agenthiveinc.com**. Stand up a **new** Netlify site for `askyard/`, attach **askyard.firstdeploy.ai** and **marquee.firstdeploy.ai**, then run the distribution checklist until people are actually asking and founders are bidding for the lights.
+
+Public mouth: [`MARKETING.md`](MARKETING.md). Job ticket: [`REED-ASSIGNMENT.md`](REED-ASSIGNMENT.md). This file stays off camera. Never post Stripe, webhooks, demo bids, functions, Gateway, or how the meter is built.
 
 Daniel wants this in front of plumbers, teachers, receptionists, earth movers, and anyone else with a question. Volume comes from free answers, LLM searches that name us, and public replies with a backlink. Not from adjectives.
 
@@ -163,37 +165,17 @@ Use IndexMe.lol (Pro/Studio if the shop already has a key) to ping:
 
 Confirm `https://askyard.firstdeploy.ai/llms.txt` is fetchable.
 
-### C. Post as the company (same day)
+### C. Post as the company (same day, after DNS is 200)
 
-Post these **verbatim**. Do not punch them up. Do not add emoji. Attach `https://askyard.firstdeploy.ai/og.jpg`.
+Use **only** the posts in [`MARKETING.md`](MARKETING.md). Paste them **verbatim**. Do not punch them up. Do not add emoji. Attach the launch stills from the kit, or `https://askyard.firstdeploy.ai/og.jpg` if the kit stills are not in `dist` yet.
 
-**X / Grok:**
+Pin the Marquee X post. Post the 16:9 launch film with it. Post the 9:16 reel the same night. Meter post two hours later. Show HN next US morning.
 
-> AskYard: anyone with a question about AI gets a free answer. Plumbers, teachers, receptionists, earth movers. Then we offer to do it this week. askyard.firstdeploy.ai
-
-**LinkedIn** (company [AgentHive Inc](https://www.linkedin.com/company/agenthiveinc)):
-
-> We shipped a free desk for people who do not live in ChatGPT. Ask the question. Read the answer. If you want it built, First Deploy AI is $1,500 setup, then $250/month, live this week or you do not pay setup. askyard.firstdeploy.ai
-
-**Second X, 4–8 hours later** (thread or new post):
-
-> Night calls go unanswered. Quotes live on a whiteboard. AskYard answers that for free, then First Deploy AI will build it this week. Search ChatGPT, Claude, Perplexity, Gemini, or Grok about AskYard. Or just ask: askyard.firstdeploy.ai
-
-If you cannot post, put the three posts in a draft email to `daniel@agenthiveinc.com` and `coltsinsider@gmail.com` with the image attached. Subject: `AskYard posts — paste these today`.
+If you cannot post, put the kit posts in a draft email to `daniel@agenthiveinc.com` and `coltsinsider@gmail.com` with the film and stills attached. Subject: `AskYard + Marquee posts — paste these today`.
 
 ### D. Show HN (same day or next morning US)
 
-Title: `Show HN: AskYard – free AI answers for plumbers, teachers, and field crews`
-
-Text:
-
-> AskYard is a free desk for people who do not live in ChatGPT. You ask about AI for the shop, the classroom, or the yard. You get a plain answer. If you want it built, First Deploy AI will do it this week ($1,500 setup, then $250/month, or you do not pay setup).
->
-> On HN paste this URL on its own line: askyard.firstdeploy.ai
->
-> We also put a bar on the page that searches ChatGPT, Claude, Perplexity, Gemini, and Grok about us, because that is how the models learn a new shop.
-
-Submit as a Show HN, not as a comment on someone else’s thread. One post. Do not reply-spam.
+Use the Show HN title and text in [`MARKETING.md`](MARKETING.md) verbatim. One post. Do not reply-spam.
 
 ### E. Put AskYard on the shelves we already own (same day)
 
