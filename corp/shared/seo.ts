@@ -16,6 +16,7 @@ import {
   FD_PROMISE,
   FD_URL,
   HERO_H1,
+  HIVE_CONSULT_URL,
   HERO_WHAT,
   HERO_WHY,
   INDEXME_BLURB,
@@ -72,14 +73,21 @@ export const PAGE_SEO: SeoPage[] = [
     h1: "One leak. Live this week.",
     bodyHtml: `<main id="route-build" class="section"><div class="container"><h1 class="display">One leak. Live this week.</h1><p class="lede">${FD_NAME} embeds, ships the after-hours desk plus the live apps, and stays on for $250/month.</p><p>Setup $1,500. Live this week or you do not pay the setup. Consult ${CONSULT_DISPLAY} or start at ${FD_URL.replace("https://", "")}.</p></div></main>`,
   },
+  {
+    path: "/consult",
+    title: "Consult — an operator in the room | AgentHive Inc",
+    description: `AI consulting that ships. Free 30-minute qualifier, then ${CONSULT_RATES}, or a 10-hour pack at $1,250. Book on Calendly. Pay on Stripe.`,
+    h1: "An operator in the room.",
+    bodyHtml: `<main id="route-consult" class="section"><div class="container"><h1 class="display">An operator in the room.</h1><p class="lede">Not another deck. Free 30-minute qualifier. Then paid time — or a fixed deploy if the leak is clear.</p><p>$75 / 30 minutes. $150 / hour. 10-hour pack $1,250 — $625 up front. Book the free 30 on Calendly. Pay on Stripe when it is paid time. Voice ${CONSULT_DISPLAY}.</p></div></main>`,
+  },
 ];
 
 export const NOT_FOUND_SEO: SeoPage = {
   path: "/404",
   title: "Page not found | AgentHive Inc",
-  description: `That path is not an AgentHive Inc page. Home, About, The Buzz, and Rankings are live on agenthiveinc.com.`,
+  description: `That path is not an AgentHive Inc page. Home, About, The Buzz, Rankings, Custom Builds, and Consult are live on agenthiveinc.com.`,
   h1: "This page is not on agenthiveinc.com",
-  bodyHtml: `<main id="route-404" class="section"><div class="container"><h1 class="display">This page is not on agenthiveinc.com</h1><p>Home, About, The Buzz, Rankings, and Custom Builds are the live AgentHive Inc pages.</p></div></main>`,
+  bodyHtml: `<main id="route-404" class="section"><div class="container"><h1 class="display">This page is not on agenthiveinc.com</h1><p>Home, About, The Buzz, Rankings, Custom Builds, and Consult are the live AgentHive Inc pages.</p></div></main>`,
   noindex: true,
 };
 
@@ -123,7 +131,7 @@ export function organizationJsonLd() {
         email: CONTACT_EMAIL,
         telephone: CONSULT_DISPLAY,
         address,
-        sameAs: [LINKEDIN_URL, FD_URL, INDEXME_URL],
+        sameAs: [LINKEDIN_URL, FD_URL, INDEXME_URL, HIVE_CONSULT_URL],
       },
       {
         "@type": "LocalBusiness",

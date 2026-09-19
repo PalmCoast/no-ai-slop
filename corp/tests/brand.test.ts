@@ -12,6 +12,8 @@ import {
   FD_CHECK_LABEL,
   FD_CHECK_URL,
   FD_CONSULT_URL,
+  HIVE_CONSULT_PATH,
+  HIVE_CONSULT_URL,
   FD_CTA_LABEL,
   FD_NAME,
   FD_PRICE,
@@ -52,6 +54,8 @@ describe("AgentHive Inc brand facts", () => {
     expect(FD_URL).toBe("https://firstdeploy.ai/");
     expect(FD_CHECK_URL).toBe("https://firstdeploy.ai/#check");
     expect(FD_CONSULT_URL).toBe("https://firstdeploy.ai/consult");
+    expect(HIVE_CONSULT_PATH).toBe("/consult");
+    expect(HIVE_CONSULT_URL).toBe("https://agenthiveinc.com/consult");
     expect(FD_PRICE).toBe("$1,500 setup, then $250/mo");
     expect(FD_PROMISE).toMatch(/Live this week/i);
     expect(INDEXME_NAME).toBe("IndexMe.lol");
@@ -84,6 +88,9 @@ describe("AgentHive Inc brand facts", () => {
     expect(home).toMatch(/INDEXME_BLURB|IndexNow/);
     expect(home).toMatch(/FD_URL|firstdeploy\.ai/);
     expect(home).toMatch(/commercial earth mover|dirty physical businesses/);
+    expect(home).toMatch(/AskAiBar/);
+    expect(home).toMatch(/queen-full\.jpg/);
+    expect(home).not.toMatch(/consult-operator/);
     expect(home).not.toMatch(/12 Grok Bots|The Swarm Roster|Recruit your first Grok Bot|bootstrapped/i);
     expect(home).not.toMatch(/14 apps|\$70k/i);
     expect(home).not.toMatch(/netlify\.app/);
@@ -99,6 +106,8 @@ describe("AgentHive Inc brand facts", () => {
     expect(about).toMatch(/QpiAI|insurance hive|OSS/);
     expect(about).toMatch(/agenthive\.io|agenthive\.co|OTHER_HIVES/);
     expect(about).toMatch(/Grok Bots|The hive/);
+    expect(about).toMatch(/queen-portrait\.jpg/);
+    expect(about).toMatch(/\/consult/);
     expect(about).not.toMatch(/14 apps|\$70k|bootstrapped/i);
     expect(about).not.toMatch(/hivebriefcase\.netlify\.app/);
   });
@@ -119,7 +128,7 @@ describe("AgentHive Inc brand facts", () => {
       "https://firstdeploy.ai/",
       "https://firstdeploy.ai/#check",
       "https://calendly.com/coltsinsider/30min",
-      "https://firstdeploy.ai/consult",
+      "/consult",
       "https://infrastructure.agenthiveinc.com/",
     ]);
     expect(MONEY_FOOTER_LINKS.map((link) => link.label)).toEqual([
@@ -154,6 +163,7 @@ describe("AgentHive Inc brand facts", () => {
       "src/pages/Home.tsx",
       "src/pages/About.tsx",
       "src/pages/Build.tsx",
+      "src/pages/Consult.tsx",
       "src/pages/Rankings.tsx",
       "src/components/Layout.tsx",
       "shared/seo.ts",
@@ -170,6 +180,8 @@ describe("AgentHive Inc brand facts", () => {
         .replace(/FD_URL/g, "")
         .replace(/FD_CHECK_URL/g, "")
         .replace(/FD_CONSULT_URL/g, "")
+        .replace(/HIVE_CONSULT_URL/g, "")
+        .replace(/HIVE_CONSULT_PATH/g, "")
         .replace(/FD_PRICE/g, "")
         .replace(/FD_CTA_LABEL/g, "")
         .replace(/FD_CHECK_LABEL/g, "")

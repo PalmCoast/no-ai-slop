@@ -36,6 +36,8 @@ writeFileSync(
     "/rankings/ /rankings/index.html 200!",
     "/build /build/index.html 200!",
     "/build/ /build/index.html 200!",
+    "/consult /consult/index.html 200!",
+    "/consult/ /consult/index.html 200!",
     "/* /404.html 404",
   ].join("\n") + "\n",
 );

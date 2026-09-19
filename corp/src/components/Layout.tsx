@@ -23,6 +23,7 @@ const NAV = [
   { to: "/#work", label: "Work", hash: true },
   { to: "/buzz", label: "The Buzz" },
   { to: "/rankings", label: "Rankings" },
+  { to: "/consult", label: "Consult" },
   { to: "/about", label: "About" },
   { to: "/build", label: "Custom Builds" },
 ];
@@ -122,6 +123,7 @@ export default function Layout() {
             <Link to="/">Home</Link>
             <Link to="/buzz">The Buzz</Link>
             <Link to="/rankings">Rankings</Link>
+            <Link to="/consult">Consult</Link>
             <Link to="/about">About</Link>
             <Link to="/build">Custom Builds</Link>
           </div>

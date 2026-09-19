@@ -11,6 +11,8 @@ export const FD_NAME = "First Deploy AI";
 export const FD_URL = "https://firstdeploy.ai/";
 export const FD_CHECK_URL = "https://firstdeploy.ai/#check";
 export const FD_CONSULT_URL = "https://firstdeploy.ai/consult";
+export const HIVE_CONSULT_PATH = "/consult";
+export const HIVE_CONSULT_URL = "https://agenthiveinc.com/consult";
 export const FD_PRICE = "$1,500 setup, then $250/mo";
 export const FD_PROMISE = "Live this week or you do not pay the setup";
 export const FD_CTA_LABEL = "Start First Deploy";
@@ -38,7 +40,7 @@ export const MONEY_FOOTER_LINKS = [
   { href: FD_URL, label: FD_NAME },
   { href: FD_CHECK_URL, label: FD_CHECK_LABEL },
   { href: CALENDLY_URL, label: FREE_30_LABEL, external: true },
-  { href: FD_CONSULT_URL, label: "Consult" },
+  { href: HIVE_CONSULT_PATH, label: "Consult" },
   { href: SEAT_CIRCUIT_URL, label: SEAT_CIRCUIT_NAME },
 ] as const;
 

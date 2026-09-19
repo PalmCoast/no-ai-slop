@@ -63,10 +63,13 @@ export default function About() {
               </p>
             </article>
             <article className="trust">
-              <h3>Consult</h3>
+              <h3>
+                <a href="/consult">Consult</a>
+              </h3>
               <p className="muted">
                 {FD_NAME}{" "}
                 <a href={`tel:${CONSULT_TEL}`}>{CONSULT_DISPLAY}</a>
+                . Gold hive rates on <a href="/consult">/consult</a>.
               </p>
             </article>
             <article className="trust">

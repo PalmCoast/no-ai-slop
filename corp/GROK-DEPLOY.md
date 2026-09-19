@@ -17,6 +17,7 @@ Pages:
 - `/buzz` The Buzz (weekly AI/infra briefing)
 - `/rankings` live app ranking (Netlify portfolio + custom domains)
 - `/build` First Deploy AI custom builds
+- `/consult` gold hive consult (Calendly + Stripe). Not the grey firstdeploy.ai/consult theme.
 
 Redirects already in `corp/netlify.toml`:
 
