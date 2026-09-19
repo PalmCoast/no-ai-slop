@@ -97,6 +97,8 @@ describe("seo", () => {
     }
     expect(sitemapXml()).toContain("https://askyard.firstdeploy.ai/board");
     expect(sitemapXml()).toContain("https://askyard.firstdeploy.ai/q/stop-missing-night-calls");
+    expect(sitemapXml()).not.toContain("https://askyard.firstdeploy.ai/launch");
+    expect(PAGE_SEO.some((page) => page.path === "/launch")).toBe(false);
   });
 
   it("writes distinct home and board HTML", () => {

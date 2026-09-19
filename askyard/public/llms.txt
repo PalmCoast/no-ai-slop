@@ -9,7 +9,6 @@ AskYard is for plumbers, teachers, receptionists, earth movers, and anyone else 
 - [Ranked board](https://askyard.firstdeploy.ai/board): Questions sorted by how many times people ask them.
 - [Apps for sale](https://askyard.firstdeploy.ai/apps): The live First Deploy AI shelf.
 - [Hunt](https://askyard.firstdeploy.ai/hunt): Copy a free answer for people already asking in public, with a link back.
-- [Launch plan](https://askyard.firstdeploy.ai/launch): How the product gets out without a big ad buy.
 
 ## Company
 - [First Deploy AI](https://firstdeploy.ai/): After-hours desk and live apps. $1,500 setup, then $250/month.
