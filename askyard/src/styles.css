@@ -209,7 +209,7 @@ button, input, textarea { font: inherit; }
 }
 .ask-box input { font-size: 1.05rem; }
 
-.section { position: relative; z-index: 1; padding: 4.5rem 0; }
+.section { position: relative; z-index: 1; padding: 6rem 0 4.5rem; }
 .section-alt { background: linear-gradient(180deg, rgba(11,9,6,0.92), rgba(5,4,3,0.92)); }
 .section-head { margin-bottom: 2rem; max-width: 42rem; }
 .section-head h2 { font-size: clamp(1.8rem, 3vw, 2.6rem); margin-bottom: 0.5rem; }

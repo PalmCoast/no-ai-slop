@@ -134,12 +134,12 @@ function summaryFor(label: RepReport["label"], name: string, watchCount: number,
     return `${who} looks strong on AskYard. ${helpful} people marked related answers as helpful.`;
   }
   if (label === "steady") {
-    return `${who} has a steady public record. No roast wall. If something new lands, this meter moves.`;
+    return `${who} has a steady public record. If something new lands, this meter moves.`;
   }
   return `${who} is quiet in public so far. That can be new, small, or careful. Search again after you ask, and install the toolbar if you want a ping when a new hit appears.`;
 }
 
 export const REP_TOOLBAR_BLURB =
-  `${BRAND_NAME} Rep is a Chrome toolbar. Search a name, see the meter. If something rough is posted in public, you see the source the next time you look. Less RateMy. More Ahrefs-for-your-name. ${MARQUEE_NAME} is the paid lights if you then want to sit at the top.`;
+  `${BRAND_NAME} Rep is a Chrome toolbar. Search a name, see the meter. If something rough is posted in public, you see the source the next time you look. ${MARQUEE_NAME} is the paid lights if you then want to sit at the top.`;
 
 export const KNOWN_LOOKUPS = [BRAND_NAME, BRAND_PARENT, "AgentHive Inc", "JobProof", "IndexMe.lol"];

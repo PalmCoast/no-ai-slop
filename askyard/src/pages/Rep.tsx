@@ -49,8 +49,8 @@ export default function Rep() {
           <div className="eyebrow">Reputation meter</div>
           <h1 className="display">Search a name. See the meter.</h1>
           <p className="lede">
-            Instant lookup if something rough is posted in public. AskYard votes plus public HN hits. A lookup, not a
-            verdict. Less RateMy. More a toolbar for your name.
+            Instant lookup if something rough is posted in public. AskYard votes plus public HN hits. Read the sources.
+            Chrome load-unpacked puts the meter in one click.
           </p>
         </div>
         <form className="ask-box" onSubmit={onSubmit}>

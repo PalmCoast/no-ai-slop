@@ -103,7 +103,7 @@ export default function Marquee() {
               inputMode="decimal"
               placeholder={minNext}
             />
-            {error ? <p className="fine">{error}</p> : <p className="fine">Checkout charges exactly what you typed.</p>}
+            {error ? <p className="fine">{error}</p> : <p className="fine">Checkout charges exactly what you typed. Floor $20.</p>}
             <button className="btn btn-primary" type="submit" disabled={busy}>
               {busy ? "Opening checkout…" : `Bid ${bid || minNext}`}
             </button>

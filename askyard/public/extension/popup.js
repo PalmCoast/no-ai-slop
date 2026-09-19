@@ -2,7 +2,8 @@ const PRODUCTION = "https://askyard.firstdeploy.ai";
 
 function apiOrigin() {
   if (location.protocol === "http:" || location.protocol === "https:") {
-    if (location.hostname === "localhost" || location.hostname.endsWith("firstdeploy.ai") || location.hostname.endsWith("netlify.app")) {
+    const host = location.hostname;
+    if (host === "localhost" || host === "127.0.0.1" || host.endsWith("firstdeploy.ai") || host.endsWith("netlify.app")) {
       return location.origin;
     }
   }
@@ -70,6 +71,10 @@ async function lookup(query) {
     reportEl.hidden = false;
     status.textContent = `Looked up ${report.query}`;
   } catch {
+    if (location.protocol === "http:" || location.protocol === "https:") {
+      location.href = `${location.origin}/rep?q=${encodeURIComponent(q)}`;
+      return;
+    }
     status.textContent = "Could not reach AskYard. Open the meter on the site.";
   }
 }
