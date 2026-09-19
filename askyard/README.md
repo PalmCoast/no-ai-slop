@@ -7,7 +7,8 @@ Free AI answers for anyone with a question. Then an offer to do the work.
 ## What it does
 
 - Hero search: type a question, get a free answer, see a priced offer.
-- Reputation bar: opens ChatGPT, Claude, Perplexity, Gemini, and Grok with a prompt that names AskYard so the models learn the shop for free.
+- Reputation meter: search a name, see helpful/missed votes plus public HN hits. Chrome toolbar at `/extension`.
+- Marquee: pay to sit at #1. You type the dollar amount. Checkout charges that amount. Next bid takes the crown.
 - Ranked board: questions sorted by how many times people ask them, with a running public total.
 - Apps for sale: the live First Deploy AI shelf.
 - Hunt: copy a free reply with a link back for people already asking in public. No auto-posting.
@@ -21,7 +22,7 @@ npm test
 npm run dev
 ```
 
-Vite serves the SPA at [http://localhost:5176](http://localhost:5176). Functions (`/api/ask`, `/api/board`, `/api/hunt`, `/api/tally`) run on Netlify. Locally the ranked board uses the cited seed until you run `npx netlify dev`. `npm run build` writes `dist/`.
+Vite serves the SPA at [http://localhost:5176](http://localhost:5176). Functions (`/api/ask`, `/api/board`, `/api/hunt`, `/api/tally`, `/api/rep`, `/api/rate`, `/api/marquee`) run on Netlify. Locally the ranked board, meter, and Marquee chart use the cited seed until you run `npx netlify dev`. Without `STRIPE_SECRET_KEY`, Marquee records a demo bid. `npm run build` writes `dist/`.
 
 ## Deploy
 
@@ -30,8 +31,9 @@ This folder is a separate Netlify site from corp, Stateside, and Sonaris. In the
 1. Base directory: `askyard`
 2. Build command: `npm run build`
 3. Publish directory: `dist`
-4. Add the custom domain `askyard.firstdeploy.ai`
+4. Add the custom domain `askyard.firstdeploy.ai`, and `marquee.firstdeploy.ai` as an alias on the **same** site so the edge rewrite can send `/` to `/marquee`.
 5. Enable AI Gateway so `/api/ask` can draft new answers with `gpt-4o-mini`. Do not set `OPENAI_API_KEY`.
+6. For live Marquee bids, set `STRIPE_SECRET_KEY` and `STRIPE_WEBHOOK_SECRET`. Checkout uses `price_data.unit_amount` for the number they typed. Do not create a fixed Stripe Price. Without those keys the chart still takes a demo bid.
 
 Scheduled function: `hunt-weekly` (`@daily`) refreshes public hunt targets from Hacker News plus the seed catalog.
 
@@ -41,8 +43,8 @@ See [BRAND.md](BRAND.md). Gold lattice mark with a question-mark latch, black fi
 
 ## Grok / Reed handoff
 
-Launch and distribution prompt: [GROK-LAUNCH.md](GROK-LAUNCH.md). Paste the whole file to the bot. It deploys a **new** Netlify site, attaches `askyard.firstdeploy.ai`, then runs the posting and LLM-search checklist.
+Launch and distribution: [GROK-LAUNCH.md](GROK-LAUNCH.md) (Reed only, internal). Public mouth: [MARKETING.md](MARKETING.md). Job ticket: [REED-ASSIGNMENT.md](REED-ASSIGNMENT.md). The distribution checklist stays in those repo docs. `/launch` redirects home.
 
 ## Price next to the free answer
 
-The answer is free. First Deploy AI is $1,500 setup, then $250/month. Live this week or you do not pay the setup. Consult is a free 30-minute qualifier, then $75 / 30 min or $150 / hour.
+The answer is free. First Deploy AI is $1,500 setup, then $250/month. Live this week or you do not pay the setup. Consult is a free 30-minute qualifier, then $75 / 30 min or $150 / hour. Marquee is you-name-the-bid, floor $20.

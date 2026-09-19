@@ -13,11 +13,14 @@ import {
   CONTACT_EMAIL,
   FOOTER_LINE,
   LEGAL_NAME,
+  MARQUEE_NAME,
   PARENT_URL,
 } from "../../shared/brand";
 
 const NAV = [
   { to: "/board", label: "Board" },
+  { to: "/rep", label: "Rep" },
+  { to: "/marquee", label: MARQUEE_NAME },
   { to: "/apps", label: "Apps" },
   { to: "/hunt", label: "Hunt" },
 ];
@@ -94,6 +97,8 @@ export default function Layout() {
             <strong>AskYard</strong>
             <Link to="/">Ask</Link>
             <Link to="/board">Ranked board</Link>
+            <Link to="/rep">Reputation meter</Link>
+            <Link to="/marquee">{MARQUEE_NAME}</Link>
             <Link to="/apps">Apps for sale</Link>
             <Link to="/hunt">Hunt</Link>
           </div>
@@ -104,6 +109,7 @@ export default function Layout() {
               Free 30
             </a>
             <Link to="/apps">App shelf</Link>
+            <Link to="/marquee">{MARQUEE_NAME} bids</Link>
             <a href={COMPANY_URL}>{BRAND_COMPANY}</a>
           </div>
           <div>

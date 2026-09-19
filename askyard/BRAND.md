@@ -34,6 +34,7 @@ Write like the shop talks.
 
 - Lead with the job. "Stop missing night calls" not "unlock after-hours intelligence".
 - Prices on the same screen as the answer.
+- Marquee is vanity with a price they type. "Your name in lights. You name the bid."
 - No banned words: leverage, seamless, empower, robust, cutting-edge, elevate, harness.
 - No "it's not X, it's Y". Say the thing.
 

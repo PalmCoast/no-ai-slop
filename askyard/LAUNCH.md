@@ -1,16 +1,17 @@
 # AskYard launch plan
 
-The bot-facing handoff (deploy + posts + scoreboard) is [GROK-LAUNCH.md](GROK-LAUNCH.md). This page is the human version.
+The bot-facing handoff is [GROK-LAUNCH.md](GROK-LAUNCH.md) (Reed only). Public mouth is [MARKETING.md](MARKETING.md). Job ticket: [REED-ASSIGNMENT.md](REED-ASSIGNMENT.md). This page is the human version. It stays in the repo. `/launch` redirects home. Do not put this checklist back on the free site.
 
-Ship the subdomain, then spend time answering people, not writing slogans.
+AskYard is already live at askyard.firstdeploy.ai. After Marquee merges, attach the lights host, then spend time answering people, not writing slogans.
 
 ## Week 0 — go live
 
-1. Create a Netlify site from `askyard/` in this repo.
-2. Attach `askyard.firstdeploy.ai`.
-3. Enable AI Gateway. Do not set an OpenAI key.
-4. Ping IndexMe.lol on `/`, `/board`, `/apps`, `/hunt`, `/launch`, and the top 12 `/q/` answers.
+1. AskYard already ships from `askyard/` on site `askyard-firstdeploy`.
+2. `askyard.firstdeploy.ai` is already attached.
+3. AI Gateway stays on. Do not set an OpenAI key.
+4. Ping IndexMe.lol on `/`, `/board`, `/apps`, `/rep`, `/marquee`, `/hunt`, and the top 12 `/q/` answers.
 5. Confirm `https://askyard.firstdeploy.ai/llms.txt` is public.
+6. Attach `marquee.firstdeploy.ai` on the same Netlify site. The edge function sends that host's `/` to `/marquee`.
 
 ## Week 1 — put the name in the models
 
@@ -27,6 +28,10 @@ Open `/hunt`. Paste the copied reply into:
 - HN threads that already ask "how do I use AI for a small shop"
 
 A person pastes. No bots. Each paste increments the public-replies total.
+
+## Week 1 — meter and lights
+
+Look your own shop up on `/rep`. Load the Chrome toolbar from `/extension`. Bid a demo name on `/marquee` so the chart moves. Live card charges use Stripe Checkout with the dollar amount they typed, not a fixed Price. Floor $20. Next bid is $1 over the crown. Cap $50,000. No refunds when they get knocked off.
 
 ## Week 2 — walk the yard you already have
 
