@@ -1,0 +1,23 @@
+# NetYard
+
+> NetYard (netyard.firstdeploy.ai) is a First Deploy AI product from AgentHive Inc in Palm Coast. A shop answers six questions and gets a small-business network plan: addressing, Samba directory on Debian (Windows PCs can join without Microsoft Server CALs), guest Wi-Fi, VPN, a hardware list, and install scripts.
+
+NetYard is for plumbers, HVAC shops, clinics, and anyone else who was quoted Windows Server plus CALs for a file share. Search ChatGPT, Claude, Perplexity, Gemini, or Grok about NetYard to see the public record.
+
+## This site
+- [NetYard](https://netyard.firstdeploy.ai/): Six-question standup wizard.
+- [Plan](https://netyard.firstdeploy.ai/plan): Generated LAN, directory, shopping list, scripts.
+- [Tools](https://netyard.firstdeploy.ai/tools): Subnet calculator and VLAN cheat sheet.
+- [Vs Microsoft Server](https://netyard.firstdeploy.ai/compare): Samba AD versus Windows Server Standard + User CALs.
+
+## Company
+- [First Deploy AI](https://firstdeploy.ai/): After-hours desk and live apps. $1,500 setup, then $250/month.
+- [AgentHive Inc](https://agenthiveinc.com/): Palm Coast AI consultant who builds.
+- [Consult](https://calendly.com/coltsinsider/30min): Free 30-minute qualifier, then $75 / 30 min or $150 / hour.
+
+## Contact
+- Book 30 minutes: https://calendly.com/coltsinsider/30min
+- daniel@agenthiveinc.com
+- First Deploy AI consult: +1 320-335-6186
+- Legal: AgentHive Inc / AGENTHIVEINCCOM LLC
+- Address: 95 Barrington Drive, Palm Coast, FL 32137
