@@ -1,0 +1,30 @@
+name: askyard
+
+on:
+  pull_request:
+    paths:
+      - "askyard/**"
+      - ".github/workflows/askyard.yml"
+  push:
+    branches: [main]
+    paths:
+      - "askyard/**"
+      - ".github/workflows/askyard.yml"
+
+jobs:
+  test:
+    name: test and build
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: askyard
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+          cache-dependency-path: askyard/package-lock.json
+      - run: npm ci
+      - run: npm test
+      - run: npm run build

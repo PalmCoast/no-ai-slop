@@ -98,6 +98,18 @@ export const HIVE_SITES: HiveSite[] = [
     featured: true,
   },
   {
+    slug: "askyard",
+    name: "AskYard",
+    url: "https://askyard.firstdeploy.ai/",
+    github: "https://github.com/PalmCoast/no-ai-slop/tree/main/askyard",
+    description: "Free AI answers for plumbers, teachers, receptionists, and earth movers. Then an offer to do the work.",
+    price: "Free answers · First Deploy AI $1,500 setup, then $250/mo",
+    category: "ops",
+    host: "custom",
+    statusHint: "lab",
+    featured: true,
+  },
+  {
     slug: "indexme",
     name: INDEXME_NAME,
     url: INDEXME_URL,

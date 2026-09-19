@@ -17,6 +17,7 @@ AgentHive Inc is a Palm Coast consultant who builds: after-hours booking plus li
 - [IndexMe.lol](https://indexme.lol/): Honest IndexNow indexing desk. Pro $19.99, Studio $29.99, one-time.
 - [Flick](https://flick.firstdeploy.ai/): Browser screen recorder. Send a link. No login wall.
 - [JobProof](https://jobproof.firstdeploy.ai/): Proof you did the work, not a resume stack.
+- [AskYard](https://askyard.firstdeploy.ai/): Free AI answers for plumbers, teachers, receptionists, and earth movers. Then an offer to do the work this week.
 - [ClaudeFarm](https://claudefarm.com/): Public storefront for First Deploy AI and consult time.
 
 ## Also shipped
