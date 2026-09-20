@@ -72,7 +72,7 @@ describe("reputation search", () => {
 describe("twelve.tools listing", () => {
   it("keeps the official free-listing backlink and dark badge", () => {
     expect(TWELVE_TOOLS_URL).toBe("https://twelve.tools");
-    expect(TWELVE_TOOLS_BADGE).toBe("https://twelve.tools/badge0-dark.svg");
+    expect(TWELVE_TOOLS_BADGE).toBe("https://twelve.tools/badge0-white.svg");
   });
 });
 

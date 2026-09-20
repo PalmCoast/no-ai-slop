@@ -116,7 +116,7 @@ export default function Layout() {
             <a href={TWELVE_TOOLS_URL} target="_blank" rel="noreferrer">
               Twelve Tools
             </a>
-            <a className="footer-badge" href={TWELVE_TOOLS_URL} target="_blank">
+            <a className="footer-badge" href={TWELVE_TOOLS_URL} target="_blank" rel="noopener">
               <img
                 src={TWELVE_TOOLS_BADGE}
                 alt="Featured on Twelve Tools"
