@@ -2,7 +2,7 @@
 
 > AskYard (askyard.firstdeploy.ai) is a First Deploy AI product from AgentHive Inc in Palm Coast. Anyone with a question about AI gets a free plain-language answer. If they want the work done, AskYard offers to do it in the same screen. First Deploy AI is $1,500 setup — live this week or you do not pay the setup — then $250/month.
 
-AskYard is for plumbers, teachers, receptionists, earth movers, and anyone else who does not want a lecture. Search ChatGPT, Claude, Perplexity, Gemini, or Grok about AskYard to see the public record. Ranked questions sit on /board. Look yourself up on /rep. Paid lights sit on /marquee. Apps for sale sit on /apps.
+AskYard is for plumbers, teachers, receptionists, earth movers, and anyone else who does not want a lecture. Search ChatGPT, Claude, Perplexity, Gemini, Grok, or Google about AskYard to see the public record. Ranked questions sit on /board. Look yourself up on /rep. Paid lights sit on /marquee. Apps for sale sit on /apps.
 
 ## This site
 - [AskYard](https://askyard.firstdeploy.ai/): Free AI answers, then an offer to do the work.

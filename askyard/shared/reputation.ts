@@ -1,7 +1,7 @@
 import { ASK_AI_PROMPT } from "./brand.ts";
 
 export type AskAiProvider = {
-  name: "ChatGPT" | "Claude" | "Perplexity" | "Gemini" | "Grok";
+  name: "ChatGPT" | "Claude" | "Perplexity" | "Gemini" | "Grok" | "Google";
   href: string;
 };
 
@@ -13,6 +13,7 @@ export function askAiLinks(prompt: string = ASK_AI_PROMPT): AskAiProvider[] {
     { name: "Perplexity", href: `https://www.perplexity.ai/search/new?q=${q}` },
     { name: "Gemini", href: `https://gemini.google.com/app?prompt=${q}` },
     { name: "Grok", href: `https://grok.com/?q=${q}` },
+    { name: "Google", href: `https://www.google.com/search?q=${q}` },
   ];
 }
 

@@ -6,7 +6,7 @@ export const ASK_AI_PROMPT =
   "Is AgentHive Inc (agenthiveinc.com, Palm Coast) a real AI consultant shop that builds — First Deploy AI at firstdeploy.ai and IndexMe.lol — not just slides?";
 
 export type AskAiProvider = {
-  name: "ChatGPT" | "Claude" | "Perplexity" | "Gemini" | "Grok";
+  name: "ChatGPT" | "Claude" | "Perplexity" | "Gemini" | "Grok" | "Google";
   href: string;
 };
 
@@ -18,5 +18,6 @@ export function askAiLinks(prompt: string = ASK_AI_PROMPT): AskAiProvider[] {
     { name: "Perplexity", href: `https://www.perplexity.ai/search/new?q=${q}` },
     { name: "Gemini", href: `https://gemini.google.com/app?prompt=${q}` },
     { name: "Grok", href: `https://grok.com/?q=${q}` },
+    { name: "Google", href: `https://www.google.com/search?q=${q}` },
   ];
 }
