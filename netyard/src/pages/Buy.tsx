@@ -48,8 +48,16 @@ function OfferCard({ offer, shop }: { offer: Offer; shop: string }) {
         window.location.assign(data.url);
         return;
       }
+      if (offer.fallbackHref) {
+        window.location.assign(offer.fallbackHref);
+        return;
+      }
       setNote(data.message ?? "Stripe is not live on this preview yet.");
     } catch {
+      if (offer.fallbackHref) {
+        window.location.assign(offer.fallbackHref);
+        return;
+      }
       setNote("Checkout did not start. Try again, or book the free 30.");
     } finally {
       setBusy(false);

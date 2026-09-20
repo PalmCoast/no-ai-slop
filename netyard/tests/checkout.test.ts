@@ -23,7 +23,7 @@ describe("offers", () => {
     expect(offerById("desk")?.mode).toBe("subscription");
     expect(offerById("consult30")?.fallbackHref).toContain("buy.stripe.com");
     expect(offerById("rack")?.fallbackHref).toContain("buy.stripe.com");
-    expect(offerById("desk")?.fallbackHref).toContain("buy.stripe.com");
+    expect(OFFERS.every((o) => Boolean(o.fallbackHref))).toBe(true);
     expect(isOfferId("rack")).toBe(true);
     expect(isOfferId("enterprise")).toBe(false);
   });
