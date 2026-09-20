@@ -473,10 +473,8 @@ footer {
 }
 .footer-grid a, .footer-grid p { display: block; color: var(--muted); margin-top: 0.4rem; }
 .footer-mark { width: min(280px, 100%); margin-bottom: 0.8rem; }
-.footer-badge { margin-top: 0.75rem; }
-.footer-badge img {
+.footer-grid a img {
   display: block;
-  width: 200px;
   max-width: 100%;
   height: auto;
 }

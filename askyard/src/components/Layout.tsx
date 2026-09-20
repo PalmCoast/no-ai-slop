@@ -15,8 +15,6 @@ import {
   LEGAL_NAME,
   MARQUEE_NAME,
   PARENT_URL,
-  TWELVE_TOOLS_BADGE,
-  TWELVE_TOOLS_URL,
 } from "../../shared/brand";
 
 const NAV = [
@@ -113,16 +111,11 @@ export default function Layout() {
             <Link to="/apps">App shelf</Link>
             <Link to="/marquee">{MARQUEE_NAME} bids</Link>
             <a href={COMPANY_URL}>{BRAND_COMPANY}</a>
-            <a href={TWELVE_TOOLS_URL} target="_blank" rel="noreferrer">
-              Twelve Tools
+            <a href="https://twelve.tools" target="_blank" rel="noopener">
+              <img src="https://twelve.tools/badge0-white.svg" alt="Featured on Twelve Tools" width={200} height={54} />
             </a>
-            <a className="footer-badge" href={TWELVE_TOOLS_URL} target="_blank" rel="noopener">
-              <img
-                src={TWELVE_TOOLS_BADGE}
-                alt="Featured on Twelve Tools"
-                width={200}
-                height={54}
-              />
+            <a href="https://fazier.com" target="_blank">
+              <img src="https://fazier.com/api/v1//public/badges/launch_badges.svg?badge_type=launched&theme=light" width={120} alt="Fazier badge" />
             </a>
           </div>
           <div>
