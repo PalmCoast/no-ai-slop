@@ -16,15 +16,16 @@ describe("Ask AI bar", () => {
     expect(ASK_AI_PROMPT).not.toMatch(/14 apps|\$70k|Grok Bot|swarm/i);
   });
 
-  it("builds five encoded free-search deep links", () => {
+  it("builds encoded free-search deep links including Google", () => {
     const links = askAiLinks();
     const encoded = encodeURIComponent(ASK_AI_PROMPT);
-    expect(links.map((link) => link.name)).toEqual(["ChatGPT", "Claude", "Perplexity", "Gemini", "Grok"]);
+    expect(links.map((link) => link.name)).toEqual(["ChatGPT", "Claude", "Perplexity", "Gemini", "Grok", "Google"]);
     expect(links[0].href).toBe(`https://chatgpt.com/?q=${encoded}`);
     expect(links[1].href).toBe(`https://claude.ai/new?q=${encoded}`);
     expect(links[2].href).toBe(`https://www.perplexity.ai/search/new?q=${encoded}`);
     expect(links[3].href).toBe(`https://gemini.google.com/app?prompt=${encoded}`);
     expect(links[4].href).toBe(`https://grok.com/?q=${encoded}`);
+    expect(links[5].href).toBe(`https://www.google.com/search?q=${encoded}`);
     for (const link of links) {
       expect(link.href).toContain(encoded);
       expect(link.href).not.toContain(" ");

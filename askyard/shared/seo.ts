@@ -46,7 +46,7 @@ export const PAGE_SEO: SeoPage[] = [
     title: "AskYard — free AI answers for the shop floor",
     description: `${HERO_H1} ${HERO_WHAT} ${BRAND_PARENT} is ${FD_PRICE}. ${FD_PROMISE}.`,
     h1: HERO_H1,
-    bodyHtml: `<main id="route-home" class="section"><div class="container"><h1 class="display">${HERO_H1}</h1><p class="lede">${HERO_WHAT}</p><p>${TAGLINE} ${BRAND_NAME} is a ${BRAND_PARENT} product from ${BRAND_COMPANY} in ${BRAND_PLACE}. Search ChatGPT, Claude, Perplexity, Gemini, or Grok about us, then ask your own question. Ranked questions live on the board. Apps for sale sit on /apps.</p><p><a href="${PARENT_URL}">Start ${BRAND_PARENT}</a> · <a href="${CALENDLY_URL}">Book the free 30</a> · ${CONSULT_DISPLAY}</p></div></main>`,
+    bodyHtml: `<main id="route-home" class="section"><div class="container"><h1 class="display">${HERO_H1}</h1><p class="lede">${HERO_WHAT}</p><p>${TAGLINE} ${BRAND_NAME} is a ${BRAND_PARENT} product from ${BRAND_COMPANY} in ${BRAND_PLACE}. Search ChatGPT, Claude, Perplexity, Gemini, Grok, or Google about us, then ask your own question. Ranked questions live on the board. Apps for sale sit on /apps.</p><p><a href="${PARENT_URL}">Start ${BRAND_PARENT}</a> · <a href="${CALENDLY_URL}">Book the free 30</a> · ${CONSULT_DISPLAY}</p></div></main>`,
   },
   {
     path: "/board",
@@ -74,7 +74,7 @@ export const PAGE_SEO: SeoPage[] = [
     title: "Answer people in public | AskYard",
     description: `Find people already asking AI questions. Copy a free AskYard answer with a link back to askyard.firstdeploy.ai.`,
     h1: "Answer people where they already ask",
-    bodyHtml: `<main id="route-hunt" class="section"><div class="container"><h1 class="display">Answer people where they already ask</h1><p class="lede">We watch public threads for plumbers, teachers, receptionists, and crews looking for AI help. Copy a plain answer. Leave a link back to AskYard. That is how the name lands in the models for free.</p><p>Start on the hunt board, then search ChatGPT, Claude, Perplexity, Gemini, or Grok about AskYard.</p></div></main>`,
+    bodyHtml: `<main id="route-hunt" class="section"><div class="container"><h1 class="display">Answer people where they already ask</h1><p class="lede">We watch public threads for plumbers, teachers, receptionists, and crews looking for AI help. Copy a plain answer. Leave a link back to AskYard. That is how the name lands in the models for free.</p><p>Start on the hunt board, then search ChatGPT, Claude, Perplexity, Gemini, Grok, or Google about AskYard.</p></div></main>`,
   },
   {
     path: "/rep",

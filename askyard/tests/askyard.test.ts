@@ -63,10 +63,11 @@ describe("question ranking", () => {
 });
 
 describe("reputation search", () => {
-  it("encodes AskYard into five LLM deep links", () => {
+  it("encodes AskYard into LLM and Google Search deep links", () => {
     const links = askAiLinks();
     const encoded = encodeURIComponent(ASK_AI_PROMPT);
-    expect(links.map((link) => link.name)).toEqual(["ChatGPT", "Claude", "Perplexity", "Gemini", "Grok"]);
+    expect(links.map((link) => link.name)).toEqual(["ChatGPT", "Claude", "Perplexity", "Gemini", "Grok", "Google"]);
+    expect(links[5].href).toBe(`https://www.google.com/search?q=${encoded}`);
     for (const link of links) {
       expect(link.href).toContain(encoded);
       expect(link.href).not.toContain(" ");
