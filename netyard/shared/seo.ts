@@ -63,6 +63,28 @@ export const PAGE_SEO: SeoPage[] = [
     h1: "Skip the CALs. Keep the domain join.",
     bodyHtml: `<main id="route-compare" class="section"><div class="container"><h1 class="display">Skip the CALs. Keep the domain join.</h1><p class="lede">Microsoft Small Business Server is gone. Essentials is gone. A 12-person shop still needs logins, a share, and guest Wi-Fi. Samba AD on Debian does that. You still pay for hardware and a UPS.</p></div></main>`,
   },
+  {
+    path: "/buy",
+    title: "Pay on Stripe | NetYard",
+    description: `Pay NetYard setup $1,500, the $250/mo desk, or consult time on Stripe. Live this week or you do not pay the setup.`,
+    h1: "Pay for the rack, not another Server license.",
+    bodyHtml: `<main id="route-buy" class="section"><div class="container"><h1 class="display">Pay for the rack, not another Server license.</h1><p class="lede">The wizard and scripts stay free. Stripe takes the $1,500 setup, the $250/mo desk, or consult time. ${FD_PROMISE}.</p></div></main>`,
+  },
+  {
+    path: "/launch",
+    title: "Launch | NetYard",
+    description: `Watch the Harbor HVAC standup. Screenshots of the wizard, VLANs, install scripts, and Stripe buy. A First Deploy AI product.`,
+    h1: "NetYard is live. Watch the standup.",
+    bodyHtml: `<main id="route-launch" class="section"><div class="container"><h1 class="display">NetYard is live. Watch the standup.</h1><p class="lede">Six questions. A VLAN plan. Samba on Debian. Pay the rack on Stripe. Graphics and the Harbor HVAC video live on this page.</p></div></main>`,
+  },
+  {
+    path: "/thanks",
+    title: "Payment landed | NetYard",
+    description: `Stripe checkout confirmation for NetYard setup, monthly desk, or consult time.`,
+    h1: "Payment landed.",
+    bodyHtml: `<main id="route-thanks" class="section"><div class="container"><h1 class="display">Payment landed.</h1><p class="lede">We rack from the plan you already generated. Keep the Stripe receipt.</p></div></main>`,
+    noindex: true,
+  },
 ];
 
 export const NOT_FOUND_SEO: SeoPage = {
@@ -70,12 +92,12 @@ export const NOT_FOUND_SEO: SeoPage = {
   title: "Page not found | NetYard",
   description: `That path is not a NetYard page. Start the wizard, open admin tools, or compare Samba with Microsoft Server.`,
   h1: "This page is not on NetYard",
-  bodyHtml: `<main id="route-404" class="section"><div class="container"><h1 class="display">This page is not on NetYard</h1><p>Home, the plan, admin tools, and the Microsoft Server comparison are live.</p></div></main>`,
+    bodyHtml: `<main id="route-404" class="section"><div class="container"><h1 class="display">This page is not on NetYard</h1><p>Home, the plan, admin tools, Stripe buy, launch, and the Microsoft Server comparison are live.</p></div></main>`,
   noindex: true,
 };
 
 export function sitemapXml(): string {
-  const urls = PAGE_SEO.map((page) => `  <url><loc>${canonicalFor(page.path)}</loc></url>`);
+  const urls = PAGE_SEO.filter((page) => !page.noindex).map((page) => `  <url><loc>${canonicalFor(page.path)}</loc></url>`);
   return `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.join("\n")}\n</urlset>\n`;
 }
 

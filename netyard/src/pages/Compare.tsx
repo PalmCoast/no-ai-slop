@@ -45,7 +45,10 @@ export default function Compare() {
           Windows side.
         </p>
         <div className="hero-actions">
-          <Link className="btn btn-primary" to="/">
+          <Link className="btn btn-primary" to="/buy">
+            Pay on Stripe
+          </Link>
+          <Link className="btn btn-outline" to="/">
             Stand up the network
           </Link>
           <Link className="btn btn-outline" to="/plan?demo=1">

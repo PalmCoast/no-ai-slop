@@ -4,6 +4,9 @@ import Home from "./pages/Home";
 import Plan from "./pages/Plan";
 import Tools from "./pages/Tools";
 import Compare from "./pages/Compare";
+import Buy from "./pages/Buy";
+import Launch from "./pages/Launch";
+import Thanks from "./pages/Thanks";
 import NotFound from "./pages/NotFound";
 
 export default function App() {
@@ -14,6 +17,9 @@ export default function App() {
         <Route path="/plan" element={<Plan />} />
         <Route path="/tools" element={<Tools />} />
         <Route path="/compare" element={<Compare />} />
+        <Route path="/buy" element={<Buy />} />
+        <Route path="/launch" element={<Launch />} />
+        <Route path="/thanks" element={<Thanks />} />
         <Route path="*" element={<NotFound />} />
       </Route>
     </Routes>

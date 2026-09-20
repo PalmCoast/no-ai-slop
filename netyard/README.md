@@ -11,6 +11,8 @@ Stand up a shop network without Microsoft Server.
 - Cost: Windows Server Standard + User CALs versus Samba at $0. Hardware is still in the shopping list.
 - Files: `NETYARD-PLAN.md`, `install-office-server.sh`, `users.csv`, `wg0.conf`, CSVs for the switch tech.
 - Tools: CIDR calculator and the VLAN numbering NetYard uses.
+- Pay: Stripe Checkout on `/buy` for $1,500 setup, $250/mo desk, and consult time.
+- Launch kit: `/launch` ships the Harbor HVAC standup video and screenshots.
 
 Email stays on Google Workspace or Microsoft 365. This does not replace Exchange.
 
@@ -23,7 +25,7 @@ npm test
 npm run dev
 ```
 
-Vite serves the app at [http://localhost:5177](http://localhost:5177). `npm run build` writes `dist/` with unique HTML per route.
+Vite serves the app at [http://localhost:5177](http://localhost:5177). `npm run build` writes `dist/` with unique HTML per route. `npm run dev:netlify` wraps functions on port 8891.
 
 ## Deploy
 
@@ -32,9 +34,17 @@ This folder is a separate Netlify site from corp, AskYard, Stateside, and Sonari
 1. Base directory: `netyard`
 2. Build command: `npm run build`
 3. Publish directory: `dist`
-4. Add the custom domain `netyard.firstdeploy.ai`
+4. Functions directory: `netlify/functions`
+5. Add the custom domain `netyard.firstdeploy.ai`
+6. Set `STRIPE_SECRET_KEY`, `STRIPE_WEBHOOK_SECRET`, `SITE_URL`
 
-No API keys. The planner runs in the browser.
+Do not retarget the site that already serves firstdeploy.ai. Launch and distribution prompt: [GROK-LAUNCH.md](GROK-LAUNCH.md). Paste the whole file to Reed. Human version: [LAUNCH.md](LAUNCH.md).
+
+## Stripe
+
+Live Palm Coast AI (`acct_1SqPSHFJWYd4pYux`) already has the prices. Defaults live in `shared/offers.ts`. Checkout Sessions when the secret is set; otherwise the live payment-link fallbacks.
+
+Webhook: `https://netyard.firstdeploy.ai/api/stripe-webhook`.
 
 ## Brand
 

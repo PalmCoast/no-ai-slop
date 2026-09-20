@@ -1,9 +1,13 @@
 [build]
   command = "npm run build"
   publish = "dist"
+  functions = "netlify/functions"
 
 [build.environment]
   NODE_VERSION = "22"
+
+[functions]
+  node_bundler = "esbuild"
 
 [dev]
   command = "npm run dev"
@@ -54,6 +58,42 @@
   force = true
 
 [[redirects]]
+  from = "/buy"
+  to = "/buy/index.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/buy/"
+  to = "/buy/index.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/launch"
+  to = "/launch/index.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/launch/"
+  to = "/launch/index.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/thanks"
+  to = "/thanks/index.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/thanks/"
+  to = "/thanks/index.html"
+  status = 200
+  force = true
+
+[[redirects]]
   from = "/*"
   to = "/404.html"
   status = 404
@@ -70,3 +110,18 @@
   for = "/assets/*"
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/brand/*"
+  [headers.values]
+    Cache-Control = "public, max-age=86400"
+
+[[headers]]
+  for = "/launch/*"
+  [headers.values]
+    Cache-Control = "public, max-age=86400"
+
+[[headers]]
+  for = "/llms.txt"
+  [headers.values]
+    Content-Type = "text/plain; charset=utf-8"

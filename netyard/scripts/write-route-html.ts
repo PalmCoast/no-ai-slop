@@ -34,6 +34,12 @@ writeFileSync(
     "/tools/ /tools/index.html 200!",
     "/compare /compare/index.html 200!",
     "/compare/ /compare/index.html 200!",
+    "/buy /buy/index.html 200!",
+    "/buy/ /buy/index.html 200!",
+    "/launch /launch/index.html 200!",
+    "/launch/ /launch/index.html 200!",
+    "/thanks /thanks/index.html 200!",
+    "/thanks/ /thanks/index.html 200!",
     "/* /404.html 404",
   ].join("\n") + "\n",
 );

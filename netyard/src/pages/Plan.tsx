@@ -3,6 +3,7 @@ import { Link, useSearchParams } from "react-router-dom";
 import { generatePlan } from "../../shared/planner";
 import { bomTotal } from "../../shared/bom";
 import type { GeneratedFile, NetworkPlan } from "../../shared/types";
+import { RackCta } from "./Buy";
 import { loadAnswers, loadDemo } from "../storage";
 
 const TABS = ["Overview", "Addressing", "Directory", "Shopping", "Runbook", "Files"] as const;
@@ -124,6 +125,7 @@ function Overview({ plan }: { plan: NetworkPlan }) {
           ))}
         </ul>
       </article>
+      <RackCta shop={plan.answers.businessName} />
     </div>
   );
 }

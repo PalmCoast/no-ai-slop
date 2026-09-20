@@ -272,8 +272,8 @@ export default function Home() {
               </p>
             )}
             <p className="fine">
-              {BRAND_PARENT} is {FD_PRICE}. {FD_PROMISE}. If you want someone else to rack it,{" "}
-              <Link to="/compare">compare the stack</Link> then book the free 30.
+              {BRAND_PARENT} is {FD_PRICE}. {FD_PROMISE}. Watch the Harbor HVAC run on{" "}
+              <Link to="/launch">the launch page</Link>, then <Link to="/buy">pay on Stripe</Link>.
             </p>
           </aside>
         </div>

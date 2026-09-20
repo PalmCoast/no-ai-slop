@@ -20,6 +20,8 @@ const NAV = [
   { to: "/plan", label: "Plan" },
   { to: "/tools", label: "Tools" },
   { to: "/compare", label: "Vs Server" },
+  { to: "/launch", label: "Launch" },
+  { to: "/buy", label: "Buy" },
 ];
 
 export default function Layout() {
@@ -46,9 +48,9 @@ export default function Layout() {
             <a href={`tel:${CONSULT_TEL}`} className="phone">
               {CONSULT_DISPLAY}
             </a>
-            <a href={PARENT_URL} className="btn btn-primary">
-              {BRAND_PARENT}
-            </a>
+            <NavLink to="/buy" className="btn btn-primary">
+              Pay on Stripe
+            </NavLink>
           </nav>
           <button
             className="menu-toggle"
@@ -71,9 +73,9 @@ export default function Layout() {
             <a href={`tel:${CONSULT_TEL}`} onClick={() => setOpen(false)}>
               {CONSULT_DISPLAY}
             </a>
-            <a href={PARENT_URL} className="btn btn-primary" onClick={() => setOpen(false)}>
-              {BRAND_PARENT}
-            </a>
+            <NavLink to="/buy" className="btn btn-primary" onClick={() => setOpen(false)}>
+              Pay on Stripe
+            </NavLink>
           </div>
         ) : null}
       </header>
@@ -96,9 +98,11 @@ export default function Layout() {
             <Link to="/plan">Your plan</Link>
             <Link to="/tools">Admin tools</Link>
             <Link to="/compare">Vs Microsoft Server</Link>
+            <Link to="/launch">Launch</Link>
           </div>
           <div>
             <strong>Buy</strong>
+            <Link to="/buy">Pay on Stripe</Link>
             <a href={PARENT_URL}>{BRAND_PARENT}</a>
             <a href={CALENDLY_URL} rel="noreferrer" target="_blank">
               Free 30
