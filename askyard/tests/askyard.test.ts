@@ -1,3 +1,6 @@
+import { readFileSync } from "node:fs";
+import { dirname, join } from "node:path";
+import { fileURLToPath } from "node:url";
 import { describe, expect, it } from "vitest";
 import {
   bumpQuestion,
@@ -15,6 +18,11 @@ import { ASK_AI_PROMPT } from "../shared/brand";
 import { SALE_APPS } from "../shared/catalog";
 import { HUNT_SEED } from "../shared/hunt";
 import { applyRouteHtml, canonicalFor, PAGE_SEO, sitemapXml } from "../shared/seo";
+
+const layoutSource = readFileSync(
+  join(dirname(fileURLToPath(import.meta.url)), "../src/components/Layout.tsx"),
+  "utf8",
+);
 
 describe("question ranking", () => {
   it("normalizes and slugs a shop-floor question", () => {
@@ -66,6 +74,27 @@ describe("reputation search", () => {
     expect(ASK_AI_PROMPT).toMatch(/askyard\.firstdeploy\.ai/);
     expect(ASK_AI_PROMPT).toMatch(/First Deploy AI/);
     expect(ASK_AI_PROMPT).toMatch(/Palm Coast/);
+  });
+});
+
+describe("directory listing badges", () => {
+  it("embeds the official twelve.tools free badge markup in the footer", () => {
+    expect(layoutSource).toContain('href="https://twelve.tools"');
+    expect(layoutSource).toContain('target="_blank"');
+    expect(layoutSource).toContain('rel="noopener"');
+    expect(layoutSource).toContain('src="https://twelve.tools/badge0-white.svg"');
+    expect(layoutSource).toContain('alt="Featured on Twelve Tools"');
+    expect(layoutSource).toContain("width={200}");
+    expect(layoutSource).toContain("height={54}");
+  });
+
+  it("embeds the official Fazier launch badge next to twelve.tools", () => {
+    expect(layoutSource).toContain('href="https://fazier.com"');
+    expect(layoutSource).toContain(
+      'src="https://fazier.com/api/v1//public/badges/launch_badges.svg?badge_type=launched&theme=light"',
+    );
+    expect(layoutSource).toContain('alt="Fazier badge"');
+    expect(layoutSource).toContain("width={120}");
   });
 });
 

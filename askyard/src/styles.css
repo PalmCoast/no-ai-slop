@@ -473,6 +473,11 @@ footer {
 }
 .footer-grid a, .footer-grid p { display: block; color: var(--muted); margin-top: 0.4rem; }
 .footer-mark { width: min(280px, 100%); margin-bottom: 0.8rem; }
+.footer-grid a img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
 .footer-bottom {
   display: flex;
   justify-content: space-between;
