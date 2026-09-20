@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 72" role="img" aria-label="NetYard">
+  <g fill="none" stroke="#e4b84a" stroke-width="2.4" stroke-linejoin="round" transform="translate(4,4) scale(1.05)">
+    <path d="M32 6l22 13v26L32 58 10 45V19z"/>
+    <path d="M32 20l12 7v14l-12 7-12-7V27z"/>
+  </g>
+  <circle cx="37.5" cy="38" r="3" fill="#e4b84a"/>
+  <text x="86" y="48" fill="#f6edd8" font-family="Space Grotesk, Inter, sans-serif" font-size="34" font-weight="700" letter-spacing="4">NET<tspan fill="#e4b84a">YARD</tspan></text>
+</svg>

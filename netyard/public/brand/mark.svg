@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="NetYard mark">
+  <g fill="none" stroke="#e4b84a" stroke-width="2.6" stroke-linejoin="round">
+    <path d="M32 6l22 13v26L32 58 10 45V19z"/>
+    <path d="M32 20l12 7v14l-12 7-12-7V27z"/>
+  </g>
+  <circle cx="32" cy="32" r="3.2" fill="#e4b84a"/>
+  <circle cx="32" cy="10" r="2.2" fill="#e4b84a"/>
+  <circle cx="50" cy="43" r="2.2" fill="#e4b84a"/>
+  <circle cx="14" cy="43" r="2.2" fill="#e4b84a"/>
+</svg>

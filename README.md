@@ -75,6 +75,10 @@ MIT
 
 [AskYard](askyard/README.md) is a First Deploy AI product at [askyard.firstdeploy.ai](https://askyard.firstdeploy.ai): free AI answers for plumbers, teachers, receptionists, earth movers, and anyone else with a question. Ranked by how often people ask. Reputation meter on `/rep`. Marquee lights on the same site at [marquee.firstdeploy.ai](https://marquee.firstdeploy.ai/). Apps for sale on the same site. See [askyard/README.md](askyard/README.md).
 
+## NetYard
+
+[NetYard](netyard/README.md) is a First Deploy AI product that stands up a small-business network without Microsoft Server. Six questions produce addressing, Samba on Debian, guest Wi-Fi, a shopping list, and install scripts. See [netyard/README.md](netyard/README.md).
+
 ## Sonaris
 
 [Sonaris](sonaris/README.md) is a separate product in this repo: a real-time voice layer for an AI assistant with live captions, turn-taking that never talks over you, persona voices, a memory file per license, and a paid skill hosted behind a paywall. See [sonaris/README.md](sonaris/README.md) for setup and [sonaris/BRAND.md](sonaris/BRAND.md) for the brand.
