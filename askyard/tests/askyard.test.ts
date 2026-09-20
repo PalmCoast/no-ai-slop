@@ -11,7 +11,7 @@ import {
   slugifyQuestion,
 } from "../shared/ask";
 import { askAiLinks } from "../shared/reputation";
-import { ASK_AI_PROMPT } from "../shared/brand";
+import { ASK_AI_PROMPT, TWELVE_TOOLS_BADGE, TWELVE_TOOLS_URL } from "../shared/brand";
 import { SALE_APPS } from "../shared/catalog";
 import { HUNT_SEED } from "../shared/hunt";
 import { applyRouteHtml, canonicalFor, PAGE_SEO, sitemapXml } from "../shared/seo";
@@ -66,6 +66,13 @@ describe("reputation search", () => {
     expect(ASK_AI_PROMPT).toMatch(/askyard\.firstdeploy\.ai/);
     expect(ASK_AI_PROMPT).toMatch(/First Deploy AI/);
     expect(ASK_AI_PROMPT).toMatch(/Palm Coast/);
+  });
+});
+
+describe("twelve.tools listing", () => {
+  it("keeps the official free-listing backlink and dark badge", () => {
+    expect(TWELVE_TOOLS_URL).toBe("https://twelve.tools");
+    expect(TWELVE_TOOLS_BADGE).toBe("https://twelve.tools/badge0-dark.svg");
   });
 });
 

@@ -15,6 +15,8 @@ import {
   LEGAL_NAME,
   MARQUEE_NAME,
   PARENT_URL,
+  TWELVE_TOOLS_BADGE,
+  TWELVE_TOOLS_URL,
 } from "../../shared/brand";
 
 const NAV = [
@@ -111,6 +113,17 @@ export default function Layout() {
             <Link to="/apps">App shelf</Link>
             <Link to="/marquee">{MARQUEE_NAME} bids</Link>
             <a href={COMPANY_URL}>{BRAND_COMPANY}</a>
+            <a href={TWELVE_TOOLS_URL} target="_blank" rel="noreferrer">
+              Twelve Tools
+            </a>
+            <a className="footer-badge" href={TWELVE_TOOLS_URL} target="_blank">
+              <img
+                src={TWELVE_TOOLS_BADGE}
+                alt="Featured on Twelve Tools"
+                width={200}
+                height={54}
+              />
+            </a>
           </div>
           <div>
             <strong>Contact</strong>
