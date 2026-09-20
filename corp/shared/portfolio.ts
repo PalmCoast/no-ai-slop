@@ -112,13 +112,13 @@ export const HIVE_SITES: HiveSite[] = [
   {
     slug: "netyard",
     name: "NetYard",
-    url: "https://github.com/PalmCoast/no-ai-slop/tree/main/netyard",
+    url: "https://netyard.firstdeploy.ai/",
     github: "https://github.com/PalmCoast/no-ai-slop/tree/main/netyard",
     description: "Stand up a small-business network without Microsoft Server. Six questions, Samba on Debian, shopping list, install scripts.",
     price: "Free plan · First Deploy AI $1,500 setup, then $250/mo",
     category: "infra",
-    host: "github",
-    statusHint: "lab",
+    host: "custom",
+    statusHint: "live",
     featured: true,
   },
   {
