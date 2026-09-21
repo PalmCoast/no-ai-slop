@@ -1,9 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://agenthiveinc.com/</loc></url>
-  <url><loc>https://agenthiveinc.com/about</loc></url>
-  <url><loc>https://agenthiveinc.com/buzz</loc></url>
-  <url><loc>https://agenthiveinc.com/rankings</loc></url>
-  <url><loc>https://agenthiveinc.com/build</loc></url>
-  <url><loc>https://agenthiveinc.com/consult</loc></url>
+  <url>
+    <loc>https://agenthiveinc.com/</loc>
+    <lastmod>2026-09-21</lastmod>
+  </url>
+  <url>
+    <loc>https://agenthiveinc.com/about</loc>
+    <lastmod>2026-09-21</lastmod>
+  </url>
+  <url>
+    <loc>https://agenthiveinc.com/buzz</loc>
+    <lastmod>2026-09-21</lastmod>
+  </url>
+  <url>
+    <loc>https://agenthiveinc.com/rankings</loc>
+    <lastmod>2026-09-21</lastmod>
+  </url>
+  <url>
+    <loc>https://agenthiveinc.com/build</loc>
+    <lastmod>2026-09-21</lastmod>
+  </url>
+  <url>
+    <loc>https://agenthiveinc.com/consult</loc>
+    <lastmod>2026-09-21</lastmod>
+  </url>
 </urlset>

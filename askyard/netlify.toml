@@ -22,6 +22,18 @@
   force = true
 
 [[redirects]]
+  from = "/about"
+  to = "/about/index.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/about/"
+  to = "/about/index.html"
+  status = 200
+  force = true
+
+[[redirects]]
   from = "/board"
   to = "/board/index.html"
   status = 200
@@ -135,6 +147,16 @@
 
 [[headers]]
   for = "/llms.txt"
+  [headers.values]
+    Content-Type = "text/plain; charset=utf-8"
+
+[[headers]]
+  for = "/robots.txt"
+  [headers.values]
+    Content-Type = "text/plain; charset=utf-8"
+
+[[headers]]
+  for = "/40602f6b-ecf3-406b-a8e5-2e9f601462b6.txt"
   [headers.values]
     Content-Type = "text/plain; charset=utf-8"
 

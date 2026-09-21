@@ -24,6 +24,8 @@ import {
   INDEXME_URL,
   LEGAL_NAME,
   LINKEDIN_URL,
+  DANIEL_LINKEDIN_URL,
+  CONTENT_LASTMOD,
   POSTAL_CODE,
   STREET_ADDRESS,
 } from "./brand.ts";
@@ -92,8 +94,22 @@ export const NOT_FOUND_SEO: SeoPage = {
 };
 
 export function sitemapXml(): string {
-  const urls = PAGE_SEO.map((page) => `  <url><loc>${canonicalFor(page.path)}</loc></url>`).join("\n");
+  const urls = PAGE_SEO.map(
+    (page) =>
+      `  <url>\n    <loc>${canonicalFor(page.path)}</loc>\n    <lastmod>${CONTENT_LASTMOD}</lastmod>\n  </url>`,
+  ).join("\n");
   return `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls}\n</urlset>\n`;
+}
+
+export function sitemapIndexXml(): string {
+  const sitemaps = [
+    { loc: `${BRAND_URL}/sitemap.xml`, lastmod: CONTENT_LASTMOD },
+    { loc: "https://askyard.firstdeploy.ai/sitemap.xml", lastmod: CONTENT_LASTMOD },
+    { loc: "https://firstdeploy.ai/sitemap.xml", lastmod: CONTENT_LASTMOD },
+  ];
+  return `<?xml version="1.0" encoding="UTF-8"?>\n<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${sitemaps
+    .map((entry) => `  <sitemap>\n    <loc>${entry.loc}</loc>\n    <lastmod>${entry.lastmod}</lastmod>\n  </sitemap>`)
+    .join("\n")}\n</sitemapindex>\n`;
 }
 
 export function canonicalFor(path: string): string {
@@ -131,7 +147,7 @@ export function organizationJsonLd() {
         email: CONTACT_EMAIL,
         telephone: CONSULT_DISPLAY,
         address,
-        sameAs: [LINKEDIN_URL, FD_URL, INDEXME_URL, HIVE_CONSULT_URL],
+        sameAs: [DANIEL_LINKEDIN_URL, LINKEDIN_URL, FD_URL, INDEXME_URL, HIVE_CONSULT_URL],
       },
       {
         "@type": "LocalBusiness",

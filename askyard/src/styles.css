@@ -314,6 +314,12 @@ button, input, textarea { font: inherit; }
 .price { color: var(--gold-bright); font-weight: 700; margin-top: 0.45rem; }
 .ask-count { font-variant-numeric: tabular-nums; color: var(--gold-bright); font-weight: 700; text-align: right; }
 .ask-count small { display: block; color: var(--muted); font-weight: 500; }
+.identity-facts, .night-line-cta { margin: 0.85rem 0; max-width: 42rem; }
+.board-qa-wrap { margin-top: 2rem; }
+.board-qa-wrap h2 { font-size: clamp(1.4rem, 2.4vw, 2rem); margin-bottom: 0.8rem; }
+.board-qa { display: grid; gap: 0.85rem; }
+.board-qa dt { font-weight: 600; }
+.board-qa dd { color: var(--muted); margin: 0.2rem 0 0; }
 
 .rate-row { margin-top: 1rem; display: grid; gap: 0.45rem; }
 .meter {

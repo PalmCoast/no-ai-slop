@@ -1,6 +1,7 @@
 import { Navigate, Route, Routes } from "react-router-dom";
 import Layout from "./components/Layout";
 import Home from "./pages/Home";
+import About from "./pages/About";
 import Board from "./pages/Board";
 import Apps from "./pages/Apps";
 import Hunt from "./pages/Hunt";
@@ -15,6 +16,7 @@ export default function App() {
     <Routes>
       <Route element={<Layout />}>
         <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
         <Route path="/board" element={<Board />} />
         <Route path="/apps" element={<Apps />} />
         <Route path="/hunt" element={<Hunt />} />

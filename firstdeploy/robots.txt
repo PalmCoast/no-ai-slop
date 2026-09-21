@@ -25,7 +25,16 @@ Allow: /
 User-agent: Bingbot
 Allow: /
 
+User-agent: Twitterbot
+Allow: /
+
+User-agent: LinkedInBot
+Allow: /
+
+User-agent: facebookexternalhit
+Allow: /
+
 User-agent: *
 Allow: /
 
-Sitemap: https://askyard.firstdeploy.ai/sitemap.xml
+Sitemap: https://firstdeploy.ai/sitemap-index.xml

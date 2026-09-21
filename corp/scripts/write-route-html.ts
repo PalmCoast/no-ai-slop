@@ -1,7 +1,7 @@
 import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
-import { applyRouteHtml, NOT_FOUND_SEO, PAGE_SEO, sitemapXml } from "../shared/seo.ts";
+import { applyRouteHtml, NOT_FOUND_SEO, PAGE_SEO, sitemapIndexXml, sitemapXml } from "../shared/seo.ts";
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 const dist = join(root, "dist");
@@ -25,6 +25,7 @@ if (sizes.size !== written.length || bodies.size !== written.length) {
 
 writeFileSync(join(dist, "404.html"), applyRouteHtml(template, NOT_FOUND_SEO));
 writeFileSync(join(dist, "sitemap.xml"), sitemapXml());
+writeFileSync(join(dist, "sitemaps.xml"), sitemapIndexXml());
 writeFileSync(
   join(dist, "_redirects"),
   [
@@ -41,4 +42,4 @@ writeFileSync(
     "/* /404.html 404",
   ].join("\n") + "\n",
 );
-console.log("wrote dist/404.html dist/sitemap.xml dist/_redirects");
+console.log("wrote dist/404.html dist/sitemap.xml dist/sitemaps.xml dist/_redirects");

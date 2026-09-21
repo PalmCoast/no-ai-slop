@@ -15,8 +15,11 @@ import {
   HERO_H1,
   HERO_WHAT,
   MARQUEE_NAME,
+  PARENT_URL,
   TAGLINE,
 } from "../../shared/brand";
+import BoardQa from "../components/BoardQa";
+import IdentityFacts from "../components/IdentityFacts";
 import { FEATURED_APPS } from "../../shared/catalog";
 import { emptyTotals, offerFor, rankedSeed, type YardQuestion, type YardTotals } from "../../shared/ask";
 
@@ -71,6 +74,7 @@ export default function Home() {
           </div>
           <h1 className="display">{HERO_H1}</h1>
           <p className="lede">{HERO_WHAT}</p>
+          <IdentityFacts />
           <p className="fine" style={{ marginBottom: "0.4rem" }}>
             Built for {TRADES.join(", ")}.
           </p>
@@ -193,8 +197,10 @@ export default function Home() {
             ))}
           </div>
           <p className="fine" style={{ marginTop: 18 }}>
-            Full ranked board on <Link to="/board">/board</Link>.
+            Full ranked board on <Link to="/board">/board</Link>. Paid desk:{" "}
+            <a href={PARENT_URL}>First Deploy AI</a>.
           </p>
+          <BoardQa heading="Every board question" />
         </div>
       </section>
 
@@ -259,6 +265,9 @@ export default function Home() {
             <div className="hero-actions" style={{ justifyContent: "center", marginTop: 18 }}>
               <a className="btn btn-primary" href="#yard-ask">
                 Ask now
+              </a>
+              <a className="btn btn-outline" href={PARENT_URL}>
+                First Deploy AI
               </a>
             </div>
           </div>

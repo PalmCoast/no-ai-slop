@@ -7,6 +7,8 @@ export const VOICE_TEL = "+15093572230";
 export const VOICE_DISPLAY = "+1 509-357-2230";
 export const CONSULT_TEL = "+13203356186";
 export const CONSULT_DISPLAY = "+1 320-335-6186";
+export const CONSULT_DISPLAY_SEO = "+1-320-335-6186";
+export const CONTENT_LASTMOD = "2026-09-21";
 export const FD_NAME = "First Deploy AI";
 export const FD_URL = "https://firstdeploy.ai/";
 export const FD_CHECK_URL = "https://firstdeploy.ai/#check";
@@ -45,6 +47,7 @@ export const MONEY_FOOTER_LINKS = [
 ] as const;
 
 export const LINKEDIN_URL = "https://www.linkedin.com/company/agenthiveinc";
+export const DANIEL_LINKEDIN_URL = "https://www.linkedin.com/in/daniel-graham-92057a15";
 export const STREET_ADDRESS = "95 Barrington Drive";
 export const ADDRESS_LOCALITY = "Palm Coast";
 export const ADDRESS_REGION = "FL";

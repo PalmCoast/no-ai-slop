@@ -37,6 +37,8 @@ writeFileSync(
   join(dist, "_redirects"),
   [
     "/ /index.html 200!",
+    "/about /about/index.html 200!",
+    "/about/ /about/index.html 200!",
     "/board /board/index.html 200!",
     "/board/ /board/index.html 200!",
     "/apps /apps/index.html 200!",
@@ -51,6 +53,10 @@ writeFileSync(
     "/marquee/ /marquee/index.html 200!",
     "/marquee/thanks /marquee/thanks/index.html 200!",
     "/marquee/thanks/ /marquee/thanks/index.html 200!",
+    ...SEED_QUESTIONS.flatMap((q) => [
+      `/q/${q.slug} /q/${q.slug}/index.html 200!`,
+      `/q/${q.slug}/ /q/${q.slug}/index.html 200!`,
+    ]),
     "/q/* /index.html 200",
     "/* /404.html 404",
   ].join("\n") + "\n",
