@@ -12,6 +12,7 @@ import {
   FD_NAME,
   FD_PRICE,
   FD_PROMISE,
+  FD_URL,
   HIVE_CONSULT_URL,
 } from "../../shared/brand";
 import { CONSULT_STRIPE_RATES } from "../../shared/consult";
@@ -69,6 +70,12 @@ export default function Consult() {
               Call {CONSULT_DISPLAY}
             </a>
           </div>
+          <p className="fine">
+            Need the after-hours desk instead?{" "}
+            <a href={FD_URL} rel="noreferrer" target="_blank">
+              {FD_NAME} — {FD_PRICE} → firstdeploy.ai
+            </a>
+          </p>
           <p className="fine">
             {CONSULT_RATES} · 10-hour pack $1,250 — $625 up front. {FD_NAME}: {FD_PRICE}.
           </p>
