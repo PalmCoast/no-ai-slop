@@ -10,6 +10,7 @@ import Rep from "./pages/Rep";
 import Marquee from "./pages/Marquee";
 import MarqueeThanks from "./pages/MarqueeThanks";
 import NotFound from "./pages/NotFound";
+import Check from "./pages/Check";
 
 export default function App() {
   return (
@@ -20,6 +21,8 @@ export default function App() {
         <Route path="/board" element={<Board />} />
         <Route path="/apps" element={<Apps />} />
         <Route path="/hunt" element={<Hunt />} />
+        <Route path="/check" element={<Check />} />
+        <Route path="/check/harbor-hvac" element={<Check />} />
         <Route path="/launch" element={<Navigate to="/" replace />} />
         <Route path="/rep" element={<Rep />} />
         <Route path="/marquee" element={<Marquee />} />

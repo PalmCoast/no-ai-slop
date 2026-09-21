@@ -118,6 +118,30 @@
   force = true
 
 [[redirects]]
+  from = "/check"
+  to = "/check/index.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/check/"
+  to = "/check/index.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/check/harbor-hvac"
+  to = "/check/harbor-hvac/index.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/check/harbor-hvac/"
+  to = "/check/harbor-hvac/index.html"
+  status = 200
+  force = true
+
+[[redirects]]
   from = "/q/*"
   to = "/index.html"
   status = 200

@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc --noEmit -p tsconfig.json && vite build && NODE_NO_WARNINGS=1 node --experimental-strip-types scripts/write-route-html.ts",
+    "build": "tsc --noEmit -p tsconfig.json && NODE_NO_WARNINGS=1 node --experimental-strip-types scripts/write-check-cards.ts && vite build && NODE_NO_WARNINGS=1 node --experimental-strip-types scripts/write-route-html.ts",
     "preview": "vite preview",
     "typecheck": "tsc --noEmit -p tsconfig.json",
     "test": "vitest run",

@@ -17,6 +17,7 @@ import {
   CONTENT_LASTMOD,
   DANIEL_LINKEDIN_URL,
   FD_PRICE_LONG,
+  FD_PROMISE,
   HERO_H1,
   HERO_WHAT,
   HOME_DESCRIPTION,
@@ -42,10 +43,11 @@ export type SeoPage = {
   description: string;
   h1: string;
   bodyHtml: string;
+  ogImage?: string;
   noindex?: boolean;
 };
 
-export const SITEMAP_STATIC_PATHS = ["/", "/about", "/board", "/apps"] as const;
+export const SITEMAP_STATIC_PATHS = ["/", "/about", "/board", "/apps", "/check"] as const;
 
 export function shortAnswer(answer: string): string {
   const sentence = answer.split(/(?<=[.!?])\s+/)[0] ?? answer;
@@ -135,6 +137,25 @@ export const PAGE_SEO: SeoPage[] = [
     h1: "You bought the lights.",
     bodyHtml: `<main id="route-marquee-thanks" class="section"><div class="container"><h1 class="display">You bought the lights.</h1><p>The next founder who wants it more can take the crown.</p></div></main>`,
     noindex: true,
+  },
+  {
+    path: "/check",
+    title: "What AI knows about your shop | AskYard",
+    description:
+      "Paste a shop name and city, or a page URL. AskYard shows the public gaps and opens Grok, ChatGPT, Claude, Perplexity, and Gemini with a prompt. IndexMe gets the page found.",
+    h1: "What AI knows about your shop",
+    ogImage: `${BRAND_URL}/check/og.png`,
+    bodyHtml: `<main id="route-check" class="section"><div class="container"><h1 class="display">What AI knows about your shop</h1><p class="lede">Paste a business name and city, a website, or a Google or Facebook page. Free. No login.</p>${identityHtml()}<p>Site facts are a live scrape when the page answers. Grok, ChatGPT, Claude, Perplexity, Gemini, and Google open with a prompt. That is not a live model answer.</p><p>Primary path: <a href="https://indexme.lol/">IndexMe.lol</a>. Night calls: <a href="${PARENT_URL}">${BRAND_PARENT}</a> — ${FD_PRICE_LONG}. ${FD_PROMISE}.</p><p>The Harbor HVAC card is a fictional demo, not a client.</p></div></main>`,
+  },
+  {
+    path: "/check/harbor-hvac",
+    title: "Harbor HVAC — fictional shop check | AskYard",
+    description:
+      "Harbor HVAC is a fictional Palm Coast shop on the AskYard check card. Not a client. The card shows blank phone, hours, and no IndexNow evidence.",
+    h1: "Harbor HVAC",
+    ogImage: `${BRAND_URL}/check/harbor-hvac.png`,
+    noindex: true,
+    bodyHtml: `<main id="route-harbor" class="section"><div class="container"><h1 class="display">Harbor HVAC</h1><p class="lede">Fictional demo shop in Palm Coast. Not a client.</p><p>Phone and hours are blank on purpose. There is no public site, so there is no sitemap or IndexNow key. Open a model with the prompt on the card. If it invents a different business, that is the gap.</p><p><a href="https://indexme.lol/">IndexMe.lol</a> gets a real page found. <a href="${PARENT_URL}">${BRAND_PARENT}</a> is ${FD_PRICE_LONG}.</p></div></main>`,
   },
 ];
 
@@ -252,6 +273,10 @@ export function applyRouteHtml(html: string, page: SeoPage): string {
   next = replaceMeta(next, "property", "og:description", page.description);
   next = replaceMeta(next, "name", "twitter:title", page.title);
   next = replaceMeta(next, "name", "twitter:description", page.description);
+  if (page.ogImage) {
+    next = replaceMeta(next, "property", "og:image", page.ogImage);
+    next = replaceMeta(next, "name", "twitter:image", page.ogImage);
+  }
   const json = `<script type="application/ld+json">${JSON.stringify(organizationJsonLd())}</script>`;
   if (next.includes('type="application/ld+json"')) {
     next = next.replace(/<script type="application\/ld\+json">[\s\S]*?<\/script>/, json);

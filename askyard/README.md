@@ -12,6 +12,7 @@ Free AI answers for anyone with a question. Then an offer to do the work.
 - Ranked board: questions sorted by how many times people ask them, with a running public total.
 - Apps for sale: the live First Deploy AI shelf.
 - Hunt: copy a free reply with a link back for people already asking in public. No auto-posting.
+- Shop check: `/check` pastes a name and city, or a page URL, and returns a share card. Site facts are a live scrape. Model rows open a prompt. IndexMe is the primary link.
 
 ## Local
 

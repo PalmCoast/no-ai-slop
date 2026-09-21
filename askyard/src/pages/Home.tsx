@@ -110,6 +110,16 @@ export default function Home() {
 
       <ReputationBar />
 
+      <section className="section" style={{ paddingTop: "1.5rem", paddingBottom: 0 }}>
+        <div className="container">
+          <Link className="check-banner" to="/check">
+            <span className="eyebrow">Shop check</span>
+            <strong>What AI knows about your shop</strong>
+            <span>Paste a name or a URL. Free. No login. The card points at IndexMe.</span>
+          </Link>
+        </div>
+      </section>
+
       <section className="section" style={{ paddingTop: "2rem" }}>
         <div className="container">
           <div className="card-grid">

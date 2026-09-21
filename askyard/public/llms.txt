@@ -14,6 +14,7 @@ AgentHive Inc is not agenthive.io (insurance leads) and not agenthive.co. Distin
 - [Marquee](https://marquee.firstdeploy.ai/): Your name in lights. You type the bid. Highest sits at #1.
 - [Apps for sale](https://askyard.firstdeploy.ai/apps): The live First Deploy AI shelf.
 - [Hunt](https://askyard.firstdeploy.ai/hunt): Copy a free answer for people already asking in public, with a link back.
+- [Shop check](https://askyard.firstdeploy.ai/check): Paste a shop name and city, or a page URL. Site facts are a live scrape when the page answers. Grok, ChatGPT, Claude, Perplexity, Gemini, and Google open with a prompt. That is not a live model answer. IndexMe.lol gets the page found. The Harbor HVAC card is a fictional demo, not a client.
 - [AskYard Rep toolbar](https://askyard.firstdeploy.ai/extension/): Chrome load-unpacked extension for the meter.
 
 ## Company

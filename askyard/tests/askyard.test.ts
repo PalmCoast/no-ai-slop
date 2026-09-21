@@ -146,6 +146,7 @@ describe("seo", () => {
       "https://askyard.firstdeploy.ai/about",
       "https://askyard.firstdeploy.ai/board",
       "https://askyard.firstdeploy.ai/apps",
+      "https://askyard.firstdeploy.ai/check",
       ...SEED_QUESTIONS.map((q) => `https://askyard.firstdeploy.ai/q/${q.slug}`),
     ]);
     expect(entries.every((entry) => /^\d{4}-\d{2}-\d{2}$/.test(entry.lastmod))).toBe(true);

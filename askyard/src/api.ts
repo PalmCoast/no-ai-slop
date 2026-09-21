@@ -9,6 +9,7 @@ import {
   type YardTotals,
 } from "../shared/ask";
 import { applyVote, buildReport, type RepReport } from "../shared/rep";
+import { fallbackCheck, type CheckReport } from "../shared/check";
 import {
   applyBid,
   minNextBidCents,
@@ -203,6 +204,24 @@ export async function placeBid(
     url: `/marquee/thanks?demo=1&name=${encodeURIComponent(name)}`,
     listings: next,
   };
+}
+
+export async function runShopCheck(query: string): Promise<CheckReport> {
+  try {
+    const res = await fetch("/api/check", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ query }),
+    });
+    const data = (await res.json().catch(() => null)) as { report?: CheckReport; error?: string } | null;
+    if (res.ok && data?.report) return data.report;
+    if (data?.error && res.status === 400) throw new Error(data.error);
+  } catch (error) {
+    if (error instanceof Error && error.message && !(error instanceof TypeError)) throw error;
+  }
+  const local = fallbackCheck(query);
+  if ("error" in local) throw new Error(local.error);
+  return local;
 }
 
 export async function confirmMarquee(sessionId: string | null, demo: boolean): Promise<MarqueeState> {

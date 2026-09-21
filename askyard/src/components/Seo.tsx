@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
+import { BRAND_URL } from "../../shared/brand";
 import { canonicalFor, organizationJsonLd, pageForPath } from "../../shared/seo";
 
 function upsertMeta(attr: "name" | "property", key: string, content: string) {
@@ -39,6 +40,9 @@ export default function Seo() {
     upsertMeta("property", "og:url", page.noindex ? `${window.location.origin}${pathname}` : canonical);
     upsertMeta("name", "twitter:title", page.title);
     upsertMeta("name", "twitter:description", page.description);
+    const ogImage = page.ogImage ?? `${BRAND_URL}/og.jpg`;
+    upsertMeta("property", "og:image", ogImage);
+    upsertMeta("name", "twitter:image", ogImage);
     let script = document.getElementById("askyard-jsonld") as HTMLScriptElement | null;
     if (!script) {
       script = document.createElement("script");
