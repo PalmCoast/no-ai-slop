@@ -71,9 +71,8 @@ export default function Consult() {
             </a>
           </div>
           <p className="fine">
-            Need the after-hours desk instead?{" "}
             <a href={FD_URL} rel="noreferrer" target="_blank">
-              {FD_NAME} — {FD_PRICE} → firstdeploy.ai
+              Need the after-hours desk instead? First Deploy AI — $1,500 setup, then $250/mo → firstdeploy.ai
             </a>
           </p>
           <p className="fine">
