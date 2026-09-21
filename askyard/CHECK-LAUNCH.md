@@ -9,7 +9,7 @@ Reed only. Public page is [https://askyard.firstdeploy.ai/check](https://askyard
 - A website URL is a live scrape of that page, `robots.txt`, and the sitemap. Phone, hours, sitemap, and IndexNow come from that scrape.
 - Grok, ChatGPT, Claude, Perplexity, Gemini, and Google are deep links. The label is "Opened with this prompt". The card does not invent a model quote.
 - Google Business and Facebook URLs are not scraped. The card says the page blocks a live scrape.
-- Primary link: IndexMe (`utm_source=askyard`, `utm_medium=check`, `utm_campaign=shop-visibility`, `utm_content=indexme`).
+- Primary link: IndexMe Pro checkout, $19.99 (`utm_content=indexme-pro`). Studio is $29.99 (`utm_content=indexme-studio`). Both are the live Stripe payment links on indexme.lol.
 - Secondary link: `firstdeploy.ai` 2-minute check, plus the free 30 on Calendly.
 - NetYard appears only when the scraped page mentions Windows Server or CALs.
 - Share image: `/check/og.png`, `/check/harbor-hvac.png`, and `/api/check-card` for a real shop token.
@@ -45,9 +45,11 @@ https://askyard.firstdeploy.ai/check/harbor-hvac
 
 | Destination | utm_content |
 | --- | --- |
-| indexme.lol | indexme |
+| IndexMe Pro, $19.99 | indexme-pro |
+| IndexMe Studio, $29.99 | indexme-studio |
 | firstdeploy.ai#check | first-deploy |
 | Calendly free 30 | free-30 |
+| Consult, pay $75 | consult-75 |
 | netyard.firstdeploy.ai | netyard |
 | askyard.firstdeploy.ai | ask |
 

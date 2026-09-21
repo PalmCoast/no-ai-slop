@@ -56,7 +56,13 @@ describe("shop check report", () => {
     expect(report.prompt).toMatch(/Tide Electric in Bunnell/);
     expect(report.prompt).not.toMatch(/Grok says|according to Grok/i);
     const indexme = new URL(report.ctas.indexme);
-    expect(indexme.origin).toBe("https://indexme.lol");
+    expect(indexme.origin).toBe("https://buy.stripe.com");
+    expect(indexme.pathname).toBe("/4gMcN52Ese5ldL7cyu2ZO1a");
+    expect(indexme.searchParams.get("utm_content")).toBe("indexme-pro");
+    const studio = new URL(report.ctas.indexmeStudio);
+    expect(studio.pathname).toBe("/aFa00jfre2mD8qN5622ZO1b");
+    const consult = new URL(report.ctas.consultPay);
+    expect(consult.pathname).toBe("/fZufZh92Qf9p5eB2XU2ZO1h");
     expect(indexme.searchParams.get("utm_source")).toBe("askyard");
     expect(indexme.searchParams.get("utm_medium")).toBe("check");
     expect(indexme.searchParams.get("utm_campaign")).toBe("shop-visibility");

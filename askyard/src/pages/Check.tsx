@@ -181,15 +181,17 @@ function ShopCard({
       </ul>
       <div className="shop-card__actions">
         <a className="check-primary" href={report.ctas.indexme}>
-          Get the page found on IndexMe
+          Pay $19.99 — IndexMe Pro
         </a>
-        <p className="shop-card__price">{report.ctas.indexmePrice}</p>
+        <p className="shop-card__price">
+          <a href={report.ctas.indexmeStudio}>Studio $29.99</a>. {report.ctas.indexmePrice}. One time.
+        </p>
         <a className="check-soft" href={report.ctas.firstDeploy}>
           {BRAND_PARENT} — 2-minute check
         </a>
         <p className="shop-card__price">
           {report.ctas.firstDeployPrice}. {FD_PROMISE}. Free 30, then {report.ctas.consultRates}.{" "}
-          <a href={report.ctas.calendly}>Book the free 30</a>.
+          <a href={report.ctas.calendly}>Book the free 30</a>. <a href={report.ctas.consultPay}>Pay $75 now</a>.
         </p>
         {report.ctas.netyard ? (
           <p>

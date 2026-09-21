@@ -115,10 +115,12 @@ export type CheckReport = {
   note: string;
   ctas: {
     indexme: string;
+    indexmeStudio: string;
     indexmePrice: string;
     firstDeploy: string;
     firstDeployPrice: string;
     calendly: string;
+    consultPay: string;
     consultRates: string;
     netyard: string | null;
     askyard: string;
@@ -130,6 +132,9 @@ export type CheckReport = {
 
 const INDEXME = SALE_APPS.find((app) => app.slug === "indexme");
 const INDEXME_PRICE = INDEXME?.price ?? "Pro $19.99 · Studio $29.99 one-time";
+const INDEXME_PRO_URL = "https://buy.stripe.com/4gMcN52Ese5ldL7cyu2ZO1a";
+const INDEXME_STUDIO_URL = "https://buy.stripe.com/aFa00jfre2mD8qN5622ZO1b";
+const CONSULT_75_URL = "https://buy.stripe.com/fZufZh92Qf9p5eB2XU2ZO1h";
 
 export function withCheckUtm(href: string, content: string): string {
   const url = new URL(href);
@@ -284,11 +289,13 @@ function moneyLinks(showNetyard: boolean): CheckReport["ctas"] {
   first.searchParams.set("utm_content", "first-deploy");
   first.hash = "check";
   return {
-    indexme: withCheckUtm("https://indexme.lol/", "indexme"),
+    indexme: withCheckUtm(INDEXME_PRO_URL, "indexme-pro"),
+    indexmeStudio: withCheckUtm(INDEXME_STUDIO_URL, "indexme-studio"),
     indexmePrice: INDEXME_PRICE,
     firstDeploy: first.toString(),
     firstDeployPrice: FD_PRICE_LONG,
     calendly: withCheckUtm(CALENDLY_URL, "free-30"),
+    consultPay: withCheckUtm(CONSULT_75_URL, "consult-75"),
     consultRates: CONSULT_RATES,
     netyard: showNetyard ? withCheckUtm("https://netyard.firstdeploy.ai/", "netyard") : null,
     askyard: withCheckUtm(`${BRAND_URL}/`, "ask"),
@@ -572,10 +579,10 @@ export function shareDocument(report: CheckReport): string {
     <p>${escapeHtml(report.note)}</p>
     <p class="steel">Models</p>
     <ul>${models}</ul>
-    <p><a class="primary" href="${escapeHtml(report.ctas.indexme)}">Get the page found on IndexMe</a></p>
-    <p>${escapeHtml(report.ctas.indexmePrice)}</p>
+    <p><a class="primary" href="${escapeHtml(report.ctas.indexme)}">Pay $19.99 — IndexMe Pro</a></p>
+    <p><a href="${escapeHtml(report.ctas.indexmeStudio)}">Studio $29.99</a>. ${escapeHtml(report.ctas.indexmePrice)}. One time.</p>
     <p><a class="soft" href="${escapeHtml(report.ctas.firstDeploy)}">${BRAND_PARENT} — 2-minute check</a></p>
-    <p>${escapeHtml(report.ctas.firstDeployPrice)}. ${escapeHtml(FD_PROMISE)}. Free 30, then ${escapeHtml(report.ctas.consultRates)}. <a href="${escapeHtml(report.ctas.calendly)}">Book the free 30</a>.</p>
+    <p>${escapeHtml(report.ctas.firstDeployPrice)}. ${escapeHtml(FD_PROMISE)}. Free 30, then ${escapeHtml(report.ctas.consultRates)}. <a href="${escapeHtml(report.ctas.calendly)}">Book the free 30</a>. <a href="${escapeHtml(report.ctas.consultPay)}">Pay $75 now</a>.</p>
     ${netyard}
     <p><a href="${escapeHtml(report.ctas.askyard)}">Ask a shop-floor question on ${BRAND_NAME}</a></p>
     <p class="steel">${BRAND_NAME} · ${BRAND_COMPANY} · ${BRAND_PLACE} · <a href="${COMPANY_URL}">agenthiveinc.com</a></p>
