@@ -1,14 +1,16 @@
 [build]
   command = "npm run build"
   publish = "dist"
+  functions = "netlify/functions"
 
 [build.environment]
   NODE_VERSION = "22"
 
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
+[functions]
+  node_bundler = "esbuild"
+
+# No /* rewrite. /api/checkout, /api/stripe-webhook, /hosted, and /s/:id are functions.
+# A catch-all rewrite to index.html would swallow those paths.
 
 [[headers]]
   for = "/*"

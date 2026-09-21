@@ -72,6 +72,14 @@ The 4,096-byte repeating buffer became 72 bytes. Writing it as hex text takes 12
 
 Bitwise operators are 32-bit, matching JavaScript. Division truncates toward zero.
 
+## Read a stamp
+
+`examples/sensor.stamp` is the sealed sensor frame. This reader expands a `BRD1` file and checks the SHA-256 of the original bytes. It does not install Braid.
+
+```bash
+python3 tools/brd1_read.py examples/sensor.stamp
+```
+
 ## Stamp Desk
 
 A local stamp is free. `seal` in the desk, or:
@@ -80,9 +88,27 @@ A local stamp is free. `seal` in the desk, or:
 npx vite-node src/cli.ts stamp examples/sensor.braid
 ```
 
-The file starts with `BRD1`. `openSeal` expands it and checks the hash. Your client does not need Python, `xxd`, or `od` to confirm the bytes.
+The file starts with `BRD1`. `openSeal` expands it and checks the hash.
 
-Stamp Desk is the paid host: **$29** for a stable URL of one stamp, so a lab can send a frame to a client who was not in the room. Stripe is not connected in this repo. The desk builds and downloads the stamp today. Hosting is the part a customer would pay for.
+Stamp Desk is **$29** once, on the same Palm Coast AI Stripe account as AskYard and NetYard. The desk posts the stamp to `POST /api/checkout`, which holds it in the `braid-stamps` Netlify Blobs store and opens Checkout on price `price_1UIE1RFJWYd4pYux4kwJRSfU` (product `prod_VIpgG7x1qvOChf`). The success page `/hosted?session_id=…` checks that the session paid $29, copies the stamp to a public key, and returns a stable URL:
+
+```text
+https://braid.firstdeploy.ai/s/<stamp id>
+```
+
+That page shows the SHA-256 and the certificate. `/s/<stamp id>/file` is the stamp bytes. The id is the first 32 hex characters of the stamp file's SHA-256, so the same stamp keeps the same path. A client opens the page in a browser. Python, `xxd`, and `od` are not required.
+
+This is a separate Netlify site. Base directory `braid`. Do not point `firstdeploy.ai` at it. On that site:
+
+```text
+STRIPE_SECRET_KEY=sk_live_...
+STRIPE_WEBHOOK_SECRET=whsec_...
+SITE_URL=https://braid.firstdeploy.ai
+```
+
+`STRIPE_PRICE_STAMP` is optional. When it is unset, Checkout uses `price_1UIE1RFJWYd4pYux4kwJRSfU`. Webhook URL: `https://braid.firstdeploy.ai/api/stripe-webhook`. Events: `checkout.session.completed`, `checkout.session.async_payment_succeeded`. The success page stores the stamp. The webhook stores it again if the buyer closes the tab. Do not commit `sk_live` or `whsec`.
+
+`braid.firstdeploy.ai` is the intended host, same pattern as AskYard and NetYard. The catalog stays `lab` until that host answers HTTP. DNS for the name is not set in this repo.
 
 ## Run the desk
 

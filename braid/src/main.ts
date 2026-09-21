@@ -15,12 +15,14 @@ const stats = document.querySelector<HTMLElement>("#stats");
 const cert = document.querySelector<HTMLElement>("#cert");
 const opened = document.querySelector<HTMLElement>("#opened");
 const download = document.querySelector<HTMLButtonElement>("#download");
+const host = document.querySelector<HTMLButtonElement>("#host");
+const hostNote = document.querySelector<HTMLElement>("#host-note");
 const price = document.querySelector<HTMLElement>("#price");
 const hex = document.querySelector<HTMLTextAreaElement>("#hex");
 const oct = document.querySelector<HTMLTextAreaElement>("#oct");
 const bin = document.querySelector<HTMLTextAreaElement>("#bin");
 
-if (!source || !out || !stats || !cert || !opened || !download || !price || !hex || !oct || !bin) {
+if (!source || !out || !stats || !cert || !opened || !download || !host || !hostNote || !price || !hex || !oct || !bin) {
   throw new Error("desk is missing a node");
 }
 
@@ -40,6 +42,7 @@ function show(result: RunResult, extra?: RunResult): void {
   stats!.textContent = `JavaScript backend ${result.runMs.toFixed(1)} ms.${vm}${same} Agree checks ${result.agrees}. Image ${result.imageBytes} bytes, source ${result.sourceChars} characters.`;
   cert!.textContent = result.certificates[0] ?? "This run did not seal a buffer.";
   download!.disabled = result.seals.length === 0;
+  host!.disabled = result.seals.length === 0;
 }
 
 function fail(error: unknown): void {
@@ -48,6 +51,7 @@ function fail(error: unknown): void {
   stats!.textContent = "The run stopped.";
   cert!.textContent = "No stamp.";
   download!.disabled = true;
+  host!.disabled = true;
 }
 
 document.querySelector("#run")?.addEventListener("click", () => {
@@ -81,6 +85,50 @@ document.querySelector("#weave")?.addEventListener("click", () => {
     fail(error);
   }
 });
+
+function stampBase64(bytes: Uint8Array): string {
+  let binary = "";
+  const chunk = 0x8000;
+  for (let i = 0; i < bytes.length; i += chunk) {
+    binary += String.fromCharCode(...bytes.subarray(i, i + chunk));
+  }
+  return btoa(binary);
+}
+
+host.addEventListener("click", async () => {
+  const stamped = last?.seals[0];
+  if (!stamped) return;
+  host.disabled = true;
+  hostNote.textContent = "Opening Checkout…";
+  try {
+    const res = await fetch("/api/checkout", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ stamp: stampBase64(stamped.blob) }),
+    });
+    const text = await res.text();
+    let data: { url?: string; message?: string } = {};
+    try {
+      data = JSON.parse(text) as { url?: string; message?: string };
+    } catch {
+      data = {};
+    }
+    if (res.ok && data.url) {
+      window.location.assign(data.url);
+      return;
+    }
+    hostNote.textContent =
+      data.message ??
+      "Checkout runs on the braid Netlify site. Download the stamp here, or set STRIPE_SECRET_KEY and open the deployed desk.";
+  } catch (error) {
+    hostNote.textContent = error instanceof Error ? error.message : String(error);
+  }
+  host.disabled = false;
+});
+
+if (new URLSearchParams(window.location.search).get("cancelled") === "1") {
+  hostNote.textContent = "Checkout was cancelled. The local stamp is still free to download.";
+}
 
 download.addEventListener("click", () => {
   const stamped = last?.seals[0];

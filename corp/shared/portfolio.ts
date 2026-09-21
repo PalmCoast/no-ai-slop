@@ -256,12 +256,12 @@ export const HIVE_SITES: HiveSite[] = [
   {
     slug: "braid",
     name: "Braid",
-    url: "https://github.com/PalmCoast/no-ai-slop/tree/main/braid",
+    url: "https://braid.firstdeploy.ai/",
     github: "https://github.com/PalmCoast/no-ai-slop/tree/main/braid",
     description: "One file for decimal code, binary flags, hex dumps, and octal notes. Compresses the bytes and seals a SHA-256.",
     price: "Local stamp free · Stamp Desk $29",
     category: "lab",
-    host: "github",
+    host: "custom",
     statusHint: "lab",
   },
   {
