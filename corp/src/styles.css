@@ -218,6 +218,12 @@ button, input, textarea { font: inherit; }
 }
 .hero-actions { display: flex; flex-wrap: wrap; gap: 0.8rem; margin-bottom: 1.2rem; }
 .fine { color: var(--muted); font-size: 0.92rem; }
+.consult-hero .fine a {
+  color: var(--ink);
+  text-decoration: underline;
+  text-underline-offset: 0.12em;
+}
+.consult-hero .fine + .fine { margin-top: 0.4rem; }
 
 .section { position: relative; z-index: 1; padding: 5rem 0; }
 .section-alt { background: linear-gradient(180deg, rgba(11,9,6,0.92), rgba(5,4,3,0.92)); }
