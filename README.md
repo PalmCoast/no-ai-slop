@@ -79,6 +79,10 @@ MIT
 
 [NetYard](netyard/README.md) is a First Deploy AI product that stands up a small-business network without Microsoft Server. Six questions produce addressing, Samba on Debian, guest Wi-Fi, a shopping list, and install scripts. See [netyard/README.md](netyard/README.md).
 
+## Braid
+
+[Braid](braid/README.md) is a language in this repo. One file holds the code, the binary flags, the hex dump, and the octal note. It checks that they are the same value, compresses the bytes, and seals a SHA-256. Local stamps are free. Hosting a stamp for a client is $29. See [braid/README.md](braid/README.md).
+
 ## Sonaris
 
 [Sonaris](sonaris/README.md) is a separate product in this repo: a real-time voice layer for an AI assistant with live captions, turn-taking that never talks over you, persona voices, a memory file per license, and a paid skill hosted behind a paywall. See [sonaris/README.md](sonaris/README.md) for setup and [sonaris/BRAND.md](sonaris/BRAND.md) for the brand.

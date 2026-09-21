@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Braid: code, binary, hex, and octal in one file</title>
+    <meta
+      name="description"
+      content="Braid checks that a decimal, a binary flag, a hex dump, and an octal note are the same bytes, then compresses them and seals a SHA-256."
+    />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  </head>
+  <body>
+    <header class="top">
+      <p class="mark">Braid</p>
+      <p class="lede">
+        Write the decimal, the binary flag, the hex dump, and the octal note in one file.
+        Braid checks they are the same value, compresses the bytes, and seals a SHA-256.
+      </p>
+    </header>
+    <main>
+      <section class="panel">
+        <div class="bar">
+          <h1>Program</h1>
+          <div class="buttons">
+            <button id="run" type="button">Run</button>
+            <button id="bench" type="button">Time 200,000 mixed-radix adds</button>
+          </div>
+        </div>
+        <textarea id="source" spellcheck="false" aria-label="Braid program"></textarea>
+      </section>
+      <section class="panel">
+        <h1>Result</h1>
+        <p id="stats" class="stats"></p>
+        <pre id="out"></pre>
+        <h2>Stamp</h2>
+        <pre id="cert">Run a program that uses seal.</pre>
+        <div class="buttons">
+          <button id="download" type="button" disabled>Download stamp</button>
+          <label class="file">
+            Open a stamp
+            <input id="open-stamp" type="file" accept=".stamp,application/octet-stream" />
+          </label>
+        </div>
+        <p id="opened" class="stats"></p>
+      </section>
+    </main>
+    <section class="weave panel">
+      <div class="bar">
+        <h1>Weave three dumps</h1>
+        <button id="weave" type="button">Weave into the editor</button>
+      </div>
+      <p class="hint">Paste xxd, <code>od -b</code>, and a binary row. Braid refuses the program if they disagree.</p>
+      <div class="dumps">
+        <label>Hex<textarea id="hex" spellcheck="false"></textarea></label>
+        <label>Octal<textarea id="oct" spellcheck="false"></textarea></label>
+        <label>Binary<textarea id="bin" spellcheck="false"></textarea></label>
+      </div>
+    </section>
+    <footer>
+      <p id="price"></p>
+    </footer>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
