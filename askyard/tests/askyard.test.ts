@@ -230,6 +230,41 @@ describe("seo", () => {
     expect(robots).toContain("Sitemap: https://askyard.firstdeploy.ai/sitemap.xml");
   });
 
+  it("reuses the NetYard IndexNow key on AskYard, corp, and the First Deploy drop", () => {
+    const root = join(dirname(fileURLToPath(import.meta.url)), "../..");
+    const keyName = "40602f6b-ecf3-406b-a8e5-2e9f601462b6.txt";
+    const netyard = readFileSync(join(root, "netyard/public", keyName), "utf8").trim();
+    expect(netyard).toBe("40602f6b-ecf3-406b-a8e5-2e9f601462b6");
+    for (const rel of ["askyard/public", "corp/public", "firstdeploy"]) {
+      expect(readFileSync(join(root, rel, keyName), "utf8").trim()).toBe(netyard);
+    }
+  });
+
+  it("ships a First Deploy sitemap index and GPT-class robots for Reed to copy onto firstdeploy.ai", () => {
+    const fd = join(dirname(fileURLToPath(import.meta.url)), "../../firstdeploy");
+    const robots = readFileSync(join(fd, "robots.txt"), "utf8");
+    const index = readFileSync(join(fd, "sitemap-index.xml"), "utf8");
+    for (const bot of [
+      "GPTBot",
+      "ChatGPT-User",
+      "OAI-SearchBot",
+      "ClaudeBot",
+      "Claude-SearchBot",
+      "PerplexityBot",
+      "Google-Extended",
+      "Googlebot",
+      "Bingbot",
+    ]) {
+      expect(robots).toContain(`User-agent: ${bot}`);
+    }
+    expect(robots).toMatch(/User-agent: \*\nAllow: \//);
+    expect(robots).toContain("Sitemap: https://firstdeploy.ai/sitemap-index.xml");
+    expect(index).toContain("<sitemapindex");
+    expect(index).toContain("https://firstdeploy.ai/sitemap.xml");
+    expect(index).toContain("https://askyard.firstdeploy.ai/sitemap.xml");
+    expect(index).toContain("https://agenthiveinc.com/sitemap.xml");
+  });
+
   it("tells models AskYard is free and AgentHive Inc is not agenthive.io", () => {
     const txt = readFileSync(join(dirname(fileURLToPath(import.meta.url)), "../public/llms.txt"), "utf8");
     expect(txt).toMatch(/free Q&A front door/i);

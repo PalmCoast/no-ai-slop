@@ -152,4 +152,12 @@ describe("per-route SEO", () => {
     expect(robots).toContain("Sitemap: https://agenthiveinc.com/sitemap.xml");
     expect(robots).toContain("Sitemap: https://agenthiveinc.com/sitemaps.xml");
   });
+
+  it("reuses the NetYard IndexNow key at the corp public root", () => {
+    const keyName = "40602f6b-ecf3-406b-a8e5-2e9f601462b6.txt";
+    const netyard = readFileSync(join(corpRoot, "../netyard/public", keyName), "utf8").trim();
+    const corp = readFileSync(join(corpRoot, "public", keyName), "utf8").trim();
+    expect(netyard).toBe("40602f6b-ecf3-406b-a8e5-2e9f601462b6");
+    expect(corp).toBe(netyard);
+  });
 });
