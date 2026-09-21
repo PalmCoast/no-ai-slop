@@ -256,13 +256,13 @@ export const HIVE_SITES: HiveSite[] = [
   {
     slug: "braid",
     name: "Braid",
-    url: "https://braid.firstdeploy.ai/",
+    url: "https://braid-firstdeploy.netlify.app/",
     github: "https://github.com/PalmCoast/no-ai-slop/tree/main/braid",
     description: "One file for decimal code, binary flags, hex dumps, and octal notes. Compresses the bytes and seals a SHA-256.",
     price: "Local stamp free · Stamp Desk $29",
     category: "lab",
-    host: "custom",
-    statusHint: "lab",
+    host: "netlify",
+    statusHint: "live",
   },
   {
     slug: "sonaris",

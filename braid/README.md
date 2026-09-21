@@ -93,22 +93,22 @@ The file starts with `BRD1`. `openSeal` expands it and checks the hash.
 Stamp Desk is **$29** once, on the same Palm Coast AI Stripe account as AskYard and NetYard. The desk posts the stamp to `POST /api/checkout`, which holds it in the `braid-stamps` Netlify Blobs store and opens Checkout on price `price_1UIE1RFJWYd4pYux4kwJRSfU` (product `prod_VIpgG7x1qvOChf`). The success page `/hosted?session_id=…` checks that the session paid $29, copies the stamp to a public key, and returns a stable URL:
 
 ```text
-https://braid.firstdeploy.ai/s/<stamp id>
+https://braid-firstdeploy.netlify.app/s/<stamp id>
 ```
 
 That page shows the SHA-256 and the certificate. `/s/<stamp id>/file` is the stamp bytes. The id is the first 32 hex characters of the stamp file's SHA-256, so the same stamp keeps the same path. A client opens the page in a browser. Python, `xxd`, and `od` are not required.
 
-This is a separate Netlify site. Base directory `braid`. Do not point `firstdeploy.ai` at it. On that site:
+The desk is the Netlify site `braid-firstdeploy` at https://braid-firstdeploy.netlify.app/. Base directory `braid`. Do not point `firstdeploy.ai` at it. On that site:
 
 ```text
 STRIPE_SECRET_KEY=sk_live_...
 STRIPE_WEBHOOK_SECRET=whsec_...
-SITE_URL=https://braid.firstdeploy.ai
+SITE_URL=https://braid-firstdeploy.netlify.app
 ```
 
-`STRIPE_PRICE_STAMP` is optional. When it is unset, Checkout uses `price_1UIE1RFJWYd4pYux4kwJRSfU`. Webhook URL: `https://braid.firstdeploy.ai/api/stripe-webhook`. Events: `checkout.session.completed`, `checkout.session.async_payment_succeeded`. The success page stores the stamp. The webhook stores it again if the buyer closes the tab. Do not commit `sk_live` or `whsec`.
+`STRIPE_PRICE_STAMP` is optional. When it is unset, Checkout uses `price_1UIE1RFJWYd4pYux4kwJRSfU`. Webhook URL: `https://braid-firstdeploy.netlify.app/api/stripe-webhook`. Events: `checkout.session.completed`, `checkout.session.async_payment_succeeded`. The success page stores the stamp. The webhook stores it again if the buyer closes the tab. Do not commit `sk_live` or `whsec`.
 
-`braid.firstdeploy.ai` is the intended host, same pattern as AskYard and NetYard. The catalog stays `lab` until that host answers HTTP. DNS for the name is not set in this repo.
+When `braid.firstdeploy.ai` is attached, set `SITE_URL` to that name. Until then the public stamp URL uses the Netlify host.
 
 ## Run the desk
 

@@ -81,7 +81,7 @@ MIT
 
 ## Braid
 
-[Braid](braid/README.md) is a language in this repo. One file holds the code, the binary flags, the hex dump, and the octal note. It checks that they are the same value, compresses the bytes, and seals a SHA-256. Local stamps are free. Stamp Desk hosts one stamp for $29 at [braid.firstdeploy.ai](https://braid.firstdeploy.ai/). See [braid/README.md](braid/README.md).
+[Braid](braid/README.md) is a language in this repo. One file holds the code, the binary flags, the hex dump, and the octal note. It checks that they are the same value, compresses the bytes, and seals a SHA-256. Local stamps are free. Stamp Desk hosts one stamp for $29 at [braid-firstdeploy.netlify.app](https://braid-firstdeploy.netlify.app/). See [braid/README.md](braid/README.md).
 
 ## Sonaris
 

@@ -27,7 +27,7 @@ describe("stamp desk", () => {
   it("keeps the Palm Coast AI price at $29", () => {
     expect(STAMP_DESK_CENTS).toBe(2900);
     expect(STAMP_PRICE_ID).toBe("price_1UIE1RFJWYd4pYux4kwJRSfU");
-    expect(STAMP_SITE).toBe("https://braid.firstdeploy.ai");
+    expect(STAMP_SITE).toBe("https://braid-firstdeploy.netlify.app");
   });
 
   it("publishes only a paid $29 Stamp Desk session", () => {
@@ -44,14 +44,14 @@ describe("stamp desk", () => {
     expect(publishRefusal({ ...paid, amount_total: 100 })).toBe("wrong_amount");
     expect(publishRefusal({ ...paid, metadata: { ...paid.metadata, product: "other" } })).toBe("wrong_product");
     expect(isStampId(stampId)).toBe(true);
-    expect(stampPageUrl(stampId)).toBe(`https://braid.firstdeploy.ai/s/${stampId}`);
+    expect(stampPageUrl(stampId)).toBe(`https://braid-firstdeploy.netlify.app/s/${stampId}`);
   });
 
   it("rejects a stamp that is not BRD1 before any payment call", async () => {
-    const bad = await checkout(new Request("https://braid.firstdeploy.ai/api/checkout", { method: "POST", body: "{}" }));
+    const bad = await checkout(new Request("https://braid-firstdeploy.netlify.app/api/checkout", { method: "POST", body: "{}" }));
     expect(bad.status).toBe(400);
     const res = await checkout(
-      new Request("https://braid.firstdeploy.ai/api/checkout", {
+      new Request("https://braid-firstdeploy.netlify.app/api/checkout", {
         method: "POST",
         body: JSON.stringify({ stamp: Buffer.from(sensorStamp()).toString("base64") }),
       }),
@@ -63,7 +63,7 @@ describe("stamp desk", () => {
   });
 
   it("asks for a Checkout session before the success page stores anything", async () => {
-    const res = await hosted(new Request("https://braid.firstdeploy.ai/hosted"));
+    const res = await hosted(new Request("https://braid-firstdeploy.netlify.app/hosted"));
     expect(res.status).toBe(400);
     expect(await res.text()).toContain("Stripe Checkout");
   });
@@ -79,14 +79,14 @@ describe("stamp desk", () => {
 
   it("renders a public page that shows the hash without a toolchain", () => {
     const opened = openSeal(sensorStamp());
-    const page = stampPageHtml(opened, "https://braid.firstdeploy.ai/s/abc", "https://braid.firstdeploy.ai/s/abc/file");
+    const page = stampPageHtml(opened, "https://braid-firstdeploy.netlify.app/s/abc", "https://braid-firstdeploy.netlify.app/s/abc/file");
     expect(page).toContain(opened.sha256);
     expect(page).toContain("Download the stamp file");
     expect(page).toContain(certificate(opened).split("\n")[0]);
     const hostile = stampPageHtml(
       { ...opened, note: `<script>alert("x")</script>` },
-      "https://braid.firstdeploy.ai/s/abc",
-      "https://braid.firstdeploy.ai/s/abc/file",
+      "https://braid-firstdeploy.netlify.app/s/abc",
+      "https://braid-firstdeploy.netlify.app/s/abc/file",
     );
     expect(hostile).not.toContain("<script>alert");
     expect(hostile).toContain("&lt;script&gt;");

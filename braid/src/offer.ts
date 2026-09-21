@@ -7,5 +7,5 @@ export const STAMP_DESK_LINE =
 /** Live Palm Coast AI price for Stamp Desk. Override with STRIPE_PRICE_STAMP. */
 export const STAMP_PRICE_ID = "price_1UIE1RFJWYd4pYux4kwJRSfU";
 
-/** Intended public host. SITE_URL on the braid Netlify site overrides this. */
-export const STAMP_SITE = "https://braid.firstdeploy.ai";
+/** Public host until braid.firstdeploy.ai DNS is attached. SITE_URL overrides this. */
+export const STAMP_SITE = "https://braid-firstdeploy.netlify.app";
