@@ -1,0 +1,53 @@
+# Bench logger frame.
+# The manual writes the magic in hex, the scope in binary,
+# the old Unix note in octal, and the lab book in decimal.
+
+let magic = agree[
+  0xA55A,
+  0b1010010101011010,
+  0o122532,
+  42330
+]
+
+let flags = agree[0b0001_0110, 0x16, 0o26, 22]
+let mode = agree[0o644, 420, 0x1A4, 0b110100100]
+
+let header = hex[
+  A5 5A 16 00
+]
+
+let pattern = hex[ 01 02 03 04 ]
+let bulk = pattern
+let i = 0
+while i < 63 {
+  bulk = bulk + pattern
+  i = i + 1
+}
+
+let frame = header + bulk
+
+fn sum(bytes) {
+  let n = 0
+  let k = 0
+  while k < len(bytes) {
+    n = (n + bytes[k]) & 0xFF
+    k = k + 1
+  }
+  return n
+}
+
+let check = sum(frame)
+let checkAgree = agree[check, 149, 0x95, 0o225, 0b10010101]
+print checkAgree
+
+let packed = compress frame
+print packed.method
+print packed.raw
+print packed.size
+print packed.saved
+assert packed.size < packed.raw
+assert expand packed == frame
+seal frame, "bench logger frame"
+print magic
+print flags
+print mode

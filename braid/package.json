@@ -1,0 +1,24 @@
+{
+  "name": "braid",
+  "version": "0.1.0",
+  "private": true,
+  "description": "One language for decimal code, binary, hex, and octal. Compresses the bytes and seals a hash.",
+  "type": "module",
+  "bin": {
+    "braid": "src/cli.ts"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "prove": "vite-node src/cli.ts prove"
+  },
+  "devDependencies": {
+    "@types/node": "^22.15.30",
+    "typescript": "^5.8.3",
+    "vite": "^6.3.5",
+    "vitest": "^3.2.4"
+  }
+}

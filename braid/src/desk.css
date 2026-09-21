@@ -1,0 +1,114 @@
+:root {
+  color: #221c16;
+  background: #efe6d6;
+  font-family: "Iowan Old Style", Palatino, "Palatino Linotype", Georgia, serif;
+  line-height: 1.45;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  padding: 28px 22px 48px;
+}
+
+.top, main, .weave, footer { max-width: 1100px; margin: 0 auto; }
+
+.mark {
+  margin: 0;
+  font-family: ui-monospace, "Cascadia Code", "SF Mono", Menlo, Consolas, monospace;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-size: 13px;
+  color: #9d3418;
+}
+
+.lede { max-width: 42rem; font-size: 1.25rem; margin: 8px 0 22px; }
+
+main {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 16px;
+}
+
+.panel {
+  background: #f7f1e6;
+  border: 1px solid #d7cbb8;
+  padding: 14px;
+}
+
+.bar, .buttons {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+h1, h2 {
+  font-family: ui-monospace, "Cascadia Code", "SF Mono", Menlo, Consolas, monospace;
+  font-size: 14px;
+  font-weight: 600;
+  margin: 0;
+}
+
+h2 { margin: 16px 0 8px; }
+
+textarea, pre {
+  font-family: ui-monospace, "Cascadia Code", "SF Mono", Menlo, Consolas, monospace;
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+textarea {
+  width: 100%;
+  min-height: 460px;
+  margin-top: 10px;
+  border: 1px solid #d7cbb8;
+  background: #fffaf2;
+  color: #221c16;
+  padding: 10px;
+  resize: vertical;
+}
+
+pre {
+  white-space: pre-wrap;
+  background: #221c16;
+  color: #f4efe4;
+  padding: 12px;
+  min-height: 8rem;
+  margin: 10px 0;
+}
+
+.stats, .hint, footer p { font-size: 0.95rem; }
+
+button, .file {
+  font-family: ui-monospace, "Cascadia Code", "SF Mono", Menlo, Consolas, monospace;
+  font-size: 13px;
+  background: #9d3418;
+  color: #fffaf2;
+  border: 0;
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+button:disabled { background: #b7aa9a; cursor: not-allowed; }
+
+.file { display: inline-block; }
+.file input { display: block; margin-top: 6px; color: #221c16; }
+
+.weave { margin-top: 16px; }
+.dumps {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+.dumps textarea { min-height: 140px; }
+.dumps label { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 12px; }
+
+footer { margin-top: 18px; }
+
+@media (max-width: 800px) {
+  main, .dumps { grid-template-columns: 1fr; }
+  textarea { min-height: 280px; }
+}
