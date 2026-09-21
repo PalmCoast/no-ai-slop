@@ -53,6 +53,10 @@ writeFileSync(
     "/marquee/ /marquee/index.html 200!",
     "/marquee/thanks /marquee/thanks/index.html 200!",
     "/marquee/thanks/ /marquee/thanks/index.html 200!",
+    "/check /check/index.html 200!",
+    "/check/ /check/index.html 200!",
+    "/check/harbor-hvac /check/harbor-hvac/index.html 200!",
+    "/check/harbor-hvac/ /check/harbor-hvac/index.html 200!",
     ...SEED_QUESTIONS.flatMap((q) => [
       `/q/${q.slug} /q/${q.slug}/index.html 200!`,
       `/q/${q.slug}/ /q/${q.slug}/index.html 200!`,

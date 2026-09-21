@@ -11,6 +11,9 @@ import { config as rate } from "../netlify/functions/rate";
 import { config as marquee } from "../netlify/functions/marquee";
 import { config as marqueeConfirm } from "../netlify/functions/marquee-confirm";
 import { config as stripeWebhook } from "../netlify/functions/stripe-webhook";
+import { config as shopCheck } from "../netlify/functions/check";
+import { config as shopCheckCard } from "../netlify/functions/check-card";
+import { config as shopCheckShare } from "../netlify/functions/check-share";
 import { fallbackAnswer } from "../netlify/lib/draft";
 
 describe("function routes", () => {
@@ -24,6 +27,9 @@ describe("function routes", () => {
     expect(marquee).toMatchObject({ path: "/api/marquee" });
     expect(marqueeConfirm).toMatchObject({ path: "/api/marquee/confirm", method: "GET" });
     expect(stripeWebhook).toMatchObject({ path: "/api/stripe-webhook", method: "POST" });
+    expect(shopCheck).toMatchObject({ path: "/api/check", method: "POST" });
+    expect(shopCheckCard).toMatchObject({ path: "/api/check-card", method: "GET" });
+    expect(shopCheckShare).toMatchObject({ path: "/s/:token", method: "GET" });
     expect(marqueeHost).toMatchObject({ path: "/*" });
   });
 
@@ -34,6 +40,9 @@ describe("function routes", () => {
     expect(toml).toContain('from = "/marquee"');
     expect(toml).toContain('from = "/rep"');
     expect(toml).toContain('from = "/about"');
+    expect(toml).toContain('from = "/check"');
+    expect(toml).toContain('to = "/check/index.html"');
+    expect(toml).toContain('from = "/check/harbor-hvac"');
     expect(toml).toContain('to = "/about/index.html"');
     expect(toml).not.toMatch(/from = "\/launch"[\s\S]*?to = "\/launch\/index\.html"/);
   });

@@ -18,6 +18,7 @@ import {
 } from "../../shared/brand";
 
 const NAV = [
+  { to: "/check", label: "Check" },
   { to: "/board", label: "Board" },
   { to: "/apps", label: "Apps" },
   { to: "/about", label: "About" },
@@ -97,6 +98,7 @@ export default function Layout() {
           <div>
             <strong>AskYard</strong>
             <Link to="/">Ask</Link>
+            <Link to="/check">Shop check</Link>
             <Link to="/about">About</Link>
             <Link to="/board">Ranked board</Link>
             <Link to="/rep">Reputation meter</Link>
