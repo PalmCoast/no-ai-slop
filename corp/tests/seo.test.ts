@@ -3,8 +3,8 @@ import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { describe, expect, it } from "vitest";
-import { LEGAL_NAME, LINKEDIN_URL } from "../shared/brand";
-import { applyRouteHtml, canonicalFor, organizationJsonLd, PAGE_SEO, sitemapXml } from "../shared/seo";
+import { DANIEL_LINKEDIN_URL, LEGAL_NAME, LINKEDIN_URL } from "../shared/brand";
+import { applyRouteHtml, canonicalFor, organizationJsonLd, PAGE_SEO, sitemapIndexXml, sitemapXml } from "../shared/seo";
 
 const corpRoot = fileURLToPath(new URL("..", import.meta.url));
 
@@ -99,6 +99,7 @@ describe("per-route SEO", () => {
     expect(json).toContain("95 Barrington Drive");
     expect(json).toContain(LEGAL_NAME);
     expect(json).toContain(LINKEDIN_URL);
+    expect(json).toContain(DANIEL_LINKEDIN_URL);
     expect(json).toContain("https://firstdeploy.ai/");
     expect(json).toContain("https://indexme.lol/");
     expect(json).toContain("https://agenthiveinc.com/consult");
@@ -112,6 +113,7 @@ describe("per-route SEO", () => {
     expect(txt).toContain("https://flick.firstdeploy.ai/");
     expect(txt).toContain("https://jobproof.firstdeploy.ai/");
     expect(txt).toContain("https://askyard.firstdeploy.ai/");
+    expect(txt).toMatch(/not the paid after-hours desk/i);
     expect(txt).toContain("https://firstdeploy.ai/");
     expect(txt).toContain("https://calendly.com/coltsinsider/30min");
     expect(txt).toContain("IndexNow");
@@ -137,5 +139,17 @@ describe("per-route SEO", () => {
     expect(xml).toContain("https://agenthiveinc.com/consult");
     expect(xml).not.toContain("firstdeploy.ai");
     expect(xml).not.toContain("llms.txt");
+    expect(xml).toContain("<lastmod>");
+    const index = sitemapIndexXml();
+    expect(index).toContain("<sitemapindex");
+    expect(index).toContain("https://agenthiveinc.com/sitemap.xml");
+    expect(index).toContain("https://askyard.firstdeploy.ai/sitemap.xml");
+    expect(index).toContain("https://firstdeploy.ai/sitemap.xml");
+    expect(readFileSync(join(corpRoot, "public/sitemaps.xml"), "utf8")).toContain("askyard.firstdeploy.ai/sitemap.xml");
+    const robots = readFileSync(join(corpRoot, "public/robots.txt"), "utf8");
+    expect(robots).toContain("User-agent: GPTBot");
+    expect(robots).toContain("User-agent: Claude-SearchBot");
+    expect(robots).toContain("Sitemap: https://agenthiveinc.com/sitemap.xml");
+    expect(robots).toContain("Sitemap: https://agenthiveinc.com/sitemaps.xml");
   });
 });

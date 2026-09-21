@@ -1,7 +1,10 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { fetchBoard } from "../api";
+import BoardQa from "../components/BoardQa";
+import IdentityFacts from "../components/IdentityFacts";
 import { emptyTotals, rankedSeed, type YardQuestion, type YardTotals } from "../../shared/ask";
+import { BRAND_PARENT, CONSULT_DISPLAY_SEO, CONSULT_TEL, FD_PRICE_LONG, PARENT_URL } from "../../shared/brand";
 
 const TRADES = ["all", "plumber", "teacher", "receptionist", "earth mover", "shop", "general"] as const;
 
@@ -28,6 +31,11 @@ export default function Board() {
           <p className="lede">
             {totals.questionsAsked.toLocaleString()} asks across {totals.uniqueQuestions} questions. The count stays on
             the card so a new visitor can see what the yard already needed.
+          </p>
+          <IdentityFacts />
+          <p className="fine">
+            <a href={PARENT_URL}>{BRAND_PARENT}</a> is {FD_PRICE_LONG}. Phone{" "}
+            <a href={`tel:${CONSULT_TEL}`}>{CONSULT_DISPLAY_SEO}</a>.
           </p>
         </div>
         <div className="filters">
@@ -60,6 +68,7 @@ export default function Board() {
             </Link>
           ))}
         </div>
+        <BoardQa heading="Short answers, no JavaScript required" />
       </div>
     </section>
   );

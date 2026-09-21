@@ -12,13 +12,18 @@ import {
   CALENDLY_URL,
   COMPANY_URL,
   CONSULT_DISPLAY,
+  CONSULT_DISPLAY_SEO,
   CONTACT_EMAIL,
-  FD_PRICE,
-  FD_PROMISE,
+  CONTENT_LASTMOD,
+  DANIEL_LINKEDIN_URL,
+  FD_PRICE_LONG,
   HERO_H1,
   HERO_WHAT,
+  HOME_DESCRIPTION,
+  HOME_TITLE,
   LEGAL_NAME,
   LINKEDIN_URL,
+  OTHER_HIVES,
   MARQUEE_NAME,
   MARQUEE_TAGLINE,
   MARQUEE_URL,
@@ -40,34 +45,67 @@ export type SeoPage = {
   noindex?: boolean;
 };
 
+export const SITEMAP_STATIC_PATHS = ["/", "/about", "/board", "/apps"] as const;
+
+export function shortAnswer(answer: string): string {
+  const sentence = answer.split(/(?<=[.!?])\s+/)[0] ?? answer;
+  return sentence.length > 220 ? `${sentence.slice(0, 217)}…` : sentence;
+}
+
+export function lastmodDate(iso?: string): string {
+  const day = iso?.slice(0, 10);
+  if (day && day > CONTENT_LASTMOD) return day;
+  return CONTENT_LASTMOD;
+}
+
+export function identityHtml(): string {
+  return `<p class="identity-facts">${BRAND_NAME} is the free Q&amp;A front door from ${BRAND_PARENT}. It is not the paid after-hours desk. Built by ${BRAND_COMPANY} in ${BRAND_PLACE}. Paid desk: <a href="${PARENT_URL}">${BRAND_PARENT}</a> — firstdeploy.ai — ${FD_PRICE_LONG}. Phone ${CONSULT_DISPLAY_SEO}.</p>`;
+}
+
+export function nightLineCtaHtml(): string {
+  return `<p class="night-line-cta">Need the night line installed? <a href="${PARENT_URL}">${BRAND_PARENT}</a> — firstdeploy.ai — ${FD_PRICE_LONG}.</p>`;
+}
+
+export function boardQaHtml(): string {
+  return `<dl class="board-qa">${SEED_QUESTIONS.map(
+    (q) =>
+      `<dt><a href="${canonicalFor(`/q/${q.slug}`)}">${escapeHtml(q.question)}</a></dt><dd>${escapeHtml(shortAnswer(q.answer))}</dd>`,
+  ).join("")}</dl>`;
+}
+
 export const PAGE_SEO: SeoPage[] = [
   {
     path: "/",
-    title: "AskYard — free AI answers for the shop floor",
-    description: `${HERO_H1} ${HERO_WHAT} ${BRAND_PARENT} is ${FD_PRICE}. ${FD_PROMISE}.`,
+    title: HOME_TITLE,
+    description: HOME_DESCRIPTION,
     h1: HERO_H1,
-    bodyHtml: `<main id="route-home" class="section"><div class="container"><h1 class="display">${HERO_H1}</h1><p class="lede">${HERO_WHAT}</p><p>${TAGLINE} ${BRAND_NAME} is a ${BRAND_PARENT} product from ${BRAND_COMPANY} in ${BRAND_PLACE}. Search ChatGPT, Claude, Perplexity, Gemini, Grok, or Google about us, then ask your own question. Ranked questions live on the board. Apps for sale sit on /apps.</p><p><a href="${PARENT_URL}">Start ${BRAND_PARENT}</a> · <a href="${CALENDLY_URL}">Book the free 30</a> · ${CONSULT_DISPLAY}</p></div></main>`,
+    bodyHtml: `<main id="route-home" class="section"><div class="container"><h1 class="display">${HERO_H1}</h1><p class="lede">${HERO_WHAT}</p>${identityHtml()}<p>${TAGLINE} ${BRAND_NAME} is a ${BRAND_PARENT} product from ${BRAND_COMPANY} in ${BRAND_PLACE}. Search ChatGPT, Claude, Perplexity, Gemini, Grok, or Google about us, then ask your own question. Ranked questions live on the board. Apps for sale sit on /apps.</p><p><a href="${PARENT_URL}">Start ${BRAND_PARENT}</a> · <a href="${CALENDLY_URL}">Book the free 30</a> · ${CONSULT_DISPLAY_SEO}</p><h2>Most asked</h2>${boardQaHtml()}</div></main>`,
   },
   {
     path: "/board",
     title: "Ranked questions | AskYard",
-    description: `Questions ranked by how many times people ask them on AskYard. Running totals stay on the board so you can see what the shop floor actually wants.`,
+    description: `Questions ranked by how many times people ask them on AskYard. ${HOME_DESCRIPTION}`,
     h1: "Ranked by how often people ask",
-    bodyHtml: `<main id="route-board" class="section"><div class="container"><h1 class="display">Ranked by how often people ask</h1><p class="lede">Every AskYard question keeps a running count. The board sorts by asks so a plumber, a teacher, or a dispatcher can see what other people already needed.</p><ol>${SEED_QUESTIONS.slice(0, 6)
-      .map((q) => `<li>${q.question} — asked ${q.asks} times</li>`)
-      .join("")}</ol></div></main>`,
+    bodyHtml: `<main id="route-board" class="section"><div class="container"><h1 class="display">Ranked by how often people ask</h1><p class="lede">Every AskYard question keeps a running count. The board sorts by asks so a plumber, a teacher, or a dispatcher can see what other people already needed.</p>${identityHtml()}<p><a href="${PARENT_URL}">${BRAND_PARENT}</a> is ${FD_PRICE_LONG}. Phone ${CONSULT_DISPLAY_SEO}.</p>${boardQaHtml()}</div></main>`,
   },
   {
     path: "/apps",
     title: "Apps for sale | AskYard",
-    description: `The live ${BRAND_PARENT} shelf: First Deploy AI, JobProof, Flick, IndexMe.lol, and the rest of the AgentHive Inc apps you can buy.`,
+    description: `The live ${BRAND_PARENT} shelf: First Deploy AI, JobProof, Flick, IndexMe.lol, and the rest of the AgentHive Inc apps you can buy. ${HOME_DESCRIPTION}`,
     h1: "Apps for sale",
-    bodyHtml: `<main id="route-apps" class="section"><div class="container"><h1 class="display">Apps for sale</h1><p class="lede">Turn-and-burn prices. Buy the small tool, or start ${BRAND_PARENT} if the leak is the night phone.</p><ul>${SALE_APPS.slice(
+    bodyHtml: `<main id="route-apps" class="section"><div class="container"><h1 class="display">Apps for sale</h1><p class="lede">Turn-and-burn prices. Buy the small tool, or start ${BRAND_PARENT} if the leak is the night phone.</p>${identityHtml()}<ul>${SALE_APPS.slice(
       0,
       8,
     )
       .map((app) => `<li><a href="${app.url}">${app.name}</a> — ${app.price}. ${app.blurb}</li>`)
-      .join("")}</ul></div></main>`,
+      .join("")}</ul><h2>Shop-floor questions</h2>${boardQaHtml()}</div></main>`,
+  },
+  {
+    path: "/about",
+    title: "About AskYard | Free shop-floor AI answers from First Deploy",
+    description: HOME_DESCRIPTION,
+    h1: "About AskYard",
+    bodyHtml: `<main id="route-about" class="section"><div class="container"><h1 class="display">About AskYard</h1><p class="lede">${BRAND_NAME} is the free Q&amp;A front door from ${BRAND_PARENT}. It is not the paid after-hours desk.</p>${identityHtml()}<p>${BRAND_COMPANY} / ${LEGAL_NAME} builds it in ${BRAND_PLACE}. ${BRAND_PARENT} is ${FD_PRICE_LONG}. Phone ${CONSULT_DISPLAY_SEO}. ${OTHER_HIVES} Distinct from other AgentHive names in insurance, OSS, or QpiAI.</p><p><a href="${PARENT_URL}">${BRAND_PARENT}</a> · <a href="${COMPANY_URL}">${BRAND_COMPANY}</a> · <a href="${CALENDLY_URL}">Book the free 30</a></p><h2>Board questions</h2>${boardQaHtml()}</div></main>`,
   },
   {
     path: "/hunt",
@@ -109,10 +147,23 @@ export const NOT_FOUND_SEO: SeoPage = {
   noindex: true,
 };
 
+export function sitemapEntries(): Array<{ loc: string; lastmod: string }> {
+  const staticEntries = SITEMAP_STATIC_PATHS.map((path) => ({
+    loc: canonicalFor(path),
+    lastmod: lastmodDate(),
+  }));
+  const questionEntries = SEED_QUESTIONS.map((q) => ({
+    loc: canonicalFor(`/q/${q.slug}`),
+    lastmod: lastmodDate(q.updatedAt),
+  }));
+  return [...staticEntries, ...questionEntries];
+}
+
 export function sitemapXml(): string {
-  const staticUrls = PAGE_SEO.filter((page) => !page.noindex).map((page) => `  <url><loc>${canonicalFor(page.path)}</loc></url>`);
-  const questionUrls = SEED_QUESTIONS.map((q) => `  <url><loc>${canonicalFor(`/q/${q.slug}`)}</loc></url>`);
-  return `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${[...staticUrls, ...questionUrls].join("\n")}\n</urlset>\n`;
+  const urls = sitemapEntries().map(
+    (entry) => `  <url>\n    <loc>${entry.loc}</loc>\n    <lastmod>${entry.lastmod}</lastmod>\n  </url>`,
+  );
+  return `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.join("\n")}\n</urlset>\n`;
 }
 
 export function canonicalFor(path: string): string {
@@ -129,9 +180,9 @@ export function pageForPath(pathname: string): SeoPage {
       return {
         path,
         title: `${q.question} | AskYard`,
-        description: q.answer.slice(0, 160),
+        description: `${q.question} ${shortAnswer(q.answer)}`.slice(0, 160),
         h1: q.question,
-        bodyHtml: `<main id="route-answer" class="section"><div class="container"><h1 class="display">${escapeHtml(q.question)}</h1><p>Asked ${q.asks} times.</p><p>${escapeHtml(q.answer)}</p></div></main>`,
+        bodyHtml: `<main id="route-answer" class="section"><div class="container"><h1 class="display">${escapeHtml(q.question)}</h1><p>Asked ${q.asks} times on AskYard, the free Q&amp;A front door from ${BRAND_PARENT}.</p><p>${escapeHtml(q.answer)}</p>${nightLineCtaHtml()}<p>Built by ${BRAND_COMPANY} in ${BRAND_PLACE}. Phone ${CONSULT_DISPLAY_SEO}.</p></div></main>`,
       };
     }
   }
@@ -166,7 +217,7 @@ export function organizationJsonLd() {
             postalCode: POSTAL_CODE,
             addressCountry: ADDRESS_COUNTRY,
           },
-          sameAs: [LINKEDIN_URL, PARENT_URL, COMPANY_URL],
+          sameAs: [DANIEL_LINKEDIN_URL, LINKEDIN_URL, PARENT_URL, COMPANY_URL],
         },
       },
       {

@@ -14,10 +14,10 @@ import {
   slugifyQuestion,
 } from "../shared/ask";
 import { askAiLinks } from "../shared/reputation";
-import { ASK_AI_PROMPT } from "../shared/brand";
+import { ASK_AI_PROMPT, HOME_DESCRIPTION, HOME_TITLE } from "../shared/brand";
 import { SALE_APPS } from "../shared/catalog";
 import { HUNT_SEED } from "../shared/hunt";
-import { applyRouteHtml, canonicalFor, PAGE_SEO, sitemapXml } from "../shared/seo";
+import { applyRouteHtml, canonicalFor, pageForPath, PAGE_SEO, sitemapEntries, sitemapXml } from "../shared/seo";
 
 const layoutSource = readFileSync(
   join(dirname(fileURLToPath(import.meta.url)), "../src/components/Layout.tsx"),
@@ -125,12 +125,72 @@ describe("seo", () => {
     for (const page of PAGE_SEO) {
       expect(canonicalFor(page.path)).toMatch(/^https:\/\/askyard\.firstdeploy\.ai/);
     }
+    expect(PAGE_SEO.some((page) => page.path === "/about")).toBe(true);
+    expect(PAGE_SEO.find((page) => page.path === "/")?.title).toBe(HOME_TITLE);
+    expect(PAGE_SEO.find((page) => page.path === "/")?.description).toBe(HOME_DESCRIPTION);
     expect(sitemapXml()).toContain("https://askyard.firstdeploy.ai/board");
-    expect(sitemapXml()).toContain("https://askyard.firstdeploy.ai/rep");
-    expect(sitemapXml()).toContain("https://askyard.firstdeploy.ai/marquee");
+    expect(sitemapXml()).toContain("https://askyard.firstdeploy.ai/about");
+    expect(sitemapXml()).toContain("https://askyard.firstdeploy.ai/apps");
     expect(sitemapXml()).toContain("https://askyard.firstdeploy.ai/q/stop-missing-night-calls");
     expect(sitemapXml()).not.toContain("https://askyard.firstdeploy.ai/launch");
+    expect(sitemapXml()).not.toContain("netlify.app");
+    expect(sitemapXml()).not.toContain("#");
     expect(PAGE_SEO.some((page) => page.path === "/launch")).toBe(false);
+  });
+
+  it("lists only money 200 URLs with real lastmod", () => {
+    const entries = sitemapEntries();
+    const locs = entries.map((entry) => entry.loc);
+    expect(locs).toEqual([
+      "https://askyard.firstdeploy.ai/",
+      "https://askyard.firstdeploy.ai/about",
+      "https://askyard.firstdeploy.ai/board",
+      "https://askyard.firstdeploy.ai/apps",
+      ...SEED_QUESTIONS.map((q) => `https://askyard.firstdeploy.ai/q/${q.slug}`),
+    ]);
+    expect(entries.every((entry) => /^\d{4}-\d{2}-\d{2}$/.test(entry.lastmod))).toBe(true);
+    expect(sitemapXml()).toContain("<lastmod>");
+    expect(sitemapXml()).not.toContain("/rep");
+    expect(sitemapXml()).not.toContain("/marquee");
+    expect(sitemapXml()).not.toContain("/hunt");
+  });
+
+  it("puts AskYard facts in the first HTML for money pages and /q/", () => {
+    const shell = `<!doctype html><html><head>
+      <title>x</title>
+      <meta name="description" content="shared" />
+      <link rel="canonical" href="https://askyard.firstdeploy.ai/" />
+      <meta property="og:title" content="shared" />
+      <meta property="og:description" content="shared" />
+      <meta property="og:url" content="https://askyard.firstdeploy.ai/" />
+      <meta name="twitter:title" content="shared" />
+      <meta name="twitter:description" content="shared" />
+    </head><body><div id="root"></div></body></html>`;
+    const paths = ["/", "/board", "/apps", "/about", "/q/stop-missing-night-calls"];
+    for (const path of paths) {
+      const page = path.startsWith("/q/") ? pageForPath(path) : PAGE_SEO.find((item) => item.path === path)!;
+      const html = applyRouteHtml(shell, page);
+      expect(html).toContain("AskYard");
+      expect(html).toContain("AgentHive Inc");
+      expect(html).toContain("Palm Coast");
+      expect(html).toContain("$1,500");
+      expect(html).toContain("$250");
+      expect(html).toContain("+1-320-335-6186");
+      expect(html).toContain("https://firstdeploy.ai/");
+      expect(html).toContain("How do I stop missing night calls?");
+      expect(html).toContain("Put one number on the truck");
+      expect(html).not.toMatch(/14 apps|\$70k/);
+      if (path === "/") {
+        expect(html).toContain(`<title>${HOME_TITLE}</title>`);
+        expect(html).toContain(HOME_DESCRIPTION);
+        expect(html).toContain('rel="canonical" href="https://askyard.firstdeploy.ai/"');
+      }
+      if (path === "/q/stop-missing-night-calls") {
+        expect(html).toContain('rel="canonical" href="https://askyard.firstdeploy.ai/q/stop-missing-night-calls"');
+        expect(html).toContain("Need the night line installed?");
+        expect(html).toContain("$1,500 setup, then $250/month");
+      }
+    }
   });
 
   it("writes distinct home and board HTML", () => {
@@ -149,5 +209,36 @@ describe("seo", () => {
     expect(home).toContain("id=\"route-home\"");
     expect(board).toContain("id=\"route-board\"");
     expect(home).not.toBe(board);
+  });
+
+  it("allows GPT-class bots in robots.txt and names the host sitemap", () => {
+    const robots = readFileSync(join(dirname(fileURLToPath(import.meta.url)), "../public/robots.txt"), "utf8");
+    for (const bot of [
+      "GPTBot",
+      "ChatGPT-User",
+      "OAI-SearchBot",
+      "ClaudeBot",
+      "Claude-SearchBot",
+      "PerplexityBot",
+      "Google-Extended",
+      "Googlebot",
+      "Bingbot",
+    ]) {
+      expect(robots).toContain(`User-agent: ${bot}`);
+    }
+    expect(robots).toMatch(/User-agent: \*\nAllow: \//);
+    expect(robots).toContain("Sitemap: https://askyard.firstdeploy.ai/sitemap.xml");
+  });
+
+  it("tells models AskYard is free and AgentHive Inc is not agenthive.io", () => {
+    const txt = readFileSync(join(dirname(fileURLToPath(import.meta.url)), "../public/llms.txt"), "utf8");
+    expect(txt).toMatch(/free Q&A front door/i);
+    expect(txt).toMatch(/not the paid after-hours desk/i);
+    expect(txt).toContain("agenthive.io");
+    expect(txt).toContain("insurance leads");
+    expect(txt).toContain("agenthive.co");
+    expect(txt).toContain("$1,500");
+    expect(txt).toContain("$250");
+    expect(txt).not.toMatch(/14 apps|\$70k/);
   });
 });

@@ -33,6 +33,8 @@ describe("function routes", () => {
     expect(toml).toContain('function = "marquee-host"');
     expect(toml).toContain('from = "/marquee"');
     expect(toml).toContain('from = "/rep"');
+    expect(toml).toContain('from = "/about"');
+    expect(toml).toContain('to = "/about/index.html"');
     expect(toml).not.toMatch(/from = "\/launch"[\s\S]*?to = "\/launch\/index\.html"/);
   });
 

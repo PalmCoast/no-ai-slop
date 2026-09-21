@@ -19,9 +19,10 @@ import {
 
 const NAV = [
   { to: "/board", label: "Board" },
+  { to: "/apps", label: "Apps" },
+  { to: "/about", label: "About" },
   { to: "/rep", label: "Rep" },
   { to: "/marquee", label: MARQUEE_NAME },
-  { to: "/apps", label: "Apps" },
   { to: "/hunt", label: "Hunt" },
 ];
 
@@ -96,6 +97,7 @@ export default function Layout() {
           <div>
             <strong>AskYard</strong>
             <Link to="/">Ask</Link>
+            <Link to="/about">About</Link>
             <Link to="/board">Ranked board</Link>
             <Link to="/rep">Reputation meter</Link>
             <Link to="/marquee">{MARQUEE_NAME}</Link>

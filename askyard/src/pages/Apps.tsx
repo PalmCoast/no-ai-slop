@@ -1,6 +1,8 @@
 import { useMemo, useState } from "react";
 import { SALE_APPS, type AppCategory } from "../../shared/catalog";
-import { BRAND_PARENT, FD_PRICE, FD_PROMISE } from "../../shared/brand";
+import BoardQa from "../components/BoardQa";
+import IdentityFacts from "../components/IdentityFacts";
+import { BRAND_PARENT, FD_PRICE, FD_PROMISE, PARENT_URL } from "../../shared/brand";
 
 const FILTERS: Array<"all" | AppCategory> = ["all", "ops", "field", "saas", "infra", "studio"];
 
@@ -21,6 +23,7 @@ export default function Apps() {
             {BRAND_PARENT} is the cash product: {FD_PRICE}. {FD_PROMISE}. Everything else is a smaller, priced tool you
             can buy the same day.
           </p>
+          <IdentityFacts />
         </div>
         <div className="filters">
           {FILTERS.map((key) => (
@@ -39,6 +42,10 @@ export default function Apps() {
             </a>
           ))}
         </div>
+        <p className="fine" style={{ marginTop: 18 }}>
+          Need the night line? <a href={PARENT_URL}>{BRAND_PARENT}</a> — firstdeploy.ai — {FD_PRICE}.
+        </p>
+        <BoardQa />
       </div>
     </section>
   );
