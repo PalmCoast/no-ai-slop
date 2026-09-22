@@ -1,6 +1,7 @@
 import { useState } from "react";
-import { Link, NavLink, Outlet } from "react-router-dom";
+import { Link, NavLink, Outlet, useLocation } from "react-router-dom";
 import Seo from "./Seo";
+import { ASKYARD_CODEHYPE_BADGE, MARQUEE_CODEHYPE_BADGE } from "../../shared/seo";
 import {
   BRAND_COMPANY,
   BRAND_NAME,
@@ -29,6 +30,8 @@ const NAV = [
 
 export default function Layout() {
   const [open, setOpen] = useState(false);
+  const { pathname } = useLocation();
+  const codehypeBadge = pathname.startsWith("/marquee") ? MARQUEE_CODEHYPE_BADGE : ASKYARD_CODEHYPE_BADGE;
 
   return (
     <div className="shell">
@@ -121,6 +124,7 @@ export default function Layout() {
             <a href="https://fazier.com" target="_blank">
               <img src="https://fazier.com/api/v1//public/badges/launch_badges.svg?badge_type=launched&theme=light" width={120} alt="Fazier badge" />
             </a>
+            <span className="codehype-badge" dangerouslySetInnerHTML={{ __html: codehypeBadge }} />
           </div>
           <div>
             <strong>Contact</strong>

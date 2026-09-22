@@ -34,13 +34,21 @@ export type SeoPage = {
   noindex?: boolean;
 };
 
+/** Official CodeHype Free Launch badge. Do not alter URLs or attributes. */
+export const NETYARD_CODEHYPE_BADGE =
+  '<a href="https://codehype.ai/product/netyard?utm_source=codehype_badge" target="_blank" rel="noopener noreferrer"> <img src="https://codehype.ai/badges/netyard.svg?variant=find-us&v=20" alt="Featured on CodeHype" width="180" height="65" loading="lazy" decoding="async" style="display:inline-block;border:0;width:100%;max-width:180px;height:auto;max-height:65px;" /> </a>';
+
+function codehypeStrip(badgeHtml: string): string {
+  return `<footer class="codehype-strip"><div class="container">${badgeHtml}</div></footer>`;
+}
+
 export const PAGE_SEO: SeoPage[] = [
   {
     path: "/",
     title: "NetYard — stand up a shop network without Microsoft Server",
     description: `${HERO_H1} ${HERO_WHAT} ${BRAND_PARENT} is ${FD_PRICE}. ${FD_PROMISE}.`,
     h1: HERO_H1,
-    bodyHtml: `<main id="route-home" class="section"><div class="container"><h1 class="display">${HERO_H1}</h1><p class="lede">${HERO_WHAT}</p><p>${TAGLINE} ${BRAND_NAME} is a ${BRAND_PARENT} product from ${BRAND_COMPANY} in ${BRAND_PLACE}. Six questions. Addressing, Samba directory, guest Wi-Fi, VPN, shopping list, install scripts. No Windows Server CALs.</p><p><a href="${PARENT_URL}">Start ${BRAND_PARENT}</a> · <a href="${CALENDLY_URL}">Book the free 30</a> · ${CONSULT_DISPLAY}</p></div></main>`,
+    bodyHtml: `<main id="route-home" class="section"><div class="container"><h1 class="display">${HERO_H1}</h1><p class="lede">${HERO_WHAT}</p><p>${TAGLINE} ${BRAND_NAME} is a ${BRAND_PARENT} product from ${BRAND_COMPANY} in ${BRAND_PLACE}. Six questions. Addressing, Samba directory, guest Wi-Fi, VPN, shopping list, install scripts. No Windows Server CALs.</p><p><a href="${PARENT_URL}">Start ${BRAND_PARENT}</a> · <a href="${CALENDLY_URL}">Book the free 30</a> · ${CONSULT_DISPLAY}</p></div></main>${codehypeStrip(NETYARD_CODEHYPE_BADGE)}`,
   },
   {
     path: "/plan",

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link, NavLink, Outlet } from "react-router-dom";
 import Seo from "./Seo";
+import { NETYARD_CODEHYPE_BADGE } from "../../shared/seo";
 import {
   BRAND_COMPANY,
   BRAND_NAME,
@@ -108,6 +109,7 @@ export default function Layout() {
               Free 30
             </a>
             <a href={COMPANY_URL}>{BRAND_COMPANY}</a>
+            <span className="codehype-badge" dangerouslySetInnerHTML={{ __html: NETYARD_CODEHYPE_BADGE }} />
           </div>
           <div>
             <strong>Contact</strong>
