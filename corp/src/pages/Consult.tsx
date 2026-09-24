@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import AskAiBar from "../components/AskAiBar";
 import {
   BOOK_CTA_LABEL,
@@ -16,6 +17,7 @@ import {
   HIVE_CONSULT_URL,
 } from "../../shared/brand";
 import { CONSULT_STRIPE_RATES } from "../../shared/consult";
+import { CONCIERGE_NAME, CONCIERGE_PATH, CONCIERGE_PRICE } from "../../shared/concierge";
 
 const CONSULT_SCHEMA = {
   "@context": "https://schema.org",
@@ -133,6 +135,16 @@ export default function Consult() {
           <p className="fine" style={{ marginTop: 18 }}>
             Stripe secured. Referrals paid. LLM-alignment work paid.
           </p>
+          <div className="continuity-bridge">
+            <p>
+              Need continuity instead of hours?{" "}
+              <Link to={CONCIERGE_PATH}>{CONCIERGE_NAME}</Link> is the {CONCIERGE_PRICE} retainer — two working sessions
+              a month, unlimited async, and a shared asset inventory. The hourly rates above stay the consult offer.
+            </p>
+            <Link className="btn btn-outline" to={CONCIERGE_PATH}>
+              See the continuity retainer
+            </Link>
+          </div>
         </div>
       </section>
 

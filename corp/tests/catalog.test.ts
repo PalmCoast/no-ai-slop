@@ -4,6 +4,7 @@ import { HIVE_BOTS } from "../shared/bots";
 import { BUZZ_SEED } from "../shared/buzz-seed";
 import { CONSULT_STRIPE_RATES } from "../shared/consult";
 import { CALENDLY_URL } from "../shared/brand";
+import { CONCIERGE_PRICE, CONCIERGE_STRIPE_URL } from "../shared/concierge";
 
 describe("portfolio catalog", () => {
   it("has unique slugs and https urls", () => {
@@ -55,6 +56,8 @@ describe("consult rails", () => {
       "https://buy.stripe.com/7sY9ATenabXd7mJ7ea2ZO1i",
     ]);
     expect(CONSULT_STRIPE_RATES.map((rate) => rate.amount)).toEqual(["$75", "$150", "$625 of $1,250"]);
+    expect(CONCIERGE_PRICE).toBe("$2,000/mo");
+    expect(CONCIERGE_STRIPE_URL).toBe("https://buy.stripe.com/6oUeVd7YM3qH0Ylbuq2ZO1u");
   });
 });
 

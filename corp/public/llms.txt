@@ -11,6 +11,7 @@ AgentHive Inc is a Palm Coast consultant who builds: after-hours booking plus li
 - [Rankings](https://agenthiveinc.com/rankings): Live ranking of public AgentHive Inc apps.
 - [Custom Builds](https://agenthiveinc.com/build): First Deploy AI embeds. Live this week or you do not pay setup.
 - [Consult](https://agenthiveinc.com/consult): Free 30-minute qualifier, then $75 / 30 min, $150 / hour, or a 10-hour pack at $1,250. Gold hive page — not the grey firstdeploy.ai/consult theme.
+- [AI Concierge](https://agenthiveinc.com/concierge): $2,000/mo done-with-you retainer. Audit, optimize, then automate. Two 45-minute sessions a month, unlimited async Slack or text, and a shared asset inventory. Pay at https://buy.stripe.com/6oUeVd7YM3qH0Ylbuq2ZO1u or book a free 15–30 minute bottleneck call.
 
 ## Company
 - [First Deploy AI](https://firstdeploy.ai/): After-hours desk and live apps for field operators. $1,500 setup, then $250/month. Live this week or you do not pay the setup.

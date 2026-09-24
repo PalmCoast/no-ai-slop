@@ -124,6 +124,7 @@ export default function Layout() {
             <Link to="/buzz">The Buzz</Link>
             <Link to="/rankings">Rankings</Link>
             <Link to="/consult">Consult</Link>
+            <Link to="/concierge">AI Concierge</Link>
             <Link to="/about">About</Link>
             <Link to="/build">Custom Builds</Link>
           </div>

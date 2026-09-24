@@ -377,6 +377,7 @@ button, input, textarea { font: inherit; }
   box-shadow: var(--shadow);
 }
 .worker, .card, .trust, .story, .rank-card, .panel { padding: 1.15rem 1.2rem; }
+.trust .btn { margin-top: 0.85rem; }
 .worker {
   cursor: pointer;
   transition: border-color 0.2s, transform 0.2s;
@@ -508,6 +509,18 @@ button, input, textarea { font: inherit; }
   box-shadow: var(--shadow);
 }
 .rate-card .btn { justify-self: start; margin-top: 0.4rem; }
+.continuity-bridge {
+  margin-top: 1.4rem;
+  padding-top: 1.2rem;
+  border-top: 1px solid var(--line);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem 1.5rem;
+}
+.continuity-bridge p { color: var(--muted); max-width: 42rem; }
+.bridge-grid { grid-template-columns: repeat(2, 1fr); }
 .rate-amt {
   font-family: Cinzel, "Times New Roman", serif;
   font-size: clamp(1.6rem, 3vw, 2.15rem);
@@ -576,7 +589,7 @@ footer {
 @media (max-width: 960px) {
   .nav-links { display: none; }
   .menu-toggle, .mobile-nav { display: flex; }
-  .roster-grid, .card-grid, .trust-grid, .steps, .portrait-grid, .cta-split, .buzz-hero, .footer-grid, .notes, .rate-grid, .consult-offers {
+  .roster-grid, .card-grid, .trust-grid, .bridge-grid, .steps, .portrait-grid, .cta-split, .buzz-hero, .footer-grid, .notes, .rate-grid, .consult-offers {
     grid-template-columns: 1fr;
   }
   .rank-card { grid-template-columns: 52px 1fr; }
