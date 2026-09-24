@@ -23,7 +23,7 @@ describe("per-route SEO", () => {
       expect(page.title).not.toMatch(/THE HIVE|We SWARM/i);
     }
     expect(PAGE_SEO.map((page) => page.path)).toEqual(
-      expect.arrayContaining(["/", "/about", "/buzz", "/rankings", "/build", "/consult"]),
+      expect.arrayContaining(["/", "/about", "/buzz", "/rankings", "/build", "/consult", "/concierge"]),
     );
   });
 
@@ -60,6 +60,15 @@ describe("per-route SEO", () => {
     expect(consult).toContain('rel="canonical" href="https://agenthiveinc.com/consult"');
     expect(consult).toContain("<h1 class=\"display\">An operator in the room.</h1>");
     expect(consult).toContain("$75");
+    expect(consult).toContain("https://agenthiveinc.com/concierge");
+    const concierge = applyRouteHtml(shell, PAGE_SEO.find((page) => page.path === "/concierge")!);
+    expect(concierge).toContain('id="route-concierge"');
+    expect(concierge).toContain('rel="canonical" href="https://agenthiveinc.com/concierge"');
+    expect(concierge).toContain('property="og:url" content="https://agenthiveinc.com/concierge"');
+    expect(concierge).toContain('property="og:title" content="AI Concierge — $2,000/mo retainer | AgentHive Inc"');
+    expect(concierge).toContain("https://buy.stripe.com/6oUeVd7YM3qH0Ylbuq2ZO1u");
+    expect(concierge).toContain("$2,000/mo");
+    expect(concierge).toContain("didn’t stick");
     expect(home).toContain('rel="canonical" href="https://agenthiveinc.com/"');
     expect(about).not.toContain('rel="canonical" href="https://agenthiveinc.com/" />');
     expect(about).toContain("application/ld+json");
@@ -137,6 +146,8 @@ describe("per-route SEO", () => {
     expect(xml).toContain("https://agenthiveinc.com/rankings");
     expect(xml).toContain("https://agenthiveinc.com/build");
     expect(xml).toContain("https://agenthiveinc.com/consult");
+    expect(xml).toContain("https://agenthiveinc.com/concierge");
+    expect(readFileSync(join(corpRoot, "public/sitemap.xml"), "utf8")).toContain("https://agenthiveinc.com/concierge");
     expect(xml).not.toContain("firstdeploy.ai");
     expect(xml).not.toContain("llms.txt");
     expect(xml).toContain("<lastmod>");
