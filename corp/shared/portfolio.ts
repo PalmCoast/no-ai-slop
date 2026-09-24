@@ -254,6 +254,17 @@ export const HIVE_SITES: HiveSite[] = [
     statusHint: "live",
   },
   {
+    slug: "hillmirror",
+    name: "HILLMIRROR",
+    url: "https://hillmirror-firstdeploy.netlify.app/",
+    description: "They file. You follow. Track every public congressional stock filing. Rank the 535. Copy after disclosure.",
+    price: "Unlock $9.99/mo · Copy $24.99/mo · Founding $99/yr",
+    category: "saas",
+    host: "netlify",
+    statusHint: "live",
+    featured: true,
+  },
+  {
     slug: "braid",
     name: "Braid",
     url: "https://github.com/PalmCoast/no-ai-slop/tree/main/braid",

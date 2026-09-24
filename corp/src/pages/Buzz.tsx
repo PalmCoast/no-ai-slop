@@ -69,6 +69,57 @@ export default function Buzz() {
         <p className="muted" style={{ marginTop: 24 }}>
           {edition.hiveNote}
         </p>
+
+        <div className="panel" style={{ margin: "2rem 0" }}>
+          <h2>Spiking in the hive: HILLMIRROR</h2>
+          <p className="muted">
+            They file. You follow. 911 House filings ranked delay-adjusted vs SPY. Board, Copy Desk $24.99/mo,
+            roster of 535.
+          </p>
+          <div className="hero-actions" style={{ marginTop: 12 }}>
+            <a
+              className="btn btn-primary"
+              href="https://hillmirror-firstdeploy.netlify.app/board"
+              rel="noreferrer"
+              target="_blank"
+            >
+              See the board
+            </a>
+            <a
+              className="btn btn-outline"
+              href="https://hillmirror-firstdeploy.netlify.app/me"
+              rel="noreferrer"
+              target="_blank"
+            >
+              Unlock $9.99/mo
+            </a>
+          </div>
+        </div>
+
+        <div className="panel" style={{ margin: "2rem 0" }}>
+          <h2>Get the weekly briefing in your inbox</h2>
+          <form name="buzz" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+            <input type="hidden" name="form-name" value="buzz" />
+            <p className="muted" hidden>
+              <label>
+                Do not fill this out: <input name="bot-field" />
+              </label>
+            </p>
+            <div className="hero-actions" style={{ marginTop: 12 }}>
+              <input
+                type="email"
+                name="email"
+                required
+                placeholder="you@shop.com"
+                aria-label="Email for The Buzz"
+                style={{ padding: "0.65rem 0.9rem", borderRadius: 8, border: "1px solid var(--line)", minWidth: 240 }}
+              />
+              <button className="btn btn-primary" type="submit">
+                Send the Buzz
+              </button>
+            </div>
+          </form>
+        </div>
       </div>
     </section>
   );

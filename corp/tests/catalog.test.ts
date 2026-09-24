@@ -26,6 +26,10 @@ describe("portfolio catalog", () => {
     expect(urls).toContain("https://writehive.netlify.app/");
     expect(urls).toContain("https://bot-lock.netlify.app/");
     expect(urls).toContain("https://hivebriefcase.netlify.app/");
+    expect(urls).toContain("https://hillmirror-firstdeploy.netlify.app/");
+    expect(HIVE_SITES.find((s) => s.slug === "hillmirror")?.price).toBe(
+      "Unlock $9.99/mo · Copy $24.99/mo · Founding $99/yr",
+    );
     expect(urls).toContain("https://stateside-jobs.netlify.app/");
     expect(HIVE_SITES.filter((s) => s.host === "netlify").length).toBeGreaterThanOrEqual(12);
   });
