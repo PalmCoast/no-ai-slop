@@ -122,6 +122,8 @@ describe("per-route SEO", () => {
     expect(txt).toContain("https://flick.firstdeploy.ai/");
     expect(txt).toContain("https://jobproof.firstdeploy.ai/");
     expect(txt).toContain("https://askyard.firstdeploy.ai/");
+    expect(txt).toContain("https://hillmirror-firstdeploy.netlify.app/");
+    expect(txt).toContain("Unlock $9.99/mo");
     expect(txt).toMatch(/not the paid after-hours desk/i);
     expect(txt).toContain("https://firstdeploy.ai/");
     expect(txt).toContain("https://calendly.com/coltsinsider/30min");

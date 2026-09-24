@@ -60,14 +60,14 @@ export const PAGE_SEO: SeoPage[] = [
     title: "The Buzz — weekly AI and infra briefing | AgentHive Inc",
     description: `The Buzz is the AgentHive Inc weekly AI and infrastructure briefing from Palm Coast. Cited stories, then what to do.`,
     h1: "The Buzz",
-    bodyHtml: `<main id="route-buzz" class="section"><div class="container"><h1 class="display">The Buzz</h1><p class="lede">Weekly AI and infrastructure briefing from ${BRAND_NAME} in Palm Coast. Cited stories, then what to do with them.</p><p>The live edition loads after this static floor. This URL is the briefing room, not the homepage and not the app rankings board.</p></div></main>`,
+    bodyHtml: `<main id="route-buzz" class="section"><div class="container"><h1 class="display">The Buzz</h1><p class="lede">Weekly AI and infrastructure briefing from ${BRAND_NAME} in Palm Coast. Cited stories, then what to do with them.</p><p>The live edition loads after this static floor. This URL is the briefing room, not the homepage and not the app rankings board.</p><p>Spiking in the hive: HILLMIRROR ranks public congressional filings at <a href="https://hillmirror-firstdeploy.netlify.app/board">hillmirror-firstdeploy.netlify.app/board</a>.</p></div></main>`,
   },
   {
     path: "/rankings",
     title: "Live app rankings | AgentHive Inc",
     description: `Public AgentHive Inc apps ranked on uptime, speed, and whether someone can buy them. ${FD_NAME} and ${INDEXME_NAME} lead the board.`,
     h1: "Live app rankings",
-    bodyHtml: `<main id="route-rankings" class="section"><div class="container"><h1 class="display">Live app rankings</h1><p class="lede">Public ${BRAND_NAME} apps scored on uptime, speed, custom domain, and whether someone can buy them.</p><p>${FD_NAME} and ${INDEXME_NAME} lead. This board is the catalog, not the consultant homepage and not The Buzz.</p></div></main>`,
+    bodyHtml: `<main id="route-rankings" class="section"><div class="container"><h1 class="display">Live app rankings</h1><p class="lede">Public ${BRAND_NAME} apps scored on uptime, speed, custom domain, and whether someone can buy them.</p><p>${FD_NAME} and ${INDEXME_NAME} lead. HILLMIRROR tracks public congressional filings at <a href="https://hillmirror-firstdeploy.netlify.app/">hillmirror-firstdeploy.netlify.app</a>. This board is the catalog, not the consultant homepage and not The Buzz.</p></div></main>`,
   },
   {
     path: "/build",
