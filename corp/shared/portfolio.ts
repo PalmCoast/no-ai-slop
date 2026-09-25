@@ -130,7 +130,7 @@ export const HIVE_SITES: HiveSite[] = [
     price: "$29 to publish",
     category: "saas",
     host: "custom",
-    statusHint: "lab",
+    statusHint: "live",
     featured: true,
   },
   {
