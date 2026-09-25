@@ -113,6 +113,7 @@ export function sitemapIndexXml(): string {
   const sitemaps = [
     { loc: `${BRAND_URL}/sitemap.xml`, lastmod: CONTENT_LASTMOD },
     { loc: "https://askyard.firstdeploy.ai/sitemap.xml", lastmod: CONTENT_LASTMOD },
+    { loc: "https://aisle.firstdeploy.ai/sitemap.xml", lastmod: CONTENT_LASTMOD },
     { loc: "https://firstdeploy.ai/sitemap.xml", lastmod: CONTENT_LASTMOD },
   ];
   return `<?xml version="1.0" encoding="UTF-8"?>\n<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${sitemaps
