@@ -79,6 +79,10 @@ MIT
 
 [NetYard](netyard/README.md) is a First Deploy AI product that stands up a small-business network without Microsoft Server. Six questions produce addressing, Samba on Debian, guest Wi-Fi, a shopping list, and install scripts. See [netyard/README.md](netyard/README.md).
 
+## Aisle
+
+[Aisle](aisle/README.md) is a First Deploy AI product. Type a precise product, such as every brown wool sweater or a 4 inch aluminum tube with a flange. Aisle reads the spec and keeps only the listings that match, one column per shop. Publish that aisle for $29. See [aisle/README.md](aisle/README.md).
+
 ## Braid
 
 [Braid](braid/README.md) is a language in this repo. One file holds the code, the binary flags, the hex dump, and the octal note. It checks that they are the same value, compresses the bytes, and seals a SHA-256. Local stamps are free. Hosting a stamp for a client is $29. See [braid/README.md](braid/README.md).

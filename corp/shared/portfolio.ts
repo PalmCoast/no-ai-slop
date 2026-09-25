@@ -122,6 +122,18 @@ export const HIVE_SITES: HiveSite[] = [
     featured: true,
   },
   {
+    slug: "aisle",
+    name: "Aisle",
+    url: "https://aisle.firstdeploy.ai/",
+    github: "https://github.com/PalmCoast/no-ai-slop/tree/main/aisle",
+    description: "One spec, every shop that has it. Brown wool sweaters. 4 inch aluminum tube with a flange. Publish the aisle for $29.",
+    price: "$29 to publish",
+    category: "saas",
+    host: "custom",
+    statusHint: "lab",
+    featured: true,
+  },
+  {
     slug: "indexme",
     name: INDEXME_NAME,
     url: INDEXME_URL,

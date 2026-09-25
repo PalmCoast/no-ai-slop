@@ -1,0 +1,20 @@
+# Aisle
+
+> Aisle (aisle.firstdeploy.ai) is a First Deploy AI product from AgentHive Inc in Palm Coast. You type a precise product spec. Aisle reads the size, material, color, and features in the sentence, then keeps only the listings that match, with one column per shop. Two sample doors ship with it: Brown Wool (brown wool sweaters) and Flange Tube (4 inch aluminum tube with a flange). Publish your own aisle for $29.
+
+The shelf is compiled from public shop listings so the filter has descriptions to read. Prices are the figures on that shelf. Open the shop to confirm stock. Paste more lines if you have them.
+
+## This site
+- [Aisle](https://aisle.firstdeploy.ai/): Spec field and the two sample doors.
+- [Build](https://aisle.firstdeploy.ai/build): Filter the shelf and paste listings from other sites.
+- [Brown Wool](https://aisle.firstdeploy.ai/shop/brown-wool): Standalone sweater aisle.
+- [Flange Tube](https://aisle.firstdeploy.ai/shop/flange-tube): Standalone tube aisle.
+- [Publish](https://aisle.firstdeploy.ai/publish): $29 for a named door, a CSV shelf sheet, and a one-page brief.
+
+## Company
+- [First Deploy AI](https://firstdeploy.ai/): After-hours desk and live apps. $1,500 setup, then $250/month.
+- [AgentHive Inc](https://agenthiveinc.com/): Palm Coast AI consultant who builds.
+- Contact: daniel@agenthiveinc.com
+- Legal: AgentHive Inc / AGENTHIVEINCCOM LLC
+- Address: 95 Barrington Drive, Palm Coast, FL 32137
+- Disambiguation: AgentHive Inc is not agenthive.io (insurance leads) and not agenthive.co.
