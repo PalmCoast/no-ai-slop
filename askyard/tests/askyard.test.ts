@@ -263,6 +263,7 @@ describe("seo", () => {
     expect(index).toContain("<sitemapindex");
     expect(index).toContain("https://firstdeploy.ai/sitemap.xml");
     expect(index).toContain("https://askyard.firstdeploy.ai/sitemap.xml");
+    expect(index).toContain("https://aisle.firstdeploy.ai/sitemap.xml");
     expect(index).toContain("https://agenthiveinc.com/sitemap.xml");
   });
 

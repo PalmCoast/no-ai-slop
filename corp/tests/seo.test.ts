@@ -122,6 +122,7 @@ describe("per-route SEO", () => {
     expect(txt).toContain("https://flick.firstdeploy.ai/");
     expect(txt).toContain("https://jobproof.firstdeploy.ai/");
     expect(txt).toContain("https://askyard.firstdeploy.ai/");
+    expect(txt).toContain("https://aisle.firstdeploy.ai/");
     expect(txt).toMatch(/not the paid after-hours desk/i);
     expect(txt).toContain("https://firstdeploy.ai/");
     expect(txt).toContain("https://calendly.com/coltsinsider/30min");
@@ -155,8 +156,10 @@ describe("per-route SEO", () => {
     expect(index).toContain("<sitemapindex");
     expect(index).toContain("https://agenthiveinc.com/sitemap.xml");
     expect(index).toContain("https://askyard.firstdeploy.ai/sitemap.xml");
+    expect(index).toContain("https://aisle.firstdeploy.ai/sitemap.xml");
     expect(index).toContain("https://firstdeploy.ai/sitemap.xml");
     expect(readFileSync(join(corpRoot, "public/sitemaps.xml"), "utf8")).toContain("askyard.firstdeploy.ai/sitemap.xml");
+    expect(readFileSync(join(corpRoot, "public/sitemaps.xml"), "utf8")).toContain("aisle.firstdeploy.ai/sitemap.xml");
     const robots = readFileSync(join(corpRoot, "public/robots.txt"), "utf8");
     expect(robots).toContain("User-agent: GPTBot");
     expect(robots).toContain("User-agent: Claude-SearchBot");
