@@ -129,8 +129,7 @@ export default function Home() {
           <div className="section-head">
             <h2>Shipped for field operators</h2>
             <p>
-              Built for field operators in dirty physical businesses — including a commercial earth mover. Public apps
-              below. No client names.
+              Built for field operators in dirty physical businesses. Public apps below. No client names.
             </p>
           </div>
           <div className="card-grid" style={{ gridTemplateColumns: "repeat(2, 1fr)" }}>
