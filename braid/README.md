@@ -82,7 +82,7 @@ npx vite-node src/cli.ts stamp examples/sensor.braid
 
 The file starts with `BRD1`. `openSeal` expands it and checks the hash. Your client does not need Python, `xxd`, or `od` to confirm the bytes.
 
-Stamp Desk is the paid host: **$29** for a stable URL of one stamp, so a lab can send a frame to a client who was not in the room. Stripe is not connected in this repo. The desk builds and downloads the stamp today. Hosting is the part a customer would pay for.
+Stamp Desk (hosted stamps) is coming soon. Local stamps are free. Hosting will give one stamp a stable URL, so a lab can send a frame to a client who was not in the room. Stripe is not connected in this repo. The desk builds and downloads the stamp today.
 
 ## Run the desk
 
