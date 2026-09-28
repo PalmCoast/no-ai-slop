@@ -86,3 +86,7 @@ MIT
 ## Sonaris
 
 [Sonaris](sonaris/README.md) is a separate product in this repo: a real-time voice layer for an AI assistant with live captions, turn-taking that never talks over you, persona voices, a memory file per license, and a paid skill hosted behind a paywall. See [sonaris/README.md](sonaris/README.md) for setup and [sonaris/BRAND.md](sonaris/BRAND.md) for the brand.
+
+## Latch
+
+[Latch](latch/README.md) is a next-hour tool for ADHD. One task on the screen, a timer you can see, and a place to park the other thought. No account, no streak, and the list stays in the browser. See [latch/README.md](latch/README.md).
