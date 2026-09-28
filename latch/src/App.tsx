@@ -552,7 +552,11 @@ export default function App() {
               {timer && state.phase !== "idle"
                 ? `${formatClock(remaining)} left on the timer.`
                 : "No timer running."}{" "}
-              {state.parked.length === 1 ? "1 thought is parked." : `${state.parked.length} thoughts are parked.`}
+              {state.parked.length === 0
+                ? "Nothing is parked."
+                : state.parked.length === 1
+                  ? "1 thought is parked."
+                  : `${state.parked.length} thoughts are parked.`}
             </p>
             <div className="row">
               <button ref={backButton} type="button" className="btn btn-primary" onClick={backToIt}>
