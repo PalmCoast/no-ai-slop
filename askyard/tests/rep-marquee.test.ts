@@ -38,11 +38,24 @@ describe("marquee name-your-price auction", () => {
   it("rejects a bid under the live crown plus a dollar", () => {
     expect(dollarsToCents("$251")).toBe(25100);
     expect(centsToDollars(25100)).toBe("$251.00");
-    expect(minNextBidCents(SEED_MARQUEE)).toBe(25100);
-    const low = parseBid("20", SEED_MARQUEE);
+    const withPaid = applyBid(SEED_MARQUEE, { name: "Vanity Labs", bidCents: 25000 });
+    expect(minNextBidCents(withPaid)).toBe(25100);
+    const low = parseBid("20", withPaid);
     expect("error" in low).toBe(true);
-    const ok = parseBid(251, SEED_MARQUEE);
+    const ok = parseBid(251, withPaid);
     expect(ok).toEqual({ cents: 25100 });
+  });
+
+  it("labels seed rows as house listings that never set the floor", () => {
+    expect(SEED_MARQUEE.every((row) => row.house)).toBe(true);
+    expect(minNextBidCents(SEED_MARQUEE)).toBe(MARQUEE_FLOOR_CENTS);
+    expect(parseBid(20, SEED_MARQUEE)).toEqual({ cents: 2000 });
+    expect("error" in parseBid(19, SEED_MARQUEE)).toBe(true);
+    const legacy = SEED_MARQUEE.map(({ house: _house, ...row }) => row);
+    expect(minNextBidCents(legacy)).toBe(MARQUEE_FLOOR_CENTS);
+    const ranked = rankMarquee(applyBid(legacy, { name: "Small Shop", bidCents: 2000 }));
+    expect(ranked[0].name).toBe("Small Shop");
+    expect(ranked.slice(1).every((row) => row.house)).toBe(true);
   });
 
   it("puts a higher bid on top and keeps the previous name on the chart", () => {
