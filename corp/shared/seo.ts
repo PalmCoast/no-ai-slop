@@ -27,6 +27,7 @@ import {
   DANIEL_LINKEDIN_URL,
   CONTENT_LASTMOD,
   POSTAL_CODE,
+  PRODUCT_FOOTER_LINKS,
   STREET_ADDRESS,
 } from "./brand.ts";
 import { CONCIERGE_BOOK_LABEL, CONCIERGE_NAME, CONCIERGE_PRICE, CONCIERGE_STRIPE_URL, CONCIERGE_URL } from "./concierge.ts";
@@ -199,8 +200,13 @@ export function applyRouteHtml(html: string, page: SeoPage): string {
   } else {
     next = next.replace("</head>", `    ${json}\n  </head>`);
   }
-  next = next.replace(/<div id="root">[\s\S]*?<\/div>/, `<div id="root">${page.bodyHtml}</div>`);
+  next = next.replace(/<div id="root">[\s\S]*?<\/div>/, `<div id="root">${page.bodyHtml}${productFooterHtml()}</div>`);
   return next;
+}
+
+function productFooterHtml(): string {
+  const links = PRODUCT_FOOTER_LINKS.map((link) => `<a href="${link.href}">${escapeHtml(link.label)}</a>`).join(" · ");
+  return `<p class="footer-products">Products: ${links}</p>`;
 }
 
 function escapeHtml(value: string): string {

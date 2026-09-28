@@ -30,6 +30,7 @@ import {
   LEGAL_NAME,
   MONEY_FOOTER_LINKS,
   OTHER_HIVES,
+  PRODUCT_FOOTER_LINKS,
   SEAT_CIRCUIT_NAME,
   SEAT_CIRCUIT_URL,
 } from "../shared/brand";
@@ -139,6 +140,14 @@ describe("AgentHive Inc brand facts", () => {
       "Seat & Circuit",
     ]);
     expect(MONEY_FOOTER_LINKS.every((link) => !link.href.includes("netlify.app"))).toBe(true);
+    expect(layout).toMatch(/footer-products/);
+    expect(layout).toMatch(/PRODUCT_FOOTER_LINKS/);
+    expect(PRODUCT_FOOTER_LINKS.map((link) => link.href)).toEqual([
+      "https://firstdeploy.ai",
+      "https://guythread.firstdeploy.ai",
+      "https://askyard.firstdeploy.ai",
+    ]);
+    expect(PRODUCT_FOOTER_LINKS.map((link) => link.label)).toEqual(["First Deploy", "GuyThread", "AskYard"]);
   });
 
   it("does not ship stale First Deploy prices or firstdeploy.dev", () => {
