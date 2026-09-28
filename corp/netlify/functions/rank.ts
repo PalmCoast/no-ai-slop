@@ -6,7 +6,15 @@ import { readRank } from "../lib/store.ts";
 export default async () => {
   const stored = await readRank();
   if (stored) {
-    return Response.json(stored, { headers: { "Cache-Control": "public, max-age=120" } });
+    // The weekly scout snapshots catalog copy (price, description) at probe
+    // time. Overlay the current catalog so copy fixes ship with the deploy
+    // instead of waiting for the next weekly pass.
+    const bySlug = new Map(HIVE_SITES.map((site) => [site.slug, site]));
+    const sites = stored.sites.map((row) => {
+      const site = bySlug.get(row.slug);
+      return site ? { ...row, price: site.price, description: site.description } : row;
+    });
+    return Response.json({ ...stored, sites }, { headers: { "Cache-Control": "public, max-age=120" } });
   }
   const fallback = rankSites(
     HIVE_SITES,
