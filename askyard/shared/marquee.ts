@@ -6,6 +6,8 @@ export type MarqueeListing = {
   bidCents: number;
   paidAt: string;
   demo?: boolean;
+  /** House/demo entry placed by us. Not a paid bid; never sets the crown or the next-bid floor. */
+  house?: boolean;
 };
 
 export const MARQUEE_FLOOR_CENTS = 2000;
@@ -22,12 +24,33 @@ export function centsToDollars(cents: number): string {
   return (cents / 100).toLocaleString("en-US", { style: "currency", currency: "USD" });
 }
 
-export function rankMarquee(listings: MarqueeListing[]): MarqueeListing[] {
-  return [...listings].sort((a, b) => b.bidCents - a.bidCents || a.name.localeCompare(b.name));
+export const HOUSE_LABEL = "House listing, not a paid bid";
+
+/** True for house/demo seed rows, including copies stored before the `house` flag existed. */
+export function isHouseListing(row: MarqueeListing): boolean {
+  if (row.house) return true;
+  return SEED_MARQUEE.some(
+    (seed) => seed.slug === row.slug && seed.bidCents === row.bidCents && seed.paidAt === row.paidAt,
+  );
 }
 
+export function paidListings(listings: MarqueeListing[]): MarqueeListing[] {
+  return listings.filter((row) => !isHouseListing(row));
+}
+
+/** Paid bids first (highest on top), then house listings. */
+export function rankMarquee(listings: MarqueeListing[]): MarqueeListing[] {
+  return listings
+    .map((row) => (isHouseListing(row) ? { ...row, house: true } : row))
+    .sort(
+      (a, b) =>
+        Number(Boolean(a.house)) - Number(Boolean(b.house)) || b.bidCents - a.bidCents || a.name.localeCompare(b.name),
+    );
+}
+
+/** Highest paid bid. House listings do not count. */
 export function topBidCents(listings: MarqueeListing[]): number {
-  return rankMarquee(listings)[0]?.bidCents ?? 0;
+  return paidListings(rankMarquee(listings))[0]?.bidCents ?? 0;
 }
 
 export function minNextBidCents(listings: MarqueeListing[]): number {
@@ -41,7 +64,14 @@ export function parseBid(raw: string | number, listings: MarqueeListing[]): { ce
   if (cents === null) return { error: "Type a dollar amount. You name the price." };
   if (cents > MARQUEE_MAX_CENTS) return { error: `Cap is ${centsToDollars(MARQUEE_MAX_CENTS)} so a typo cannot empty a card.` };
   const min = minNextBidCents(listings);
-  if (cents < min) return { error: `The crown is ${centsToDollars(topBidCents(listings))}. Next bid is ${centsToDollars(min)} or more.` };
+  if (cents < min) {
+    const top = topBidCents(listings);
+    return {
+      error: top
+        ? `The crown is ${centsToDollars(top)}. Next bid is ${centsToDollars(min)} or more.`
+        : `Floor is ${centsToDollars(min)}. Bid ${centsToDollars(min)} or more.`,
+    };
+  }
   return { cents };
 }
 
@@ -62,10 +92,11 @@ export function applyBid(
   return rankMarquee([row, ...rest]);
 }
 
+// House/demo entries: our own products shown on the chart. Not paid bids.
 export const SEED_MARQUEE: MarqueeListing[] = [
-  { slug: "first-deploy-ai", name: "First Deploy AI", bidCents: 25000, paidAt: "2026-09-19T12:00:00.000Z" },
-  { slug: "askyard", name: "AskYard", bidCents: 12000, paidAt: "2026-09-19T12:00:00.000Z" },
-  { slug: "jobproof", name: "JobProof", bidCents: 8000, paidAt: "2026-09-19T12:00:00.000Z" },
-  { slug: "indexme-lol", name: "IndexMe.lol", bidCents: 4999, paidAt: "2026-09-19T12:00:00.000Z" },
-  { slug: "flick", name: "Flick", bidCents: 2500, paidAt: "2026-09-19T12:00:00.000Z" },
+  { slug: "first-deploy-ai", name: "First Deploy AI", bidCents: 25000, paidAt: "2026-09-19T12:00:00.000Z", house: true },
+  { slug: "askyard", name: "AskYard", bidCents: 12000, paidAt: "2026-09-19T12:00:00.000Z", house: true },
+  { slug: "jobproof", name: "JobProof", bidCents: 8000, paidAt: "2026-09-19T12:00:00.000Z", house: true },
+  { slug: "indexme-lol", name: "IndexMe.lol", bidCents: 4999, paidAt: "2026-09-19T12:00:00.000Z", house: true },
+  { slug: "flick", name: "Flick", bidCents: 2500, paidAt: "2026-09-19T12:00:00.000Z", house: true },
 ];

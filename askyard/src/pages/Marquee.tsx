@@ -1,7 +1,14 @@
 import { useEffect, useState, type FormEvent } from "react";
 import { Link, useSearchParams } from "react-router-dom";
 import { fetchMarquee, placeBid } from "../api";
-import { centsToDollars, MARQUEE_FLOOR_CENTS, MARQUEE_MAX_CENTS, type MarqueeListing } from "../../shared/marquee";
+import {
+  centsToDollars,
+  HOUSE_LABEL,
+  MARQUEE_FLOOR_CENTS,
+  MARQUEE_MAX_CENTS,
+  paidListings,
+  type MarqueeListing,
+} from "../../shared/marquee";
 import { MARQUEE_NAME, MARQUEE_TAGLINE, MARQUEE_URL } from "../../shared/brand";
 
 export default function Marquee() {
@@ -23,7 +30,7 @@ export default function Marquee() {
     });
   }, []);
 
-  const crown = listings[0];
+  const crown = paidListings(listings)[0];
 
   async function onBid(event: FormEvent) {
     event.preventDefault();
@@ -77,6 +84,12 @@ export default function Marquee() {
             <p className="price">{centsToDollars(crown.bidCents)}</p>
             {crown.demo ? <p className="fine">Demo bid. Live card checkout when Stripe is on.</p> : null}
           </div>
+        ) : listings.length ? (
+          <div className="crown-card">
+            <p className="eyebrow">Current crown</p>
+            <p className="crown-name">No paid bids yet</p>
+            <p className="fine">The crown is open at {centsToDollars(MARQUEE_FLOOR_CENTS)}. The chart below shows house listings.</p>
+          </div>
         ) : null}
 
         <div className="cta-split" style={{ marginTop: 28, alignItems: "start" }}>
@@ -111,13 +124,13 @@ export default function Marquee() {
           <div>
             <ol className="marquee-chart">
               {listings.map((row, index) => (
-                <li key={row.slug} className={index === 0 ? "on-top" : undefined}>
+                <li key={row.slug} className={index === 0 && !row.house ? "on-top" : undefined}>
                   <span className="rank-num">{String(index + 1).padStart(2, "0")}</span>
                   <span>
                     <strong>{row.name}</strong>
-                    {row.demo ? <em> · demo</em> : null}
+                    {row.house ? <em> · {HOUSE_LABEL}</em> : row.demo ? <em> · demo</em> : null}
                   </span>
-                  <span className="price">{centsToDollars(row.bidCents)}</span>
+                  <span className="price">{row.house ? "House" : centsToDollars(row.bidCents)}</span>
                 </li>
               ))}
             </ol>
