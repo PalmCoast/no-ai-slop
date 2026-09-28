@@ -73,6 +73,12 @@ h1, h2, p { margin: 0; }
   font-family: "IBM Plex Mono", ui-monospace, monospace;
   color: var(--ink);
 }
+.top-actions {
+  display: flex;
+  gap: 0.4rem;
+  align-items: center;
+}
+.too-much,
 .sound {
   border: 1px solid var(--line);
   background: transparent;
@@ -80,7 +86,14 @@ h1, h2, p { margin: 0; }
   min-height: 2.6rem;
   padding: 0.35rem 0.8rem;
 }
+.too-much { border-color: var(--clay); color: var(--ink); }
 .sound.on { border-color: var(--clay); color: var(--clay); }
+.who {
+  margin-top: 0.85rem;
+  color: var(--muted);
+  font-size: 0.95rem;
+  line-height: 1.45;
+}
 
 main { display: grid; gap: 0.85rem; padding-top: 1rem; }
 
@@ -263,6 +276,8 @@ footer {
   box-shadow: var(--shadow);
   display: grid;
   gap: 0.75rem;
+  max-height: min(92dvh, 42rem);
+  overflow: auto;
 }
 .dialog-task {
   font-size: clamp(1.4rem, 3vw, 1.8rem);

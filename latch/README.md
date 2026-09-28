@@ -1,16 +1,18 @@
 # Latch
 
-A next-hour tool for ADHD. One task on the screen, a timer you can see, and a place to park the other thought.
+A next-hour tool for AuDHD, and for a nervous system that startles or shuts down, including CPTSD. AuDHD means autism and ADHD together. One task on the screen, a timer you can see coming, a place to park the other thought, and a stop when it is too much.
 
-Latch is for the hour when attention slips: trouble starting, time that does not feel real, and a working memory that drops the thing you just remembered. It is a timer and a list. It does not diagnose or treat ADHD.
+Latch is for the hour when starting, switching, or staying with one thing is the hard part. It is a timer and a list. It does not diagnose or treat autism, ADHD, or CPTSD.
 
 ## What it does
 
 - One thing on screen. If the line is too big (an email, a kitchen, a bill, a chapter), Latch offers a smaller physical move and keeps the original line on Later.
-- A timer with a ring. 15 seconds, 2 minutes, 10 minutes, or 25 minutes. The ring shows time passing, and the copy says how long you have already been on it.
+- A timer with a ring. 15 seconds, 2 minutes, 10 minutes, or 25 minutes. Before it starts, the screen says what the ring will offer: 5 more minutes, the next thing, stop, or too much.
 - Park a thought without leaving the task. The parked line can become the one thing later.
 - I wandered. The screen pauses a running timer and shows the task, the time left, and how many thoughts are parked.
-- When the timer rings: 5 more minutes, the next thing on Later, or stop. After three extensions, Latch states the count and how many thoughts are parked.
+- Too much. One tap pauses a running timer and stays paused until you press Resume. The choices are physical: feet on the floor, water or leave the room, a smaller move, or a body need (loud, water, bathroom, leave) that becomes the one thing. It does not ask why.
+- Switching names both sides first. Leaving the current task for something on Later, or for a parked thought, shows what you are leaving and what is next. Not yet keeps the current task.
+- When the timer rings: 5 more minutes, the next thing on Later, stop, or too much. After three extensions, Latch states the count and how many thoughts are parked.
 - Sound is off until you turn it on. The chime is two quiet notes.
 - Everything you type stays in `localStorage` on this browser. There is no account and no streak to break.
 - The timer, the one thing, and the parking list are free. They stay free.
@@ -19,7 +21,7 @@ Latch is for the hour when attention slips: trouble starting, time that does not
 ## What it refuses
 
 - Streaks, points, and badges. A missed day is not a score.
-- Treatment claims. A note on the page says it helped one person while testing. That is an experience, not a study.
+- Treatment claims. A note on the page says it helped one person keep time on a task while testing. That is an experience, not a study, and it is not a claim about autism, ADHD, or CPTSD.
 - Medication reminders and clinical advice.
 - Uploading the task list. Checkout sends the product name and the price, not the words on the screen.
 

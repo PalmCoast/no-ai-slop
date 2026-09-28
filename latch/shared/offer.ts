@@ -1,3 +1,5 @@
+import { WHO_LINE } from "./steady";
+
 export const PRICE_CENTS = 2900;
 export const PRICE_LABEL = "$29";
 export const PRICE_DETAIL = "$29 once. Card fees, hosting, and a small margin. No subscription.";
@@ -21,4 +23,6 @@ export const DEMO_NOTE = "Demo record. No card was charged. A real charge starts
 export const SELLER = "Sold by AgentHive Inc, Palm Coast.";
 export const SELLER_EMAIL = "daniel@agenthiveinc.com";
 
-export const PUBLIC_COPY = [FREE_LINE, MAKER_NOTE, PRICE_DETAIL, RECORD_STAYS, DEMO_NOTE, ...RECORD_GETS].join(" ");
+export const PUBLIC_COPY = [WHO_LINE, FREE_LINE, MAKER_NOTE, PRICE_DETAIL, RECORD_STAYS, DEMO_NOTE, ...RECORD_GETS].join(
+  " ",
+);

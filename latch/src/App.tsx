@@ -8,10 +8,11 @@ import {
   progress,
   remainingSec,
 } from "../shared/latch";
+import { hasRecord } from "../shared/license";
+import { BODY_NEEDS, RING_LINE, STEADY_STEPS, TOO_MUCH_LINE, WHO_LINE } from "../shared/steady";
 import RecordPanel from "./Record";
 import { chime, primeAudio } from "./sound";
 import { useLatch } from "./useLatch";
-import { hasRecord } from "../shared/license";
 
 function Mark() {
   return (
@@ -124,6 +125,9 @@ export default function App() {
   const latch = useLatch();
   const { state, nowMs } = latch;
   const [wander, setWander] = useState(false);
+  const [tooMuch, setTooMuch] = useState(false);
+  const [steadyId, setSteadyId] = useState<string | null>(null);
+  const [handoff, setHandoff] = useState<{ id: string; title: string; source: "later" | "parked" } | null>(null);
   const [editing, setEditing] = useState(false);
   const [editDraft, setEditDraft] = useState("");
   const [clearArmed, setClearArmed] = useState(false);
@@ -131,6 +135,8 @@ export default function App() {
   const pausedForWander = useRef(false);
   const prevPhase = useRef(state.phase);
   const backButton = useRef<HTMLButtonElement>(null);
+  const steadyClose = useRef<HTMLButtonElement>(null);
+  const handoffStay = useRef<HTMLButtonElement>(null);
   const laterInput = useRef<HTMLInputElement>(null);
   const laterSection = useRef<HTMLElement>(null);
   const timerSection = useRef<HTMLElement>(null);
@@ -148,16 +154,28 @@ export default function App() {
     if (wander) backButton.current?.focus();
   }, [wander]);
 
+  useEffect(() => {
+    if (tooMuch) steadyClose.current?.focus();
+  }, [tooMuch]);
+
+  useEffect(() => {
+    if (handoff) handoffStay.current?.focus();
+  }, [handoff]);
+
   const backToItRef = useRef<() => void>(() => {});
 
   useEffect(() => {
-    if (!wander) return;
+    if (!wander && !tooMuch && !handoff) return;
     function onKey(event: KeyboardEvent) {
-      if (event.key === "Escape") backToItRef.current();
+      if (event.key !== "Escape") return;
+      if (wander) backToItRef.current();
+      setTooMuch(false);
+      setSteadyId(null);
+      setHandoff(null);
     }
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
-  }, [wander]);
+  }, [wander, tooMuch, handoff]);
 
   function openWander() {
     pausedForWander.current = state.phase === "running";
@@ -181,6 +199,46 @@ export default function App() {
     laterSection.current?.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "start" });
     laterInput.current?.focus();
   }
+
+  function openTooMuch() {
+    setHandoff(null);
+    setSteadyId(null);
+    if (state.phase === "running") latch.pause();
+    setTooMuch(true);
+  }
+
+  function closeTooMuch() {
+    setTooMuch(false);
+    setSteadyId(null);
+  }
+
+  function takeBody(move: string) {
+    setTooMuch(false);
+    setSteadyId(null);
+    latch.stopTimer();
+    latch.commit(move, null);
+  }
+
+  function askSwitch(id: string, title: string, source: "later" | "parked") {
+    if (!state.now) {
+      if (source === "later") latch.makeLaterNow(id);
+      else latch.makeParkedNow(id);
+      return;
+    }
+    setTooMuch(false);
+    setHandoff({ id, title, source });
+  }
+
+  function confirmHandoff() {
+    if (!handoff) return;
+    if (handoff.source === "later") latch.makeLaterNow(handoff.id);
+    else latch.makeParkedNow(handoff.id);
+    setHandoff(null);
+  }
+
+  const steadyStep = STEADY_STEPS.find((step) => step.id === steadyId) ?? null;
+  const nextMove = state.now ? (firstMoves(state.now.title)[0] ?? null) : null;
+  const handoffMove = handoff ? (firstMoves(handoff.title)[0] ?? null) : null;
 
   const timer = state.timer;
   const remaining = timer ? remainingSec(timer, state.phase, nowMs) : 0;
@@ -212,18 +270,25 @@ export default function App() {
         ) : (
           <p className="top-now quiet">One thing on screen, a timer you can see, a place to park the rest.</p>
         )}
-        <button
-          type="button"
-          className={`sound${state.sound ? " on" : ""}`}
-          aria-pressed={state.sound}
-          onClick={() => {
-            if (!state.sound) primeAudio();
-            latch.toggleSound();
-          }}
-        >
-          {state.sound ? "Sound on" : "Sound off"}
-        </button>
+        <div className="top-actions">
+          <button type="button" className="too-much" onClick={openTooMuch}>
+            Too much
+          </button>
+          <button
+            type="button"
+            className={`sound${state.sound ? " on" : ""}`}
+            aria-pressed={state.sound}
+            onClick={() => {
+              if (!state.sound) primeAudio();
+              latch.toggleSound();
+            }}
+          >
+            {state.sound ? "Sound on" : "Sound off"}
+          </button>
+        </div>
       </header>
+
+      <p className="who">{WHO_LINE}</p>
 
       <main>
         <section className="panel now-panel" aria-labelledby="now-heading">
@@ -270,6 +335,9 @@ export default function App() {
                 </button>
                 <button type="button" className="btn btn-ghost" onClick={openWander}>
                   I wandered
+                </button>
+                <button type="button" className="btn btn-ghost" onClick={openTooMuch}>
+                  Too much
                 </button>
                 {editing ? null : (
                   <button
@@ -331,7 +399,7 @@ export default function App() {
 
             {state.phase === "idle" ? (
               <>
-                <p className="hint">When it rings, you decide whether to stop or keep going.</p>
+                <p className="hint">{RING_LINE}</p>
                 <div className="presets">
                   {PRESETS.map((preset) => (
                     <button
@@ -381,13 +449,16 @@ export default function App() {
                     disabled={state.later.length === 0}
                     onClick={() => {
                       const next = state.later[0];
-                      if (next) latch.makeLaterNow(next.id);
+                      if (next) askSwitch(next.id, next.title, "later");
                     }}
                   >
                     Next thing
                   </button>
                   <button type="button" className="btn btn-ghost" onClick={() => latch.stopTimer()}>
                     Stop
+                  </button>
+                  <button type="button" className="btn btn-ghost" onClick={openTooMuch}>
+                    Too much
                   </button>
                 </div>
                 {state.later.length === 0 ? <p className="hint">Nothing is on Later yet.</p> : null}
@@ -442,7 +513,7 @@ export default function App() {
                 <li key={note.id}>
                   <p>{note.text}</p>
                   <div className="row">
-                    <button type="button" className="btn btn-ghost" onClick={() => latch.makeParkedNow(note.id)}>
+                    <button type="button" className="btn btn-ghost" onClick={() => askSwitch(note.id, note.text, "parked")}>
                       Make this the one thing
                     </button>
                     <button type="button" className="btn btn-ghost" onClick={() => latch.removeParked(note.id)}>
@@ -468,7 +539,7 @@ export default function App() {
               <li key={task.id}>
                 <p>{task.title}</p>
                 <div className="row">
-                  <button type="button" className="btn btn-ghost" onClick={() => latch.makeLaterNow(task.id)}>
+                  <button type="button" className="btn btn-ghost" onClick={() => askSwitch(task.id, task.title, "later")}>
                     Make this the one thing
                   </button>
                   <button type="button" className="btn btn-ghost" onClick={() => latch.removeLater(task.id)}>
@@ -534,6 +605,8 @@ export default function App() {
                 setClearArmed(false);
                 setEditing(false);
                 setWander(false);
+                setTooMuch(false);
+                setHandoff(null);
               }}
             >
               Yes, clear it
@@ -551,7 +624,10 @@ export default function App() {
           Your list stays in this browser. There is no streak to break.{" "}
           <a href="#record">The timer is free. The record is $29 once.</a>
         </p>
-        <p>Latch does not diagnose or treat ADHD. In a crisis, call local emergency services or 988 in the US.</p>
+        <p>
+          Latch does not diagnose or treat ADHD, autism, or CPTSD. In a crisis, call local emergency services or 988 in the
+          US.
+        </p>
       </footer>
 
       {wander && state.now ? (
@@ -583,6 +659,94 @@ export default function App() {
               </button>
               <button type="button" className="btn btn-ghost" onClick={pickSomethingElse}>
                 Pick something else
+              </button>
+            </div>
+          </div>
+        </div>
+      ) : null}
+
+      {tooMuch ? (
+        <div className="scrim" onClick={closeTooMuch}>
+          <div
+            className="dialog"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="steady-title"
+            onClick={(event) => event.stopPropagation()}
+          >
+            <p className="kicker" id="steady-title">
+              Too much
+            </p>
+            <p>{TOO_MUCH_LINE}</p>
+            {state.phase === "paused" ? <p className="hint">The timer stays paused until you press Resume.</p> : null}
+            {state.now && !steadyStep ? <p className="hint">A body need sends "{state.now.title}" to Later.</p> : null}
+            {steadyStep ? (
+              <p className="dialog-task">{steadyStep.detail}</p>
+            ) : (
+              <>
+                <div className="row">
+                  {STEADY_STEPS.map((step) => (
+                    <button key={step.id} type="button" className="btn btn-ghost" onClick={() => setSteadyId(step.id)}>
+                      {step.label}
+                    </button>
+                  ))}
+                  {nextMove ? (
+                    <button
+                      type="button"
+                      className="btn btn-ghost"
+                      onClick={() => {
+                        latch.narrow(nextMove);
+                        closeTooMuch();
+                      }}
+                    >
+                      Smaller: {nextMove}
+                    </button>
+                  ) : null}
+                </div>
+                <div className="moves">
+                  <p className="label">Or make the one thing a body need</p>
+                  <div className="move-row">
+                    {BODY_NEEDS.map((need) => (
+                      <button key={need.id} type="button" className="chip" onClick={() => takeBody(need.move)}>
+                        {need.label}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              </>
+            )}
+            <div className="row">
+              <button ref={steadyClose} type="button" className="btn btn-primary" onClick={closeTooMuch}>
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      ) : null}
+
+      {handoff && state.now ? (
+        <div className="scrim" onClick={() => setHandoff(null)}>
+          <div
+            className="dialog"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="handoff-title"
+            onClick={(event) => event.stopPropagation()}
+          >
+            <p className="kicker" id="handoff-title">
+              Switching
+            </p>
+            <p className="hint">You are leaving</p>
+            <p className="dialog-task">{state.now.title}</p>
+            <p className="hint">Next</p>
+            <p className="dialog-task">{handoff.title}</p>
+            {handoffMove ? <p className="hint">First move: {handoffMove}</p> : null}
+            <div className="row">
+              <button ref={handoffStay} type="button" className="btn btn-ghost" onClick={() => setHandoff(null)}>
+                Not yet
+              </button>
+              <button type="button" className="btn btn-primary" onClick={confirmHandoff}>
+                Go
               </button>
             </div>
           </div>
