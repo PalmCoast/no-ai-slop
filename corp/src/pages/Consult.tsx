@@ -61,8 +61,7 @@ export default function Consult() {
             <em>in the room.</em>
           </h1>
           <p className="lede">
-            Not another deck. Free 30-minute qualifier. Then paid time — or a fixed deploy if the leak is clear. Already
-            done inside a live commercial earth-moving operation.
+            Not another deck. Free 30-minute qualifier. Then paid time — or a fixed deploy if the leak is clear.
           </p>
           <div className="hero-actions">
             <a className="btn btn-primary" href={CALENDLY_URL} rel="noreferrer" target="_blank">
