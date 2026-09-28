@@ -259,7 +259,7 @@ export const HIVE_SITES: HiveSite[] = [
     url: "https://github.com/PalmCoast/no-ai-slop/tree/main/braid",
     github: "https://github.com/PalmCoast/no-ai-slop/tree/main/braid",
     description: "One file for decimal code, binary flags, hex dumps, and octal notes. Compresses the bytes and seals a SHA-256.",
-    price: "Local stamp free · Stamp Desk $29",
+    price: "Local stamps free · Stamp Desk coming soon",
     category: "lab",
     host: "github",
     statusHint: "lab",
