@@ -1,6 +1,8 @@
 // Latch keeps one task, a visible timer, and a parking list.
 // Callers pass the clock and the ids. Nothing here tracks a streak.
 
+import { isPlausibleLicense, normalizeKey } from "./license";
+
 export const STORAGE_KEY = "latch.v1";
 export const EXTEND_SEC = 5 * 60;
 export const TITLE_MAX = 200;
@@ -34,6 +36,15 @@ export type Timer = {
   startedAt: number;
   accumulatedSec: number;
   extensions: number;
+  fenceId: string;
+};
+
+export type TimeEntry = {
+  id: string;
+  title: string;
+  seconds: number;
+  parked: number;
+  endedAt: number;
 };
 
 export type LatchState = {
@@ -43,6 +54,8 @@ export type LatchState = {
   timer: Timer | null;
   phase: Phase;
   sound: boolean;
+  log: TimeEntry[];
+  licenseKey: string | null;
 };
 
 const EMAIL = [
@@ -86,7 +99,7 @@ const KNOWN_MOVES = new Set(
 const PHASES = new Set<Phase>(["idle", "running", "paused", "done"]);
 
 export function emptyState(): LatchState {
-  return { now: null, later: [], parked: [], timer: null, phase: "idle", sound: false };
+  return { now: null, later: [], parked: [], timer: null, phase: "idle", sound: false, log: [], licenseKey: null };
 }
 
 export function cleanTitle(title: string): string {
@@ -191,7 +204,10 @@ export function promoteParked(state: LatchState, noteId: string, taskId: string)
   return { ...state, now: task, later, parked, timer: null, phase: "idle" };
 }
 
-export function startTimer(state: LatchState, presetId: string, nowMs: number): LatchState {
+export const CUSTOM_MIN_MINUTES = 1;
+export const CUSTOM_MAX_MINUTES = 90;
+
+export function startTimer(state: LatchState, presetId: string, nowMs: number, fenceId = "fence"): LatchState {
   const preset = presetById(presetId);
   if (!preset) return state;
   return {
@@ -203,8 +219,37 @@ export function startTimer(state: LatchState, presetId: string, nowMs: number): 
       startedAt: nowMs,
       accumulatedSec: 0,
       extensions: 0,
+      fenceId,
     },
   };
+}
+
+export function startCustomTimer(state: LatchState, minutes: number, nowMs: number, fenceId = "fence"): LatchState {
+  const whole = Math.round(minutes);
+  if (!Number.isFinite(whole) || whole < CUSTOM_MIN_MINUTES || whole > CUSTOM_MAX_MINUTES) return state;
+  return {
+    ...state,
+    phase: "running",
+    timer: {
+      presetId: "custom",
+      durationSec: whole * 60,
+      startedAt: nowMs,
+      accumulatedSec: 0,
+      extensions: 0,
+      fenceId,
+    },
+  };
+}
+
+export function setLicense(state: LatchState, key: string): LatchState {
+  const clean = normalizeKey(key);
+  if (!isPlausibleLicense(clean) || state.licenseKey === clean) return state;
+  return { ...state, licenseKey: clean };
+}
+
+export function forgetLicense(state: LatchState): LatchState {
+  if (!state.licenseKey) return state;
+  return { ...state, licenseKey: null };
 }
 
 export function elapsedSec(timer: Timer, phase: Phase, nowMs: number): number {
@@ -272,7 +317,7 @@ export function toggleSound(state: LatchState): LatchState {
 }
 
 export function clearAll(state: LatchState): LatchState {
-  return { ...emptyState(), sound: state.sound };
+  return { ...emptyState(), sound: state.sound, licenseKey: state.licenseKey };
 }
 
 export function formatClock(totalSec: number): string {
@@ -338,13 +383,31 @@ function readTimer(value: unknown): Timer | null {
   const extensions =
     typeof value.extensions === "number" && Number.isFinite(value.extensions) ? Math.max(0, Math.floor(value.extensions)) : 0;
   const presetId = typeof value.presetId === "string" ? value.presetId.slice(0, 40) : "custom";
+  const fenceId =
+    typeof value.fenceId === "string" && value.fenceId && value.fenceId.length <= 80
+      ? value.fenceId
+      : `fence-${startedAt}`;
   return {
     presetId,
     durationSec,
     startedAt,
     accumulatedSec: Math.min(accumulated, durationSec),
     extensions,
+    fenceId,
   };
+}
+
+function readEntry(value: unknown): TimeEntry | null {
+  if (!isRecord(value)) return null;
+  if (typeof value.id !== "string" || !value.id || value.id.length > 80) return null;
+  if (typeof value.title !== "string") return null;
+  const title = cleanTitle(value.title);
+  if (!title) return null;
+  const seconds = typeof value.seconds === "number" && value.seconds > 0 ? Math.round(value.seconds) : 0;
+  if (!seconds || seconds > 24 * 60 * 60) return null;
+  const parked = typeof value.parked === "number" && value.parked >= 0 ? Math.min(1000, Math.floor(value.parked)) : 0;
+  const endedAt = typeof value.endedAt === "number" && Number.isFinite(value.endedAt) ? value.endedAt : 0;
+  return { id: value.id, title, seconds, parked, endedAt };
 }
 
 export function sanitize(input: unknown): LatchState {
@@ -361,7 +424,12 @@ export function sanitize(input: unknown): LatchState {
   if (timer && phase === "done") timer = { ...timer, accumulatedSec: timer.durationSec };
   if (timer && phase === "idle") timer = null;
   const sound = input.sound === true;
-  return { now, later, parked, timer, phase, sound };
+  const log = Array.isArray(input.log)
+    ? dedupeById(input.log.map(readEntry).filter((entry): entry is TimeEntry => entry !== null)).slice(0, 200)
+    : [];
+  const licenseRaw = typeof input.licenseKey === "string" ? normalizeKey(input.licenseKey) : "";
+  const licenseKey = isPlausibleLicense(licenseRaw) ? licenseRaw : null;
+  return { now, later, parked, timer, phase, sound, log, licenseKey };
 }
 
 export function serialize(state: LatchState): string {

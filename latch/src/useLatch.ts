@@ -5,6 +5,7 @@ import {
   commitNow,
   extendTimer,
   finishNow,
+  forgetLicense,
   narrowNow,
   parkThought,
   pauseTimer,
@@ -14,12 +15,16 @@ import {
   removeParked,
   renameNow,
   resumeTimer,
+  setLicense,
+  startCustomTimer,
   startTimer,
   tickTimer,
   toggleSound,
   addLater,
   type LatchState,
 } from "../shared/latch";
+import { hasRecord } from "../shared/license";
+import { recordTime } from "../shared/record";
 import { loadState, saveState } from "./storage";
 
 function createId(): string {
@@ -37,7 +42,7 @@ export function useLatch() {
   useEffect(() => {
     const t = Date.now();
     setNowMs(t);
-    setState((current) => tickTimer(current, t));
+    setState((current) => settle(current, t));
   }, []);
 
   useEffect(() => {
@@ -45,7 +50,7 @@ export function useLatch() {
     const id = window.setInterval(() => {
       const t = Date.now();
       setNowMs(t);
-      setState((current) => tickTimer(current, t));
+      setState((current) => settle(current, t));
     }, 200);
     return () => window.clearInterval(id);
   }, [state.phase]);
@@ -54,6 +59,12 @@ export function useLatch() {
     const t = Date.now();
     setNowMs(t);
     return t;
+  }
+
+  function settle(current: LatchState, t: number): LatchState {
+    const next = tickTimer(current, t);
+    if (next.phase === "done" && current.phase !== "done") return recordTime(next, t);
+    return next;
   }
 
   return {
@@ -71,7 +82,8 @@ export function useLatch() {
       setState((current) => narrowNow(current, move, createId(), t));
     },
     finish() {
-      setState((current) => finishNow(current));
+      const t = at();
+      setState((current) => finishNow(recordTime(current, t)));
     },
     addLater(title: string) {
       const t = at();
@@ -81,7 +93,8 @@ export function useLatch() {
       setState((current) => removeLater(current, id));
     },
     makeLaterNow(id: string) {
-      setState((current) => promoteLater(current, id));
+      const t = at();
+      setState((current) => promoteLater(recordTime(current, t), id));
     },
     park(text: string) {
       const t = at();
@@ -91,11 +104,19 @@ export function useLatch() {
       setState((current) => removeParked(current, id));
     },
     makeParkedNow(id: string) {
-      setState((current) => promoteParked(current, id, createId()));
+      const t = at();
+      setState((current) => promoteParked(recordTime(current, t), id, createId()));
     },
     start(presetId: string) {
       const t = at();
-      setState((current) => startTimer(current, presetId, t));
+      setState((current) => startTimer(recordTime(current, t), presetId, t, createId()));
+    },
+    startCustom(minutes: number) {
+      const t = at();
+      setState((current) => {
+        if (!hasRecord(current.licenseKey)) return current;
+        return startCustomTimer(recordTime(current, t), minutes, t, createId());
+      });
     },
     pause() {
       const t = at();
@@ -110,10 +131,17 @@ export function useLatch() {
       setState((current) => extendTimer(current, t));
     },
     stopTimer() {
-      setState((current) => clearTimer(current));
+      const t = at();
+      setState((current) => clearTimer(recordTime(current, t)));
     },
     toggleSound() {
       setState((current) => toggleSound(current));
+    },
+    unlock(key: string) {
+      setState((current) => setLicense(current, key));
+    },
+    forgetKey() {
+      setState((current) => forgetLicense(current));
     },
     clear() {
       setState((current) => clearAll(current));

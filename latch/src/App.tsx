@@ -8,8 +8,10 @@ import {
   progress,
   remainingSec,
 } from "../shared/latch";
+import RecordPanel from "./Record";
 import { chime, primeAudio } from "./sound";
 import { useLatch } from "./useLatch";
+import { hasRecord } from "../shared/license";
 
 function Mark() {
   return (
@@ -389,6 +391,9 @@ export default function App() {
                   </button>
                 </div>
                 {state.later.length === 0 ? <p className="hint">Nothing is on Later yet.</p> : null}
+                {timer && state.log.some((entry) => entry.id === timer.fenceId) ? (
+                  <p className="hint">Kept on the record.</p>
+                ) : null}
               </>
             ) : null}
 
@@ -501,6 +506,17 @@ export default function App() {
           </form>
         </section>
 
+        <RecordPanel
+          licensed={hasRecord(state.licenseKey)}
+          licenseKey={state.licenseKey}
+          log={state.log}
+          nowMs={nowMs}
+          hasTask={Boolean(state.now)}
+          onUnlock={latch.unlock}
+          onForget={latch.forgetKey}
+          onCustom={latch.startCustom}
+        />
+
         <details
           className="clear"
           onToggle={(event) => {
@@ -508,7 +524,7 @@ export default function App() {
           }}
         >
           <summary>Clear this browser</summary>
-          <p>Removes the one thing, Later, and parked thoughts from this browser.</p>
+          <p>Removes the one thing, Later, parked thoughts, and record lines from this browser. A record key, if you have one, stays.</p>
           {clearArmed ? (
             <button
               type="button"
@@ -531,7 +547,10 @@ export default function App() {
       </main>
 
       <footer>
-        <p>Your list stays in this browser. There is no streak to break.</p>
+        <p>
+          Your list stays in this browser. There is no streak to break.{" "}
+          <a href="#record">The timer is free. The record is $29 once.</a>
+        </p>
         <p>Latch does not diagnose or treat ADHD. In a crisis, call local emergency services or 988 in the US.</p>
       </footer>
 

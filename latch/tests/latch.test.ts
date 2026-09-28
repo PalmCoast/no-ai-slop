@@ -160,7 +160,7 @@ describe("storage", () => {
     const next = hydrate(raw);
     expect(next.now?.title).toBe("Open the file");
     expect(next.phase).toBe("running");
-    expect(Object.keys(next).sort()).toEqual(["later", "now", "parked", "phase", "sound", "timer"]);
+    expect(Object.keys(next).sort()).toEqual(["later", "licenseKey", "log", "now", "parked", "phase", "sound", "timer"]);
     expect(JSON.stringify(next)).not.toContain("streak");
     expect(hydrate("{")).toEqual(emptyState());
     expect(sanitize({ phase: "running", timer: null, later: [{ id: "a", title: "  " }] }).phase).toBe("idle");

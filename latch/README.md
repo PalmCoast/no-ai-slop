@@ -12,13 +12,16 @@ Latch is for the hour when attention slips: trouble starting, time that does not
 - I wandered. The screen pauses a running timer and shows the task, the time left, and how many thoughts are parked.
 - When the timer rings: 5 more minutes, the next thing on Later, or stop. After three extensions, Latch states the count and how many thoughts are parked.
 - Sound is off until you turn it on. The chime is two quiet notes.
-- Everything stays in `localStorage` on this browser. There is no account and no streak to break.
+- Everything you type stays in `localStorage` on this browser. There is no account and no streak to break.
+- The timer, the one thing, and the parking list are free. They stay free.
+- The record is $29 once. It keeps a log of time on task, lets you choose a timer from 1 to 90 minutes, and downloads a text file. No subscription. The log stays on this browser. The payment does not include what you typed.
 
 ## What it refuses
 
 - Streaks, points, and badges. A missed day is not a score.
-- Accounts, servers, and analytics. Closing the tab keeps the list on that browser.
+- Treatment claims. A note on the page says it helped one person while testing. That is an experience, not a study.
 - Medication reminders and clinical advice.
+- Uploading the task list. Checkout sends the product name and the price, not the words on the screen.
 
 ## Local
 
@@ -39,4 +42,6 @@ This folder is its own Netlify site. In the Netlify UI:
 2. Build command: `npm run build`
 3. Publish directory: `dist`
 
-No environment variables. The app does not call an API.
+Set `STRIPE_SECRET_KEY` to charge the $29 record through Stripe Checkout. Without that key, **Get the record** issues a demo key and charges nothing. Optional `SITE_URL` is the origin used in the success and cancel URLs.
+
+The task list is not an environment variable and it is not sent to Stripe.

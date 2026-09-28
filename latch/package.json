@@ -13,10 +13,13 @@
     "test:watch": "vitest"
   },
   "dependencies": {
+    "@netlify/functions": "^3.1.10",
     "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "react-dom": "^18.3.1",
+    "stripe": "^18.5.0"
   },
   "devDependencies": {
+    "@types/node": "^22.20.4",
     "@types/react": "^18.3.20",
     "@types/react-dom": "^18.3.6",
     "@vitejs/plugin-react": "^4.4.1",
