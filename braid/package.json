@@ -15,6 +15,11 @@
     "test": "vitest run",
     "prove": "vite-node src/cli.ts prove"
   },
+  "dependencies": {
+    "@netlify/blobs": "^10.0.8",
+    "@netlify/functions": "^6.0.0",
+    "stripe": "^18.4.0"
+  },
   "devDependencies": {
     "@types/node": "^22.15.30",
     "typescript": "^5.8.3",
