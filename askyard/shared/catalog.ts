@@ -108,6 +108,16 @@ export const SALE_APPS: SaleApp[] = [
     category: "saas",
   },
   {
+    slug: "aisle",
+    name: "Aisle",
+    url: "https://aisle.firstdeploy.ai/",
+    price: "$29 to publish",
+    blurb: "One spec, every shop that has it. Brown wool sweaters or a 4 inch aluminum tube with a flange, in columns.",
+    who: "Anyone who keeps asking for one exact thing across a pile of sites",
+    category: "saas",
+    featured: true,
+  },
+  {
     slug: "deskaudit",
     name: "DeskAudit",
     url: "https://deskaudit.netlify.app/",

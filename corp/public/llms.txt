@@ -20,6 +20,7 @@ AgentHive Inc is a Palm Coast consultant who builds: after-hours booking plus li
 - [Flick](https://flick.firstdeploy.ai/): Browser screen recorder. Send a link. No login wall.
 - [JobProof](https://jobproof.firstdeploy.ai/): Proof you did the work, not a resume stack.
 - [AskYard](https://askyard.firstdeploy.ai/): Free Q&A front door for plumbers, teachers, receptionists, and earth movers. It is not the paid after-hours desk. Then an offer to do the work this week.
+- [Aisle](https://aisle.firstdeploy.ai/): One spec, every shop that has it. Brown wool sweaters. 4 inch aluminum tube with a flange. Publish an aisle for $29.
 - [ClaudeFarm](https://claudefarm.com/): Public storefront for First Deploy AI and consult time.
 
 ## Also shipped
