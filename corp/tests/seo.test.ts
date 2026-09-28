@@ -53,6 +53,9 @@ describe("per-route SEO", () => {
     expect(home).toContain("field operations");
     expect(home).toContain("Start First Deploy");
     expect(home).toContain("Book the free 30");
+    expect(home).toContain(
+      'Products: <a href="https://firstdeploy.ai">First Deploy</a> · <a href="https://guythread.firstdeploy.ai">GuyThread</a> · <a href="https://askyard.firstdeploy.ai">AskYard</a>',
+    );
     expect(home).toContain("IndexNow");
     expect(about).toContain("calendly.com/coltsinsider/30min");
     const consult = applyRouteHtml(shell, PAGE_SEO.find((page) => page.path === "/consult")!);

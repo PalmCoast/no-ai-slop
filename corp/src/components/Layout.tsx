@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { Fragment, useState } from "react";
 import { Link, NavLink, Outlet } from "react-router-dom";
 import Seo from "./Seo";
 import {
@@ -15,6 +15,7 @@ import {
   FOOTER_LINE,
   MONEY_FOOTER_LINKS,
   OTHER_HIVES,
+  PRODUCT_FOOTER_LINKS,
   VOICE_DISPLAY,
   VOICE_TEL,
 } from "../../shared/brand";
@@ -155,6 +156,15 @@ export default function Layout() {
             <a href="/llms.txt">llms.txt</a>
           </div>
         </div>
+        <p className="container footer-products">
+          Products:{" "}
+          {PRODUCT_FOOTER_LINKS.map((link, index) => (
+            <Fragment key={link.href}>
+              {index > 0 ? " · " : null}
+              <a href={link.href}>{link.label}</a>
+            </Fragment>
+          ))}
+        </p>
         <div className="container footer-bottom">
           <div>
             © 2026 {BRAND_NAME} · {LEGAL_NAME} · {BRAND_PLACE}

@@ -46,6 +46,13 @@ export const MONEY_FOOTER_LINKS = [
   { href: SEAT_CIRCUIT_URL, label: SEAT_CIRCUIT_NAME },
 ] as const;
 
+/** Product names on their own footer row. Money links above stay unchanged. */
+export const PRODUCT_FOOTER_LINKS = [
+  { href: "https://firstdeploy.ai", label: "First Deploy" },
+  { href: "https://guythread.firstdeploy.ai", label: "GuyThread" },
+  { href: "https://askyard.firstdeploy.ai", label: "AskYard" },
+] as const;
+
 export const LINKEDIN_URL = "https://www.linkedin.com/company/agenthiveinc";
 export const DANIEL_LINKEDIN_URL = "https://www.linkedin.com/in/daniel-graham-92057a15";
 export const STREET_ADDRESS = "95 Barrington Drive";
