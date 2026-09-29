@@ -5,6 +5,7 @@ import {
   DEMO_NOTE,
   FREE_LINE,
   MAKER_NOTE,
+  STUDY_NOTE,
   PRICE_DETAIL,
   PRICE_LABEL,
   RECORD_GETS,
@@ -158,6 +159,7 @@ export default function RecordPanel({
       </p>
       <p>{FREE_LINE}</p>
       <p className="hint maker">{MAKER_NOTE}</p>
+      <p className="hint">{STUDY_NOTE}</p>
       {licensed ? (
         <>
           <p className="summary">{summaryLine(log, nowMs)}</p>

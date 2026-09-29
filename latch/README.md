@@ -22,6 +22,7 @@ Latch is for the hour when starting, switching, or staying with one thing is the
 
 - Streaks, points, and badges. A missed day is not a score.
 - Treatment claims. A note on the page says it helped one person keep time on a task while testing. That is an experience, not a study, and it is not a claim about autism, ADHD, or CPTSD.
+- Passing off someone else's study as a Latch result. White and Shah (2011) found that adults with ADHD scored higher on original verbal ideas and on real-world creative achievement, and preferred generating ideas, while adults without ADHD preferred clarifying the problem and developing the idea. The page cites that paper and says it is not about Latch.
 - Medication reminders and clinical advice.
 - Uploading the task list. Checkout sends the product name and the price, not the words on the screen.
 

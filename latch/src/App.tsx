@@ -9,6 +9,7 @@ import {
   remainingSec,
 } from "../shared/latch";
 import { hasRecord } from "../shared/license";
+import { STUDY_DOI, STUDY_NOTE } from "../shared/offer";
 import { BODY_NEEDS, RING_LINE, STEADY_STEPS, TOO_MUCH_LINE, WHO_LINE } from "../shared/steady";
 import RecordPanel from "./Record";
 import { chime, primeAudio } from "./sound";
@@ -627,6 +628,10 @@ export default function App() {
         <p>
           Latch does not diagnose or treat ADHD, autism, or CPTSD. In a crisis, call local emergency services or 988 in the
           US.
+        </p>
+        <p>
+          {STUDY_NOTE}{" "}
+          <a href={STUDY_DOI}>White and Shah, 2011</a>.
         </p>
       </footer>
 

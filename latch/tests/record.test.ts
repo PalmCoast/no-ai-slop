@@ -3,7 +3,7 @@ import { handle } from "../netlify/lib/api";
 import { signToken, verifyToken } from "../netlify/lib/sign";
 import { commitNow, emptyState, pauseTimer, setLicense, startCustomTimer, startTimer, tickTimer } from "../shared/latch";
 import { generateDemoKey, isPlausibleLicense } from "../shared/license";
-import { DEMO_NOTE, FREE_LINE, MAKER_NOTE, PRICE_CENTS, PRICE_DETAIL, PUBLIC_COPY } from "../shared/offer";
+import { DEMO_NOTE, FREE_LINE, MAKER_NOTE, PRICE_CENTS, PRICE_DETAIL, PUBLIC_COPY, STUDY_CITE, STUDY_NOTE } from "../shared/offer";
 import { exportLog, recordTime, summaryLine } from "../shared/record";
 
 const T0 = new Date(2026, 8, 28, 9, 0, 0).getTime();
@@ -20,6 +20,11 @@ describe("the offer", () => {
     expect(FREE_LINE).toContain("free");
     expect(MAKER_NOTE).toContain("my experience");
     expect(MAKER_NOTE).toContain("does not treat ADHD");
+    expect(STUDY_NOTE).toContain("White and Shah");
+    expect(STUDY_NOTE).toContain("generating ideas");
+    expect(STUDY_NOTE).toContain("not about Latch");
+    expect(STUDY_CITE).toContain("Personality and Individual Differences");
+    expect(STUDY_CITE).toContain("50(5)");
     const copy = PUBLIC_COPY.toLowerCase();
     expect(copy).not.toMatch(/cure|clinically proven|guaranteed|treatment for adhd/);
   });
