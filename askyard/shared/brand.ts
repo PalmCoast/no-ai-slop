@@ -20,7 +20,7 @@ export const VOICE_DISPLAY = "+1 509-357-2230";
 export const CALENDLY_URL = "https://calendly.com/coltsinsider/30min";
 export const FD_PRICE = "$1,500 setup, then $250/mo";
 export const FD_PRICE_LONG = "$1,500 setup, then $250/month";
-export const FD_PROMISE = "Live this week or you do not pay the setup";
+export const FD_PROMISE = "Live this week on the same written plan we run for active client builds";
 export const HOME_TITLE = "AskYard | Free shop-floor AI answers from First Deploy";
 export const HOME_DESCRIPTION =
   "AskYard is the free shop-floor front door from First Deploy. Not agenthive.io. Built by AgentHive Inc in Palm Coast. Paid desk: firstdeploy.ai.";

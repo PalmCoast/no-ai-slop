@@ -48,4 +48,4 @@ Launch and distribution: [GROK-LAUNCH.md](GROK-LAUNCH.md) (Reed only, internal).
 
 ## Price next to the free answer
 
-The answer is free. First Deploy AI is $1,500 setup, then $250/month. Live this week or you do not pay the setup. Consult is a free 30-minute qualifier, then $75 / 30 min or $150 / hour. Marquee is you-name-the-bid, floor $20.
+The answer is free. First Deploy AI is $1,500 setup, then $250/month. Live this week on the same written plan we run for active client builds. Consult is a free 30-minute qualifier, then $75 / 30 min or $150 / hour. Marquee is you-name-the-bid, floor $20.

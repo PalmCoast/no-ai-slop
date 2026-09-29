@@ -40,7 +40,7 @@ export const HIVE_SITES: HiveSite[] = [
     name: FD_NAME,
     url: FD_URL,
     github: "https://github.com/PalmCoast/FirstDeploy",
-    description: "After-hours desk and live apps for field operators. Live this week or you do not pay.",
+    description: "After-hours desk and live apps for field operators. Live this week on a written plan.",
     price: FD_PRICE,
     category: "ops",
     host: "custom",

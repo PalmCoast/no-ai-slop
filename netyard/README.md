@@ -52,4 +52,4 @@ Gold lattice node on a black field, cream type. Same family as AskYard. Copy sta
 
 ## Price next to the free plan
 
-The plan and scripts are free. First Deploy AI is $1,500 setup, then $250/month if you want the shop racked for you. Live this week or you do not pay the setup. Consult is a free 30-minute qualifier, then $75 / 30 min or $150 / hour.
+The plan and scripts are free. First Deploy AI is $1,500 setup, then $250/month if you want the shop racked for you. Live this week on the same written plan we run for active client builds. Consult is a free 30-minute qualifier, then $75 / 30 min or $150 / hour.
