@@ -70,11 +70,9 @@ button, input, textarea { font: inherit; }
   letter-spacing: -0.02em;
 }
 .brand img {
-  width: 36px;
-  height: 36px;
-  object-fit: cover;
-  border-radius: 8px;
-  box-shadow: 0 0 0 1px var(--line), 0 0 18px rgba(228, 184, 74, 0.35);
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
 }
 .gold { color: var(--gold); }
 .nav-links {
@@ -576,6 +574,23 @@ footer {
 }
 .footer-grid a, .footer-grid p { display: block; color: var(--muted); margin-top: 0.4rem; }
 .footer-mark { width: min(280px, 100%); margin-bottom: 0.8rem; border-radius: 12px; }
+
+.promo-stage {
+  border: 1px solid var(--line);
+  background: #050403;
+  overflow: hidden;
+}
+.promo-film {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  background: #050403;
+}
+.shelf-grid { grid-template-columns: repeat(3, 1fr); }
+.shelf-card { display: flex; flex-direction: column; gap: 0.45rem; color: inherit; }
+.shelf-card h2 { font-size: 1.25rem; }
+.shelf-mark { width: 40px; height: 40px; }
+.shelf-price { color: var(--gold); font-weight: 600; }
 .footer-products {
   color: var(--muted);
   font-size: 0.85rem;
@@ -597,7 +612,7 @@ footer {
 @media (max-width: 960px) {
   .nav-links { display: none; }
   .menu-toggle, .mobile-nav { display: flex; }
-  .roster-grid, .card-grid, .trust-grid, .bridge-grid, .steps, .portrait-grid, .cta-split, .buzz-hero, .footer-grid, .notes, .rate-grid, .consult-offers {
+  .roster-grid, .card-grid, .shelf-grid, .trust-grid, .bridge-grid, .steps, .portrait-grid, .cta-split, .buzz-hero, .footer-grid, .notes, .rate-grid, .consult-offers {
     grid-template-columns: 1fr;
   }
   .rank-card { grid-template-columns: 52px 1fr; }

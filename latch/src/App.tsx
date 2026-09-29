@@ -16,15 +16,15 @@ import { useLatch } from "./useLatch";
 
 function Mark() {
   return (
-    <svg className="mark" viewBox="0 0 32 32" aria-hidden="true">
+    <svg className="mark" viewBox="0 0 64 64" aria-hidden="true">
       <path
-        d="M11 9h9.5a5.5 5.5 0 0 1 0 11H14"
+        d="M22 16h18a10 10 0 0 1 0 20H28"
         fill="none"
         stroke="currentColor"
-        strokeWidth="2.4"
+        strokeWidth="3.2"
         strokeLinecap="round"
       />
-      <path d="M14 16.5h7" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" />
+      <path d="M28 30h12" fill="none" stroke="#f4efe6" strokeWidth="3.2" strokeLinecap="round" />
     </svg>
   );
 }

@@ -21,6 +21,7 @@ import {
 } from "../../shared/brand";
 
 const NAV = [
+  { to: "/premium", label: "Sites" },
   { to: "/#work", label: "Work", hash: true },
   { to: "/buzz", label: "The Buzz" },
   { to: "/rankings", label: "Rankings" },
@@ -39,7 +40,7 @@ export default function Layout() {
       <header className="topbar">
         <div className="container nav">
           <Link to="/" className="brand" onClick={() => setOpen(false)}>
-            <img src="/brand/mark-bee.jpg" alt="" width={36} height={36} />
+            <img src="/brand/mark.svg" alt="" width={32} height={32} />
             <span>
               Agent<span className="gold">Hive</span> Inc
             </span>
