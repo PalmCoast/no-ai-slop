@@ -122,6 +122,18 @@ export const HIVE_SITES: HiveSite[] = [
     featured: true,
   },
   {
+    slug: "latch",
+    name: "Latch",
+    url: "https://latch.agenthiveinc.com/",
+    github: "https://github.com/PalmCoast/no-ai-slop/tree/main/latch",
+    description: "One task, a timer you can see coming, and a stop when it is too much. For AuDHD and CPTSD. The timer is free. Not a treatment.",
+    price: "Timer free · Record $29 once",
+    category: "saas",
+    host: "custom",
+    statusHint: "live",
+    featured: true,
+  },
+  {
     slug: "indexme",
     name: INDEXME_NAME,
     url: INDEXME_URL,
