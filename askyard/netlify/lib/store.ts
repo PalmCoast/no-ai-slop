@@ -2,6 +2,7 @@ import { getStore } from "@netlify/blobs";
 import {
   computeTotals,
   rankQuestions,
+  scrubGuarantee,
   SEED_QUESTIONS,
   type YardQuestion,
   type YardTotals,
@@ -22,7 +23,7 @@ export async function readBoard(): Promise<BoardState> {
   try {
     const data = (await store().get("board.json", { type: "json" })) as BoardState | null;
     if (data?.questions?.length) {
-      const merged = mergeSeed(data.questions);
+      const merged = mergeSeed(data.questions).map((q) => ({ ...q, answer: scrubGuarantee(q.answer) }));
       return { questions: rankQuestions(merged), totals: { ...computeTotals(merged), ...data.totals } };
     }
   } catch {
