@@ -19,10 +19,11 @@ export default function Build() {
           </h1>
           <p className="lede">
             Missed calls, dead quotes, a board that still lives on the wall. {FD_NAME} embeds, ships the after-hours desk
-            plus the live apps, and stays on for $250/month. If it is not live this week, you do not pay the setup.
+            plus the live apps, and stays on for $250/month. Every build runs on a written plan: scope, build, go-live, the same process as our active client builds.
           </p>
           <ul className="takeaways">
-            <li>Setup $1,500. Live this week or you don’t pay.</li>
+            <li>Setup $1,500: 50% to start, the balance at completion or split over two monthly payments.</li>
+            <li>90-day projects: half upfront, half at completion.</li>
             <li>Then $250/month per company to keep the desk and the apps on. {FD_PRICE}.</li>
             <li>Voice line, dispatch, quotes, the board your crew actually opens.</li>
           </ul>

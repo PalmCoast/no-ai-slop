@@ -37,7 +37,7 @@ If someone asks how it works: “Search a name. Type a bid. Highest sits at one.
 
 - Answers: free
 - Marquee: you name the bid. Floor $20. Next bid is $1 over the crown.
-- First Deploy AI (only if the AskYard free-answer post needs it): $1,500 setup, then $250/month. Live this week or you do not pay the setup.
+- First Deploy AI (only if the AskYard free-answer post needs it): $1,500 setup, then $250/month. Live this week on the same written plan we run for active client builds.
 
 ## Voice
 
@@ -102,7 +102,7 @@ Hashtags: none. Location: Palm Coast if the platform asks.
 > Free lookup: askyard.firstdeploy.ai/rep
 > The chart: marquee.firstdeploy.ai
 >
-> First Deploy AI is still the cash product if the leak is the night phone: $1,500 setup, then $250/month, live this week or you do not pay setup.
+> First Deploy AI is still the cash product if the leak is the night phone: $1,500 setup, then $250/month, live this week on a written plan.
 
 ### X — AskYard floor (keep this; do not replace it)
 
@@ -114,7 +114,7 @@ Title: `Show HN: AskYard – free AI answers, then a paid name in lights`
 
 Text:
 
-> AskYard is a free desk. You ask about AI for the shop, the classroom, or the yard. You get a plain answer. If you want it built, First Deploy AI will do it this week ($1,500 setup, then $250/month, or you do not pay setup).
+> AskYard is a free desk. You ask about AI for the shop, the classroom, or the yard. You get a plain answer. If you want it built, First Deploy AI will do it this week ($1,500 setup, then $250/month, on a written plan).
 >
 > askyard.firstdeploy.ai
 >

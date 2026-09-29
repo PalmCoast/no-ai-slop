@@ -73,9 +73,9 @@ export const PAGE_SEO: SeoPage[] = [
   {
     path: "/build",
     title: "Custom builds via First Deploy AI | AgentHive Inc",
-    description: `${FD_NAME} custom embeds: ${FD_PRICE}. Live this week or you do not pay the setup.`,
+    description: `${FD_NAME} custom embeds: ${FD_PRICE}. Live this week on the same written plan we run for active client builds.`,
     h1: "One leak. Live this week.",
-    bodyHtml: `<main id="route-build" class="section"><div class="container"><h1 class="display">One leak. Live this week.</h1><p class="lede">${FD_NAME} embeds, ships the after-hours desk plus the live apps, and stays on for $250/month.</p><p>Setup $1,500. Live this week or you do not pay the setup. Consult ${CONSULT_DISPLAY} or start at ${FD_URL.replace("https://", "")}.</p></div></main>`,
+    bodyHtml: `<main id="route-build" class="section"><div class="container"><h1 class="display">One leak. Live this week.</h1><p class="lede">${FD_NAME} embeds, ships the after-hours desk plus the live apps, and stays on for $250/month.</p><p>Setup $1,500: 50% to start, the balance at completion or split over two monthly payments. 90-day projects: half upfront, half at completion. Live this week on the same written plan we run for active client builds. Consult ${CONSULT_DISPLAY} or start at ${FD_URL.replace("https://", "")}.</p></div></main>`,
   },
   {
     path: "/consult",

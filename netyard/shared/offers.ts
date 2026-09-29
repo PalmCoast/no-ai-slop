@@ -26,7 +26,7 @@ export const OFFERS: Offer[] = [
     envKey: "STRIPE_PRICE_ID_RACK",
     defaultPriceId: "price_1UHpioFJWYd4pYuxawfgIoHJ",
     fallbackHref: "https://buy.stripe.com/dRm6oH6UI9P5ePb0PM2ZO1n",
-    blurb: "We stand up the LAN from your NetYard plan this week. Live this week or you do not pay the setup.",
+    blurb: "We stand up the LAN from your NetYard plan this week. Live this week on the same written plan we run for active client builds.",
     cta: "Pay setup",
   },
   {

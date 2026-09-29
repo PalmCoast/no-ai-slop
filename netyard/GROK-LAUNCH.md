@@ -53,7 +53,7 @@ Launch media (use these, do not remake them):
 4. **Turn Stripe on.** Prices already exist on live Palm Coast AI (`acct_1SqPSHFJWYd4pYux`). Do not create new products. Do not change amounts. Do not set provider AI keys.
 5. Do not auto-post into Facebook groups, Reddit, or HN comment threads as if you were a plumber. You may post as AgentHive Inc / First Deploy AI on X and LinkedIn with the copy below. Attach the video and screenshots from `/launch`.
 6. Do not redesign, add guessed `*.netlify.app` hosts to the corp catalog, force-push, enable auto-merge, or commit secrets.
-7. Prices stay on the page: wizard is free. First Deploy AI / NetYard rack is $1,500 setup, then $250/month. Live this week or they do not pay the setup. Consult is a free 30, then $75 / 30 min or $150 / hour.
+7. Prices stay on the page: wizard is free. First Deploy AI / NetYard rack is $1,500 setup, then $250/month. Live this week on a written plan. Consult is a free 30, then $75 / 30 min or $150 / hour.
 
 ## Stripe (do this before the marketing posts)
 
@@ -212,7 +212,7 @@ If the network only lets you attach one video + a few images, attach the video f
 
 **LinkedIn** (company [AgentHive Inc](https://www.linkedin.com/company/agenthiveinc)):
 
-> We shipped NetYard. A plumber or HVAC shop answers six questions and walks out with VLANs, Samba AD, a shopping list, and Debian install scripts. No Windows Server User CALs. If you want us to rack it, First Deploy AI is $1,500 setup, then $250/month, live this week or you do not pay setup. Pay on Stripe: netyard.firstdeploy.ai/buy Watch the standup: netyard.firstdeploy.ai/launch
+> We shipped NetYard. A plumber or HVAC shop answers six questions and walks out with VLANs, Samba AD, a shopping list, and Debian install scripts. No Windows Server User CALs. If you want us to rack it, First Deploy AI is $1,500 setup, then $250/month, live this week on a written plan. Pay on Stripe: netyard.firstdeploy.ai/buy Watch the standup: netyard.firstdeploy.ai/launch
 
 **Second X, 4–8 hours later** (thread or new post). Attach `scripts.webp` and `compare.webp`:
 
@@ -228,7 +228,7 @@ Text:
 
 > NetYard is a free planner for small shops that were quoted Windows Server plus CALs for a file share. Six questions. You get VLANs, Samba AD or a workgroup, guest Wi-Fi, a shopping list, and Debian install scripts.
 >
-> If you want it racked, First Deploy AI is $1,500 setup, then $250/month, live this week or you do not pay setup. Pay on Stripe.
+> If you want it racked, First Deploy AI is $1,500 setup, then $250/month, live this week on a written plan. Pay on Stripe.
 >
 > Demo video and screenshots: netyard.firstdeploy.ai/launch
 > Wizard: netyard.firstdeploy.ai
