@@ -1,5 +1,19 @@
-import { BRAND_URL, CALENDLY_URL, PARENT_CHECK_URL, PARENT_URL } from "./brand.ts";
+import { BRAND_URL, CALENDLY_URL, FD_PROMISE, PARENT_CHECK_URL, PARENT_URL } from "./brand.ts";
 import { SALE_APPS, type SaleApp } from "./catalog.ts";
+
+const GUARANTEE_SENTENCE =
+  /(?:don['’`]?t|dont|do not|won['’]?t|will not) pay|money[\s-]*back|\bno[\s-]+risk\b|risk[\s-]*free|\bpay only\b|only pay if/i;
+
+/** Rewrites any stored risk-reversal sentence ("or you don't pay the setup") into the plan line. */
+export function scrubGuarantee(text: string): string {
+  if (!text || !GUARANTEE_SENTENCE.test(text)) return text;
+  const out: string[] = [];
+  for (const sentence of text.split(/(?<=[.!?])\s+/)) {
+    if (!GUARANTEE_SENTENCE.test(sentence)) out.push(sentence);
+    else if (!out.includes(`${FD_PROMISE}.`)) out.push(`${FD_PROMISE}.`);
+  }
+  return out.join(" ");
+}
 
 export type YardQuestion = {
   slug: string;

@@ -278,3 +278,15 @@ describe("seo", () => {
     expect(txt).not.toMatch(/14 apps|\$70k/);
   });
 });
+
+import { scrubGuarantee as __scrub } from "../shared/ask.ts";
+describe("scrubGuarantee", () => {
+  it("rewrites stored risk-reversal sentences", () => {
+    const out = __scrub("First Deploy AI is $1,500 setup. If it is not live this week, you do not pay the setup. Book below.");
+    expect(out).not.toMatch(/do not pay|don.?t pay/i);
+    expect(out).toContain("written plan");
+    expect(out).toContain("Book below.");
+    expect(__scrub("We can have it running this week, or you don’t pay the setup fee.")).not.toMatch(/pay the setup/);
+    expect(__scrub("Plain answer.")).toBe("Plain answer.");
+  });
+});
