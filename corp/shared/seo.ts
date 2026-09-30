@@ -47,7 +47,7 @@ export const PAGE_SEO: SeoPage[] = [
     title: "AgentHive Inc — working AI in field operations",
     description: `${HERO_H1} ${HERO_WHAT} ${FD_NAME} is ${FD_PRICE}. ${FD_PROMISE}. Book a free 30, then ${CONSULT_RATES}. ${INDEXME_NAME}: ${INDEXME_BLURB}.`,
     h1: HERO_H1,
-    bodyHtml: `<main id="route-home" class="section"><div class="container"><h1 class="display">${HERO_H1}</h1><p class="lede">${BRAND_NAME} is a Palm Coast AI consultant who builds. ${HERO_WHAT}</p><p>${HERO_WHY}</p><p>${FD_NAME} is $1,500 setup — ${FD_PROMISE.toLowerCase()} — then $250/mo at firstdeploy.ai. ${INDEXME_NAME} is the ${INDEXME_BLURB} at indexme.lol.</p><p><a href="${FD_URL}">${FD_CTA_LABEL}</a> · <a href="${CALENDLY_URL}">${BOOK_CTA_LABEL}</a> · Consult ${CONSULT_DISPLAY}</p></div></main>`,
+    bodyHtml: `<main id="route-home" class="section"><div class="container"><h1 class="display">${HERO_H1}</h1><p class="lede">${BRAND_NAME} is a Palm Coast AI consultant who builds. ${HERO_WHAT}</p><p>${HERO_WHY}</p><p>${FD_NAME} is $1,750 setup (50% to start or pay in full) — ${FD_PROMISE.toLowerCase()} — then $250/mo at firstdeploy.ai. ${INDEXME_NAME} is the ${INDEXME_BLURB} at indexme.lol.</p><p><a href="${FD_URL}">${FD_CTA_LABEL}</a> · <a href="${CALENDLY_URL}">${BOOK_CTA_LABEL}</a> · Consult ${CONSULT_DISPLAY}</p></div></main>`,
   },
   {
     path: "/about",
@@ -75,7 +75,7 @@ export const PAGE_SEO: SeoPage[] = [
     title: "Custom builds via First Deploy AI | AgentHive Inc",
     description: `${FD_NAME} custom embeds: ${FD_PRICE}. Live this week on the same written plan we run for active client builds.`,
     h1: "One leak. Live this week.",
-    bodyHtml: `<main id="route-build" class="section"><div class="container"><h1 class="display">One leak. Live this week.</h1><p class="lede">${FD_NAME} embeds, ships the after-hours desk plus the live apps, and stays on for $250/month.</p><p>Setup $1,500: 50% to start, the balance at completion or split over two monthly payments. 90-day projects: half upfront, half at completion. Live this week on the same written plan we run for active client builds. Consult ${CONSULT_DISPLAY} or start at ${FD_URL.replace("https://", "")}.</p></div></main>`,
+    bodyHtml: `<main id="route-build" class="section"><div class="container"><h1 class="display">One leak. Live this week.</h1><p class="lede">${FD_NAME} embeds, ships the after-hours desk plus the live apps, and stays on for $250/month.</p><p>Setup $1,750: 50% to start ($875), the balance at completion, or pay in full. 90-day projects: half upfront, half at completion. Live this week on the same written plan we run for active client builds. Consult ${CONSULT_DISPLAY} or start at ${FD_URL.replace("https://", "")}.</p></div></main>`,
   },
   {
     path: "/consult",

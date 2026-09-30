@@ -29,7 +29,7 @@ const CONSULT_SCHEMA = {
     "@type": "Organization",
     name: BRAND_NAME,
     url: `${BRAND_URL}/`,
-    telephone: ["+1-320-335-6186", "+1-509-357-2230"],
+    telephone: ["+1-320-335-6186"],
   },
   description: `AI consulting that ships. Free 30-minute qualifier, then ${CONSULT_RATES}, or a 10-hour pack at $1,250.`,
   offers: [
@@ -73,7 +73,7 @@ export default function Consult() {
           </div>
           <p className="fine">
             <a href={FD_URL} rel="noreferrer" target="_blank">
-              Need the after-hours desk instead? First Deploy AI — $1,500 setup, then $250/mo → firstdeploy.ai
+              Need the after-hours desk instead? First Deploy AI — $1,750 setup (50% to start or pay in full), then $250/mo → firstdeploy.ai
             </a>
           </p>
           <p className="fine">

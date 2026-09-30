@@ -18,7 +18,7 @@ describe("portfolio catalog", () => {
   it("lists every hive-map commercial site plus verified Netlify apps", () => {
     const urls = HIVE_SITES.map((s) => s.url);
     expect(urls).toContain("https://firstdeploy.ai/");
-    expect(HIVE_SITES.find((s) => s.slug === "first-deploy")?.price).toBe("$1,500 setup, then $250/mo");
+    expect(HIVE_SITES.find((s) => s.slug === "first-deploy")?.price).toBe("$1,750 setup (50% to start or pay in full), then $250/mo");
     expect(HIVE_SITES.find((s) => s.slug === "first-deploy")?.name).toBe("First Deploy AI");
     expect(urls).toContain("https://flick.firstdeploy.ai/");
     expect(urls).toContain("https://jobproof.firstdeploy.ai/");

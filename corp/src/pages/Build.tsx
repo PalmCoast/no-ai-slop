@@ -22,7 +22,7 @@ export default function Build() {
             plus the live apps, and stays on for $250/month. Every build runs on a written plan: scope, build, go-live, the same process as our active client builds.
           </p>
           <ul className="takeaways">
-            <li>Setup $1,500: 50% to start, the balance at completion or split over two monthly payments.</li>
+            <li>Setup $1,750: 50% to start ($875), the balance at completion, or pay in full.</li>
             <li>90-day projects: half upfront, half at completion.</li>
             <li>Then $250/month per company to keep the desk and the apps on. {FD_PRICE}.</li>
             <li>Voice line, dispatch, quotes, the board your crew actually opens.</li>

@@ -100,7 +100,7 @@ export default function Home() {
               <p className="eyebrow">Cash product</p>
               <h2>{FD_NAME}</h2>
               <p style={{ marginTop: 12 }}>
-                After-hours booking plus live apps for dirt, plants, and shops. $1,500 setup —{" "}
+                After-hours booking plus live apps for dirt, plants, and shops. $1,750 setup (50% to start or pay in full) —{" "}
                 {FD_PROMISE.toLowerCase()} — then $250/mo.
               </p>
               <p className="muted" style={{ marginTop: 12 }}>

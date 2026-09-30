@@ -57,7 +57,7 @@ describe("AgentHive Inc brand facts", () => {
     expect(FD_CONSULT_URL).toBe("https://firstdeploy.ai/consult");
     expect(HIVE_CONSULT_PATH).toBe("/consult");
     expect(HIVE_CONSULT_URL).toBe("https://agenthiveinc.com/consult");
-    expect(FD_PRICE).toBe("$1,500 setup, then $250/mo");
+    expect(FD_PRICE).toBe("$1,750 setup (50% to start or pay in full), then $250/mo");
     expect(FD_PROMISE).toMatch(/Live this week/i);
     expect(INDEXME_NAME).toBe("IndexMe.lol");
     expect(INDEXME_URL).toBe("https://indexme.lol/");
