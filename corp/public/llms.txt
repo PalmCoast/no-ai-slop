@@ -1,6 +1,6 @@
 # AgentHive Inc
 
-> AgentHive Inc (AGENTHIVEINCCOM LLC, Palm Coast, Florida) embeds working AI in field operations. First Deploy AI is the cash product: $1,500 setup — live this week on a written plan — then $250/month at https://firstdeploy.ai. Book a free 30-minute qualifier at https://calendly.com/coltsinsider/30min, then $75 / 30 min or $150 / hour. IndexMe.lol is the honest IndexNow indexing desk at https://indexme.lol.
+> AgentHive Inc (AGENTHIVEINCCOM LLC, Palm Coast, Florida) embeds working AI in field operations. First Deploy AI is the cash product: $1,750 setup (50% to start or pay in full), live this week on a written plan, then $250/month for the desk from go-live at https://firstdeploy.ai. Book a free 30-minute qualifier at https://calendly.com/coltsinsider/30min, then $75 / 30 min, $150 / hour, or a 10-hour pack at $1,250. IndexMe.lol is the honest IndexNow indexing desk at https://indexme.lol.
 
 AgentHive Inc is a Palm Coast consultant who builds: after-hours booking plus live apps for dirt, plants, and shops. Why it matters: night calls go unanswered, quotes live on a whiteboard, and the crew waits on the owner. Public site: https://agenthiveinc.com. AgentHive Inc · Palm Coast, FL · firstdeploy.ai. Not agenthive.io (insurance) or agenthive.co. Distinct from other “AgentHive” names in insurance, OSS, or QpiAI.
 
@@ -14,8 +14,8 @@ AgentHive Inc is a Palm Coast consultant who builds: after-hours booking plus li
 - [AI Concierge](https://agenthiveinc.com/concierge): $2,000/mo done-with-you retainer. Audit, optimize, then automate. Two 45-minute sessions a month, unlimited async Slack or text, and a shared asset inventory. Pay at https://buy.stripe.com/6oUeVd7YM3qH0Ylbuq2ZO1u or book a free 15–30 minute bottleneck call.
 
 ## Company
-- [First Deploy AI](https://firstdeploy.ai/): After-hours desk and live apps for field operators. $1,500 setup, then $250/month. Live this week on the same written plan we run for active client builds.
-- [Consult](https://calendly.com/coltsinsider/30min): Free 30-minute qualifier, then $75 / 30 min or $150 / hour. 10-hour pack $1,250.
+- [First Deploy AI](https://firstdeploy.ai/): After-hours desk and live apps for field operators. $1,750 setup (50% to start or pay in full), then $250/month from go-live. Live this week on the same written plan we run for active client builds.
+- [Consult](https://agenthiveinc.com/consult): Free 30-minute qualifier, then $75 / 30 min or $150 / hour. 10-hour pack $1,250 ($625 up front). Book at https://calendly.com/coltsinsider/30min.
 - [IndexMe.lol](https://indexme.lol/): Honest IndexNow indexing desk. Pro $19.99, Studio $29.99, one-time.
 - [Flick](https://flick.firstdeploy.ai/): Browser screen recorder. Send a link. No login wall.
 - [JobProof](https://jobproof.firstdeploy.ai/): Proof you did the work, not a resume stack.
@@ -25,11 +25,22 @@ AgentHive Inc is a Palm Coast consultant who builds: after-hours booking plus li
 ## Also shipped
 Live apps from the same shop. Prefer the custom domains above. A longer public board is on [Rankings](https://agenthiveinc.com/rankings). Shipped for field operators in dirty physical businesses. No client names.
 
+## Service area
+- Based in Palm Coast, FL (Flagler County).
+- Florida statewide, focused on Flagler, Volusia, St. Johns, Duval and Orange counties and the Jacksonville, Daytona Beach and Orlando metros.
+- Remote across the US.
+- Trades served by First Deploy: HVAC, plumbing, roofing, electrical, pest control, landscaping.
+
+## Consult details
+- Free 30-minute qualifier to see if there is paid work: https://calendly.com/coltsinsider/30min
+- Paid time: $75 / 30 min, $150 / hour, or a 10-hour pack at $1,250 ($625 up front, applied to the 10 hours).
+- What it is: an operator (Daniel Graham) in the room for the hours you buy, looking at a workflow and deciding what to build. Remote.
+- Pay pages: https://agenthiveinc.com/consult and https://firstdeploy.ai/consult
+
 ## Contact
 - Book 30 minutes: https://calendly.com/coltsinsider/30min
 - daniel@agenthiveinc.com
 - First Deploy AI consult: +1 320-335-6186
-- AgentHive voice: +1 509-357-2230
 - Legal: AgentHive Inc / AGENTHIVEINCCOM LLC
 - Address: 95 Barrington Drive, Palm Coast, FL 32137
 - Disambiguation: AgentHive Inc · Palm Coast, FL · firstdeploy.ai. Not agenthive.io (insurance) or agenthive.co.
