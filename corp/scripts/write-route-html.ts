@@ -29,6 +29,11 @@ writeFileSync(join(dist, "sitemaps.xml"), sitemapIndexXml());
 writeFileSync(
   join(dist, "_redirects"),
   [
+    // Legacy hub URLs linked across the portfolio (audit 2026-09-30): send them to /about.
+    "/hive /about 301!",
+    "/hive/ /about 301!",
+    "/hive.html /about 301!",
+    "/about.html /about 301!",
     "/about /about/index.html 200!",
     "/about/ /about/index.html 200!",
     "/buzz /buzz/index.html 200!",
