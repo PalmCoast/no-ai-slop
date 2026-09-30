@@ -130,7 +130,7 @@ describe("per-route SEO", () => {
     expect(txt).toContain("https://calendly.com/coltsinsider/30min");
     expect(txt).toContain("IndexNow");
     expect(txt).toContain("field operations");
-    expect(txt).toContain("$1,500");
+    expect(txt).toContain("$1,750");
     expect(txt).toContain("$250");
     expect(txt).toContain("https://firstdeploy.ai");
     expect(txt).toContain("https://agenthiveinc.com/consult");
