@@ -119,7 +119,7 @@ export default function About() {
             <h2>Daniel Graham</h2>
             <p className="role">Chairman, {BRAND_NAME}</p>
             <p style={{ marginTop: 12 }}>
-              25 years of enterprise IT across Eli Lilly, Humana, and Southwire. SAFe 5.1 certified. Built {BRAND_NAME}{" "}
+              25 years of enterprise IT across Fortune 500 organizations. SAFe 5.1 certified. Built {BRAND_NAME}{" "}
               on a simple rule: AI should ship, earn, and solve a real leak.
             </p>
             <p className="muted" style={{ marginTop: 12 }}>
