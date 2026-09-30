@@ -16,8 +16,6 @@ import {
   MONEY_FOOTER_LINKS,
   OTHER_HIVES,
   PRODUCT_FOOTER_LINKS,
-  VOICE_DISPLAY,
-  VOICE_TEL,
 } from "../../shared/brand";
 
 const NAV = [
@@ -152,7 +150,6 @@ export default function Layout() {
             <a href={`tel:${CONSULT_TEL}`}>
               {FD_NAME} {CONSULT_DISPLAY}
             </a>
-            <a href={`tel:${VOICE_TEL}`}>Voice {VOICE_DISPLAY}</a>
             <a href="/llms.txt">llms.txt</a>
           </div>
         </div>

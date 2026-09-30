@@ -12,8 +12,6 @@ import {
   LEGAL_NAME,
   ADDRESS_LINE,
   OTHER_HIVES,
-  VOICE_DISPLAY,
-  VOICE_TEL,
 } from "../../shared/brand";
 
 export default function About() {
@@ -153,9 +151,6 @@ export default function About() {
               </li>
               <li>
                 Consult — {FD_NAME} <a href={`tel:${CONSULT_TEL}`}>{CONSULT_DISPLAY}</a>
-              </li>
-              <li>
-                AgentHive voice — <a href={`tel:${VOICE_TEL}`}>{VOICE_DISPLAY}</a>
               </li>
               <li>Alder, CEO — alder@agenthiveinc.com</li>
               <li>Sol, CPO/CTO — sol@agenthiveinc.com</li>
