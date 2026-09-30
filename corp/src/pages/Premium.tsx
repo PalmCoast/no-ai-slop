@@ -9,11 +9,9 @@ export default function Premium() {
             className="promo-film"
             poster="/promo/shelf-poster.png"
             src="/promo/shelf.mp4"
-            autoPlay
-            muted
-            loop
-            playsInline
             controls
+            playsInline
+            preload="metadata"
           />
         </div>
         <div className="section-head" style={{ marginTop: "2rem" }}>
