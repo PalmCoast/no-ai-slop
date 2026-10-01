@@ -9,15 +9,27 @@ plugins {
     alias(libs.plugins.roborazzi)
 }
 
-// Optional release signing. If keystore.properties (gitignored) is present, the
-// release build is signed with your own key; otherwise it falls back to the
-// Android debug key so `assembleRelease` still produces an installable APK for
-// personal sideloading — without committing any secrets.
+// Release signing. Credentials are resolved from environment variables first
+// (for CI), then a local, gitignored keystore.properties. If neither is fully
+// configured, the build falls back to the Android debug key so `assembleRelease`
+// still produces an installable APK for development — no secrets are committed.
 val keystorePropsFile = rootProject.file("keystore.properties")
-val hasReleaseKeystore = keystorePropsFile.exists()
 val keystoreProps = Properties().apply {
-    if (hasReleaseKeystore) FileInputStream(keystorePropsFile).use { load(it) }
+    if (keystorePropsFile.exists()) FileInputStream(keystorePropsFile).use { load(it) }
 }
+
+fun signingValue(envKey: String, propKey: String): String? =
+    System.getenv(envKey)?.takeIf { it.isNotBlank() } ?: keystoreProps.getProperty(propKey)
+
+val releaseStoreFilePath = signingValue("FOLD_KEYSTORE_FILE", "storeFile")
+val releaseStorePassword = signingValue("FOLD_KEYSTORE_PASSWORD", "storePassword")
+val releaseKeyAlias = signingValue("FOLD_KEY_ALIAS", "keyAlias")
+val releaseKeyPassword = signingValue("FOLD_KEY_PASSWORD", "keyPassword")
+val hasReleaseKeystore = releaseStoreFilePath != null &&
+    releaseStorePassword != null &&
+    releaseKeyAlias != null &&
+    releaseKeyPassword != null &&
+    rootProject.file(releaseStoreFilePath).exists()
 
 android {
     namespace = "com.danielgraham.foldcompanion"
@@ -37,10 +49,12 @@ android {
     signingConfigs {
         if (hasReleaseKeystore) {
             create("release") {
-                storeFile = rootProject.file(keystoreProps.getProperty("storeFile"))
-                storePassword = keystoreProps.getProperty("storePassword")
-                keyAlias = keystoreProps.getProperty("keyAlias")
-                keyPassword = keystoreProps.getProperty("keyPassword")
+                storeFile = rootProject.file(releaseStoreFilePath!!)
+                storePassword = releaseStorePassword
+                keyAlias = releaseKeyAlias
+                keyPassword = releaseKeyPassword
+                enableV1Signing = true
+                enableV2Signing = true
             }
         }
     }
