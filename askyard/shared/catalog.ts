@@ -162,6 +162,16 @@ export const SALE_APPS: SaleApp[] = [
     category: "studio",
   },
   {
+    slug: "hillmirror",
+    name: "HILLMIRROR",
+    url: "https://hillmirror-firstdeploy.netlify.app/",
+    price: "Unlock $9.99/mo · Copy $24.99/mo · Founding $99/yr",
+    blurb: "They file. You follow. Public congressional filings ranked. Copy after disclosure.",
+    who: "Anyone watching Congress trade",
+    category: "saas",
+    featured: true,
+  },
+  {
     slug: "marquee",
     name: "Marquee",
     url: "https://marquee.firstdeploy.ai/",
