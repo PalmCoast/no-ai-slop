@@ -68,6 +68,18 @@ export function nightLineCtaHtml(): string {
   return `<p class="night-line-cta">Need the night line installed? <a href="${PARENT_URL}">${BRAND_PARENT}</a> — firstdeploy.ai — ${FD_PRICE_LONG}.</p>`;
 }
 
+/** Official CodeHype Free Launch badge. Do not alter URLs or attributes. */
+export const ASKYARD_CODEHYPE_BADGE =
+  '<a href="https://codehype.ai/product/askyard?utm_source=codehype_badge" target="_blank" rel="noopener noreferrer"> <img src="https://codehype.ai/badges/askyard.svg?variant=find-us&v=20" alt="Featured on CodeHype" width="180" height="65" loading="lazy" decoding="async" style="display:inline-block;border:0;width:100%;max-width:180px;height:auto;max-height:65px;" /> </a>';
+
+/** Official CodeHype Free Launch badge for Marquee. Do not alter URLs or attributes. */
+export const MARQUEE_CODEHYPE_BADGE =
+  '<a href="https://codehype.ai/product/marquee?utm_source=codehype_badge" target="_blank" rel="noopener noreferrer"> <img src="https://codehype.ai/badges/marquee.svg?variant=find-us&v=20" alt="Featured on CodeHype" width="180" height="65" loading="lazy" decoding="async" style="display:inline-block;border:0;width:100%;max-width:180px;height:auto;max-height:65px;" /> </a>';
+
+function codehypeStrip(badgeHtml: string): string {
+  return `<footer class="codehype-strip"><div class="container">${badgeHtml}</div></footer>`;
+}
+
 export function boardQaHtml(): string {
   return `<dl class="board-qa">${SEED_QUESTIONS.map(
     (q) =>
@@ -81,7 +93,7 @@ export const PAGE_SEO: SeoPage[] = [
     title: HOME_TITLE,
     description: HOME_DESCRIPTION,
     h1: HERO_H1,
-    bodyHtml: `<main id="route-home" class="section"><div class="container"><h1 class="display">${HERO_H1}</h1><p class="lede">${HERO_WHAT}</p>${identityHtml()}<p>${TAGLINE} ${BRAND_NAME} is a ${BRAND_PARENT} product from ${BRAND_COMPANY} in ${BRAND_PLACE}. Search ChatGPT, Claude, Perplexity, Gemini, Grok, or Google about us, then ask your own question. Ranked questions live on the board. Apps for sale sit on /apps.</p><p><a href="${PARENT_URL}">Start ${BRAND_PARENT}</a> · <a href="${CALENDLY_URL}">Book the free 30</a> · ${CONSULT_DISPLAY_SEO}</p><h2>Most asked</h2>${boardQaHtml()}</div></main>`,
+    bodyHtml: `<main id="route-home" class="section"><div class="container"><h1 class="display">${HERO_H1}</h1><p class="lede">${HERO_WHAT}</p>${identityHtml()}<p>${TAGLINE} ${BRAND_NAME} is a ${BRAND_PARENT} product from ${BRAND_COMPANY} in ${BRAND_PLACE}. Search ChatGPT, Claude, Perplexity, Gemini, Grok, or Google about us, then ask your own question. Ranked questions live on the board. Apps for sale sit on /apps.</p><p><a href="${PARENT_URL}">Start ${BRAND_PARENT}</a> · <a href="${CALENDLY_URL}">Book the free 30</a> · ${CONSULT_DISPLAY_SEO}</p><h2>Most asked</h2>${boardQaHtml()}</div></main>${codehypeStrip(ASKYARD_CODEHYPE_BADGE)}`,
   },
   {
     path: "/board",
@@ -128,7 +140,7 @@ export const PAGE_SEO: SeoPage[] = [
     title: `${MARQUEE_NAME} — ${MARQUEE_TAGLINE}`,
     description: `${MARQUEE_TAGLINE} Name-your-price bid, floor $20. Highest sits at #1. The next bid takes the crown. No refunds. ${MARQUEE_URL}`,
     h1: MARQUEE_TAGLINE,
-    bodyHtml: `<main id="route-marquee" class="section"><div class="container"><h1 class="display">${MARQUEE_TAGLINE}</h1><p class="lede">Founders would die for the name in lights. You type the dollar amount. Checkout charges that amount. Floor $${MARQUEE_FLOOR_CENTS / 100}. The next bid knocks you off. No refunds.</p><p>Lookup is free on <a href="${BRAND_URL}/rep">/rep</a>. The chart is paid vanity.</p></div></main>`,
+    bodyHtml: `<main id="route-marquee" class="section"><div class="container"><h1 class="display">${MARQUEE_TAGLINE}</h1><p class="lede">Founders would die for the name in lights. You type the dollar amount. Checkout charges that amount. Floor $${MARQUEE_FLOOR_CENTS / 100}. The next bid knocks you off. No refunds.</p><p>Lookup is free on <a href="${BRAND_URL}/rep">/rep</a>. The chart is paid vanity.</p></div></main>${codehypeStrip(MARQUEE_CODEHYPE_BADGE)}`,
   },
   {
     path: "/marquee/thanks",

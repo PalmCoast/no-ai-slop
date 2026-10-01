@@ -5,7 +5,7 @@ import { generatePlan } from "../shared/planner.ts";
 import { DEMO_ANSWERS, defaultAnswers, validateAnswers } from "../shared/questions.ts";
 import { directoryMode } from "../shared/directory.ts";
 import { WINDOWS_SERVER_STANDARD_USD, WINDOWS_USER_CAL_USD } from "../shared/microsoft.ts";
-import { applyRouteHtml, canonicalFor, PAGE_SEO, sitemapXml } from "../shared/seo.ts";
+import { applyRouteHtml, canonicalFor, NETYARD_CODEHYPE_BADGE, PAGE_SEO, sitemapXml } from "../shared/seo.ts";
 import { NEEDS, type Answers } from "../shared/types.ts";
 import { needsVlans } from "../shared/addressing.ts";
 import { apCount, bomTotal, switchPorts } from "../shared/bom.ts";
@@ -170,6 +170,13 @@ describe("seo", () => {
     const pages = PAGE_SEO.map((page) => applyRouteHtml(shell, page));
     expect(new Set(pages).size).toBe(PAGE_SEO.length);
     expect(pages[0]).toContain("id=\"route-home\"");
+    expect(pages[0]).toContain(NETYARD_CODEHYPE_BADGE);
+    expect(pages[0]).toContain("https://codehype.ai/badges/netyard.svg?variant=find-us&v=20");
+    expect(pages[0]).not.toContain("badges/askyard.svg");
+    expect(pages[0]).not.toContain("badges/marquee.svg");
+    for (const page of PAGE_SEO) {
+      if (page.path !== "/") expect(page.bodyHtml).not.toContain("codehype.ai");
+    }
     expect(pages[0]).toContain("Microsoft Server");
     expect(pages[0]).toContain("$1,500");
     expect(pages.join("")).not.toMatch(/firstdeploy\\.dev|\\$2,?500/);

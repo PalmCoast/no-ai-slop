@@ -17,7 +17,16 @@ import { askAiLinks } from "../shared/reputation";
 import { ASK_AI_PROMPT, HOME_DESCRIPTION, HOME_TITLE } from "../shared/brand";
 import { SALE_APPS } from "../shared/catalog";
 import { HUNT_SEED } from "../shared/hunt";
-import { applyRouteHtml, canonicalFor, pageForPath, PAGE_SEO, sitemapEntries, sitemapXml } from "../shared/seo";
+import {
+  applyRouteHtml,
+  ASKYARD_CODEHYPE_BADGE,
+  canonicalFor,
+  MARQUEE_CODEHYPE_BADGE,
+  pageForPath,
+  PAGE_SEO,
+  sitemapEntries,
+  sitemapXml,
+} from "../shared/seo";
 
 const layoutSource = readFileSync(
   join(dirname(fileURLToPath(import.meta.url)), "../src/components/Layout.tsx"),
@@ -96,6 +105,26 @@ describe("directory listing badges", () => {
     );
     expect(layoutSource).toContain('alt="Fazier badge"');
     expect(layoutSource).toContain("width={120}");
+  });
+
+  it("puts the AskYard CodeHype badge on home and the Marquee badge only on /marquee", () => {
+    const home = PAGE_SEO.find((page) => page.path === "/")!;
+    const marquee = PAGE_SEO.find((page) => page.path === "/marquee")!;
+    expect(home.bodyHtml).toContain(ASKYARD_CODEHYPE_BADGE);
+    expect(home.bodyHtml).toContain("https://codehype.ai/badges/askyard.svg?variant=find-us&v=20");
+    expect(home.bodyHtml).not.toContain("badges/marquee.svg");
+    expect(marquee.bodyHtml).toContain(MARQUEE_CODEHYPE_BADGE);
+    expect(marquee.bodyHtml).toContain("https://codehype.ai/badges/marquee.svg?variant=find-us&v=20");
+    expect(marquee.bodyHtml).not.toContain("badges/askyard.svg");
+    for (const page of PAGE_SEO) {
+      if (page.path !== "/" && page.path !== "/marquee") {
+        expect(page.bodyHtml).not.toContain("codehype.ai");
+      }
+    }
+    expect(layoutSource).toContain("ASKYARD_CODEHYPE_BADGE");
+    expect(layoutSource).toContain("MARQUEE_CODEHYPE_BADGE");
+    expect(layoutSource).toContain('pathname.startsWith("/marquee")');
+    expect(layoutSource).toContain("codehype-badge");
   });
 });
 
