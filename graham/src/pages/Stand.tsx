@@ -13,7 +13,7 @@ export default function Stand() {
   const [error, setError] = useState("");
 
   useEffect(() => {
-    document.title = "Stand one up | Graham";
+    document.title = "Stand one up | Higgins";
   }, []);
 
   function onSubmit(event: FormEvent) {

@@ -12,7 +12,7 @@ export default function Book() {
   const [held, setHeld] = useState("");
 
   useEffect(() => {
-    document.title = "Book | Graham";
+    document.title = "Book | Higgins";
     void postJson<{ slots: Slot[] }>("/api/book")
       .then((body) => {
         if (body.slots?.length) {

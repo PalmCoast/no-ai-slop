@@ -52,7 +52,7 @@ export function drawFrame(ctx: CanvasRenderingContext2D, answer: Answer, progres
   ctx.fillStyle = "#f6edd8";
   ctx.font = "600 22px Georgia, serif";
   ctx.textAlign = "center";
-  ctx.fillText("GRAHAM", w / 2, 340);
+  ctx.fillText("HIGGINS", w / 2, 340);
   ctx.fillStyle = "#a89472";
   ctx.font = "16px sans-serif";
   ctx.fillText("Daniel's line", w / 2, 368);

@@ -22,7 +22,7 @@ export default function Line() {
   const [saved, setSaved] = useState("");
 
   useEffect(() => {
-    document.title = "Line | Graham";
+    document.title = "Line | Higgins";
   }, []);
 
   function run(nextFrom: string, nextSaid: string) {
@@ -65,7 +65,7 @@ export default function Line() {
     <div className="container narrow">
       <p className="kicker">The forward</p>
       <h1>Screen the call.</h1>
-      <p className="lede">Graham checks the contacts list first. Then the script. A country code never decides it.</p>
+      <p className="lede">Higgins checks the contacts list first. Then the script. A country code never decides it.</p>
       <div className="row wrap">
         {SAMPLES.map((sample) => (
           <button

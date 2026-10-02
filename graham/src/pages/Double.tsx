@@ -26,7 +26,7 @@ export default function Double() {
   const [note, setNote] = useState("");
 
   useEffect(() => {
-    document.title = "Double | Graham";
+    document.title = "Double | Higgins";
   }, []);
 
   function ask(next: string) {
@@ -73,9 +73,9 @@ export default function Double() {
         const url = URL.createObjectURL(blob);
         const link = document.createElement("a");
         link.href = url;
-        link.download = "graham-answer.webm";
+        link.download = "higgins-answer.webm";
         link.click();
-        setNote("Reel saved. Graham is on the card. It is not a filmed face.");
+        setNote("Reel saved. Higgins is on the card. It is not a filmed face.");
         resolve();
       };
     });
@@ -99,7 +99,7 @@ export default function Double() {
       <div>
         <p className="kicker">Body double</p>
         <h1>Talk, then cut the reel.</h1>
-        <p className="lede">Graham answers in the shop voice, says the price when there is one, and speaks it. The video is a caption card with the mark.</p>
+        <p className="lede">Higgins answers in the shop voice, says the price when there is one, and speaks it. The video is a caption card with the mark.</p>
         <div className="row wrap">
           {PROMPTS.map((prompt) => (
             <button key={prompt} type="button" className="chip" onClick={() => { setQuestion(prompt); ask(prompt); }}>
@@ -109,7 +109,7 @@ export default function Double() {
         </div>
         <form className="stack" onSubmit={onSubmit}>
           <label>
-            Ask Graham
+            Ask Higgins
             <textarea value={question} onChange={(event) => setQuestion(event.target.value)} rows={3} />
           </label>
           <div className="row">
@@ -145,7 +145,7 @@ export default function Double() {
         ) : null}
         {note ? <p className="muted">{note}</p> : null}
       </div>
-      <canvas ref={canvasRef} className="reel" width={720} height={1280} aria-label="Graham answer reel" />
+      <canvas ref={canvasRef} className="reel" width={720} height={1280} aria-label="Higgins answer reel" />
     </div>
   );
 }

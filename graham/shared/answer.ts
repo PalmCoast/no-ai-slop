@@ -49,13 +49,13 @@ export function answerAs(question: string, disclosure = DISCLOSURE): Answer {
 
   if (/country code|india|mill|spam|warranty script|block/.test(text)) {
     const headline = "A mill script is blocked. A country code is not.";
-    const detail = "People on the contacts list still ring the cell. Everyone else gets Graham.";
+    const detail = "People on the contacts list still ring the cell. Everyone else gets Higgins.";
     const reason = "Warranty, press-1, and fake-agency scripts die here. A real HVAC quote from an unfamiliar number becomes a note.";
     return { lane: "line", headline, detail, reason, spoken: speak(disclosure, [headline, detail, reason]) };
   }
 
-  if (/who are you|your name|graham/.test(text) && !/stand|setup|price|cost/.test(text)) {
-    const headline = "Graham. Daniel's line.";
+  if (/who are you|your name|higgins/.test(text) && !/stand|setup|price|cost/.test(text)) {
+    const headline = "Higgins. Daniel's line.";
     const detail = "I book, I take the note, and I get him when it cannot wait.";
     const reason = "The cell still rings for the contacts list. I am the forward for everyone else.";
     return { lane: "desk", headline, detail, reason, spoken: speak(disclosure, [headline, detail, reason]) };
@@ -80,7 +80,7 @@ export function answerAs(question: string, disclosure = DISCLOSURE): Answer {
   if (/night call|after hours|missed call|stop missing/.test(text)) {
     const yard = skill("askyard");
     const headline = "The night call should land on a desk, not a voicemail grave.";
-    const detail = "Graham is that desk for this line. AskYard answers the same question for a shop that is not ready to buy.";
+    const detail = "Higgins is that desk for this line. AskYard answers the same question for a shop that is not ready to buy.";
     const price = yard?.price;
     const reason = "Free answer first. The paid forward is the setup.";
     return { lane: "shop", headline, detail, price, reason, href: yard?.href, spoken: speak(disclosure, [headline, detail, reason]) };
@@ -115,7 +115,7 @@ export function answerAs(question: string, disclosure = DISCLOSURE): Answer {
 
   if (/voice|talk|video|reel|body double/.test(text)) {
     const headline = "I can say it out loud and cut the caption reel.";
-    const detail = "The reel is Graham on a black card, not a fake face. A cloned voice stays on the operator's own ElevenLabs account.";
+    const detail = "The reel is Higgins on a black card, not a fake face. A cloned voice stays on the operator's own ElevenLabs account.";
     const reason = "Talk is in the browser. The file is theirs to send.";
     return { lane: "desk", headline, detail, reason, spoken: speak(disclosure, [headline, detail, reason]) };
   }

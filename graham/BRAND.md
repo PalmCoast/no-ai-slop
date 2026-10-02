@@ -1,8 +1,8 @@
-# Graham brand
+# Higgins brand
 
 ## Name
 
-Graham is the surname, used as the being. Daniel's instance is Graham. The next operator's instance is their surname.
+Daniel's instance is Higgins. Daniel Graham is the operator; Higgins is the being that answers his line. A client stood up from the template gets a being named after their surname.
 
 ## Palette
 

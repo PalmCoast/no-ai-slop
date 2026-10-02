@@ -3,7 +3,7 @@ import { PLUGINS, SKILLS } from "../../shared/catalog.ts";
 
 export default function Apps() {
   useEffect(() => {
-    document.title = "Apps | Graham";
+    document.title = "Apps | Higgins";
   }, []);
   const live = PLUGINS.filter((plugin) => plugin.mode === "on");
   const connect = PLUGINS.filter((plugin) => plugin.mode === "plugin");
@@ -11,7 +11,7 @@ export default function Apps() {
   return (
     <div className="container">
       <p className="kicker">One being</p>
-      <h1>The apps sit inside Graham.</h1>
+      <h1>The apps sit inside Higgins.</h1>
       <p className="lede">AskYard, GuyThread, NetYard, and the rest are skills. Connectors that need a login stay plugins. You connect yours. Daniel's keys are not in the recipe.</p>
       <section>
         <h2>Skills</h2>

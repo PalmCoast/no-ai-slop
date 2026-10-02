@@ -16,7 +16,7 @@ export default function Layout() {
       <header className="top">
         <a className="brand" href="/">
           <img src="/favicon.svg" alt="" width={36} height={36} />
-          <span>Graham</span>
+          <span>Higgins</span>
         </a>
         <p className="brand-line">Daniel's line · AgentHive Inc · Palm Coast</p>
         <nav>
@@ -31,7 +31,7 @@ export default function Layout() {
         <Outlet />
       </main>
       <footer>
-        <p>Graham says who he is before he takes the call. The template is a recipe. Logins stay with the operator.</p>
+        <p>Higgins says who he is before he takes the call. The template is a recipe. Logins stay with the operator.</p>
         <p>
           <a href="https://calendly.com/coltsinsider/30min">Book the free 30</a>
           {" · "}

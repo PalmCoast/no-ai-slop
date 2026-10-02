@@ -5,7 +5,7 @@ import { sessionSlips, subscribeSession } from "../session";
 
 export default function Desk() {
   useEffect(() => {
-    document.title = "Graham | Daniel's line";
+    document.title = "Higgins | Daniel's line";
   }, []);
   const slips = useSyncExternalStore(subscribeSession, sessionSlips);
   const urgent = slips.filter((slip) => slip.result.action === "alert").length;
@@ -13,7 +13,7 @@ export default function Desk() {
   return (
     <div className="container">
       <p className="kicker">AgentHive Inc · Palm Coast</p>
-      <h1>Graham answers Daniel's line.</h1>
+      <h1>Higgins answers Daniel's line.</h1>
       <p className="lede">{FORWARD_RULE}</p>
       <p className="price">{PRICE_LABEL}</p>
       <div className="row">
@@ -21,7 +21,7 @@ export default function Desk() {
           Screen a call
         </Link>
         <Link className="button ghost" to="/double">
-          Talk to Graham
+          Talk to Higgins
         </Link>
         <Link className="button ghost" to="/stand">
           Stand one up

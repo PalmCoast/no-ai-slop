@@ -1,8 +1,8 @@
-export const BEING = "Graham";
+export const BEING = "Higgins";
 export const OPERATOR = "Daniel Graham";
 export const SHOP = "AgentHive Inc";
 export const PLACE = "Palm Coast, Florida";
-export const DISCLOSURE = "This is Graham, Daniel's line.";
+export const DISCLOSURE = "This is Higgins, Daniel's line.";
 export const CONSULT_DISPLAY = "+1 320-335-6186";
 export const CONSULT_TEL = "+13203356186";
 export const CALENDLY_URL = "https://calendly.com/coltsinsider/30min";
@@ -13,7 +13,7 @@ export const MONTHLY_USD = 250;
 export const TEMPLATE_SOURCE = "spacexai-team-bots-2026-09-28";
 
 export const FORWARD_RULE =
-  "Unknown callers hit Graham. A number on the contacts list still rings the cell. A mill script is blocked. A country code is not a reason.";
+  "Unknown callers hit Higgins. A number on the contacts list still rings the cell. A mill script is blocked. A country code is not a reason.";
 
 /** Numbers the public site may show. The cell itself stays off this page. */
 export const PUBLIC_CONTACTS: { name: string; phones: string[] }[] = [

@@ -1,4 +1,4 @@
-import { toTemplate, type GrahamTemplate } from "./template.ts";
+import { toTemplate, type HigginsTemplate } from "./template.ts";
 
 export type StandInput = {
   surname?: string;
@@ -8,7 +8,7 @@ export type StandInput = {
 };
 
 export type StandResult =
-  | { ok: true; being: string; template: GrahamTemplate }
+  | { ok: true; being: string; template: HigginsTemplate }
   | { ok: false; error: "surname_required" | "surname_invalid" | "operator_required" };
 
 const SURNAME = /^[A-Za-z][A-Za-z'’.-]{0,39}(?: [A-Za-z][A-Za-z'’.-]{0,39})?$/;

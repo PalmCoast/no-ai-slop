@@ -17,8 +17,8 @@ import {
   TEMPLATE_SOURCE,
 } from "./public.ts";
 
-export type GrahamTemplate = {
-  kind: "graham-template";
+export type HigginsTemplate = {
+  kind: "higgins-template";
   source: typeof TEMPLATE_SOURCE;
   recipe: true;
   being: string;
@@ -46,7 +46,7 @@ function containsPhone(packed: string): boolean {
   return hits.some((hit) => hit.replace(/\D/g, "").length >= 10);
 }
 
-export function danielTemplate(): GrahamTemplate {
+export function danielTemplate(): HigginsTemplate {
   return toTemplate({
     being: BEING,
     operator: OPERATOR,
@@ -62,9 +62,9 @@ export function toTemplate(input: {
   shop: string;
   place: string;
   disclosure: string;
-}): GrahamTemplate {
+}): HigginsTemplate {
   return {
-    kind: "graham-template",
+    kind: "higgins-template",
     source: TEMPLATE_SOURCE,
     recipe: true,
     being: input.being,
@@ -94,7 +94,7 @@ export function toTemplate(input: {
 }
 
 /** Fail closed: a template that still holds a phone or a key is not shippable. */
-export function templateLeaks(template: GrahamTemplate, contacts: Contact[], secrets: string[]): string[] {
+export function templateLeaks(template: HigginsTemplate, contacts: Contact[], secrets: string[]): string[] {
   const packed = JSON.stringify(template);
   const leaks: string[] = [];
   for (const contact of contacts) {

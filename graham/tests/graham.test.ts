@@ -59,7 +59,7 @@ describe("the line", () => {
     });
     expect(result.action).toBe("block");
     expect(result.spamId).toBe("press1");
-    expect(result.say.startsWith("This is Graham, Daniel's line.")).toBe(true);
+    expect(result.say.startsWith("This is Higgins, Daniel's line.")).toBe(true);
   });
 
   it("alerts when the work has stopped and still offers the hold", () => {
@@ -115,7 +115,7 @@ describe("answers", () => {
     expect(rule.headline).toContain("country code");
     const price = answerAs("What does it cost to stand up another shop");
     expect(price.price).toContain("$1,750");
-    expect(price.spoken.startsWith("This is Graham, Daniel's line.")).toBe(true);
+    expect(price.spoken.startsWith("This is Higgins, Daniel's line.")).toBe(true);
   });
 });
 
@@ -213,5 +213,18 @@ describe("functions", () => {
     expect(stoodBody.being).toBe("Brooks");
     expect(stoodBody.price).toContain("$1,750");
     expect(stoodBody.template.credentials).toBe("not-included");
+  });
+});
+
+describe("persona name", () => {
+  it("introduces itself as Higgins and keeps Daniel Graham as the operator", () => {
+    const who = answerAs("Who are you?");
+    expect(who.headline).toBe("Higgins. Daniel's line.");
+    expect(who.spoken.startsWith("This is Higgins, Daniel's line.")).toBe(true);
+    const recipe = danielTemplate();
+    expect(recipe.kind).toBe("higgins-template");
+    expect(recipe.being).toBe("Higgins");
+    expect(recipe.operator).toBe("Daniel Graham");
+    expect(JSON.stringify(recipe)).not.toMatch(/\bGraham\b(?<!Daniel Graham)/);
   });
 });

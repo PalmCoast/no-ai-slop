@@ -1,10 +1,10 @@
-# Graham
+# Higgins
 
-Graham is Daniel Graham's line. The cell forwards unknown callers here. People on the contacts list still ring him. Graham books the meeting, takes the note, alerts him when the work has stopped, and blocks a mill script.
+Higgins is Daniel Graham's line. The cell forwards unknown callers here. People on the contacts list still ring him. Higgins books the meeting, takes the note, alerts him when the work has stopped, and blocks a mill script.
 
 The shape is a [SpaceXAI Team Bot](https://x.ai/news/team-bots) (28 Sep 2026): context, plugins, credentials, and memory. The public template is a recipe. It does not carry contacts, call notes, or keys. Conversations on a stood-up being stay with that operator.
 
-The body double talks in the browser and cuts a vertical caption reel. It says "This is Graham, Daniel's line." The reel is the mark, not a filmed face. A cloned voice stays on the operator's own account.
+The body double talks in the browser and cuts a vertical caption reel. It says "This is Higgins, Daniel's line." The reel is the mark, not a filmed face. A cloned voice stays on the operator's own account.
 
 GuyThread supplies the Monday drop: three things, each with a price and a reason. AskYard, NetYard, Sonaris, Stateside, Latch, Braid, and First Deploy AI are skills of the same being.
 
@@ -31,4 +31,4 @@ Do not set a provider API key in the repo. Voice in the browser needs no key. El
 
 Separate Netlify site. Base directory `graham`. Build `npm run build`. Publish `dist`. Node 22. `netlify.toml` already says this.
 
-The catalog lists Graham as lab until a host answers. Do not point another product's site at this folder.
+The catalog lists Higgins as lab until a host answers. Do not point another product's site at this folder.

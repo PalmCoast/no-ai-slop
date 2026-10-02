@@ -4,7 +4,7 @@ import { sessionHolds, sessionSlips, subscribeSession } from "../session";
 
 export default function Notes() {
   useEffect(() => {
-    document.title = "Notes | Graham";
+    document.title = "Notes | Higgins";
   }, []);
   const slips = useSyncExternalStore(subscribeSession, sessionSlips);
   const holds = useSyncExternalStore(subscribeSession, sessionHolds);

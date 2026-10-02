@@ -83,7 +83,7 @@ export type Plugin = {
   id: string;
   name: string;
   job: string;
-  /** on = Graham runs it with no secret. plugin = the operator connects their own account. */
+  /** on = Higgins runs it with no secret. plugin = the operator connects their own account. */
   mode: "on" | "plugin";
 };
 

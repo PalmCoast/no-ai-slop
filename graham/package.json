@@ -2,7 +2,7 @@
   "name": "graham",
   "version": "1.0.0",
   "private": true,
-  "description": "Graham — Daniel Graham's line. Screens the forward, books the meeting, and stands the same body double up for a client.",
+  "description": "Higgins — Daniel Graham's line. Screens the forward, books the meeting, and stands the same body double up for a client.",
   "type": "module",
   "scripts": {
     "dev": "vite",
