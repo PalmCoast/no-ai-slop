@@ -27,6 +27,9 @@ export const cleanToken = (s: unknown, max = 40): string =>
     .replace(/^-|-$/g, "")
     .slice(0, max);
 
+/** `?src=audit` marks an agent/audit run: /go answers 200 with the target instead of redirecting. */
+export const isAuditSrc = (src: string | null | undefined): boolean => /^audit/i.test(String(src ?? ""));
+
 /** Build the redirect target for a /go click. `from` is already cleaned. */
 export function goTarget(name: string, from: string): string | null {
   const link = GO_LINKS[name];

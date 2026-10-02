@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { config } from "../netlify/functions/go";
-import { GO_LINKS, goTarget } from "../shared/go-links";
+import { GO_LINKS, goTarget, isAuditSrc } from "../shared/go-links";
 
 describe("/go tracker", () => {
   it("is a first-class function path", () => {
@@ -20,5 +20,12 @@ describe("/go tracker", () => {
 
   it("404s unknown names", () => {
     expect(goTarget("nope", "x")).toBeNull();
+  });
+
+  it("treats ?src=audit as an audit run (no Stripe redirect)", () => {
+    expect(isAuditSrc("audit")).toBe(true);
+    expect(isAuditSrc("audit-0930")).toBe(true);
+    expect(isAuditSrc("gads")).toBe(false);
+    expect(isAuditSrc(null)).toBe(false);
   });
 });
