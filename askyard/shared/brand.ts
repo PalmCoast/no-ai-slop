@@ -18,15 +18,15 @@ export const CONSULT_DISPLAY_SEO = "+1-320-335-6186";
 export const VOICE_TEL = "+15093572230";
 export const VOICE_DISPLAY = "+1 509-357-2230";
 export const CALENDLY_URL = "https://calendly.com/coltsinsider/30min";
-export const FD_PRICE = "$1,500 setup, then $250/mo";
-export const FD_PRICE_LONG = "$1,500 setup, then $250/month";
+export const FD_PRICE = "$1,750 setup, then $250/mo";
+export const FD_PRICE_LONG = "$1,750 setup, then $250/month";
 export const FD_PROMISE = "Live this week on the same written plan we run for active client builds";
 export const HOME_TITLE = "AskYard | Free shop-floor AI answers from First Deploy";
 export const HOME_DESCRIPTION =
   "AskYard is the free shop-floor front door from First Deploy. Not agenthive.io. Built by AgentHive Inc in Palm Coast. Paid desk: firstdeploy.ai.";
 export const OTHER_HIVES = "AgentHive Inc is not agenthive.io (insurance leads) and not agenthive.co.";
 export const NIGHT_LINE_CTA =
-  "Need the night line installed? First Deploy AI — firstdeploy.ai — $1,500 setup, then $250/month.";
+  "Need the night line installed? First Deploy AI — firstdeploy.ai — $1,750 setup, then $250/month.";
 export const CONTENT_LASTMOD = "2026-09-21";
 export const CONSULT_RATES = "$75 / 30 min · $150 / hour";
 export const HERO_H1 = "Ask about AI. Get a free answer.";

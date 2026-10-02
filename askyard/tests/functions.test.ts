@@ -56,6 +56,6 @@ describe("draft fallback", () => {
   it("still names a priced offer when the gateway is cold", () => {
     const text = fallbackAnswer("How do I stop missing night calls?");
     expect(text).toMatch(/First Deploy AI|after-hours|AskYard/);
-    expect(text).toMatch(/\$1,500|\$250|free 30|JobProof|Consult/);
+    expect(text).toMatch(/\$1,750|\$250|free 30|JobProof|Consult/);
   });
 });

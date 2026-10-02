@@ -102,7 +102,7 @@ describe("directory listing badges", () => {
 describe("apps for sale", () => {
   it("lists First Deploy AI first and keeps live prices", () => {
     expect(SALE_APPS[0].name).toBe("First Deploy AI");
-    expect(SALE_APPS[0].price).toBe("$1,500 setup, then $250/mo");
+    expect(SALE_APPS[0].price).toBe("$1,750 setup, then $250/mo");
     expect(SALE_APPS.some((app) => app.slug === "jobproof")).toBe(true);
     expect(SALE_APPS.some((app) => app.slug === "flick")).toBe(true);
     expect(SALE_APPS.every((app) => app.url.startsWith("https://"))).toBe(true);
@@ -174,7 +174,7 @@ describe("seo", () => {
       expect(html).toContain("AskYard");
       expect(html).toContain("AgentHive Inc");
       expect(html).toContain("Palm Coast");
-      expect(html).toContain("$1,500");
+      expect(html).toContain("$1,750");
       expect(html).toContain("$250");
       expect(html).toContain("+1-320-335-6186");
       expect(html).toContain("https://firstdeploy.ai/");
@@ -189,7 +189,7 @@ describe("seo", () => {
       if (path === "/q/stop-missing-night-calls") {
         expect(html).toContain('rel="canonical" href="https://askyard.firstdeploy.ai/q/stop-missing-night-calls"');
         expect(html).toContain("Need the night line installed?");
-        expect(html).toContain("$1,500 setup, then $250/month");
+        expect(html).toContain("$1,750 setup, then $250/month");
       }
     }
   });
@@ -273,7 +273,7 @@ describe("seo", () => {
     expect(txt).toContain("agenthive.io");
     expect(txt).toContain("insurance leads");
     expect(txt).toContain("agenthive.co");
-    expect(txt).toContain("$1,500");
+    expect(txt).toContain("$1,750");
     expect(txt).toContain("$250");
     expect(txt).not.toMatch(/14 apps|\$70k/);
   });
@@ -282,7 +282,7 @@ describe("seo", () => {
 import { scrubGuarantee as __scrub } from "../shared/ask.ts";
 describe("scrubGuarantee", () => {
   it("rewrites stored risk-reversal sentences", () => {
-    const out = __scrub("First Deploy AI is $1,500 setup. If it is not live this week, you do not pay the setup. Book below.");
+    const out = __scrub("First Deploy AI is $1,750 setup. If it is not live this week, you do not pay the setup. Book below.");
     expect(out).not.toMatch(/do not pay|don.?t pay/i);
     expect(out).toContain("written plan");
     expect(out).toContain("Book below.");
