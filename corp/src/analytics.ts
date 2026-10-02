@@ -67,15 +67,16 @@ export function initAnalytics(): void {
     if (audit) sessionStorage.setItem("ph_audit", "1");
 
     loadSnippet();
-    const ph = window.posthog!;
-    ph.init(TOKEN, {
+    // Always read window.posthog at call time: array.js swaps the stub for the real client.
+    const ph = () => window.posthog!;
+    ph().init(TOKEN, {
       api_host: API_HOST,
       person_profiles: "identified_only",
       capture_pageview: "history_change",
       autocapture: false,
       disable_session_recording: true,
     });
-    ph.register({ site: location.hostname, audit });
+    ph().register({ site: location.hostname, audit });
 
     document.addEventListener(
       "click",
@@ -87,7 +88,7 @@ export function initAnalytics(): void {
         if (!kind) return;
         const u = new URL(a.href, location.href);
         const go = u.pathname.match(/\/go\/([a-z0-9-]+)/i);
-        ph.capture(
+        ph().capture(
           "cta_click",
           {
             kind,
