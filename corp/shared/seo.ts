@@ -10,6 +10,7 @@ import {
   CALENDLY_URL,
   CONSULT_DISPLAY,
   CONSULT_RATES,
+  CONSULT_TEL,
   FD_CTA_LABEL,
   FD_NAME,
   FD_PRICE,
@@ -30,7 +31,19 @@ import {
   PRODUCT_FOOTER_LINKS,
   STREET_ADDRESS,
 } from "./brand.ts";
-import { CONCIERGE_BOOK_LABEL, CONCIERGE_NAME, CONCIERGE_PRICE, CONCIERGE_STRIPE_URL, CONCIERGE_URL } from "./concierge.ts";
+import {
+  CONCIERGE_APPROVAL_LINE,
+  CONCIERGE_BOOK_LABEL,
+  CONCIERGE_NAME,
+  CONCIERGE_PRICE,
+  CONCIERGE_STRIPE_URL,
+  CONCIERGE_URL,
+  PILOT_BUY_LABEL,
+  PILOT_BUY_URL,
+  PILOT_NAME,
+  PILOT_PRICE,
+  PILOT_SEATS,
+} from "./concierge.ts";
 
 export type SeoPage = {
   path: string;
@@ -86,10 +99,10 @@ export const PAGE_SEO: SeoPage[] = [
   },
   {
     path: "/concierge",
-    title: `AI Concierge — ${CONCIERGE_PRICE} retainer | AgentHive Inc`,
-    description: `Done-with-you AI retainer for owners who tried ChatGPT and it didn’t stick. Audit, optimize, then automate. Two 45-minute sessions a month, unlimited async Slack or text, and a shared asset inventory. ${CONCIERGE_PRICE}.`,
-    h1: "Two sessions. The work ships.",
-    bodyHtml: `<main id="route-concierge" class="section"><div class="container"><h1 class="display">Two sessions. The work ships.</h1><p class="lede">${CONCIERGE_NAME} is a ${CONCIERGE_PRICE} done-with-you retainer. Audit the messy task, optimize the process, then automate it.</p><p>Included: 2 × 45-minute sessions a month, unlimited async Slack or text, and a shared inventory of every skill, automation, and asset we build. For owners who tried ChatGPT and it didn’t stick.</p><p>If ${FD_NAME} or hourly packs fit better, those stay open. ${CONSULT_RATES}. ${FD_NAME}: ${FD_PRICE}.</p><p><a href="${CONCIERGE_STRIPE_URL}">Start ${CONCIERGE_NAME} — ${CONCIERGE_PRICE}</a> · <a href="${CALENDLY_URL}">${CONCIERGE_BOOK_LABEL}</a> · <a href="mailto:${CONTACT_EMAIL}">${CONTACT_EMAIL}</a> · ${CONSULT_DISPLAY}</p></div></main>`,
+    title: `AI Concierge — always-on AI assistant, ${CONCIERGE_PRICE} | AgentHive Inc`,
+    description: `An always-on AI assistant that runs your inbox, calendar and follow-ups. ${CONCIERGE_APPROVAL_LINE} ${CONCIERGE_NAME} ${CONCIERGE_PRICE}. ${PILOT_NAME} (${PILOT_SEATS} seats): ${PILOT_PRICE}.`,
+    h1: "Your inbox, calendar and follow-ups. Handled.",
+    bodyHtml: `<main id="route-concierge" class="section"><div class="container"><h1 class="display">Your inbox, calendar and follow-ups. Handled.</h1><p class="lede">${CONCIERGE_NAME} is an always-on AI assistant that sorts your inbox, drafts replies in your voice, keeps your calendar and chases quotes and invoices. ${CONCIERGE_APPROVAL_LINE} Connects to Gmail, Google Calendar, Stripe and your CRM.</p><p><a href="${CALENDLY_URL}">${CONCIERGE_BOOK_LABEL}</a> · <a href="tel:${CONSULT_TEL}">${CONSULT_DISPLAY}</a> · <a href="mailto:${CONTACT_EMAIL}">${CONTACT_EMAIL}</a></p><h2>${PILOT_NAME} (${PILOT_SEATS} seats): ${PILOT_PRICE}</h2><p>Your cell rings first. Whatever you miss, your chief of staff picks up. It texts you who called, what they want, and a reply ready to send, and it handles your inbox and calendar. Nothing goes out until you text YES. Works on any phone. One flat price, set up for you in 48 hours. <a href="${PILOT_BUY_URL}">${PILOT_BUY_LABEL}</a></p><p>${CONCIERGE_NAME}: ${CONCIERGE_PRICE}. <a href="${CONCIERGE_STRIPE_URL}">Start ${CONCIERGE_NAME} — ${CONCIERGE_PRICE}</a></p><p>Other options: ${FD_NAME} ${FD_PRICE}. Hourly consult ${CONSULT_RATES}.</p></div></main>`,
   },
 ];
 
