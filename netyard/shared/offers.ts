@@ -11,9 +11,14 @@ export type Offer = {
   envKey: string;
   defaultPriceId: string;
   fallbackHref?: string;
+  /** When set, the /buy button links straight here instead of creating a Checkout Session. */
+  directHref?: string;
   blurb: string;
   cta: string;
 };
+
+/** First Deploy AI setup deposit ($875 of $1,750) on firstdeploy.ai; 302s to the live Stripe link. */
+export const FD_DEPOSIT_URL = "https://firstdeploy.ai/go/deposit";
 
 export const OFFERS: Offer[] = [
   {
@@ -25,7 +30,8 @@ export const OFFERS: Offer[] = [
     mode: "payment",
     envKey: "STRIPE_PRICE_ID_RACK",
     defaultPriceId: "price_1UHpioFJWYd4pYuxawfgIoHJ",
-    fallbackHref: "https://buy.stripe.com/dRm6oH6UI9P5ePb0PM2ZO1n",
+    fallbackHref: FD_DEPOSIT_URL,
+    directHref: FD_DEPOSIT_URL,
     blurb: "We stand up the LAN from your NetYard plan this week. Live this week on the same written plan we run for active client builds.",
     cta: "Pay setup",
   },
