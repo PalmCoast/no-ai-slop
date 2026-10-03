@@ -1,6 +1,6 @@
 import type { Config, Context } from "@netlify/functions";
 import { getStore } from "@netlify/blobs";
-import { cleanToken, goTarget } from "../../shared/go-links.ts";
+import { cleanToken, goTarget, isAuditSrc } from "../../shared/go-links.ts";
 
 const BOT_RE =
   /bot|crawl|spider|slurp|preview|facebookexternalhit|embedly|whatsapp|telegram|discord|skype|curl|wget|python|httpx|aiohttp|go-http|java\/|okhttp|axios|node-fetch|undici|headless|phantom|puppeteer|playwright|lighthouse|pagespeed|monitor|uptime|scan|check|validator|feed|fetch|archiver|semrush|ahrefs|mj12|dotbot|petalbot|bytespider|gptbot|claude|perplexity|chatgpt|oai-search|google-extended|bingpreview/i;
@@ -34,7 +34,10 @@ export default async (req: Request, context: Context) => {
   const ua = req.headers.get("user-agent") || "";
   const test = TEST_RE.test(ua);
   const bot = !test && (!ua || BOT_RE.test(ua));
-  const kind = test ? "test" : bot ? "bot" : "human";
+  // Audit mode: agents and site audits call /go/<name>?src=audit. Never redirect them to
+  // Stripe, because loading a Payment Link creates a real Checkout Session.
+  const audit = isAuditSrc(url.searchParams.get("src"));
+  const kind = audit ? "audit" : test ? "test" : bot ? "bot" : "human";
   const prefetch = /prefetch|prerender/i.test(
     (req.headers.get("sec-purpose") || "") + (req.headers.get("purpose") || "") + (req.headers.get("x-moz") || ""),
   );
@@ -51,6 +54,7 @@ export default async (req: Request, context: Context) => {
       ua: ua.slice(0, 400),
       bot,
       test,
+      audit,
       country: context.geo?.country?.code || null,
       target,
     };
@@ -61,6 +65,18 @@ export default async (req: Request, context: Context) => {
     } catch (e) {
       console.error("go: blob write failed", e);
     }
+  }
+
+  if (audit) {
+    return new Response(`audit: /go/${name} -> ${target}\n`, {
+      status: 200,
+      headers: {
+        "content-type": "text/plain; charset=utf-8",
+        "x-go-target": target,
+        "cache-control": "no-store, max-age=0",
+        "x-robots-tag": "noindex, nofollow",
+      },
+    });
   }
 
   return new Response(null, {

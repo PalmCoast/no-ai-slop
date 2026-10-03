@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import AskAiBar from "../components/AskAiBar";
 import {
   BRAND_NAME,
@@ -14,12 +14,21 @@ import {
   HIVE_CONSULT_PATH,
 } from "../../shared/brand";
 import {
+  CONCIERGE_APPROVAL_LINE,
   CONCIERGE_BOOK_LABEL,
   CONCIERGE_NAME,
   CONCIERGE_PRICE,
   CONCIERGE_PRICE_AMOUNT,
   CONCIERGE_STRIPE_URL,
   CONCIERGE_URL,
+  PILOT_BUY_LABEL,
+  PILOT_BUY_URL,
+  PILOT_MONTHLY_AMOUNT,
+  PILOT_NAME,
+  PILOT_PAID_MESSAGE,
+  PILOT_PRICE,
+  PILOT_SEATS,
+  PILOT_SETUP_AMOUNT,
 } from "../../shared/concierge";
 
 const CONCIERGE_SCHEMA = {
@@ -36,21 +45,44 @@ const CONCIERGE_SCHEMA = {
     telephone: "+1-320-335-6186",
   },
   description:
-    "Done-with-you AI retainer. Audit, optimize, then automate. Two 45-minute sessions a month, unlimited async Slack or text, and a shared asset inventory.",
-  offers: {
-    "@type": "Offer",
-    name: CONCIERGE_NAME,
-    price: CONCIERGE_PRICE_AMOUNT,
-    priceCurrency: "USD",
-    url: CONCIERGE_STRIPE_URL,
-    availability: "https://schema.org/InStock",
-  },
+    "An always-on AI assistant for busy owners. It sorts the inbox, drafts replies, keeps the calendar and chases follow-ups. Nothing goes out without your approval.",
+  offers: [
+    {
+      "@type": "Offer",
+      name: CONCIERGE_NAME,
+      price: CONCIERGE_PRICE_AMOUNT,
+      priceCurrency: "USD",
+      url: CONCIERGE_STRIPE_URL,
+      availability: "https://schema.org/InStock",
+    },
+    {
+      "@type": "Offer",
+      name: `${PILOT_NAME} (${PILOT_SEATS} seats)`,
+      price: PILOT_SETUP_AMOUNT,
+      priceCurrency: "USD",
+      description: `${PILOT_PRICE}. Setup fee, then $${PILOT_MONTHLY_AMOUNT} per month.`,
+      url: PILOT_BUY_URL,
+      availability: "https://schema.org/LimitedAvailability",
+    },
+  ],
 };
 
 export default function Concierge() {
+  const paid = new URLSearchParams(useLocation().search).get("paid") === "1";
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(CONCIERGE_SCHEMA) }} />
+      {paid && (
+        <div className="section" role="status" style={{ paddingBottom: 0 }}>
+          <div className="container">
+            <article className="trust">
+              <p className="eyebrow">{PILOT_NAME}</p>
+              <h3>You’re in.</h3>
+              <p className="muted">{PILOT_PAID_MESSAGE}</p>
+            </article>
+          </div>
+        </div>
+      )}
       <section className="hero consult-hero">
         <div className="hero-media">
           <img
@@ -60,146 +92,170 @@ export default function Concierge() {
         </div>
         <div className="hero-copy">
           <div className="eyebrow">
-            <span className="dot" /> {CONCIERGE_NAME} · {CONCIERGE_PRICE}
+            <span className="dot" /> {CONCIERGE_NAME} · always-on AI assistant
           </div>
           <h1 className="display">
-            Two sessions.
+            Your inbox, calendar and follow-ups.
             <br />
-            <em>The work ships.</em>
+            <em>Handled.</em>
           </h1>
           <p className="lede">
-            A {CONCIERGE_PRICE} done-with-you retainer for owners who tried ChatGPT and it didn’t stick. We audit the
-            messy task, cut the broken steps, then automate it — with an operator in the room.
+            An always-on AI assistant that works inside your business. It sorts your inbox, drafts replies in your
+            voice, keeps your calendar and chases quotes and invoices. <strong>{CONCIERGE_APPROVAL_LINE}</strong> It
+            drafts, flags and reminds. You tap yes.
           </p>
           <div className="hero-actions">
-            <a className="btn btn-primary" href={CONCIERGE_STRIPE_URL} rel="noreferrer" target="_blank">
-              Start {CONCIERGE_NAME} — {CONCIERGE_PRICE}
-            </a>
-            <a className="btn btn-outline" href={CALENDLY_URL} rel="noreferrer" target="_blank">
+            <a className="btn btn-primary" href={CALENDLY_URL} rel="noreferrer" target="_blank">
               {CONCIERGE_BOOK_LABEL}
             </a>
+            <a className="btn btn-outline" href="#pilot">
+              {PILOT_NAME} · {PILOT_SEATS} seats
+            </a>
           </div>
+          <p className="fine">Connects to Gmail, Google Calendar, Stripe and your CRM.</p>
           <p className="fine">
-            <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>
-            {" · "}
             <a href={`tel:${CONSULT_TEL}`}>{CONSULT_DISPLAY}</a>
+            {" · "}
+            <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>
           </p>
         </div>
       </section>
 
       <AskAiBar />
 
-      <section className="section" id="aoa">
+      <section className="section" id="what">
         <div className="container">
           <div className="section-head">
-            <h2>Audit. Optimize. Automate.</h2>
-            <p>Same order every month. AI comes after the process is worth automating.</p>
+            <h2>What it does every day.</h2>
+            <p>It learns your prices, people, customers and the way you talk, so you stop explaining things twice.</p>
           </div>
-          <div className="steps">
+          <div className="trust-grid">
             <article className="trust">
-              <p className="step-num">01</p>
-              <h3>Audit</h3>
-              <p className="muted">Screen-share the messy task live. We watch it and map what actually eats the week.</p>
+              <p className="eyebrow">Inbox</p>
+              <h3>Sorted and drafted</h3>
+              <p className="muted">“Needs you,” “drafted for you” and “FYI.” Replies are written in your voice, ready to approve.</p>
             </article>
             <article className="trust">
-              <p className="step-num">02</p>
-              <h3>Optimize</h3>
-              <p className="muted">Cut broken and duplicate steps before any model touches the work.</p>
+              <p className="eyebrow">Calendar</p>
+              <h3>Kept for you</h3>
+              <p className="muted">Finds open times, proposes them and books once you say yes.</p>
             </article>
             <article className="trust">
-              <p className="step-num">03</p>
-              <h3>Automate</h3>
+              <p className="eyebrow">Follow-ups</p>
+              <h3>Chased on time</h3>
+              <p className="muted">Quotes, invoices and “just checking in” notes get drafted on schedule instead of forgotten.</p>
+            </article>
+            <article className="trust">
+              <p className="eyebrow">Answers</p>
+              <h3>From your own records</h3>
+              <p className="muted">Ask “what did we last tell the Johnsons?” and get it from your email, calendar, Stripe and CRM.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section className="section section-alt" id="pilot">
+        <div className="container cta-split">
+          <div>
+            <div className="eyebrow">
+              {PILOT_NAME} · {PILOT_SEATS} seats
+            </div>
+            <h2 className="display" style={{ fontSize: "clamp(2.2rem, 5vw, 3.6rem)" }}>
+              Your cell rings first.
+              <br />
+              <em>Whatever you miss, your chief of staff picks up.</em>
+            </h2>
+            <p className="lede">
+              It texts you who called, what they want, and a reply ready to send, and it handles your inbox and
+              calendar. Nothing goes out until you text YES.
+            </p>
+            <p className="lede">Works on any phone. One flat price, set up for you in 48 hours.</p>
+            <div className="hero-actions">
+              <a className="btn btn-primary" href={PILOT_BUY_URL} rel="noreferrer" target="_blank">
+                {PILOT_BUY_LABEL}
+              </a>
+              <a className="btn btn-outline" href={CALENDLY_URL} rel="noreferrer" target="_blank">
+                {CONCIERGE_BOOK_LABEL}
+              </a>
+            </div>
+            <p className="fine">Limited to {PILOT_SEATS} pilot seats.</p>
+          </div>
+          <article className="rate-card">
+            <p className="eyebrow">Pilot price</p>
+            <p className="rate-amt">{PILOT_PRICE}</p>
+            <p className="muted">One-time setup, then $299 a month. Set up for you in 48 hours.</p>
+            <p className="muted">{CONCIERGE_NAME} stays at {CONCIERGE_PRICE}.</p>
+          </article>
+        </div>
+      </section>
+
+      <section className="section" id="day">
+        <div className="container">
+          <div className="section-head">
+            <h2>A day with it.</h2>
+            <p>For busy owner-operators with a full inbox.</p>
+          </div>
+          <div className="trust-grid bridge-grid">
+            <article className="trust">
+              <p className="eyebrow">Before</p>
               <p className="muted">
-                Claude projects, skills, and workflows. When software is the right tool, that hands off to {FD_NAME} or
-                a scoped build.
+                You get back from job sites at 7 pm to 60 unread emails, three estimate requests and a supplier invoice
+                you can’t find. Last week’s quotes never got a follow-up.
+              </p>
+            </article>
+            <article className="trust">
+              <p className="eyebrow">After</p>
+              <p className="muted">
+                By morning the inbox is sorted. Estimate replies are drafted with open times filled in, and older quotes
+                have a follow-up waiting. You clear it all from your phone in 15 minutes.
               </p>
             </article>
           </div>
         </div>
       </section>
 
-      <section className="section section-alt" id="included">
-        <div className="container">
-          <div className="section-head">
-            <h2>What’s included.</h2>
-            <p>Forced working time, a thread you can use while the work is in front of you, and a list of assets you keep.</p>
-          </div>
-          <div className="trust-grid consult-offers">
-            <article className="trust">
-              <p className="eyebrow">Sessions</p>
-              <h3>2 × 45 minutes</h3>
-              <p className="muted">Two working sessions a month on Zoom, screen-share. You leave with something usable the same day.</p>
-            </article>
-            <article className="trust">
-              <p className="eyebrow">Between calls</p>
-              <h3>Unlimited async</h3>
-              <p className="muted">Slack or text while the question is in front of you. Not a ticket queue.</p>
-            </article>
-            <article className="trust">
-              <p className="eyebrow">The hub</p>
-              <h3>Shared asset inventory</h3>
-              <p className="muted">Notion or Drive: links, schedule, and a running list of every skill, automation, and asset we build.</p>
-            </article>
-            <article className="trust">
-              <p className="eyebrow">Before kickoff</p>
-              <h3>Intake</h3>
-              <p className="muted">Time sinks, tool stack, and the process inventory — so the first session starts on the real leak.</p>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section className="section" id="price">
+      <section className="section section-alt" id="price">
         <div className="container cta-split">
           <div>
-            <div className="eyebrow">The retainer</div>
+            <div className="eyebrow">{CONCIERGE_NAME}</div>
             <h2 className="display" style={{ fontSize: "clamp(2.2rem, 5vw, 3.6rem)" }}>
               {CONCIERGE_PRICE}.
               <br />
-              <em>Month to month.</em>
+              <em>Set up and tuned for you.</em>
             </h2>
             <p className="lede">
-              You’re not buying hours. You’re buying two forced working sessions a month so the AI work actually ships —
-              and a running list of assets you’ll hate to lose at renewal. Six seats, so the sessions stay sharp.
+              Setup, connected tools and ongoing tuning are included. I run my own company this way every day, and I
+              keep improving yours each month.
             </p>
             <div className="hero-actions">
-              <a className="btn btn-primary" href={CONCIERGE_STRIPE_URL} rel="noreferrer" target="_blank">
-                Start {CONCIERGE_NAME} — {CONCIERGE_PRICE}
-              </a>
-              <a className="btn btn-outline" href={CALENDLY_URL} rel="noreferrer" target="_blank">
+              <a className="btn btn-primary" href={CALENDLY_URL} rel="noreferrer" target="_blank">
                 {CONCIERGE_BOOK_LABEL}
+              </a>
+              <a className="btn btn-outline" href={CONCIERGE_STRIPE_URL} rel="noreferrer" target="_blank">
+                Start {CONCIERGE_NAME} — {CONCIERGE_PRICE}
               </a>
             </div>
             <p className="fine">Stripe subscription. Recurring {CONCIERGE_PRICE}. Cancel any month after the first 30 days.</p>
           </div>
           <article className="rate-card">
-            <p className="eyebrow">Who it’s for</p>
+            <p className="eyebrow">How we work together</p>
             <p className="rate-amt">{CONCIERGE_PRICE}</p>
-            <p className="muted">
-              Owners and COOs who already tried ChatGPT or Claude and it didn’t stick. Stuck in sales follow-up, quoting,
-              scheduling, ops handoffs, or reporting — and want a partner on the calls, not a PDF of prompts.
-            </p>
-            <p className="muted">
-              Not included: unlimited custom software, staffing your team, or a black-box agency that runs without you.
-            </p>
+            <p className="muted">Two 45-minute working sessions a month, plus text or Slack between them.</p>
+            <p className="muted">{CONCIERGE_APPROVAL_LINE}</p>
           </article>
         </div>
       </section>
 
-      <section className="section section-alt">
+      <section className="section">
         <div className="container">
           <div className="section-head">
-            <h2>If a retainer is the wrong shape.</h2>
-            <p>
-              {FD_NAME} and the hourly packs stay open. The bottleneck call is how we say which one fits — we don’t
-              force the retainer.
-            </p>
+            <h2>Other options.</h2>
           </div>
           <div className="trust-grid bridge-grid">
             <article className="trust">
               <p className="eyebrow">{FD_NAME}</p>
               <h3>{FD_PRICE}</h3>
-              <p className="muted">After-hours desk and a fixed deploy when the audit shows calls or quotes leaking.</p>
+              <p className="muted">After-hours desk and a fixed deploy for field operators.</p>
               <a className="btn btn-outline" href={FD_URL} rel="noreferrer" target="_blank">
                 {FD_NAME}
               </a>
@@ -207,20 +263,20 @@ export default function Concierge() {
             <article className="trust">
               <p className="eyebrow">Hourly consult</p>
               <h3>{CONSULT_RATES}</h3>
-              <p className="muted">Paid time, or a 10-hour pack at $1,250, when continuity is more than you need.</p>
+              <p className="muted">Paid time, or a 10-hour pack at $1,250.</p>
               <Link className="btn btn-outline" to={HIVE_CONSULT_PATH}>
                 See hourly consult
               </Link>
             </article>
           </div>
           <p className="fine" style={{ marginTop: 18 }}>
-            <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>
+            <a href={CALENDLY_URL} rel="noreferrer" target="_blank">
+              {CONCIERGE_BOOK_LABEL}
+            </a>
             {" · "}
             <a href={`tel:${CONSULT_TEL}`}>{CONSULT_DISPLAY}</a>
             {" · "}
-            <a href={CALENDLY_URL} rel="noreferrer" target="_blank">
-              Free 15–30 minute bottleneck call
-            </a>
+            <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>
           </p>
         </div>
       </section>

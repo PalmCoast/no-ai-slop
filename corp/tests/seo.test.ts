@@ -68,10 +68,15 @@ describe("per-route SEO", () => {
     expect(concierge).toContain('id="route-concierge"');
     expect(concierge).toContain('rel="canonical" href="https://agenthiveinc.com/concierge"');
     expect(concierge).toContain('property="og:url" content="https://agenthiveinc.com/concierge"');
-    expect(concierge).toContain('property="og:title" content="AI Concierge — $2,000/mo retainer | AgentHive Inc"');
+    expect(concierge).toContain('property="og:title" content="AI Concierge — always-on AI assistant, $2,000/mo | AgentHive Inc"');
     expect(concierge).toContain("https://buy.stripe.com/6oUeVd7YM3qH0Ylbuq2ZO1u");
     expect(concierge).toContain("$2,000/mo");
-    expect(concierge).toContain("didn’t stick");
+    expect(concierge).toContain("Nothing goes out without your approval.");
+    expect(concierge).toContain("Chief of Staff pilot (3 seats): $1,500 setup + $299/mo");
+    expect(concierge).toContain("https://calendly.com/coltsinsider/30min");
+    expect(concierge).toContain("https://buy.stripe.com/9B600jbaYe5ldL7cyu2ZO1B");
+    expect(concierge).not.toMatch(/guarantee|money-back|risk-free|never miss|the only/i);
+    expect(concierge).not.toContain("386-276-2114");
     expect(home).toContain('rel="canonical" href="https://agenthiveinc.com/"');
     expect(about).not.toContain('rel="canonical" href="https://agenthiveinc.com/" />');
     expect(about).toContain("application/ld+json");
