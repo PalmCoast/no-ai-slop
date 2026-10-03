@@ -3,7 +3,7 @@ import checkout, { config as checkoutConfig } from "../netlify/functions/checkou
 import { config as orderConfig } from "../netlify/functions/order.ts";
 import { config as webhookConfig } from "../netlify/functions/stripe-webhook.ts";
 import { priceIdFor } from "../netlify/lib/stripe.ts";
-import { OFFERS, isOfferId, offerById } from "../shared/offers.ts";
+import { FD_DEPOSIT_URL, OFFERS, isOfferId, offerById } from "../shared/offers.ts";
 
 const saved = { ...process.env };
 
@@ -18,11 +18,14 @@ describe("offers", () => {
   it("keeps five priced SKUs on live Palm Coast AI prices", () => {
     expect(OFFERS.map((o) => o.id)).toEqual(["rack", "desk", "consult30", "consultHour", "pack"]);
     expect(new Set(OFFERS.map((o) => o.defaultPriceId)).size).toBe(5);
-    expect(offerById("rack")?.cents).toBe(150_000);
+    expect(offerById("rack")?.cents).toBe(175_000);
     expect(offerById("desk")?.cents).toBe(25_000);
     expect(offerById("desk")?.mode).toBe("subscription");
     expect(offerById("consult30")?.fallbackHref).toContain("buy.stripe.com");
-    expect(offerById("rack")?.fallbackHref).toContain("buy.stripe.com");
+    expect(FD_DEPOSIT_URL).toBe("https://firstdeploy.ai/go/deposit");
+    expect(offerById("rack")?.fallbackHref).toBe(FD_DEPOSIT_URL);
+    expect(offerById("rack")?.directHref).toBe(FD_DEPOSIT_URL);
+    expect(OFFERS.filter((o) => o.directHref).map((o) => o.id)).toEqual(["rack"]);
     expect(OFFERS.every((o) => Boolean(o.fallbackHref))).toBe(true);
     expect(isOfferId("rack")).toBe(true);
     expect(isOfferId("enterprise")).toBe(false);
@@ -64,7 +67,7 @@ describe("checkout without a Stripe secret", () => {
     const body = (await res.json()) as { url?: string; fallback?: boolean; offer?: string };
     expect(body.offer).toBe("rack");
     expect(body.fallback).toBe(true);
-    expect(body.url).toBe("https://buy.stripe.com/dRm6oH6UI9P5ePb0PM2ZO1n");
+    expect(body.url).toBe("https://firstdeploy.ai/go/deposit");
   });
 
   it("returns the consult Stripe payment link", async () => {

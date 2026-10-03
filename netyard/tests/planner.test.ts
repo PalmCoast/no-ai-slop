@@ -171,7 +171,7 @@ describe("seo", () => {
     expect(new Set(pages).size).toBe(PAGE_SEO.length);
     expect(pages[0]).toContain("id=\"route-home\"");
     expect(pages[0]).toContain("Microsoft Server");
-    expect(pages[0]).toContain("$1,500");
+    expect(pages[0]).toContain("$1,750");
     expect(pages.join("")).not.toMatch(/firstdeploy\\.dev|\\$2,?500/);
     expect(PAGE_SEO.find((p) => p.path === "/buy")?.h1).toMatch(/Pay for the rack/);
     expect(PAGE_SEO.find((p) => p.path === "/launch")?.h1).toMatch(/Watch the standup/);

@@ -66,9 +66,9 @@ export const PAGE_SEO: SeoPage[] = [
   {
     path: "/buy",
     title: "Pay on Stripe | NetYard",
-    description: `Pay NetYard setup $1,500, the $250/mo desk, or consult time on Stripe. Live this week on the same written plan we run for active client builds.`,
+    description: `Pay NetYard setup $1,750 ($875 to start), the $250/mo desk, or consult time on Stripe. Live this week on the same written plan we run for active client builds.`,
     h1: "Pay for the rack, not another Server license.",
-    bodyHtml: `<main id="route-buy" class="section"><div class="container"><h1 class="display">Pay for the rack, not another Server license.</h1><p class="lede">The wizard and scripts stay free. Stripe takes the $1,500 setup, the $250/mo desk, or consult time. ${FD_PROMISE}.</p></div></main>`,
+    bodyHtml: `<main id="route-buy" class="section"><div class="container"><h1 class="display">Pay for the rack, not another Server license.</h1><p class="lede">The wizard and scripts stay free. Stripe takes the $1,750 setup ($875 to start), the $250/mo desk, or consult time. ${FD_PROMISE}.</p></div></main>`,
   },
   {
     path: "/launch",

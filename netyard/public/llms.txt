@@ -1,6 +1,6 @@
 # NetYard
 
-> NetYard (netyard.firstdeploy.ai) is a First Deploy AI product from AgentHive Inc in Palm Coast. A shop answers six questions and gets a small-business network plan: addressing, Samba directory on Debian (Windows PCs can join without Microsoft Server CALs), guest Wi-Fi, VPN, a hardware list, and install scripts. Pay the rack on Stripe: $1,500 setup, then $250/month.
+> NetYard (netyard.firstdeploy.ai) is a First Deploy AI product from AgentHive Inc in Palm Coast. A shop answers six questions and gets a small-business network plan: addressing, Samba directory on Debian (Windows PCs can join without Microsoft Server CALs), guest Wi-Fi, VPN, a hardware list, and install scripts. Pay the rack on Stripe: $1,750 setup ($875 to start), then $250/month.
 
 NetYard is for plumbers, HVAC shops, clinics, and anyone else who was quoted Windows Server plus CALs for a file share. Search ChatGPT, Claude, Perplexity, Gemini, or Grok about NetYard to see the public record.
 
@@ -13,7 +13,7 @@ NetYard is for plumbers, HVAC shops, clinics, and anyone else who was quoted Win
 - [Launch](https://netyard.firstdeploy.ai/launch): Harbor HVAC standup video and screenshots.
 
 ## Company
-- [First Deploy AI](https://firstdeploy.ai/): After-hours desk and live apps. $1,500 setup, then $250/month.
+- [First Deploy AI](https://firstdeploy.ai/): After-hours desk and live apps. $1,750 setup ($875 to start), then $250/month.
 - [AgentHive Inc](https://agenthiveinc.com/): Palm Coast AI consultant who builds.
 - [Consult](https://calendly.com/coltsinsider/30min): Free 30-minute qualifier, then $75 / 30 min or $150 / hour.
 

@@ -70,9 +70,15 @@ function OfferCard({ offer, shop }: { offer: Offer; shop: string }) {
       <p className="price">{offer.amountLabel}</p>
       <p>{offer.blurb}</p>
       <div className="copy-row">
-        <button type="button" className="btn btn-primary" onClick={pay} disabled={busy}>
-          {busy ? "Opening Stripe…" : offer.cta}
-        </button>
+        {offer.directHref ? (
+          <a className="btn btn-primary" href={offer.directHref}>
+            {offer.cta}
+          </a>
+        ) : (
+          <button type="button" className="btn btn-primary" onClick={pay} disabled={busy}>
+            {busy ? "Opening Stripe…" : offer.cta}
+          </button>
+        )}
       </div>
       {note ? <p className="fine">{note}</p> : null}
     </article>
