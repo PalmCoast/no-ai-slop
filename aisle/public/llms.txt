@@ -12,7 +12,7 @@ The shelf is compiled from public shop listings so the filter has descriptions t
 - [Publish](https://aisle.firstdeploy.ai/publish): $29 for a named door, a CSV shelf sheet, and a one-page brief.
 
 ## Company
-- [First Deploy AI](https://firstdeploy.ai/): After-hours desk and live apps. $1,500 setup, then $250/month.
+- [First Deploy AI](https://firstdeploy.ai/): After-hours desk and live apps. $1,750 setup ($875 to start), then $250/month.
 - [AgentHive Inc](https://agenthiveinc.com/): Palm Coast AI consultant who builds.
 - Contact: daniel@agenthiveinc.com
 - Legal: AgentHive Inc / AGENTHIVEINCCOM LLC
