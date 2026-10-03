@@ -74,6 +74,7 @@ describe("per-route SEO", () => {
     expect(concierge).toContain("Nothing goes out without your approval.");
     expect(concierge).toContain("Chief of Staff pilot (3 seats): $1,500 setup + $299/mo");
     expect(concierge).toContain("https://calendly.com/coltsinsider/30min");
+    expect(concierge).toContain("https://buy.stripe.com/9B600jbaYe5ldL7cyu2ZO1B");
     expect(concierge).not.toMatch(/guarantee|money-back|risk-free|never miss|the only/i);
     expect(concierge).not.toContain("386-276-2114");
     expect(home).toContain('rel="canonical" href="https://agenthiveinc.com/"');

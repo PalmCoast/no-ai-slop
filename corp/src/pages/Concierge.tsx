@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import AskAiBar from "../components/AskAiBar";
 import {
   BRAND_NAME,
@@ -25,6 +25,7 @@ import {
   PILOT_BUY_URL,
   PILOT_MONTHLY_AMOUNT,
   PILOT_NAME,
+  PILOT_PAID_MESSAGE,
   PILOT_PRICE,
   PILOT_SEATS,
   PILOT_SETUP_AMOUNT,
@@ -60,16 +61,28 @@ const CONCIERGE_SCHEMA = {
       price: PILOT_SETUP_AMOUNT,
       priceCurrency: "USD",
       description: `${PILOT_PRICE}. Setup fee, then $${PILOT_MONTHLY_AMOUNT} per month.`,
-      url: `${CONCIERGE_URL}#pilot`,
+      url: PILOT_BUY_URL,
       availability: "https://schema.org/LimitedAvailability",
     },
   ],
 };
 
 export default function Concierge() {
+  const paid = new URLSearchParams(useLocation().search).get("paid") === "1";
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(CONCIERGE_SCHEMA) }} />
+      {paid && (
+        <div className="section" role="status" style={{ paddingBottom: 0 }}>
+          <div className="container">
+            <article className="trust">
+              <p className="eyebrow">{PILOT_NAME}</p>
+              <h3>You’re in.</h3>
+              <p className="muted">{PILOT_PAID_MESSAGE}</p>
+            </article>
+          </div>
+        </div>
+      )}
       <section className="hero consult-hero">
         <div className="hero-media">
           <img
@@ -160,6 +173,9 @@ export default function Concierge() {
             <div className="hero-actions">
               <a className="btn btn-primary" href={PILOT_BUY_URL} rel="noreferrer" target="_blank">
                 {PILOT_BUY_LABEL}
+              </a>
+              <a className="btn btn-outline" href={CALENDLY_URL} rel="noreferrer" target="_blank">
+                {CONCIERGE_BOOK_LABEL}
               </a>
             </div>
             <p className="fine">Limited to {PILOT_SEATS} pilot seats.</p>

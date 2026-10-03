@@ -17,14 +17,10 @@ export const PILOT_PRICE = "$1,500 setup + $299/mo";
 export const PILOT_SETUP_AMOUNT = "1500.00";
 export const PILOT_MONTHLY_AMOUNT = "299.00";
 
-/**
- * TODO(stripe-pilot-link): the Chief of Staff pilot Payment Link ($1,500 one-time + $299/mo)
- * does not exist yet. Daniel has to approve creating it in Stripe. When it exists, paste the
- * https://buy.stripe.com/... URL here (and add a /go/ entry if wanted). While this is empty the
- * pilot button books the 30-min call instead.
- */
-export const PILOT_STRIPE_URL = "";
+/** Live Stripe Payment Link for the Chief of Staff pilot ($1,500 one-time + $299/mo). After payment it redirects to /concierge?paid=1. */
+export const PILOT_STRIPE_URL = "https://buy.stripe.com/9B600jbaYe5ldL7cyu2ZO1B";
 
-/** Where the pilot buy button points: the Stripe link once it exists, the 30-min call until then. */
+/** Where the pilot buy button points (falls back to the 30-min call if the Stripe link is ever blanked). */
 export const PILOT_BUY_URL = PILOT_STRIPE_URL || CALENDLY_URL;
 export const PILOT_BUY_LABEL = PILOT_STRIPE_URL ? `Claim a pilot seat — ${PILOT_PRICE}` : "Claim a pilot seat — book a 30-min call";
+export const PILOT_PAID_MESSAGE = "Thanks, your pilot seat is reserved. I’ll reach out to schedule your setup. Questions: 320-335-6186.";
