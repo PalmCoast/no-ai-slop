@@ -48,7 +48,7 @@ export const OFFER_BY_SLUG: Record<string, YardOffer> = {
   "first-deploy": {
     slug: "first-deploy",
     title: "First Deploy AI",
-    price: "$1,750 setup, then $250/mo",
+    price: "$1,750 setup ($875 to start), then $250/mo",
     cta: "Start First Deploy AI",
     href: PARENT_CHECK_URL,
     line: "We stand up the after-hours desk this week on a written plan.",
@@ -247,7 +247,7 @@ export const SEED_QUESTIONS: YardQuestion[] = [
     helpful: 74,
     missed: 6,
     answer:
-      "Put one number on the truck, the yard sign, and Google. After hours, that number should text the caller back in under a minute with two questions: what broke, and when can we come. A human reviews the thread in the morning. You do not need a new receptionist. You need the phone to catch the job while you sleep. First Deploy AI stands that desk up this week for $1,750 setup, then $250/month. Setup terms: 50% to start, the balance at completion or split over two monthly payments.",
+      "Put one number on the truck, the yard sign, and Google. After hours, that number should text the caller back in under a minute with two questions: what broke, and when can we come. A human reviews the thread in the morning. You do not need a new receptionist. You need the phone to catch the job while you sleep. First Deploy AI stands that desk up this week for $1,750 setup ($875 to start), then $250/month. Setup terms: 50% to start, the balance at completion or split over two monthly payments.",
   },
   {
     slug: "ai-without-learning-chatgpt",
@@ -281,7 +281,7 @@ export const SEED_QUESTIONS: YardQuestion[] = [
     offerSlug: "first-deploy",
     updatedAt: seedDate(),
     answer:
-      "Do not buy a new phone system. Forward after-hours to a desk that texts back, books, and logs the job. That is one product, not six apps. First Deploy AI is $1,750 setup and $250/month. A $20 chatbot on the website will not answer the missed call. The leak is the night ring, not the homepage.",
+      "Do not buy a new phone system. Forward after-hours to a desk that texts back, books, and logs the job. That is one product, not six apps. First Deploy AI is $1,750 setup ($875 to start) and $250/month. A $20 chatbot on the website will not answer the missed call. The leak is the night ring, not the homepage.",
   },
   {
     slug: "ai-write-a-quote-from-a-photo",
@@ -361,7 +361,7 @@ export const SEED_QUESTIONS: YardQuestion[] = [
     offerSlug: "first-deploy",
     updatedAt: seedDate(),
     answer:
-      "The answer on AskYard is free. The work is not. First Deploy AI is $1,750 setup, then $250/month. Live this week on the same written plan we run for active client builds. Consult is a free 30-minute qualifier, then $75 per 30 minutes or $150/hour. We put the price next to the answer so you can walk away.",
+      "The answer on AskYard is free. The work is not. First Deploy AI is $1,750 setup ($875 to start), then $250/month. Live this week on the same written plan we run for active client builds. Consult is a free 30-minute qualifier, then $75 per 30 minutes or $150/hour. We put the price next to the answer so you can walk away.",
   },
 ];
 

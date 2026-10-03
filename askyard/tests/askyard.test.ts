@@ -102,7 +102,7 @@ describe("directory listing badges", () => {
 describe("apps for sale", () => {
   it("lists First Deploy AI first and keeps live prices", () => {
     expect(SALE_APPS[0].name).toBe("First Deploy AI");
-    expect(SALE_APPS[0].price).toBe("$1,750 setup, then $250/mo");
+    expect(SALE_APPS[0].price).toBe("$1,750 setup ($875 to start), then $250/mo");
     expect(SALE_APPS.some((app) => app.slug === "jobproof")).toBe(true);
     expect(SALE_APPS.some((app) => app.slug === "flick")).toBe(true);
     expect(SALE_APPS.every((app) => app.url.startsWith("https://"))).toBe(true);
@@ -189,7 +189,7 @@ describe("seo", () => {
       if (path === "/q/stop-missing-night-calls") {
         expect(html).toContain('rel="canonical" href="https://askyard.firstdeploy.ai/q/stop-missing-night-calls"');
         expect(html).toContain("Need the night line installed?");
-        expect(html).toContain("$1,750 setup, then $250/month");
+        expect(html).toContain("$1,750 setup ($875 to start), then $250/month");
       }
     }
   });

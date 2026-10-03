@@ -23,7 +23,7 @@ export default function OfferPanel({
         <p className="price">{offer.price}</p>
         {offer.slug === "first-deploy" ? (
           <p className="fine">
-            <a href="https://firstdeploy.ai/">First Deploy AI</a> — firstdeploy.ai — $1,750 setup, then $250/month.
+            <a href="https://firstdeploy.ai/">First Deploy AI</a> — firstdeploy.ai — $1,750 setup ($875 to start), then $250/month.
           </p>
         ) : null}
         <div className="hero-actions">
