@@ -229,7 +229,7 @@ describe("shop check seo", () => {
     expect(demo.ogImage).toBe("https://askyard.firstdeploy.ai/check/harbor-hvac.png");
     expect(sitemapXml()).toContain("https://askyard.firstdeploy.ai/check");
     expect(sitemapXml()).not.toContain("harbor-hvac");
-    expect(page.bodyHtml).toContain("$1,500");
+    expect(page.bodyHtml).toContain("$1,750");
     expect(page.bodyHtml).not.toMatch(/14 apps|\$70k/);
   });
 });

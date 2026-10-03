@@ -16,7 +16,7 @@ export const SALE_APPS: SaleApp[] = [
     slug: "first-deploy",
     name: "First Deploy AI",
     url: "https://firstdeploy.ai/",
-    price: "$1,500 setup, then $250/mo",
+    price: "$1,750 setup ($875 to start), then $250/mo",
     blurb: "After-hours desk plus live apps for dirt, plants, and shops. Live this week on the same written plan we run for active client builds.",
     who: "Owners who miss night calls",
     category: "ops",
