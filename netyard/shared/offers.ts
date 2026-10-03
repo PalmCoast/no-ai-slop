@@ -19,8 +19,8 @@ export const OFFERS: Offer[] = [
   {
     id: "rack",
     name: "Rack this network",
-    amountLabel: "$1,500 setup",
-    cents: 150_000,
+    amountLabel: "$1,750 setup ($875 to start)",
+    cents: 175_000,
     interval: "one_time",
     mode: "payment",
     envKey: "STRIPE_PRICE_ID_RACK",

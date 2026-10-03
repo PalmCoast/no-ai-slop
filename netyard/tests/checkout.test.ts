@@ -18,7 +18,7 @@ describe("offers", () => {
   it("keeps five priced SKUs on live Palm Coast AI prices", () => {
     expect(OFFERS.map((o) => o.id)).toEqual(["rack", "desk", "consult30", "consultHour", "pack"]);
     expect(new Set(OFFERS.map((o) => o.defaultPriceId)).size).toBe(5);
-    expect(offerById("rack")?.cents).toBe(150_000);
+    expect(offerById("rack")?.cents).toBe(175_000);
     expect(offerById("desk")?.cents).toBe(25_000);
     expect(offerById("desk")?.mode).toBe("subscription");
     expect(offerById("consult30")?.fallbackHref).toContain("buy.stripe.com");
