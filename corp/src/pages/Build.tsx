@@ -37,7 +37,13 @@ export default function Build() {
           </div>
         </div>
         <div className="frame">
-          <img src="/brand/queen-full.jpg" alt="AgentHive Inc queen standing in gold armor" />
+          <img
+            src="/brand/queen-full.webp"
+            alt="Illustration: AgentHive Inc queen standing in gold armor"
+            width={784}
+            height={1168}
+            loading="lazy"
+          />
         </div>
       </div>
     </section>

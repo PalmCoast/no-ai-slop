@@ -4,7 +4,8 @@ import { join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { describe, expect, it } from "vitest";
 import { DANIEL_LINKEDIN_URL, LEGAL_NAME, LINKEDIN_URL } from "../shared/brand";
-import { applyRouteHtml, canonicalFor, organizationJsonLd, PAGE_SEO, sitemapIndexXml, sitemapXml } from "../shared/seo";
+import { render } from "../src/entry-server";
+import { applyRouteHtml, canonicalFor, jsonLdFor, organizationJsonLd, PAGE_SEO, sitemapIndexXml, sitemapXml } from "../shared/seo";
 
 const corpRoot = fileURLToPath(new URL("..", import.meta.url));
 
@@ -68,7 +69,7 @@ describe("per-route SEO", () => {
     expect(concierge).toContain('id="route-concierge"');
     expect(concierge).toContain('rel="canonical" href="https://agenthiveinc.com/concierge"');
     expect(concierge).toContain('property="og:url" content="https://agenthiveinc.com/concierge"');
-    expect(concierge).toContain('property="og:title" content="AI Concierge — $2,000/mo retainer | AgentHive Inc"');
+    expect(concierge).toContain('property="og:title" content="AI Concierge: fractional AI advisor, $2,000/mo | AgentHive Inc"');
     expect(concierge).toContain("https://buy.stripe.com/6oUeVd7YM3qH0Ylbuq2ZO1u");
     expect(concierge).toContain("$2,000/mo");
     expect(concierge).toContain("didn’t stick");
@@ -146,10 +147,11 @@ describe("per-route SEO", () => {
     expect(xml).toContain("https://agenthiveinc.com/</loc>");
     expect(xml).toContain("https://agenthiveinc.com/about");
     expect(xml).toContain("https://agenthiveinc.com/buzz");
-    expect(xml).toContain("https://agenthiveinc.com/rankings");
-    expect(xml).toContain("https://agenthiveinc.com/build");
+    expect(xml).not.toContain("https://agenthiveinc.com/rankings");
+    expect(xml).not.toContain("https://agenthiveinc.com/build");
     expect(xml).toContain("https://agenthiveinc.com/consult");
     expect(xml).toContain("https://agenthiveinc.com/concierge");
+    expect(xml).toContain("https://agenthiveinc.com/concierge/vs-hiring");
     expect(readFileSync(join(corpRoot, "public/sitemap.xml"), "utf8")).toContain("https://agenthiveinc.com/concierge");
     expect(xml).not.toContain("firstdeploy.ai");
     expect(xml).not.toContain("llms.txt");
@@ -157,14 +159,66 @@ describe("per-route SEO", () => {
     const index = sitemapIndexXml();
     expect(index).toContain("<sitemapindex");
     expect(index).toContain("https://agenthiveinc.com/sitemap.xml");
-    expect(index).toContain("https://askyard.firstdeploy.ai/sitemap.xml");
-    expect(index).toContain("https://firstdeploy.ai/sitemap.xml");
-    expect(readFileSync(join(corpRoot, "public/sitemaps.xml"), "utf8")).toContain("askyard.firstdeploy.ai/sitemap.xml");
+    expect(index).not.toContain("askyard.firstdeploy.ai");
+    expect(index).not.toContain("https://firstdeploy.ai/sitemap.xml");
+    expect(readFileSync(join(corpRoot, "public/sitemaps.xml"), "utf8")).not.toContain("askyard.firstdeploy.ai");
     const robots = readFileSync(join(corpRoot, "public/robots.txt"), "utf8");
     expect(robots).toContain("User-agent: GPTBot");
     expect(robots).toContain("User-agent: Claude-SearchBot");
     expect(robots).toContain("Sitemap: https://agenthiveinc.com/sitemap.xml");
-    expect(robots).toContain("Sitemap: https://agenthiveinc.com/sitemaps.xml");
+    expect(robots).not.toContain("sitemaps.xml");
+  });
+
+  it("keeps home and concierge descriptions short and puts offers on the right routes", () => {
+    const home = PAGE_SEO.find((page) => page.path === "/")!;
+    const concierge = PAGE_SEO.find((page) => page.path === "/concierge")!;
+    const consult = PAGE_SEO.find((page) => page.path === "/consult")!;
+    const about = PAGE_SEO.find((page) => page.path === "/about")!;
+    expect(home.description.length).toBeLessThanOrEqual(155);
+    expect(about.description.length).toBeLessThanOrEqual(155);
+    expect(concierge.description.length).toBeLessThanOrEqual(155);
+    expect(consult.description).toContain("$1,250");
+    expect(PAGE_SEO.find((page) => page.path === "/rankings")?.noindex).toBe(true);
+    expect(PAGE_SEO.find((page) => page.path === "/build")?.noindex).toBe(true);
+    const consultLd = JSON.stringify(jsonLdFor(consult));
+    expect(consultLd).toContain("ProfessionalService");
+    expect(consultLd).toContain('"price":"75.00"');
+    expect(consultLd).toContain('"price":"150.00"');
+    expect(consultLd).toContain('"price":"1250.00"');
+    expect(consultLd).toContain("Daniel Graham");
+    expect(consultLd).not.toContain("LocalBusiness");
+    const conciergeLd = JSON.stringify(jsonLdFor(concierge));
+    expect(conciergeLd).toContain("UnitPriceSpecification");
+    expect(conciergeLd).toContain("2000.00");
+    expect(conciergeLd).toContain("FAQPage");
+    const homeLd = JSON.stringify(jsonLdFor(home));
+    expect(homeLd).toContain("Organization");
+    expect(homeLd).toContain("Palm Coast");
+  });
+
+  it("prerenders the main copy into static HTML", () => {
+    for (const path of ["/", "/about", "/consult", "/concierge", "/concierge/vs-hiring"]) {
+      const html = render(path);
+      const words = html.replace(/<[^>]+>/g, " ").split(/\s+/).filter(Boolean);
+      expect(words.length).toBeGreaterThan(250);
+    }
+    const consult = render("/consult");
+    expect(consult).toContain("What an AI consultant costs");
+    expect(consult).toContain("AI consulting");
+    expect(consult).toContain("$1,250");
+    expect(consult).toContain("ainexus360.com");
+    expect(consult).toContain("infrastructure.agenthiveinc.com");
+    expect(consult).toContain("Illustration: gold honeycomb boardroom");
+    const concierge = render("/concierge");
+    expect(concierge).toContain("fractional AI advisor");
+    expect(concierge).toContain("$2,000/mo");
+    expect(concierge).toContain("Daniel Graham");
+    expect(concierge).not.toContain("consult-operator.jpg");
+    const hiring = render("/concierge/vs-hiring");
+    expect(hiring).toContain("$135,980");
+    expect(hiring).toContain("$175,140");
+    expect(hiring).toContain("bls.gov");
+    expect(hiring).toContain("does not quote an agency price");
   });
 
   it("reuses the NetYard IndexNow key at the corp public root", () => {

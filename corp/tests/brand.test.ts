@@ -90,7 +90,7 @@ describe("AgentHive Inc brand facts", () => {
     expect(home).toMatch(/FD_URL|firstdeploy\.ai/);
     expect(home).toMatch(/commercial earth mover|dirty physical businesses/);
     expect(home).toMatch(/AskAiBar/);
-    expect(home).toMatch(/queen-full\.jpg/);
+    expect(home).toMatch(/queen-full\.webp/);
     expect(home).not.toMatch(/consult-operator/);
     expect(home).not.toMatch(/12 Grok Bots|The Swarm Roster|Recruit your first Grok Bot|bootstrapped/i);
     expect(home).not.toMatch(/14 apps|\$70k/i);
@@ -107,7 +107,7 @@ describe("AgentHive Inc brand facts", () => {
     expect(about).toMatch(/QpiAI|insurance hive|OSS/);
     expect(about).toMatch(/agenthive\.io|agenthive\.co|OTHER_HIVES/);
     expect(about).toMatch(/Grok Bots|The hive/);
-    expect(about).toMatch(/queen-portrait\.jpg/);
+    expect(about).toMatch(/queen-portrait\.webp/);
     expect(about).toMatch(/\/consult/);
     expect(about).not.toMatch(/14 apps|\$70k|bootstrapped/i);
     expect(about).not.toMatch(/hivebriefcase\.netlify\.app/);

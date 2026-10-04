@@ -1,4 +1,6 @@
 import AskAiBar from "../components/AskAiBar";
+import AuthorCard from "../components/AuthorCard";
+import { DANIEL_BIO } from "../../shared/author";
 import {
   BRAND_NAME,
   BRAND_PLACE,
@@ -20,7 +22,12 @@ export default function About() {
       <section className="section">
         <div className="container portrait-grid">
           <div className="frame">
-            <img src="/brand/queen-portrait.jpg" alt="AgentHive Inc queen — gold honeycomb crown and armor" />
+            <img
+              src="/brand/queen-portrait.webp"
+              alt="Illustration: gold honeycomb queen, crown and armor"
+              width={784}
+              height={1168}
+            />
           </div>
           <div>
             <div className="eyebrow">
@@ -29,10 +36,10 @@ export default function About() {
             <h1 className="display" style={{ fontSize: "clamp(2.4rem, 5vw, 4rem)" }}>
               About {BRAND_NAME}
             </h1>
-            <p className="lede">
-              {BRAND_NAME} is a Palm Coast AI consultant shop. Daniel Graham embeds working AI in field operations —
-              prompts, stack, and hard code — then leaves it running. {FD_NAME} is the product. Consulting is how you
-              buy time in the room.
+            <p className="lede">{DANIEL_BIO}</p>
+            <p className="muted">
+              {BRAND_NAME} is a Palm Coast AI consultant shop. {FD_NAME} is the product. Consulting is how you buy time
+              in the room. The portrait is a brand illustration, not a photograph of Daniel Graham.
             </p>
             <p className="muted">
               Public brand {BRAND_NAME}. Legal name {LEGAL_NAME}. Site{" "}
@@ -62,12 +69,12 @@ export default function About() {
             </article>
             <article className="trust">
               <h3>
-                <a href="/consult">Consult</a>
+                <a href="/consult">Consult</a> and <a href="/concierge">AI Concierge</a>
               </h3>
               <p className="muted">
                 {FD_NAME}{" "}
                 <a href={`tel:${CONSULT_TEL}`}>{CONSULT_DISPLAY}</a>
-                . Gold hive rates on <a href="/consult">/consult</a>.
+                . Rates on <a href="/consult">/consult</a>. The monthly retainer is <a href="/concierge">/concierge</a>.
               </p>
             </article>
             <article className="trust">
@@ -112,27 +119,7 @@ export default function About() {
 
       <section className="section section-alt">
         <div className="container cta-split">
-          <article className="panel">
-            <p className="eyebrow">DG</p>
-            <h2>Daniel Graham</h2>
-            <p className="role">Chairman, {BRAND_NAME}</p>
-            <p style={{ marginTop: 12 }}>
-              25 years of enterprise IT across Fortune 500 organizations. SAFe 5.1 certified. Built {BRAND_NAME}{" "}
-              on a simple rule: AI should ship, earn, and solve a real leak.
-            </p>
-            <p className="muted" style={{ marginTop: 12 }}>
-              Philosophy: Ship fast. Learn in public. Build AI that earns while you sleep. No lock-in, no fluff, no free
-              audits.
-            </p>
-            <div className="hero-actions" style={{ marginTop: 18 }}>
-              <a className="btn btn-primary" href={CALENDLY_URL} rel="noreferrer" target="_blank">
-                Book 30 minutes
-              </a>
-              <a className="btn btn-outline" href={`mailto:${CONTACT_EMAIL}`}>
-                {CONTACT_EMAIL}
-              </a>
-            </div>
-          </article>
+          <AuthorCard />
           <article className="panel">
             <h2>The desk</h2>
             <p className="muted" style={{ margin: "0.6rem 0 1rem" }}>
@@ -181,7 +168,13 @@ export default function About() {
             </p>
           </div>
           <div className="frame">
-            <img src="/brand/hive-fleet.jpg" alt="Gold honeycomb tunnel with a swarm of craft" />
+            <img
+              src="/brand/hive-fleet.webp"
+              alt="Illustration: gold honeycomb tunnel with a swarm of craft"
+              width={1168}
+              height={784}
+              loading="lazy"
+            />
           </div>
         </div>
       </section>
