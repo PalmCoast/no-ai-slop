@@ -1,8 +1,9 @@
 import { Link } from "react-router-dom";
 import AskAiBar from "../components/AskAiBar";
+import AuthorCard from "../components/AuthorCard";
+import FaqList from "../components/FaqList";
+import { CONCIERGE_FAQS } from "../../shared/faqs";
 import {
-  BRAND_NAME,
-  BRAND_URL,
   CALENDLY_URL,
   CONSULT_DISPLAY,
   CONSULT_RATES,
@@ -17,45 +18,19 @@ import {
   CONCIERGE_BOOK_LABEL,
   CONCIERGE_NAME,
   CONCIERGE_PRICE,
-  CONCIERGE_PRICE_AMOUNT,
   CONCIERGE_STRIPE_URL,
-  CONCIERGE_URL,
 } from "../../shared/concierge";
-
-const CONCIERGE_SCHEMA = {
-  "@context": "https://schema.org",
-  "@type": "Service",
-  name: `${BRAND_NAME} ${CONCIERGE_NAME}`,
-  url: CONCIERGE_URL,
-  image: `${BRAND_URL}/brand/consult-operator.jpg`,
-  provider: {
-    "@type": "Organization",
-    name: BRAND_NAME,
-    url: `${BRAND_URL}/`,
-    email: CONTACT_EMAIL,
-    telephone: "+1-320-335-6186",
-  },
-  description:
-    "Done-with-you AI retainer. Audit, optimize, then automate. Two 45-minute sessions a month, unlimited async Slack or text, and a shared asset inventory.",
-  offers: {
-    "@type": "Offer",
-    name: CONCIERGE_NAME,
-    price: CONCIERGE_PRICE_AMOUNT,
-    priceCurrency: "USD",
-    url: CONCIERGE_STRIPE_URL,
-    availability: "https://schema.org/InStock",
-  },
-};
 
 export default function Concierge() {
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(CONCIERGE_SCHEMA) }} />
       <section className="hero consult-hero">
         <div className="hero-media">
           <img
-            src="/brand/consult-operator.jpg"
-            alt="Male founder-operator at the gold honeycomb boardroom — signet ring and bee tattoo"
+            src="/brand/consult-operator.webp"
+            alt="Illustration: gold honeycomb boardroom"
+            width={1400}
+            height={930}
           />
         </div>
         <div className="hero-copy">
@@ -68,7 +43,7 @@ export default function Concierge() {
             <em>The work ships.</em>
           </h1>
           <p className="lede">
-            A {CONCIERGE_PRICE} done-with-you retainer for owners who tried ChatGPT and it didn’t stick. We audit the
+            A {CONCIERGE_PRICE} fractional AI advisor for owners who tried ChatGPT and it didn’t stick. We audit the
             messy task, cut the broken steps, then automate it — with an operator in the room.
           </p>
           <div className="hero-actions">
@@ -222,6 +197,27 @@ export default function Concierge() {
               Free 15–30 minute bottleneck call
             </a>
           </p>
+          <p style={{ marginTop: 18 }}>
+            Compare this retainer with a full-time hire on{" "}
+            <Link to="/concierge/vs-hiring">Concierge vs hiring</Link>. Hourly time stays on{" "}
+            <Link to={HIVE_CONSULT_PATH}>consult</Link>. Shops that need the after-hours desk can start at{" "}
+            <a href={FD_URL}>{FD_NAME}</a>.
+          </p>
+        </div>
+      </section>
+
+      <section className="section" id="faq">
+        <div className="container">
+          <div className="section-head">
+            <h2>Concierge questions</h2>
+          </div>
+          <FaqList items={CONCIERGE_FAQS} />
+        </div>
+      </section>
+
+      <section className="section section-alt">
+        <div className="container">
+          <AuthorCard linked />
         </div>
       </section>
     </>

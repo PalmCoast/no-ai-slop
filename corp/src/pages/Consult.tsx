@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
 import AskAiBar from "../components/AskAiBar";
+import FaqList from "../components/FaqList";
+import { CONSULT_FAQS } from "../../shared/faqs";
 import {
   BOOK_CTA_LABEL,
-  BRAND_NAME,
-  BRAND_URL,
   CALENDLY_URL,
   CONSULT_DISPLAY,
   CONSULT_RATES,
@@ -14,41 +14,20 @@ import {
   FD_PRICE,
   FD_PROMISE,
   FD_URL,
-  HIVE_CONSULT_URL,
 } from "../../shared/brand";
 import { CONSULT_STRIPE_RATES } from "../../shared/consult";
 import { CONCIERGE_NAME, CONCIERGE_PATH, CONCIERGE_PRICE } from "../../shared/concierge";
 
-const CONSULT_SCHEMA = {
-  "@context": "https://schema.org",
-  "@type": "ProfessionalService",
-  name: `${BRAND_NAME} AI consulting`,
-  url: HIVE_CONSULT_URL,
-  image: `${BRAND_URL}/brand/consult-operator.jpg`,
-  provider: {
-    "@type": "Organization",
-    name: BRAND_NAME,
-    url: `${BRAND_URL}/`,
-    telephone: ["+1-320-335-6186"],
-  },
-  description: `AI consulting that ships. Free 30-minute qualifier, then ${CONSULT_RATES}, or a 10-hour pack at $1,250.`,
-  offers: [
-    { "@type": "Offer", name: "Free 30-minute qualifier", price: "0.00", priceCurrency: "USD" },
-    { "@type": "Offer", name: "30 minutes", price: "75.00", priceCurrency: "USD" },
-    { "@type": "Offer", name: "1 hour", price: "150.00", priceCurrency: "USD" },
-    { "@type": "Offer", name: "10-hour pack", price: "1250.00", priceCurrency: "USD" },
-  ],
-};
-
 export default function Consult() {
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(CONSULT_SCHEMA) }} />
       <section className="hero consult-hero">
         <div className="hero-media">
           <img
-            src="/brand/consult-operator.jpg"
-            alt="Male founder-operator at the gold honeycomb boardroom — signet ring and bee tattoo"
+            src="/brand/consult-operator.webp"
+            alt="Illustration: gold honeycomb boardroom"
+            width={1400}
+            height={930}
           />
         </div>
         <div className="hero-copy">
@@ -147,6 +126,59 @@ export default function Consult() {
         </div>
       </section>
 
+      <section className="section" id="ai-consultant-cost">
+        <div className="container">
+          <div className="section-head">
+            <h2>What an AI consultant costs</h2>
+            <p>These are the prices on this page. Palm Coast, Florida, and remote by Calendly.</p>
+          </div>
+          <div className="trust-grid consult-offers">
+            <article className="trust">
+              <p className="eyebrow">Qualifier</p>
+              <h3>Free 30</h3>
+              <p className="muted">No charge. We use it to see if there is paid work.</p>
+            </article>
+            <article className="trust">
+              <p className="eyebrow">Paid time</p>
+              <h3>{CONSULT_RATES}</h3>
+              <p className="muted">$75 for 30 minutes. $150 for an hour. Pay on Stripe after the qualifier.</p>
+            </article>
+            <article className="trust">
+              <p className="eyebrow">Pack</p>
+              <h3>$1,250 for 10 hours</h3>
+              <p className="muted">$625 up front. That is half of the $1,250 pack.</p>
+            </article>
+            <article className="trust">
+              <p className="eyebrow">Monthly</p>
+              <h3>{CONCIERGE_PRICE}</h3>
+              <p className="muted">
+                <Link to={CONCIERGE_PATH}>{CONCIERGE_NAME}</Link> when you want continuity instead of hours.
+              </p>
+            </article>
+          </div>
+          <p style={{ marginTop: 18 }}>
+            AI consulting from Palm Coast, Florida (Flagler County). Daniel Graham is based there. The free 30 and the
+            paid sessions are Calendly calls, so owners outside Palm Coast hire him remotely. This page does not sell
+            an on-site visit.
+          </p>
+          <p>
+            Need it monthly? <Link to={CONCIERGE_PATH}>{CONCIERGE_NAME}</Link>. For a{" "}
+            <a href="https://ainexus360.com/">fixed-fee audit</a>, see AI Nexus 360. For{" "}
+            <a href="https://infrastructure.agenthiveinc.com/">telco/network work</a>, see Seat &amp; Circuit. Compare
+            the retainer with a hire on <Link to="/concierge/vs-hiring">Concierge vs hiring</Link>.
+          </p>
+        </div>
+      </section>
+
+      <section className="section section-alt" id="faq">
+        <div className="container">
+          <div className="section-head">
+            <h2>Consult questions</h2>
+          </div>
+          <FaqList items={CONSULT_FAQS} />
+        </div>
+      </section>
+
       <section className="section">
         <div className="container cta-split">
           <div>
@@ -171,8 +203,11 @@ export default function Consult() {
           </div>
           <div className="frame consult-frame">
             <img
-              src="/brand/consult-operator.jpg"
-              alt="Male operator in the gold honeycomb war room, honeycomb signet and bee tattoo"
+              src="/brand/consult-operator.webp"
+              alt="Illustration: gold honeycomb boardroom"
+              width={1400}
+              height={930}
+              loading="lazy"
             />
           </div>
         </div>

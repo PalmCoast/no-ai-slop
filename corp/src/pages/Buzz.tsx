@@ -34,7 +34,13 @@ export default function Buzz() {
               {new Date(edition.generatedAt).toUTCString()}
             </p>
           </div>
-          <img className="hex-art" src="/brand/mark-crown.jpg" alt="Crowned geometric bee mark" />
+          <img
+            className="hex-art"
+            src="/brand/mark-crown.webp"
+            alt="Illustration: crowned geometric bee mark"
+            width={720}
+            height={1073}
+          />
         </div>
 
         <div className="panel" style={{ margin: "2rem 0" }}>

@@ -30,7 +30,12 @@ export default function Home() {
     <>
       <section className="hero">
         <div className="hero-media">
-          <img src="/brand/queen-full.jpg" alt="AgentHive Inc queen in gold honeycomb armor" />
+          <img
+            src="/brand/queen-full.webp"
+            alt="Illustration: AgentHive Inc queen in gold honeycomb armor"
+            width={784}
+            height={1168}
+          />
         </div>
         <div className="hero-copy">
           <div className="eyebrow">

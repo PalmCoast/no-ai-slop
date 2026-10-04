@@ -7,6 +7,7 @@ import Rankings from "./pages/Rankings";
 import Build from "./pages/Build";
 import Consult from "./pages/Consult";
 import Concierge from "./pages/Concierge";
+import VsHiring from "./pages/VsHiring";
 import NotFound from "./pages/NotFound";
 
 export default function App() {
@@ -20,6 +21,7 @@ export default function App() {
         <Route path="/build" element={<Build />} />
         <Route path="/consult" element={<Consult />} />
         <Route path="/concierge" element={<Concierge />} />
+        <Route path="/concierge/vs-hiring" element={<VsHiring />} />
         <Route path="/hive" element={<Navigate to="/rankings" replace />} />
         <Route path="*" element={<NotFound />} />
       </Route>

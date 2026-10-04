@@ -272,6 +272,11 @@ export default function Home() {
               </p>
             )}
             <p className="fine">
+              <Link to="/compare">Samba vs Windows Server</Link>
+              {" · "}
+              <Link to="/tools">Admin tools</Link>
+            </p>
+            <p className="fine">
               {BRAND_PARENT} is {FD_PRICE}. {FD_PROMISE}. Watch the Harbor HVAC run on{" "}
               <Link to="/launch">the launch page</Link>, then <Link to="/buy">pay on Stripe</Link>.
             </p>

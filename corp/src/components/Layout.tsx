@@ -37,7 +37,7 @@ export default function Layout() {
       <header className="topbar">
         <div className="container nav">
           <Link to="/" className="brand" onClick={() => setOpen(false)}>
-            <img src="/brand/mark-bee.jpg" alt="" width={36} height={36} />
+            <img src="/brand/mark-bee.webp" alt="" width={36} height={36} />
             <span>
               Agent<span className="gold">Hive</span> Inc
             </span>
@@ -100,7 +100,7 @@ export default function Layout() {
       <footer>
         <div className="container footer-grid">
           <div>
-            <img className="footer-mark" src="/brand/wordmark.jpg" alt={BRAND_NAME} />
+            <img className="footer-mark" src="/brand/wordmark.webp" alt="AgentHive Inc" width={560} height={376} loading="lazy" />
             <p>
               {BRAND_NAME} · {LEGAL_NAME}
               <br />

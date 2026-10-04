@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
-import { canonicalFor, organizationJsonLd, pageForPath } from "../../shared/seo";
+import { canonicalFor, jsonLdFor, pageForPath } from "../../shared/seo";
 
 function upsertMeta(attr: "name" | "property", key: string, content: string) {
   const selector = `meta[${attr}="${key}"]`;
@@ -27,19 +27,33 @@ export default function Seo() {
   const { pathname } = useLocation();
   const page = pageForPath(pathname);
   const canonical = canonicalFor(page.path === "/404" ? pathname : page.path);
-  const json = JSON.stringify(organizationJsonLd());
+  const jsonLd = page.noindex ? null : jsonLdFor(page);
+  const json = jsonLd ? JSON.stringify(jsonLd) : "";
 
   useEffect(() => {
     document.title = page.title;
     upsertMeta("name", "description", page.description);
-    upsertMeta("name", "robots", page.noindex ? "noindex, nofollow" : "index, follow");
-    upsertLink("canonical", page.noindex ? `${window.location.origin}${pathname}` : canonical);
+    upsertMeta("name", "robots", page.noindex ? "noindex, follow" : "index, follow");
+    const canonicalLink = document.head.querySelector('link[rel="canonical"]');
+    if (page.noindex) {
+      canonicalLink?.remove();
+    } else {
+      upsertLink("canonical", canonical);
+    }
     upsertMeta("property", "og:title", page.title);
     upsertMeta("property", "og:description", page.description);
-    upsertMeta("property", "og:url", page.noindex ? `${window.location.origin}${pathname}` : canonical);
+    if (page.noindex) {
+      document.head.querySelector('meta[property="og:url"]')?.remove();
+    } else {
+      upsertMeta("property", "og:url", canonical);
+    }
     upsertMeta("name", "twitter:title", page.title);
     upsertMeta("name", "twitter:description", page.description);
     let script = document.getElementById("agenthive-jsonld") as HTMLScriptElement | null;
+    if (!json) {
+      script?.remove();
+      return;
+    }
     if (!script) {
       script = document.createElement("script");
       script.id = "agenthive-jsonld";

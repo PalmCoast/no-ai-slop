@@ -91,6 +91,9 @@ export default function Layout() {
               <br />
               {FOOTER_LINE}
             </p>
+            <p>
+              Designed by <a href="https://agenthiveinc.com/about">Daniel Graham</a>, 25 yrs enterprise IT/telecom.
+            </p>
           </div>
           <div>
             <strong>NetYard</strong>
@@ -108,6 +111,8 @@ export default function Layout() {
               Free 30
             </a>
             <a href={COMPANY_URL}>{BRAND_COMPANY}</a>
+            <a href="https://agenthiveinc.com/about">About Daniel Graham</a>
+            <a href="https://infrastructure.agenthiveinc.com/">Seat &amp; Circuit</a>
           </div>
           <div>
             <strong>Contact</strong>

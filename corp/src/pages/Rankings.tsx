@@ -64,7 +64,13 @@ export default function Rankings() {
             </p>
           </div>
           <div className="frame">
-            <img src="/brand/hive-fleet.jpg" alt="Swarm of craft inside a gold honeycomb" />
+            <img
+              src="/brand/hive-fleet.webp"
+              alt="Illustration: swarm of craft inside a gold honeycomb"
+              width={1168}
+              height={784}
+              loading="lazy"
+            />
           </div>
         </div>
 

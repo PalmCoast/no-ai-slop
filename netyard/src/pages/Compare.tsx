@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { COMPARE_FAQS, LICENSING_CHECKED, MICROSOFT_CAL_URL } from "../../shared/licensing";
 import { WINDOWS_SERVER_STANDARD_USD, WINDOWS_USER_CAL_USD } from "../../shared/microsoft";
 
 export default function Compare() {
@@ -40,9 +41,22 @@ export default function Compare() {
           </article>
         </div>
 
+        <h2>Licensing questions</h2>
+        <div className="faq-list">
+          {COMPARE_FAQS.map((faq) => (
+            <article key={faq.q} className="card">
+              <h3>{faq.q}</h3>
+              <p>{faq.a}</p>
+            </article>
+          ))}
+        </div>
+        <p>
+          Microsoft licensing page, checked {LICENSING_CHECKED}: <a href={MICROSOFT_CAL_URL}>{MICROSOFT_CAL_URL}</a>.
+        </p>
         <p style={{ marginTop: "1.5rem" }}>
           Street prices, not a Microsoft quote. Software Assurance, core packs, and Remote Desktop CALs are extra on the
-          Windows side.
+          Windows side. The ${WINDOWS_SERVER_STANDARD_USD.toLocaleString()} and ${WINDOWS_USER_CAL_USD} figures above are
+          those street estimates.
         </p>
         <div className="hero-actions">
           <Link className="btn btn-primary" to="/buy">
