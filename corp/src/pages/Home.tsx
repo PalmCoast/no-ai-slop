@@ -141,7 +141,8 @@ export default function Home() {
             ))}
           </div>
           <p className="fine" style={{ marginTop: 18 }}>
-            Full public board on <a href="/rankings">Rankings</a>. Weekly briefing on <a href="/buzz">The Buzz</a>.
+            Prices and marks for the sites we stand behind are on <a href="/premium">Premium sites</a>. Full public
+            board on <a href="/rankings">Rankings</a>. Weekly briefing on <a href="/buzz">The Buzz</a>.
           </p>
         </div>
       </section>

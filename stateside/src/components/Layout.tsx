@@ -4,9 +4,9 @@ import { useAuth } from "../auth";
 function Logo() {
   return (
     <svg viewBox="0 0 64 64" aria-hidden="true">
-      <rect width="64" height="64" rx="14" fill="#c8a24a" />
-      <path d="M14 40 L32 14 L50 40 Z" fill="#0b1f3a" />
-      <rect x="14" y="44" width="36" height="6" rx="3" fill="#0b1f3a" />
+      <rect width="64" height="64" rx="12" fill="#0b1f3a" />
+      <path d="M16 38 L32 16 L48 38 Z" fill="#c8a24a" />
+      <rect x="16" y="42" width="32" height="5" fill="#f5f1e8" />
     </svg>
   );
 }

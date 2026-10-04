@@ -23,7 +23,7 @@ describe("per-route SEO", () => {
       expect(page.title).not.toMatch(/THE HIVE|We SWARM/i);
     }
     expect(PAGE_SEO.map((page) => page.path)).toEqual(
-      expect.arrayContaining(["/", "/about", "/buzz", "/rankings", "/build", "/consult", "/concierge"]),
+      expect.arrayContaining(["/", "/about", "/buzz", "/rankings", "/build", "/consult", "/concierge", "/premium"]),
     );
   });
 
