@@ -24,6 +24,8 @@ import {
   STREET_ADDRESS,
   TAGLINE,
 } from "./brand.ts";
+import { OFFERS } from "./offers.ts";
+import { COMPARE_FAQS, MICROSOFT_CAL_URL } from "./licensing.ts";
 
 export type SeoPage = {
   path: string;
@@ -38,27 +40,29 @@ export const PAGE_SEO: SeoPage[] = [
   {
     path: "/",
     title: "NetYard — stand up a shop network without Microsoft Server",
-    description: `${HERO_H1} ${HERO_WHAT} ${BRAND_PARENT} is ${FD_PRICE}. ${FD_PROMISE}.`,
+    description:
+      "Stand up a small-shop network without Microsoft Server. Six questions, Samba on Debian, guest Wi-Fi, and the install scripts.",
     h1: HERO_H1,
-    bodyHtml: `<main id="route-home" class="section"><div class="container"><h1 class="display">${HERO_H1}</h1><p class="lede">${HERO_WHAT}</p><p>${TAGLINE} ${BRAND_NAME} is a ${BRAND_PARENT} product from ${BRAND_COMPANY} in ${BRAND_PLACE}. Six questions. Addressing, Samba directory, guest Wi-Fi, VPN, shopping list, install scripts. No Windows Server CALs.</p><p><a href="${PARENT_URL}">Start ${BRAND_PARENT}</a> · <a href="${CALENDLY_URL}">Book the free 30</a> · ${CONSULT_DISPLAY}</p></div></main>`,
+    bodyHtml: `<main id="route-home" class="section"><div class="container"><h1 class="display">${HERO_H1}</h1><p class="lede">${HERO_WHAT}</p><p>${TAGLINE} ${BRAND_NAME} is a ${BRAND_PARENT} product from ${BRAND_COMPANY} in ${BRAND_PLACE}. Six questions. Addressing, Samba directory, guest Wi-Fi, VPN, shopping list, install scripts. No Windows Server CALs.</p><p>${BRAND_PARENT} is ${FD_PRICE}.</p><p><a href="${PARENT_URL}">Start ${BRAND_PARENT}</a> · <a href="${BRAND_URL}/compare">Samba vs Windows Server</a> · <a href="${BRAND_URL}/tools">Admin tools</a> · <a href="${CALENDLY_URL}">Book the free 30</a> · ${CONSULT_DISPLAY}</p></div></main>`,
   },
   {
     path: "/plan",
     title: "Your network plan | NetYard",
+    noindex: true,
     description: `The generated small-business LAN: VLANs, Samba AD or workgroup, firewall matrix, hardware list, and Debian install scripts.`,
     h1: "Your shop network",
     bodyHtml: `<main id="route-plan" class="section"><div class="container"><h1 class="display">Your shop network</h1><p class="lede">Addressing, directory, Wi-Fi, shopping list, and scripts. Download the files and walk the runbook. Email stays in Google Workspace or Microsoft 365.</p></div></main>`,
   },
   {
     path: "/tools",
-    title: "Admin tools | NetYard",
+    title: "Small-shop network admin tools | NetYard",
     description: `Subnet calculator, VLAN cheat sheet, and the jobs a shop admin still does after the network is up — without Microsoft Server.`,
     h1: "Tools a shop admin actually uses",
     bodyHtml: `<main id="route-tools" class="section"><div class="container"><h1 class="display">Tools a shop admin actually uses</h1><p class="lede">CIDR math, DHCP ranges, and VLAN IDs. Pair them with a NetYard plan so you are not guessing 192.168.1.1 on a customer LAN.</p></div></main>`,
   },
   {
     path: "/compare",
-    title: "Samba vs Microsoft Server | NetYard",
+    title: "Samba AD vs Windows Server for a small shop | NetYard",
     description: `Windows Server Standard plus User CALs versus Samba on Debian. What you keep, what you give up, and when cloud-only is enough.`,
     h1: "Skip the CALs. Keep the domain join.",
     bodyHtml: `<main id="route-compare" class="section"><div class="container"><h1 class="display">Skip the CALs. Keep the domain join.</h1><p class="lede">Microsoft Small Business Server is gone. Essentials is gone. A 12-person shop still needs logins, a share, and guest Wi-Fi. Samba AD on Debian does that. You still pay for hardware and a UPS.</p></div></main>`,
@@ -66,13 +70,14 @@ export const PAGE_SEO: SeoPage[] = [
   {
     path: "/buy",
     title: "Pay on Stripe | NetYard",
-    description: `Pay NetYard setup $1,750 ($875 to start), the $250/mo desk, or consult time on Stripe. Live this week on the same written plan we run for active client builds.`,
+    description: `Pay NetYard setup $1,750 ($875 to start), the $250/mo desk, or consult time on Stripe.`,
     h1: "Pay for the rack, not another Server license.",
     bodyHtml: `<main id="route-buy" class="section"><div class="container"><h1 class="display">Pay for the rack, not another Server license.</h1><p class="lede">The wizard and scripts stay free. Stripe takes the $1,750 setup ($875 to start), the $250/mo desk, or consult time. ${FD_PROMISE}.</p></div></main>`,
   },
   {
     path: "/launch",
     title: "Launch | NetYard",
+    noindex: true,
     description: `Watch the Harbor HVAC standup. Screenshots of the wizard, VLANs, install scripts, and Stripe buy. A First Deploy AI product.`,
     h1: "NetYard is live. Watch the standup.",
     bodyHtml: `<main id="route-launch" class="section"><div class="container"><h1 class="display">NetYard is live. Watch the standup.</h1><p class="lede">Six questions. A VLAN plan. Samba on Debian. Pay the rack on Stripe. Graphics and the Harbor HVAC video live on this page.</p></div></main>`,
@@ -146,7 +151,69 @@ export function organizationJsonLd() {
   };
 }
 
-export function applyRouteHtml(html: string, page: SeoPage): string {
+function danielPerson() {
+  return {
+    "@type": "Person",
+    name: "Daniel Graham",
+    jobTitle: "Founder, AgentHive Inc",
+    url: "https://agenthiveinc.com/about",
+    description: "Daniel Graham, founder of AgentHive Inc, Palm Coast, Florida. 25 years in enterprise IT and telecom.",
+  };
+}
+
+export function jsonLdFor(page: SeoPage): object | null {
+  if (page.noindex) return null;
+  if (page.path === "/") return organizationJsonLd();
+  if (page.path === "/compare") {
+    return {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Article",
+          headline: "Samba AD vs Windows Server for a small shop",
+          author: danielPerson(),
+          dateModified: "2026-10-04",
+          mainEntityOfPage: canonicalFor(page.path),
+          citation: MICROSOFT_CAL_URL,
+        },
+        {
+          "@type": "FAQPage",
+          mainEntity: COMPARE_FAQS.map((faq) => ({
+            "@type": "Question",
+            name: faq.q,
+            acceptedAnswer: { "@type": "Answer", text: faq.a },
+          })),
+        },
+      ],
+    };
+  }
+  if (page.path === "/buy") {
+    return {
+      "@context": "https://schema.org",
+      "@graph": OFFERS.map((offer) => ({
+        "@type": "Offer",
+        name: offer.name,
+        price: (offer.cents / 100).toFixed(2),
+        priceCurrency: "USD",
+        description: `${offer.amountLabel}. ${offer.blurb}`,
+        ...(offer.interval === "month"
+          ? {
+              priceSpecification: {
+                "@type": "UnitPriceSpecification",
+                price: (offer.cents / 100).toFixed(2),
+                priceCurrency: "USD",
+                unitText: "month",
+                referenceQuantity: { "@type": "QuantitativeValue", value: 1, unitCode: "MON" },
+              },
+            }
+          : {}),
+      })),
+    };
+  }
+  return null;
+}
+
+export function applyRouteHtml(html: string, page: SeoPage, renderedBody?: string): string {
   const canonical = canonicalFor(page.path === "/404" ? "/404" : page.path);
   const robots = page.noindex ? "noindex, follow" : "index, follow";
   let next = html;
@@ -164,13 +231,20 @@ export function applyRouteHtml(html: string, page: SeoPage): string {
   next = replaceMeta(next, "property", "og:description", page.description);
   next = replaceMeta(next, "name", "twitter:title", page.title);
   next = replaceMeta(next, "name", "twitter:description", page.description);
-  const json = `<script type="application/ld+json">${JSON.stringify(organizationJsonLd())}</script>`;
-  if (next.includes('type="application/ld+json"')) {
-    next = next.replace(/<script type="application\/ld\+json">[\s\S]*?<\/script>/, json);
-  } else {
-    next = next.replace("</head>", `    ${json}\n  </head>`);
+  const jsonLd = jsonLdFor(page);
+  const existing = /<script type="application\/ld\+json">[\s\S]*?<\/script>/;
+  if (jsonLd) {
+    const json = `<script type="application/ld+json">${JSON.stringify(jsonLd)}</script>`;
+    if (existing.test(next)) next = next.replace(existing, json);
+    else next = next.replace("</head>", `    ${json}\n  </head>`);
+  } else if (existing.test(next)) {
+    next = next.replace(existing, "");
   }
-  next = next.replace(/<div id="root">[\s\S]*?<\/div>/, `<div id="root">${page.bodyHtml}</div>`);
+  const body = renderedBody ?? page.bodyHtml;
+  if (!/<div id="root">\s*<\/div>/.test(next)) {
+    throw new Error("SEO apply failed: missing empty #root");
+  }
+  next = next.replace(/<div id="root">\s*<\/div>/, `<div id="root">${body}</div>`);
   return next;
 }
 
