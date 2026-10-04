@@ -21,7 +21,7 @@ import {
 } from "../../shared/brand";
 import { HIVE_SITES } from "../../shared/portfolio";
 
-const PROOF_SLUGS = ["flick", "jobproof", "indexme", "claudefarm"];
+const PROOF_SLUGS = ["flick", "jobproof", "indexme", "claudefarm", "hillmirror"];
 
 export default function Home() {
   const proof = HIVE_SITES.filter((site) => PROOF_SLUGS.includes(site.slug));
