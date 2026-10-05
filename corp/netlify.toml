@@ -16,6 +16,7 @@
   framework = "#custom"
 
 # Clean URL aliases from the previous static site.
+# /hive already 301s to /about on the live site (dist/_redirects). Keep that.
 [[redirects]]
   from = "/about.html"
   to = "/about"
@@ -23,12 +24,63 @@
 
 [[redirects]]
   from = "/hive.html"
-  to = "/rankings"
+  to = "/about"
   status = 301
 
 [[redirects]]
   from = "/hive"
-  to = "/rankings"
+  to = "/about"
+  status = 301
+
+[[redirects]]
+  from = "/hive/"
+  to = "/about"
+  status = 301
+
+# Dead paths verified 404 on 2026-10-05. Exact /go only — /go/:name is the function.
+[[redirects]]
+  from = "/go"
+  to = "/consult"
+  status = 301
+
+[[redirects]]
+  from = "/go/"
+  to = "/consult"
+  status = 301
+
+[[redirects]]
+  from = "/book"
+  to = "/consult"
+  status = 301
+
+[[redirects]]
+  from = "/book/"
+  to = "/consult"
+  status = 301
+
+[[redirects]]
+  from = "/contact"
+  to = "/about"
+  status = 301
+
+[[redirects]]
+  from = "/contact/"
+  to = "/about"
+  status = 301
+
+[[redirects]]
+  from = "/pricing"
+  to = "/concierge"
+  status = 301
+
+[[redirects]]
+  from = "/pricing/"
+  to = "/concierge"
+  status = 301
+
+[[redirects]]
+  from = "/og.png"
+  to = "/og.jpg"
   status = 301
 
 [[redirects]]

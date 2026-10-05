@@ -22,7 +22,7 @@ export default function App() {
         <Route path="/consult" element={<Consult />} />
         <Route path="/concierge" element={<Concierge />} />
         <Route path="/concierge/vs-hiring" element={<VsHiring />} />
-        <Route path="/hive" element={<Navigate to="/rankings" replace />} />
+        <Route path="/hive" element={<Navigate to="/about" replace />} />
         <Route path="*" element={<NotFound />} />
       </Route>
     </Routes>
