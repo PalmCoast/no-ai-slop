@@ -117,6 +117,11 @@ export default function Home() {
             <strong>What AI knows about your shop</strong>
             <span>Paste a name or a URL. Free. No login. The card points at IndexMe.</span>
           </Link>
+          <Link className="check-banner" to="/ai-credits" style={{ marginTop: "0.75rem" }}>
+            <span className="eyebrow">Free AI credits</span>
+            <strong>Free AI credits, trials and startup programs</strong>
+            <span>Anthropic, OpenAI, Google, AWS, Microsoft and more. Official links only.</span>
+          </Link>
           <a
             className="check-banner"
             href="https://jobproof.firstdeploy.ai/?src=askyard"

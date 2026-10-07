@@ -11,6 +11,7 @@ import Marquee from "./pages/Marquee";
 import MarqueeThanks from "./pages/MarqueeThanks";
 import NotFound from "./pages/NotFound";
 import Check from "./pages/Check";
+import AiCredits from "./pages/AiCredits";
 
 export default function App() {
   return (
@@ -22,6 +23,7 @@ export default function App() {
         <Route path="/apps" element={<Apps />} />
         <Route path="/hunt" element={<Hunt />} />
         <Route path="/check" element={<Check />} />
+        <Route path="/ai-credits" element={<AiCredits />} />
         <Route path="/check/harbor-hvac" element={<Check />} />
         <Route path="/launch" element={<Navigate to="/" replace />} />
         <Route path="/rep" element={<Rep />} />
