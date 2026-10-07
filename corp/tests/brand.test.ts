@@ -144,10 +144,10 @@ describe("AgentHive Inc brand facts", () => {
     expect(layout).toMatch(/PRODUCT_FOOTER_LINKS/);
     expect(PRODUCT_FOOTER_LINKS.map((link) => link.href)).toEqual([
       "https://firstdeploy.ai",
-      "https://guythread.firstdeploy.ai",
-      "https://askyard.firstdeploy.ai",
+      "/concierge",
+      "https://netyard.firstdeploy.ai",
     ]);
-    expect(PRODUCT_FOOTER_LINKS.map((link) => link.label)).toEqual(["First Deploy", "GuyThread", "AskYard"]);
+    expect(PRODUCT_FOOTER_LINKS.map((link) => link.label)).toEqual(["First Deploy", "AI Concierge", "NetYard"]);
   });
 
   it("does not ship stale First Deploy prices or firstdeploy.dev", () => {

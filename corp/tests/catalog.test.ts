@@ -22,12 +22,12 @@ describe("portfolio catalog", () => {
     expect(HIVE_SITES.find((s) => s.slug === "first-deploy")?.name).toBe("First Deploy AI");
     expect(urls).toContain("https://flick.firstdeploy.ai/");
     expect(urls).toContain("https://jobproof.firstdeploy.ai/");
-    expect(urls).toContain("https://askyard.firstdeploy.ai/");
+    expect(urls).toContain("https://netyard.firstdeploy.ai/");
     expect(urls).toContain("https://writehive.netlify.app/");
     expect(urls).toContain("https://bot-lock.netlify.app/");
     expect(urls).toContain("https://hivebriefcase.netlify.app/");
     expect(urls).toContain("https://stateside-jobs.netlify.app/");
-    expect(HIVE_SITES.filter((s) => s.host === "netlify").length).toBeGreaterThanOrEqual(12);
+    expect(HIVE_SITES.filter((s) => s.host === "netlify").length).toBeGreaterThanOrEqual(11);
   });
 
   it("does not include known-dead guessed hostnames", () => {
@@ -37,6 +37,13 @@ describe("portfolio catalog", () => {
     expect(urls).not.toContain("commandcrm.netlify.app");
     expect(urls).not.toContain("mcp-rust-three.vercel.app");
     expect(urls).not.toContain("firstdeploy.dev");
+  });
+
+  it("leaves out products dropped from the top-10 lineup", () => {
+    const text = JSON.stringify(HIVE_SITES).toLowerCase();
+    for (const name of ["claudefarm", "askyard", "guythread", "braid", "hillmirror", "socketsnap", "aipricingcalculators", "ai pricing calculators", "clawlock", "deskaudit"]) {
+      expect(text).not.toContain(name);
+    }
   });
 });
 

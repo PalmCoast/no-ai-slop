@@ -68,8 +68,8 @@ export const FEATURED_ON = [
 /** Product names on their own footer row. Money links above stay unchanged. */
 export const PRODUCT_FOOTER_LINKS = [
   { href: "https://firstdeploy.ai", label: "First Deploy" },
-  { href: "https://guythread.firstdeploy.ai", label: "GuyThread" },
-  { href: "https://askyard.firstdeploy.ai", label: "AskYard" },
+  { href: "/concierge", label: "AI Concierge" },
+  { href: "https://netyard.firstdeploy.ai", label: "NetYard" },
 ] as const;
 
 export const LINKEDIN_URL = "https://www.linkedin.com/company/agenthiveinc";

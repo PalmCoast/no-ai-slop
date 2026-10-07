@@ -10,10 +10,15 @@ export default async () => {
     // time. Overlay the current catalog so copy fixes ship with the deploy
     // instead of waiting for the next weekly pass.
     const bySlug = new Map(HIVE_SITES.map((site) => [site.slug, site]));
-    const sites = stored.sites.map((row) => {
-      const site = bySlug.get(row.slug);
-      return site ? { ...row, price: site.price, description: site.description } : row;
-    });
+    // Rows for products dropped from the catalog are left out, and the
+    // remaining rows are renumbered so the board has no gaps.
+    const sites = stored.sites
+      .filter((row) => bySlug.has(row.slug))
+      .sort((a, b) => a.rank - b.rank)
+      .map((row, index) => {
+        const site = bySlug.get(row.slug)!;
+        return { ...row, rank: index + 1, price: site.price, description: site.description };
+      });
     return Response.json({ ...stored, sites }, { headers: { "Cache-Control": "public, max-age=120" } });
   }
   const fallback = rankSites(
