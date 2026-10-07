@@ -126,6 +126,18 @@
   force = true
 
 [[redirects]]
+  from = "/disclosure"
+  to = "/disclosure/index.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/disclosure/"
+  to = "/disclosure/index.html"
+  status = 200
+  force = true
+
+[[redirects]]
   from = "/x"
   to = "/x/index.html"
   status = 200

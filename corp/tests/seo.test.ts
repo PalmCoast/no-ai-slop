@@ -24,7 +24,7 @@ describe("per-route SEO", () => {
       expect(page.title).not.toMatch(/THE HIVE|We SWARM/i);
     }
     expect(PAGE_SEO.map((page) => page.path)).toEqual(
-      expect.arrayContaining(["/", "/about", "/buzz", "/rankings", "/build", "/consult", "/concierge"]),
+      expect.arrayContaining(["/", "/about", "/buzz", "/rankings", "/build", "/consult", "/concierge", "/disclosure"]),
     );
   });
 
@@ -125,8 +125,9 @@ describe("per-route SEO", () => {
     expect(txt).not.toMatch(/coltsinsider@gmail\.com/);
     expect(txt).toContain("https://flick.firstdeploy.ai/");
     expect(txt).toContain("https://jobproof.firstdeploy.ai/");
-    expect(txt).toContain("https://askyard.firstdeploy.ai/");
-    expect(txt).toMatch(/not the paid after-hours desk/i);
+    expect(txt).not.toMatch(/askyard|claudefarm/i);
+    expect(txt).not.toContain("buy.stripe.com");
+    expect(txt).toContain("https://agenthiveinc.com/disclosure");
     expect(txt).toContain("https://firstdeploy.ai/");
     expect(txt).toContain("https://calendly.com/coltsinsider/30min");
     expect(txt).toContain("IndexNow");
@@ -152,6 +153,7 @@ describe("per-route SEO", () => {
     expect(xml).toContain("https://agenthiveinc.com/consult");
     expect(xml).toContain("https://agenthiveinc.com/concierge");
     expect(xml).toContain("https://agenthiveinc.com/concierge/vs-hiring");
+    expect(xml).toContain("https://agenthiveinc.com/disclosure");
     expect(readFileSync(join(corpRoot, "public/sitemap.xml"), "utf8")).toContain("https://agenthiveinc.com/concierge");
     expect(xml).not.toContain("firstdeploy.ai");
     expect(xml).not.toContain("llms.txt");

@@ -34,6 +34,7 @@ import {
 import { DANIEL_BIO, DANIEL_ID, DANIEL_JOB_TITLE, DANIEL_NAME, DANIEL_SAME_AS, DANIEL_URL } from "./author.ts";
 import { CONCIERGE_BOOK_LABEL, CONCIERGE_NAME, CONCIERGE_PRICE, CONCIERGE_PRICE_AMOUNT, CONCIERGE_STRIPE_URL, CONCIERGE_URL } from "./concierge.ts";
 import { CONCIERGE_FAQS, CONSULT_FAQS, HIRING_FAQS } from "./faqs.ts";
+import { AFFILIATE_TOOLS, DISCLOSURE_LINE, DISCLOSURE_UPDATED } from "./disclosure.ts";
 
 export type SeoPage = {
   path: string;
@@ -105,6 +106,14 @@ export const PAGE_SEO: SeoPage[] = [
       "AI Concierge is $2,000/mo. BLS May 2025 median wages: software developers $135,980, IT managers $175,140. No agency price quoted.",
     h1: "Concierge vs hiring an in-house AI person",
     bodyHtml: `<main id="route-hiring" class="section"><div class="container"><h1 class="display">Concierge vs hiring an in-house AI person</h1><p class="lede">${CONCIERGE_NAME} is ${CONCIERGE_PRICE}. Twelve months is $24,000. The Bureau of Labor Statistics median annual wage for software developers was $135,980 in May 2025, and for computer and information systems managers $175,140. Both are wages, not benefits. Checked October 4, 2026. This page does not quote an agency price.</p><p>${DANIEL_BIO}</p><p><a href="${BRAND_URL}/consult">Consult</a> · <a href="${CONCIERGE_URL}">${CONCIERGE_NAME}</a> · <a href="${DANIEL_URL}">About Daniel Graham</a></p></div></main>`,
+  },
+  {
+    path: "/disclosure",
+    title: "Affiliate disclosure | AgentHive Inc",
+    description:
+      "AgentHive Inc earns commissions only on tools it uses itself (Netlify, Lovable, ElevenLabs, Higgsfield). How affiliate links work on agenthiveinc.com.",
+    h1: "Affiliate disclosure",
+    bodyHtml: `<main id="route-disclosure" class="section"><div class="container"><h1 class="display">Affiliate disclosure</h1><p class="lede">${DISCLOSURE_LINE}</p><p>Some links on agenthiveinc.com may be affiliate links. If you sign up or buy through one, ${BRAND_NAME} (${LEGAL_NAME}) may earn a commission. The tools in our own stack that run affiliate programs: ${AFFILIATE_TOOLS.map((t) => `${t.name} (${t.use})`).join(", ")}. You pay the same price you would pay going direct. A commission does not decide what we recommend or build with, and the footer &ldquo;Featured on&rdquo; badges are not affiliate links. Questions: <a href="mailto:${CONTACT_EMAIL}">${CONTACT_EMAIL}</a>. Last updated ${DISCLOSURE_UPDATED}.</p></div></main>`,
   },
 ];
 

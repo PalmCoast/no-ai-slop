@@ -10,6 +10,7 @@ import {
   CONTACT_EMAIL,
   FD_NAME,
   FD_URL,
+  FEATURED_ON,
   LEGAL_NAME,
   ADDRESS_LINE,
   FOOTER_LINE,
@@ -17,6 +18,7 @@ import {
   OTHER_HIVES,
   PRODUCT_FOOTER_LINKS,
 } from "../../shared/brand";
+import { DISCLOSURE_LINE, DISCLOSURE_PATH } from "../../shared/disclosure";
 
 const NAV = [
   { to: "/#work", label: "Work", hash: true },
@@ -151,6 +153,7 @@ export default function Layout() {
               {FD_NAME} {CONSULT_DISPLAY}
             </a>
             <a href="/llms.txt">llms.txt</a>
+            <Link to={DISCLOSURE_PATH}>Disclosure</Link>
           </div>
         </div>
         <p className="container footer-products">
@@ -161,6 +164,23 @@ export default function Layout() {
               <a href={link.href}>{link.label}</a>
             </Fragment>
           ))}
+        </p>
+        <div className="container footer-featured" aria-label="Featured on">
+          <span>{BRAND_NAME} products are featured on:</span>
+          {FEATURED_ON.map((item) =>
+            "img" in item ? (
+              <a key={item.href} href={item.href} target="_blank" rel="noopener noreferrer">
+                <img src={item.img} alt={item.label} width={item.width} height={item.height} loading="lazy" />
+              </a>
+            ) : (
+              <a key={item.href} href={item.href} target="_blank" rel="noopener noreferrer">
+                {item.label}
+              </a>
+            ),
+          )}
+        </div>
+        <p className="container footer-disclosure">
+          {DISCLOSURE_LINE} <Link to={DISCLOSURE_PATH}>Disclosure</Link>
         </p>
         <div className="container footer-bottom">
           <div>
