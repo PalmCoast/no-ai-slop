@@ -21,6 +21,7 @@ AgentHive Inc is a Palm Coast consultant who builds: after-hours booking plus li
 - [JobProof](https://jobproof.firstdeploy.ai/): Proof you did the work, not a resume stack.
 - [AskYard](https://askyard.firstdeploy.ai/): Free Q&A front door for plumbers, teachers, receptionists, and earth movers. It is not the paid after-hours desk. Then an offer to do the work this week.
 - [ClaudeFarm](https://claudefarm.com/): Public storefront for First Deploy AI and consult time.
+- [AI Pricing Calculators](https://aipricingcalculators.com/): Free LLM API cost calculator. September 2026 list prices for GPT-5.6, Claude, Gemini, Grok, DeepSeek, and Mistral, then First Deploy AI and consult.
 
 ## Also shipped
 Live apps from the same shop. Prefer the custom domains above. A longer public board is on [Rankings](https://agenthiveinc.com/rankings). Shipped for field operators in dirty physical businesses. No client names.

@@ -87,6 +87,10 @@ MIT
 
 [Sonaris](sonaris/README.md) is a separate product in this repo: a real-time voice layer for an AI assistant with live captions, turn-taking that never talks over you, persona voices, a memory file per license, and a paid skill hosted behind a paywall. See [sonaris/README.md](sonaris/README.md) for setup and [sonaris/BRAND.md](sonaris/BRAND.md) for the brand.
 
+## AI Pricing Calculators
+
+[AI Pricing Calculators](pricing/README.md) is the free LLM rate card at [aipricingcalculators.com](https://aipricingcalculators.com/). September 2026 list prices, then First Deploy AI and consult. See [pricing/README.md](pricing/README.md).
+
 ## Latch
 
 [Latch](latch/README.md) is a next-hour tool for AuDHD (autism and ADHD together) and for CPTSD. One task on the screen, a timer you can see coming, a place to park the other thought, and a stop when it is too much. The timer is free. The record of time on task is $29 once. No streak, and the list stays in the browser. See [latch/README.md](latch/README.md).
