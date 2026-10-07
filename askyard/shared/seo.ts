@@ -36,6 +36,7 @@ import {
 import { SALE_APPS } from "./catalog.ts";
 import { SEED_QUESTIONS } from "./ask.ts";
 import { MARQUEE_FLOOR_CENTS } from "./marquee.ts";
+import { AI_CREDIT_OFFERS, AI_CREDITS_FAQ, VERIFIED_ON } from "./ai-credits.ts";
 
 export type SeoPage = {
   path: string;
@@ -45,9 +46,10 @@ export type SeoPage = {
   bodyHtml: string;
   ogImage?: string;
   noindex?: boolean;
+  faq?: Array<{ q: string; a: string }>;
 };
 
-export const SITEMAP_STATIC_PATHS = ["/", "/about", "/board", "/apps", "/check"] as const;
+export const SITEMAP_STATIC_PATHS = ["/", "/about", "/board", "/apps", "/check", "/ai-credits"] as const;
 
 export function shortAnswer(answer: string): string {
   const sentence = answer.split(/(?<=[.!?])\s+/)[0] ?? answer;
@@ -157,6 +159,16 @@ export const PAGE_SEO: SeoPage[] = [
     noindex: true,
     bodyHtml: `<main id="route-harbor" class="section"><div class="container"><h1 class="display">Harbor HVAC</h1><p class="lede">Fictional demo shop in Palm Coast. Not a client.</p><p>Phone and hours are blank on purpose. There is no public site, so there is no sitemap or IndexNow key. Open a model with the prompt on the card. If it invents a different business, that is the gap.</p><p><a href="https://indexme.lol/">IndexMe.lol</a> gets a real page found. <a href="${PARENT_URL}">${BRAND_PARENT}</a> is ${FD_PRICE_LONG}.</p></div></main>`,
   },
+  {
+    path: "/ai-credits",
+    title: "Free AI credits, trials and startup programs | AskYard",
+    description: `${AI_CREDIT_OFFERS.length} free AI credit offers, trials and startup programs from Anthropic, OpenAI, Google Cloud, AWS, Microsoft and more. Filter by stage and tool. Official links, checked ${VERIFIED_ON}.`,
+    h1: "Free AI credits, trials and startup programs",
+    faq: AI_CREDITS_FAQ,
+    bodyHtml: `<main id="route-ai-credits" class="section"><div class="container"><h1 class="display">Free AI credits, trials and startup programs</h1><p class="lede">${AI_CREDIT_OFFERS.length} offers from the providers' own pages. Open the official link and redeem on the provider's site. Offers change; checked ${VERIFIED_ON}.</p><ul>${AI_CREDIT_OFFERS.map(
+      (o) => `<li><a href="${escapeHtml(o.url)}">${escapeHtml(o.provider)}: ${escapeHtml(o.offer)}</a> — ${escapeHtml(o.amount)}. Who qualifies: ${escapeHtml(o.qualifies)}.</li>`,
+    ).join("")}</ul><h2>Our partners</h2><p><a href="https://www.micro1.ai/company-referral">micro1 data partnerships (referral)</a> · <a href="https://jobproof.firstdeploy.ai/?src=aicredits">JobProof</a> · <a href="https://agenthiveinc.com/consult?src=aicredits">AgentHive consult</a></p><h2>Questions</h2><dl class="board-qa">${AI_CREDITS_FAQ.map((f) => `<dt>${escapeHtml(f.q)}</dt><dd>${escapeHtml(f.a)}</dd>`).join("")}</dl></div></main>`,
+  },
 ];
 
 export const NOT_FOUND_SEO: SeoPage = {
@@ -208,6 +220,25 @@ export function pageForPath(pathname: string): SeoPage {
     }
   }
   return PAGE_SEO.find((page) => page.path === path) ?? NOT_FOUND_SEO;
+}
+
+export function jsonLdFor(page?: SeoPage) {
+  const base = organizationJsonLd();
+  if (!page?.faq) return base;
+  const graph = base["@graph"].map((node) =>
+    node["@type"] === "FAQPage"
+      ? {
+          "@type": "FAQPage",
+          "@id": `${canonicalFor(page.path)}#faq`,
+          mainEntity: page.faq!.map((f) => ({
+            "@type": "Question",
+            name: f.q,
+            acceptedAnswer: { "@type": "Answer", text: f.a },
+          })),
+        }
+      : node,
+  );
+  return { ...base, "@graph": graph };
 }
 
 export function organizationJsonLd() {
@@ -277,7 +308,7 @@ export function applyRouteHtml(html: string, page: SeoPage): string {
     next = replaceMeta(next, "property", "og:image", page.ogImage);
     next = replaceMeta(next, "name", "twitter:image", page.ogImage);
   }
-  const json = `<script type="application/ld+json">${JSON.stringify(organizationJsonLd())}</script>`;
+  const json = `<script type="application/ld+json">${JSON.stringify(jsonLdFor(page))}</script>`;
   if (next.includes('type="application/ld+json"')) {
     next = next.replace(/<script type="application\/ld\+json">[\s\S]*?<\/script>/, json);
   } else {

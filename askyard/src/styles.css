@@ -558,3 +558,13 @@ footer {
   .card-grid, .trust-grid, .totals, .footer-grid { grid-template-columns: 1fr; }
   .check-layout, .shop-card__share, .shop-card__models { grid-template-columns: 1fr; }
 }
+
+/* /ai-credits */
+.credits-grid { margin-top: 0.6rem; }
+.credit-card { display: flex; flex-direction: column; gap: 0.55rem; }
+.credit-card h3 { margin: 0; }
+.credit-card .eyebrow { align-self: flex-start; }
+.credit-card .btn { align-self: flex-start; margin-top: auto; }
+.credit-amount { color: var(--gold); font-weight: 600; margin: 0; }
+.credit-tags { display: flex; flex-wrap: wrap; gap: 0.35rem; }
+.partner-card { border-color: var(--gold); }

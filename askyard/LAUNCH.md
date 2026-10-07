@@ -48,7 +48,7 @@ X:
 
 LinkedIn:
 
-> We shipped a free desk for people who do not live in ChatGPT. Ask the question. Read the answer. If you want it built, First Deploy AI is $1,500 setup, then $250/month, live this week on a written plan. askyard.firstdeploy.ai
+> We shipped a free desk for people who do not live in ChatGPT. Ask the question. Read the answer. If you want it built, First Deploy AI is $1,750 setup ($875 to start), then $250/month, live this week on a written plan. askyard.firstdeploy.ai
 
 ## Done when
 

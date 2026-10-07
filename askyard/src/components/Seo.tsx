@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { BRAND_URL } from "../../shared/brand";
-import { canonicalFor, organizationJsonLd, pageForPath } from "../../shared/seo";
+import { canonicalFor, jsonLdFor, pageForPath } from "../../shared/seo";
 
 function upsertMeta(attr: "name" | "property", key: string, content: string) {
   const selector = `meta[${attr}="${key}"]`;
@@ -28,7 +28,7 @@ export default function Seo() {
   const { pathname } = useLocation();
   const page = pageForPath(pathname);
   const canonical = canonicalFor(page.path === "/404" ? pathname : page.path);
-  const json = JSON.stringify(organizationJsonLd());
+  const json = JSON.stringify(jsonLdFor(page));
 
   useEffect(() => {
     document.title = page.title;
