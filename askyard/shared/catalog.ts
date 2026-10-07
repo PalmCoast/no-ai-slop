@@ -35,7 +35,7 @@ export const SALE_APPS: SaleApp[] = [
   {
     slug: "jobproof",
     name: "JobProof",
-    url: "https://jobproof.firstdeploy.ai/",
+    url: "https://jobproof.firstdeploy.ai/?src=askyard",
     price: "Solo $49/mo · Crew $99/mo",
     blurb: "Proof the job happened — photos and timestamps, not another status meeting.",
     who: "Crews that get argued with about whether they showed up",

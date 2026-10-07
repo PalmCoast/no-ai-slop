@@ -66,7 +66,7 @@ export const OFFER_BY_SLUG: Record<string, YardOffer> = {
     title: "JobProof",
     price: "Solo $49/mo · Crew $99/mo",
     cta: "Open JobProof",
-    href: "https://jobproof.firstdeploy.ai/",
+    href: "https://jobproof.firstdeploy.ai/?src=askyard",
     line: "Photos and timestamps so the argument about whether you showed up ends.",
   },
   flick: {

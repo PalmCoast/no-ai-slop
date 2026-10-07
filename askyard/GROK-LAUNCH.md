@@ -51,7 +51,7 @@ APIs:
 4. **Do not set** `OPENAI_API_KEY` (or any other provider key). Enable AI Gateway on the new site so `/api/ask` can draft with `gpt-4o-mini`. Gateway only activates after a production deploy.
 5. Do not auto-post into Facebook groups, Reddit, or HN comment threads as if you were a plumber. A human (Daniel) pastes `/hunt` replies. You may post as AgentHive Inc / First Deploy AI on X and LinkedIn with the copy below.
 6. Do not redesign, add guessed `*.netlify.app` hosts to the corp catalog, force-push, enable auto-merge, or commit secrets.
-7. Prices stay on the page: answers are free. First Deploy AI is $1,500 setup, then $250/month. Live this week on a written plan. Consult is a free 30, then $75 / 30 min or $150 / hour. Marquee is you-name-the-bid, floor $20, not a fixed Stripe Price.
+7. Prices stay on the page: answers are free. First Deploy AI is $1,750 setup ($875 to start), then $250/month. Live this week on a written plan. Consult is a free 30, then $75 / 30 min or $150 / hour. Marquee is you-name-the-bid, floor $20, not a fixed Stripe Price.
 8. Do not put the launch playbook back on the public site. `GROK-LAUNCH.md` and `LAUNCH.md` stay in git. `/launch` stays a home redirect.
 
 ## Deploy sequence
@@ -98,7 +98,7 @@ Expect 200 unless noted.
 - `https://askyard.firstdeploy.ai/board`
 - `https://askyard.firstdeploy.ai/rep?q=AskYard` — meter, not a roast wall
 - `https://askyard.firstdeploy.ai/marquee` — bid field is a dollar amount, not a fixed price button
-- `https://askyard.firstdeploy.ai/apps` — First Deploy AI listed at $1,500 setup, then $250/mo; Marquee is you-name-the-bid, floor $20
+- `https://askyard.firstdeploy.ai/apps` — First Deploy AI listed at $1,750 setup ($875 to start), then $250/mo; Marquee is you-name-the-bid, floor $20
 - `https://askyard.firstdeploy.ai/hunt` — replies include `askyard.firstdeploy.ai`
 - `https://askyard.firstdeploy.ai/launch` — 301 to home
 - `https://askyard.firstdeploy.ai/q/stop-missing-night-calls` — helpful / missed
