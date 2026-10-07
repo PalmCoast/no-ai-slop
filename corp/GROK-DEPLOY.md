@@ -22,7 +22,7 @@ Pages:
 Redirects already in `corp/netlify.toml`:
 
 - `/about.html` → `/about`
-- `/hive` and `/hive.html` → `/rankings`
+- `/hive`, `/hive/`, and `/hive.html` → `/about`
 - `/apps` and `/portfolio` → `/rankings`
 - `/the-buzz` → `/buzz`
 
@@ -132,8 +132,8 @@ Hit every URL. Expect 200 unless noted.
 - `https://agenthiveinc.com/build`
 - `https://agenthiveinc.com/llms.txt`
 - `https://agenthiveinc.com/about.html` — 301 to `/about`
-- `https://agenthiveinc.com/hive` — 301 to `/rankings`
-- `https://agenthiveinc.com/hive.html` — 301 to `/rankings`
+- `https://agenthiveinc.com/hive` — 301 to `/about`
+- `https://agenthiveinc.com/hive.html` — 301 to `/about`
 - `https://agenthiveinc.com/api/buzz` — JSON
 - `https://agenthiveinc.com/api/rank` — JSON with `sites[]`
 - Click a Rankings row (First Deploy AI, IndexMe.lol, Flick, WriteHive, Bot Lock) and confirm the destination is live

@@ -6,6 +6,7 @@ import { createServer } from "vite";
 import { ViteNodeRunner } from "vite-node/client";
 import { installSourcemapsSupport } from "vite-node/source-map";
 import { ViteNodeServer } from "vite-node/server";
+import { publishRedirectsFile } from "../shared/publish-redirects.ts";
 import { applyRouteHtml, NOT_FOUND_SEO, PAGE_SEO, sitemapIndexXml, sitemapXml } from "../shared/seo.ts";
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
@@ -64,31 +65,5 @@ if (hashes.size !== written.length) {
 writeFileSync(join(dist, "404.html"), applyRouteHtml(template, NOT_FOUND_SEO));
 writeFileSync(join(dist, "sitemap.xml"), sitemapXml());
 writeFileSync(join(dist, "sitemaps.xml"), sitemapIndexXml());
-writeFileSync(
-  join(dist, "_redirects"),
-  [
-    // Legacy hub URLs linked across the portfolio (audit 2026-09-30): send them to /about.
-    "/hive /about 301!",
-    "/hive/ /about 301!",
-    "/hive.html /about 301!",
-    "/about.html /about 301!",
-    "/about /about/index.html 200!",
-    "/about/ /about/index.html 200!",
-    "/buzz /buzz/index.html 200!",
-    "/buzz/ /buzz/index.html 200!",
-    "/rankings /rankings/index.html 200!",
-    "/rankings/ /rankings/index.html 200!",
-    "/build /build/index.html 200!",
-    "/build/ /build/index.html 200!",
-    "/consult /consult/index.html 200!",
-    "/consult/ /consult/index.html 200!",
-    "/concierge /concierge/index.html 200!",
-    "/concierge/ /concierge/index.html 200!",
-    "/concierge/vs-hiring /concierge/vs-hiring/index.html 200!",
-    "/concierge/vs-hiring/ /concierge/vs-hiring/index.html 200!",
-    "/x /x/index.html 200!",
-    "/x/ /x/index.html 200!",
-    "/* /404.html 404",
-  ].join("\n") + "\n",
-);
+writeFileSync(join(dist, "_redirects"), publishRedirectsFile());
 console.log("wrote dist/404.html dist/sitemap.xml dist/sitemaps.xml dist/_redirects");
