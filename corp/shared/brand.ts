@@ -44,6 +44,27 @@ export const MONEY_FOOTER_LINKS = [
   { href: SEAT_CIRCUIT_URL, label: SEAT_CIRCUIT_NAME },
 ] as const;
 
+/**
+ * "Featured on" strip: directory listings for AgentHive Inc products (same badges as the firstdeploy.ai footer).
+ */
+export const FEATURED_ON = [
+  { href: "https://twelve.tools", label: "Featured on Twelve Tools" },
+  {
+    href: "https://fazier.com",
+    label: "Fazier badge",
+    img: "https://fazier.com/api/v1//public/badges/launch_badges.svg?badge_type=launched&theme=light",
+    width: 120,
+    height: 26,
+  },
+  {
+    href: "https://launchaf.com/products/product-105",
+    label: "Featured on LaunchAF",
+    img: "https://launchaf.com/api/badge/light?v=launchaf-blue-2026-2",
+    width: 200,
+    height: 56,
+  },
+] as const;
+
 /** Product names on their own footer row. Money links above stay unchanged. */
 export const PRODUCT_FOOTER_LINKS = [
   { href: "https://firstdeploy.ai", label: "First Deploy" },
