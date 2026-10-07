@@ -146,7 +146,8 @@ export default function Home() {
             ))}
           </div>
           <p className="fine" style={{ marginTop: 18 }}>
-            Full public board on <a href="/rankings">Rankings</a>. Weekly briefing on <a href="/buzz">The Buzz</a>.
+            Free API rate card: <a href="https://aipricingcalculators.com/">AI Pricing Calculators</a>. Full public
+            board on <a href="/rankings">Rankings</a>. Weekly briefing on <a href="/buzz">The Buzz</a>.
           </p>
         </div>
       </section>

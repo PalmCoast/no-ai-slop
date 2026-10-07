@@ -185,7 +185,7 @@ export const SALE_APPS: SaleApp[] = [
     name: "AI Pricing Calculators",
     url: "https://aipricingcalculators.com/",
     price: "Free calculator",
-    blurb: "Free LLM API cost calculator, then the live AgentHive offers.",
+    blurb: "Free LLM API cost calculator for the September 2026 list prices, then the live AgentHive offers.",
     who: "Anyone about to buy tokens blind",
     category: "saas",
   },
