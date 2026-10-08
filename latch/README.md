@@ -38,12 +38,14 @@ Vite serves the app at [http://127.0.0.1:5183](http://127.0.0.1:5183). `npm run 
 
 ## Deploy
 
-This folder is its own Netlify site. In the Netlify UI:
+Production host: [latch.agenthiveinc.com](https://latch.agenthiveinc.com). Reed owns that deploy. The ticket is [REED-ASSIGNMENT.md](REED-ASSIGNMENT.md). The steps are [GROK-DEPLOY.md](GROK-DEPLOY.md).
+
+This folder is its own Netlify site. It is not the site that serves agenthiveinc.com. In the Netlify UI:
 
 1. Base directory: `latch`
 2. Build command: `npm run build`
 3. Publish directory: `dist`
 
-Set `STRIPE_SECRET_KEY` to charge the $29 record through Stripe Checkout. Without that key, **Get the record** issues a demo key and charges nothing. Optional `SITE_URL` is the origin used in the success and cancel URLs.
+Set `SITE_URL` to `https://latch.agenthiveinc.com`. Set `STRIPE_SECRET_KEY` to charge the $29 record through Stripe Checkout. Without that key, **Get the record** issues a demo key and charges nothing.
 
 The task list is not an environment variable and it is not sent to Stripe.
