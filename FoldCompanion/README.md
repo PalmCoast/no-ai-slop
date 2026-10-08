@@ -91,15 +91,37 @@ The app appears as **Fold Companion**. Open it, and the four call buttons are on
 adb install -r app/build/outputs/apk/release/app-release.apk
 ```
 
-By default the release APK is signed with the Android debug key, which is fine for
-personal sideloading. To sign with your own key (recommended so future updates
-install over the top), copy `keystore.properties.template` to `keystore.properties`
-(gitignored), generate a keystore, and fill it in:
+### Release signing
+
+The release build is signed with a real key when credentials are provided, and
+falls back to the Android debug key for local development otherwise. Credentials
+resolve in this order: **environment variables → `keystore.properties` → debug key.**
+
+Generate a keystore once and keep it safe (losing it means you can't ship updates
+that install over the top):
 
 ```bash
 keytool -genkeypair -v -keystore fold-companion-release.jks \
   -alias fold -keyalg RSA -keysize 2048 -validity 10000
 ```
+
+Local signing — copy `keystore.properties.template` to `keystore.properties`
+(gitignored) and fill it in:
+
+```properties
+storeFile=fold-companion-release.jks
+storePassword=...
+keyAlias=fold
+keyPassword=...
+```
+
+CI signing — set these environment variables instead (no files committed):
+
+```
+FOLD_KEYSTORE_FILE, FOLD_KEYSTORE_PASSWORD, FOLD_KEY_ALIAS, FOLD_KEY_PASSWORD
+```
+
+`*.jks` and `keystore.properties` are gitignored — never commit signing material.
 
 To grant the optional mail list: open the app → **Mail** tab → **Open
 notification-access settings** → enable Fold Companion.
