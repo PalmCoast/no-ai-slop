@@ -176,6 +176,19 @@ export const HIVE_SITES: HiveSite[] = [
     statusHint: "live",
   },
   {
+    slug: "graham",
+    name: "Graham",
+    url: "https://github.com/PalmCoast/no-ai-slop/tree/main/graham",
+    github: "https://github.com/PalmCoast/no-ai-slop/tree/main/graham",
+    description:
+      "Daniel Graham's line. Contacts still ring the cell. Mill scripts are blocked. The same being stands up under a client's surname.",
+    price: "$1,750 setup (50% to start or pay in full), then $250/mo",
+    category: "ops",
+    host: "github",
+    statusHint: "lab",
+    featured: true,
+  },
+  {
     slug: "writehive",
     name: "WriteHive",
     url: "https://writehive.netlify.app/",
