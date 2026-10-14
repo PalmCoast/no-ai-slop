@@ -27,7 +27,7 @@ Vite serves the app at [http://127.0.0.1:5191](http://127.0.0.1:5191). The API (
 
 ## Deploy
 
-This folder is its own Netlify site. Do not point another product site at `redline/`.
+This folder is its own Netlify site. Do not point another product site at `redline/`. The handoff for Reed is [GROK-LAUNCH.md](GROK-LAUNCH.md). Do not post that file.
 
 1. Base directory: `redline`
 2. Build command: `npm run build`
