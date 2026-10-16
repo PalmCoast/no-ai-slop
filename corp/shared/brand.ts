@@ -57,7 +57,7 @@ export const FEATURED_ON = [
     height: 26,
   },
   {
-    href: "https://launchaf.com/products/product-105",
+    href: "https://launchaf.com/products/product-107",
     label: "Featured on LaunchAF",
     img: "https://launchaf.com/api/badge/light?v=launchaf-blue-2026-2",
     width: 200,
