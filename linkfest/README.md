@@ -39,3 +39,5 @@ This folder is its own Netlify site. In the Netlify UI:
 Intended host: `https://linkfest.indexme.lol`. The canonical URL, Open Graph image, and sitemap use that origin. Change `SITE_ORIGIN` in `shared/brand.ts` and the matching tags in `index.html` if the public host is different.
 
 No environment variables. The check runs in the `/api/check` function.
+
+Launch handoff for Reed: [GROK-LAUNCH.md](GROK-LAUNCH.md). Human notes: [LAUNCH.md](LAUNCH.md).
