@@ -62,7 +62,8 @@ export default function Disclosure() {
         <h2>&ldquo;Featured on&rdquo; badges</h2>
         <p>
           The badges in our footer link to directories that list our products. They are not affiliate links, and we
-          earn nothing from them.
+          earn nothing from them. The &ldquo;Hosted on Netlify&rdquo; link in the footer is different: it is our Netlify partner referral
+          link (Netlify is in the list above).
         </p>
 
         <h2>Questions</h2>

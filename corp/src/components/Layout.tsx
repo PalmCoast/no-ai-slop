@@ -180,7 +180,10 @@ export default function Layout() {
           )}
         </div>
         <p className="container footer-disclosure">
-          {DISCLOSURE_LINE} <Link to={DISCLOSURE_PATH}>Disclosure</Link>
+          {DISCLOSURE_LINE} <Link to={DISCLOSURE_PATH}>Disclosure</Link> ·{" "}
+          <a href="https://join.netlify.com/mn6b2zkzsv2b" target="_blank" rel="sponsored noopener">
+            Hosted on Netlify
+          </a>
         </p>
         <div className="container footer-bottom">
           <div>
