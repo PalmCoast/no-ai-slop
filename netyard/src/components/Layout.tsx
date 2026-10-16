@@ -125,7 +125,12 @@ export default function Layout() {
           <div>
             © 2026 {BRAND_COMPANY} · {LEGAL_NAME}
           </div>
-          <div>{FOOTER_LINE}</div>
+          <div>
+            {FOOTER_LINE} ·{" "}
+            <a href="https://join.netlify.com/mn6b2zkzsv2b" target="_blank" rel="sponsored noopener">
+              Hosted on Netlify
+            </a>
+          </div>
         </div>
       </footer>
     </div>
