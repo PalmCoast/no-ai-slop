@@ -90,3 +90,7 @@ MIT
 ## Latch
 
 [Latch](latch/README.md) is a next-hour tool for AuDHD (autism and ADHD together) and for CPTSD. One task on the screen, a timer you can see coming, a place to park the other thought, and a stop when it is too much. The timer is free. The record of time on task is $29 once. No streak, and the list stays in the browser. See [latch/README.md](latch/README.md).
+
+## Link Fest
+
+[Link Fest](linkfest/README.md) is an IndexMe.lol page: a board of real outbound links, a credit line you can paste, and a check that your page links to [indexme.lol](https://indexme.lol/) with the name visible. The idea stays on the page that wrote it. See [linkfest/README.md](linkfest/README.md).
