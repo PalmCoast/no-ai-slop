@@ -45,7 +45,7 @@ export const OFFERS: Offer[] = [
     envKey: "STRIPE_PRICE_ID_MONTHLY",
     defaultPriceId: "price_1UHpipFJWYd4pYuxCrWZNXmY",
     fallbackHref: "https://buy.stripe.com/8x2aEXcf2e5lfTf41Y2ZO1o",
-    blurb: "After-hours coverage and a named operator on the shop network after the rack.",
+    blurb: "A named operator on your shop network after the build, working from the same written NetYard plan when people, shares, or Wi-Fi change.",
     cta: "Start monthly",
   },
   {

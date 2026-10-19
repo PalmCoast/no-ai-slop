@@ -9,7 +9,7 @@ NetYard is for plumbers, HVAC shops, clinics, and anyone else who was quoted Win
 - [Plan](https://netyard.firstdeploy.ai/plan): Generated LAN, directory, shopping list, scripts.
 - [Tools](https://netyard.firstdeploy.ai/tools): Subnet calculator and VLAN cheat sheet.
 - [Vs Microsoft Server](https://netyard.firstdeploy.ai/compare): Samba AD versus Windows Server Standard + User CALs.
-- [Buy](https://netyard.firstdeploy.ai/buy): Stripe for setup, monthly desk, and consult time.
+- [Buy](https://netyard.firstdeploy.ai/buy): Have First Deploy AI build the network: $1,750 setup ($875 to start), then $250/month.
 - [Pricing and FAQ](https://netyard.firstdeploy.ai/#pricing): The plan is free. First Deploy AI builds it for $1,750 setup ($875 to start, balance when it is done), then $250/month.
 - [Launch](https://netyard.firstdeploy.ai/launch): Harbor HVAC standup video and screenshots.
 
