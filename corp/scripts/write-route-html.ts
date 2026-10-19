@@ -7,6 +7,7 @@ import { ViteNodeRunner } from "vite-node/client";
 import { installSourcemapsSupport } from "vite-node/source-map";
 import { ViteNodeServer } from "vite-node/server";
 import { applyRouteHtml, NOT_FOUND_SEO, PAGE_SEO, sitemapIndexXml, sitemapXml } from "../shared/seo.ts";
+import { CONSULT_COMPARE_PAGES } from "../shared/consultCompare.ts";
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 const dist = join(root, "dist");
@@ -84,6 +85,7 @@ writeFileSync(
     "/consult/ /consult/index.html 200!",
     "/consult/ai-consultant-cost /consult/ai-consultant-cost/index.html 200!",
     "/consult/ai-consultant-cost/ /consult/ai-consultant-cost/index.html 200!",
+    ...CONSULT_COMPARE_PAGES.flatMap((page) => [`${page.path} ${page.path}/index.html 200!`, `${page.path}/ ${page.path}/index.html 200!`]),
     "/concierge /concierge/index.html 200!",
     "/concierge/ /concierge/index.html 200!",
     "/concierge/vs-hiring /concierge/vs-hiring/index.html 200!",

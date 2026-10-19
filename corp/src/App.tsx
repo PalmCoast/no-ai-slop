@@ -11,6 +11,8 @@ import Concierge from "./pages/Concierge";
 import VsHiring from "./pages/VsHiring";
 import Disclosure from "./pages/Disclosure";
 import NotFound from "./pages/NotFound";
+import ConsultComparePage from "./pages/ConsultComparePage";
+import { CONSULT_COMPARE_PAGES } from "../shared/consultCompare";
 
 export default function App() {
   return (
@@ -23,6 +25,9 @@ export default function App() {
         <Route path="/build" element={<Build />} />
         <Route path="/consult" element={<Consult />} />
         <Route path="/consult/ai-consultant-cost" element={<ConsultCost />} />
+        {CONSULT_COMPARE_PAGES.map((page) => (
+          <Route key={page.path} path={page.path} element={<ConsultComparePage />} />
+        ))}
         <Route path="/concierge" element={<Concierge />} />
         <Route path="/concierge/vs-hiring" element={<VsHiring />} />
         <Route path="/disclosure" element={<Disclosure />} />

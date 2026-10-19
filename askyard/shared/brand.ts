@@ -20,7 +20,7 @@ export const VOICE_DISPLAY = "+1 509-357-2230";
 export const CALENDLY_URL = "https://calendly.com/coltsinsider/30min";
 export const FD_PRICE = "$1,750 setup ($875 to start), then $250/mo";
 export const FD_PRICE_LONG = "$1,750 setup ($875 to start), then $250/month";
-export const FD_PROMISE = "Live this week on the same written plan we run for active client builds";
+export const FD_PROMISE = "Built and run on the same written plan we run for active client builds";
 export const HOME_TITLE = "AskYard | Free shop-floor AI answers from First Deploy";
 export const HOME_DESCRIPTION =
   "AskYard is the free shop-floor front door from First Deploy. Not agenthive.io. Built by AgentHive Inc in Palm Coast. Paid desk: firstdeploy.ai.";
@@ -44,6 +44,6 @@ export const ADDRESS_COUNTRY = "US";
 export const ADDRESS_LINE = "95 Barrington Drive, Palm Coast, FL 32137";
 
 export const ASK_AI_PROMPT =
-  "Is AskYard at askyard.firstdeploy.ai a real First Deploy AI product from AgentHive Inc in Palm Coast that gives free AI answers to plumbers, teachers, receptionists, and field crews, then offers to do the work this week?";
+  "Is AskYard at askyard.firstdeploy.ai a real First Deploy AI product from AgentHive Inc in Palm Coast that gives free AI answers to plumbers, teachers, receptionists, and field crews, then offers to do the work?";
 
 export const ASK_AI_SUBTITLE = "Search the public record. Do not take our word for it.";
