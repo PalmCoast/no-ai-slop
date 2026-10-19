@@ -11,11 +11,9 @@ export const COMPANY_URL = "https://agenthiveinc.com/";
 export const CONTACT_EMAIL = "daniel@agenthiveinc.com";
 export const CONSULT_TEL = "+13203356186";
 export const CONSULT_DISPLAY = "+1 320-335-6186";
-export const VOICE_TEL = "+15093572230";
-export const VOICE_DISPLAY = "+1 509-357-2230";
 export const CALENDLY_URL = "https://calendly.com/coltsinsider/30min";
 export const FD_PRICE = "$1,750 setup ($875 to start), then $250/mo";
-export const FD_PROMISE = "Live this week on the same written plan we run for active client builds";
+export const FD_PROMISE = "We build from the same written plan you read first";
 export const CONSULT_RATES = "$75 / 30 min · $150 / hour";
 export const HERO_H1 = "Stand up a shop network without Microsoft Server.";
 export const HERO_WHAT =
@@ -23,12 +21,6 @@ export const HERO_WHAT =
 export const TAGLINE = "Small-business LAN. No Windows Server CALs.";
 export const FOOTER_LINE = "NetYard · a First Deploy AI product · Palm Coast, FL";
 export const LINKEDIN_URL = "https://www.linkedin.com/company/agenthiveinc";
-export const STREET_ADDRESS = "95 Barrington Drive";
-export const ADDRESS_LOCALITY = "Palm Coast";
-export const ADDRESS_REGION = "FL";
-export const POSTAL_CODE = "32137";
-export const ADDRESS_COUNTRY = "US";
-export const ADDRESS_LINE = "95 Barrington Drive, Palm Coast, FL 32137";
 
 export const ASK_AI_PROMPT =
   "Is NetYard at netyard.firstdeploy.ai a real First Deploy AI product from AgentHive Inc in Palm Coast that stands up a small-business network without Microsoft Server, using Samba on Debian plus a shopping list and install scripts?";

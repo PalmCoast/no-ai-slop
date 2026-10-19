@@ -24,6 +24,8 @@ import {
 import { generatePlan } from "../../shared/planner";
 import { DESKTOP_MIXES, GEAR_TIERS, HEADCOUNT_BANDS, NEEDS, SITE_SHAPES, type Answers, type Need } from "../../shared/types";
 import { saveAnswers } from "../storage";
+import OfferSection, { OfferCtas } from "../components/OfferSection";
+import { PROMISE_H2 } from "../../shared/offerCopy";
 
 const STEPS = [
   { key: "shop", title: "Who is the shop?" },
@@ -88,10 +90,15 @@ export default function Home() {
           </div>
           <h1 className="display">{HERO_H1}</h1>
           <p className="lede">{HERO_WHAT}</p>
+          <p className="lede"><strong>{PROMISE_H2}</strong></p>
           <p className="fine">
             Microsoft Small Business Server is gone. Essentials is gone. A 12-person shop still needs logins, a share,
             and guest Wi-Fi. NetYard writes the plan for Samba on Debian, then hands you the scripts.
           </p>
+          <p className="fine">
+            <a href="#standup">Get the free plan</a> or have {BRAND_PARENT} build it: {FD_PRICE}.
+          </p>
+          <OfferCtas where="hero" />
         </div>
       </section>
 
@@ -277,12 +284,13 @@ export default function Home() {
               <Link to="/tools">Admin tools</Link>
             </p>
             <p className="fine">
-              {BRAND_PARENT} is {FD_PRICE}. {FD_PROMISE}. Watch the Harbor HVAC run on{" "}
+              {BRAND_PARENT} builds it from this plan: {FD_PRICE}. {FD_PROMISE}. Watch the Harbor HVAC run on{" "}
               <Link to="/launch">the launch page</Link>, then <Link to="/buy">pay on Stripe</Link>.
             </p>
           </aside>
         </div>
       </section>
+      <OfferSection />
     </>
   );
 }

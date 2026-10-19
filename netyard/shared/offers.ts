@@ -32,7 +32,7 @@ export const OFFERS: Offer[] = [
     defaultPriceId: "price_1UHpioFJWYd4pYuxawfgIoHJ",
     fallbackHref: FD_DEPOSIT_URL,
     directHref: FD_DEPOSIT_URL,
-    blurb: "We stand up the LAN from your NetYard plan this week. Live this week on the same written plan we run for active client builds.",
+    blurb: "We stand up the LAN from your NetYard plan. $875 to start, balance when it is done.",
     cta: "Pay setup",
   },
   {
