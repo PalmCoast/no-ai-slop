@@ -89,4 +89,4 @@ MIT
 
 ## Latch
 
-[Latch](latch/README.md) is a next-hour tool for AuDHD (autism and ADHD together) and for CPTSD. One task on the screen, a timer you can see coming, a place to park the other thought, and a stop when it is too much. The timer is free. The record of time on task is $29 once. No streak, and the list stays in the browser. See [latch/README.md](latch/README.md).
+[Latch](latch/README.md) is a next-hour tool for AuDHD (autism and ADHD together) and for CPTSD. One task on the screen, a timer you can see coming, a place to park the other thought, and a stop when it is too much. The timer is free. The record of time on task is $29 once. No streak, and the list stays in the browser. Production host is [latch.agenthiveinc.com](https://latch.agenthiveinc.com). See [latch/README.md](latch/README.md).
