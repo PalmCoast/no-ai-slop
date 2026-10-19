@@ -107,7 +107,7 @@ export default function ConsultCost() {
               </tbody>
             </table>
           </div>
-          <h3 style={{ marginTop: 26 }}>Independent consultants with a free first call</h3>
+          <h3 style={{ marginTop: 26 }}>Independent consultants</h3>
           <ul className="cost-list">
             {PUBLISHED_SOLO.map((row) => (
               <li key={row.source}>
