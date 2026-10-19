@@ -14,7 +14,7 @@ NetYard is for plumbers, HVAC shops, clinics, and anyone else who was quoted Win
 - [Samba AD for small business](https://netyard.firstdeploy.ai/samba-ad-small-business): What Samba AD does, what it can't, and how the plan works around each gap.
 - [Per-server Linux license vs a built network](https://netyard.firstdeploy.ai/zentyal-alternative): A comparison page with dated, plain-text sources.
 - [Free self-run platform vs a built network](https://netyard.firstdeploy.ai/nethserver-alternative): A comparison page with dated, plain-text sources.
-- [Buy](https://netyard.firstdeploy.ai/buy): Stripe for setup, monthly desk, and consult time.
+- [Buy](https://netyard.firstdeploy.ai/buy): Have First Deploy AI build the network: $1,750 setup ($875 to start), then $250/month.
 - [Pricing and FAQ](https://netyard.firstdeploy.ai/#pricing): The plan is free. First Deploy AI builds it for $1,750 setup ($875 to start, balance when it is done), then $250/month.
 - [Launch](https://netyard.firstdeploy.ai/launch): Harbor HVAC standup video and screenshots.
 

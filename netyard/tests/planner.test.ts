@@ -191,7 +191,7 @@ describe("seo", () => {
     const buyLd = JSON.stringify(jsonLdFor(PAGE_SEO.find((page) => page.path === "/buy")!));
     expect(buyLd).toContain("1750.00");
     expect(buyLd).toContain("250.00");
-    expect(buyLd).toContain("75.00");
+    expect(buyLd).not.toContain("625.00");
     expect(buyLd).not.toContain("WebApplication");
     const homeLd = JSON.stringify(jsonLdFor(home));
     expect(homeLd).toContain("WebApplication");
