@@ -15,7 +15,7 @@ export default function Build() {
           <h1 className="display" style={{ fontSize: "clamp(2.2rem, 5vw, 3.8rem)" }}>
             One leak.
             <br />
-            <em>Live this week.</em>
+            <em>Built on a written plan.</em>
           </h1>
           <p className="lede">
             Missed calls, dead quotes, a board that still lives on the wall. {FD_NAME} embeds, ships the after-hours desk
