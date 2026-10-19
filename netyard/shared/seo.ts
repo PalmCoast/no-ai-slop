@@ -81,7 +81,7 @@ export const PAGE_SEO: SeoPage[] = [
   {
     path: "/thanks",
     title: "Payment landed | NetYard",
-    description: `Stripe checkout confirmation for NetYard setup, monthly desk, or consult time.`,
+    description: `Stripe checkout confirmation for a NetYard network build.`,
     h1: "Payment landed.",
     bodyHtml: `<main id="route-thanks" class="section"><div class="container"><h1 class="display">Payment landed.</h1><p class="lede">We rack from the plan you already generated. Keep the Stripe receipt.</p></div></main>`,
     noindex: true,
