@@ -36,25 +36,21 @@ import { CONCIERGE_BOOK_LABEL, CONCIERGE_NAME, CONCIERGE_PRICE, CONCIERGE_PRICE_
 import { CONCIERGE_FAQS, CONSULT_FAQS, HIRING_FAQS } from "./faqs.ts";
 import { AFFILIATE_TOOLS, DISCLOSURE_LINE, DISCLOSURE_UPDATED } from "./disclosure.ts";
 import {
-  SWITCH_CHECKED,
+  SWITCH_DESCRIPTION,
   SWITCH_ENDS,
   SWITCH_ENDS_ISO,
+  SWITCH_FAQS,
   SWITCH_GUARANTEE,
-  SWITCH_OFFERS,
+  SWITCH_H1,
+  SWITCH_LEDE,
+  SWITCH_MONTHLY,
   SWITCH_PATH,
   SWITCH_PUBLISHED_ISO,
   SWITCH_SETUP,
   SWITCH_URL,
   SWITCH_YEAR_ONE,
-  type SwitchOffer,
+  SWITCH_TITLE,
 } from "./switch.ts";
-
-function switchBodyHtml(offer: SwitchOffer): string {
-  const rows = offer.plans
-    .map((plan) => `<li>${escapeHtml(plan.plan)}: ${escapeHtml(plan.price)}, ${escapeHtml(plan.includes)} ${escapeHtml(plan.over)}.</li>`)
-    .join("");
-  return `<main id="route-switch${offer.slug.replace(/-/g, "")}" class="section"><div class="container"><h1 class="display">${escapeHtml(offer.h1)}</h1><p class="lede">${escapeHtml(offer.lede)}</p><p>${escapeHtml(offer.what)}</p><ul>${rows}</ul><p>Switch offer: $875 setup (the $875 balance is waived), then $250/mo flat from go-live. ${escapeHtml(SWITCH_GUARANTEE)} Through ${SWITCH_ENDS}.</p><p><a href="${BRAND_URL}${offer.path}">Switch from ${escapeHtml(offer.competitor)}</a> · <a href="${SWITCH_URL}">All switch offers</a> · <a href="${offer.compareUrl}">${FD_NAME} vs ${escapeHtml(offer.competitor)}</a> · <a href="${CALENDLY_URL}">${BOOK_CTA_LABEL}</a></p></div></main>`;
-}
 
 export type SeoPage = {
   path: string;
@@ -129,21 +125,11 @@ export const PAGE_SEO: SeoPage[] = [
   },
   {
     path: SWITCH_PATH,
-    title: "Switch from Smith.ai or Ruby: $875 setup, $250/mo flat | AgentHive Inc",
-    description:
-      "Paying Smith.ai or Ruby? Switch to First Deploy AI: $875 setup for switchers, then $250/mo with no call count or minute meter. Through Nov 30, 2026.",
-    h1: "Paying Smith.ai or Ruby to answer the phone? Switch for $875.",
-    bodyHtml: `<main id="route-switch" class="section"><div class="container"><h1 class="display">Paying Smith.ai or Ruby to answer the phone? Switch for $875.</h1><p class="lede">${FD_NAME} is the after-hours desk for trade shops, built and run for $250/mo with no call count and no minute meter. Published setup is $1,750. A shop leaving Smith.ai or Ruby pays $875 and the balance is waived, through ${SWITCH_ENDS}.</p><p>${escapeHtml(SWITCH_GUARANTEE)} Competitor prices read ${SWITCH_CHECKED} from each vendor’s own pages.</p><p>${SWITCH_OFFERS.map((offer) => `<a href="${BRAND_URL}${offer.path}">Switch from ${escapeHtml(offer.competitor)}</a>`).join(" · ")} · <a href="${FD_URL}">${FD_NAME}</a> · <a href="${CALENDLY_URL}">${BOOK_CTA_LABEL}</a></p></div></main>`,
+    title: SWITCH_TITLE,
+    description: SWITCH_DESCRIPTION,
+    h1: SWITCH_H1,
+    bodyHtml: `<main id="route-switch" class="section"><div class="container"><h1 class="display">${escapeHtml(SWITCH_H1)}</h1><p class="lede">${escapeHtml(SWITCH_LEDE)}</p><p>${escapeHtml(SWITCH_GUARANTEE)} Through ${SWITCH_ENDS}. Year one is $${SWITCH_YEAR_ONE.toLocaleString("en-US")}.</p><p><a href="${SWITCH_URL}">${FD_NAME} desk offer</a> · <a href="${FD_URL}">${FD_NAME}</a> · <a href="${CALENDLY_URL}">${BOOK_CTA_LABEL}</a></p></div></main>`,
   },
-  ...SWITCH_OFFERS.map(
-    (offer): SeoPage => ({
-      path: offer.path,
-      title: offer.pageTitle,
-      description: offer.description,
-      h1: offer.h1,
-      bodyHtml: switchBodyHtml(offer),
-    }),
-  ),
   {
     path: "/disclosure",
     title: "Affiliate disclosure | AgentHive Inc",
@@ -370,61 +356,39 @@ export function jsonLdFor(page: SeoPage): object | null {
         organizationNode(),
         danielPerson(),
         {
-          "@type": "CollectionPage",
-          name: page.h1,
-          url: SWITCH_URL,
-          description: page.description,
-          datePublished: SWITCH_PUBLISHED_ISO,
-          dateModified: SWITCH_PUBLISHED_ISO,
-          author: { "@id": DANIEL_ID },
-          publisher: { "@id": `${BRAND_URL}/#organization` },
-          hasPart: SWITCH_OFFERS.map((offer) => ({ "@type": "WebPage", name: offer.h1, url: canonicalFor(offer.path) })),
-        },
-      ],
-    };
-  }
-  const switchPage = SWITCH_OFFERS.find((offer) => offer.path === page.path);
-  if (switchPage) {
-    const url = canonicalFor(switchPage.path);
-    return {
-      "@context": "https://schema.org",
-      "@graph": [
-        organizationNode(),
-        danielPerson(),
-        {
           "@type": "Article",
-          headline: switchPage.h1,
-          description: switchPage.description,
+          headline: page.h1,
+          description: page.description,
           author: { "@id": DANIEL_ID },
           publisher: { "@id": `${BRAND_URL}/#organization` },
           datePublished: SWITCH_PUBLISHED_ISO,
           dateModified: SWITCH_PUBLISHED_ISO,
-          mainEntityOfPage: url,
+          mainEntityOfPage: SWITCH_URL,
         },
         {
           "@type": "Service",
-          name: `${FD_NAME} after-hours desk, ${switchPage.competitor} switch`,
+          name: `${FD_NAME} after-hours desk`,
           serviceType: "AI after-hours phone desk for trade shops",
-          url,
+          url: SWITCH_URL,
           provider: { "@id": `${BRAND_URL}/#organization` },
           areaServed: "US",
-          description: `${switchPage.lede} ${SWITCH_GUARANTEE}`,
+          description: `${SWITCH_LEDE} ${SWITCH_GUARANTEE}`,
           offers: [
             {
               "@type": "Offer",
-              name: `${switchPage.competitor} switch setup`,
+              name: "Setup",
               price: SWITCH_SETUP.toFixed(2),
               priceCurrency: "USD",
-              url,
+              url: SWITCH_URL,
               availability: "https://schema.org/InStock",
               validFrom: SWITCH_PUBLISHED_ISO,
               validThrough: SWITCH_ENDS_ISO,
-              description: `One-time setup for a verified ${switchPage.competitor} customer. Published setup is $1,750. Year one on the offer is $${SWITCH_YEAR_ONE.toLocaleString("en-US")}.`,
+              description: `No setup fee on a plan started by ${SWITCH_ENDS}. Year one on the offer is $${SWITCH_YEAR_ONE.toLocaleString("en-US")}.`,
             },
-            monthlyOffer(`${FD_NAME} desk`, "250.00", url),
+            monthlyOffer(`${FD_NAME} desk`, SWITCH_MONTHLY.toFixed(2), SWITCH_URL),
           ],
         },
-        faqPage(switchPage.faqs),
+        faqPage(SWITCH_FAQS),
       ],
     };
   }

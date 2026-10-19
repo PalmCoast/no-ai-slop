@@ -11,18 +11,6 @@ export const GO_LINKS: Record<string, GoLink> = {
   // First Deploy has its own tracker; /go/first-deploy hands off to it.
   "first-deploy": { url: "https://firstdeploy.ai/go/start", kind: "page", label: "First Deploy — $1,750 setup + $250/mo" },
   concierge: { url: "https://buy.stripe.com/6oUeVd7YM3qH0Ylbuq2ZO1u", kind: "stripe", label: "AI Concierge — $2,000/mo" },
-  // Switch offers reuse the live First Deploy $875 start link (firstdeploy.ai/go/deposit).
-  // The $875 balance is waived for a verified switcher; client_reference_id carries the offer.
-  "switch-smith-ai": {
-    url: "https://buy.stripe.com/9B68wP92Qe5layV8ie2ZO1w",
-    kind: "stripe",
-    label: "First Deploy AI — Smith.ai switch, $875 setup + $250/mo",
-  },
-  "switch-ruby": {
-    url: "https://buy.stripe.com/9B68wP92Qe5layV8ie2ZO1w",
-    kind: "stripe",
-    label: "First Deploy AI — Ruby switch, $875 setup + $250/mo",
-  },
   "jobproof-solo": { url: "https://buy.stripe.com/5kQfZhcf29P536tbuq2ZO1f", kind: "stripe", label: "JobProof Solo — $49/mo" },
   "jobproof-crew": { url: "https://buy.stripe.com/bJe14n7YMaT95eB6a62ZO1e", kind: "stripe", label: "JobProof Crew — $99/mo" },
   "indexme-pro": { url: "https://buy.stripe.com/4gMcN52Ese5ldL7cyu2ZO1a", kind: "stripe", label: "IndexMe Pro — $19.99 once" },

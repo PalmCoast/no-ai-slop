@@ -150,30 +150,6 @@
   force = true
 
 [[redirects]]
-  from = "/switch/smith-ai"
-  to = "/switch/smith-ai/index.html"
-  status = 200
-  force = true
-
-[[redirects]]
-  from = "/switch/smith-ai/"
-  to = "/switch/smith-ai/index.html"
-  status = 200
-  force = true
-
-[[redirects]]
-  from = "/switch/ruby"
-  to = "/switch/ruby/index.html"
-  status = 200
-  force = true
-
-[[redirects]]
-  from = "/switch/ruby/"
-  to = "/switch/ruby/index.html"
-  status = 200
-  force = true
-
-[[redirects]]
   from = "/x"
   to = "/x/index.html"
   status = 200
