@@ -1,4 +1,6 @@
+import { Link } from "react-router-dom";
 import AskAiBar from "../components/AskAiBar";
+import { SWITCH_ENDS, SWITCH_PATH, SWITCH_SETUP_LABEL } from "../../shared/switch";
 import {
   BOOK_CTA_LABEL,
   BRAND_NAME,
@@ -110,6 +112,10 @@ export default function Home() {
               </p>
               <p className="muted" style={{ marginTop: 12 }}>
                 Consult: free 30-minute qualifier, then {CONSULT_RATES}. 10-hour pack $1,250 (half up front).
+              </p>
+              <p className="muted" style={{ marginTop: 12 }}>
+                Paying Smith.ai or Ruby to answer the phone today?{" "}
+                <Link to={SWITCH_PATH}>Switch for {SWITCH_SETUP_LABEL} setup</Link>, then $250/mo, through {SWITCH_ENDS}.
               </p>
             </article>
             <article className="panel">

@@ -35,6 +35,26 @@ import { DANIEL_BIO, DANIEL_ID, DANIEL_JOB_TITLE, DANIEL_NAME, DANIEL_SAME_AS, D
 import { CONCIERGE_BOOK_LABEL, CONCIERGE_NAME, CONCIERGE_PRICE, CONCIERGE_PRICE_AMOUNT, CONCIERGE_STRIPE_URL, CONCIERGE_URL } from "./concierge.ts";
 import { CONCIERGE_FAQS, CONSULT_FAQS, HIRING_FAQS } from "./faqs.ts";
 import { AFFILIATE_TOOLS, DISCLOSURE_LINE, DISCLOSURE_UPDATED } from "./disclosure.ts";
+import {
+  SWITCH_CHECKED,
+  SWITCH_ENDS,
+  SWITCH_ENDS_ISO,
+  SWITCH_GUARANTEE,
+  SWITCH_OFFERS,
+  SWITCH_PATH,
+  SWITCH_PUBLISHED_ISO,
+  SWITCH_SETUP,
+  SWITCH_URL,
+  SWITCH_YEAR_ONE,
+  type SwitchOffer,
+} from "./switch.ts";
+
+function switchBodyHtml(offer: SwitchOffer): string {
+  const rows = offer.plans
+    .map((plan) => `<li>${escapeHtml(plan.plan)}: ${escapeHtml(plan.price)}, ${escapeHtml(plan.includes)} ${escapeHtml(plan.over)}.</li>`)
+    .join("");
+  return `<main id="route-switch${offer.slug.replace(/-/g, "")}" class="section"><div class="container"><h1 class="display">${escapeHtml(offer.h1)}</h1><p class="lede">${escapeHtml(offer.lede)}</p><p>${escapeHtml(offer.what)}</p><ul>${rows}</ul><p>Switch offer: $875 setup (the $875 balance is waived), then $250/mo flat from go-live. ${escapeHtml(SWITCH_GUARANTEE)} Through ${SWITCH_ENDS}.</p><p><a href="${BRAND_URL}${offer.path}">Switch from ${escapeHtml(offer.competitor)}</a> · <a href="${SWITCH_URL}">All switch offers</a> · <a href="${offer.compareUrl}">${FD_NAME} vs ${escapeHtml(offer.competitor)}</a> · <a href="${CALENDLY_URL}">${BOOK_CTA_LABEL}</a></p></div></main>`;
+}
 
 export type SeoPage = {
   path: string;
@@ -107,6 +127,23 @@ export const PAGE_SEO: SeoPage[] = [
     h1: "Concierge vs hiring an in-house AI person",
     bodyHtml: `<main id="route-hiring" class="section"><div class="container"><h1 class="display">Concierge vs hiring an in-house AI person</h1><p class="lede">${CONCIERGE_NAME} is ${CONCIERGE_PRICE}. Twelve months is $24,000. The Bureau of Labor Statistics median annual wage for software developers was $135,980 in May 2025, and for computer and information systems managers $175,140. Both are wages, not benefits. Checked October 4, 2026. This page does not quote an agency price.</p><p>${DANIEL_BIO}</p><p><a href="${BRAND_URL}/consult">Consult</a> · <a href="${CONCIERGE_URL}">${CONCIERGE_NAME}</a> · <a href="${DANIEL_URL}">About Daniel Graham</a></p></div></main>`,
   },
+  {
+    path: SWITCH_PATH,
+    title: "Switch from Smith.ai or Ruby: $875 setup, $250/mo flat | AgentHive Inc",
+    description:
+      "Paying Smith.ai or Ruby? Switch to First Deploy AI: $875 setup for switchers, then $250/mo with no call count or minute meter. Through Nov 30, 2026.",
+    h1: "Paying Smith.ai or Ruby to answer the phone? Switch for $875.",
+    bodyHtml: `<main id="route-switch" class="section"><div class="container"><h1 class="display">Paying Smith.ai or Ruby to answer the phone? Switch for $875.</h1><p class="lede">${FD_NAME} is the after-hours desk for trade shops, built and run for $250/mo with no call count and no minute meter. Published setup is $1,750. A shop leaving Smith.ai or Ruby pays $875 and the balance is waived, through ${SWITCH_ENDS}.</p><p>${escapeHtml(SWITCH_GUARANTEE)} Competitor prices read ${SWITCH_CHECKED} from each vendor’s own pages.</p><p>${SWITCH_OFFERS.map((offer) => `<a href="${BRAND_URL}${offer.path}">Switch from ${escapeHtml(offer.competitor)}</a>`).join(" · ")} · <a href="${FD_URL}">${FD_NAME}</a> · <a href="${CALENDLY_URL}">${BOOK_CTA_LABEL}</a></p></div></main>`,
+  },
+  ...SWITCH_OFFERS.map(
+    (offer): SeoPage => ({
+      path: offer.path,
+      title: offer.pageTitle,
+      description: offer.description,
+      h1: offer.h1,
+      bodyHtml: switchBodyHtml(offer),
+    }),
+  ),
   {
     path: "/disclosure",
     title: "Affiliate disclosure | AgentHive Inc",
@@ -323,6 +360,71 @@ export function jsonLdFor(page: SeoPage): object | null {
           offers: monthlyOffer(CONCIERGE_NAME, CONCIERGE_PRICE_AMOUNT, CONCIERGE_STRIPE_URL),
         },
         faqPage(CONCIERGE_FAQS),
+      ],
+    };
+  }
+  if (page.path === SWITCH_PATH) {
+    return {
+      "@context": "https://schema.org",
+      "@graph": [
+        organizationNode(),
+        danielPerson(),
+        {
+          "@type": "CollectionPage",
+          name: page.h1,
+          url: SWITCH_URL,
+          description: page.description,
+          datePublished: SWITCH_PUBLISHED_ISO,
+          dateModified: SWITCH_PUBLISHED_ISO,
+          author: { "@id": DANIEL_ID },
+          publisher: { "@id": `${BRAND_URL}/#organization` },
+          hasPart: SWITCH_OFFERS.map((offer) => ({ "@type": "WebPage", name: offer.h1, url: canonicalFor(offer.path) })),
+        },
+      ],
+    };
+  }
+  const switchPage = SWITCH_OFFERS.find((offer) => offer.path === page.path);
+  if (switchPage) {
+    const url = canonicalFor(switchPage.path);
+    return {
+      "@context": "https://schema.org",
+      "@graph": [
+        organizationNode(),
+        danielPerson(),
+        {
+          "@type": "Article",
+          headline: switchPage.h1,
+          description: switchPage.description,
+          author: { "@id": DANIEL_ID },
+          publisher: { "@id": `${BRAND_URL}/#organization` },
+          datePublished: SWITCH_PUBLISHED_ISO,
+          dateModified: SWITCH_PUBLISHED_ISO,
+          mainEntityOfPage: url,
+        },
+        {
+          "@type": "Service",
+          name: `${FD_NAME} after-hours desk, ${switchPage.competitor} switch`,
+          serviceType: "AI after-hours phone desk for trade shops",
+          url,
+          provider: { "@id": `${BRAND_URL}/#organization` },
+          areaServed: "US",
+          description: `${switchPage.lede} ${SWITCH_GUARANTEE}`,
+          offers: [
+            {
+              "@type": "Offer",
+              name: `${switchPage.competitor} switch setup`,
+              price: SWITCH_SETUP.toFixed(2),
+              priceCurrency: "USD",
+              url,
+              availability: "https://schema.org/InStock",
+              validFrom: SWITCH_PUBLISHED_ISO,
+              validThrough: SWITCH_ENDS_ISO,
+              description: `One-time setup for a verified ${switchPage.competitor} customer. Published setup is $1,750. Year one on the offer is $${SWITCH_YEAR_ONE.toLocaleString("en-US")}.`,
+            },
+            monthlyOffer(`${FD_NAME} desk`, "250.00", url),
+          ],
+        },
+        faqPage(switchPage.faqs),
       ],
     };
   }

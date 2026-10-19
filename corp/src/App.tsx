@@ -9,7 +9,10 @@ import Consult from "./pages/Consult";
 import Concierge from "./pages/Concierge";
 import VsHiring from "./pages/VsHiring";
 import Disclosure from "./pages/Disclosure";
+import Switch from "./pages/Switch";
+import SwitchOffer from "./pages/SwitchOffer";
 import NotFound from "./pages/NotFound";
+import { switchOffer } from "../shared/switch";
 
 export default function App() {
   return (
@@ -24,6 +27,9 @@ export default function App() {
         <Route path="/concierge" element={<Concierge />} />
         <Route path="/concierge/vs-hiring" element={<VsHiring />} />
         <Route path="/disclosure" element={<Disclosure />} />
+        <Route path="/switch" element={<Switch />} />
+        <Route path="/switch/smith-ai" element={<SwitchOffer offer={switchOffer("smith-ai")} />} />
+        <Route path="/switch/ruby" element={<SwitchOffer offer={switchOffer("ruby")} />} />
         <Route path="/hive" element={<Navigate to="/rankings" replace />} />
         <Route path="*" element={<NotFound />} />
       </Route>
