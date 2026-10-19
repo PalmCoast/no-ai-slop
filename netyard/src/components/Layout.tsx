@@ -104,8 +104,6 @@ export default function Layout() {
             <Link to="/windows-server-cal-math">Windows Server CAL math</Link>
             <Link to="/windows-sbs-replacement">SBS replacement</Link>
             <Link to="/samba-ad-small-business">Samba AD for small business</Link>
-            <Link to="/zentyal-alternative">Zentyal alternative</Link>
-            <Link to="/nethserver-alternative">NethServer alternative</Link>
             <Link to="/launch">Launch</Link>
           </div>
           <div>
