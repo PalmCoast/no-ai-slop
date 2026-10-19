@@ -29,7 +29,6 @@ import {
   CONTENT_LASTMOD,
   POSTAL_CODE,
   PRODUCT_FOOTER_LINKS,
-  STREET_ADDRESS,
 } from "./brand.ts";
 import { DANIEL_BIO, DANIEL_ID, DANIEL_JOB_TITLE, DANIEL_NAME, DANIEL_SAME_AS, DANIEL_URL } from "./author.ts";
 import { CONCIERGE_BOOK_LABEL, CONCIERGE_NAME, CONCIERGE_PRICE, CONCIERGE_PRICE_AMOUNT, CONCIERGE_STRIPE_URL, CONCIERGE_URL } from "./concierge.ts";
@@ -160,7 +159,6 @@ export function organizationJsonLd() {
   const address = {
     "@type": "PostalAddress",
     "@id": addressId,
-    streetAddress: STREET_ADDRESS,
     addressLocality: ADDRESS_LOCALITY,
     addressRegion: ADDRESS_REGION,
     postalCode: POSTAL_CODE,
@@ -241,7 +239,6 @@ function organizationNode() {
     telephone: CONSULT_DISPLAY_SEO,
     address: {
       "@type": "PostalAddress",
-      streetAddress: STREET_ADDRESS,
       addressLocality: ADDRESS_LOCALITY,
       addressRegion: ADDRESS_REGION,
       postalCode: POSTAL_CODE,
