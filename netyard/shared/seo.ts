@@ -1,8 +1,4 @@
 import {
-  ADDRESS_COUNTRY,
-  ADDRESS_LINE,
-  ADDRESS_LOCALITY,
-  ADDRESS_REGION,
   ASK_AI_PROMPT,
   BRAND_COMPANY,
   BRAND_NAME,
@@ -20,12 +16,12 @@ import {
   LEGAL_NAME,
   LINKEDIN_URL,
   PARENT_URL,
-  POSTAL_CODE,
-  STREET_ADDRESS,
   TAGLINE,
 } from "./brand.ts";
 import { OFFERS } from "./offers.ts";
-import { COMPARE_FAQS, MICROSOFT_CAL_URL } from "./licensing.ts";
+import { COMPARE_FAQS } from "./licensing.ts";
+import { OFFER_FAQS, PRICE_CARD } from "./offerCopy.ts";
+import { FD_DEPOSIT_URL } from "./offers.ts";
 
 export type SeoPage = {
   path: string;
@@ -41,7 +37,7 @@ export const PAGE_SEO: SeoPage[] = [
     path: "/",
     title: "NetYard — stand up a shop network without Microsoft Server",
     description:
-      "Stand up a small-shop network without Microsoft Server. Six questions, Samba on Debian, guest Wi-Fi, and the install scripts.",
+      "Free plan for a small-shop network without Microsoft Server: Samba on Debian, guest Wi-Fi, VPN, scripts. Or we build it, $875 to start.",
     h1: HERO_H1,
     bodyHtml: `<main id="route-home" class="section"><div class="container"><h1 class="display">${HERO_H1}</h1><p class="lede">${HERO_WHAT}</p><p>${TAGLINE} ${BRAND_NAME} is a ${BRAND_PARENT} product from ${BRAND_COMPANY} in ${BRAND_PLACE}. Six questions. Addressing, Samba directory, guest Wi-Fi, VPN, shopping list, install scripts. No Windows Server CALs.</p><p>${BRAND_PARENT} is ${FD_PRICE}.</p><p><a href="${PARENT_URL}">Start ${BRAND_PARENT}</a> · <a href="${BRAND_URL}/compare">Samba vs Windows Server</a> · <a href="${BRAND_URL}/tools">Admin tools</a> · <a href="${CALENDLY_URL}">Book the free 30</a> · ${CONSULT_DISPLAY}</p></div></main>`,
   },
@@ -136,16 +132,31 @@ export function organizationJsonLd() {
           url: COMPANY_URL,
           email: CONTACT_EMAIL,
           telephone: CONSULT_DISPLAY,
-          address: {
-            "@type": "PostalAddress",
-            streetAddress: STREET_ADDRESS,
-            addressLocality: ADDRESS_LOCALITY,
-            addressRegion: ADDRESS_REGION,
-            postalCode: POSTAL_CODE,
-            addressCountry: ADDRESS_COUNTRY,
-          },
           sameAs: [LINKEDIN_URL, PARENT_URL, COMPANY_URL],
         },
+      },
+      {
+        "@type": "Service",
+        "@id": `${BRAND_URL}/#build`,
+        name: "NetYard network build by First Deploy AI",
+        serviceType: "Small-business network setup without Microsoft Server",
+        description: `${PRICE_CARD.title}. ${PRICE_CARD.price}. ${PRICE_CARD.sub}`,
+        provider: { "@id": orgId },
+        offers: {
+          "@type": "Offer",
+          price: "1750.00",
+          priceCurrency: "USD",
+          description: "$1,750 setup ($875 to start, balance when it is done), then $250/mo.",
+          url: FD_DEPOSIT_URL,
+        },
+      },
+      {
+        "@type": "FAQPage",
+        mainEntity: OFFER_FAQS.map((faq) => ({
+          "@type": "Question",
+          name: faq.q,
+          acceptedAnswer: { "@type": "Answer", text: faq.a },
+        })),
       },
     ],
   };
@@ -174,7 +185,6 @@ export function jsonLdFor(page: SeoPage): object | null {
           author: danielPerson(),
           dateModified: "2026-10-04",
           mainEntityOfPage: canonicalFor(page.path),
-          citation: MICROSOFT_CAL_URL,
         },
         {
           "@type": "FAQPage",
@@ -273,4 +283,4 @@ function replaceLink(html: string, rel: string, href: string): string {
   return html.replace("</head>", `    ${tag}\n  </head>`);
 }
 
-export { ASK_AI_PROMPT, ADDRESS_LINE };
+export { ASK_AI_PROMPT };

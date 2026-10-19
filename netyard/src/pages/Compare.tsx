@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { COMPARE_FAQS, LICENSING_CHECKED, MICROSOFT_CAL_URL } from "../../shared/licensing";
+import { COMPARE_FAQS, LICENSING_CHECKED } from "../../shared/licensing";
 import { WINDOWS_SERVER_STANDARD_USD, WINDOWS_USER_CAL_USD } from "../../shared/microsoft";
 
 export default function Compare() {
@@ -51,7 +51,7 @@ export default function Compare() {
           ))}
         </div>
         <p>
-          Microsoft licensing page, checked {LICENSING_CHECKED}: <a href={MICROSOFT_CAL_URL}>{MICROSOFT_CAL_URL}</a>.
+          Source: Microsoft's Client Access License page, checked {LICENSING_CHECKED}.
         </p>
         <p style={{ marginTop: "1.5rem" }}>
           Street prices, not a Microsoft quote. Software Assurance, core packs, and Remote Desktop CALs are extra on the

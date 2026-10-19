@@ -89,7 +89,7 @@ export function RackCta({ shop }: { shop?: string }) {
   return (
     <article className="card">
       <h3>Want us to rack it?</h3>
-      <p>First Deploy AI stands the LAN this week. Pay setup on Stripe, then $250/mo for the desk.</p>
+      <p>First Deploy AI builds the LAN from your plan. $1,750 setup ($875 to start), then $250/mo for the desk.</p>
       <div className="copy-row">
         <Link className="btn btn-primary" to="/buy">
           Pay on Stripe
