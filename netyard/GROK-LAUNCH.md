@@ -53,7 +53,7 @@ Launch media (use these, do not remake them):
 4. **Turn Stripe on.** Prices already exist on live Palm Coast AI (`acct_1SqPSHFJWYd4pYux`). Do not create new products. Do not change amounts. Do not set provider AI keys.
 5. Do not auto-post into Facebook groups, Reddit, or HN comment threads as if you were a plumber. You may post as AgentHive Inc / First Deploy AI on X and LinkedIn with the copy below. Attach the video and screenshots from `/launch`.
 6. Do not redesign, add guessed `*.netlify.app` hosts to the corp catalog, force-push, enable auto-merge, or commit secrets.
-7. Prices stay on the page: wizard is free. First Deploy AI / NetYard rack is $1,500 setup, then $250/month. Live this week on a written plan. Consult is a free 30, then $75 / 30 min or $150 / hour.
+7. Prices stay on the page: wizard is free. First Deploy AI / NetYard rack is $1,750 setup ($875 to start, balance at completion), then $250/month. Live this week on a written plan. Consult is a free 30, then $75 / 30 min or $150 / hour.
 
 ## Stripe (do this before the marketing posts)
 
@@ -61,7 +61,7 @@ Live catalog already in code (`netyard/shared/offers.ts`):
 
 | Offer | Amount | Price ID | Payment link fallback |
 | --- | --- | --- | --- |
-| Rack this network | $1,500 one-time | `price_1UHpioFJWYd4pYuxawfgIoHJ` | https://buy.stripe.com/dRm6oH6UI9P5ePb0PM2ZO1n |
+| Rack this network | $1,750 setup ($875 to start, balance at completion) | `price_1UHpioFJWYd4pYuxawfgIoHJ` | https://firstdeploy.ai/go/deposit (deposit) |
 | NetYard desk | $250/mo | `price_1UHpipFJWYd4pYuxCrWZNXmY` | https://buy.stripe.com/8x2aEXcf2e5lfTf41Y2ZO1o |
 | 30-minute consult | $75 | `price_1UEsXoFJWYd4pYuxvYOkG9Wf` | https://buy.stripe.com/fZufZh92Qf9p5eB2XU2ZO1h |
 | 1-hour consult | $150 | `price_1UEsXpFJWYd4pYuxhhAVBevZ` | https://buy.stripe.com/eVq9ATbaY6CT6iF7ea2ZO1g |
@@ -145,14 +145,14 @@ Expect 200 unless noted.
 - `https://netyard.firstdeploy.ai/plan?demo=1` — Harbor HVAC / plumbing demo, Samba AD, Guest VLAN 30
 - `https://netyard.firstdeploy.ai/tools`
 - `https://netyard.firstdeploy.ai/compare`
-- `https://netyard.firstdeploy.ai/buy` — five Stripe cards at $1,500 / $250/mo / $75 / $150 / $625
+- `https://netyard.firstdeploy.ai/buy` — five Stripe cards at $1,750 setup ($875 to start) / $250/mo / $75 / $150 / $625
 - `https://netyard.firstdeploy.ai/launch` — `<video src="/launch/standup.mp4">` plus the seven webp shots
 - `https://netyard.firstdeploy.ai/launch/standup.mp4` — video bytes, not HTML
 - `https://netyard.firstdeploy.ai/og.jpg`
 - `https://netyard.firstdeploy.ai/llms.txt`
 - `POST https://netyard.firstdeploy.ai/api/checkout` with `{"offer":"rack"}` — JSON `{ url }` pointing at Stripe, not `index.html`
 
-Click **Pay setup** on `/buy`. Confirm Stripe Checkout (or the live payment link) shows **$1,500**. Do not complete a live charge unless Daniel asks.
+Click **Pay setup** on `/buy`. Confirm Stripe Checkout (or the live payment link) shows the **$875** deposit (of $1,750 setup). Do not complete a live charge unless Daniel asks.
 
 If `/api/*` returns HTML, function routes lost to the SPA catch-all. Check that each function `path` config deployed.
 
@@ -212,7 +212,7 @@ If the network only lets you attach one video + a few images, attach the video f
 
 **LinkedIn** (company [AgentHive Inc](https://www.linkedin.com/company/agenthiveinc)):
 
-> We shipped NetYard. A plumber or HVAC shop answers six questions and walks out with VLANs, Samba AD, a shopping list, and Debian install scripts. No Windows Server User CALs. If you want us to rack it, First Deploy AI is $1,500 setup, then $250/month, live this week on a written plan. Pay on Stripe: netyard.firstdeploy.ai/buy Watch the standup: netyard.firstdeploy.ai/launch
+> We shipped NetYard. A plumber or HVAC shop answers six questions and walks out with VLANs, Samba AD, a shopping list, and Debian install scripts. No Windows Server User CALs. If you want us to rack it, First Deploy AI is $1,750 setup ($875 to start, balance at completion), then $250/month, live this week on a written plan. Pay on Stripe: netyard.firstdeploy.ai/buy Watch the standup: netyard.firstdeploy.ai/launch
 
 **Second X, 4–8 hours later** (thread or new post). Attach `scripts.webp` and `compare.webp`:
 
@@ -228,7 +228,7 @@ Text:
 
 > NetYard is a free planner for small shops that were quoted Windows Server plus CALs for a file share. Six questions. You get VLANs, Samba AD or a workgroup, guest Wi-Fi, a shopping list, and Debian install scripts.
 >
-> If you want it racked, First Deploy AI is $1,500 setup, then $250/month, live this week on a written plan. Pay on Stripe.
+> If you want it racked, First Deploy AI is $1,750 setup ($875 to start, balance at completion), then $250/month, live this week on a written plan. Pay on Stripe.
 >
 > Demo video and screenshots: netyard.firstdeploy.ai/launch
 > Wizard: netyard.firstdeploy.ai
