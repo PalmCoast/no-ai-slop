@@ -50,14 +50,13 @@ export const CONSULT_COMPARE_PAGES: ConsultComparePage[] = [
     crumb: "North Star AI Consultation alternative",
     title: "North Star AI Consultation alternative: $100/hr vs 30-minute blocks | AgentHive Inc",
     description:
-      "North Star AI Consultation charges $100 an hour online after a free call. AgentHive Inc sells 30-minute blocks at $75 and $150 hours, by video, US-wide. Checked Oct 19, 2026.",
+      "North Star AI Consultation charges $100 an hour online. AgentHive Inc sells 30-minute blocks at $75 and $150 hours, by video, US-wide. Checked Oct 19, 2026.",
     h1: "North Star AI Consultation alternative: $100 an hour vs 30-minute blocks",
-    lede: "North Star and AgentHive Inc both start with a free 30-minute call and both do hands-on AI work for small businesses. North Star is cheaper per hour. AgentHive Inc lets you buy 30 minutes at a time and pay up front on Stripe. Here is what each one publishes.",
+    lede: "North Star and AgentHive Inc both do hands-on AI work for small businesses. North Star is cheaper per hour. AgentHive Inc lets you buy 30 minutes at a time and pay up front on Stripe. Here is what each one publishes.",
     sections: [
       {
         h2: `What North Star publishes (checked ${C})`,
         bullets: [
-          "A free 30-minute intro call: a short form first, then a phone call.",
           "Coaching, team training, tool reviews, and done-for-you setup at $100 an hour, online.",
           "Work is quoted before it starts and billed after by invoice. No long-term contracts.",
           "A retainer is a monthly block of hours at the same $100 an hour.",
@@ -70,7 +69,7 @@ export const CONSULT_COMPARE_PAGES: ConsultComparePage[] = [
         table: {
           head: ["", "North Star AI Consultation", "AgentHive Inc"],
           rows: [
-            ["First call", "Free 30 minutes (form, then phone)", "Free 30 minutes (Calendly, by video)"],
+            ["First call", "", "Free 30 minutes (Calendly, by video)"],
             ["Hourly", "$100 an hour, online", "$150 an hour, or $75 for 30 minutes"],
             ["Bigger block", "Monthly block of hours at $100 an hour", "10 hours for $1,250 ($125 an hour)"],
             ["How you pay", "Invoice after the work", "Stripe, before the session. No contract"],
@@ -102,8 +101,8 @@ export const CONSULT_COMPARE_PAGES: ConsultComparePage[] = [
         a: `Per hour, yes. North Star publishes $100 an hour online; AgentHive Inc charges $150 an hour, $75 for 30 minutes, or $125 an hour in a 10-hour pack. Checked ${C}.`,
       },
       {
-        q: "Do both offer a free first call?",
-        a: "Yes. Both publish a free 30-minute first call. Ours is booked on Calendly and runs by video.",
+        q: "How does a first call with AgentHive Inc work?",
+        a: "It is a free 30-minute call, booked on Calendly and run by video.",
       },
       {
         q: "Where do I start with AgentHive Inc?",
@@ -127,11 +126,11 @@ export const CONSULT_COMPARE_PAGES: ConsultComparePage[] = [
         table: {
           head: ["Model", "Example", "Published entry price"],
           rows: [
-            ["Hourly consultant", "North Star AI Consultation", "Free 30-minute call, then $100 an hour online"],
+            ["Hourly consultant", "North Star AI Consultation", "$100 an hour online"],
             ["Hourly consultant", "AgentHive Inc", "Free 30-minute call, then $75 per 30 minutes or $150 an hour"],
-            ["Audit, then training", "AIessentials", "Free intro call; $1,500 AI audit and written roadmap; $150 an hour advice available"],
+            ["Audit, then training", "AIessentials", "$1,500 AI audit and written roadmap; $150 an hour advice available"],
             ["Agency (audit, build, maintain)", "Horizon", "Audit from $299 for 1 to 15 employees; maintenance from $500 a month, required on every engagement"],
-            ["Fractional AI officer", "Carlo Sansonetti", "Free 30-minute call; AI Opportunity Audit from $4,500; Fractional AI Officer has a 6-month minimum"],
+            ["Fractional AI officer", "Carlo Sansonetti", "AI Opportunity Audit from $4,500; Fractional AI Officer has a 6-month minimum"],
             ["Monthly advisor", "AgentHive Inc AI Concierge", "$2,000 a month, two 45-minute sessions plus async Slack or text"],
           ],
           note: "Each price is from the firm's own public page on the date above. These are asking prices, not survey averages.",
@@ -253,16 +252,13 @@ export const CONSULT_COMPARE_PAGES: ConsultComparePage[] = [
     crumb: "Free AI consultation",
     title: "Free AI consultation: what a good free 30 minutes should leave you with | AgentHive Inc",
     description:
-      "Most small-business AI consultants offer a free 30-minute call. A buyer's checklist for what that call should give you, and what ours covers. Checked Oct 19, 2026.",
+      "A buyer's checklist for what that call should give you, and what ours covers. Checked Oct 19, 2026.",
     h1: "Free AI consultation: what a good free 30 minutes should leave you with",
-    lede: "A free 30-minute call is standard. North Star AI Consultation, AIessentials, Carlo Sansonetti, and AgentHive Inc all publish one. The call is only useful if you leave with something. Here is what to expect from it.",
+    lede: "AgentHive Inc starts with a free 30-minute call. A first call is only useful if you leave with something. Here is what to expect from it.",
     sections: [
       {
-        h2: `Who offers a free first call (checked ${C})`,
+        h2: `How our first call works (checked ${C})`,
         bullets: [
-          "North Star AI Consultation: a free 30-minute intro call, a short form first, then a phone call.",
-          "AIessentials: a free 30-minute intro call before its $1,500 audit.",
-          "Carlo Sansonetti: a free 30-minute call, then a written proposal.",
           "AgentHive Inc: a free 30-minute call on Calendly, by video.",
         ],
       },
@@ -285,7 +281,7 @@ export const CONSULT_COMPARE_PAGES: ConsultComparePage[] = [
       },
     ],
     pickThem: {
-      h2: "Book someone else's free call if",
+      h2: "Someone else may fit better if",
       bullets: [
         "You want a paid audit as the next step",
         "You want an in-person or regional consultant",

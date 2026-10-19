@@ -62,10 +62,10 @@ export const PUBLISHED_RANGES = [
 export const PUBLISHED_SOLO = [
   {
     source: "North Star AI Consultation",
-    price: "Free 30-minute intro call, then $100 an hour online",
+    price: "$100 an hour online",
   },
   {
     source: "Rich Nashawaty",
-    price: "Free 30-minute call; fixed-price projects from $1,500; retainer from $750 a month",
+    price: "Fixed-price projects from $1,500; retainer from $750 a month",
   },
 ] as const;
