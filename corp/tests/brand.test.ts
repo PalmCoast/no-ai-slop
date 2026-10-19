@@ -58,7 +58,7 @@ describe("AgentHive Inc brand facts", () => {
     expect(HIVE_CONSULT_PATH).toBe("/consult");
     expect(HIVE_CONSULT_URL).toBe("https://agenthiveinc.com/consult");
     expect(FD_PRICE).toBe("$1,750 setup (50% to start or pay in full), then $250/mo");
-    expect(FD_PROMISE).toMatch(/Live this week/i);
+    expect(FD_PROMISE).not.toMatch(/live this week|you don.t pay|guarantee/i);
     expect(INDEXME_NAME).toBe("IndexMe.lol");
     expect(INDEXME_URL).toBe("https://indexme.lol/");
     expect(INDEXME_BLURB).toMatch(/IndexNow/);
@@ -148,6 +148,17 @@ describe("AgentHive Inc brand facts", () => {
       "https://netyard.firstdeploy.ai",
     ]);
     expect(PRODUCT_FOOTER_LINKS.map((link) => link.label)).toEqual(["First Deploy", "AI Concierge", "NetYard"]);
+  });
+
+  it("does not ship delivery promises or guarantee wording", () => {
+    const files = walk(join(fileURLToPath(new URL("..", import.meta.url))));
+    const hits: string[] = [];
+    for (const file of files) {
+      if (file.includes("/tests/")) continue;
+      const text = readFileSync(file, "utf8");
+      if (/live this week|or you don.t pay|money.back|guarantee/i.test(text)) hits.push(file);
+    }
+    expect(hits, hits.join("\n")).toEqual([]);
   });
 
   it("does not ship stale First Deploy prices or firstdeploy.dev", () => {
