@@ -62,7 +62,7 @@ export const PAGE_SEO: SeoPage[] = [
     title: "Samba AD vs Windows Server for a small shop | NetYard",
     description: `Windows Server Standard plus User CALs versus Samba on Debian. What you keep, what you give up, and when cloud-only is enough.`,
     h1: "Skip the CALs. Keep the domain join.",
-    bodyHtml: `<main id="route-compare" class="section"><div class="container"><h1 class="display">Skip the CALs. Keep the domain join.</h1><p class="lede">Microsoft Small Business Server is gone. Essentials is gone. A 12-person shop still needs logins, a share, and guest Wi-Fi. Samba AD on Debian does that. You still pay for hardware and a UPS.</p></div></main>`,
+    bodyHtml: `<main id="route-compare" class="section"><div class="container"><h1 class="display">Skip the CALs. Keep the domain join.</h1><p class="lede">Microsoft's Windows Server 2025 licensing guide lists Datacenter, Standard, and Essentials (OEM only, up to 25 users and 50 devices, no base CAL). A 12-person shop still needs logins, a share, and guest Wi-Fi. Samba AD on Debian does that. You still pay for hardware and a UPS.</p></div></main>`,
   },
   {
     path: "/buy",
