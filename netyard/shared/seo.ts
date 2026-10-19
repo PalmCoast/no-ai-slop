@@ -22,6 +22,7 @@ import { OFFERS } from "./offers.ts";
 import { COMPARE_FAQS } from "./licensing.ts";
 import { OFFER_FAQS, PRICE_CARD } from "./offerCopy.ts";
 import { FD_DEPOSIT_URL } from "./offers.ts";
+import { COMPARE_CHECKED_ISO, COMPARE_PAGES, comparePageFor } from "./comparePages.ts";
 
 export type SeoPage = {
   path: string;
@@ -86,6 +87,13 @@ export const PAGE_SEO: SeoPage[] = [
     bodyHtml: `<main id="route-thanks" class="section"><div class="container"><h1 class="display">Payment landed.</h1><p class="lede">We rack from the plan you already generated. Keep the Stripe receipt.</p></div></main>`,
     noindex: true,
   },
+  ...COMPARE_PAGES.map((page) => ({
+    path: page.path,
+    title: page.title,
+    description: page.description,
+    h1: page.h1,
+    bodyHtml: `<main class="section"><div class="container"><h1 class="display">${page.h1}</h1><p class="lede">${page.lede}</p></div></main>`,
+  })),
 ];
 
 export const NOT_FOUND_SEO: SeoPage = {
@@ -189,6 +197,40 @@ export function jsonLdFor(page: SeoPage): object | null {
         {
           "@type": "FAQPage",
           mainEntity: COMPARE_FAQS.map((faq) => ({
+            "@type": "Question",
+            name: faq.q,
+            acceptedAnswer: { "@type": "Answer", text: faq.a },
+          })),
+        },
+      ],
+    };
+  }
+  const compare = comparePageFor(page.path);
+  if (compare) {
+    return {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Article",
+          headline: compare.h1,
+          description: compare.description,
+          author: danielPerson(),
+          publisher: { "@type": "Organization", name: BRAND_COMPANY, url: COMPANY_URL },
+          datePublished: COMPARE_CHECKED_ISO,
+          dateModified: COMPARE_CHECKED_ISO,
+          mainEntityOfPage: canonicalFor(page.path),
+        },
+        {
+          "@type": "BreadcrumbList",
+          itemListElement: [
+            { "@type": "ListItem", position: 1, name: BRAND_NAME, item: `${BRAND_URL}/` },
+            { "@type": "ListItem", position: 2, name: "Compare", item: canonicalFor("/compare") },
+            { "@type": "ListItem", position: 3, name: compare.h1, item: canonicalFor(page.path) },
+          ],
+        },
+        {
+          "@type": "FAQPage",
+          mainEntity: compare.faqs.map((faq) => ({
             "@type": "Question",
             name: faq.q,
             acceptedAnswer: { "@type": "Answer", text: faq.a },

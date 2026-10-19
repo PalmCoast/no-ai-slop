@@ -9,6 +9,11 @@ NetYard is for plumbers, HVAC shops, clinics, and anyone else who was quoted Win
 - [Plan](https://netyard.firstdeploy.ai/plan): Generated LAN, directory, shopping list, scripts.
 - [Tools](https://netyard.firstdeploy.ai/tools): Subnet calculator and VLAN cheat sheet.
 - [Vs Microsoft Server](https://netyard.firstdeploy.ai/compare): Samba AD versus Windows Server Standard + User CALs.
+- [Windows Server CAL math](https://netyard.firstdeploy.ai/windows-server-cal-math): CAL arithmetic for a 12-person shop from published list prices, next to a Samba directory with no CAL.
+- [Windows SBS replacement](https://netyard.firstdeploy.ai/windows-sbs-replacement): What replaces Small Business Server in 2026 for a 12-person shop.
+- [Samba AD for small business](https://netyard.firstdeploy.ai/samba-ad-small-business): What Samba AD does, what it can't, and how the plan works around each gap.
+- [Zentyal alternative](https://netyard.firstdeploy.ai/zentyal-alternative): A per-server Linux license versus a free plan and a done-for-you build.
+- [NethServer alternative](https://netyard.firstdeploy.ai/nethserver-alternative): A free self-run platform versus a free plan and a done-for-you build.
 - [Buy](https://netyard.firstdeploy.ai/buy): Stripe for setup, monthly desk, and consult time.
 - [Pricing and FAQ](https://netyard.firstdeploy.ai/#pricing): The plan is free. First Deploy AI builds it for $1,750 setup ($875 to start, balance when it is done), then $250/month.
 - [Launch](https://netyard.firstdeploy.ai/launch): Harbor HVAC standup video and screenshots.

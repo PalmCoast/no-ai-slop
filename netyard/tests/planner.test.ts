@@ -152,7 +152,7 @@ describe("seo", () => {
     const h1s = PAGE_SEO.map((page) => page.h1);
     expect(new Set(titles).size).toBe(PAGE_SEO.length);
     expect(new Set(h1s).size).toBe(PAGE_SEO.length);
-    expect(PAGE_SEO.map((p) => p.path)).toEqual(["/", "/plan", "/tools", "/compare", "/buy", "/launch", "/thanks"]);
+    expect(PAGE_SEO.map((p) => p.path)).toEqual(["/", "/plan", "/tools", "/compare", "/buy", "/launch", "/thanks", "/zentyal-alternative", "/nethserver-alternative", "/windows-sbs-replacement", "/windows-server-cal-math", "/samba-ad-small-business"]);
     expect(canonicalFor("/")).toBe("https://netyard.firstdeploy.ai/");
   });
 

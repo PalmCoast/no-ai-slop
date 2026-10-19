@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { COMPARE_PAGES } from "../../shared/comparePages";
 import { COMPARE_FAQS, LICENSING_CHECKED } from "../../shared/licensing";
 import { WINDOWS_SERVER_STANDARD_USD, WINDOWS_USER_CAL_USD } from "../../shared/microsoft";
 
@@ -58,6 +59,14 @@ export default function Compare() {
           Windows side. The ${WINDOWS_SERVER_STANDARD_USD.toLocaleString()} and ${WINDOWS_USER_CAL_USD} figures above are
           those street estimates.
         </p>
+        <h2>More comparisons</h2>
+        <ul className="takeaways">
+          {COMPARE_PAGES.map((p) => (
+            <li key={p.path}>
+              <Link to={p.path}>{p.h1}</Link>
+            </li>
+          ))}
+        </ul>
         <div className="hero-actions">
           <Link className="btn btn-primary" to="/buy">
             Pay on Stripe
