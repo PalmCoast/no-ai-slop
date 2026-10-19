@@ -220,8 +220,10 @@ describe("per-route SEO", () => {
     ]) expect(consult).toContain(href);
     const cost = render("/consult/ai-consultant-cost");
     expect(cost).toContain("What an AI consultant costs a small business");
-    expect(cost).toContain("northstarconsult.ai");
-    expect(cost).toContain("iternal.ai");
+    expect(cost).toContain("North Star AI Consultation");
+    expect(cost).not.toMatch(/href="https?:\/\/(?:www\.)?(northstarconsult\.ai|aiessentials\.us|carlosansonetti\.com|iternal\.ai|cloudmotiv\.ai|paretotalent\.com|richnashawaty\.com)/);
+    const hrefs = [...cost.matchAll(/href="(https?:[^"]+)"/g)].map((m) => m[1]);
+    for (const h of hrefs) expect(h).toMatch(/^https:\/\/((\w+\.)?agenthiveinc\.com|ainexus360\.com|calendly\.com\/coltsinsider\/30min|firstdeploy\.ai|netyard\.firstdeploy\.ai|www\.linkedin\.com|twelve\.tools|fazier\.com|launchaf\.com|join\.netlify\.com)/);
     expect(cost).toContain("October 19, 2026");
     expect(cost).toContain("$1,250");
     expect(cost).not.toMatch(/live this week|or you don.t pay/i);
