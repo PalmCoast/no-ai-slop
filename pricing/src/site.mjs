@@ -44,7 +44,7 @@ export const FAQS = [
   },
   {
     q: "What is First Deploy, exactly?",
-    a: "The after-hours desk and live apps for field operators. $1,750 setup, live this week on a written plan, then $250/month. Half the setup ($875) can start the job. Details live on firstdeploy.ai.",
+    a: "The after-hours desk and live apps for field operators. $1,750 setup, built on a written plan, then $250/month. Half the setup ($875) can start the job. Details live on firstdeploy.ai.",
   },
   {
     q: "How does consult billing work?",
@@ -527,7 +527,7 @@ export function homeHtml() {
       <div class="wrap">
         <p class="kicker">The desk</p>
         <h2>First Deploy AI, after-hours line and live apps</h2>
-        <p class="section-lead">You run dirt, plants, or a shop. Jobs call after the office closes. Quotes die on the whiteboard. First Deploy takes that job and keeps it. Setup is $1,750. One leak live this week on a written plan. Then $250/month per company to keep the desk and the apps on.</p>
+        <p class="section-lead">You run dirt, plants, or a shop. Jobs call after the office closes. Quotes die on the whiteboard. First Deploy takes that job and keeps it. Setup is $1,750. One leak, built on a written plan. Then $250/month per company to keep the desk and the apps on.</p>
         <div class="pay-grid">
           <a class="pay" href="https://firstdeploy.ai/go/deposit?from=aiprice"><span class="amt">$875</span><span>Start with 50% of the $1,750 setup</span></a>
           <a class="pay" href="https://firstdeploy.ai/go/start?from=aiprice"><span class="amt">$1,750</span><span>Setup, pay in full</span></a>

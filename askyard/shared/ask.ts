@@ -51,7 +51,7 @@ export const OFFER_BY_SLUG: Record<string, YardOffer> = {
     price: "$1,750 setup ($875 to start), then $250/mo",
     cta: "Start First Deploy AI",
     href: PARENT_CHECK_URL,
-    line: "We stand up the after-hours desk this week on a written plan.",
+    line: "We stand up the after-hours desk on a written plan.",
   },
   consult: {
     slug: "consult",
@@ -247,7 +247,7 @@ export const SEED_QUESTIONS: YardQuestion[] = [
     helpful: 74,
     missed: 6,
     answer:
-      "Put one number on the truck, the yard sign, and Google. After hours, that number should text the caller back in under a minute with two questions: what broke, and when can we come. A human reviews the thread in the morning. You do not need a new receptionist. You need the phone to catch the job while you sleep. First Deploy AI stands that desk up this week for $1,750 setup ($875 to start), then $250/month. Setup terms: 50% to start, the balance at completion or split over two monthly payments.",
+      "Put one number on the truck, the yard sign, and Google. After hours, that number should text the caller back in under a minute with two questions: what broke, and when can we come. A human reviews the thread in the morning. You do not need a new receptionist. You need the phone to catch the job while you sleep. First Deploy AI stands that desk up on a written plan for $1,750 setup ($875 to start), then $250/month. Setup terms: 50% to start, the balance at completion or split over two monthly payments.",
   },
   {
     slug: "ai-without-learning-chatgpt",
@@ -291,7 +291,7 @@ export const SEED_QUESTIONS: YardQuestion[] = [
     offerSlug: "consult",
     updatedAt: seedDate(),
     answer:
-      "It can draft the line items from a photo. A person still has to set the price. The useful version is: snap the water heater, get a draft with parts and labor hours, then you tap yes and the customer gets a pay link. We will not let a model send a number you did not see. Book the free 30 if you want that loop on your phone this week.",
+      "It can draft the line items from a photo. A person still has to set the price. The useful version is: snap the water heater, get a draft with parts and labor hours, then you tap yes and the customer gets a pay link. We will not let a model send a number you did not see. Book the free 30 if you want that loop on your phone.",
   },
   {
     slug: "teacher-grade-faster",
@@ -361,7 +361,7 @@ export const SEED_QUESTIONS: YardQuestion[] = [
     offerSlug: "first-deploy",
     updatedAt: seedDate(),
     answer:
-      "The answer on AskYard is free. The work is not. First Deploy AI is $1,750 setup ($875 to start), then $250/month. Live this week on the same written plan we run for active client builds. Consult is a free 30-minute qualifier, then $75 per 30 minutes or $150/hour. We put the price next to the answer so you can walk away.",
+      "The answer on AskYard is free. The work is not. First Deploy AI is $1,750 setup ($875 to start), then $250/month. Built and run on the same written plan we run for active client builds. Consult is a free 30-minute qualifier, then $75 per 30 minutes or $150/hour. We put the price next to the answer so you can walk away.",
   },
 ];
 

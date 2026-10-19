@@ -154,7 +154,7 @@ export default function Home() {
       <section className="section section-alt">
         <div className="container">
           <div className="cta-box">
-            <h2>Start this week</h2>
+            <h2>Start with a free 30-minute call</h2>
             <p>
               {FD_NAME}: {FD_PRICE}. {FD_PROMISE}.
             </p>

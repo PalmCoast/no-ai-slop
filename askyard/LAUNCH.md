@@ -44,11 +44,11 @@ Look your own shop up on `/rep`. Load the Chrome toolbar from `/extension`. Bid 
 
 X:
 
-> AskYard: anyone with a question about AI gets a free answer. Plumbers, teachers, receptionists, earth movers. Then we offer to do it this week. askyard.firstdeploy.ai
+> AskYard: anyone with a question about AI gets a free answer. Plumbers, teachers, receptionists, earth movers. Then we offer to do the work. askyard.firstdeploy.ai
 
 LinkedIn:
 
-> We shipped a free desk for people who do not live in ChatGPT. Ask the question. Read the answer. If you want it built, First Deploy AI is $1,750 setup ($875 to start), then $250/month, live this week on a written plan. askyard.firstdeploy.ai
+> We shipped a free desk for people who do not live in ChatGPT. Ask the question. Read the answer. If you want it built, First Deploy AI is $1,750 setup ($875 to start), then $250/month, built on a written plan. askyard.firstdeploy.ai
 
 ## Done when
 

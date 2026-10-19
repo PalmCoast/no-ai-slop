@@ -89,7 +89,7 @@ function hnItemUrl(hit: HnHit): string {
 }
 
 export function composeHuntReply(title: string): string {
-  return `AskYard answers this in plain words for shops, schools, and crews, then offers to do the work this week if you want it done.\n\n${REPLY_FOOTER}\n\nSource question: ${title}`;
+  return `AskYard answers this in plain words for shops, schools, and crews, then offers to do the work if you want it done.\n\n${REPLY_FOOTER}\n\nSource question: ${title}`;
 }
 
 export async function fetchHuntHits(): Promise<HuntHit[]> {
