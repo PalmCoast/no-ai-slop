@@ -66,9 +66,9 @@ export const PAGE_SEO: SeoPage[] = [
   {
     path: "/buy",
     title: "Pay on Stripe | NetYard",
-    description: `Pay NetYard setup $1,750 ($875 to start), the $250/mo desk, or consult time on Stripe.`,
+    description: `Have First Deploy AI build your NetYard network: $1,750 setup ($875 to start, balance when it is done), then $250/mo.`,
     h1: "Pay for the rack, not another Server license.",
-    bodyHtml: `<main id="route-buy" class="section"><div class="container"><h1 class="display">Pay for the rack, not another Server license.</h1><p class="lede">The wizard and scripts stay free. Stripe takes the $1,750 setup ($875 to start), the $250/mo desk, or consult time. ${FD_PROMISE}.</p></div></main>`,
+    bodyHtml: `<main id="route-buy" class="section"><div class="container"><h1 class="display">Pay for the rack, not another Server license.</h1><p class="lede">The wizard and scripts stay free. Have us build it: $1,750 setup ($875 to start), then $250/mo. ${FD_PROMISE}.</p></div></main>`,
   },
   {
     path: "/launch",
@@ -198,26 +198,26 @@ export function jsonLdFor(page: SeoPage): object | null {
     };
   }
   if (page.path === "/buy") {
+    const rack = OFFERS.find((offer) => offer.id === "rack");
     return {
       "@context": "https://schema.org",
-      "@graph": OFFERS.map((offer) => ({
-        "@type": "Offer",
-        name: offer.name,
-        price: (offer.cents / 100).toFixed(2),
-        priceCurrency: "USD",
-        description: `${offer.amountLabel}. ${offer.blurb}`,
-        ...(offer.interval === "month"
-          ? {
-              priceSpecification: {
-                "@type": "UnitPriceSpecification",
-                price: (offer.cents / 100).toFixed(2),
-                priceCurrency: "USD",
-                unitText: "month",
-                referenceQuantity: { "@type": "QuantitativeValue", value: 1, unitCode: "MON" },
-              },
-            }
-          : {}),
-      })),
+      "@type": "Offer",
+      name: PRICE_CARD.title,
+      price: rack ? (rack.cents / 100).toFixed(2) : "1750.00",
+      priceCurrency: "USD",
+      description: "$1,750 setup ($875 to start, balance when it is done), then $250/mo.",
+      url: FD_DEPOSIT_URL,
+      priceSpecification: [
+        { "@type": "PriceSpecification", name: "Setup", price: "1750.00", priceCurrency: "USD" },
+        {
+          "@type": "UnitPriceSpecification",
+          name: "Monthly",
+          price: "250.00",
+          priceCurrency: "USD",
+          unitText: "month",
+          referenceQuantity: { "@type": "QuantitativeValue", value: 1, unitCode: "MON" },
+        },
+      ],
     };
   }
   return null;
