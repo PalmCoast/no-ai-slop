@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="196" height="48" viewBox="0 0 196 48" role="img" aria-label="Link Fest. IndexMe.lol">
+  <rect width="196" height="48" fill="#10120f"/>
+  <circle cx="24" cy="24" r="12" fill="#d8ff36"/>
+  <circle cx="24" cy="24" r="7" fill="none" stroke="#10120f" stroke-width="1.4"/>
+  <path d="M17.5 24h13M24 17.2c1.7 1.8 2.6 4 2.6 6.8s-.9 5-2.6 6.8c-1.7-1.8-2.6-4-2.6-6.8s.9-5 2.6-6.8z" fill="none" stroke="#10120f" stroke-width="1.2"/>
+  <text x="44" y="22" fill="#fffef9" font-family="Manrope, Segoe UI, sans-serif" font-size="13" font-weight="800" letter-spacing="-0.4">INDEXME.LOL</text>
+  <text x="44" y="36" fill="#d8ff36" font-family="ui-monospace, monospace" font-size="10" letter-spacing="1.4">LINK FEST</text>
+</svg>
