@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { CONSULT_COMPARE_PAGES } from "../../shared/consultCompare";
 import FaqList from "../components/FaqList";
 import { CONSULT_FAQS } from "../../shared/faqs";
 import {
@@ -197,6 +198,16 @@ export default function Consult() {
             <a href="https://ainexus360.com/">fixed-fee audit</a> at AI Nexus 360,{" "}
             <a href="https://infrastructure.agenthiveinc.com/">telco and network work</a> at Seat &amp; Circuit, and{" "}
             <Link to="/concierge/vs-hiring">Concierge vs hiring</Link>.
+          </p>
+          <p>
+            Comparisons:{" "}
+            {CONSULT_COMPARE_PAGES.map((page, i) => (
+              <span key={page.path}>
+                {i > 0 ? " · " : ""}
+                <Link to={page.path}>{page.neutral}</Link>
+              </span>
+            ))}
+            .
           </p>
         </div>
       </section>

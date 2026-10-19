@@ -34,6 +34,7 @@ import { DANIEL_BIO, DANIEL_ID, DANIEL_JOB_TITLE, DANIEL_NAME, DANIEL_SAME_AS, D
 import { CONCIERGE_BOOK_LABEL, CONCIERGE_NAME, CONCIERGE_PRICE, CONCIERGE_PRICE_AMOUNT, CONCIERGE_STRIPE_URL, CONCIERGE_URL } from "./concierge.ts";
 import { CONCIERGE_FAQS, CONSULT_COST_FAQS, CONSULT_FAQS, HIRING_FAQS } from "./faqs.ts";
 import { CONSULT_COST_CHECKED, CONSULT_COST_CHECKED_ISO, CONSULT_COST_URL } from "./consult.ts";
+import { CONSULT_COMPARE_CHECKED_ISO, CONSULT_COMPARE_PAGES, consultComparePageFor } from "./consultCompare.ts";
 import { AFFILIATE_TOOLS, DISCLOSURE_LINE, DISCLOSURE_UPDATED } from "./disclosure.ts";
 
 export type SeoPage = {
@@ -98,6 +99,13 @@ export const PAGE_SEO: SeoPage[] = [
     h1: "What an AI consultant costs a small business",
     bodyHtml: `<main id="route-consultcost" class="section"><div class="container"><h1 class="display">What an AI consultant costs a small business</h1><p class="lede">AI firms that publish their prices put independent AI advice at about $100 to $350 an hour and a monthly advisor at $1,500 to $8,000. AgentHive Inc charges $75 for 30 minutes, $150 an hour, or $1,250 for a 10-hour pack, after a free 30-minute call.</p><p>Sources checked ${CONSULT_COST_CHECKED}. <a href="${HIVE_CONSULT_URL}">Book the free 30</a> or call ${CONSULT_DISPLAY}.</p></div></main>`,
   },
+  ...CONSULT_COMPARE_PAGES.map((page) => ({
+    path: page.path,
+    title: page.title,
+    description: page.description,
+    h1: page.h1,
+    bodyHtml: `<main id="route-${page.path.split("/").pop()!.replace(/[^a-z]/g, "")}" class="section"><div class="container"><h1 class="display">${page.h1}</h1><p class="lede">${page.lede}</p><p><a href="${HIVE_CONSULT_URL}">Book the free 30</a> or call ${CONSULT_DISPLAY}.</p></div></main>`,
+  })),
   {
     path: "/concierge",
     title: `AI Concierge: fractional AI advisor, ${CONCIERGE_PRICE} | AgentHive Inc`,
@@ -334,6 +342,34 @@ export function jsonLdFor(page: SeoPage): object | null {
           ],
         },
         faqPage(CONSULT_COST_FAQS),
+      ],
+    };
+  }
+  const compare = consultComparePageFor(page.path);
+  if (compare) {
+    return {
+      "@context": "https://schema.org",
+      "@graph": [
+        organizationNode(),
+        danielPerson(),
+        {
+          "@type": "Article",
+          headline: compare.h1,
+          description: compare.description,
+          author: { "@id": DANIEL_ID },
+          publisher: { "@id": `${BRAND_URL}/#organization` },
+          datePublished: CONSULT_COMPARE_CHECKED_ISO,
+          dateModified: CONSULT_COMPARE_CHECKED_ISO,
+          mainEntityOfPage: canonicalFor(page.path),
+        },
+        {
+          "@type": "BreadcrumbList",
+          itemListElement: [
+            { "@type": "ListItem", position: 1, name: "Consult", item: HIVE_CONSULT_URL },
+            { "@type": "ListItem", position: 2, name: compare.crumb, item: canonicalFor(page.path) },
+          ],
+        },
+        faqPage(compare.faqs),
       ],
     };
   }
