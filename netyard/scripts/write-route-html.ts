@@ -7,6 +7,7 @@ import { ViteNodeRunner } from "vite-node/client";
 import { installSourcemapsSupport } from "vite-node/source-map";
 import { ViteNodeServer } from "vite-node/server";
 import { applyRouteHtml, NOT_FOUND_SEO, PAGE_SEO, sitemapXml } from "../shared/seo.ts";
+import { COMPARE_PAGES } from "../shared/comparePages.ts";
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 const dist = join(root, "dist");
@@ -78,6 +79,7 @@ writeFileSync(
     "/launch/ /launch/index.html 200!",
     "/thanks /thanks/index.html 200!",
     "/thanks/ /thanks/index.html 200!",
+    ...COMPARE_PAGES.flatMap((page) => [`${page.path} ${page.path}/index.html 200!`, `${page.path}/ ${page.path}/index.html 200!`]),
     "/* /404.html 404",
   ].join("\n") + "\n",
 );

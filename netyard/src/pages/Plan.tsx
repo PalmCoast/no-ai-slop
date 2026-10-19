@@ -298,7 +298,7 @@ function Shopping({ plan }: { plan: NetworkPlan }) {
         </tbody>
       </table>
       <p className="fine" style={{ marginTop: "0.8rem" }}>
-        Street estimates, not a quote. Hardware ≈ ${bomTotal(plan.bom).toLocaleString()}. Windows Server licenses ≈ $
+        Hardware is street estimates; Windows figures are published list prices (Microsoft for Standard, a reseller for User CALs). Not a quote. Hardware ≈ ${bomTotal(plan.bom).toLocaleString()}. Windows Server licenses ≈ $
         {plan.microsoft.windowsTotalUsd.toLocaleString()}.
       </p>
     </div>

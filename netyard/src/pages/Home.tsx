@@ -92,8 +92,8 @@ export default function Home() {
           <p className="lede">{HERO_WHAT}</p>
           <p className="lede"><strong>{PROMISE_H2}</strong></p>
           <p className="fine">
-            Microsoft Small Business Server is gone. Essentials is gone. A 12-person shop still needs logins, a share,
-            and guest Wi-Fi. NetYard writes the plan for Samba on Debian, then hands you the scripts.
+            Microsoft's 2025 licensing guide lists Windows Server Essentials as OEM only, for up to 25 users and 50 devices.
+            A 12-person shop still needs logins, a share, and guest Wi-Fi. NetYard writes the plan for Samba on Debian, then hands you the scripts.
           </p>
           <p className="fine">
             <a href="#standup">Get the free plan</a> or have {BRAND_PARENT} build it: {FD_PRICE}.

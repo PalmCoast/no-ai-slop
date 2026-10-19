@@ -8,6 +8,8 @@ import Buy from "./pages/Buy";
 import Launch from "./pages/Launch";
 import Thanks from "./pages/Thanks";
 import NotFound from "./pages/NotFound";
+import ComparePage from "./pages/ComparePage";
+import { COMPARE_PAGES } from "../shared/comparePages";
 
 export default function App() {
   return (
@@ -20,6 +22,9 @@ export default function App() {
         <Route path="/buy" element={<Buy />} />
         <Route path="/launch" element={<Launch />} />
         <Route path="/thanks" element={<Thanks />} />
+        {COMPARE_PAGES.map((page) => (
+          <Route key={page.path} path={page.path} element={<ComparePage />} />
+        ))}
         <Route path="*" element={<NotFound />} />
       </Route>
     </Routes>
