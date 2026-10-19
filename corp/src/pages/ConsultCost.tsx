@@ -76,8 +76,7 @@ export default function ConsultCost() {
             <h2>What other firms publish</h2>
             <p>
               Asking prices from each firm's own public page, checked {CONSULT_COST_CHECKED}. These firms sell AI
-              services themselves, so read them as published prices, not survey averages. Sources are named, not
-              linked; search the firm's name to check them.
+              services themselves, so read them as published prices, not survey averages.
             </p>
           </div>
           <div className="table-wrap">
