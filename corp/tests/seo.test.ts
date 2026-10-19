@@ -73,6 +73,8 @@ describe("per-route SEO", () => {
     expect(concierge).toContain("https://buy.stripe.com/6oUeVd7YM3qH0Ylbuq2ZO1u");
     expect(concierge).toContain("$2,000/mo");
     expect(concierge).toContain("didn’t stick");
+    expect(concierge).toContain("Holistic Consulting");
+    expect(concierge).not.toMatch(/href="https?:\/\/(?:www\.)?(holisticconsulting\.tech|smallbizstrategy\.ai|iternal\.ai)/);
     expect(home).toContain('rel="canonical" href="https://agenthiveinc.com/"');
     expect(about).not.toContain('rel="canonical" href="https://agenthiveinc.com/" />');
     expect(about).toContain("application/ld+json");

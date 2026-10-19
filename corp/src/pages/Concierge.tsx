@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import AskAiBar from "../components/AskAiBar";
 import AuthorCard from "../components/AuthorCard";
 import FaqList from "../components/FaqList";
 import { CONCIERGE_FAQS } from "../../shared/faqs";
@@ -18,8 +17,31 @@ import {
   CONCIERGE_BOOK_LABEL,
   CONCIERGE_NAME,
   CONCIERGE_PRICE,
+  CONCIERGE_COMPARE_CHECKED,
+  CONCIERGE_PUBLISHED,
   CONCIERGE_STRIPE_URL,
 } from "../../shared/concierge";
+
+const STEPS = [
+  { title: "Free call", body: "15 to 30 minutes on Calendly. We find out whether a retainer, hourly time, or First Deploy AI fits." },
+  { title: "Intake", body: "Before kickoff: your time sinks, your tool stack, and the processes worth fixing first." },
+  { title: "Audit and optimize", body: "Screen-share the messy task live. Cut broken and duplicate steps before any model touches it." },
+  { title: "Automate", body: "Build the projects, skills and workflows in the sessions, and log every one in your shared inventory." },
+];
+
+const GOOD_FIT = [
+  "You own or run the business and tried ChatGPT or Claude, and it didn’t stick.",
+  "One or two tasks eat the week: sales follow-up, quoting, scheduling, ops handoffs, reporting.",
+  "You will show up to two working sessions a month and do the work in them.",
+  "You want a partner on the calls, not a PDF of prompts.",
+];
+
+const NOT_A_FIT = [
+  "You want custom software built without limit. That is a scoped build or First Deploy AI.",
+  "You want an agency that runs it all without you on the calls.",
+  "You need someone to staff your team or sit in your office.",
+  "You only have a one-off question. Hourly consult is cheaper for that.",
+];
 
 export default function Concierge() {
   return (
@@ -62,41 +84,28 @@ export default function Concierge() {
         </div>
       </section>
 
-      <AskAiBar />
-
-      <section className="section" id="aoa">
+      <section className="section" id="how">
         <div className="container">
           <div className="section-head">
-            <h2>Audit. Optimize. Automate.</h2>
-            <p>Same order every month. AI comes after the process is worth automating.</p>
+            <h2>How it works.</h2>
+            <p>Audit, optimize, automate. Same order every month. AI comes after the process is worth automating.</p>
           </div>
-          <div className="steps">
-            <article className="trust">
-              <p className="step-num">01</p>
-              <h3>Audit</h3>
-              <p className="muted">Screen-share the messy task live. We watch it and map what actually eats the week.</p>
-            </article>
-            <article className="trust">
-              <p className="step-num">02</p>
-              <h3>Optimize</h3>
-              <p className="muted">Cut broken and duplicate steps before any model touches the work.</p>
-            </article>
-            <article className="trust">
-              <p className="step-num">03</p>
-              <h3>Automate</h3>
-              <p className="muted">
-                Claude projects, skills, and workflows. When software is the right tool, that hands off to {FD_NAME} or
-                a scoped build.
-              </p>
-            </article>
-          </div>
+          <ol className="steps steps-4">
+            {STEPS.map((step, i) => (
+              <li key={step.title} className="trust">
+                <p className="step-num">{i + 1}</p>
+                <h3>{step.title}</h3>
+                <p className="muted">{step.body}</p>
+              </li>
+            ))}
+          </ol>
         </div>
       </section>
 
       <section className="section section-alt" id="included">
         <div className="container">
           <div className="section-head">
-            <h2>What’s included.</h2>
+            <h2>What you get.</h2>
             <p>Forced working time, a thread you can use while the work is in front of you, and a list of assets you keep.</p>
           </div>
           <div className="trust-grid consult-offers">
@@ -158,6 +167,100 @@ export default function Concierge() {
               Not included: unlimited custom software, staffing your team, or a black-box agency that runs without you.
             </p>
           </article>
+        </div>
+      </section>
+
+      <section className="section section-alt" id="compare">
+        <div className="container">
+          <div className="section-head">
+            <h2>What {CONCIERGE_PRICE} gets you, next to published fractional AI prices.</h2>
+            <p>
+              Asking prices from each firm’s own page, checked {CONCIERGE_COMPARE_CHECKED}. {CONCIERGE_NAME} sits below
+              the floor of both published retainers.
+            </p>
+          </div>
+          <div className="table-wrap">
+            <table className="cost-table">
+              <thead>
+                <tr>
+                  <th scope="col">Who</th>
+                  <th scope="col">Monthly price</th>
+                  <th scope="col">What the price covers</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <strong>AgentHive Inc {CONCIERGE_NAME}</strong>
+                    <small>
+                      <a href={CONCIERGE_STRIPE_URL} rel="noreferrer" target="_blank">
+                        Start {CONCIERGE_NAME}
+                      </a>
+                    </small>
+                  </td>
+                  <td>
+                    <strong>{CONCIERGE_PRICE}</strong>
+                  </td>
+                  <td>
+                    2 × 45-minute working sessions, unlimited async Slack or text, a shared asset inventory. Cancel any
+                    month after the first 30 days.
+                  </td>
+                </tr>
+                {CONCIERGE_PUBLISHED.map((row) => (
+                  <tr key={row.source}>
+                    <td>
+                      <strong>{row.source}</strong>
+                      <small className="muted">
+                        Source: {row.source} page, &ldquo;{row.page}&rdquo;, checked {CONCIERGE_COMPARE_CHECKED}
+                      </small>
+                      <small>
+                        <a href={CALENDLY_URL} rel="noreferrer" target="_blank">
+                          Book a free call with AgentHive
+                        </a>
+                      </small>
+                    </td>
+                    <td>{row.price}</td>
+                    <td>{row.terms}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <p className="fine" style={{ marginTop: 12 }}>
+            Prices can change. Hours and scope differ by firm, so compare what each price covers. Against a full-time
+            hire, see <Link to="/concierge/vs-hiring">Concierge vs hiring</Link>.
+          </p>
+        </div>
+      </section>
+
+      <section className="section" id="fit">
+        <div className="container">
+          <div className="trust-grid bridge-grid">
+            <article className="trust">
+              <p className="eyebrow">Good fit</p>
+              <ul className="cost-list">
+                {GOOD_FIT.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+            </article>
+            <article className="trust">
+              <p className="eyebrow">Not a fit</p>
+              <ul className="cost-list">
+                {NOT_A_FIT.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+            </article>
+          </div>
+          <div className="hero-actions" style={{ marginTop: 18 }}>
+            <a className="btn btn-primary" href={CONCIERGE_STRIPE_URL} rel="noreferrer" target="_blank">
+              Start {CONCIERGE_NAME} — {CONCIERGE_PRICE}
+            </a>
+            <a className="btn btn-outline" href={CALENDLY_URL} rel="noreferrer" target="_blank">
+              {CONCIERGE_BOOK_LABEL}
+            </a>
+          </div>
         </div>
       </section>
 

@@ -78,6 +78,22 @@ export const CONCIERGE_FAQS: Faq[] = [
     q: "Who is the fractional AI advisor for?",
     a: "Owners and COOs who already tried ChatGPT or Claude and it didn’t stick, and want a partner on the calls rather than a PDF of prompts.",
   },
+  {
+    q: "How does $2,000/mo compare with other fractional AI advisors?",
+    a: "Firms that publish their prices ask more. Holistic Consulting lists $3,500, $6,500 and $9,500 a month. SmallBizStrategy.ai lists $3,000 to $6,000 a month. The iternal.ai guide puts a fractional AI advisor at $1,500 to $8,000 a month. All checked October 19, 2026. AI Concierge is $2,000 a month.",
+  },
+  {
+    q: "Why not hire someone full time?",
+    a: "Twelve months of AI Concierge is $24,000. The Bureau of Labor Statistics median annual wage for software developers was $135,980 in May 2025, wages only. The Concierge vs hiring page has the full comparison.",
+  },
+  {
+    q: "What if a monthly retainer is the wrong fit?",
+    a: `Hourly consult stays open: ${CONSULT_RATES}, or a 10-hour pack for $1,250. Shops whose calls or quotes leak after hours can start with First Deploy AI. The free call is where we say which one fits.`,
+  },
+  {
+    q: "How do I start?",
+    a: "Book a free 15 to 30 minute call on Calendly, or start the subscription on Stripe. Intake comes before the first session so it starts on the real problem.",
+  },
 ];
 
 export const BLS_CHECKED = "October 4, 2026";
