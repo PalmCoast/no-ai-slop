@@ -57,7 +57,7 @@ export const FEATURED_ON = [
     height: 26,
   },
   {
-    href: "https://launchaf.com/products/product-105",
+    href: "https://launchaf.com/products/product-107",
     label: "Featured on LaunchAF",
     img: "https://launchaf.com/api/badge/light?v=launchaf-blue-2026-2",
     width: 200,
@@ -74,9 +74,8 @@ export const PRODUCT_FOOTER_LINKS = [
 
 export const LINKEDIN_URL = "https://www.linkedin.com/company/agenthiveinc";
 export const DANIEL_LINKEDIN_URL = "https://www.linkedin.com/in/daniel-graham-92057a15";
-export const STREET_ADDRESS = "95 Barrington Drive";
 export const ADDRESS_LOCALITY = "Palm Coast";
 export const ADDRESS_REGION = "FL";
 export const POSTAL_CODE = "32137";
 export const ADDRESS_COUNTRY = "US";
-export const ADDRESS_LINE = "95 Barrington Drive, Palm Coast, FL 32137";
+export const ADDRESS_LINE = "Palm Coast, FL 32137";

@@ -29,11 +29,11 @@ import {
   CONTENT_LASTMOD,
   POSTAL_CODE,
   PRODUCT_FOOTER_LINKS,
-  STREET_ADDRESS,
 } from "./brand.ts";
 import { DANIEL_BIO, DANIEL_ID, DANIEL_JOB_TITLE, DANIEL_NAME, DANIEL_SAME_AS, DANIEL_URL } from "./author.ts";
 import { CONCIERGE_BOOK_LABEL, CONCIERGE_NAME, CONCIERGE_PRICE, CONCIERGE_PRICE_AMOUNT, CONCIERGE_STRIPE_URL, CONCIERGE_URL } from "./concierge.ts";
-import { CONCIERGE_FAQS, CONSULT_FAQS, HIRING_FAQS } from "./faqs.ts";
+import { CONCIERGE_FAQS, CONSULT_COST_FAQS, CONSULT_FAQS, HIRING_FAQS } from "./faqs.ts";
+import { CONSULT_COST_CHECKED, CONSULT_COST_CHECKED_ISO, CONSULT_COST_URL, PUBLISHED_RANGES, PUBLISHED_SOLO } from "./consult.ts";
 import { AFFILIATE_TOOLS, DISCLOSURE_LINE, DISCLOSURE_UPDATED } from "./disclosure.ts";
 
 export type SeoPage = {
@@ -86,10 +86,17 @@ export const PAGE_SEO: SeoPage[] = [
   },
   {
     path: "/consult",
-    title: "AI consultant for owners: free 30 min, then $75 | AgentHive Inc",
-    description: `AI consulting that ships. Free 30-minute qualifier, then ${CONSULT_RATES}, or a 10-hour pack at $1,250. Book on Calendly. Pay on Stripe.`,
-    h1: "An operator in the room.",
-    bodyHtml: `<main id="route-consult" class="section"><div class="container"><h1 class="display">An operator in the room.</h1><p class="lede">Not another deck. Free 30-minute qualifier. Then paid time — or a fixed deploy if the leak is clear.</p><p>$75 / 30 minutes. $150 / hour. 10-hour pack $1,250 — $625 up front. Book the free 30 on Calendly. Pay on Stripe when it is paid time. Voice ${CONSULT_DISPLAY}.</p><p>Need continuity instead of hours? <a href="${CONCIERGE_URL}">${CONCIERGE_NAME}</a> is the ${CONCIERGE_PRICE} retainer.</p></div></main>`,
+    title: "AI consultant for small business: free 30 min, then $75 | AgentHive Inc",
+    description: `Hands-on AI help for owners. Free 30-minute call, then ${CONSULT_RATES}, or a 10-hour pack for $1,250. Set up in your accounts.`,
+    h1: "Hand over the AI job. We set it up with you.",
+    bodyHtml: `<main id="route-consult" class="section"><div class="container"><h1 class="display">Hand over the AI job. We set it up with you.</h1><p class="lede">Tell Daniel Graham the task that eats your week. On a free 30-minute call you find out if AI can take it. If it can, paid hours go to building it in your own accounts until it runs.</p><p>Free 30 minutes. Then $75 / 30 minutes, $150 / hour, or a 10-hour pack for $1,250 ($625 up front). Book the free 30 on Calendly. Call ${CONSULT_DISPLAY}.</p><p>Compare: <a href="${CONSULT_COST_URL}">what an AI consultant costs</a>. Need someone monthly? <a href="${CONCIERGE_URL}">${CONCIERGE_NAME}</a> is the ${CONCIERGE_PRICE} retainer.</p></div></main>`,
+  },
+  {
+    path: "/consult/ai-consultant-cost",
+    title: "What an AI consultant costs a small business (2026) | AgentHive Inc",
+    description: "AI consultant prices other firms publish (checked Oct 19, 2026) next to ours: free 30 min, $75 / 30 min, $150 / hour, $1,250 for 10 hours.",
+    h1: "What an AI consultant costs a small business",
+    bodyHtml: `<main id="route-consultcost" class="section"><div class="container"><h1 class="display">What an AI consultant costs a small business</h1><p class="lede">AI firms that publish their prices put independent AI advice at about $100 to $350 an hour and a monthly advisor at $1,500 to $8,000. AgentHive Inc charges $75 for 30 minutes, $150 an hour, or $1,250 for a 10-hour pack, after a free 30-minute call.</p><p>Sources checked ${CONSULT_COST_CHECKED}. <a href="${HIVE_CONSULT_URL}">Book the free 30</a> or call ${CONSULT_DISPLAY}.</p></div></main>`,
   },
   {
     path: "/concierge",
@@ -160,7 +167,6 @@ export function organizationJsonLd() {
   const address = {
     "@type": "PostalAddress",
     "@id": addressId,
-    streetAddress: STREET_ADDRESS,
     addressLocality: ADDRESS_LOCALITY,
     addressRegion: ADDRESS_REGION,
     postalCode: POSTAL_CODE,
@@ -241,7 +247,6 @@ function organizationNode() {
     telephone: CONSULT_DISPLAY_SEO,
     address: {
       "@type": "PostalAddress",
-      streetAddress: STREET_ADDRESS,
       addressLocality: ADDRESS_LOCALITY,
       addressRegion: ADDRESS_REGION,
       postalCode: POSTAL_CODE,
@@ -294,15 +299,42 @@ export function jsonLdFor(page: SeoPage): object | null {
             addressRegion: ADDRESS_REGION,
             addressCountry: ADDRESS_COUNTRY,
           },
-          description: `AI consulting that ships. Free 30-minute qualifier, then ${CONSULT_RATES}, or a 10-hour pack at $1,250.`,
+          description: `Hands-on AI consulting for small business owners. Free 30-minute call, then ${CONSULT_RATES}, or a 10-hour pack at $1,250 ($625 up front).`,
           offers: [
-            { "@type": "Offer", name: "Free 30-minute qualifier", price: "0.00", priceCurrency: "USD" },
+            { "@type": "Offer", name: "Free 30-minute call", price: "0.00", priceCurrency: "USD" },
             { "@type": "Offer", name: "30 minutes", price: "75.00", priceCurrency: "USD" },
             { "@type": "Offer", name: "1 hour", price: "150.00", priceCurrency: "USD" },
             { "@type": "Offer", name: "10-hour pack", price: "1250.00", priceCurrency: "USD" },
           ],
         },
         faqPage(CONSULT_FAQS),
+      ],
+    };
+  }
+  if (page.path === "/consult/ai-consultant-cost") {
+    return {
+      "@context": "https://schema.org",
+      "@graph": [
+        organizationNode(),
+        danielPerson(),
+        {
+          "@type": "Article",
+          headline: "What an AI consultant costs a small business",
+          author: { "@id": DANIEL_ID },
+          publisher: { "@id": `${BRAND_URL}/#organization` },
+          datePublished: CONSULT_COST_CHECKED_ISO,
+          dateModified: CONSULT_COST_CHECKED_ISO,
+          mainEntityOfPage: canonicalFor(page.path),
+          citation: [...PUBLISHED_RANGES.map((row): string => row.url), ...PUBLISHED_SOLO.map((row): string => row.url)],
+        },
+        {
+          "@type": "BreadcrumbList",
+          itemListElement: [
+            { "@type": "ListItem", position: 1, name: "Consult", item: HIVE_CONSULT_URL },
+            { "@type": "ListItem", position: 2, name: "What an AI consultant costs", item: CONSULT_COST_URL },
+          ],
+        },
+        faqPage(CONSULT_COST_FAQS),
       ],
     };
   }

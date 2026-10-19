@@ -5,24 +5,55 @@ export type Faq = { q: string; a: string };
 
 export const CONSULT_FAQS: Faq[] = [
   {
-    q: "What happens in the free 30?",
-    a: "The free 30 is a qualifier on Calendly. We use it to see if there is paid work. Then you pick paid time, or a fixed deploy if the leak is clear.",
+    q: "What happens on the free 30-minute call?",
+    a: "You describe the task that eats your week. Daniel Graham tells you plainly whether AI is a good fit for it, what he would do first, and roughly how many paid hours it takes. If it is not a fit, he says so and you owe nothing.",
+  },
+  {
+    q: "Do I need to be technical?",
+    a: "No. You know the business; Daniel handles the setup. Sessions are in plain language, on a shared screen, inside the tools you already use.",
+  },
+  {
+    q: "What kind of work fits paid hours?",
+    a: "One clear task at a time: drafting quotes or replies, sorting an inbox, turning notes into documents, connecting two apps, setting up an AI assistant for your team, or picking which tools are worth paying for. Bigger builds are scoped on the call before any money changes hands.",
+  },
+  {
+    q: "Who owns what gets built?",
+    a: "You do. Work is set up in your accounts with your logins, and any tool subscription is in your name. If we stop working together, everything stays with you.",
+  },
+  {
+    q: "Is my customer data safe?",
+    a: "We decide together which data goes into which tool before anything is connected, and private details stay out of tools that are not approved for them. You keep the admin access.",
   },
   {
     q: "How does billing work?",
-    a: `After the free 30, paid time is ${CONSULT_RATES}. A 10-hour pack is $1,250, with $625 up front. You pay the paid time on Stripe.`,
+    a: `The first 30 minutes are free. After that, paid time is ${CONSULT_RATES}, paid on Stripe after the free call. The 10-hour pack is $1,250 ($125 an hour): $625 up front, the remainder when the hours start.`,
   },
   {
-    q: "Is the consult remote or on-site?",
-    a: "Daniel Graham is in Palm Coast, Florida. The qualifier and the paid sessions are Calendly calls. This page does not sell an on-site visit.",
+    q: "Is it remote or on-site?",
+    a: "Remote. Daniel Graham is based in Palm Coast, Florida, and every call and session runs by video, so owners anywhere in the US can book. This page does not sell an on-site visit.",
   },
   {
-    q: "What if I need someone every month?",
-    a: `${CONCIERGE_NAME} is the ${CONCIERGE_PRICE} retainer: two 45-minute sessions a month, unlimited async Slack or text, and a shared asset inventory.`,
+    q: "What if I need help every month?",
+    a: `${CONCIERGE_NAME} is the ${CONCIERGE_PRICE} retainer: two 45-minute sessions a month, unlimited async Slack or text, and a shared asset inventory. The hourly rates stay available if you only need a few hours.`,
+  },
+];
+
+export const CONSULT_COST_FAQS: Faq[] = [
+  {
+    q: "How much does an AI consultant cost for a small business?",
+    a: "Guides published by AI firms in 2026 put independent AI advice at roughly $100 to $350 an hour and a monthly advisor at $1,500 to $8,000. These are asking prices from the firms' own pages, not survey averages. AgentHive Inc charges $75 for 30 minutes, $150 an hour, or $1,250 for 10 hours, after a free 30-minute call.",
   },
   {
-    q: "Do you consult from Palm Coast?",
-    a: "Yes. Daniel Graham is based in Palm Coast, Florida, in Flagler County. Owners outside Palm Coast book the same Calendly call, so the session is remote.",
+    q: "Is hourly or a fixed project better?",
+    a: "Hourly fits when the task is small or you want to learn alongside the work. A fixed project fits one defined build with a clear finish line. If you are not sure, the free 30-minute call is where that gets decided.",
+  },
+  {
+    q: "Why does the 10-hour pack cost less per hour?",
+    a: "The pack is $1,250 for 10 hours, which works out to $125 an hour instead of $150. You pay $625 up front and the remainder when the hours start.",
+  },
+  {
+    q: "Where do the comparison numbers come from?",
+    a: `Each range is quoted from the named firm's own public page, with a link, checked on October 19, 2026. Prices change, so check the source before you compare.`,
   },
 ];
 

@@ -82,6 +82,8 @@ writeFileSync(
     "/build/ /build/index.html 200!",
     "/consult /consult/index.html 200!",
     "/consult/ /consult/index.html 200!",
+    "/consult/ai-consultant-cost /consult/ai-consultant-cost/index.html 200!",
+    "/consult/ai-consultant-cost/ /consult/ai-consultant-cost/index.html 200!",
     "/concierge /concierge/index.html 200!",
     "/concierge/ /concierge/index.html 200!",
     "/concierge/vs-hiring /concierge/vs-hiring/index.html 200!",

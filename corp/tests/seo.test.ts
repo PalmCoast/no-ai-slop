@@ -62,7 +62,7 @@ describe("per-route SEO", () => {
     const consult = applyRouteHtml(shell, PAGE_SEO.find((page) => page.path === "/consult")!);
     expect(consult).toContain('id="route-consult"');
     expect(consult).toContain('rel="canonical" href="https://agenthiveinc.com/consult"');
-    expect(consult).toContain("<h1 class=\"display\">An operator in the room.</h1>");
+    expect(consult).toContain("<h1 class=\"display\">Hand over the AI job. We set it up with you.</h1>");
     expect(consult).toContain("$75");
     expect(consult).toContain("https://agenthiveinc.com/concierge");
     const concierge = applyRouteHtml(shell, PAGE_SEO.find((page) => page.path === "/concierge")!);
@@ -99,7 +99,8 @@ describe("per-route SEO", () => {
     expect(pages[0]).toContain("$1,750");
     expect(pages[0]).toContain("$250/mo");
     expect(pages.join("")).not.toMatch(/\$2,?500|\$1,?500\s*\/\s*mo|firstdeploy\.dev/);
-    expect(pages[1]).toContain("95 Barrington Drive");
+    expect(pages[1]).toContain("Palm Coast, FL 32137");
+    expect(pages.join("")).not.toContain("Barrington");
     expect(pages[2]).toContain("briefing");
     expect(pages.join("")).not.toMatch(/14 apps|\$70k|coltsinsider@gmail/i);
   });
@@ -109,7 +110,8 @@ describe("per-route SEO", () => {
     const json = JSON.stringify(graph);
     expect(json).toContain("Organization");
     expect(json).toContain("LocalBusiness");
-    expect(json).toContain("95 Barrington Drive");
+    expect(json).toContain("32137");
+    expect(json).not.toContain("Barrington");
     expect(json).toContain(LEGAL_NAME);
     expect(json).toContain(LINKEDIN_URL);
     expect(json).toContain(DANIEL_LINKEDIN_URL);
@@ -205,7 +207,27 @@ describe("per-route SEO", () => {
       expect(words.length).toBeGreaterThan(250);
     }
     const consult = render("/consult");
-    expect(consult).toContain("What an AI consultant costs");
+    expect(consult).toContain("What you get");
+    expect(consult).toContain("How it works");
+    expect(consult).toContain("what an AI consultant costs");
+    expect(consult).toContain("/consult/ai-consultant-cost");
+    expect(consult).not.toMatch(/live this week|or you don.t pay|guarantee/i);
+    for (const href of [
+      "https://calendly.com/coltsinsider/30min",
+      "https://buy.stripe.com/fZufZh92Qf9p5eB2XU2ZO1h",
+      "https://buy.stripe.com/eVq9ATbaY6CT6iF7ea2ZO1g",
+      "https://buy.stripe.com/7sY9ATenabXd7mJ7ea2ZO1i",
+    ]) expect(consult).toContain(href);
+    const cost = render("/consult/ai-consultant-cost");
+    expect(cost).toContain("What an AI consultant costs a small business");
+    expect(cost).toContain("northstarconsult.ai");
+    expect(cost).toContain("iternal.ai");
+    expect(cost).toContain("October 19, 2026");
+    expect(cost).toContain("$1,250");
+    expect(cost).not.toMatch(/live this week|or you don.t pay/i);
+    const costLd = JSON.stringify(jsonLdFor(PAGE_SEO.find((page) => page.path === "/consult/ai-consultant-cost")!));
+    expect(costLd).toContain("FAQPage");
+    expect(costLd).toContain("BreadcrumbList");
     expect(consult).toContain("AI consulting");
     expect(consult).toContain("$1,250");
     expect(consult).toContain("ainexus360.com");
