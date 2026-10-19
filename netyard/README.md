@@ -11,7 +11,7 @@ Stand up a shop network without Microsoft Server.
 - Cost: Windows Server Standard + User CALs versus Samba at $0. Hardware is still in the shopping list.
 - Files: `NETYARD-PLAN.md`, `install-office-server.sh`, `users.csv`, `wg0.conf`, CSVs for the switch tech.
 - Tools: CIDR calculator and the VLAN numbering NetYard uses.
-- Pay: Stripe Checkout on `/buy` for $1,500 setup, $250/mo desk, and consult time.
+- Pay: Stripe Checkout on `/buy` for $1,750 setup ($875 to start, balance at completion), $250/mo desk, and consult time.
 - Launch kit: `/launch` ships the Harbor HVAC standup video and screenshots.
 
 Email stays on Google Workspace or Microsoft 365. This does not replace Exchange.
@@ -52,4 +52,4 @@ Gold lattice node on a black field, cream type. Same family as AskYard. Copy sta
 
 ## Price next to the free plan
 
-The plan and scripts are free. First Deploy AI is $1,500 setup, then $250/month if you want the shop racked for you. Built from the same written plan we run for active client builds. Consult is a free 30-minute qualifier, then $75 / 30 min or $150 / hour.
+The plan and scripts are free. First Deploy AI is $1,750 setup ($875 to start, balance at completion), then $250/month if you want the shop racked for you. Built and run for you on a written plan. Consult is a free 30-minute qualifier, then $75 / 30 min or $150 / hour.

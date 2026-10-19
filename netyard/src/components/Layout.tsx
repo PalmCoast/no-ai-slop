@@ -101,6 +101,9 @@ export default function Layout() {
             <Link to="/plan">Your plan</Link>
             <Link to="/tools">Admin tools</Link>
             <Link to="/compare">Vs Microsoft Server</Link>
+            <Link to="/windows-server-cal-math">Windows Server CAL math</Link>
+            <Link to="/windows-sbs-replacement">SBS replacement</Link>
+            <Link to="/samba-ad-small-business">Samba AD for small business</Link>
             <Link to="/launch">Launch</Link>
           </div>
           <div>

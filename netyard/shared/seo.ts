@@ -22,6 +22,7 @@ import { OFFERS } from "./offers.ts";
 import { COMPARE_FAQS } from "./licensing.ts";
 import { OFFER_FAQS, PRICE_CARD } from "./offerCopy.ts";
 import { FD_DEPOSIT_URL } from "./offers.ts";
+import { COMPARE_CHECKED_ISO, COMPARE_PAGES, comparePageFor } from "./comparePages.ts";
 
 export type SeoPage = {
   path: string;
@@ -61,14 +62,14 @@ export const PAGE_SEO: SeoPage[] = [
     title: "Samba AD vs Windows Server for a small shop | NetYard",
     description: `Windows Server Standard plus User CALs versus Samba on Debian. What you keep, what you give up, and when cloud-only is enough.`,
     h1: "Skip the CALs. Keep the domain join.",
-    bodyHtml: `<main id="route-compare" class="section"><div class="container"><h1 class="display">Skip the CALs. Keep the domain join.</h1><p class="lede">Microsoft Small Business Server is gone. Essentials is gone. A 12-person shop still needs logins, a share, and guest Wi-Fi. Samba AD on Debian does that. You still pay for hardware and a UPS.</p></div></main>`,
+    bodyHtml: `<main id="route-compare" class="section"><div class="container"><h1 class="display">Skip the CALs. Keep the domain join.</h1><p class="lede">Microsoft's Windows Server 2025 licensing guide lists Datacenter, Standard, and Essentials (OEM only, up to 25 users and 50 devices, no base CAL). A 12-person shop still needs logins, a share, and guest Wi-Fi. Samba AD on Debian does that. You still pay for hardware and a UPS.</p></div></main>`,
   },
   {
     path: "/buy",
     title: "Pay on Stripe | NetYard",
-    description: `Pay NetYard setup $1,750 ($875 to start), the $250/mo desk, or consult time on Stripe.`,
+    description: `Have First Deploy AI build your NetYard network: $1,750 setup ($875 to start, balance when it is done), then $250/mo.`,
     h1: "Pay for the rack, not another Server license.",
-    bodyHtml: `<main id="route-buy" class="section"><div class="container"><h1 class="display">Pay for the rack, not another Server license.</h1><p class="lede">The wizard and scripts stay free. Stripe takes the $1,750 setup ($875 to start), the $250/mo desk, or consult time. ${FD_PROMISE}.</p></div></main>`,
+    bodyHtml: `<main id="route-buy" class="section"><div class="container"><h1 class="display">Pay for the rack, not another Server license.</h1><p class="lede">The wizard and scripts stay free. Have us build it: $1,750 setup ($875 to start), then $250/mo. ${FD_PROMISE}.</p></div></main>`,
   },
   {
     path: "/launch",
@@ -81,11 +82,18 @@ export const PAGE_SEO: SeoPage[] = [
   {
     path: "/thanks",
     title: "Payment landed | NetYard",
-    description: `Stripe checkout confirmation for NetYard setup, monthly desk, or consult time.`,
+    description: `Stripe checkout confirmation for a NetYard network build.`,
     h1: "Payment landed.",
     bodyHtml: `<main id="route-thanks" class="section"><div class="container"><h1 class="display">Payment landed.</h1><p class="lede">We rack from the plan you already generated. Keep the Stripe receipt.</p></div></main>`,
     noindex: true,
   },
+  ...COMPARE_PAGES.map((page) => ({
+    path: page.path,
+    title: page.title,
+    description: page.description,
+    h1: page.h1,
+    bodyHtml: `<main class="section"><div class="container"><h1 class="display">${page.h1}</h1><p class="lede">${page.lede}</p></div></main>`,
+  })),
 ];
 
 export const NOT_FOUND_SEO: SeoPage = {
@@ -197,27 +205,61 @@ export function jsonLdFor(page: SeoPage): object | null {
       ],
     };
   }
-  if (page.path === "/buy") {
+  const compare = comparePageFor(page.path);
+  if (compare) {
     return {
       "@context": "https://schema.org",
-      "@graph": OFFERS.map((offer) => ({
-        "@type": "Offer",
-        name: offer.name,
-        price: (offer.cents / 100).toFixed(2),
-        priceCurrency: "USD",
-        description: `${offer.amountLabel}. ${offer.blurb}`,
-        ...(offer.interval === "month"
-          ? {
-              priceSpecification: {
-                "@type": "UnitPriceSpecification",
-                price: (offer.cents / 100).toFixed(2),
-                priceCurrency: "USD",
-                unitText: "month",
-                referenceQuantity: { "@type": "QuantitativeValue", value: 1, unitCode: "MON" },
-              },
-            }
-          : {}),
-      })),
+      "@graph": [
+        {
+          "@type": "Article",
+          headline: compare.h1,
+          description: compare.description,
+          author: danielPerson(),
+          publisher: { "@type": "Organization", name: BRAND_COMPANY, url: COMPANY_URL },
+          datePublished: COMPARE_CHECKED_ISO,
+          dateModified: COMPARE_CHECKED_ISO,
+          mainEntityOfPage: canonicalFor(page.path),
+        },
+        {
+          "@type": "BreadcrumbList",
+          itemListElement: [
+            { "@type": "ListItem", position: 1, name: BRAND_NAME, item: `${BRAND_URL}/` },
+            { "@type": "ListItem", position: 2, name: "Compare", item: canonicalFor("/compare") },
+            { "@type": "ListItem", position: 3, name: compare.h1, item: canonicalFor(page.path) },
+          ],
+        },
+        {
+          "@type": "FAQPage",
+          mainEntity: compare.faqs.map((faq) => ({
+            "@type": "Question",
+            name: faq.q,
+            acceptedAnswer: { "@type": "Answer", text: faq.a },
+          })),
+        },
+      ],
+    };
+  }
+  if (page.path === "/buy") {
+    const rack = OFFERS.find((offer) => offer.id === "rack");
+    return {
+      "@context": "https://schema.org",
+      "@type": "Offer",
+      name: PRICE_CARD.title,
+      price: rack ? (rack.cents / 100).toFixed(2) : "1750.00",
+      priceCurrency: "USD",
+      description: "$1,750 setup ($875 to start, balance when it is done), then $250/mo.",
+      url: FD_DEPOSIT_URL,
+      priceSpecification: [
+        { "@type": "PriceSpecification", name: "Setup", price: "1750.00", priceCurrency: "USD" },
+        {
+          "@type": "UnitPriceSpecification",
+          name: "Monthly",
+          price: "250.00",
+          priceCurrency: "USD",
+          unitText: "month",
+          referenceQuantity: { "@type": "QuantitativeValue", value: 1, unitCode: "MON" },
+        },
+      ],
     };
   }
   return null;

@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
+import { COMPARE_PAGES } from "../../shared/comparePages";
 import { COMPARE_FAQS, LICENSING_CHECKED } from "../../shared/licensing";
-import { WINDOWS_SERVER_STANDARD_USD, WINDOWS_USER_CAL_USD } from "../../shared/microsoft";
+import { WINDOWS_PRICES_CHECKED, WINDOWS_SERVER_STANDARD_USD, WINDOWS_USER_CAL_USD } from "../../shared/microsoft";
 
 export default function Compare() {
   return (
@@ -8,9 +9,11 @@ export default function Compare() {
       <div className="container narrow">
         <h1 className="display">Skip the CALs. Keep the domain join.</h1>
         <p className="lede">
-          A 12-person shop used to buy Windows Small Business Server. That product is gone. Essentials is gone. What is
-          left is Windows Server Standard at about ${WINDOWS_SERVER_STANDARD_USD.toLocaleString()} plus about $
-          {WINDOWS_USER_CAL_USD} per person in User CALs, and you still buy a box, a switch, and a UPS.
+          A 12-person shop used to buy Windows Small Business Server. Microsoft's Windows Server 2025 licensing guide now
+          lists three editions: Datacenter, Standard, and Essentials. Essentials is sold only by OEM server makers, for up
+          to 25 users and 50 devices, and needs no base CAL. Standard is ${WINDOWS_SERVER_STANDARD_USD.toLocaleString()}{" "}
+          (Microsoft's suggested price for 16 cores) plus ${WINDOWS_USER_CAL_USD} per person in User CALs at one
+          reseller's published list price, and you still buy a box, a switch, and a UPS.
         </p>
 
         <div className="card-grid plan-grid">
@@ -54,10 +57,22 @@ export default function Compare() {
           Source: Microsoft's Client Access License page, checked {LICENSING_CHECKED}.
         </p>
         <p style={{ marginTop: "1.5rem" }}>
-          Street prices, not a Microsoft quote. Software Assurance, core packs, and Remote Desktop CALs are extra on the
-          Windows side. The ${WINDOWS_SERVER_STANDARD_USD.toLocaleString()} and ${WINDOWS_USER_CAL_USD} figures above are
-          those street estimates.
+          Prices, checked {WINDOWS_PRICES_CHECKED}: Windows Server 2025 Standard ${WINDOWS_SERVER_STANDARD_USD.toLocaleString()}{" "}
+          is Microsoft's suggested MSRP for 16 core licenses (Microsoft's Windows Server 2025 pricing page). The $
+          {WINDOWS_USER_CAL_USD} User CAL is a reseller price, not Microsoft's: o365hq.com's published US list price for
+          one Windows Server 2025 User CAL, one-time, commercial. Microsoft's pricing page lists no CAL price. Essentials
+          limits are from Microsoft's Windows Server 2025 licensing guide. These are list prices, not a quote. Software
+          Assurance, extra core licenses, and Remote Desktop CALs are extra on the Windows side. The full arithmetic for 12
+          people is on <Link to="/windows-server-cal-math">Windows Server CAL math</Link>.
         </p>
+        <h2>More comparisons</h2>
+        <ul className="takeaways">
+          {COMPARE_PAGES.map((p) => (
+            <li key={p.path}>
+              <Link to={p.path}>{p.h1}</Link>
+            </li>
+          ))}
+        </ul>
         <div className="hero-actions">
           <Link className="btn btn-primary" to="/buy">
             Pay on Stripe

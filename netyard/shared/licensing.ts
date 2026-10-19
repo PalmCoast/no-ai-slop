@@ -1,5 +1,5 @@
 export const MICROSOFT_CAL_URL = "https://www.microsoft.com/en-us/licensing/product-licensing/client-access-license";
-export const LICENSING_CHECKED = "October 4, 2026";
+export const LICENSING_CHECKED = "October 19, 2026";
 
 export type Faq = { q: string; a: string };
 
@@ -14,6 +14,6 @@ export const COMPARE_FAQS: Faq[] = [
   },
   {
     q: "Does per-core licensing remove Windows Server CALs?",
-    a: `Microsoft's page says some server products are licensed per core, and under that model you do not buy additional CALs. The same table lists Windows Server on the Core/CAL row, so a Windows Server purchase can still require CALs. The dollar figures elsewhere on this page are street estimates, not a price from Microsoft. Source: Microsoft's Client Access License page, checked ${LICENSING_CHECKED}.`,
+    a: `Microsoft's page says some server products are licensed per core, and under that model you do not buy additional CALs. The same table lists Windows Server on the Core/CAL row, so a Windows Server purchase can still require CALs. The dollar figures elsewhere on this page are published list prices (Microsoft for Standard, a reseller for CALs), not a quote. Source: Microsoft's Client Access License page, checked ${LICENSING_CHECKED}.`,
   },
 ];
