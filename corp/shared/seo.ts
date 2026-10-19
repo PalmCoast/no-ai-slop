@@ -33,7 +33,7 @@ import {
 import { DANIEL_BIO, DANIEL_ID, DANIEL_JOB_TITLE, DANIEL_NAME, DANIEL_SAME_AS, DANIEL_URL } from "./author.ts";
 import { CONCIERGE_BOOK_LABEL, CONCIERGE_NAME, CONCIERGE_PRICE, CONCIERGE_PRICE_AMOUNT, CONCIERGE_STRIPE_URL, CONCIERGE_URL } from "./concierge.ts";
 import { CONCIERGE_FAQS, CONSULT_COST_FAQS, CONSULT_FAQS, HIRING_FAQS } from "./faqs.ts";
-import { CONSULT_COST_CHECKED, CONSULT_COST_CHECKED_ISO, CONSULT_COST_URL, PUBLISHED_RANGES, PUBLISHED_SOLO } from "./consult.ts";
+import { CONSULT_COST_CHECKED, CONSULT_COST_CHECKED_ISO, CONSULT_COST_URL } from "./consult.ts";
 import { AFFILIATE_TOOLS, DISCLOSURE_LINE, DISCLOSURE_UPDATED } from "./disclosure.ts";
 
 export type SeoPage = {
@@ -325,7 +325,6 @@ export function jsonLdFor(page: SeoPage): object | null {
           datePublished: CONSULT_COST_CHECKED_ISO,
           dateModified: CONSULT_COST_CHECKED_ISO,
           mainEntityOfPage: canonicalFor(page.path),
-          citation: [...PUBLISHED_RANGES.map((row): string => row.url), ...PUBLISHED_SOLO.map((row): string => row.url)],
         },
         {
           "@type": "BreadcrumbList",

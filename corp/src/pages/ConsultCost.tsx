@@ -92,10 +92,13 @@ export default function ConsultCost() {
                 {PUBLISHED_RANGES.map((row) => (
                   <tr key={row.source}>
                     <td>
-                      <a href={row.url} rel="noopener noreferrer nofollow" target="_blank">
-                        {row.source}
-                      </a>
-                      <small className="muted"> {row.page}</small>
+                      <strong>{row.source}</strong>
+                      <small className="muted">
+                        Source: {row.source} page, &ldquo;{row.page}&rdquo;, checked {CONSULT_COST_CHECKED}
+                      </small>
+                      <small>
+                        <Link to={`${HIVE_CONSULT_PATH}#pricing`}>See our consult pricing</Link>
+                      </small>
                     </td>
                     <td>{row.hourly}</td>
                     <td>{row.monthly}</td>
@@ -108,10 +111,11 @@ export default function ConsultCost() {
           <ul className="cost-list">
             {PUBLISHED_SOLO.map((row) => (
               <li key={row.source}>
-                <a href={row.url} rel="noopener noreferrer nofollow" target="_blank">
-                  {row.source}
+                <strong>{row.source}</strong>: {row.price}. <span className="muted">(Source: {row.source} pricing page,
+                checked {CONSULT_COST_CHECKED}.)</span>{" "}
+                <a href={CALENDLY_URL} rel="noreferrer" target="_blank">
+                  Book a free 30 with AgentHive
                 </a>
-                : {row.price}.
               </li>
             ))}
           </ul>
