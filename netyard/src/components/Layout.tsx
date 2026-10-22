@@ -124,6 +124,13 @@ export default function Layout() {
             <a href="/llms.txt">llms.txt</a>
           </div>
         </div>
+        <p className="container footer-disclosure">
+          We earn commissions only on tools we use ourselves.{" "}
+          <a href="https://agenthiveinc.com/disclosure">Disclosure</a> ·{" "}
+          <a href="https://join.netlify.com/mn6b2zkzsv2b" target="_blank" rel="sponsored noopener">
+            Hosted on Netlify
+          </a>
+        </p>
         <div className="container footer-bottom">
           <div>
             © 2026 {BRAND_COMPANY} · {LEGAL_NAME}

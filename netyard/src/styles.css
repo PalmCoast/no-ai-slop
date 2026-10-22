@@ -322,6 +322,15 @@ footer {
 }
 .footer-grid a, .footer-grid p { display: block; color: var(--muted); margin-top: 0.4rem; }
 .footer-mark { width: min(280px, 100%); margin-bottom: 0.8rem; }
+.footer-disclosure {
+  color: var(--muted);
+  font-size: 0.8rem;
+  margin: 1rem 0;
+}
+.footer-disclosure a {
+  color: var(--muted);
+  text-decoration: underline;
+}
 .footer-bottom {
   display: flex;
   justify-content: space-between;

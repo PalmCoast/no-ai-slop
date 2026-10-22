@@ -32,7 +32,18 @@ export default function Disclosure() {
         <ul className="takeaways">
           {AFFILIATE_TOOLS.map((tool) => (
             <li key={tool.name}>
-              {tool.name} ({tool.use})
+              {"href" in tool && tool.href ? (
+                <>
+                  <a href={tool.href} target="_blank" rel="sponsored noopener">
+                    {tool.name}
+                  </a>{" "}
+                  ({tool.use})
+                </>
+              ) : (
+                <>
+                  {tool.name} ({tool.use})
+                </>
+              )}
             </li>
           ))}
         </ul>
