@@ -10,6 +10,7 @@ import ConsultCost from "./pages/ConsultCost";
 import Concierge from "./pages/Concierge";
 import VsHiring from "./pages/VsHiring";
 import Disclosure from "./pages/Disclosure";
+import Switch from "./pages/Switch";
 import NotFound from "./pages/NotFound";
 import ConsultComparePage from "./pages/ConsultComparePage";
 import { CONSULT_COMPARE_PAGES } from "../shared/consultCompare";
@@ -31,6 +32,7 @@ export default function App() {
         <Route path="/concierge" element={<Concierge />} />
         <Route path="/concierge/vs-hiring" element={<VsHiring />} />
         <Route path="/disclosure" element={<Disclosure />} />
+        <Route path="/switch" element={<Switch />} />
         <Route path="/hive" element={<Navigate to="/rankings" replace />} />
         <Route path="*" element={<NotFound />} />
       </Route>

@@ -1,4 +1,6 @@
+import { Link } from "react-router-dom";
 import AskAiBar from "../components/AskAiBar";
+import { SWITCH_ENDS, SWITCH_MONTHLY_LABEL, SWITCH_PATH } from "../../shared/switch";
 import {
   BOOK_CTA_LABEL,
   BRAND_NAME,
@@ -110,6 +112,10 @@ export default function Home() {
               </p>
               <p className="muted" style={{ marginTop: 12 }}>
                 Consult: free 30-minute qualifier, then {CONSULT_RATES}. 10-hour pack $1,250 (half up front).
+              </p>
+              <p className="muted" style={{ marginTop: 12 }}>
+                {`Through ${SWITCH_ENDS}, the desk is ${SWITCH_MONTHLY_LABEL} with no setup fee. `}
+                <Link to={SWITCH_PATH}>See the offer</Link>.
               </p>
             </article>
             <article className="panel">

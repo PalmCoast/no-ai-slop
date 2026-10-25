@@ -92,6 +92,8 @@ writeFileSync(
     "/concierge/vs-hiring/ /concierge/vs-hiring/index.html 200!",
     "/disclosure /disclosure/index.html 200!",
     "/disclosure/ /disclosure/index.html 200!",
+    "/switch /switch/index.html 200!",
+    "/switch/ /switch/index.html 200!",
     "/x /x/index.html 200!",
     "/x/ /x/index.html 200!",
     "/* /404.html 404",

@@ -36,6 +36,22 @@ import { CONCIERGE_FAQS, CONSULT_COST_FAQS, CONSULT_FAQS, HIRING_FAQS } from "./
 import { CONSULT_COST_CHECKED, CONSULT_COST_CHECKED_ISO, CONSULT_COST_URL } from "./consult.ts";
 import { CONSULT_COMPARE_CHECKED_ISO, CONSULT_COMPARE_PAGES, consultComparePageFor } from "./consultCompare.ts";
 import { AFFILIATE_TOOLS, DISCLOSURE_LINE, DISCLOSURE_UPDATED } from "./disclosure.ts";
+import {
+  SWITCH_DESCRIPTION,
+  SWITCH_ENDS,
+  SWITCH_ENDS_ISO,
+  SWITCH_FAQS,
+  SWITCH_GUARANTEE,
+  SWITCH_H1,
+  SWITCH_LEDE,
+  SWITCH_MONTHLY,
+  SWITCH_PATH,
+  SWITCH_PUBLISHED_ISO,
+  SWITCH_SETUP,
+  SWITCH_URL,
+  SWITCH_YEAR_ONE,
+  SWITCH_TITLE,
+} from "./switch.ts";
 
 export type SeoPage = {
   path: string;
@@ -121,6 +137,13 @@ export const PAGE_SEO: SeoPage[] = [
       "AI Concierge is $2,000/mo. BLS May 2025 median wages: software developers $135,980, IT managers $175,140. No agency price quoted.",
     h1: "Concierge vs hiring an in-house AI person",
     bodyHtml: `<main id="route-hiring" class="section"><div class="container"><h1 class="display">Concierge vs hiring an in-house AI person</h1><p class="lede">${CONCIERGE_NAME} is ${CONCIERGE_PRICE}. Twelve months is $24,000. The Bureau of Labor Statistics median annual wage for software developers was $135,980 in May 2025, and for computer and information systems managers $175,140. Both are wages, not benefits. Checked October 4, 2026. This page does not quote an agency price.</p><p>${DANIEL_BIO}</p><p><a href="${BRAND_URL}/consult">Consult</a> · <a href="${CONCIERGE_URL}">${CONCIERGE_NAME}</a> · <a href="${DANIEL_URL}">About Daniel Graham</a></p></div></main>`,
+  },
+  {
+    path: SWITCH_PATH,
+    title: SWITCH_TITLE,
+    description: SWITCH_DESCRIPTION,
+    h1: SWITCH_H1,
+    bodyHtml: `<main id="route-switch" class="section"><div class="container"><h1 class="display">${escapeHtml(SWITCH_H1)}</h1><p class="lede">${escapeHtml(SWITCH_LEDE)}</p><p>${escapeHtml(SWITCH_GUARANTEE)} Through ${SWITCH_ENDS}. Year one is $${SWITCH_YEAR_ONE.toLocaleString("en-US")}.</p><p><a href="${SWITCH_URL}">${FD_NAME} desk offer</a> · <a href="${FD_URL}">${FD_NAME}</a> · <a href="${CALENDLY_URL}">${BOOK_CTA_LABEL}</a></p></div></main>`,
   },
   {
     path: "/disclosure",
@@ -390,6 +413,49 @@ export function jsonLdFor(page: SeoPage): object | null {
           offers: monthlyOffer(CONCIERGE_NAME, CONCIERGE_PRICE_AMOUNT, CONCIERGE_STRIPE_URL),
         },
         faqPage(CONCIERGE_FAQS),
+      ],
+    };
+  }
+  if (page.path === SWITCH_PATH) {
+    return {
+      "@context": "https://schema.org",
+      "@graph": [
+        organizationNode(),
+        danielPerson(),
+        {
+          "@type": "Article",
+          headline: page.h1,
+          description: page.description,
+          author: { "@id": DANIEL_ID },
+          publisher: { "@id": `${BRAND_URL}/#organization` },
+          datePublished: SWITCH_PUBLISHED_ISO,
+          dateModified: SWITCH_PUBLISHED_ISO,
+          mainEntityOfPage: SWITCH_URL,
+        },
+        {
+          "@type": "Service",
+          name: `${FD_NAME} after-hours desk`,
+          serviceType: "AI after-hours phone desk for trade shops",
+          url: SWITCH_URL,
+          provider: { "@id": `${BRAND_URL}/#organization` },
+          areaServed: "US",
+          description: `${SWITCH_LEDE} ${SWITCH_GUARANTEE}`,
+          offers: [
+            {
+              "@type": "Offer",
+              name: "Setup",
+              price: SWITCH_SETUP.toFixed(2),
+              priceCurrency: "USD",
+              url: SWITCH_URL,
+              availability: "https://schema.org/InStock",
+              validFrom: SWITCH_PUBLISHED_ISO,
+              validThrough: SWITCH_ENDS_ISO,
+              description: `No setup fee on a plan started by ${SWITCH_ENDS}. Year one on the offer is $${SWITCH_YEAR_ONE.toLocaleString("en-US")}.`,
+            },
+            monthlyOffer(`${FD_NAME} desk`, SWITCH_MONTHLY.toFixed(2), SWITCH_URL),
+          ],
+        },
+        faqPage(SWITCH_FAQS),
       ],
     };
   }

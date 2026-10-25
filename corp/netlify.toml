@@ -138,6 +138,18 @@
   force = true
 
 [[redirects]]
+  from = "/switch"
+  to = "/switch/index.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/switch/"
+  to = "/switch/index.html"
+  status = 200
+  force = true
+
+[[redirects]]
   from = "/x"
   to = "/x/index.html"
   status = 200
