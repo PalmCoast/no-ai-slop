@@ -1,0 +1,17 @@
+# Link Fest
+
+> Link Fest is an IndexMe.lol page of real outbound links. Put a visible follow link to https://indexme.lol/ on your site, with IndexMe in the anchor text. The board links back to pages that already do that, and to the page that wrote the idea.
+
+The check at /api/check fetches a public HTML page and looks for an `<a href>` whose host is indexme.lol. A passing link is a follow link with IndexMe in the anchor, the image alt, or the aria-label. nofollow is reported on its own. Private hosts, link-local addresses, credentialed URLs, and ports other than 80 and 443 are refused.
+
+## Links
+
+- [IndexMe.lol](https://indexme.lol/): IndexNow, sitemap and robots checks, search console steps. Pro $19.99. Studio $29.99. One time.
+- [Free desk](https://indexme.lol/desk/): The check, with no signup.
+- [Pricing](https://indexme.lol/#pricing): Starter is free. Pro and Studio are one-time.
+- [AgentHive Inc](https://agenthiveinc.com/): Palm Coast shop that publishes IndexMe.
+- [LaunchAF listing](https://launchaf.com/products/product-106): Their write-up of the desk. Link Fest links back.
+
+## Contact
+
+[hello@indexme.lol](mailto:hello@indexme.lol)
