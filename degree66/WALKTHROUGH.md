@@ -1,12 +1,13 @@
-# 66degrees Interview Workbench — Plain-English Walkthrough for Daniel
+# Paradigm Blueprint Workbench — Plain-English Walkthrough for Daniel
 
-This guide explains everything about the **66degrees Interview Workbench** (`degree66`) in plain English so you can share your screen tomorrow (Wednesday, October 28 at 10:00 AM ET) and explain every piece from start to finish with complete confidence.
+This guide explains everything about the **Paradigm Blueprint Workbench** (`degree66`) in plain English so you can share your screen tomorrow (Wednesday, October 28 at 10:00 AM ET) and explain every piece from start to finish with complete confidence.
 
 ---
 
 ## 1. What This App Is (and What to Be Honest About Up Front)
 
-- **What it is:** A **100% offline, deterministic Google Cloud architecture simulator and blueprint generator** built specifically to prepare for your 66degrees conversation.
+- **What it is:** A **100% offline, deterministic Google Cloud architecture study simulator and blueprint generator** by Daniel Graham, built to learn and explore the 66degrees approach on Google Cloud.
+- **Clearly branded as your own study tool:** The top header reads **"Paradigm Blueprint Workbench — An offline study simulator by Daniel Graham, built to learn the 66degrees approach on Google Cloud"** (with no 66degrees logo mark or partner badge in the header, so it never looks like you are claiming it is an official 66degrees product).
 - **Zero live AI or backend calls:** Because your interview bans using live LLMs during the call, this app makes **zero API calls, zero network fetches, and zero live LLM requests**. Everything runs locally in your browser using deterministic rules and templates.
 - **Be honest with the interviewers:** Tell them plainly:
   - *"This is a deterministic blueprint simulator I built to prepare for our conversation today—not a live production system."*
@@ -106,7 +107,7 @@ If an interviewer asks *"How did you build this?"* or *"Walk me through the code
 3. **`degree66/src/App.tsx` (The User Interface):**
    Holds the React state for the active tab and `input` parameters. Whenever you click a preset card, change a dropdown, or slide a slider, React calls `generateBlueprint(input)` in memory (in less than 1 millisecond) and updates the architecture cards, cost table, Human-in-the-Lead sandbox badges, and code viewer immediately.
 4. **`degree66/tests/planner.test.ts` (Automated Tests):**
-   Runs 5 automated checks verifying that all 5 presets load, that the Gordon Food Service preset generates all 5 layers and 4 files, that choosing HIPAA turns on `VPC Service Controls` and `INGRESS_TRAFFIC_INTERNAL_ONLY`, and that increasing event volume scales the FinOps cost table properly.
+   Runs 6 automated checks verifying that all 5 presets load, that the Gordon Food Service preset generates all 5 layers and 4 files, that choosing HIPAA turns on `VPC Service Controls` and `INGRESS_TRAFFIC_INTERNAL_ONLY`, that increasing event volume scales the FinOps cost table properly, that all 4 flashcard categories are covered, and that the build stays `noindex`/offline with no personal contact info.
 
 ---
 

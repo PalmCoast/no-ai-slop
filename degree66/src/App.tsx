@@ -200,13 +200,10 @@ export default function App() {
       <header className="topbar">
         <div className="container topbar-inner">
           <div className="brand-block">
-            <div className="brand-badge">66°</div>
             <div>
-              <div className="brand-title">
-                66degrees <span className="gcp-pill">Google Cloud Diamond Partner</span>
-              </div>
+              <div className="brand-title">Paradigm Blueprint Workbench</div>
               <div className="brand-sub">
-                Paradigm° Data + Paradigm°OS Interactive Architecture & Interview Workbench
+                An offline study simulator by Daniel Graham, built to learn the 66degrees approach on Google Cloud
               </div>
             </div>
           </div>

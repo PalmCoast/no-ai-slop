@@ -96,7 +96,16 @@ describe("66degrees Paradigm° blueprint planner", () => {
   it("ships noindex meta tag, disallow-all robots.txt, zero live API calls, and no personal email/phone", () => {
     const indexHtml = readFileSync(join(degree66Root, "index.html"), "utf8");
     expect(indexHtml).toContain('<meta name="robots" content="noindex" />');
+    expect(indexHtml).toContain("Paradigm Blueprint Workbench");
     expect(indexHtml).not.toContain("fonts.googleapis.com");
+
+    const appTsx = readFileSync(join(degree66Root, "src/App.tsx"), "utf8");
+    expect(appTsx).toContain("Paradigm Blueprint Workbench");
+    expect(appTsx).toContain(
+      "An offline study simulator by Daniel Graham, built to learn the 66degrees approach on Google Cloud",
+    );
+    expect(appTsx).not.toContain('<div className="brand-badge">66°</div>');
+    expect(appTsx).not.toContain('<span className="gcp-pill">Google Cloud Diamond Partner</span>');
 
     const robotsTxt = readFileSync(join(degree66Root, "public/robots.txt"), "utf8");
     expect(robotsTxt).toContain("User-agent: *");
