@@ -1,3 +1,6 @@
+import { readFileSync, readdirSync, statSync } from "node:fs";
+import { join } from "node:path";
+import { fileURLToPath } from "node:url";
 import { describe, expect, it } from "vitest";
 import {
   generateBlueprint,
@@ -5,6 +8,18 @@ import {
   INTERVIEW_FLASHCARDS,
   SCENARIO_PRESETS,
 } from "../shared/planner.ts";
+
+const degree66Root = fileURLToPath(new URL("..", import.meta.url));
+
+function walk(dir: string, acc: string[] = []): string[] {
+  for (const name of readdirSync(dir)) {
+    if (name === "node_modules" || name === "dist") continue;
+    const full = join(dir, name);
+    if (statSync(full).isDirectory()) walk(full, acc);
+    else if (/\.(tsx|ts|html|txt|md|css)$/.test(name)) acc.push(full);
+  }
+  return acc;
+}
 
 describe("66degrees Paradigm° blueprint planner", () => {
   it("provides 5 verified 66degrees client scenario presets", () => {
@@ -76,5 +91,24 @@ describe("66degrees Paradigm° blueprint planner", () => {
     expect(categories.has("Google Cloud Data")).toBe(true);
     expect(categories.has("Vertex AI & Gemini")).toBe(true);
     expect(categories.has("Architecture Tradeoffs")).toBe(true);
+  });
+
+  it("ships noindex meta tag, disallow-all robots.txt, zero live API calls, and no personal email/phone", () => {
+    const indexHtml = readFileSync(join(degree66Root, "index.html"), "utf8");
+    expect(indexHtml).toContain('<meta name="robots" content="noindex" />');
+    expect(indexHtml).not.toContain("fonts.googleapis.com");
+
+    const robotsTxt = readFileSync(join(degree66Root, "public/robots.txt"), "utf8");
+    expect(robotsTxt).toContain("User-agent: *");
+    expect(robotsTxt).toContain("Disallow: /");
+
+    const files = walk(degree66Root).filter((f) => !f.includes("/tests/"));
+    for (const file of files) {
+      const content = readFileSync(file, "utf8");
+      expect(content).not.toMatch(/320-335-6186|3203356186|daniel@agenthiveinc\.com|coltsinsider/i);
+      if (file.endsWith(".ts") || file.endsWith(".tsx")) {
+        expect(content).not.toMatch(/\bfetch\s*\(/);
+      }
+    }
   });
 });
