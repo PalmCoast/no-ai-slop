@@ -90,3 +90,7 @@ MIT
 ## Latch
 
 [Latch](latch/README.md) is a next-hour tool for AuDHD (autism and ADHD together) and for CPTSD. One task on the screen, a timer you can see coming, a place to park the other thought, and a stop when it is too much. The timer is free. The record of time on task is $29 once. No streak, and the list stays in the browser. See [latch/README.md](latch/README.md).
+
+## 66degrees Interview Workbench
+
+[degree66](degree66/README.md) is an interactive Google Cloud architecture simulator and interview workbench built for 66degrees. Five client case-study presets (Gordon Food Service 450,000-SKU catalog enrichment, Managed Services data quality alert automation, HIPAA biomedical migration, travel/hospitality Customer Engagement Suite, and utility contact-center QA) generate a 5-layer Google Cloud topology, FinOps sizing, BigQuery Vector Search SQL, Terraform HCL, and a Vertex AI Gemini 2.5 Python gate. See [degree66/README.md](degree66/README.md).
