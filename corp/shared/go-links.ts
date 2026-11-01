@@ -9,7 +9,7 @@ export type GoLink = { url: string; kind: "stripe" | "page"; label: string };
 
 export const GO_LINKS: Record<string, GoLink> = {
   // First Deploy has its own tracker; /go/first-deploy hands off to it.
-  "first-deploy": { url: "https://firstdeploy.ai/go/start", kind: "page", label: "First Deploy — $1,750 setup + $250/mo" },
+  "first-deploy": { url: "https://firstdeploy.ai/go/start", kind: "page", label: "First Deploy — $500 setup, $100/mo" },
   concierge: { url: "https://buy.stripe.com/6oUeVd7YM3qH0Ylbuq2ZO1u", kind: "stripe", label: "AI Concierge — $2,000/mo" },
   "jobproof-solo": { url: "https://buy.stripe.com/5kQfZhcf29P536tbuq2ZO1f", kind: "stripe", label: "JobProof Solo — $49/mo" },
   "jobproof-crew": { url: "https://buy.stripe.com/bJe14n7YMaT95eB6a62ZO1e", kind: "stripe", label: "JobProof Crew — $99/mo" },
@@ -17,6 +17,9 @@ export const GO_LINKS: Record<string, GoLink> = {
   "indexme-studio": { url: "https://buy.stripe.com/aFa00jfre2mD8qN5622ZO1b", kind: "stripe", label: "IndexMe Studio — $29.99 once" },
   flick: { url: "https://flick.firstdeploy.ai/", kind: "page", label: "Flick — Lights $19/mo · Marquee $99 once" },
   hillmirror: { url: "https://hillmirror-firstdeploy.netlify.app/", kind: "page", label: "HillMirror — from $4.99" },
+  // Supplied for the AI Ad Sprint page. Tests check the redirect target only; do not fetch these URLs.
+  "ads-sprint": { url: "https://buy.stripe.com/5kQ00j0wke5layVbuq2ZO1L", kind: "stripe", label: "AI Ad Sprint — $297 one time" },
+  "ads-engine": { url: "https://buy.stripe.com/4gM9ATa6U2mD36tbuq2ZO1M", kind: "stripe", label: "AI Ad Sprint monthly — $997/mo" },
 };
 
 export const cleanToken = (s: unknown, max = 40): string =>

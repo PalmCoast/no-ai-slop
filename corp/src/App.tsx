@@ -12,11 +12,15 @@ import VsHiring from "./pages/VsHiring";
 import Disclosure from "./pages/Disclosure";
 import NotFound from "./pages/NotFound";
 import ConsultComparePage from "./pages/ConsultComparePage";
+import Ads from "./pages/Ads";
+import AdsThanks from "./pages/AdsThanks";
 import { CONSULT_COMPARE_PAGES } from "../shared/consultCompare";
 
 export default function App() {
   return (
     <Routes>
+      <Route path="/ads" element={<Ads />} />
+      <Route path="/ads/thanks" element={<AdsThanks />} />
       <Route element={<Layout />}>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />

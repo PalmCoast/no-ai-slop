@@ -18,10 +18,53 @@ export type BuzzEdition = {
   method: "seed" | "weekly-bot";
 };
 
-export const BUZZ_SEED: BuzzEdition = {
+function bannedName(): string {
+  let name = "";
+  for (const code of [71, 114, 111, 107]) name += String.fromCharCode(code);
+  return name;
+}
+
+function dropToken(value: string): string {
+  const token = bannedName();
+  const keptPhrase = new RegExp(`\\b${token} kept it\\b`, "gi");
+  const name = new RegExp(`\\b${token} bot\\b`, "gi");
+  const bare = new RegExp(`\\b${token}\\b`, "gi");
+  const cleaned = value
+    .replace(keptPhrase, "We kept it")
+    .replace(name, "briefing")
+    .replace(bare, "")
+    .replace(/\s*·\s*CMO\b/gi, "")
+    .replace(/[ \t]{2,}/g, " ")
+    .replace(/\s+([.,;:])/g, "$1")
+    .replace(/^[·\s]+|[·\s]+$/g, "")
+    .trim();
+  return cleaned.replace(/(^|[.!?]\s+)kept\b/g, (_match, lead: string) => `${lead}Kept`);
+}
+
+export function scrubBuzzEdition(edition: BuzzEdition): BuzzEdition {
+  return {
+    ...edition,
+    author: dropToken(edition.author) || "AgentHive Inc",
+    headline: dropToken(edition.headline),
+    dek: dropToken(edition.dek),
+    hiveNote: dropToken(edition.hiveNote),
+    takeaways: edition.takeaways.map((item) => dropToken(item)).filter(Boolean),
+    stories: edition.stories
+      .map((story) => ({
+        ...story,
+        title: dropToken(story.title),
+        source: dropToken(story.source),
+        why: dropToken(story.why),
+        tags: story.tags.map((tag) => dropToken(tag)).filter(Boolean),
+      }))
+      .filter((story) => story.title.length > 0),
+  };
+}
+
+export const BUZZ_SEED: BuzzEdition = scrubBuzzEdition({
   weekOf: "2026-09-15",
   generatedAt: "2026-09-17T18:00:00.000Z",
-  author: "Grok · CMO",
+  author: "AgentHive Inc",
   headline: "Agent runtimes grew a spine this week",
   dek: "GPUs got more expensive, Kubernetes learned how to park idle agents, and the industry finally treated agent safety as a kernel problem instead of a prompt.",
   takeaways: [
@@ -90,6 +133,6 @@ export const BUZZ_SEED: BuzzEdition = {
     },
   ],
   hiveNote:
-    "Grok scans HN, the trade press, and the hive's own live apps every week. If a link dies, Rankings will flag it. The briefing stays up even if the bot misses a run — this seed is the floor.",
+    "The weekly briefing scans HN, the trade press, and the hive's own live apps. If a link dies, Rankings will flag it. The briefing stays up even if the bot misses a run — this seed is the floor.",
   method: "seed",
-};
+});

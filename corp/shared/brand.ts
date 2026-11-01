@@ -6,14 +6,17 @@ export const CONTACT_EMAIL = "daniel@agenthiveinc.com";
 export const CONSULT_TEL = "+13203356186";
 export const CONSULT_DISPLAY = "+1 320-335-6186";
 export const CONSULT_DISPLAY_SEO = "+1-320-335-6186";
-export const CONTENT_LASTMOD = "2026-09-21";
+export const CONTENT_LASTMOD = "2026-11-01";
 export const FD_NAME = "First Deploy AI";
 export const FD_URL = "https://firstdeploy.ai/";
 export const FD_CHECK_URL = "https://firstdeploy.ai/#check";
 export const FD_CONSULT_URL = "https://firstdeploy.ai/consult";
 export const HIVE_CONSULT_PATH = "/consult";
 export const HIVE_CONSULT_URL = "https://agenthiveinc.com/consult";
-export const FD_PRICE = "$1,750 setup (50% to start or pay in full), then $250/mo";
+export const FD_FOUNDING_URL = "https://firstdeploy.ai/go/founding?from=agenthive";
+export const FD_PRICE = "$500 setup, $100/mo";
+export const FD_PRICE_LINE =
+  "First Deploy $500 setup, $100/mo; founding offer for the first 5 businesses is $250 setup + $100/mo (first checkout $350), page at https://firstdeploy.ai/go/founding?from=agenthive.";
 export const FD_PROMISE = "Built and run for you on a written plan";
 export const FD_CTA_LABEL = "Start First Deploy";
 export const BOOK_CTA_LABEL = "Book the free 30";
@@ -29,7 +32,8 @@ export const OTHER_HIVES = "Not agenthive.io (insurance) or agenthive.co.";
 export const INDEXME_NAME = "IndexMe.lol";
 export const INDEXME_URL = "https://indexme.lol/";
 export const INDEXME_BLURB = "honest IndexNow indexing desk";
-export const CALENDLY_URL = "https://calendly.com/coltsinsider/30min";
+/** Shop line. Replaces the old personal booking link. */
+export const BOOK_HREF = `tel:${CONSULT_TEL}`;
 export const SEAT_CIRCUIT_NAME = "Seat & Circuit";
 export const SEAT_CIRCUIT_URL = "https://infrastructure.agenthiveinc.com/";
 export const FLICK_URL = "https://flick.firstdeploy.ai/";
@@ -39,7 +43,7 @@ export const JOBPROOF_URL = "https://jobproof.firstdeploy.ai/";
 export const MONEY_FOOTER_LINKS = [
   { href: FD_URL, label: FD_NAME },
   { href: FD_CHECK_URL, label: FD_CHECK_LABEL },
-  { href: CALENDLY_URL, label: FREE_30_LABEL, external: true },
+  { href: BOOK_HREF, label: FREE_30_LABEL },
   { href: HIVE_CONSULT_PATH, label: "Consult" },
   { href: SEAT_CIRCUIT_URL, label: SEAT_CIRCUIT_NAME },
 ] as const;

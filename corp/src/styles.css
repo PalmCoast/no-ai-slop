@@ -68,6 +68,7 @@ button, input, textarea { font: inherit; }
   font-weight: 700;
   font-size: 1.2rem;
   letter-spacing: -0.02em;
+  min-height: 44px;
 }
 .brand img {
   width: 36px;
@@ -86,6 +87,9 @@ button, input, textarea { font: inherit; }
   color: var(--muted);
   font-size: 0.92rem;
   font-weight: 500;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
 }
 .nav-links a.active, .nav-links a:hover { color: var(--gold-bright); }
 .nav-links a.btn-primary,
@@ -93,8 +97,8 @@ button, input, textarea { font: inherit; }
 .phone { color: var(--gold) !important; }
 .menu-toggle {
   display: none;
-  width: 42px;
-  height: 42px;
+  width: 44px;
+  height: 44px;
   background: transparent;
   border: 1px solid var(--line);
   border-radius: 10px;
@@ -115,6 +119,11 @@ button, input, textarea { font: inherit; }
   padding: 0 20px 20px;
   flex-direction: column;
   gap: 0.85rem;
+}
+.mobile-nav a {
+  min-height: 44px;
+  display: flex;
+  align-items: center;
 }
 
 .btn {
@@ -306,7 +315,8 @@ button, input, textarea { font: inherit; }
   display: inline-flex;
   align-items: center;
   gap: 0.4rem;
-  padding: 0.45rem 0.7rem;
+  min-height: 44px;
+  padding: 0.55rem 0.85rem;
   border-radius: 999px;
   border: 1px solid #333;
   background: #141414;
@@ -337,7 +347,6 @@ button, input, textarea { font: inherit; }
 .ask-ai-bar__logo--gemini {
   background: conic-gradient(#4285f4, #ea4335, #fbbc05, #34a853, #4285f4);
 }
-.ask-ai-bar__logo--grok { background: #111; box-shadow: inset 0 0 0 1.5px #f5f5f5; }
 .ask-ai-bar__logo--google { background: #4285f4; }
 
 .ticker {
@@ -368,7 +377,10 @@ button, input, textarea { font: inherit; }
 }
 .roster-grid { grid-template-columns: repeat(3, 1fr); }
 .card-grid { grid-template-columns: repeat(3, 1fr); }
-.trust-grid { grid-template-columns: repeat(4, 1fr); }
+.trust-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.trust h3, .trust p, .card h3, .card p { overflow-wrap: anywhere; }
 
 .card, .worker, .trust, .rank-card, .story, .panel {
   background: linear-gradient(180deg, rgba(24, 20, 14, 0.96), rgba(12, 10, 7, 0.96));
@@ -456,16 +468,27 @@ button, input, textarea { font: inherit; }
 
 .filters { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.2rem; }
 .filter {
+  display: inline-flex;
+  align-items: center;
   background: #100d09;
   color: var(--muted);
   border: 1px solid var(--line);
   border-radius: 999px;
-  padding: 0.35rem 0.8rem;
+  min-height: 44px;
+  padding: 0.55rem 0.9rem;
   cursor: pointer;
 }
 .filter.on { color: #1a1204; background: var(--gold); border-color: var(--gold); }
-.rank-grid { grid-template-columns: 1fr; }
-.rank-card { display: grid; grid-template-columns: 72px 1fr auto; gap: 1rem; align-items: center; }
+.rank-grid { grid-template-columns: minmax(0, 1fr); }
+.rank-card {
+  display: grid;
+  grid-template-columns: 72px minmax(0, 1fr) auto;
+  gap: 1rem;
+  align-items: center;
+  min-width: 0;
+}
+.rank-card > div { min-width: 0; }
+.rank-card h3, .rank-card p { overflow-wrap: anywhere; }
 .rank-num { font-family: Cinzel, serif; font-size: 1.6rem; color: var(--gold); }
 .pill {
   display: inline-flex;
@@ -574,15 +597,23 @@ footer {
   gap: 1.5rem;
   margin-bottom: 1.5rem;
 }
-.footer-grid a, .footer-grid p { display: block; color: var(--muted); margin-top: 0.4rem; }
+.footer-grid > div { min-width: 0; }
+.footer-grid a, .footer-grid p { display: flex; align-items: center; min-height: 44px; color: var(--muted); margin-top: 0; max-width: 100%; overflow-wrap: anywhere; }
+.footer-grid p { display: block; min-height: 0; margin-top: 0.4rem; }
+footer a { display: inline-flex; align-items: center; min-height: 44px; max-width: 100%; overflow-wrap: anywhere; }
 .footer-mark { width: min(280px, 100%); margin-bottom: 0.8rem; border-radius: 12px; }
 .footer-products {
   color: var(--muted);
   font-size: 0.85rem;
   margin-bottom: 1rem;
 }
-.footer-products a {
+.footer-products a,
+.footer-disclosure a,
+.footer-bottom a {
   color: var(--muted);
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
 }
 .footer-featured {
   display: flex;
@@ -597,10 +628,16 @@ footer {
 .footer-featured a {
   color: var(--muted);
   line-height: 0;
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
 }
 .footer-featured a:not(:has(img)) {
   line-height: 1.4;
   text-decoration: underline;
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
 }
 .footer-featured img {
   height: auto;
@@ -629,10 +666,10 @@ footer {
 @media (max-width: 960px) {
   .nav-links { display: none; }
   .menu-toggle, .mobile-nav { display: flex; }
-  .roster-grid, .card-grid, .trust-grid, .bridge-grid, .steps, .portrait-grid, .cta-split, .buzz-hero, .footer-grid, .notes, .rate-grid, .consult-offers {
-    grid-template-columns: 1fr;
+  .roster-grid, .card-grid, .trust-grid, .bridge-grid, .steps, .portrait-grid, .cta-split, .buzz-hero, .footer-grid, .notes, .rate-grid, .consult-offers, .cols-3, .cols-2 {
+    grid-template-columns: minmax(0, 1fr);
   }
-  .rank-card { grid-template-columns: 52px 1fr; }
+  .rank-card { grid-template-columns: 52px minmax(0, 1fr); }
   .hero-copy { padding-top: 3rem; }
   .hero-media img { object-position: 70% 10%; }
   .display { font-size: clamp(2.6rem, 12vw, 4.2rem); }
@@ -648,8 +685,8 @@ footer {
 
 .faq-list { display: grid; gap: 0.8rem; }
 .faq-list .trust h3 { margin-bottom: 0.35rem; }
-.table-wrap { overflow-x: auto; margin: 1.2rem 0 1.6rem; }
-.compare-table { width: 100%; border-collapse: collapse; min-width: 720px; }
+.table-wrap { overflow-x: auto; max-width: 100%; min-width: 0; margin: 1.2rem 0 1.6rem; }
+.compare-table { width: 100%; border-collapse: collapse; min-width: 0; }
 .compare-table th, .compare-table td {
   border: 1px solid var(--line);
   padding: 0.75rem 0.8rem;
@@ -657,6 +694,7 @@ footer {
   vertical-align: top;
 }
 .compare-table thead th { color: var(--gold); }
+.vs-hiring a { overflow-wrap: anywhere; }
 
 /* Consult rework 2026-10-19: what you get, 4 steps, one pricing card, cost tables */
 .consult-get { grid-template-columns: repeat(3, 1fr); }
@@ -692,6 +730,14 @@ footer {
 .cost-table td small { display: block; }
 .cost-list { padding-left: 1.2rem; }
 .cost-list li { margin: 0.4rem 0; }
+@media (max-width: 700px) {
+  .cost-table, .compare-table, .cost-table thead, .compare-table thead, .cost-table tbody, .compare-table tbody, .cost-table tr, .compare-table tr, .cost-table th, .compare-table th, .cost-table td, .compare-table td {
+    display: block;
+    width: 100%;
+  }
+  .cost-table thead, .compare-table thead { display: none; }
+  .cost-table tr, .compare-table tr { margin: 0 0 1rem; border-bottom: 1px solid var(--line); }
+}
 @media (max-width: 900px) {
   .consult-get, .steps-4 { grid-template-columns: 1fr; }
   .price-card__rows li { grid-template-columns: 1fr auto; }

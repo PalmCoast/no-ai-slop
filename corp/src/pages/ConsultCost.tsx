@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
 import FaqList from "../components/FaqList";
 import { CONSULT_COST_FAQS } from "../../shared/faqs";
-import { BOOK_CTA_LABEL, CALENDLY_URL, CONSULT_DISPLAY, CONSULT_TEL, HIVE_CONSULT_PATH } from "../../shared/brand";
-import { CONSULT_COST_CHECKED, PUBLISHED_RANGES, PUBLISHED_SOLO } from "../../shared/consult";
+import { BOOK_CTA_LABEL, BOOK_HREF, CONSULT_DISPLAY, CONSULT_TEL, HIVE_CONSULT_PATH } from "../../shared/brand";
+import { CONSULT_COST_CHECKED } from "../../shared/consult";
 import { CONCIERGE_NAME, CONCIERGE_PATH, CONCIERGE_PRICE } from "../../shared/concierge";
 
 const OURS = [
@@ -28,12 +28,11 @@ export default function ConsultCost() {
             What an AI consultant costs a small business
           </h1>
           <p className="lede">
-            AI firms that publish their prices put independent AI advice at about $100 to $350 an hour and a monthly
-            advisor at $1,500 to $8,000. AgentHive Inc charges $75 for 30 minutes, $150 an hour, or $1,250 for a
-            10-hour pack, after a free 30-minute call.
+            AgentHive Inc charges $75 for 30 minutes, $150 an hour, or $1,250 for a 10-hour pack, after a free
+            30-minute call. This page lists those prices. It does not quote another firm.
           </p>
           <div className="hero-actions">
-            <a className="btn btn-primary" href={CALENDLY_URL} rel="noreferrer" target="_blank">
+            <a className="btn btn-primary" href={BOOK_HREF}>
               {BOOK_CTA_LABEL}
             </a>
             <Link className="btn btn-outline" to={`${HIVE_CONSULT_PATH}#pricing`}>
@@ -70,58 +69,6 @@ export default function ConsultCost() {
         </div>
       </section>
 
-      <section className="section" id="published-ranges">
-        <div className="container">
-          <div className="section-head">
-            <h2>What other firms publish</h2>
-            <p>
-              Asking prices from each firm's own public page, checked {CONSULT_COST_CHECKED}. These firms sell AI
-              services themselves, so read them as published prices, not survey averages.
-            </p>
-          </div>
-          <div className="table-wrap">
-            <table className="cost-table">
-              <thead>
-                <tr>
-                  <th scope="col">Source</th>
-                  <th scope="col">Hourly</th>
-                  <th scope="col">Monthly</th>
-                </tr>
-              </thead>
-              <tbody>
-                {PUBLISHED_RANGES.map((row) => (
-                  <tr key={row.source}>
-                    <td>
-                      <strong>{row.source}</strong>
-                      <small className="muted">
-                        Source: {row.source} page, &ldquo;{row.page}&rdquo;, checked {CONSULT_COST_CHECKED}
-                      </small>
-                      <small>
-                        <Link to={`${HIVE_CONSULT_PATH}#pricing`}>See our consult pricing</Link>
-                      </small>
-                    </td>
-                    <td>{row.hourly}</td>
-                    <td>{row.monthly}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-          <h3 style={{ marginTop: 26 }}>Independent consultants</h3>
-          <ul className="cost-list">
-            {PUBLISHED_SOLO.map((row) => (
-              <li key={row.source}>
-                <strong>{row.source}</strong>: {row.price}. <span className="muted">(Source: {row.source} pricing page,
-                checked {CONSULT_COST_CHECKED}.)</span>{" "}
-                <a href={CALENDLY_URL} rel="noreferrer" target="_blank">
-                  Book a free 30 with AgentHive
-                </a>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </section>
-
       <section className="section section-alt" id="how-we-compare">
         <div className="container">
           <div className="section-head">
@@ -131,8 +78,7 @@ export default function ConsultCost() {
             <article className="trust">
               <h3>Hourly</h3>
               <p className="muted">
-                $150 an hour sits inside the $100 to $350 band the guides above publish. Some solo consultants charge
-                less; North Star lists $100 an hour online.
+                A paid hour is $150. A 30-minute block is $75 when the question is small.
               </p>
             </article>
             <article className="trust">
@@ -151,8 +97,8 @@ export default function ConsultCost() {
             <article className="trust">
               <h3>Monthly</h3>
               <p className="muted">
-                <Link to={CONCIERGE_PATH}>{CONCIERGE_NAME}</Link> is {CONCIERGE_PRICE}, inside the $1,500 to $8,000
-                monthly band above.
+                <Link to={CONCIERGE_PATH}>{CONCIERGE_NAME}</Link> is {CONCIERGE_PRICE} when you want two working sessions
+                every month.
               </p>
             </article>
           </div>
@@ -177,7 +123,7 @@ export default function ConsultCost() {
               takes.
             </p>
             <div className="hero-actions" style={{ justifyContent: "center" }}>
-              <a className="btn btn-primary" href={CALENDLY_URL} rel="noreferrer" target="_blank">
+              <a className="btn btn-primary" href={BOOK_HREF}>
                 {BOOK_CTA_LABEL}
               </a>
               <a className="btn btn-outline" href={`tel:${CONSULT_TEL}`}>

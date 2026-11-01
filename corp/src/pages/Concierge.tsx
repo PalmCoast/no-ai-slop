@@ -3,11 +3,10 @@ import AuthorCard from "../components/AuthorCard";
 import FaqList from "../components/FaqList";
 import { CONCIERGE_FAQS } from "../../shared/faqs";
 import {
-  CALENDLY_URL,
+  BOOK_HREF,
   CONSULT_DISPLAY,
   CONSULT_RATES,
   CONSULT_TEL,
-  CONTACT_EMAIL,
   FD_NAME,
   FD_PRICE,
   FD_URL,
@@ -17,20 +16,18 @@ import {
   CONCIERGE_BOOK_LABEL,
   CONCIERGE_NAME,
   CONCIERGE_PRICE,
-  CONCIERGE_COMPARE_CHECKED,
-  CONCIERGE_PUBLISHED,
   CONCIERGE_STRIPE_URL,
 } from "../../shared/concierge";
 
 const STEPS = [
-  { title: "Free call", body: "15 to 30 minutes on Calendly. We find out whether a retainer, hourly time, or First Deploy AI fits." },
+  { title: "Free call", body: "15 to 30 minutes on the shop line. We find out whether a retainer, hourly time, or First Deploy AI fits." },
   { title: "Intake", body: "Before kickoff: your time sinks, your tool stack, and the processes worth fixing first." },
   { title: "Audit and optimize", body: "Screen-share the messy task live. Cut broken and duplicate steps before any model touches it." },
   { title: "Automate", body: "Build the projects, skills and workflows in the sessions, and log every one in your shared inventory." },
 ];
 
 const GOOD_FIT = [
-  "You own or run the business and tried ChatGPT or Claude, and it didn’t stick.",
+  "You own or run the business and a general chat tool didn’t stick.",
   "One or two tasks eat the week: sales follow-up, quoting, scheduling, ops handoffs, reporting.",
   "You will show up to two working sessions a month and do the work in them.",
   "You want a partner on the calls, not a PDF of prompts.",
@@ -65,20 +62,18 @@ export default function Concierge() {
             <em>The work ships.</em>
           </h1>
           <p className="lede">
-            A {CONCIERGE_PRICE} fractional AI advisor for owners who tried ChatGPT and it didn’t stick. We audit the
+            A {CONCIERGE_PRICE} fractional AI advisor for owners who tried a general chat tool and it didn’t stick. We audit the
             messy task, cut the broken steps, then automate it — with an operator in the room.
           </p>
           <div className="hero-actions">
             <a className="btn btn-primary" href={CONCIERGE_STRIPE_URL} rel="noreferrer" target="_blank">
               Start {CONCIERGE_NAME} — {CONCIERGE_PRICE}
             </a>
-            <a className="btn btn-outline" href={CALENDLY_URL} rel="noreferrer" target="_blank">
+            <a className="btn btn-outline" href={BOOK_HREF}>
               {CONCIERGE_BOOK_LABEL}
             </a>
           </div>
           <p className="fine">
-            <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>
-            {" · "}
             <a href={`tel:${CONSULT_TEL}`}>{CONSULT_DISPLAY}</a>
           </p>
         </div>
@@ -150,7 +145,7 @@ export default function Concierge() {
               <a className="btn btn-primary" href={CONCIERGE_STRIPE_URL} rel="noreferrer" target="_blank">
                 Start {CONCIERGE_NAME} — {CONCIERGE_PRICE}
               </a>
-              <a className="btn btn-outline" href={CALENDLY_URL} rel="noreferrer" target="_blank">
+              <a className="btn btn-outline" href={BOOK_HREF}>
                 {CONCIERGE_BOOK_LABEL}
               </a>
             </div>
@@ -160,7 +155,7 @@ export default function Concierge() {
             <p className="eyebrow">Who it’s for</p>
             <p className="rate-amt">{CONCIERGE_PRICE}</p>
             <p className="muted">
-              Owners and COOs who already tried ChatGPT or Claude and it didn’t stick. Stuck in sales follow-up, quoting,
+              Owners and COOs who already tried a general chat tool and it didn’t stick. Stuck in sales follow-up, quoting,
               scheduling, ops handoffs, or reporting — and want a partner on the calls, not a PDF of prompts.
             </p>
             <p className="muted">
@@ -173,11 +168,8 @@ export default function Concierge() {
       <section className="section section-alt" id="compare">
         <div className="container">
           <div className="section-head">
-            <h2>What {CONCIERGE_PRICE} gets you, next to published fractional AI prices.</h2>
-            <p>
-              Asking prices from each firm’s own page, checked {CONCIERGE_COMPARE_CHECKED}. {CONCIERGE_NAME} sits below
-              the floor of both published retainers.
-            </p>
+            <h2>What {CONCIERGE_PRICE} includes.</h2>
+            <p>The retainer is the monthly price on this page. We are not quoting anyone else’s rate.</p>
           </div>
           <div className="table-wrap">
             <table className="cost-table">
@@ -206,28 +198,11 @@ export default function Concierge() {
                     month after the first 30 days.
                   </td>
                 </tr>
-                {CONCIERGE_PUBLISHED.map((row) => (
-                  <tr key={row.source}>
-                    <td>
-                      <strong>{row.source}</strong>
-                      <small className="muted">
-                        Source: {row.source} page, &ldquo;{row.page}&rdquo;, checked {CONCIERGE_COMPARE_CHECKED}
-                      </small>
-                      <small>
-                        <a href={CALENDLY_URL} rel="noreferrer" target="_blank">
-                          Book a free call with AgentHive
-                        </a>
-                      </small>
-                    </td>
-                    <td>{row.price}</td>
-                    <td>{row.terms}</td>
-                  </tr>
-                ))}
               </tbody>
             </table>
           </div>
           <p className="fine" style={{ marginTop: 12 }}>
-            Prices can change. Hours and scope differ by firm, so compare what each price covers. Against a full-time
+            Against a full-time
             hire, see <Link to="/concierge/vs-hiring">Concierge vs hiring</Link>.
           </p>
         </div>
@@ -257,7 +232,7 @@ export default function Concierge() {
             <a className="btn btn-primary" href={CONCIERGE_STRIPE_URL} rel="noreferrer" target="_blank">
               Start {CONCIERGE_NAME} — {CONCIERGE_PRICE}
             </a>
-            <a className="btn btn-outline" href={CALENDLY_URL} rel="noreferrer" target="_blank">
+            <a className="btn btn-outline" href={BOOK_HREF}>
               {CONCIERGE_BOOK_LABEL}
             </a>
           </div>
@@ -292,11 +267,9 @@ export default function Concierge() {
             </article>
           </div>
           <p className="fine" style={{ marginTop: 18 }}>
-            <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>
-            {" · "}
             <a href={`tel:${CONSULT_TEL}`}>{CONSULT_DISPLAY}</a>
             {" · "}
-            <a href={CALENDLY_URL} rel="noreferrer" target="_blank">
+            <a href={BOOK_HREF}>
               Free 15–30 minute bottleneck call
             </a>
           </p>

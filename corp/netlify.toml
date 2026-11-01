@@ -150,6 +150,40 @@
   force = true
 
 [[redirects]]
+  from = "/ads/thanks"
+  to = "/ads/thanks/index.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/ads/thanks/"
+  to = "/ads/thanks/index.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/ads"
+  to = "/ads/index.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/ads/"
+  to = "/ads/index.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/consult/north-star-ai-consultation-alternative"
+  to = "/consult/ai-help-30-minute-blocks"
+  status = 301
+
+[[redirects]]
+  from = "/consult/north-star-ai-consultation-alternative/"
+  to = "/consult/ai-help-30-minute-blocks"
+  status = 301
+
+[[redirects]]
   from = "/*"
   to = "/404.html"
   status = 404

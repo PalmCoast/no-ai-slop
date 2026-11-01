@@ -4,7 +4,7 @@ import FaqList from "../components/FaqList";
 import { CONSULT_FAQS } from "../../shared/faqs";
 import {
   BOOK_CTA_LABEL,
-  CALENDLY_URL,
+  BOOK_HREF,
   CONSULT_DISPLAY,
   CONSULT_TEL,
   FD_NAME,
@@ -42,7 +42,7 @@ const WHAT_YOU_GET = [
 ] as const;
 
 const STEPS = [
-  { title: "Book the free 30", body: "Pick a time on Calendly. Bring the one task you most want off your plate." },
+  { title: "Book the free 30", body: "Call the shop line. Bring the one task you most want off your plate." },
   { title: "Get a plan on the call", body: "You hear what we would do first and roughly how many hours it takes, before you pay anything." },
   { title: "Choose your time", body: "Buy 30 minutes, an hour, or the 10-hour pack on Stripe. No contract." },
   { title: "We build it together", body: "Sessions run by video in your accounts. Keep going, add hours, or stop when the job is done." },
@@ -74,7 +74,7 @@ export default function Consult() {
             If it can, paid hours go to building it in your own accounts until it runs.
           </p>
           <div className="hero-actions">
-            <a className="btn btn-primary" href={CALENDLY_URL} rel="noreferrer" target="_blank">
+            <a className="btn btn-primary" href={BOOK_HREF}>
               {BOOK_CTA_LABEL}
             </a>
             <a className="btn btn-outline" href={`tel:${CONSULT_TEL}`}>
@@ -121,7 +121,7 @@ export default function Consult() {
             ))}
           </ol>
           <div className="hero-actions" style={{ marginTop: 22 }}>
-            <a className="btn btn-primary" href={CALENDLY_URL} rel="noreferrer" target="_blank">
+            <a className="btn btn-primary" href={BOOK_HREF}>
               {BOOK_CTA_LABEL}
             </a>
           </div>
@@ -143,7 +143,7 @@ export default function Consult() {
               <li>
                 <span>Free 30-minute call</span>
                 <strong>$0</strong>
-                <a className="btn btn-primary" href={CALENDLY_URL} rel="noreferrer" target="_blank">
+                <a className="btn btn-primary" href={BOOK_HREF}>
                   {BOOK_CTA_LABEL}
                 </a>
               </li>
@@ -225,7 +225,7 @@ export default function Consult() {
               Thirty minutes, free. If AI can take the job, you will know what it costs to set up before you pay.
             </p>
             <div className="hero-actions">
-              <a className="btn btn-primary" href={CALENDLY_URL} rel="noreferrer" target="_blank">
+              <a className="btn btn-primary" href={BOOK_HREF}>
                 {BOOK_CTA_LABEL}
               </a>
               <a className="btn btn-outline" href={`tel:${CONSULT_TEL}`}>

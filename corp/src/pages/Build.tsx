@@ -2,7 +2,7 @@ import {
   CONSULT_DISPLAY,
   CONSULT_TEL,
   FD_NAME,
-  FD_PRICE,
+  FD_PRICE_LINE,
   FD_URL,
 } from "../../shared/brand";
 
@@ -19,12 +19,10 @@ export default function Build() {
           </h1>
           <p className="lede">
             Missed calls, dead quotes, a board that still lives on the wall. {FD_NAME} embeds, ships the after-hours desk
-            plus the live apps, and stays on for $250/month. Every build runs on a written plan: scope, build, go-live, the same process as our active client builds.
+            plus the live apps. {FD_PRICE_LINE} Every build runs on a written plan: scope, build, go-live, the same process as our active client builds.
           </p>
           <ul className="takeaways">
-            <li>Setup $1,750: 50% to start ($875), the balance at completion, or pay in full.</li>
             <li>90-day projects: half upfront, half at completion.</li>
-            <li>Then $250/month per company to keep the desk and the apps on. {FD_PRICE}.</li>
             <li>Voice line, dispatch, quotes, the board your crew actually opens.</li>
           </ul>
           <div className="hero-actions" style={{ marginTop: 18 }}>

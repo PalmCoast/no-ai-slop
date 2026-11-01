@@ -19,7 +19,7 @@ const year = CONCIERGE_TWELVE_MONTHS.toLocaleString("en-US");
 
 export default function VsHiring() {
   return (
-    <section className="section">
+    <section className="section vs-hiring">
       <div className="container">
         <div className="eyebrow">
           <span className="dot" /> {CONCIERGE_NAME} · compared with a hire

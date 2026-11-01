@@ -94,6 +94,12 @@ writeFileSync(
     "/disclosure/ /disclosure/index.html 200!",
     "/x /x/index.html 200!",
     "/x/ /x/index.html 200!",
+    "/ads/thanks /ads/thanks/index.html 200!",
+    "/ads/thanks/ /ads/thanks/index.html 200!",
+    "/ads /ads/index.html 200!",
+    "/ads/ /ads/index.html 200!",
+    "/consult/north-star-ai-consultation-alternative /consult/ai-help-30-minute-blocks 301",
+    "/consult/north-star-ai-consultation-alternative/ /consult/ai-help-30-minute-blocks 301",
     "/* /404.html 404",
   ].join("\n") + "\n",
 );

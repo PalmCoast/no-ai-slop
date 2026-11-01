@@ -8,7 +8,7 @@ import {
   CONSULT_DISPLAY,
   CONSULT_RATES,
   CONTACT_EMAIL,
-  CALENDLY_URL,
+  BOOK_HREF,
   FD_CHECK_LABEL,
   FD_CHECK_URL,
   FD_CONSULT_URL,
@@ -17,6 +17,7 @@ import {
   FD_CTA_LABEL,
   FD_NAME,
   FD_PRICE,
+  FD_PRICE_LINE,
   FD_PROMISE,
   FD_URL,
   FOOTER_LINE,
@@ -57,12 +58,15 @@ describe("AgentHive Inc brand facts", () => {
     expect(FD_CONSULT_URL).toBe("https://firstdeploy.ai/consult");
     expect(HIVE_CONSULT_PATH).toBe("/consult");
     expect(HIVE_CONSULT_URL).toBe("https://agenthiveinc.com/consult");
-    expect(FD_PRICE).toBe("$1,750 setup (50% to start or pay in full), then $250/mo");
+    expect(FD_PRICE).toBe("$500 setup, $100/mo");
+    expect(FD_PRICE_LINE).toContain("https://firstdeploy.ai/go/founding?from=agenthive");
+    expect(FD_PRICE_LINE).not.toContain("1" + ",750");
+    expect(FD_PRICE_LINE).not.toContain("$" + "250/mo");
     expect(FD_PROMISE).not.toMatch(/live this week|you don.t pay|guarantee/i);
     expect(INDEXME_NAME).toBe("IndexMe.lol");
     expect(INDEXME_URL).toBe("https://indexme.lol/");
     expect(INDEXME_BLURB).toMatch(/IndexNow/);
-    expect(CALENDLY_URL).toBe("https://calendly.com/coltsinsider/30min");
+    expect(BOOK_HREF).toBe("tel:+13203356186");
     expect(FD_CTA_LABEL).toBe("Start First Deploy");
     expect(BOOK_CTA_LABEL).toBe("Book the free 30");
     expect(FREE_30_LABEL).toBe("Free 30");
@@ -96,17 +100,18 @@ describe("AgentHive Inc brand facts", () => {
     expect(home).not.toMatch(/14 apps|\$70k/i);
     expect(home).not.toMatch(/netlify\.app/);
     const primaryHrefs = [...home.matchAll(/className="btn btn-primary"[^>]*href=\{([^}]+)\}/g)].map((m) => m[1]);
-    expect(new Set(primaryHrefs)).toEqual(new Set(["FD_URL", "CALENDLY_URL"]));
+    expect(new Set(primaryHrefs)).toEqual(new Set(["FD_URL", "BOOK_HREF"]));
   });
 
-  it("About keeps Inc vs LLC, Calendly, and the 320 consult line", () => {
+  it("About keeps Inc vs LLC, the shop line, and the 320 consult line", () => {
     const about = readFileSync(join(fileURLToPath(new URL("../src/pages/About.tsx", import.meta.url))), "utf8");
-    expect(about).toMatch(/CALENDLY_URL|calendly\.com\/coltsinsider\/30min/);
+    expect(about).toMatch(/BOOK_HREF|tel:/);
+    expect(about).not.toMatch(/calendly|grok/i);
     expect(about).toMatch(/CONSULT_DISPLAY|320-335-6186/);
     expect(about).toMatch(/LEGAL_NAME|AGENTHIVEINCCOM LLC/);
     expect(about).toMatch(/QpiAI|insurance hive|OSS/);
     expect(about).toMatch(/agenthive\.io|agenthive\.co|OTHER_HIVES/);
-    expect(about).toMatch(/Grok Bots|The hive/);
+    expect(about).toMatch(/The hive/);
     expect(about).toMatch(/queen-portrait\.webp/);
     expect(about).toMatch(/\/consult/);
     expect(about).not.toMatch(/14 apps|\$70k|bootstrapped/i);
@@ -128,7 +133,7 @@ describe("AgentHive Inc brand facts", () => {
     expect(MONEY_FOOTER_LINKS.map((link) => link.href)).toEqual([
       "https://firstdeploy.ai/",
       "https://firstdeploy.ai/#check",
-      "https://calendly.com/coltsinsider/30min",
+      "tel:+13203356186",
       "/consult",
       "https://infrastructure.agenthiveinc.com/",
     ]);

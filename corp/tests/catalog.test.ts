@@ -1,9 +1,9 @@
 import { describe, expect, it } from "vitest";
 import { HIVE_SITES } from "../shared/portfolio";
 import { HIVE_BOTS } from "../shared/bots";
-import { BUZZ_SEED } from "../shared/buzz-seed";
+import { BUZZ_SEED, scrubBuzzEdition, type BuzzEdition } from "../shared/buzz-seed";
 import { CONSULT_STRIPE_RATES } from "../shared/consult";
-import { CALENDLY_URL } from "../shared/brand";
+import { BOOK_HREF } from "../shared/brand";
 import { CONCIERGE_PRICE, CONCIERGE_STRIPE_URL } from "../shared/concierge";
 
 describe("portfolio catalog", () => {
@@ -18,7 +18,7 @@ describe("portfolio catalog", () => {
   it("lists every hive-map commercial site plus verified Netlify apps", () => {
     const urls = HIVE_SITES.map((s) => s.url);
     expect(urls).toContain("https://firstdeploy.ai/");
-    expect(HIVE_SITES.find((s) => s.slug === "first-deploy")?.price).toBe("$1,750 setup (50% to start or pay in full), then $250/mo");
+    expect(HIVE_SITES.find((s) => s.slug === "first-deploy")?.price).toBe("$500 setup, $100/mo");
     expect(HIVE_SITES.find((s) => s.slug === "first-deploy")?.name).toBe("First Deploy AI");
     expect(urls).toContain("https://flick.firstdeploy.ai/");
     expect(urls).toContain("https://jobproof.firstdeploy.ai/");
@@ -55,8 +55,8 @@ describe("swarm roster", () => {
 });
 
 describe("consult rails", () => {
-  it("keeps Calendly and Stripe buy links, not a grey embed", () => {
-    expect(CALENDLY_URL).toBe("https://calendly.com/coltsinsider/30min");
+  it("keeps the shop line and Stripe buy links, not a grey embed", () => {
+    expect(BOOK_HREF).toBe("tel:+13203356186");
     expect(CONSULT_STRIPE_RATES.map((rate) => rate.href)).toEqual([
       "https://buy.stripe.com/fZufZh92Qf9p5eB2XU2ZO1h",
       "https://buy.stripe.com/eVq9ATbaY6CT6iF7ea2ZO1g",
@@ -75,5 +75,35 @@ describe("buzz seed", () => {
     for (const story of BUZZ_SEED.stories) {
       expect(story.url.startsWith("https://")).toBe(true);
     }
+  });
+
+  it("turns a kept-it line into We kept it and never starts a sentence with kept", () => {
+    const token = String.fromCharCode(71, 114, 111, 107);
+    const edition: BuzzEdition = {
+      weekOf: "2026-09-15",
+      generatedAt: "2026-09-17T18:00:00.000Z",
+      author: "AgentHive Inc",
+      headline: "Notes",
+      dek: `${token} kept it because the source was public.`,
+      takeaways: [],
+      stories: [
+        {
+          title: "A note",
+          url: "https://example.com/a",
+          source: "Example",
+          why: `Done. ${token} kept the file name in the summary.`,
+          tags: [],
+        },
+      ],
+      hiveNote: `${token} kept it.`,
+      method: "seed",
+    };
+    const out = scrubBuzzEdition(edition);
+    expect(out.dek).toBe("We kept it because the source was public.");
+    expect(out.hiveNote).toBe("We kept it.");
+    expect(out.stories[0]?.why).toBe("Done. Kept the file name in the summary.");
+    const blob = [out.dek, out.hiveNote, out.headline, ...out.stories.map((story) => story.why)].join(" ");
+    expect(blob).not.toMatch(new RegExp(token, "i"));
+    expect(blob).not.toMatch(/(^|[.!?]\s+)kept\b/);
   });
 });

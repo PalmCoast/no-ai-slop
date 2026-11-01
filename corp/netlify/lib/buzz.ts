@@ -1,4 +1,4 @@
-import { BUZZ_SEED, type BuzzEdition, type BuzzStory } from "../../shared/buzz-seed.ts";
+import { BUZZ_SEED, scrubBuzzEdition, type BuzzEdition, type BuzzStory } from "../../shared/buzz-seed.ts";
 
 type HnHit = {
   title?: string;
@@ -12,7 +12,7 @@ const HN_QUERIES = [
   "https://hn.algolia.com/api/v1/search?query=AI%20OR%20GPU%20OR%20agent%20OR%20kubernetes%20OR%20inference&tags=story&hitsPerPage=20",
 ];
 
-const KEYWORDS = /ai|gpu|agent|llm|model|infer|kuber|cloud|openai|anthropic|xai|grok|nvidia|sandb|secur|token|vector|rag/i;
+const KEYWORDS = /ai|gpu|agent|llm|model|infer|kuber|cloud|openai|anthropic|xai|nvidia|sandb|secur|token|vector|rag/i;
 
 function mondayOf(date: Date): string {
   const d = new Date(Date.UTC(date.getUTCFullYear(), date.getUTCMonth(), date.getUTCDate()));
@@ -30,7 +30,7 @@ function hnUrl(hit: HnHit): string {
 async function fetchHits(): Promise<HnHit[]> {
   const batches = await Promise.all(
     HN_QUERIES.map(async (url) => {
-      const res = await fetch(url, { headers: { "User-Agent": "AgentHive-Grok-Briefing/1.0" } });
+      const res = await fetch(url, { headers: { "User-Agent": "AgentHive-Briefing/1.0" } });
       if (!res.ok) return [] as HnHit[];
       const json = (await res.json()) as { hits?: HnHit[] };
       return json.hits ?? [];
@@ -55,7 +55,7 @@ function pickStories(hits: HnHit[]): BuzzStory[] {
       title: hit.title ?? "Untitled",
       url: hnUrl(hit),
       source: "Hacker News",
-      why: `${hit.points ?? 0} points on HN this week. Grok kept it because it touches agents, models, or the metal they run on.`,
+      why: `${hit.points ?? 0} points on HN this week. Kept because it touches agents, models, or the metal they run on.`,
       tags: ["hn", "weekly"],
     }));
 }
@@ -76,7 +76,7 @@ async function maybeSummarize(stories: BuzzStory[]): Promise<Pick<BuzzEdition, "
         {
           role: "system",
           content:
-            "You are Grok, CMO of AgentHive Inc. Write a weekly AI and infrastructure briefing. No filler, no binary contrasts, no 'here's the thing'. JSON only: {headline, dek, takeaways: string[5]}.",
+            "Write the AgentHive Inc weekly AI and infrastructure briefing. No filler, no binary contrasts, no 'here's the thing'. Do not name an assistant product or a bot. JSON only: {headline, dek, takeaways: string[5]}.",
         },
         {
           role: "user",
@@ -103,26 +103,26 @@ export async function compileBuzz(): Promise<BuzzEdition> {
   try {
     const hits = await fetchHits();
     const stories = pickStories(hits);
-    if (stories.length < 3) return { ...BUZZ_SEED, generatedAt: new Date().toISOString() };
+    if (stories.length < 3) return scrubBuzzEdition({ ...BUZZ_SEED, generatedAt: new Date().toISOString() });
     const summary = await maybeSummarize(stories);
     const now = new Date();
-    return {
+    return scrubBuzzEdition({
       weekOf: mondayOf(now),
       generatedAt: now.toISOString(),
-      author: "Grok · CMO",
-      headline: summary?.headline ?? "The swarm's weekly AI and infra brief",
+      author: "AgentHive Inc",
+      headline: summary?.headline ?? "This week's AI and infra brief",
       dek:
         summary?.dek ??
-        "Grok pulled the week's agent, GPU, and runtime stories off HN and the trade press. Read the links. Skip the recap if you already lived it.",
+        "This week's agent, GPU, and runtime stories, pulled from HN and the trade press. Read the links.",
       takeaways:
         summary?.takeaways ??
         stories.slice(0, 5).map((s) => s.title),
       stories,
       hiveNote:
-        "Compiled by the weekly Grok bot on Netlify. Ranking of live hive apps is a separate scout at /rankings.",
+        "Compiled by the weekly briefing on Netlify. Ranking of live hive apps is a separate scout at /rankings.",
       method: "weekly-bot",
-    };
+    });
   } catch {
-    return { ...BUZZ_SEED, generatedAt: new Date().toISOString() };
+    return scrubBuzzEdition({ ...BUZZ_SEED, generatedAt: new Date().toISOString() });
   }
 }

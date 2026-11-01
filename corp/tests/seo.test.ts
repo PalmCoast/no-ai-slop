@@ -46,7 +46,7 @@ describe("per-route SEO", () => {
     expect(about).toContain('property="og:url" content="https://agenthiveinc.com/about"');
     expect(about).toContain('id="route-about"');
     expect(about).toContain("<h1 class=\"display\">About AgentHive Inc</h1>");
-    expect(about).toContain("daniel@agenthiveinc.com");
+    expect(about).not.toContain("@agenthiveinc.com");
     expect(home).toContain('id="route-home"');
     expect(home).toContain("First Deploy AI");
     expect(home).toContain("IndexMe.lol");
@@ -58,7 +58,8 @@ describe("per-route SEO", () => {
       'Products: <a href="https://firstdeploy.ai">First Deploy</a> · <a href="/concierge">AI Concierge</a> · <a href="https://netyard.firstdeploy.ai">NetYard</a>',
     );
     expect(home).toContain("IndexNow");
-    expect(about).toContain("calendly.com/coltsinsider/30min");
+    expect(about).toContain("tel:+13203356186");
+    expect(about).not.toMatch(/calendly/i);
     const consult = applyRouteHtml(shell, PAGE_SEO.find((page) => page.path === "/consult")!);
     expect(consult).toContain('id="route-consult"');
     expect(consult).toContain('rel="canonical" href="https://agenthiveinc.com/consult"');
@@ -73,8 +74,7 @@ describe("per-route SEO", () => {
     expect(concierge).toContain("https://buy.stripe.com/6oUeVd7YM3qH0Ylbuq2ZO1u");
     expect(concierge).toContain("$2,000/mo");
     expect(concierge).toContain("didn’t stick");
-    expect(concierge).toContain("Holistic Consulting");
-    expect(concierge).not.toMatch(/href="https?:\/\/(?:www\.)?(holisticconsulting\.tech|smallbizstrategy\.ai|iternal\.ai)/);
+    expect(concierge).not.toMatch(/Holistic Consulting|SmallBizStrategy|iternal\.ai/);
     expect(home).toContain('rel="canonical" href="https://agenthiveinc.com/"');
     expect(about).not.toContain('rel="canonical" href="https://agenthiveinc.com/" />');
     expect(about).toContain("application/ld+json");
@@ -98,8 +98,10 @@ describe("per-route SEO", () => {
     const ids = pages.map((html) => html.match(/id="route-[a-z]+"/)?.[0]);
     expect(new Set(hashes).size).toBe(PAGE_SEO.length);
     expect(new Set(ids).size).toBe(PAGE_SEO.length);
-    expect(pages[0]).toContain("$1,750");
-    expect(pages[0]).toContain("$250/mo");
+    expect(pages[0]).toContain("$500 setup, $100/mo");
+    expect(pages[0]).toContain("https://firstdeploy.ai/go/founding?from=agenthive");
+    expect(pages[0]).not.toContain("1" + ",750");
+    expect(pages[0]).not.toContain("$" + "250/mo");
     expect(pages.join("")).not.toMatch(/\$2,?500|\$1,?500\s*\/\s*mo|firstdeploy\.dev/);
     expect(pages[1]).toContain("Palm Coast, FL 32137");
     expect(pages.join("")).not.toContain("Barrington");
@@ -121,11 +123,21 @@ describe("per-route SEO", () => {
     expect(json).toContain("https://indexme.lol/");
     expect(json).toContain("https://agenthiveinc.com/consult");
     expect(json).not.toMatch(/USPTO|14 apps|\$70k/i);
+    expect(json).not.toContain("@agenthiveinc.com");
+  });
+
+  it("keeps @agenthiveinc.com out of every page JSON-LD block", () => {
+    expect(JSON.stringify(organizationJsonLd())).not.toContain("@agenthiveinc.com");
+    for (const page of PAGE_SEO) {
+      const block = jsonLdFor(page);
+      const json = block ? JSON.stringify(block) : "";
+      expect(json).not.toContain("@agenthiveinc.com");
+    }
   });
 
   it("keeps gmail off llms.txt contact and prefers custom product domains", () => {
     const txt = readFileSync(join(corpRoot, "public/llms.txt"), "utf8");
-    expect(txt).toContain("daniel@agenthiveinc.com");
+    expect(txt).not.toMatch(/mailto:|daniel@agenthiveinc\.com/);
     expect(txt).not.toMatch(/coltsinsider@gmail\.com/);
     expect(txt).toContain("https://flick.firstdeploy.ai/");
     expect(txt).toContain("https://jobproof.firstdeploy.ai/");
@@ -133,14 +145,17 @@ describe("per-route SEO", () => {
     expect(txt).not.toContain("buy.stripe.com");
     expect(txt).toContain("https://agenthiveinc.com/disclosure");
     expect(txt).toContain("https://firstdeploy.ai/");
-    expect(txt).toContain("https://calendly.com/coltsinsider/30min");
+    expect(txt).toContain("https://agenthiveinc.com/ads");
+    expect(txt).toContain("+1 320-335-6186");
+    expect(txt).not.toMatch(/calendly|grok/i);
+    expect(txt).not.toContain("1" + ",750");
+    expect(txt).not.toContain("$" + "250/mo");
     expect(txt).toContain("IndexNow");
     expect(txt).toContain("field operations");
-    expect(txt).toContain("$1,750");
-    expect(txt).toContain("$250");
+    expect(txt).toContain("$500 setup, $100/mo");
+    expect(txt).toContain("https://firstdeploy.ai/go/founding?from=agenthive");
     expect(txt).toContain("https://firstdeploy.ai");
     expect(txt).toContain("https://agenthiveinc.com/consult");
-    expect(txt).toContain("https://calendly.com/coltsinsider/30min");
     expect(txt).toContain("agenthive.io");
     expect(txt).toContain("agenthive.co");
     expect(txt).toContain("AgentHive Inc · Palm Coast, FL · firstdeploy.ai");
@@ -213,19 +228,50 @@ describe("per-route SEO", () => {
     expect(consult).toContain("How it works");
     expect(consult).toContain("what an AI consultant costs");
     expect(consult).toContain("/consult/ai-consultant-cost");
+    for (const path of [
+      "/consult/ai-help-30-minute-blocks",
+      "/consult/ai-consultant-vs-agency-vs-fractional",
+      "/consult/ai-consultant-hourly-rate",
+      "/consult/free-ai-consultation",
+      "/consult/ai-audit-cost",
+    ]) {
+      expect(consult).toContain(`href="${path}"`);
+    }
+    expect(consult).not.toContain("north-star-ai-consultation-alternative");
+    const blocks = PAGE_SEO.find((page) => page.path === "/consult/ai-help-30-minute-blocks")!;
+    expect(canonicalFor(blocks.path)).toBe("https://agenthiveinc.com/consult/ai-help-30-minute-blocks");
+    expect(sitemapXml()).toContain("https://agenthiveinc.com/consult/ai-help-30-minute-blocks");
+    expect(sitemapXml()).not.toContain("north-star-ai-consultation-alternative");
+    expect(readFileSync(join(corpRoot, "public/sitemap.xml"), "utf8")).toContain(
+      "https://agenthiveinc.com/consult/ai-help-30-minute-blocks",
+    );
+    expect(readFileSync(join(corpRoot, "public/llms.txt"), "utf8")).toContain(
+      "https://agenthiveinc.com/consult/ai-help-30-minute-blocks",
+    );
+    const redirects = [
+      readFileSync(join(corpRoot, "scripts/write-route-html.ts"), "utf8"),
+      readFileSync(join(corpRoot, "netlify.toml"), "utf8"),
+    ].join("\n");
+    expect(redirects).toContain(
+      "/consult/north-star-ai-consultation-alternative /consult/ai-help-30-minute-blocks 301",
+    );
+    expect(redirects).toContain('from = "/consult/north-star-ai-consultation-alternative"');
+    expect(redirects).toContain("status = 301");
     expect(consult).not.toMatch(/live this week|or you don.t pay|guarantee/i);
     for (const href of [
-      "https://calendly.com/coltsinsider/30min",
+      "tel:+13203356186",
       "https://buy.stripe.com/fZufZh92Qf9p5eB2XU2ZO1h",
       "https://buy.stripe.com/eVq9ATbaY6CT6iF7ea2ZO1g",
       "https://buy.stripe.com/7sY9ATenabXd7mJ7ea2ZO1i",
     ]) expect(consult).toContain(href);
     const cost = render("/consult/ai-consultant-cost");
     expect(cost).toContain("What an AI consultant costs a small business");
-    expect(cost).toContain("North Star AI Consultation");
+    expect(cost).not.toMatch(/North Star|AIessentials|iternal\.ai|CloudMotiv|Pareto Talent/);
     expect(cost).not.toMatch(/href="https?:\/\/(?:www\.)?(northstarconsult\.ai|aiessentials\.us|carlosansonetti\.com|iternal\.ai|cloudmotiv\.ai|paretotalent\.com|richnashawaty\.com)/);
     const hrefs = [...cost.matchAll(/href="(https?:[^"]+)"/g)].map((m) => m[1]);
-    for (const h of hrefs) expect(h).toMatch(/^https:\/\/((\w+\.)?agenthiveinc\.com|ainexus360\.com|calendly\.com\/coltsinsider\/30min|firstdeploy\.ai|netyard\.firstdeploy\.ai|www\.linkedin\.com|twelve\.tools|fazier\.com|launchaf\.com|join\.netlify\.com)/);
+    for (const h of hrefs) expect(h).toMatch(/^(tel:\+13203356186|https:\/\/((\w+\.)?agenthiveinc\.com|ainexus360\.com|firstdeploy\.ai|netyard\.firstdeploy\.ai|www\.linkedin\.com|twelve\.tools|fazier\.com|launchaf\.com|join\.netlify\.com))/);
+    expect(cost).toContain("Where do these prices come from?");
+    expect(cost).not.toContain("Where do the comparison numbers come from?");
     expect(cost).toContain("October 19, 2026");
     expect(cost).toContain("$1,250");
     expect(cost).not.toMatch(/live this week|or you don.t pay/i);
