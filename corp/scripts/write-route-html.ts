@@ -94,6 +94,10 @@ writeFileSync(
     "/disclosure/ /disclosure/index.html 200!",
     "/x /x/index.html 200!",
     "/x/ /x/index.html 200!",
+    "/ads/thanks /ads/thanks/index.html 200!",
+    "/ads/thanks/ /ads/thanks/index.html 200!",
+    "/ads /ads/index.html 200!",
+    "/ads/ /ads/index.html 200!",
     "/* /404.html 404",
   ].join("\n") + "\n",
 );

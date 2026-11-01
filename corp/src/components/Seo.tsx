@@ -47,6 +47,23 @@ export default function Seo() {
     } else {
       upsertMeta("property", "og:url", canonical);
     }
+    upsertMeta("property", "og:image", page.ogImage ?? "https://agenthiveinc.com/og.jpg");
+    upsertMeta("name", "twitter:image", page.ogImage ?? "https://agenthiveinc.com/og.jpg");
+    for (const [attr, key] of [
+      ["property", "og:image:width"],
+      ["property", "og:image:height"],
+      ["property", "og:image:alt"],
+      ["name", "twitter:image:alt"],
+    ] as const) {
+      if (page.ogImage && (key === "og:image:alt" || key === "twitter:image:alt") && page.ogImageAlt) {
+        upsertMeta(attr, key, page.ogImageAlt);
+      } else if (page.ogImage && (key === "og:image:width" || key === "og:image:height")) {
+        upsertMeta(attr, key, key.endsWith("width") ? "1200" : "630");
+      } else {
+        document.head.querySelector(`meta[${attr}="${key}"]`)?.remove();
+      }
+    }
+    upsertLink("icon", page.icon ?? "/favicon.svg");
     upsertMeta("name", "twitter:title", page.title);
     upsertMeta("name", "twitter:description", page.description);
     let script = document.getElementById("agenthive-jsonld") as HTMLScriptElement | null;

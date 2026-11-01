@@ -36,6 +36,20 @@ import { CONCIERGE_FAQS, CONSULT_COST_FAQS, CONSULT_FAQS, HIRING_FAQS } from "./
 import { CONSULT_COST_CHECKED, CONSULT_COST_CHECKED_ISO, CONSULT_COST_URL } from "./consult.ts";
 import { CONSULT_COMPARE_CHECKED_ISO, CONSULT_COMPARE_PAGES, consultComparePageFor } from "./consultCompare.ts";
 import { AFFILIATE_TOOLS, DISCLOSURE_LINE, DISCLOSURE_UPDATED } from "./disclosure.ts";
+import {
+  ADS_DESCRIPTION,
+  ADS_FAQS,
+  ADS_H1,
+  ADS_ICON,
+  ADS_OG_ALT,
+  ADS_OG_IMAGE,
+  ADS_PATH,
+  ADS_THANKS_DESCRIPTION,
+  ADS_THANKS_H1,
+  ADS_THANKS_PATH,
+  ADS_THANKS_TITLE,
+  ADS_TITLE,
+} from "./ads.ts";
 
 export type SeoPage = {
   path: string;
@@ -44,6 +58,9 @@ export type SeoPage = {
   h1: string;
   bodyHtml: string;
   noindex?: boolean;
+  ogImage?: string;
+  ogImageAlt?: string;
+  icon?: string;
 };
 
 export const PAGE_SEO: SeoPage[] = [
@@ -130,6 +147,25 @@ export const PAGE_SEO: SeoPage[] = [
     h1: "Affiliate disclosure",
     bodyHtml: `<main id="route-disclosure" class="section"><div class="container"><h1 class="display">Affiliate disclosure</h1><p class="lede">${DISCLOSURE_LINE}</p><p>Some links on agenthiveinc.com may be affiliate links. If you sign up or buy through one, ${BRAND_NAME} (${LEGAL_NAME}) may earn a commission. The tools in our own stack that run affiliate programs: ${AFFILIATE_TOOLS.map((t) => `${t.name} (${t.use})`).join(", ")}. You pay the same price you would pay going direct. A commission does not decide what we recommend or build with, and the footer &ldquo;Featured on&rdquo; badges are not affiliate links. Questions: <a href="mailto:${CONTACT_EMAIL}">${CONTACT_EMAIL}</a>. Last updated ${DISCLOSURE_UPDATED}.</p></div></main>`,
   },
+  {
+    path: ADS_PATH,
+    title: ADS_TITLE,
+    description: ADS_DESCRIPTION,
+    h1: ADS_H1,
+    ogImage: ADS_OG_IMAGE,
+    ogImageAlt: ADS_OG_ALT,
+    icon: ADS_ICON,
+    bodyHtml: `<main id="route-ads"><h1>${ADS_H1}</h1><p>${ADS_DESCRIPTION}</p><p>AI Ad Sprint is $297 one time for 6 video ads and 6 image ads, delivered within 72 hours. Monthly is $997 a month for 20 new ads. Paid upfront by card. Samples are spec concepts and AI-generated people are labeled as AI.</p></main>`,
+  },
+  {
+    path: ADS_THANKS_PATH,
+    title: ADS_THANKS_TITLE,
+    description: ADS_THANKS_DESCRIPTION,
+    h1: ADS_THANKS_H1,
+    noindex: true,
+    icon: ADS_ICON,
+    bodyHtml: `<main id="route-adsthanks"><h1>${ADS_THANKS_H1}</h1><p>${ADS_THANKS_DESCRIPTION}</p><p>We reply by email, then the sprint starts once payment and intake are in. You get a download link within 72 hours. Files come in 9:16, 1:1 and 4:5. Any AI-generated person is labeled as AI. One round of revisions follows delivery.</p></main>`,
+  },
 ];
 
 export const NOT_FOUND_SEO: SeoPage = {
@@ -143,12 +179,14 @@ export const NOT_FOUND_SEO: SeoPage = {
 
 export function sitemapXml(): string {
   const urls = PAGE_SEO.filter((page) => !page.noindex)
-    .map(
-      (page) =>
-        `  <url>\n    <loc>${canonicalFor(page.path)}</loc>\n    <lastmod>${CONTENT_LASTMOD}</lastmod>\n  </url>`,
-    )
+    .map((page) => {
+      const image = page.ogImage
+        ? `\n    <image:image>\n      <image:loc>${page.ogImage}</image:loc>\n    </image:image>`
+        : "";
+      return `  <url>\n    <loc>${canonicalFor(page.path)}</loc>\n    <lastmod>${CONTENT_LASTMOD}</lastmod>${image}\n  </url>`;
+    })
     .join("\n");
-  return `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls}\n</urlset>\n`;
+  return `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">\n${urls}\n</urlset>\n`;
 }
 
 export function sitemapIndexXml(): string {
@@ -393,6 +431,33 @@ export function jsonLdFor(page: SeoPage): object | null {
       ],
     };
   }
+  if (page.path === ADS_PATH) {
+    return {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Service",
+          name: "AI Ad Sprint",
+          serviceType: "Product ad creative",
+          url: canonicalFor(ADS_PATH),
+          provider: { "@id": `${BRAND_URL}/#organization` },
+          description: ADS_DESCRIPTION,
+          offers: [
+            {
+              "@type": "Offer",
+              name: "AI Ad Sprint",
+              price: "297.00",
+              priceCurrency: "USD",
+              url: `${BRAND_URL}/go/ads-sprint`,
+              availability: "https://schema.org/InStock",
+            },
+            monthlyOffer("Monthly ads", "997.00", `${BRAND_URL}/go/ads-engine`),
+          ],
+        },
+        faqPage(ADS_FAQS),
+      ],
+    };
+  }
   if (page.path === "/concierge/vs-hiring") {
     return {
       "@context": "https://schema.org",
@@ -433,6 +498,19 @@ export function applyRouteHtml(html: string, page: SeoPage, renderedBody?: strin
   next = replaceMeta(next, "property", "og:description", page.description);
   next = replaceMeta(next, "name", "twitter:title", page.title);
   next = replaceMeta(next, "name", "twitter:description", page.description);
+  if (page.ogImage) {
+    next = replaceMeta(next, "property", "og:image", page.ogImage);
+    next = replaceMeta(next, "name", "twitter:image", page.ogImage);
+    next = replaceMeta(next, "property", "og:image:width", "1200");
+    next = replaceMeta(next, "property", "og:image:height", "630");
+    if (page.ogImageAlt) {
+      next = replaceMeta(next, "property", "og:image:alt", page.ogImageAlt);
+      next = replaceMeta(next, "name", "twitter:image:alt", page.ogImageAlt);
+    }
+  }
+  if (page.icon) {
+    next = next.replace(/<link\s+rel="icon"[^>]*>/i, `<link rel="icon" href="${page.icon}" type="image/svg+xml" />`);
+  }
   const jsonLd = jsonLdFor(page);
   const existing = /<script type="application\/ld\+json">[\s\S]*?<\/script>/;
   if (jsonLd) {

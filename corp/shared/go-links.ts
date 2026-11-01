@@ -17,6 +17,9 @@ export const GO_LINKS: Record<string, GoLink> = {
   "indexme-studio": { url: "https://buy.stripe.com/aFa00jfre2mD8qN5622ZO1b", kind: "stripe", label: "IndexMe Studio — $29.99 once" },
   flick: { url: "https://flick.firstdeploy.ai/", kind: "page", label: "Flick — Lights $19/mo · Marquee $99 once" },
   hillmirror: { url: "https://hillmirror-firstdeploy.netlify.app/", kind: "page", label: "HillMirror — from $4.99" },
+  // Supplied for the AI Ad Sprint page. Tests check the redirect target only; do not fetch these URLs.
+  "ads-sprint": { url: "https://buy.stripe.com/5kQ00j0wke5layVbuq2ZO1L", kind: "stripe", label: "AI Ad Sprint — $297 one time" },
+  "ads-engine": { url: "https://buy.stripe.com/4gM9ATa6U2mD36tbuq2ZO1M", kind: "stripe", label: "AI Ad Sprint monthly — $997/mo" },
 };
 
 export const cleanToken = (s: unknown, max = 40): string =>
