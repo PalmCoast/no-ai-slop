@@ -8,7 +8,6 @@ import {
   BOOK_HREF,
   CONSULT_DISPLAY,
   CONSULT_TEL,
-  CONTACT_EMAIL,
   FD_NAME,
   FD_URL,
   LEGAL_NAME,
@@ -56,7 +55,7 @@ export default function About() {
         <div className="container">
           <div className="section-head">
             <h2>Contact</h2>
-            <p>Book 30 minutes, call the consult line, or email the shop.</p>
+            <p>Call the shop line. The number is on this page.</p>
           </div>
           <div className="trust-grid">
             <article className="trust">
@@ -73,12 +72,6 @@ export default function About() {
                 {FD_NAME}{" "}
                 <a href={`tel:${CONSULT_TEL}`}>{CONSULT_DISPLAY}</a>
                 . Rates on <a href="/consult">/consult</a>. The monthly retainer is <a href="/concierge">/concierge</a>.
-              </p>
-            </article>
-            <article className="trust">
-              <h3>Email</h3>
-              <p className="muted">
-                <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>
               </p>
             </article>
             <article className="trust">
@@ -129,13 +122,13 @@ export default function About() {
                 Call — <a href={BOOK_HREF}>{CONSULT_DISPLAY}</a>
               </li>
               <li>
-                Daniel Graham — <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>
+                Daniel Graham
               </li>
               <li>
                 Consult — {FD_NAME} <a href={`tel:${CONSULT_TEL}`}>{CONSULT_DISPLAY}</a>
               </li>
-              <li>Alder, CEO — alder@agenthiveinc.com</li>
-              <li>Sol, CPO/CTO — sol@agenthiveinc.com</li>
+              <li>Alder, CEO</li>
+              <li>Sol, CPO/CTO</li>
             </ul>
           </article>
         </div>

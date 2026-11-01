@@ -2,7 +2,6 @@ import {
   BRAND_NAME,
   CONSULT_DISPLAY,
   CONSULT_TEL,
-  CONTACT_EMAIL,
   FD_NAME,
   LEGAL_NAME,
 } from "../../shared/brand";
@@ -79,7 +78,7 @@ export default function Disclosure() {
 
         <h2>Questions</h2>
         <p>
-          Email <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a> or call{" "}
+          Call{" "}
           <a href={`tel:${CONSULT_TEL}`}>{CONSULT_DISPLAY}</a>.
         </p>
         <p className="muted">Last updated {DISCLOSURE_UPDATED}.</p>

@@ -78,7 +78,7 @@ export const PAGE_SEO: SeoPage[] = [
     title: "About AgentHive Inc — AGENTHIVEINCCOM LLC, Palm Coast",
     description: `${BRAND_NAME} is the Palm Coast AI consultant shop behind ${FD_NAME}. Legal name ${LEGAL_NAME}. Call ${CONSULT_DISPLAY}.`,
     h1: "About AgentHive Inc",
-    bodyHtml: `<main id="route-about" class="section"><div class="container"><h1 class="display">About AgentHive Inc</h1><p class="lede">${BRAND_NAME} / ${LEGAL_NAME} is the Palm Coast AI consultant shop that builds and ships. Daniel Graham embeds working AI in field operations, then leaves it running.</p><p>Contact: <a href="${BOOK_HREF}">${CONSULT_DISPLAY}</a>. ${FD_NAME} consult ${CONSULT_DISPLAY}. Email <a href="mailto:${CONTACT_EMAIL}">${CONTACT_EMAIL}</a>. Shop address ${ADDRESS_LINE}.</p><p>This page is the company record for ${BRAND_NAME} at agenthiveinc.com — not QpiAI, not agenthive.io (insurance), not agenthive.co, not an OSS org with a similar name. The money homepage stays on the work.</p></div></main>`,
+    bodyHtml: `<main id="route-about" class="section"><div class="container"><h1 class="display">About AgentHive Inc</h1><p class="lede">${BRAND_NAME} / ${LEGAL_NAME} is the Palm Coast AI consultant shop that builds and ships. Daniel Graham embeds working AI in field operations, then leaves it running.</p><p>Contact: <a href="${BOOK_HREF}">${CONSULT_DISPLAY}</a>. ${FD_NAME} consult ${CONSULT_DISPLAY}. Shop address ${ADDRESS_LINE}.</p><p>This page is the company record for ${BRAND_NAME} at agenthiveinc.com — not QpiAI, not agenthive.io (insurance), not agenthive.co, not an OSS org with a similar name. The money homepage stays on the work.</p></div></main>`,
   },
   {
     path: "/buzz",
@@ -113,9 +113,9 @@ export const PAGE_SEO: SeoPage[] = [
   {
     path: "/consult/ai-consultant-cost",
     title: "What an AI consultant costs a small business (2026) | AgentHive Inc",
-    description: "AI consultant prices other firms publish (checked Oct 19, 2026) next to ours: free 30 min, $75 / 30 min, $150 / hour, $1,250 for 10 hours.",
+    description: "AgentHive Inc prices: free 30 min, then $75 / 30 min, $150 / hour, or $1,250 for 10 hours.",
     h1: "What an AI consultant costs a small business",
-    bodyHtml: `<main id="route-consultcost" class="section"><div class="container"><h1 class="display">What an AI consultant costs a small business</h1><p class="lede">AI firms that publish their prices put independent AI advice at about $100 to $350 an hour and a monthly advisor at $1,500 to $8,000. AgentHive Inc charges $75 for 30 minutes, $150 an hour, or $1,250 for a 10-hour pack, after a free 30-minute call.</p><p>Sources checked ${CONSULT_COST_CHECKED}. <a href="${HIVE_CONSULT_URL}">Book the free 30</a> or call ${CONSULT_DISPLAY}.</p></div></main>`,
+    bodyHtml: `<main id="route-consultcost" class="section"><div class="container"><h1 class="display">What an AI consultant costs a small business</h1><p class="lede">AgentHive Inc charges $75 for 30 minutes, $150 an hour, or $1,250 for a 10-hour pack, after a free 30-minute call. This page lists those prices and does not quote another firm.</p><p>Checked ${CONSULT_COST_CHECKED}. <a href="${HIVE_CONSULT_URL}">Book the free 30</a> or call ${CONSULT_DISPLAY}.</p></div></main>`,
   },
   ...CONSULT_COMPARE_PAGES.map((page) => ({
     path: page.path,
@@ -128,9 +128,9 @@ export const PAGE_SEO: SeoPage[] = [
     path: "/concierge",
     title: `AI Concierge: fractional AI advisor, ${CONCIERGE_PRICE} | AgentHive Inc`,
     description:
-      "Fractional AI advisor, $2,000/mo: two 45-minute sessions, unlimited async Slack or text, a shared asset inventory. Retainers we checked list $3,000+.",
+      "Fractional AI advisor, $2,000/mo: two 45-minute sessions, unlimited async Slack or text, and a shared asset inventory.",
     h1: "Two sessions. The work ships.",
-    bodyHtml: `<main id="route-concierge" class="section"><div class="container"><h1 class="display">Two sessions. The work ships.</h1><p class="lede">${CONCIERGE_NAME} is a ${CONCIERGE_PRICE} done-with-you retainer. Audit the messy task, optimize the process, then automate it.</p><p>Included: 2 × 45-minute sessions a month, unlimited async Slack or text, and a shared inventory of every skill, automation, and asset we build. For owners who tried ChatGPT and it didn’t stick.</p><p>Compared with published fractional AI prices (checked October 19, 2026): Holistic Consulting lists $3,500, $6,500 and $9,500 a month; SmallBizStrategy.ai lists $3,000 to $6,000 a month; the iternal.ai guide gives $1,500 to $8,000 a month.</p><p>If ${FD_NAME} or hourly packs fit better, those stay open. ${CONSULT_RATES}. ${FD_NAME}: ${FD_PRICE}.</p>    <p><a href="${CONCIERGE_STRIPE_URL}">Start ${CONCIERGE_NAME} — ${CONCIERGE_PRICE}</a> · <a href="${BOOK_HREF}">${CONCIERGE_BOOK_LABEL}</a> · <a href="mailto:${CONTACT_EMAIL}">${CONTACT_EMAIL}</a> · ${CONSULT_DISPLAY}</p></div></main>`,
+    bodyHtml: `<main id="route-concierge" class="section"><div class="container"><h1 class="display">Two sessions. The work ships.</h1><p class="lede">${CONCIERGE_NAME} is a ${CONCIERGE_PRICE} done-with-you retainer. Audit the messy task, optimize the process, then automate it.</p><p>Included: 2 × 45-minute sessions a month, unlimited async Slack or text, and a shared inventory of every skill, automation, and asset we build. For owners who tried a general chat tool and it didn’t stick.</p><p>If ${FD_NAME} or hourly packs fit better, those stay open. ${CONSULT_RATES}. ${FD_PRICE_LINE}</p>    <p><a href="${CONCIERGE_STRIPE_URL}">Start ${CONCIERGE_NAME} — ${CONCIERGE_PRICE}</a> · <a href="${BOOK_HREF}">${CONCIERGE_BOOK_LABEL}</a> · ${CONSULT_DISPLAY}</p></div></main>`,
   },
   {
     path: "/concierge/vs-hiring",
@@ -146,7 +146,7 @@ export const PAGE_SEO: SeoPage[] = [
     description:
       "AgentHive Inc earns commissions only on tools it uses itself (Netlify, Lovable, ElevenLabs, Higgsfield). How affiliate links work on agenthiveinc.com.",
     h1: "Affiliate disclosure",
-    bodyHtml: `<main id="route-disclosure" class="section"><div class="container"><h1 class="display">Affiliate disclosure</h1><p class="lede">${DISCLOSURE_LINE}</p><p>Some links on agenthiveinc.com may be affiliate links. If you sign up or buy through one, ${BRAND_NAME} (${LEGAL_NAME}) may earn a commission. The tools in our own stack that run affiliate programs: ${AFFILIATE_TOOLS.map((t) => `${t.name} (${t.use})`).join(", ")}. You pay the same price you would pay going direct. A commission does not decide what we recommend or build with, and the footer &ldquo;Featured on&rdquo; badges are not affiliate links. Questions: <a href="mailto:${CONTACT_EMAIL}">${CONTACT_EMAIL}</a>. Last updated ${DISCLOSURE_UPDATED}.</p></div></main>`,
+    bodyHtml: `<main id="route-disclosure" class="section"><div class="container"><h1 class="display">Affiliate disclosure</h1><p class="lede">${DISCLOSURE_LINE}</p><p>Some links on agenthiveinc.com may be affiliate links. If you sign up or buy through one, ${BRAND_NAME} (${LEGAL_NAME}) may earn a commission. The tools in our own stack that run affiliate programs: ${AFFILIATE_TOOLS.map((t) => `${t.name} (${t.use})`).join(", ")}. You pay the same price you would pay going direct. A commission does not decide what we recommend or build with, and the footer &ldquo;Featured on&rdquo; badges are not affiliate links. Questions: call ${CONSULT_DISPLAY}. Last updated ${DISCLOSURE_UPDATED}.</p></div></main>`,
   },
   {
     path: ADS_PATH,
@@ -513,6 +513,11 @@ export function applyRouteHtml(html: string, page: SeoPage, renderedBody?: strin
   }
   if (page.icon) {
     next = next.replace(/<link\s+rel="icon"[^>]*>/i, `<link rel="icon" href="${page.icon}" type="image/svg+xml" />`);
+  }
+  if (page.path === "/ads" || page.path === "/ads/thanks") {
+    next = next.replace(/<link\s+rel="preconnect"\s+href="https:\/\/fonts\.googleapis\.com"[^>]*>\s*/gi, "");
+    next = next.replace(/<link\s+rel="preconnect"\s+href="https:\/\/fonts\.gstatic\.com"[^>]*>\s*/gi, "");
+    next = next.replace(/<link[^>]*href="https:\/\/fonts\.googleapis\.com\/[^"]*"[^>]*>\s*/gi, "");
   }
   const jsonLd = jsonLdFor(page);
   const existing = /<script type="application\/ld\+json">[\s\S]*?<\/script>/;

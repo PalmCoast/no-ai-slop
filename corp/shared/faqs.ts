@@ -41,7 +41,7 @@ export const CONSULT_FAQS: Faq[] = [
 export const CONSULT_COST_FAQS: Faq[] = [
   {
     q: "How much does an AI consultant cost for a small business?",
-    a: "Guides published by AI firms in 2026 put independent AI advice at roughly $100 to $350 an hour and a monthly advisor at $1,500 to $8,000. These are asking prices from the firms' own pages, not survey averages. AgentHive Inc charges $75 for 30 minutes, $150 an hour, or $1,250 for 10 hours, after a free 30-minute call.",
+    a: "AgentHive Inc charges $75 for 30 minutes, $150 an hour, or $1,250 for 10 hours, after a free 30-minute call. This answer does not quote another firm's rate.",
   },
   {
     q: "Is hourly or a fixed project better?",
@@ -53,7 +53,7 @@ export const CONSULT_COST_FAQS: Faq[] = [
   },
   {
     q: "Where do the comparison numbers come from?",
-    a: `Each range is quoted from the named firm's own public page, with a link, checked on October 19, 2026. Prices change, so check the source before you compare.`,
+    a: "The numbers on this page are AgentHive Inc prices published on the consult page. We are not quoting another firm.",
   },
 ];
 
@@ -76,11 +76,11 @@ export const CONCIERGE_FAQS: Faq[] = [
   },
   {
     q: "Who is the fractional AI advisor for?",
-    a: "Owners and COOs who already tried ChatGPT or Claude and it didn’t stick, and want a partner on the calls rather than a PDF of prompts.",
+    a: "Owners and COOs who already tried a general chat tool and it didn’t stick, and want a partner on the calls rather than a PDF of prompts.",
   },
   {
-    q: "How does $2,000/mo compare with other fractional AI advisors?",
-    a: "Firms that publish their prices ask more. Holistic Consulting lists $3,500, $6,500 and $9,500 a month. SmallBizStrategy.ai lists $3,000 to $6,000 a month. The iternal.ai guide puts a fractional AI advisor at $1,500 to $8,000 a month. All checked October 19, 2026. AI Concierge is $2,000 a month.",
+    q: "What does the monthly price cover?",
+    a: "AI Concierge is $2,000 a month: two 45-minute sessions, unlimited async Slack or text, and a shared asset inventory. This answer does not quote another firm's rate.",
   },
   {
     q: "Why not hire someone full time?",

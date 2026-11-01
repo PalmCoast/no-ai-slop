@@ -7,7 +7,6 @@ import {
   BOOK_HREF,
   CONSULT_DISPLAY,
   CONSULT_TEL,
-  CONTACT_EMAIL,
   FD_NAME,
   FD_URL,
   FEATURED_ON,
@@ -149,7 +148,6 @@ export default function Layout() {
           <div>
             <strong>Contact</strong>
             <a href={BOOK_HREF}>Call {CONSULT_DISPLAY}</a>
-            <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>
             <a href={`tel:${CONSULT_TEL}`}>
               {FD_NAME} {CONSULT_DISPLAY}
             </a>

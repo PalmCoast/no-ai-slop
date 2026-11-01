@@ -81,7 +81,7 @@ export default function Ads() {
               <div className="ads-slot ads-r916" data-hero-sample>
                 <img
                   src="/ads/samples/supplement.webp"
-                  alt="Spec ad, AI-generated, 9:16"
+                    alt="Spec ad for the fictional brand Pine and Packet, AI-generated, 9:16"
                   width={1200}
                   height={1490}
                 />
@@ -98,7 +98,7 @@ export default function Ads() {
           <div className="ads-wrap">
             <h2 id="samples-h">A few we made on spec</h2>
             <p className="ads-sub">
-              These are concept ads built from public product pages to show the style. Nobody paid for them, and we
+              These are concept ads made to show the style. The brand names are made up. Nobody paid for them, and we
               don't claim they ran.
             </p>
             <div className="ads-samples">
@@ -106,7 +106,7 @@ export default function Ads() {
                 <div className="ads-slot ads-r916" data-slot="1">
                   <img
                     src="/ads/samples/supplement.webp"
-                    alt="Sample ad, supplement, 9:16. Spec concept, AI-generated."
+                    alt="Sample ad for the fictional brand Pine and Packet, 9:16. Spec concept, AI-generated."
                     width={1200}
                     height={1490}
                   />
@@ -119,7 +119,7 @@ export default function Ads() {
                 <div className="ads-slot ads-r11" data-slot="2">
                   <img
                     src="/ads/samples/skincare.webp"
-                    alt="Sample ad, skincare, 1:1. Spec concept, AI-generated."
+                    alt="Sample ad for the fictional brand Low Tide, 1:1. Spec concept, AI-generated."
                     width={1200}
                     height={1490}
                   />
@@ -132,7 +132,7 @@ export default function Ads() {
                 <div className="ads-slot ads-r45" data-slot="3">
                   <img
                     src="/ads/samples/homegoods.webp"
-                    alt="Sample ad, home goods, 4:5. Spec concept, AI-generated."
+                    alt="Sample ad for the fictional brand Brack and Co, 4:5. Spec concept, AI-generated."
                     width={1200}
                     height={1490}
                   />

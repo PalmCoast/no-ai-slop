@@ -77,7 +77,7 @@ export default function Home() {
               off the phone.
             </p>
           </div>
-          <div className="trust-grid" style={{ gridTemplateColumns: "repeat(3, 1fr)" }}>
+          <div className="trust-grid cols-3">
             <article className="trust">
               <h3>Missed night calls</h3>
               <p className="muted">The phone rings after hours. Nobody books the job. That leak is the desk.</p>
@@ -136,7 +136,7 @@ export default function Home() {
               Built for field operators in dirty physical businesses. Public apps below. No client names.
             </p>
           </div>
-          <div className="card-grid" style={{ gridTemplateColumns: "repeat(2, 1fr)" }}>
+          <div className="card-grid cols-2">
             {proof.map((site) => (
               <a key={site.slug} className="card" href={site.url} rel="noreferrer" target="_blank">
                 <h3>{site.name}</h3>

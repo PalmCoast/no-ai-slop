@@ -18,7 +18,7 @@ export default function ConsultComparePage() {
             <Link to={HIVE_CONSULT_PATH}>Consult</Link> / {page.crumb}
           </p>
           <div className="eyebrow">
-            <span className="dot" /> Comparison · checked {CONSULT_COMPARE_CHECKED}
+            <span className="dot" /> Consult · checked {CONSULT_COMPARE_CHECKED}
           </div>
           <h1 className="display" style={{ fontSize: "clamp(2.2rem, 5vw, 3.4rem)" }}>
             {page.h1}
@@ -85,7 +85,7 @@ export default function ConsultComparePage() {
 
       <section className="section">
         <div className="container">
-          <div className="card-grid" style={{ gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))" }}>
+          <div className="card-grid cols-2">
             <article className="trust">
               <h3>{page.pickThem.h2}</h3>
               <ul>
@@ -119,7 +119,7 @@ export default function ConsultComparePage() {
         <div className="container">
           <div className="section-head">
             <h2>Sources</h2>
-            <p>Plain-text sources, no outbound links. Each was read on the date shown. Prices change, so check before you compare.</p>
+            <p>These prices are the ones published on our consult page.</p>
           </div>
           <ul>
             {page.sources.map((s) => (

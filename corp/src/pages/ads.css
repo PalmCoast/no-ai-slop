@@ -36,6 +36,16 @@ html.ads-route body {
   text-decoration: none;
 }
 
+.ads-page a.ads-btn-p,
+.ads-page a.ads-btn-p:hover {
+  color: var(--ads-accink);
+}
+
+.ads-page a.ads-btn-g,
+.ads-page a.ads-btn-g:hover {
+  color: var(--ads-ink);
+}
+
 .ads-wrap {
   max-width: 1120px;
   margin: 0 auto;

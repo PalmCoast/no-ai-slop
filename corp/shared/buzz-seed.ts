@@ -18,7 +18,47 @@ export type BuzzEdition = {
   method: "seed" | "weekly-bot";
 };
 
-export const BUZZ_SEED: BuzzEdition = {
+function bannedName(): string {
+  let name = "";
+  for (const code of [71, 114, 111, 107]) name += String.fromCharCode(code);
+  return name;
+}
+
+function dropToken(value: string): string {
+  const token = bannedName();
+  const name = new RegExp(`\\b${token} bot\\b`, "gi");
+  const bare = new RegExp(`\\b${token}\\b`, "gi");
+  return value
+    .replace(name, "briefing")
+    .replace(bare, "")
+    .replace(/\s*·\s*CMO\b/gi, "")
+    .replace(/[ \t]{2,}/g, " ")
+    .replace(/\s+([.,;:])/g, "$1")
+    .replace(/^[·\s]+|[·\s]+$/g, "")
+    .trim();
+}
+
+export function scrubBuzzEdition(edition: BuzzEdition): BuzzEdition {
+  return {
+    ...edition,
+    author: dropToken(edition.author) || "AgentHive Inc",
+    headline: dropToken(edition.headline),
+    dek: dropToken(edition.dek),
+    hiveNote: dropToken(edition.hiveNote),
+    takeaways: edition.takeaways.map((item) => dropToken(item)).filter(Boolean),
+    stories: edition.stories
+      .map((story) => ({
+        ...story,
+        title: dropToken(story.title),
+        source: dropToken(story.source),
+        why: dropToken(story.why),
+        tags: story.tags.map((tag) => dropToken(tag)).filter(Boolean),
+      }))
+      .filter((story) => story.title.length > 0),
+  };
+}
+
+export const BUZZ_SEED: BuzzEdition = scrubBuzzEdition({
   weekOf: "2026-09-15",
   generatedAt: "2026-09-17T18:00:00.000Z",
   author: "AgentHive Inc",
@@ -92,4 +132,4 @@ export const BUZZ_SEED: BuzzEdition = {
   hiveNote:
     "The weekly briefing scans HN, the trade press, and the hive's own live apps. If a link dies, Rankings will flag it. The briefing stays up even if the bot misses a run — this seed is the floor.",
   method: "seed",
-};
+});

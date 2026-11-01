@@ -12,7 +12,7 @@ async function probeUrl(url: string): Promise<Omit<RankProbe, "slug">> {
       method: "GET",
       redirect: "follow",
       signal: controller.signal,
-      headers: { "User-Agent": "AgentHive-Grok-Scout/1.0 (+https://agenthiveinc.com/rankings)" },
+      headers: { "User-Agent": "AgentHive-Scout/1.0 (+https://agenthiveinc.com/rankings)" },
     });
     return {
       url,

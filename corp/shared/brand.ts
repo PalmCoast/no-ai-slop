@@ -13,10 +13,10 @@ export const FD_CHECK_URL = "https://firstdeploy.ai/#check";
 export const FD_CONSULT_URL = "https://firstdeploy.ai/consult";
 export const HIVE_CONSULT_PATH = "/consult";
 export const HIVE_CONSULT_URL = "https://agenthiveinc.com/consult";
-export const FD_FOUNDING_URL = "https://firstdeploy.ai/founding";
+export const FD_FOUNDING_URL = "https://firstdeploy.ai/go/founding?from=agenthive";
 export const FD_PRICE = "$500 setup, $100/mo";
 export const FD_PRICE_LINE =
-  "First Deploy $500 setup, $100/mo; founding offer for the first 5 businesses is $250 setup + $100/mo (first checkout $350), page at https://firstdeploy.ai/founding.";
+  "First Deploy $500 setup, $100/mo; founding offer for the first 5 businesses is $250 setup + $100/mo (first checkout $350), page at https://firstdeploy.ai/go/founding?from=agenthive.";
 export const FD_PROMISE = "Built and run for you on a written plan";
 export const FD_CTA_LABEL = "Start First Deploy";
 export const BOOK_CTA_LABEL = "Book the free 30";

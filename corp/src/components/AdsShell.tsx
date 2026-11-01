@@ -7,7 +7,12 @@ import "../pages/ads.css";
 function useAdsDocument() {
   useEffect(() => {
     document.documentElement.classList.add("ads-route");
-    return () => document.documentElement.classList.remove("ads-route");
+    const fontLinks = [...document.head.querySelectorAll('link[href*="fonts.googleapis.com"], link[href*="fonts.gstatic.com"]')];
+    for (const link of fontLinks) link.remove();
+    return () => {
+      document.documentElement.classList.remove("ads-route");
+      for (const link of fontLinks) document.head.appendChild(link);
+    };
   }, []);
 }
 

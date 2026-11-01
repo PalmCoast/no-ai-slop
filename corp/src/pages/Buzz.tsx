@@ -1,19 +1,19 @@
 import { useEffect, useState } from "react";
-import { BUZZ_SEED, type BuzzEdition } from "../../shared/buzz-seed";
+import { BUZZ_SEED, scrubBuzzEdition, type BuzzEdition } from "../../shared/buzz-seed";
 
 export default function Buzz() {
-  const [edition, setEdition] = useState<BuzzEdition>(BUZZ_SEED);
+  const [edition, setEdition] = useState<BuzzEdition>(() => scrubBuzzEdition(BUZZ_SEED));
   const [source, setSource] = useState<"live" | "seed">("seed");
 
   useEffect(() => {
     fetch("/api/buzz")
       .then((res) => (res.ok ? res.json() : Promise.reject(new Error("buzz unavailable"))))
       .then((data: BuzzEdition) => {
-        setEdition(data);
+        setEdition(scrubBuzzEdition(data));
         setSource(data.method === "weekly-bot" ? "live" : "seed");
       })
       .catch(() => {
-        setEdition(BUZZ_SEED);
+        setEdition(scrubBuzzEdition(BUZZ_SEED));
         setSource("seed");
       });
   }, []);

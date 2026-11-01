@@ -59,7 +59,7 @@ describe("AgentHive Inc brand facts", () => {
     expect(HIVE_CONSULT_PATH).toBe("/consult");
     expect(HIVE_CONSULT_URL).toBe("https://agenthiveinc.com/consult");
     expect(FD_PRICE).toBe("$500 setup, $100/mo");
-    expect(FD_PRICE_LINE).toContain("https://firstdeploy.ai/founding");
+    expect(FD_PRICE_LINE).toContain("https://firstdeploy.ai/go/founding?from=agenthive");
     expect(FD_PRICE_LINE).not.toContain("1" + ",750");
     expect(FD_PRICE_LINE).not.toContain("$" + "250/mo");
     expect(FD_PROMISE).not.toMatch(/live this week|you don.t pay|guarantee/i);
