@@ -58,7 +58,8 @@ describe("per-route SEO", () => {
       'Products: <a href="https://firstdeploy.ai">First Deploy</a> · <a href="/concierge">AI Concierge</a> · <a href="https://netyard.firstdeploy.ai">NetYard</a>',
     );
     expect(home).toContain("IndexNow");
-    expect(about).toContain("calendly.com/coltsinsider/30min");
+    expect(about).toContain("tel:+13203356186");
+    expect(about).not.toMatch(/calendly/i);
     const consult = applyRouteHtml(shell, PAGE_SEO.find((page) => page.path === "/consult")!);
     expect(consult).toContain('id="route-consult"');
     expect(consult).toContain('rel="canonical" href="https://agenthiveinc.com/consult"');
@@ -98,8 +99,10 @@ describe("per-route SEO", () => {
     const ids = pages.map((html) => html.match(/id="route-[a-z]+"/)?.[0]);
     expect(new Set(hashes).size).toBe(PAGE_SEO.length);
     expect(new Set(ids).size).toBe(PAGE_SEO.length);
-    expect(pages[0]).toContain("$1,750");
-    expect(pages[0]).toContain("$250/mo");
+    expect(pages[0]).toContain("$500 setup, $100/mo");
+    expect(pages[0]).toContain("https://firstdeploy.ai/founding");
+    expect(pages[0]).not.toContain("1" + ",750");
+    expect(pages[0]).not.toContain("$" + "250/mo");
     expect(pages.join("")).not.toMatch(/\$2,?500|\$1,?500\s*\/\s*mo|firstdeploy\.dev/);
     expect(pages[1]).toContain("Palm Coast, FL 32137");
     expect(pages.join("")).not.toContain("Barrington");
@@ -133,14 +136,17 @@ describe("per-route SEO", () => {
     expect(txt).not.toContain("buy.stripe.com");
     expect(txt).toContain("https://agenthiveinc.com/disclosure");
     expect(txt).toContain("https://firstdeploy.ai/");
-    expect(txt).toContain("https://calendly.com/coltsinsider/30min");
+    expect(txt).toContain("https://agenthiveinc.com/ads");
+    expect(txt).toContain("+1 320-335-6186");
+    expect(txt).not.toMatch(/calendly|grok/i);
+    expect(txt).not.toContain("1" + ",750");
+    expect(txt).not.toContain("$" + "250/mo");
     expect(txt).toContain("IndexNow");
     expect(txt).toContain("field operations");
-    expect(txt).toContain("$1,750");
-    expect(txt).toContain("$250");
+    expect(txt).toContain("$500 setup, $100/mo");
+    expect(txt).toContain("https://firstdeploy.ai/founding");
     expect(txt).toContain("https://firstdeploy.ai");
     expect(txt).toContain("https://agenthiveinc.com/consult");
-    expect(txt).toContain("https://calendly.com/coltsinsider/30min");
     expect(txt).toContain("agenthive.io");
     expect(txt).toContain("agenthive.co");
     expect(txt).toContain("AgentHive Inc · Palm Coast, FL · firstdeploy.ai");
@@ -215,7 +221,7 @@ describe("per-route SEO", () => {
     expect(consult).toContain("/consult/ai-consultant-cost");
     expect(consult).not.toMatch(/live this week|or you don.t pay|guarantee/i);
     for (const href of [
-      "https://calendly.com/coltsinsider/30min",
+      "tel:+13203356186",
       "https://buy.stripe.com/fZufZh92Qf9p5eB2XU2ZO1h",
       "https://buy.stripe.com/eVq9ATbaY6CT6iF7ea2ZO1g",
       "https://buy.stripe.com/7sY9ATenabXd7mJ7ea2ZO1i",
@@ -225,7 +231,7 @@ describe("per-route SEO", () => {
     expect(cost).toContain("North Star AI Consultation");
     expect(cost).not.toMatch(/href="https?:\/\/(?:www\.)?(northstarconsult\.ai|aiessentials\.us|carlosansonetti\.com|iternal\.ai|cloudmotiv\.ai|paretotalent\.com|richnashawaty\.com)/);
     const hrefs = [...cost.matchAll(/href="(https?:[^"]+)"/g)].map((m) => m[1]);
-    for (const h of hrefs) expect(h).toMatch(/^https:\/\/((\w+\.)?agenthiveinc\.com|ainexus360\.com|calendly\.com\/coltsinsider\/30min|firstdeploy\.ai|netyard\.firstdeploy\.ai|www\.linkedin\.com|twelve\.tools|fazier\.com|launchaf\.com|join\.netlify\.com)/);
+    for (const h of hrefs) expect(h).toMatch(/^(tel:\+13203356186|https:\/\/((\w+\.)?agenthiveinc\.com|ainexus360\.com|firstdeploy\.ai|netyard\.firstdeploy\.ai|www\.linkedin\.com|twelve\.tools|fazier\.com|launchaf\.com|join\.netlify\.com))/);
     expect(cost).toContain("October 19, 2026");
     expect(cost).toContain("$1,250");
     expect(cost).not.toMatch(/live this week|or you don.t pay/i);

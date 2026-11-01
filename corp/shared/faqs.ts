@@ -92,7 +92,7 @@ export const CONCIERGE_FAQS: Faq[] = [
   },
   {
     q: "How do I start?",
-    a: "Book a free 15 to 30 minute call on Calendly, or start the subscription on Stripe. Intake comes before the first session so it starts on the real problem.",
+    a: "Call +1 320-335-6186 for a free 15 to 30 minute call, or start the subscription. Intake comes before the first session so it starts on the real problem.",
   },
 ];
 

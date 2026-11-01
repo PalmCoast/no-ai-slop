@@ -1,7 +1,7 @@
 /**
  * No-link consult comparison pages (Oct 19, 2026).
  * Competitor names appear only on these pages. Sources are plain text with a checked date: no links to any
- * competitor or source domain. Every CTA points to us (free 30 on Calendly, +1 320-335-6186, /consult#pricing).
+ * competitor or source domain. Every CTA points to us (free 30 by phone at +1 320-335-6186, /consult#pricing).
  * Only facts read from each firm's own public page on the checked date. Never repeat a competitor's trial or
  * refund offer, never invent stats, never name clients.
  */
@@ -69,7 +69,7 @@ export const CONSULT_COMPARE_PAGES: ConsultComparePage[] = [
         table: {
           head: ["", "North Star AI Consultation", "AgentHive Inc"],
           rows: [
-            ["First call", "", "Free 30 minutes (Calendly, by video)"],
+            ["First call", "", "Free 30 minutes by phone, +1 320-335-6186"],
             ["Hourly", "$100 an hour, online", "$150 an hour, or $75 for 30 minutes"],
             ["Bigger block", "Monthly block of hours at $100 an hour", "10 hours for $1,250 ($125 an hour)"],
             ["How you pay", "Invoice after the work", "Stripe, before the session. No contract"],
@@ -102,7 +102,7 @@ export const CONSULT_COMPARE_PAGES: ConsultComparePage[] = [
       },
       {
         q: "How does a first call with AgentHive Inc work?",
-        a: "It is a free 30-minute call, booked on Calendly and run by video.",
+        a: "It is a free 30-minute call on the shop line, +1 320-335-6186, run by phone or video.",
       },
       {
         q: "Where do I start with AgentHive Inc?",
@@ -259,7 +259,7 @@ export const CONSULT_COMPARE_PAGES: ConsultComparePage[] = [
       {
         h2: `How our first call works (checked ${C})`,
         bullets: [
-          "AgentHive Inc: a free 30-minute call on Calendly, by video.",
+          "AgentHive Inc: a free 30-minute call on +1 320-335-6186, by phone or video.",
         ],
       },
       {

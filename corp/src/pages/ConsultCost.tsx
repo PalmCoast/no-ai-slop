@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import FaqList from "../components/FaqList";
 import { CONSULT_COST_FAQS } from "../../shared/faqs";
-import { BOOK_CTA_LABEL, CALENDLY_URL, CONSULT_DISPLAY, CONSULT_TEL, HIVE_CONSULT_PATH } from "../../shared/brand";
+import { BOOK_CTA_LABEL, BOOK_HREF, CONSULT_DISPLAY, CONSULT_TEL, HIVE_CONSULT_PATH } from "../../shared/brand";
 import { CONSULT_COST_CHECKED, PUBLISHED_RANGES, PUBLISHED_SOLO } from "../../shared/consult";
 import { CONCIERGE_NAME, CONCIERGE_PATH, CONCIERGE_PRICE } from "../../shared/concierge";
 
@@ -33,7 +33,7 @@ export default function ConsultCost() {
             10-hour pack, after a free 30-minute call.
           </p>
           <div className="hero-actions">
-            <a className="btn btn-primary" href={CALENDLY_URL} rel="noreferrer" target="_blank">
+            <a className="btn btn-primary" href={BOOK_HREF}>
               {BOOK_CTA_LABEL}
             </a>
             <Link className="btn btn-outline" to={`${HIVE_CONSULT_PATH}#pricing`}>
@@ -113,7 +113,7 @@ export default function ConsultCost() {
               <li key={row.source}>
                 <strong>{row.source}</strong>: {row.price}. <span className="muted">(Source: {row.source} pricing page,
                 checked {CONSULT_COST_CHECKED}.)</span>{" "}
-                <a href={CALENDLY_URL} rel="noreferrer" target="_blank">
+                <a href={BOOK_HREF}>
                   Book a free 30 with AgentHive
                 </a>
               </li>
@@ -177,7 +177,7 @@ export default function ConsultCost() {
               takes.
             </p>
             <div className="hero-actions" style={{ justifyContent: "center" }}>
-              <a className="btn btn-primary" href={CALENDLY_URL} rel="noreferrer" target="_blank">
+              <a className="btn btn-primary" href={BOOK_HREF}>
                 {BOOK_CTA_LABEL}
               </a>
               <a className="btn btn-outline" href={`tel:${CONSULT_TEL}`}>

@@ -3,7 +3,7 @@ import AuthorCard from "../components/AuthorCard";
 import FaqList from "../components/FaqList";
 import { CONCIERGE_FAQS } from "../../shared/faqs";
 import {
-  CALENDLY_URL,
+  BOOK_HREF,
   CONSULT_DISPLAY,
   CONSULT_RATES,
   CONSULT_TEL,
@@ -23,7 +23,7 @@ import {
 } from "../../shared/concierge";
 
 const STEPS = [
-  { title: "Free call", body: "15 to 30 minutes on Calendly. We find out whether a retainer, hourly time, or First Deploy AI fits." },
+  { title: "Free call", body: "15 to 30 minutes on the shop line. We find out whether a retainer, hourly time, or First Deploy AI fits." },
   { title: "Intake", body: "Before kickoff: your time sinks, your tool stack, and the processes worth fixing first." },
   { title: "Audit and optimize", body: "Screen-share the messy task live. Cut broken and duplicate steps before any model touches it." },
   { title: "Automate", body: "Build the projects, skills and workflows in the sessions, and log every one in your shared inventory." },
@@ -72,7 +72,7 @@ export default function Concierge() {
             <a className="btn btn-primary" href={CONCIERGE_STRIPE_URL} rel="noreferrer" target="_blank">
               Start {CONCIERGE_NAME} — {CONCIERGE_PRICE}
             </a>
-            <a className="btn btn-outline" href={CALENDLY_URL} rel="noreferrer" target="_blank">
+            <a className="btn btn-outline" href={BOOK_HREF}>
               {CONCIERGE_BOOK_LABEL}
             </a>
           </div>
@@ -150,7 +150,7 @@ export default function Concierge() {
               <a className="btn btn-primary" href={CONCIERGE_STRIPE_URL} rel="noreferrer" target="_blank">
                 Start {CONCIERGE_NAME} — {CONCIERGE_PRICE}
               </a>
-              <a className="btn btn-outline" href={CALENDLY_URL} rel="noreferrer" target="_blank">
+              <a className="btn btn-outline" href={BOOK_HREF}>
                 {CONCIERGE_BOOK_LABEL}
               </a>
             </div>
@@ -214,7 +214,7 @@ export default function Concierge() {
                         Source: {row.source} page, &ldquo;{row.page}&rdquo;, checked {CONCIERGE_COMPARE_CHECKED}
                       </small>
                       <small>
-                        <a href={CALENDLY_URL} rel="noreferrer" target="_blank">
+                        <a href={BOOK_HREF}>
                           Book a free call with AgentHive
                         </a>
                       </small>
@@ -257,7 +257,7 @@ export default function Concierge() {
             <a className="btn btn-primary" href={CONCIERGE_STRIPE_URL} rel="noreferrer" target="_blank">
               Start {CONCIERGE_NAME} — {CONCIERGE_PRICE}
             </a>
-            <a className="btn btn-outline" href={CALENDLY_URL} rel="noreferrer" target="_blank">
+            <a className="btn btn-outline" href={BOOK_HREF}>
               {CONCIERGE_BOOK_LABEL}
             </a>
           </div>
@@ -296,7 +296,7 @@ export default function Concierge() {
             {" · "}
             <a href={`tel:${CONSULT_TEL}`}>{CONSULT_DISPLAY}</a>
             {" · "}
-            <a href={CALENDLY_URL} rel="noreferrer" target="_blank">
+            <a href={BOOK_HREF}>
               Free 15–30 minute bottleneck call
             </a>
           </p>

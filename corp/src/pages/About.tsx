@@ -5,7 +5,7 @@ import {
   BRAND_NAME,
   BRAND_PLACE,
   BRAND_URL,
-  CALENDLY_URL,
+  BOOK_HREF,
   CONSULT_DISPLAY,
   CONSULT_TEL,
   CONTACT_EMAIL,
@@ -62,9 +62,7 @@ export default function About() {
             <article className="trust">
               <h3>Book 30 minutes</h3>
               <p className="muted">
-                <a href={CALENDLY_URL} rel="noreferrer" target="_blank">
-                  calendly.com/coltsinsider/30min
-                </a>
+                <a href={BOOK_HREF}>{CONSULT_DISPLAY}</a>
               </p>
             </article>
             <article className="trust">
@@ -89,8 +87,8 @@ export default function About() {
             </article>
           </div>
           <div className="hero-actions" style={{ marginTop: 22 }}>
-            <a className="btn btn-primary" href={CALENDLY_URL} rel="noreferrer" target="_blank">
-              Book 30 minutes
+            <a className="btn btn-primary" href={BOOK_HREF}>
+              Call {CONSULT_DISPLAY}
             </a>
             <a className="btn btn-outline" href={`tel:${CONSULT_TEL}`}>
               {CONSULT_DISPLAY}
@@ -128,10 +126,7 @@ export default function About() {
             </p>
             <ul className="takeaways">
               <li>
-                Book —{" "}
-                <a href={CALENDLY_URL} rel="noreferrer" target="_blank">
-                  30-minute Calendly
-                </a>
+                Call — <a href={BOOK_HREF}>{CONSULT_DISPLAY}</a>
               </li>
               <li>
                 Daniel Graham — <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>
@@ -151,9 +146,8 @@ export default function About() {
           <div>
             <h2>The hive, off the money page</h2>
             <p className="muted" style={{ margin: "0.8rem 0 1rem" }}>
-              Twelve named Grok Bots write The Buzz and rank live apps. That lore stays here — not on the homepage a
-              field owner uses to buy. {FD_NAME} is the cash product. HiveBriefcase and Bot Lock are infra, listed on
-              Rankings.
+              The Buzz and the live-app board stay here, off the homepage a field owner uses to buy. {FD_NAME} is
+              the cash product. HiveBriefcase and Bot Lock are infra, listed on Rankings.
             </p>
             <div className="hero-actions">
               <a className="btn btn-primary" href={FD_URL}>

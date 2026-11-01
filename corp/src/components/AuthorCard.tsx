@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { DANIEL_BIO, DANIEL_JOB_TITLE, DANIEL_NAME } from "../../shared/author";
-import { CALENDLY_URL, CONSULT_DISPLAY, CONSULT_TEL, CONTACT_EMAIL, FD_NAME, FD_URL, FLICK_URL, INDEXME_URL, JOBPROOF_URL } from "../../shared/brand";
+import { CONSULT_DISPLAY, CONSULT_TEL, CONTACT_EMAIL, FD_NAME, FD_URL, FLICK_URL, INDEXME_URL, JOBPROOF_URL } from "../../shared/brand";
 
 const PRODUCTS = [
   { href: FD_URL, label: FD_NAME },
@@ -21,10 +21,6 @@ export default function AuthorCard({ linked = false }: { linked?: boolean }) {
         <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>
         {" · "}
         <a href={`tel:${CONSULT_TEL}`}>{CONSULT_DISPLAY}</a>
-        {" · "}
-        <a href={CALENDLY_URL} rel="noreferrer" target="_blank">
-          Book 30 minutes
-        </a>
       </p>
       <p style={{ marginTop: 12 }}>Live products:</p>
       <ul className="takeaways">

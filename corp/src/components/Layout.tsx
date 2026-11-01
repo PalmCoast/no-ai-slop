@@ -4,7 +4,7 @@ import Seo from "./Seo";
 import {
   BRAND_NAME,
   BRAND_PLACE,
-  CALENDLY_URL,
+  BOOK_HREF,
   CONSULT_DISPLAY,
   CONSULT_TEL,
   CONTACT_EMAIL,
@@ -148,9 +148,7 @@ export default function Layout() {
           </div>
           <div>
             <strong>Contact</strong>
-            <a href={CALENDLY_URL} rel="noreferrer" target="_blank">
-              Book 30 minutes
-            </a>
+            <a href={BOOK_HREF}>Call {CONSULT_DISPLAY}</a>
             <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>
             <a href={`tel:${CONSULT_TEL}`}>
               {FD_NAME} {CONSULT_DISPLAY}

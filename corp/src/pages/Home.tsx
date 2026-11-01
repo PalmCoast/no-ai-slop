@@ -3,13 +3,13 @@ import {
   BOOK_CTA_LABEL,
   BRAND_NAME,
   BRAND_PLACE,
-  CALENDLY_URL,
+  BOOK_HREF,
+  FD_PRICE_LINE,
   CONSULT_DISPLAY,
   CONSULT_RATES,
   CONSULT_TEL,
   FD_CTA_LABEL,
   FD_NAME,
-  FD_PRICE,
   FD_PROMISE,
   FD_URL,
   HERO_H1,
@@ -49,13 +49,13 @@ export default function Home() {
             {HERO_WHY}
           </p>
           <p className="fine" style={{ marginBottom: "1rem", color: "var(--ink)" }}>
-            {FD_NAME}: {FD_PRICE}. {FD_PROMISE}.
+            {FD_PRICE_LINE} {FD_PROMISE}.
           </p>
           <div className="hero-actions">
             <a className="btn btn-primary" href={FD_URL}>
               {FD_CTA_LABEL}
             </a>
-            <a className="btn btn-primary" href={CALENDLY_URL} rel="noreferrer" target="_blank">
+            <a className="btn btn-primary" href={BOOK_HREF}>
               {BOOK_CTA_LABEL}
             </a>
           </div>
@@ -105,8 +105,7 @@ export default function Home() {
               <p className="eyebrow">Cash product</p>
               <h2>{FD_NAME}</h2>
               <p style={{ marginTop: 12 }}>
-                After-hours booking plus live apps for dirt, plants, and shops. $1,750 setup (50% to start or pay in full) —{" "}
-                {FD_PROMISE.toLowerCase()} — then $250/mo.
+                After-hours booking plus live apps for dirt, plants, and shops. {FD_PRICE_LINE} {FD_PROMISE}.
               </p>
               <p className="muted" style={{ marginTop: 12 }}>
                 Consult: free 30-minute qualifier, then {CONSULT_RATES}. 10-hour pack $1,250 (half up front).
@@ -156,13 +155,13 @@ export default function Home() {
           <div className="cta-box">
             <h2>Start with a free 30-minute call</h2>
             <p>
-              {FD_NAME}: {FD_PRICE}. {FD_PROMISE}.
+              {FD_PRICE_LINE} {FD_PROMISE}.
             </p>
             <div className="hero-actions" style={{ justifyContent: "center", marginTop: 18, marginBottom: 0 }}>
               <a className="btn btn-primary" href={FD_URL}>
                 {FD_CTA_LABEL}
               </a>
-              <a className="btn btn-primary" href={CALENDLY_URL} rel="noreferrer" target="_blank">
+              <a className="btn btn-primary" href={BOOK_HREF}>
                 {BOOK_CTA_LABEL}
               </a>
             </div>

@@ -3,7 +3,7 @@ import { HIVE_SITES } from "../shared/portfolio";
 import { HIVE_BOTS } from "../shared/bots";
 import { BUZZ_SEED } from "../shared/buzz-seed";
 import { CONSULT_STRIPE_RATES } from "../shared/consult";
-import { CALENDLY_URL } from "../shared/brand";
+import { BOOK_HREF } from "../shared/brand";
 import { CONCIERGE_PRICE, CONCIERGE_STRIPE_URL } from "../shared/concierge";
 
 describe("portfolio catalog", () => {
@@ -18,7 +18,7 @@ describe("portfolio catalog", () => {
   it("lists every hive-map commercial site plus verified Netlify apps", () => {
     const urls = HIVE_SITES.map((s) => s.url);
     expect(urls).toContain("https://firstdeploy.ai/");
-    expect(HIVE_SITES.find((s) => s.slug === "first-deploy")?.price).toBe("$1,750 setup (50% to start or pay in full), then $250/mo");
+    expect(HIVE_SITES.find((s) => s.slug === "first-deploy")?.price).toBe("$500 setup, $100/mo");
     expect(HIVE_SITES.find((s) => s.slug === "first-deploy")?.name).toBe("First Deploy AI");
     expect(urls).toContain("https://flick.firstdeploy.ai/");
     expect(urls).toContain("https://jobproof.firstdeploy.ai/");
@@ -55,8 +55,8 @@ describe("swarm roster", () => {
 });
 
 describe("consult rails", () => {
-  it("keeps Calendly and Stripe buy links, not a grey embed", () => {
-    expect(CALENDLY_URL).toBe("https://calendly.com/coltsinsider/30min");
+  it("keeps the shop line and Stripe buy links, not a grey embed", () => {
+    expect(BOOK_HREF).toBe("tel:+13203356186");
     expect(CONSULT_STRIPE_RATES.map((rate) => rate.href)).toEqual([
       "https://buy.stripe.com/fZufZh92Qf9p5eB2XU2ZO1h",
       "https://buy.stripe.com/eVq9ATbaY6CT6iF7ea2ZO1g",

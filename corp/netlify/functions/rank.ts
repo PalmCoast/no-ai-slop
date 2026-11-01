@@ -32,7 +32,7 @@ export default async () => {
     })),
   );
   return Response.json(
-    { generatedAt: null, sites: fallback, note: "Grok scout has not stored a live pass yet. Showing catalog ranks." },
+    { generatedAt: null, sites: fallback, note: "The scout has not stored a live pass yet. Showing catalog ranks." },
     { headers: { "Cache-Control": "public, max-age=60" } },
   );
 };

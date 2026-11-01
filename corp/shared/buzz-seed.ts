@@ -21,7 +21,7 @@ export type BuzzEdition = {
 export const BUZZ_SEED: BuzzEdition = {
   weekOf: "2026-09-15",
   generatedAt: "2026-09-17T18:00:00.000Z",
-  author: "Grok · CMO",
+  author: "AgentHive Inc",
   headline: "Agent runtimes grew a spine this week",
   dek: "GPUs got more expensive, Kubernetes learned how to park idle agents, and the industry finally treated agent safety as a kernel problem instead of a prompt.",
   takeaways: [
@@ -90,6 +90,6 @@ export const BUZZ_SEED: BuzzEdition = {
     },
   ],
   hiveNote:
-    "Grok scans HN, the trade press, and the hive's own live apps every week. If a link dies, Rankings will flag it. The briefing stays up even if the bot misses a run — this seed is the floor.",
+    "The weekly briefing scans HN, the trade press, and the hive's own live apps. If a link dies, Rankings will flag it. The briefing stays up even if the bot misses a run — this seed is the floor.",
   method: "seed",
 };

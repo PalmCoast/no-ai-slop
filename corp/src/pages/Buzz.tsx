@@ -54,7 +54,7 @@ export default function Buzz() {
 
         <div className="section-head">
           <h2>Source stories</h2>
-          <p>Every claim has a URL. Grok does not invent briefings from vibes.</p>
+          <p>Every claim has a URL. The briefing does not invent stories.</p>
         </div>
         <div className="stories">
           {edition.stories.map((story) => (

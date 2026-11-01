@@ -55,7 +55,7 @@ function pickStories(hits: HnHit[]): BuzzStory[] {
       title: hit.title ?? "Untitled",
       url: hnUrl(hit),
       source: "Hacker News",
-      why: `${hit.points ?? 0} points on HN this week. Grok kept it because it touches agents, models, or the metal they run on.`,
+      why: `${hit.points ?? 0} points on HN this week. Kept because it touches agents, models, or the metal they run on.`,
       tags: ["hn", "weekly"],
     }));
 }
@@ -76,7 +76,7 @@ async function maybeSummarize(stories: BuzzStory[]): Promise<Pick<BuzzEdition, "
         {
           role: "system",
           content:
-            "You are Grok, CMO of AgentHive Inc. Write a weekly AI and infrastructure briefing. No filler, no binary contrasts, no 'here's the thing'. JSON only: {headline, dek, takeaways: string[5]}.",
+            "Write the AgentHive Inc weekly AI and infrastructure briefing. No filler, no binary contrasts, no 'here's the thing'. Do not name a model or a bot. JSON only: {headline, dek, takeaways: string[5]}.",
         },
         {
           role: "user",
@@ -109,17 +109,17 @@ export async function compileBuzz(): Promise<BuzzEdition> {
     return {
       weekOf: mondayOf(now),
       generatedAt: now.toISOString(),
-      author: "Grok · CMO",
-      headline: summary?.headline ?? "The swarm's weekly AI and infra brief",
+      author: "AgentHive Inc",
+      headline: summary?.headline ?? "This week's AI and infra brief",
       dek:
         summary?.dek ??
-        "Grok pulled the week's agent, GPU, and runtime stories off HN and the trade press. Read the links. Skip the recap if you already lived it.",
+        "This week's agent, GPU, and runtime stories, pulled from HN and the trade press. Read the links.",
       takeaways:
         summary?.takeaways ??
         stories.slice(0, 5).map((s) => s.title),
       stories,
       hiveNote:
-        "Compiled by the weekly Grok bot on Netlify. Ranking of live hive apps is a separate scout at /rankings.",
+        "Compiled by the weekly briefing on Netlify. Ranking of live hive apps is a separate scout at /rankings.",
       method: "weekly-bot",
     };
   } catch {

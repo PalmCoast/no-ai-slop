@@ -7,7 +7,8 @@ import {
   BRAND_URL,
   CONTACT_EMAIL,
   BOOK_CTA_LABEL,
-  CALENDLY_URL,
+  BOOK_HREF,
+  FD_PRICE_LINE,
   CONSULT_DISPLAY,
   CONSULT_RATES,
   FD_CTA_LABEL,
@@ -70,14 +71,14 @@ export const PAGE_SEO: SeoPage[] = [
     description:
       "AgentHive Inc embeds working AI in field operations from Palm Coast. Book a free 30, then $75/30 min or $150/hr.",
     h1: HERO_H1,
-    bodyHtml: `<main id="route-home" class="section"><div class="container"><h1 class="display">${HERO_H1}</h1><p class="lede">${BRAND_NAME} is a Palm Coast AI consultant who builds. ${HERO_WHAT}</p><p>${HERO_WHY}</p><p>${FD_NAME} is $1,750 setup (50% to start or pay in full) — ${FD_PROMISE.toLowerCase()} — then $250/mo at firstdeploy.ai. ${INDEXME_NAME} is the ${INDEXME_BLURB} at indexme.lol.</p><p><a href="${FD_URL}">${FD_CTA_LABEL}</a> · <a href="${CALENDLY_URL}">${BOOK_CTA_LABEL}</a> · Consult ${CONSULT_DISPLAY}</p></div></main>`,
+    bodyHtml: `<main id="route-home" class="section"><div class="container"><h1 class="display">${HERO_H1}</h1><p class="lede">${BRAND_NAME} is a Palm Coast AI consultant who builds. ${HERO_WHAT}</p><p>${HERO_WHY}</p><p>${FD_PRICE_LINE} ${FD_PROMISE}. ${INDEXME_NAME} is the ${INDEXME_BLURB} at indexme.lol.</p><p><a href="${FD_URL}">${FD_CTA_LABEL}</a> · <a href="${BOOK_HREF}">${BOOK_CTA_LABEL}</a> · Consult ${CONSULT_DISPLAY}</p></div></main>`,
   },
   {
     path: "/about",
     title: "About AgentHive Inc — AGENTHIVEINCCOM LLC, Palm Coast",
     description: `${BRAND_NAME} is the Palm Coast AI consultant shop behind ${FD_NAME}. Legal name ${LEGAL_NAME}. Call ${CONSULT_DISPLAY}.`,
     h1: "About AgentHive Inc",
-    bodyHtml: `<main id="route-about" class="section"><div class="container"><h1 class="display">About AgentHive Inc</h1><p class="lede">${BRAND_NAME} / ${LEGAL_NAME} is the Palm Coast AI consultant shop that builds and ships. Daniel Graham embeds working AI in field operations, then leaves it running.</p><p>Contact: <a href="${CALENDLY_URL}">Book 30 minutes</a>. ${FD_NAME} consult ${CONSULT_DISPLAY}. Email <a href="mailto:${CONTACT_EMAIL}">${CONTACT_EMAIL}</a>. Shop address ${ADDRESS_LINE}.</p><p>This page is the company record for ${BRAND_NAME} at agenthiveinc.com — not QpiAI, not agenthive.io (insurance), not agenthive.co, not an OSS org with a similar name. Grok Bot swarm lore lives here, not on the money homepage.</p></div></main>`,
+    bodyHtml: `<main id="route-about" class="section"><div class="container"><h1 class="display">About AgentHive Inc</h1><p class="lede">${BRAND_NAME} / ${LEGAL_NAME} is the Palm Coast AI consultant shop that builds and ships. Daniel Graham embeds working AI in field operations, then leaves it running.</p><p>Contact: <a href="${BOOK_HREF}">${CONSULT_DISPLAY}</a>. ${FD_NAME} consult ${CONSULT_DISPLAY}. Email <a href="mailto:${CONTACT_EMAIL}">${CONTACT_EMAIL}</a>. Shop address ${ADDRESS_LINE}.</p><p>This page is the company record for ${BRAND_NAME} at agenthiveinc.com — not QpiAI, not agenthive.io (insurance), not agenthive.co, not an OSS org with a similar name. The money homepage stays on the work.</p></div></main>`,
   },
   {
     path: "/buzz",
@@ -100,14 +101,14 @@ export const PAGE_SEO: SeoPage[] = [
     description: `${FD_NAME} custom embeds: ${FD_PRICE}. ${FD_PROMISE}.`,
     h1: "One leak. Built on a written plan.",
     noindex: true,
-    bodyHtml: `<main id="route-build" class="section"><div class="container"><h1 class="display">One leak. Built on a written plan.</h1><p class="lede">${FD_NAME} embeds, ships the after-hours desk plus the live apps, and stays on for $250/month.</p><p>Setup $1,750: 50% to start ($875), the balance at completion, or pay in full. 90-day projects: half upfront, half at completion. ${FD_PROMISE}. Consult ${CONSULT_DISPLAY} or start at ${FD_URL.replace("https://", "")}.</p></div></main>`,
+    bodyHtml: `<main id="route-build" class="section"><div class="container"><h1 class="display">One leak. Built on a written plan.</h1><p class="lede">${FD_NAME} embeds, ships the after-hours desk plus the live apps. ${FD_PRICE_LINE}</p><p>90-day projects: half upfront, half at completion. ${FD_PROMISE}. Consult ${CONSULT_DISPLAY} or start at ${FD_URL.replace("https://", "")}.</p></div></main>`,
   },
   {
     path: "/consult",
     title: "AI consultant for small business: free 30 min, then $75 | AgentHive Inc",
     description: `Hands-on AI help for owners. Free 30-minute call, then ${CONSULT_RATES}, or a 10-hour pack for $1,250. Set up in your accounts.`,
     h1: "Hand over the AI job. We set it up with you.",
-    bodyHtml: `<main id="route-consult" class="section"><div class="container"><h1 class="display">Hand over the AI job. We set it up with you.</h1><p class="lede">Tell Daniel Graham the task that eats your week. On a free 30-minute call you find out if AI can take it. If it can, paid hours go to building it in your own accounts until it runs.</p><p>Free 30 minutes. Then $75 / 30 minutes, $150 / hour, or a 10-hour pack for $1,250 ($625 up front). Book the free 30 on Calendly. Call ${CONSULT_DISPLAY}.</p><p>Compare: <a href="${CONSULT_COST_URL}">what an AI consultant costs</a>. Need someone monthly? <a href="${CONCIERGE_URL}">${CONCIERGE_NAME}</a> is the ${CONCIERGE_PRICE} retainer.</p></div></main>`,
+    bodyHtml: `<main id="route-consult" class="section"><div class="container"><h1 class="display">Hand over the AI job. We set it up with you.</h1><p class="lede">Tell Daniel Graham the task that eats your week. On a free 30-minute call you find out if AI can take it. If it can, paid hours go to building it in your own accounts until it runs.</p><p>Free 30 minutes. Then $75 / 30 minutes, $150 / hour, or a 10-hour pack for $1,250 ($625 up front). Call ${CONSULT_DISPLAY}.</p><p>Compare: <a href="${CONSULT_COST_URL}">what an AI consultant costs</a>. Need someone monthly? <a href="${CONCIERGE_URL}">${CONCIERGE_NAME}</a> is the ${CONCIERGE_PRICE} retainer.</p></div></main>`,
   },
   {
     path: "/consult/ai-consultant-cost",
@@ -129,7 +130,7 @@ export const PAGE_SEO: SeoPage[] = [
     description:
       "Fractional AI advisor, $2,000/mo: two 45-minute sessions, unlimited async Slack or text, a shared asset inventory. Retainers we checked list $3,000+.",
     h1: "Two sessions. The work ships.",
-    bodyHtml: `<main id="route-concierge" class="section"><div class="container"><h1 class="display">Two sessions. The work ships.</h1><p class="lede">${CONCIERGE_NAME} is a ${CONCIERGE_PRICE} done-with-you retainer. Audit the messy task, optimize the process, then automate it.</p><p>Included: 2 × 45-minute sessions a month, unlimited async Slack or text, and a shared inventory of every skill, automation, and asset we build. For owners who tried ChatGPT and it didn’t stick.</p><p>Compared with published fractional AI prices (checked October 19, 2026): Holistic Consulting lists $3,500, $6,500 and $9,500 a month; SmallBizStrategy.ai lists $3,000 to $6,000 a month; the iternal.ai guide gives $1,500 to $8,000 a month.</p><p>If ${FD_NAME} or hourly packs fit better, those stay open. ${CONSULT_RATES}. ${FD_NAME}: ${FD_PRICE}.</p>    <p><a href="${CONCIERGE_STRIPE_URL}">Start ${CONCIERGE_NAME} — ${CONCIERGE_PRICE}</a> · <a href="${CALENDLY_URL}">${CONCIERGE_BOOK_LABEL}</a> · <a href="mailto:${CONTACT_EMAIL}">${CONTACT_EMAIL}</a> · ${CONSULT_DISPLAY}</p></div></main>`,
+    bodyHtml: `<main id="route-concierge" class="section"><div class="container"><h1 class="display">Two sessions. The work ships.</h1><p class="lede">${CONCIERGE_NAME} is a ${CONCIERGE_PRICE} done-with-you retainer. Audit the messy task, optimize the process, then automate it.</p><p>Included: 2 × 45-minute sessions a month, unlimited async Slack or text, and a shared inventory of every skill, automation, and asset we build. For owners who tried ChatGPT and it didn’t stick.</p><p>Compared with published fractional AI prices (checked October 19, 2026): Holistic Consulting lists $3,500, $6,500 and $9,500 a month; SmallBizStrategy.ai lists $3,000 to $6,000 a month; the iternal.ai guide gives $1,500 to $8,000 a month.</p><p>If ${FD_NAME} or hourly packs fit better, those stay open. ${CONSULT_RATES}. ${FD_NAME}: ${FD_PRICE}.</p>    <p><a href="${CONCIERGE_STRIPE_URL}">Start ${CONCIERGE_NAME} — ${CONCIERGE_PRICE}</a> · <a href="${BOOK_HREF}">${CONCIERGE_BOOK_LABEL}</a> · <a href="mailto:${CONTACT_EMAIL}">${CONTACT_EMAIL}</a> · ${CONSULT_DISPLAY}</p></div></main>`,
   },
   {
     path: "/concierge/vs-hiring",
