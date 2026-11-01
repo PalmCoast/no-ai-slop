@@ -5,7 +5,6 @@ import {
   ADDRESS_REGION,
   BRAND_NAME,
   BRAND_URL,
-  CONTACT_EMAIL,
   BOOK_CTA_LABEL,
   BOOK_HREF,
   FD_PRICE_LINE,
@@ -156,7 +155,7 @@ export const PAGE_SEO: SeoPage[] = [
     ogImage: ADS_OG_IMAGE,
     ogImageAlt: ADS_OG_ALT,
     icon: ADS_ICON,
-    bodyHtml: `<main id="route-ads"><h1>${ADS_H1}</h1><p>${ADS_DESCRIPTION}</p><p>AI Ad Sprint is $297 one time for 6 video ads and 6 image ads, delivered within 72 hours. Monthly is $997 a month for 20 new ads. Paid upfront by card. Samples are spec concepts and AI-generated people are labeled as AI.</p></main>`,
+    bodyHtml: `<main id="route-ads"><h1>${ADS_H1}</h1><p>${ADS_DESCRIPTION}</p><p>AI Ad Sprint is $297 one time for 6 video ads and 6 image ads, delivered within 72 hours. Monthly is $997 a month for 20 new ads. Paid upfront by card. AI-generated people are labeled as AI.</p></main>`,
   },
   {
     path: ADS_THANKS_PATH,
@@ -230,7 +229,6 @@ export function organizationJsonLd() {
         name: BRAND_NAME,
         legalName: LEGAL_NAME,
         url: `${BRAND_URL}/`,
-        email: CONTACT_EMAIL,
         telephone: CONSULT_DISPLAY,
         address,
         sameAs: [DANIEL_LINKEDIN_URL, LINKEDIN_URL, FD_URL, INDEXME_URL, HIVE_CONSULT_URL],
@@ -242,7 +240,6 @@ export function organizationJsonLd() {
         legalName: LEGAL_NAME,
         url: `${BRAND_URL}/`,
         image: `${BRAND_URL}/og.jpg`,
-        email: CONTACT_EMAIL,
         telephone: CONSULT_DISPLAY,
         address,
         areaServed: "US",
@@ -271,7 +268,6 @@ function danielPerson() {
     name: DANIEL_NAME,
     jobTitle: DANIEL_JOB_TITLE,
     url: DANIEL_URL,
-    email: CONTACT_EMAIL,
     telephone: CONSULT_DISPLAY_SEO,
     description: DANIEL_BIO,
     address: {
@@ -292,7 +288,6 @@ function organizationNode() {
     name: BRAND_NAME,
     legalName: LEGAL_NAME,
     url: `${BRAND_URL}/`,
-    email: CONTACT_EMAIL,
     telephone: CONSULT_DISPLAY_SEO,
     address: {
       "@type": "PostalAddress",

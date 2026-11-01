@@ -26,9 +26,11 @@ function bannedName(): string {
 
 function dropToken(value: string): string {
   const token = bannedName();
+  const keptPhrase = new RegExp(`\\b${token} kept it\\b`, "gi");
   const name = new RegExp(`\\b${token} bot\\b`, "gi");
   const bare = new RegExp(`\\b${token}\\b`, "gi");
-  return value
+  const cleaned = value
+    .replace(keptPhrase, "We kept it")
     .replace(name, "briefing")
     .replace(bare, "")
     .replace(/\s*·\s*CMO\b/gi, "")
@@ -36,6 +38,7 @@ function dropToken(value: string): string {
     .replace(/\s+([.,;:])/g, "$1")
     .replace(/^[·\s]+|[·\s]+$/g, "")
     .trim();
+  return cleaned.replace(/(^|[.!?]\s+)kept\b/g, (_match, lead: string) => `${lead}Kept`);
 }
 
 export function scrubBuzzEdition(edition: BuzzEdition): BuzzEdition {

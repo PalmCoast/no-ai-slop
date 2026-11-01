@@ -13,7 +13,7 @@ AgentHive Inc is a Palm Coast consultant who builds: after-hours booking plus li
 - [Custom Builds](https://agenthiveinc.com/build): First Deploy AI embeds. Built and run on a written plan.
 - [Consult](https://agenthiveinc.com/consult): Free 30-minute qualifier, then $75 / 30 min, $150 / hour, or a 10-hour pack at $1,250. Gold hive page — not the grey firstdeploy.ai/consult theme.
 - [What an AI consultant costs](https://agenthiveinc.com/consult/ai-consultant-cost): Published AI consultant prices next to ours, checked Oct 19, 2026.
-- [$100 an hour vs 30-minute blocks](https://agenthiveinc.com/consult/north-star-ai-consultation-alternative): A comparison page with dated, plain-text sources.
+- [AI help in 30-minute blocks](https://agenthiveinc.com/consult/ai-help-30-minute-blocks): A comparison page with dated, plain-text sources.
 - [AI consultant vs agency vs fractional AI officer](https://agenthiveinc.com/consult/ai-consultant-vs-agency-vs-fractional): Published entry prices for each model, dated.
 - [AI consultant hourly rate](https://agenthiveinc.com/consult/ai-consultant-hourly-rate): What $75, $100, $150 and $350 an hour buy.
 - [Free AI consultation](https://agenthiveinc.com/consult/free-ai-consultation): What a good free 30 minutes should leave you with.

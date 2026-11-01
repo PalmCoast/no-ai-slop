@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { HIVE_SITES } from "../shared/portfolio";
 import { HIVE_BOTS } from "../shared/bots";
-import { BUZZ_SEED } from "../shared/buzz-seed";
+import { BUZZ_SEED, scrubBuzzEdition, type BuzzEdition } from "../shared/buzz-seed";
 import { CONSULT_STRIPE_RATES } from "../shared/consult";
 import { BOOK_HREF } from "../shared/brand";
 import { CONCIERGE_PRICE, CONCIERGE_STRIPE_URL } from "../shared/concierge";
@@ -75,5 +75,35 @@ describe("buzz seed", () => {
     for (const story of BUZZ_SEED.stories) {
       expect(story.url.startsWith("https://")).toBe(true);
     }
+  });
+
+  it("turns a kept-it line into We kept it and never starts a sentence with kept", () => {
+    const token = String.fromCharCode(71, 114, 111, 107);
+    const edition: BuzzEdition = {
+      weekOf: "2026-09-15",
+      generatedAt: "2026-09-17T18:00:00.000Z",
+      author: "AgentHive Inc",
+      headline: "Notes",
+      dek: `${token} kept it because the source was public.`,
+      takeaways: [],
+      stories: [
+        {
+          title: "A note",
+          url: "https://example.com/a",
+          source: "Example",
+          why: `Done. ${token} kept the file name in the summary.`,
+          tags: [],
+        },
+      ],
+      hiveNote: `${token} kept it.`,
+      method: "seed",
+    };
+    const out = scrubBuzzEdition(edition);
+    expect(out.dek).toBe("We kept it because the source was public.");
+    expect(out.hiveNote).toBe("We kept it.");
+    expect(out.stories[0]?.why).toBe("Done. Kept the file name in the summary.");
+    const blob = [out.dek, out.hiveNote, out.headline, ...out.stories.map((story) => story.why)].join(" ");
+    expect(blob).not.toMatch(new RegExp(token, "i"));
+    expect(blob).not.toMatch(/(^|[.!?]\s+)kept\b/);
   });
 });

@@ -1,5 +1,5 @@
 /**
- * Consult guide pages. Paths stay so existing URLs keep working.
+ * Consult guide pages.
  * Copy states AgentHive Inc prices only. No other firm's name and no market range we did not publish.
  */
 export const CONSULT_COMPARE_CHECKED = "October 19, 2026";
@@ -72,7 +72,7 @@ function page(partial: Omit<ConsultComparePage, "sources" | "pickThem" | "pickUs
 
 export const CONSULT_COMPARE_PAGES: ConsultComparePage[] = [
   page({
-    path: "/consult/north-star-ai-consultation-alternative",
+    path: "/consult/ai-help-30-minute-blocks",
     neutral: "30-minute blocks",
     crumb: "30-minute blocks",
     title: "AI help in 30-minute blocks, then $75 | AgentHive Inc",

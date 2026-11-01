@@ -7,7 +7,6 @@ export const ADS_INTAKE_PATH = "/api/ads-intake";
 export const ADS_OG_IMAGE = "https://agenthiveinc.com/ads/og-ads.png";
 export const ADS_OG_ALT = "AI Ad Sprint: 12 new ads for your product in 72 hours. AgentHive Inc.";
 export const ADS_ICON = "/ads/favicon.svg";
-export const SAMPLE_CAPTION = "Spec / concept, not commissioned · AI-generated";
 
 export const ADS_TITLE = "AI Ad Sprint — 12 product ads in 72 hours | AgentHive Inc";
 export const ADS_DESCRIPTION =
@@ -19,7 +18,7 @@ export const ADS_THANKS_DESCRIPTION = "Your product is in. Here is what happens 
 export const ADS_THANKS_H1 = "Got it. Your product is in.";
 
 export const ADS_FOOTER_NOTE =
-  "Some ads on this page and in our deliveries use AI-generated people. They're labeled as AI. Samples marked \"spec\" were made as concepts and weren't commissioned.";
+  "Some ads in a delivery use AI-generated people. They're labeled as AI.";
 
 export const ADS_FAQS: { q: string; a: string }[] = [
   {

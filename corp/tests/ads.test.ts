@@ -10,7 +10,7 @@ vi.mock("../netlify/lib/store.ts", () => ({
 
 import handler, { config as intakeConfig } from "../netlify/functions/ads-intake.ts";
 import { render } from "../src/entry-server";
-import { ADS_OG_IMAGE, SAMPLE_CAPTION } from "../shared/ads";
+import { ADS_OG_IMAGE } from "../shared/ads";
 import { applyRouteHtml, jsonLdFor, PAGE_SEO, sitemapXml } from "../shared/seo";
 
 const corpRoot = fileURLToPath(new URL("..", import.meta.url));
@@ -72,14 +72,13 @@ describe("AI Ad Sprint pages", () => {
     expect(offer).toContain('href="/go/ads-engine"');
     expect(offer.match(/href="\/go\/ads-sprint"/g)?.length).toBe(3);
     expect(offer.match(/href="\/go\/ads-engine"/g)?.length).toBe(1);
-    expect(offer).toContain('data-slot="1"');
-    expect(offer).toContain('data-slot="2"');
-    expect(offer).toContain('data-slot="3"');
-    expect(offer).toContain('data-hero-sample');
-    expect(offer).toContain("/ads/samples/supplement.webp");
-    expect(offer).toContain("/ads/samples/skincare.webp");
-    expect(offer).toContain("/ads/samples/homegoods.webp");
-    expect(offer.replace(/<[^>]+>/g, "")).toContain(SAMPLE_CAPTION);
+    expect(offer).not.toContain("data-slot=");
+    expect(offer).not.toContain("data-hero-sample");
+    expect(offer).not.toContain('id="samples"');
+    expect(offer).not.toContain("/ads/samples/");
+    expect(offer).not.toContain("ads-tag");
+    expect(offer).not.toContain("See samples below");
+    expect(offer).toContain("AI-generated people are always labeled as AI.");
     expect(offer).toContain('name="bot-field"');
     expect(offer).toContain('name="name"');
     expect(offer).toContain('action="/api/ads-intake"');

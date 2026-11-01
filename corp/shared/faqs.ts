@@ -52,7 +52,7 @@ export const CONSULT_COST_FAQS: Faq[] = [
     a: "The pack is $1,250 for 10 hours, which works out to $125 an hour instead of $150. You pay $625 up front and the remainder when the hours start.",
   },
   {
-    q: "Where do the comparison numbers come from?",
+    q: "Where do these prices come from?",
     a: "The numbers on this page are AgentHive Inc prices published on the consult page. We are not quoting another firm.",
   },
 ];

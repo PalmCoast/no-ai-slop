@@ -1,21 +1,6 @@
 import { useEffect, useState, type FormEvent } from "react";
 import AdsShell from "../components/AdsShell";
-import {
-  ADS_ENGINE_GO,
-  ADS_FAQS,
-  ADS_INTAKE_PATH,
-  ADS_SPRINT_GO,
-  SAMPLE_CAPTION,
-} from "../../shared/ads";
-
-function Caption() {
-  const [lead, tail] = SAMPLE_CAPTION.split(" · ");
-  return (
-    <span className="ads-ai">
-      {lead} · <span className="ads-nw">{tail}</span>
-    </span>
-  );
-}
+import { ADS_ENGINE_GO, ADS_FAQS, ADS_INTAKE_PATH, ADS_SPRINT_GO } from "../../shared/ads";
 
 export default function Ads() {
   const [status, setStatus] = useState<"idle" | "sending" | "done">("idle");
@@ -58,89 +43,19 @@ export default function Ads() {
     <AdsShell pricing>
       <main id="route-ads">
         <section className="ads-hero" id="top" aria-labelledby="hero-h">
-          <div className="ads-wrap ads-hero-grid">
-            <div>
-              <p className="ads-eyebrow">AI Ad Sprint</p>
-              <h1 id="hero-h">
-                12 new ads for your product in <span>72 hours.</span>
-              </h1>
-              <p className="ads-lede">
-                6 short video ads and 6 image ads, made from your product page and sized for the feeds you already run.
-                $297. AI-generated people are always labeled as AI.
-              </p>
-              <div>
-                <a className="ads-btn ads-btn-p" href={ADS_SPRINT_GO}>
-                  Start my sprint — $297
-                </a>
-              </div>
-              <p className="ads-under">
-                Want to see the style first? <a href="#samples">See samples below.</a>
-              </p>
-            </div>
-            <figure className="ads-hero-vis">
-              <div className="ads-slot ads-r916" data-hero-sample>
-                <img
-                  src="/ads/samples/supplement.webp"
-                    alt="Spec ad for the fictional brand Pine and Packet, AI-generated, 9:16"
-                  width={1200}
-                  height={1490}
-                />
-                <span className="ads-tag">Spec ad · AI-generated</span>
-              </div>
-              <figcaption>
-                <Caption />
-              </figcaption>
-            </figure>
-          </div>
-        </section>
-
-        <section className="ads-section" id="samples" aria-labelledby="samples-h">
           <div className="ads-wrap">
-            <h2 id="samples-h">A few we made on spec</h2>
-            <p className="ads-sub">
-              These are concept ads made to show the style. The brand names are made up. Nobody paid for them, and we
-              don't claim they ran.
+            <p className="ads-eyebrow">AI Ad Sprint</p>
+            <h1 id="hero-h">
+              12 new ads for your product in <span>72 hours.</span>
+            </h1>
+            <p className="ads-lede">
+              6 short video ads and 6 image ads, made from your product page and sized for the feeds you already run.
+              $297. AI-generated people are always labeled as AI.
             </p>
-            <div className="ads-samples">
-              <figure className="ads-sample">
-                <div className="ads-slot ads-r916" data-slot="1">
-                  <img
-                    src="/ads/samples/supplement.webp"
-                    alt="Sample ad for the fictional brand Pine and Packet, 9:16. Spec concept, AI-generated."
-                    width={1200}
-                    height={1490}
-                  />
-                </div>
-                <figcaption>
-                <Caption />
-              </figcaption>
-              </figure>
-              <figure className="ads-sample">
-                <div className="ads-slot ads-r11" data-slot="2">
-                  <img
-                    src="/ads/samples/skincare.webp"
-                    alt="Sample ad for the fictional brand Low Tide, 1:1. Spec concept, AI-generated."
-                    width={1200}
-                    height={1490}
-                  />
-                </div>
-                <figcaption>
-                <Caption />
-              </figcaption>
-              </figure>
-              <figure className="ads-sample">
-                <div className="ads-slot ads-r45" data-slot="3">
-                  <img
-                    src="/ads/samples/homegoods.webp"
-                    alt="Sample ad for the fictional brand Brack and Co, 4:5. Spec concept, AI-generated."
-                    width={1200}
-                    height={1490}
-                  />
-                </div>
-                <figcaption>
-                <Caption />
-              </figcaption>
-              </figure>
+            <div>
+              <a className="ads-btn ads-btn-p" href={ADS_SPRINT_GO}>
+                Start my sprint — $297
+              </a>
             </div>
           </div>
         </section>

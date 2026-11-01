@@ -315,7 +315,8 @@ button, input, textarea { font: inherit; }
   display: inline-flex;
   align-items: center;
   gap: 0.4rem;
-  padding: 0.45rem 0.7rem;
+  min-height: 44px;
+  padding: 0.55rem 0.85rem;
   border-radius: 999px;
   border: 1px solid #333;
   background: #141414;
@@ -467,16 +468,27 @@ button, input, textarea { font: inherit; }
 
 .filters { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.2rem; }
 .filter {
+  display: inline-flex;
+  align-items: center;
   background: #100d09;
   color: var(--muted);
   border: 1px solid var(--line);
   border-radius: 999px;
-  padding: 0.35rem 0.8rem;
+  min-height: 44px;
+  padding: 0.55rem 0.9rem;
   cursor: pointer;
 }
 .filter.on { color: #1a1204; background: var(--gold); border-color: var(--gold); }
-.rank-grid { grid-template-columns: 1fr; }
-.rank-card { display: grid; grid-template-columns: 72px 1fr auto; gap: 1rem; align-items: center; }
+.rank-grid { grid-template-columns: minmax(0, 1fr); }
+.rank-card {
+  display: grid;
+  grid-template-columns: 72px minmax(0, 1fr) auto;
+  gap: 1rem;
+  align-items: center;
+  min-width: 0;
+}
+.rank-card > div { min-width: 0; }
+.rank-card h3, .rank-card p { overflow-wrap: anywhere; }
 .rank-num { font-family: Cinzel, serif; font-size: 1.6rem; color: var(--gold); }
 .pill {
   display: inline-flex;
@@ -585,8 +597,10 @@ footer {
   gap: 1.5rem;
   margin-bottom: 1.5rem;
 }
-.footer-grid a, .footer-grid p { display: flex; align-items: center; min-height: 44px; color: var(--muted); margin-top: 0; }
+.footer-grid > div { min-width: 0; }
+.footer-grid a, .footer-grid p { display: flex; align-items: center; min-height: 44px; color: var(--muted); margin-top: 0; max-width: 100%; overflow-wrap: anywhere; }
 .footer-grid p { display: block; min-height: 0; margin-top: 0.4rem; }
+footer a { display: inline-flex; align-items: center; min-height: 44px; max-width: 100%; overflow-wrap: anywhere; }
 .footer-mark { width: min(280px, 100%); margin-bottom: 0.8rem; border-radius: 12px; }
 .footer-products {
   color: var(--muted);
@@ -655,7 +669,7 @@ footer {
   .roster-grid, .card-grid, .trust-grid, .bridge-grid, .steps, .portrait-grid, .cta-split, .buzz-hero, .footer-grid, .notes, .rate-grid, .consult-offers, .cols-3, .cols-2 {
     grid-template-columns: minmax(0, 1fr);
   }
-  .rank-card { grid-template-columns: 52px 1fr; }
+  .rank-card { grid-template-columns: 52px minmax(0, 1fr); }
   .hero-copy { padding-top: 3rem; }
   .hero-media img { object-position: 70% 10%; }
   .display { font-size: clamp(2.6rem, 12vw, 4.2rem); }
@@ -680,6 +694,7 @@ footer {
   vertical-align: top;
 }
 .compare-table thead th { color: var(--gold); }
+.vs-hiring a { overflow-wrap: anywhere; }
 
 /* Consult rework 2026-10-19: what you get, 4 steps, one pricing card, cost tables */
 .consult-get { grid-template-columns: repeat(3, 1fr); }
