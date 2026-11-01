@@ -90,6 +90,11 @@ button, input, textarea { font: inherit; }
   min-height: 44px;
   display: inline-flex;
   align-items: center;
+  /* Wider tap target without moving anything: the padding is cancelled by the negative margin. */
+  min-width: 44px;
+  justify-content: center;
+  padding-inline: 0.25rem;
+  margin-inline: -0.25rem;
 }
 .nav-links a.active, .nav-links a:hover { color: var(--gold-bright); }
 .nav-links a.btn-primary,
@@ -685,6 +690,9 @@ footer a { display: inline-flex; align-items: center; min-height: 44px; max-widt
 
 .faq-list { display: grid; gap: 0.8rem; }
 .faq-list .trust h3 { margin-bottom: 0.35rem; }
+/* Card-title links (/about contact cards, /buzz headlines): 44px tap height.
+   Vertical padding on an inline box grows the hit area but not the line box, so the layout doesn't move. */
+.trust h3 a, .story h3 a { padding-block: 0.75rem; }
 .table-wrap { overflow-x: auto; max-width: 100%; min-width: 0; margin: 1.2rem 0 1.6rem; }
 .compare-table { width: 100%; border-collapse: collapse; min-width: 0; }
 .compare-table th, .compare-table td {

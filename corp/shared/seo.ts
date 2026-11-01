@@ -177,6 +177,9 @@ export const NOT_FOUND_SEO: SeoPage = {
   noindex: true,
 };
 
+/** Static free planner page shipped from public/ads/creative-calculator/index.html. */
+export const CREATIVE_CALCULATOR_URL = "https://agenthiveinc.com/ads/creative-calculator/";
+
 export function sitemapXml(): string {
   const urls = PAGE_SEO.filter((page) => !page.noindex)
     .map((page) => {
@@ -188,7 +191,9 @@ export function sitemapXml(): string {
     .join("\n");
   // Static file in public/ram-deals/. Not a PAGE_SEO route, so prerender must not rewrite it.
   const ramDeals = `  <url>\n    <loc>https://agenthiveinc.com/ram-deals/</loc>\n    <lastmod>2026-11-01</lastmod>\n  </url>`;
-  return `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">\n${urls}\n${ramDeals}\n</urlset>\n`;
+  // Static file in public/ads/creative-calculator/. Same pattern as /ram-deals: not a PAGE_SEO route.
+  const creativeCalculator = `  <url>\n    <loc>${CREATIVE_CALCULATOR_URL}</loc>\n    <lastmod>2026-11-01</lastmod>\n  </url>`;
+  return `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">\n${urls}\n${ramDeals}\n${creativeCalculator}\n</urlset>\n`;
 }
 
 export function sitemapIndexXml(): string {

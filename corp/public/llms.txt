@@ -12,12 +12,12 @@ AgentHive Inc is a Palm Coast consultant who builds: after-hours booking plus li
 - [Rankings](https://agenthiveinc.com/rankings): Live ranking of public AgentHive Inc apps.
 - [Custom Builds](https://agenthiveinc.com/build): First Deploy AI embeds. Built and run on a written plan.
 - [Consult](https://agenthiveinc.com/consult): Free 30-minute qualifier, then $75 / 30 min, $150 / hour, or a 10-hour pack at $1,250. Gold hive page — not the grey firstdeploy.ai/consult theme.
-- [What an AI consultant costs](https://agenthiveinc.com/consult/ai-consultant-cost): Published AI consultant prices next to ours, checked Oct 19, 2026.
-- [AI help in 30-minute blocks](https://agenthiveinc.com/consult/ai-help-30-minute-blocks): A comparison page with dated, plain-text sources.
-- [AI consultant vs agency vs fractional AI officer](https://agenthiveinc.com/consult/ai-consultant-vs-agency-vs-fractional): Published entry prices for each model, dated.
-- [AI consultant hourly rate](https://agenthiveinc.com/consult/ai-consultant-hourly-rate): What $75, $100, $150 and $350 an hour buy.
-- [Free AI consultation](https://agenthiveinc.com/consult/free-ai-consultation): What a good free 30 minutes should leave you with.
-- [AI audit cost](https://agenthiveinc.com/consult/ai-audit-cost): Published audit prices and when one paid hour is enough.
+- [What an AI consultant costs](https://agenthiveinc.com/consult/ai-consultant-cost): AgentHive Inc prices: free 30 minutes, then $75 / 30 min, $150 / hour, or $1,250 for 10 hours.
+- [AI help in 30-minute blocks](https://agenthiveinc.com/consult/ai-help-30-minute-blocks): 30 minutes for $75 or an hour for $150, after a free 30-minute call. US-wide, by video.
+- [Hourly AI help, a 10-hour pack, or a monthly retainer](https://agenthiveinc.com/consult/ai-consultant-vs-agency-vs-fractional): Three ways to buy time from AgentHive Inc: $75 / 30 min, a $1,250 pack, or AI Concierge at $2,000/mo.
+- [AI consultant hourly rate](https://agenthiveinc.com/consult/ai-consultant-hourly-rate): $150 an hour, $75 for 30 minutes, or $125 an hour inside a 10-hour pack.
+- [Free AI consultation](https://agenthiveinc.com/consult/free-ai-consultation): What the free 30-minute call covers: whether the task fits, the first step, and whether paid time is needed.
+- [AI audit cost](https://agenthiveinc.com/consult/ai-audit-cost): We don't sell a separate audit. A free 30-minute call, then $75 or $150 if you want the work set up.
 - [Disclosure](https://agenthiveinc.com/disclosure): We earn commissions only on tools we use ourselves.
 - [AI Concierge](https://agenthiveinc.com/concierge): $2,000/mo done-with-you retainer. Audit, optimize, then automate. Two 45-minute sessions a month, unlimited async Slack or text, and a shared asset inventory. Details and checkout on https://agenthiveinc.com/concierge, or book a free 15–30 minute bottleneck call.
 
