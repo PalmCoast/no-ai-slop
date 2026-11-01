@@ -71,6 +71,10 @@ MIT
 
 [corp/](corp/README.md) is the flagship site for [agenthiveinc.com](https://agenthiveinc.com): AgentHive Inc (AGENTHIVEINCCOM LLC, Palm Coast) AI consultant shop, First Deploy AI, IndexMe.lol, The Buzz, and a live ranking of the public Netlify portfolio. See [corp/README.md](corp/README.md).
 
+## Graham
+
+[Graham](graham/README.md) is Daniel Graham's line. Unknown callers hit the desk. People on the contacts list still ring the cell. Graham books, takes the note, alerts when the work has stopped, and blocks a mill script. The body double talks and cuts a caption reel. The same being stands up under a client's surname for $1,750 setup, then $250/mo. See [graham/README.md](graham/README.md).
+
 ## AskYard
 
 [AskYard](askyard/README.md) is a First Deploy AI product at [askyard.firstdeploy.ai](https://askyard.firstdeploy.ai): free AI answers for plumbers, teachers, receptionists, earth movers, and anyone else with a question. Ranked by how often people ask. Reputation meter on `/rep`. Marquee lights on the same site at [marquee.firstdeploy.ai](https://marquee.firstdeploy.ai/). Apps for sale on the same site. See [askyard/README.md](askyard/README.md).
