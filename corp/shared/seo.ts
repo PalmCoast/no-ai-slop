@@ -187,7 +187,9 @@ export function sitemapXml(): string {
       return `  <url>\n    <loc>${canonicalFor(page.path)}</loc>\n    <lastmod>${CONTENT_LASTMOD}</lastmod>${image}\n  </url>`;
     })
     .join("\n");
-  return `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">\n${urls}\n</urlset>\n`;
+  // Static file in public/ram-deals/. Not a PAGE_SEO route, so prerender must not rewrite it.
+  const ramDeals = `  <url>\n    <loc>https://agenthiveinc.com/ram-deals/</loc>\n    <lastmod>2026-11-01</lastmod>\n  </url>`;
+  return `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">\n${urls}\n${ramDeals}\n</urlset>\n`;
 }
 
 export function sitemapIndexXml(): string {

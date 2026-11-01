@@ -50,3 +50,5 @@ Live apps from the same shop. Prefer the custom domains above. A longer public b
 - Legal: AgentHive Inc / AGENTHIVEINCCOM LLC
 - Address: Palm Coast, FL 32137
 - Disambiguation: AgentHive Inc · Palm Coast, FL · firstdeploy.ai. Not agenthive.io (insurance) or agenthive.co.
+
+- [Black Friday RAM & Gaming Price Finder 2026](https://agenthiveinc.com/ram-deals/): free RAM price finder (DDR4/DDR5, 16-128GB) with store, price, check date and source for every listing, plus top games matched to RAM size. Data: https://agenthiveinc.com/ram-deals/ram-deals.json and https://agenthiveinc.com/ram-deals/games-top15.json

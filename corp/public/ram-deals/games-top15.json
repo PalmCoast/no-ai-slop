@@ -1,0 +1,425 @@
+{
+ "updated": "2026-11-01",
+ "source_list_name": "Steam top sellers (US) + Steam concurrent players",
+ "source_list_url": "https://store.steampowered.com/charts/topsellers/US",
+ "games": [
+  {
+   "rank": 1,
+   "name": "Call of Duty: Modern Warfare 4",
+   "appid": 4435490,
+   "store_url": "https://store.steampowered.com/app/4435490/",
+   "requirements_url": "https://store.steampowered.com/app/4435490/",
+   "min_ram_gb": 8,
+   "rec_ram_gb": 16,
+   "requirements_checked": "2026-11-01",
+   "price_usd": 69.99,
+   "price_source_url": "https://store.steampowered.com/api/appdetails?appids=4435490&cc=us",
+   "price_checked": "2026-11-01"
+  },
+  {
+   "rank": 2,
+   "name": "Phantom Blade Zero",
+   "appid": 4115450,
+   "store_url": "https://store.steampowered.com/app/4115450/",
+   "requirements_url": "https://store.steampowered.com/app/4115450/",
+   "min_ram_gb": 16,
+   "rec_ram_gb": 16,
+   "requirements_checked": "2026-11-01",
+   "price_usd": 59.99,
+   "price_source_url": "https://store.steampowered.com/api/appdetails?appids=4115450&cc=us",
+   "price_checked": "2026-11-01"
+  },
+  {
+   "rank": 3,
+   "name": "Probably Stolen - Cyberpunk Shopkeeper Sim",
+   "appid": 4348910,
+   "store_url": "https://store.steampowered.com/app/4348910/",
+   "requirements_url": "https://store.steampowered.com/app/4348910/",
+   "min_ram_gb": 8,
+   "rec_ram_gb": null,
+   "requirements_checked": "2026-11-01",
+   "price_usd": 17.99,
+   "price_source_url": "https://store.steampowered.com/api/appdetails?appids=4348910&cc=us",
+   "price_checked": "2026-11-01"
+  },
+  {
+   "rank": 4,
+   "name": "Cyberpunk 2077",
+   "appid": 1091500,
+   "store_url": "https://store.steampowered.com/app/1091500/",
+   "requirements_url": "https://store.steampowered.com/app/1091500/",
+   "min_ram_gb": 12,
+   "rec_ram_gb": 16,
+   "requirements_checked": "2026-11-01",
+   "price_usd": 59.99,
+   "price_source_url": "https://store.steampowered.com/api/appdetails?appids=1091500&cc=us",
+   "price_checked": "2026-11-01"
+  },
+  {
+   "rank": 5,
+   "name": "Moon Sweepers",
+   "appid": 5335510,
+   "store_url": "https://store.steampowered.com/app/5335510/",
+   "requirements_url": "https://store.steampowered.com/app/5335510/",
+   "min_ram_gb": 8,
+   "rec_ram_gb": 16,
+   "requirements_checked": "2026-11-01",
+   "price_usd": 8.99,
+   "price_source_url": "https://store.steampowered.com/api/appdetails?appids=5335510&cc=us",
+   "price_checked": "2026-11-01"
+  },
+  {
+   "rank": 6,
+   "name": "WARDOGS",
+   "appid": 1867240,
+   "store_url": "https://store.steampowered.com/app/1867240/",
+   "requirements_url": "https://store.steampowered.com/app/1867240/",
+   "min_ram_gb": 16,
+   "rec_ram_gb": 16,
+   "requirements_checked": "2026-11-01",
+   "price_usd": 39.99,
+   "price_source_url": "https://store.steampowered.com/api/appdetails?appids=1867240&cc=us",
+   "price_checked": "2026-11-01"
+  },
+  {
+   "rank": 7,
+   "name": "Dead by Daylight",
+   "appid": 381210,
+   "store_url": "https://store.steampowered.com/app/381210/",
+   "requirements_url": "https://store.steampowered.com/app/381210/",
+   "min_ram_gb": 8,
+   "rec_ram_gb": 8,
+   "requirements_checked": "2026-11-01",
+   "price_usd": 7.99,
+   "price_source_url": "https://store.steampowered.com/api/appdetails?appids=381210&cc=us",
+   "price_checked": "2026-11-01"
+  },
+  {
+   "rank": 8,
+   "name": "Enshrouded",
+   "appid": 1203620,
+   "store_url": "https://store.steampowered.com/app/1203620/",
+   "requirements_url": "https://store.steampowered.com/app/1203620/",
+   "min_ram_gb": 16,
+   "rec_ram_gb": 16,
+   "requirements_checked": "2026-11-01",
+   "price_usd": 39.99,
+   "price_source_url": "https://store.steampowered.com/api/appdetails?appids=1203620&cc=us",
+   "price_checked": "2026-11-01"
+  },
+  {
+   "rank": 9,
+   "name": "Rust",
+   "appid": 252490,
+   "store_url": "https://store.steampowered.com/app/252490/",
+   "requirements_url": "https://store.steampowered.com/app/252490/",
+   "min_ram_gb": 12,
+   "rec_ram_gb": 16,
+   "requirements_checked": "2026-11-01",
+   "price_usd": 19.99,
+   "price_source_url": "https://store.steampowered.com/api/appdetails?appids=252490&cc=us",
+   "price_checked": "2026-11-01"
+  },
+  {
+   "rank": 10,
+   "name": "Crimson Desert Enhanced",
+   "appid": 3321460,
+   "store_url": "https://store.steampowered.com/app/3321460/",
+   "requirements_url": "https://store.steampowered.com/app/3321460/",
+   "min_ram_gb": 16,
+   "rec_ram_gb": 16,
+   "requirements_checked": "2026-11-01",
+   "price_usd": 69.99,
+   "price_source_url": "https://store.steampowered.com/api/appdetails?appids=3321460&cc=us",
+   "price_checked": "2026-11-01"
+  },
+  {
+   "rank": 11,
+   "name": "FINAL FANTASY RESONANCE",
+   "appid": 3259780,
+   "store_url": "https://store.steampowered.com/app/3259780/",
+   "requirements_url": "https://store.steampowered.com/app/3259780/",
+   "min_ram_gb": 8,
+   "rec_ram_gb": 8,
+   "requirements_checked": "2026-11-01",
+   "price_usd": 49.99,
+   "price_source_url": "https://store.steampowered.com/api/appdetails?appids=3259780&cc=us",
+   "price_checked": "2026-11-01"
+  },
+  {
+   "rank": 12,
+   "name": "EA SPORTS FC 27",
+   "appid": 4080220,
+   "store_url": "https://store.steampowered.com/app/4080220/",
+   "requirements_url": "https://store.steampowered.com/app/4080220/",
+   "min_ram_gb": 8,
+   "rec_ram_gb": 12,
+   "requirements_checked": "2026-11-01",
+   "price_usd": 69.99,
+   "price_source_url": "https://store.steampowered.com/api/appdetails?appids=4080220&cc=us",
+   "price_checked": "2026-11-01"
+  },
+  {
+   "rank": 13,
+   "name": "DayZ",
+   "appid": 221100,
+   "store_url": "https://store.steampowered.com/app/221100/",
+   "requirements_url": "https://store.steampowered.com/app/221100/",
+   "min_ram_gb": 8,
+   "rec_ram_gb": 12,
+   "requirements_checked": "2026-11-01",
+   "price_usd": 24.99,
+   "price_source_url": "https://store.steampowered.com/api/appdetails?appids=221100&cc=us",
+   "price_checked": "2026-11-01"
+  },
+  {
+   "rank": 14,
+   "name": "HELLDIVERS 2",
+   "appid": 553850,
+   "store_url": "https://store.steampowered.com/app/553850/",
+   "requirements_url": "https://store.steampowered.com/app/553850/",
+   "min_ram_gb": 8,
+   "rec_ram_gb": 16,
+   "requirements_checked": "2026-11-01",
+   "price_usd": 39.99,
+   "price_source_url": "https://store.steampowered.com/api/appdetails?appids=553850&cc=us",
+   "price_checked": "2026-11-01"
+  },
+  {
+   "rank": 15,
+   "name": "ARC Raiders",
+   "appid": 1808500,
+   "store_url": "https://store.steampowered.com/app/1808500/",
+   "requirements_url": "https://store.steampowered.com/app/1808500/",
+   "min_ram_gb": 12,
+   "rec_ram_gb": 16,
+   "requirements_checked": "2026-11-01",
+   "price_usd": 39.99,
+   "price_source_url": "https://store.steampowered.com/api/appdetails?appids=1808500&cc=us",
+   "price_checked": "2026-11-01"
+  }
+ ],
+ "ram_guide": {
+  "16": {
+   "text": "14 of the 15 games list a recommended RAM of 16GB or less on Steam; Probably Stolen lists only an 8GB minimum and no recommendation. Phantom Blade Zero, WARDOGS, Enshrouded and Crimson Desert Enhanced list 16GB as both minimum and recommended, so 16GB meets their requirement with nothing to spare.",
+   "sources": [
+    {
+     "name": "Call of Duty: Modern Warfare 4 (Steam)",
+     "url": "https://store.steampowered.com/app/4435490/"
+    },
+    {
+     "name": "Phantom Blade Zero (Steam)",
+     "url": "https://store.steampowered.com/app/4115450/"
+    },
+    {
+     "name": "Probably Stolen - Cyberpunk Shopkeeper Sim (Steam)",
+     "url": "https://store.steampowered.com/app/4348910/"
+    },
+    {
+     "name": "Cyberpunk 2077 (Steam)",
+     "url": "https://store.steampowered.com/app/1091500/"
+    },
+    {
+     "name": "Moon Sweepers (Steam)",
+     "url": "https://store.steampowered.com/app/5335510/"
+    },
+    {
+     "name": "WARDOGS (Steam)",
+     "url": "https://store.steampowered.com/app/1867240/"
+    },
+    {
+     "name": "Dead by Daylight (Steam)",
+     "url": "https://store.steampowered.com/app/381210/"
+    },
+    {
+     "name": "Enshrouded (Steam)",
+     "url": "https://store.steampowered.com/app/1203620/"
+    },
+    {
+     "name": "Rust (Steam)",
+     "url": "https://store.steampowered.com/app/252490/"
+    },
+    {
+     "name": "Crimson Desert Enhanced (Steam)",
+     "url": "https://store.steampowered.com/app/3321460/"
+    },
+    {
+     "name": "FINAL FANTASY RESONANCE (Steam)",
+     "url": "https://store.steampowered.com/app/3259780/"
+    },
+    {
+     "name": "EA SPORTS FC 27 (Steam)",
+     "url": "https://store.steampowered.com/app/4080220/"
+    },
+    {
+     "name": "DayZ (Steam)",
+     "url": "https://store.steampowered.com/app/221100/"
+    },
+    {
+     "name": "HELLDIVERS 2 (Steam)",
+     "url": "https://store.steampowered.com/app/553850/"
+    },
+    {
+     "name": "ARC Raiders (Steam)",
+     "url": "https://store.steampowered.com/app/1808500/"
+    }
+   ]
+  },
+  "32": {
+   "text": "With 32GB you're 16GB above the highest recommended RAM of any top-15 game, and you meet the 32GB recommendation of ACE COMBAT 8: WINGS OF THEVE ($69.99), BeamNG.drive ($24.99), Where Winds Meet (free to play) and Wuthering Waves (free to play) (Steam requirements and prices checked 2026-11-01).",
+   "sources": [
+    {
+     "name": "ACE COMBAT 8: WINGS OF THEVE requirements (Steam)",
+     "url": "https://store.steampowered.com/app/2288340/"
+    },
+    {
+     "name": "ACE COMBAT 8: WINGS OF THEVE price (Steam API, checked 2026-11-01)",
+     "url": "https://store.steampowered.com/api/appdetails?appids=2288340&cc=us"
+    },
+    {
+     "name": "BeamNG.drive requirements (Steam)",
+     "url": "https://store.steampowered.com/app/284160/"
+    },
+    {
+     "name": "BeamNG.drive price (Steam API, checked 2026-11-01)",
+     "url": "https://store.steampowered.com/api/appdetails?appids=284160&cc=us"
+    },
+    {
+     "name": "Where Winds Meet requirements (Steam)",
+     "url": "https://store.steampowered.com/app/3564740/"
+    },
+    {
+     "name": "Wuthering Waves requirements (Steam)",
+     "url": "https://store.steampowered.com/app/3513350/"
+    }
+   ]
+  },
+  "64": {
+   "text": "None of the 15 games, and none of the four 32GB-tier games, list a recommendation above 32GB on Steam. 64GB goes beyond every listed requirement here; it's headroom for heavier uses like large mod packs, streaming or recording while you play, or running local AI models.",
+   "sources": [
+    {
+     "name": "Call of Duty: Modern Warfare 4 (Steam)",
+     "url": "https://store.steampowered.com/app/4435490/"
+    },
+    {
+     "name": "Phantom Blade Zero (Steam)",
+     "url": "https://store.steampowered.com/app/4115450/"
+    },
+    {
+     "name": "Probably Stolen - Cyberpunk Shopkeeper Sim (Steam)",
+     "url": "https://store.steampowered.com/app/4348910/"
+    },
+    {
+     "name": "Cyberpunk 2077 (Steam)",
+     "url": "https://store.steampowered.com/app/1091500/"
+    },
+    {
+     "name": "Moon Sweepers (Steam)",
+     "url": "https://store.steampowered.com/app/5335510/"
+    },
+    {
+     "name": "WARDOGS (Steam)",
+     "url": "https://store.steampowered.com/app/1867240/"
+    },
+    {
+     "name": "Dead by Daylight (Steam)",
+     "url": "https://store.steampowered.com/app/381210/"
+    },
+    {
+     "name": "Enshrouded (Steam)",
+     "url": "https://store.steampowered.com/app/1203620/"
+    },
+    {
+     "name": "Rust (Steam)",
+     "url": "https://store.steampowered.com/app/252490/"
+    },
+    {
+     "name": "Crimson Desert Enhanced (Steam)",
+     "url": "https://store.steampowered.com/app/3321460/"
+    },
+    {
+     "name": "FINAL FANTASY RESONANCE (Steam)",
+     "url": "https://store.steampowered.com/app/3259780/"
+    },
+    {
+     "name": "EA SPORTS FC 27 (Steam)",
+     "url": "https://store.steampowered.com/app/4080220/"
+    },
+    {
+     "name": "DayZ (Steam)",
+     "url": "https://store.steampowered.com/app/221100/"
+    },
+    {
+     "name": "HELLDIVERS 2 (Steam)",
+     "url": "https://store.steampowered.com/app/553850/"
+    },
+    {
+     "name": "ARC Raiders (Steam)",
+     "url": "https://store.steampowered.com/app/1808500/"
+    },
+    {
+     "name": "ACE COMBAT 8: WINGS OF THEVE requirements (Steam)",
+     "url": "https://store.steampowered.com/app/2288340/"
+    },
+    {
+     "name": "BeamNG.drive requirements (Steam)",
+     "url": "https://store.steampowered.com/app/284160/"
+    },
+    {
+     "name": "Where Winds Meet requirements (Steam)",
+     "url": "https://store.steampowered.com/app/3564740/"
+    },
+    {
+     "name": "Wuthering Waves requirements (Steam)",
+     "url": "https://store.steampowered.com/app/3513350/"
+    }
+   ]
+  }
+ },
+ "ram_tool_32gb_tier_games": [
+  {
+   "name": "ACE COMBAT 8: WINGS OF THEVE",
+   "appid": 2288340,
+   "store_url": "https://store.steampowered.com/app/2288340/",
+   "requirements_url": "https://store.steampowered.com/app/2288340/",
+   "min_ram_gb": 16,
+   "rec_ram_gb": 32,
+   "requirements_checked": "2026-11-01",
+   "price_usd": 69.99,
+   "price_source_url": "https://store.steampowered.com/api/appdetails?appids=2288340&cc=us",
+   "price_checked": "2026-11-01"
+  },
+  {
+   "name": "BeamNG.drive",
+   "appid": 284160,
+   "store_url": "https://store.steampowered.com/app/284160/",
+   "requirements_url": "https://store.steampowered.com/app/284160/",
+   "min_ram_gb": 16,
+   "rec_ram_gb": 32,
+   "requirements_checked": "2026-11-01",
+   "price_usd": 24.99,
+   "price_source_url": "https://store.steampowered.com/api/appdetails?appids=284160&cc=us",
+   "price_checked": "2026-11-01"
+  },
+  {
+   "name": "Where Winds Meet",
+   "appid": 3564740,
+   "store_url": "https://store.steampowered.com/app/3564740/",
+   "requirements_url": "https://store.steampowered.com/app/3564740/",
+   "min_ram_gb": 16,
+   "rec_ram_gb": 32,
+   "requirements_checked": "2026-11-01",
+   "free_to_play": true
+  },
+  {
+   "name": "Wuthering Waves",
+   "appid": 3513350,
+   "store_url": "https://store.steampowered.com/app/3513350/",
+   "requirements_url": "https://store.steampowered.com/app/3513350/",
+   "min_ram_gb": 16,
+   "rec_ram_gb": 32,
+   "requirements_checked": "2026-11-01",
+   "free_to_play": true
+  }
+ ]
+}
