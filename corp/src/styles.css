@@ -90,9 +90,9 @@ button, input, textarea { font: inherit; }
   min-height: 44px;
   display: inline-flex;
   align-items: center;
-  /* Wider tap target without moving anything: the padding is cancelled by the negative margin. */
-  min-width: 44px;
-  justify-content: center;
+}
+/* Text links only (not the button): 8px wider tap target, cancelled by the negative margin so nothing moves. */
+.nav-links a:not(.btn) {
   padding-inline: 0.25rem;
   margin-inline: -0.25rem;
 }
