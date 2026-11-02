@@ -39,6 +39,12 @@ describe("/picks storefront", () => {
     }
   });
 
+  it("keeps the deep-link anchors other pages use", () => {
+    for (const id of ["netlify", "mailcheap", "higgsfield", "ad-sprint", "brooms-tees", "brooms-gear", "ram-deals"]) {
+      expect(page.match(new RegExp(`id="${id}"`, "g"))?.length, id).toBe(1);
+    }
+  });
+
   it("carries no banned copy", () => {
     expect(page).not.toMatch(/refund|money-back|guarantee|coupon|promo code|™/i);
     expect(page).not.toMatch(/HVAC|plumb|roofer|roofing|electrician|landscap|Flagler|Volusia|missed call/i);
