@@ -48,7 +48,7 @@
     posthog.init("phc_y9BPZxQLpF7FviUKN6JSBqSUD7fcnwXuXzHzDQ8asLjv", {
       api_host: "https://us.i.posthog.com",
       person_profiles: "identified_only",
-      capture_pageview: true,
+      capture_pageview: "history_change",
       autocapture: false,
       disable_session_recording: true,
     });
