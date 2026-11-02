@@ -1,5 +1,6 @@
 import { useEffect, useState, type FormEvent } from "react";
 import AdsShell from "../components/AdsShell";
+import { PICKS_PATH } from "../../shared/brand";
 import { ADS_ENGINE_GO, ADS_FAQS, ADS_INTAKE_PATH, ADS_SPRINT_GO } from "../../shared/ads";
 
 export default function Ads() {
@@ -250,6 +251,9 @@ export default function Ads() {
             <a className="ads-btn ads-btn-p" href={ADS_SPRINT_GO}>
               Start my sprint — $297
             </a>
+            <p className="ads-final-line">
+              Want the tools behind the ads? <a href={PICKS_PATH}>See our picks</a>.
+            </p>
           </div>
         </section>
       </main>
