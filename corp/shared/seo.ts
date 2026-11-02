@@ -29,6 +29,7 @@ import {
   CONTENT_LASTMOD,
   POSTAL_CODE,
   PRODUCT_FOOTER_LINKS,
+  PICKS_URL,
 } from "./brand.ts";
 import { DANIEL_BIO, DANIEL_ID, DANIEL_JOB_TITLE, DANIEL_NAME, DANIEL_SAME_AS, DANIEL_URL } from "./author.ts";
 import { CONCIERGE_BOOK_LABEL, CONCIERGE_NAME, CONCIERGE_PRICE, CONCIERGE_PRICE_AMOUNT, CONCIERGE_STRIPE_URL, CONCIERGE_URL } from "./concierge.ts";
@@ -66,18 +67,18 @@ export type SeoPage = {
 export const PAGE_SEO: SeoPage[] = [
   {
     path: "/",
-    title: "AgentHive Inc — working AI in field operations",
+    title: "AgentHive Inc — done-for-you AI operator for funded teams",
     description:
-      "AgentHive Inc embeds working AI in field operations from Palm Coast. Book a free 30, then $75/30 min or $150/hr.",
+      "Done-for-you AI for funded companies and 30–200 person teams: AI Ad Sprint, AI Concierge, and Picks. Free 30-minute call, then $75/30 min or $150/hr.",
     h1: HERO_H1,
-    bodyHtml: `<main id="route-home" class="section"><div class="container"><h1 class="display">${HERO_H1}</h1><p class="lede">${BRAND_NAME} is a Palm Coast AI consultant who builds. ${HERO_WHAT}</p><p>${HERO_WHY}</p><p>${FD_PRICE_LINE} ${FD_PROMISE}. ${INDEXME_NAME} is the ${INDEXME_BLURB} at indexme.lol.</p><p><a href="${FD_URL}">${FD_CTA_LABEL}</a> · <a href="${BOOK_HREF}">${BOOK_CTA_LABEL}</a> · Consult ${CONSULT_DISPLAY}</p></div></main>`,
+    bodyHtml: `<main id="route-home" class="section"><div class="container"><h1 class="display">${HERO_H1}</h1><p class="lede">${BRAND_NAME} is a Palm Coast AI consultant who builds. ${HERO_WHAT}</p><p>${HERO_WHY}</p><p>${FD_PRICE_LINE} ${FD_PROMISE}. ${INDEXME_NAME} is the ${INDEXME_BLURB} at indexme.lol.</p><p><a href="/ads">AI Ad Sprint</a> · <a href="/concierge">AI Concierge</a> · <a href="/picks/">Picks</a> · <a href="${FD_URL}">${FD_CTA_LABEL}</a> · <a href="${BOOK_HREF}">${BOOK_CTA_LABEL}</a> · Consult ${CONSULT_DISPLAY}</p></div></main>`,
   },
   {
     path: "/about",
     title: "About AgentHive Inc — AGENTHIVEINCCOM LLC, Palm Coast",
-    description: `${BRAND_NAME} is the Palm Coast AI consultant shop behind ${FD_NAME}. Legal name ${LEGAL_NAME}. Call ${CONSULT_DISPLAY}.`,
+    description: `${BRAND_NAME} is the Palm Coast AI operator behind ${FD_NAME}. Legal name ${LEGAL_NAME}. Call ${CONSULT_DISPLAY}.`,
     h1: "About AgentHive Inc",
-    bodyHtml: `<main id="route-about" class="section"><div class="container"><h1 class="display">About AgentHive Inc</h1><p class="lede">${BRAND_NAME} / ${LEGAL_NAME} is the Palm Coast AI consultant shop that builds and ships. Daniel Graham embeds working AI in field operations, then leaves it running.</p><p>Contact: <a href="${BOOK_HREF}">${CONSULT_DISPLAY}</a>. ${FD_NAME} consult ${CONSULT_DISPLAY}. Shop address ${ADDRESS_LINE}.</p><p>This page is the company record for ${BRAND_NAME} at agenthiveinc.com — not QpiAI, not agenthive.io (insurance), not agenthive.co, not an OSS org with a similar name. The money homepage stays on the work.</p></div></main>`,
+    bodyHtml: `<main id="route-about" class="section"><div class="container"><h1 class="display">About AgentHive Inc</h1><p class="lede">${BRAND_NAME} / ${LEGAL_NAME} is the Palm Coast AI consulting company that builds and ships. Daniel Graham builds working AI for funded teams, then leaves it running.</p><p>Contact: <a href="${BOOK_HREF}">${CONSULT_DISPLAY}</a>. ${FD_NAME} consult ${CONSULT_DISPLAY}. Shop address ${ADDRESS_LINE}.</p><p>This page is the company record for ${BRAND_NAME} at agenthiveinc.com — not QpiAI, not agenthive.io (insurance), not agenthive.co, not an OSS org with a similar name. The money homepage stays on the work.</p></div></main>`,
   },
   {
     path: "/buzz",
@@ -100,11 +101,11 @@ export const PAGE_SEO: SeoPage[] = [
     description: `${FD_NAME} custom embeds: ${FD_PRICE}. ${FD_PROMISE}.`,
     h1: "One leak. Built on a written plan.",
     noindex: true,
-    bodyHtml: `<main id="route-build" class="section"><div class="container"><h1 class="display">One leak. Built on a written plan.</h1><p class="lede">${FD_NAME} embeds, ships the after-hours desk plus the live apps. ${FD_PRICE_LINE}</p><p>90-day projects: half upfront, half at completion. ${FD_PROMISE}. Consult ${CONSULT_DISPLAY} or start at ${FD_URL.replace("https://", "")}.</p></div></main>`,
+    bodyHtml: `<main id="route-build" class="section"><div class="container"><h1 class="display">One leak. Built on a written plan.</h1><p class="lede">${FD_NAME} embeds, ships the front desk plus the live apps. ${FD_PRICE_LINE}</p><p>90-day projects: half upfront, half at completion. ${FD_PROMISE}. Consult ${CONSULT_DISPLAY} or start at ${FD_URL.replace("https://", "")}.</p></div></main>`,
   },
   {
     path: "/consult",
-    title: "AI consultant for small business: free 30 min, then $75 | AgentHive Inc",
+    title: "AI consultant for funded teams: free 30 min, then $75 | AgentHive Inc",
     description: `Hands-on AI help for owners. Free 30-minute call, then ${CONSULT_RATES}, or a 10-hour pack for $1,250. Set up in your accounts.`,
     h1: "Hand over the AI job. We set it up with you.",
     bodyHtml: `<main id="route-consult" class="section"><div class="container"><h1 class="display">Hand over the AI job. We set it up with you.</h1><p class="lede">Tell Daniel Graham the task that eats your week. On a free 30-minute call you find out if AI can take it. If it can, paid hours go to building it in your own accounts until it runs.</p><p>Free 30 minutes. Then $75 / 30 minutes, $150 / hour, or a 10-hour pack for $1,250 ($625 up front). Call ${CONSULT_DISPLAY}.</p><p>Compare: <a href="${CONSULT_COST_URL}">what an AI consultant costs</a>. Need someone monthly? <a href="${CONCIERGE_URL}">${CONCIERGE_NAME}</a> is the ${CONCIERGE_PRICE} retainer.</p></div></main>`,
@@ -143,7 +144,7 @@ export const PAGE_SEO: SeoPage[] = [
     path: "/disclosure",
     title: "Affiliate disclosure | AgentHive Inc",
     description:
-      "AgentHive Inc earns commissions only on tools it uses itself (Netlify, Lovable, ElevenLabs, Higgsfield). How affiliate links work on agenthiveinc.com.",
+      "AgentHive Inc earns commissions only on tools it uses itself (Netlify, Lovable, Higgsfield, MailCheap, Mercor, micro1). How affiliate links work on agenthiveinc.com.",
     h1: "Affiliate disclosure",
     bodyHtml: `<main id="route-disclosure" class="section"><div class="container"><h1 class="display">Affiliate disclosure</h1><p class="lede">${DISCLOSURE_LINE}</p><p>Some links on agenthiveinc.com may be affiliate links. If you sign up or buy through one, ${BRAND_NAME} (${LEGAL_NAME}) may earn a commission. The tools in our own stack that run affiliate programs: ${AFFILIATE_TOOLS.map((t) => `${t.name} (${t.use})`).join(", ")}. You pay the same price you would pay going direct. A commission does not decide what we recommend or build with, and the footer &ldquo;Featured on&rdquo; badges are not affiliate links. Questions: call ${CONSULT_DISPLAY}. Last updated ${DISCLOSURE_UPDATED}.</p></div></main>`,
   },
@@ -191,9 +192,11 @@ export function sitemapXml(): string {
     .join("\n");
   // Static file in public/ram-deals/. Not a PAGE_SEO route, so prerender must not rewrite it.
   const ramDeals = `  <url>\n    <loc>https://agenthiveinc.com/ram-deals/</loc>\n    <lastmod>2026-11-01</lastmod>\n  </url>`;
+  // Static file in public/picks/. Same pattern as /ram-deals: not a PAGE_SEO route.
+  const picks = `  <url>\n    <loc>${PICKS_URL}</loc>\n    <lastmod>2026-11-02</lastmod>\n    <image:image>\n      <image:loc>${PICKS_URL}og.png</image:loc>\n    </image:image>\n  </url>`;
   // Static file in public/ads/creative-calculator/. Same pattern as /ram-deals: not a PAGE_SEO route.
   const creativeCalculator = `  <url>\n    <loc>${CREATIVE_CALCULATOR_URL}</loc>\n    <lastmod>2026-11-01</lastmod>\n  </url>`;
-  return `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">\n${urls}\n${ramDeals}\n${creativeCalculator}\n</urlset>\n`;
+  return `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">\n${urls}\n${ramDeals}\n${creativeCalculator}\n${picks}\n</urlset>\n`;
 }
 
 export function sitemapIndexXml(): string {
@@ -249,7 +252,7 @@ export function organizationJsonLd() {
         address,
         areaServed: "US",
         parentOrganization: { "@id": orgId },
-        description: `${BRAND_NAME} embeds working AI in field operations. ${FD_NAME} ships the after-hours desk. ${ADDRESS_LINE}.`,
+        description: `${BRAND_NAME} is a done-for-you AI operator for funded teams: AI Ad Sprint, AI Concierge, and Picks. ${ADDRESS_LINE}.`,
       },
     ],
   };
@@ -348,7 +351,7 @@ export function jsonLdFor(page: SeoPage): object | null {
             addressRegion: ADDRESS_REGION,
             addressCountry: ADDRESS_COUNTRY,
           },
-          description: `Hands-on AI consulting for small business owners. Free 30-minute call, then ${CONSULT_RATES}, or a 10-hour pack at $1,250 ($625 up front).`,
+          description: `Hands-on AI consulting for funded teams and their leaders. Free 30-minute call, then ${CONSULT_RATES}, or a 10-hour pack at $1,250 ($625 up front).`,
           offers: [
             { "@type": "Offer", name: "Free 30-minute call", price: "0.00", priceCurrency: "USD" },
             { "@type": "Offer", name: "30 minutes", price: "75.00", priceCurrency: "USD" },

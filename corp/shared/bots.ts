@@ -91,6 +91,6 @@ export const HIVE_BOTS: HiveBot[] = [
     role: "Field Ops",
     initial: "H",
     tools: ["ServiceTitan", "Maps", "SMS"],
-    brief: "The after-hours desk. Missed calls, quotes, and the crew on the dirt.",
+    brief: "The brand front desk. Calls answered in your name, details sent to you.",
   },
 ];

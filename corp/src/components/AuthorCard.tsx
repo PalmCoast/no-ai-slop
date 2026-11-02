@@ -1,13 +1,13 @@
 import { Link } from "react-router-dom";
 import { DANIEL_BIO, DANIEL_JOB_TITLE, DANIEL_NAME } from "../../shared/author";
-import { CONSULT_DISPLAY, CONSULT_TEL, FD_NAME, FD_URL, FLICK_URL, INDEXME_URL, JOBPROOF_URL } from "../../shared/brand";
+import { CONSULT_DISPLAY, CONSULT_TEL, FD_NAME, FD_URL, FLICK_URL, INDEXME_URL, PICKS_PATH } from "../../shared/brand";
 
 const PRODUCTS = [
+  { href: PICKS_PATH, label: "Picks" },
+  { href: "/ads", label: "AI Ad Sprint" },
   { href: FD_URL, label: FD_NAME },
-  { href: "https://netyard.firstdeploy.ai/", label: "NetYard" },
   { href: INDEXME_URL, label: "IndexMe" },
   { href: FLICK_URL, label: "Flick" },
-  { href: JOBPROOF_URL, label: "JobProof" },
 ];
 
 export default function AuthorCard({ linked = false }: { linked?: boolean }) {

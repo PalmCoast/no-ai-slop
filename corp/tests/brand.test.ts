@@ -74,9 +74,9 @@ describe("AgentHive Inc brand facts", () => {
     expect(SEAT_CIRCUIT_NAME).toBe("Seat & Circuit");
     expect(SEAT_CIRCUIT_URL).toBe("https://infrastructure.agenthiveinc.com/");
     expect(CONSULT_RATES).toBe("$75 / 30 min · $150 / hour");
-    expect(HERO_H1).toMatch(/field operations/);
-    expect(HERO_WHAT).toMatch(/dirt, plants, and shops/);
-    expect(HERO_WHY).toMatch(/whiteboard/);
+    expect(HERO_H1).toMatch(/done-for-you AI operator/);
+    expect(HERO_WHAT).toMatch(/funded companies and 30–200 person teams/);
+    expect(`${HERO_H1} ${HERO_WHAT} ${HERO_WHY}`).not.toMatch(/field|dirt|shop|crew|whiteboard|missed/i);
     expect(FOOTER_LINE).toBe("AgentHive Inc · Palm Coast, FL · firstdeploy.ai");
     expect(OTHER_HIVES).toMatch(/agenthive\.io/);
     expect(OTHER_HIVES).toMatch(/agenthive\.co/);
@@ -85,14 +85,15 @@ describe("AgentHive Inc brand facts", () => {
   it("homepage teaches the consultant shop, not the 12-bot swarm", () => {
     const home = readFileSync(join(fileURLToPath(new URL("../src/pages/Home.tsx", import.meta.url))), "utf8");
     expect(home).toMatch(/AI consultant who builds/);
-    expect(home).toMatch(/HERO_H1|field operations/);
+    expect(home).toMatch(/HERO_H1/);
     expect(home).toMatch(/FD_NAME|First Deploy AI/);
     expect(home).toMatch(/FD_CTA_LABEL|Start First Deploy/);
     expect(home).toMatch(/BOOK_CTA_LABEL|Book the free 30/);
     expect(home).toMatch(/INDEXME_NAME|IndexMe/);
     expect(home).toMatch(/INDEXME_BLURB|IndexNow/);
     expect(home).toMatch(/FD_URL|firstdeploy\.ai/);
-    expect(home).toMatch(/commercial earth mover|dirty physical businesses/);
+    expect(home).toMatch(/PICKS_PATH/);
+    expect(home).not.toMatch(/commercial earth mover|dirty physical businesses|field owners|crew|whiteboard/i);
     expect(home).toMatch(/AskAiBar/);
     expect(home).toMatch(/queen-full\.webp/);
     expect(home).not.toMatch(/consult-operator/);
@@ -100,7 +101,7 @@ describe("AgentHive Inc brand facts", () => {
     expect(home).not.toMatch(/14 apps|\$70k/i);
     expect(home).not.toMatch(/netlify\.app/);
     const primaryHrefs = [...home.matchAll(/className="btn btn-primary"[^>]*href=\{([^}]+)\}/g)].map((m) => m[1]);
-    expect(new Set(primaryHrefs)).toEqual(new Set(["FD_URL", "BOOK_HREF"]));
+    expect(new Set(primaryHrefs)).toEqual(new Set(["BOOK_HREF", "PICKS_PATH"]));
   });
 
   it("About keeps Inc vs LLC, the shop line, and the 320 consult line", () => {
@@ -131,28 +132,36 @@ describe("AgentHive Inc brand facts", () => {
     expect(layout).not.toMatch(/INDEXME_|Live work|WriteHive|Bot Lock/);
     expect(MONEY_FOOTER_LINKS).toHaveLength(5);
     expect(MONEY_FOOTER_LINKS.map((link) => link.href)).toEqual([
-      "https://firstdeploy.ai/",
-      "https://firstdeploy.ai/#check",
-      "tel:+13203356186",
+      "/picks/",
+      "/ads",
+      "/concierge",
       "/consult",
-      "https://infrastructure.agenthiveinc.com/",
+      "tel:+13203356186",
     ]);
     expect(MONEY_FOOTER_LINKS.map((link) => link.label)).toEqual([
-      "First Deploy AI",
-      "2-minute check",
-      "Free 30",
+      "Picks",
+      "AI Ad Sprint",
+      "AI Concierge",
       "Consult",
-      "Seat & Circuit",
+      "Free 30",
     ]);
     expect(MONEY_FOOTER_LINKS.every((link) => !link.href.includes("netlify.app"))).toBe(true);
     expect(layout).toMatch(/footer-products/);
     expect(layout).toMatch(/PRODUCT_FOOTER_LINKS/);
     expect(PRODUCT_FOOTER_LINKS.map((link) => link.href)).toEqual([
-      "https://firstdeploy.ai",
+      "/picks/",
+      "/ads",
       "/concierge",
-      "https://netyard.firstdeploy.ai",
+      "https://firstdeploy.ai",
+      "/ram-deals/",
     ]);
-    expect(PRODUCT_FOOTER_LINKS.map((link) => link.label)).toEqual(["First Deploy", "AI Concierge", "NetYard"]);
+    expect(PRODUCT_FOOTER_LINKS.map((link) => link.label)).toEqual([
+      "Picks",
+      "AI Ad Sprint",
+      "AI Concierge",
+      "First Deploy",
+      "RAM & rig deals",
+    ]);
   });
 
   it("does not ship delivery promises or guarantee wording", () => {

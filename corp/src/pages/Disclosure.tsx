@@ -17,7 +17,7 @@ export default function Disclosure() {
         </h1>
         <p className="lede">{DISCLOSURE_LINE}</p>
         <p className="muted">
-          {BRAND_NAME} ({LEGAL_NAME}) is a Palm Coast, Florida AI consultant shop. This page covers agenthiveinc.com.
+          {BRAND_NAME} ({LEGAL_NAME}) is a Palm Coast, Florida AI consulting company. This page covers agenthiveinc.com.
         </p>
 
         <h2>The short version</h2>

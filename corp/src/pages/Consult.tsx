@@ -62,7 +62,7 @@ export default function Consult() {
         </div>
         <div className="hero-copy">
           <div className="eyebrow">
-            <span className="dot" /> AI consulting for small business owners
+            <span className="dot" /> AI consulting for funded teams and their leaders
           </div>
           <h1 className="display">
             Hand over the AI job.
@@ -192,7 +192,7 @@ export default function Consult() {
       <section className="section" id="ai-consultant-cost">
         <div className="container">
           <p>
-            AI consulting from Palm Coast, Florida (Flagler County), by video for owners anywhere in the US. Read{" "}
+            AI consulting from Palm Coast, Florida, by video for leaders anywhere in the US. Read{" "}
             <Link to={CONSULT_COST_PATH}>what an AI consultant costs</Link> before you book. Related:{" "}
             <Link to={CONCIERGE_PATH}>{CONCIERGE_NAME}</Link>, a{" "}
             <a href="https://ainexus360.com/">fixed-fee audit</a> at AI Nexus 360,{" "}

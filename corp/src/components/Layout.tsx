@@ -8,24 +8,29 @@ import {
   CONSULT_DISPLAY,
   CONSULT_TEL,
   FD_NAME,
-  FD_URL,
   FEATURED_ON,
   LEGAL_NAME,
   ADDRESS_LINE,
   FOOTER_LINE,
   MONEY_FOOTER_LINKS,
   OTHER_HIVES,
+  PICKS_PATH,
   PRODUCT_FOOTER_LINKS,
 } from "../../shared/brand";
-import { DISCLOSURE_LINE, DISCLOSURE_PATH } from "../../shared/disclosure";
+import { AFFILIATE_TOOLS, DISCLOSURE_LINE, DISCLOSURE_PATH } from "../../shared/disclosure";
 
+const PARTNER_LINKS = AFFILIATE_TOOLS.filter(
+  (tool): tool is (typeof AFFILIATE_TOOLS)[number] & { href: string } => "href" in tool && Boolean(tool.href),
+);
+
+/** /picks/ is a static page (public/picks/index.html), so it is a plain link, not a router link. */
 const NAV = [
-  { to: "/#work", label: "Work", hash: true },
-  { to: "/buzz", label: "The Buzz" },
-  { to: "/rankings", label: "Rankings" },
+  { to: "/picks/", label: "Picks", hash: true },
+  { to: "/ads", label: "AI Ad Sprint" },
+  { to: "/concierge", label: "AI Concierge" },
   { to: "/consult", label: "Consult" },
+  { to: "/buzz", label: "The Buzz" },
   { to: "/about", label: "About" },
-  { to: "/build", label: "Custom Builds" },
 ];
 
 export default function Layout() {
@@ -58,8 +63,8 @@ export default function Layout() {
             <a href={`tel:${CONSULT_TEL}`} className="phone">
               {CONSULT_DISPLAY}
             </a>
-            <a href={FD_URL} className="btn btn-primary">
-              {FD_NAME}
+            <a href={PICKS_PATH} className="btn btn-primary">
+              Shop Picks
             </a>
           </nav>
           <button
@@ -89,8 +94,8 @@ export default function Layout() {
             <a href={`tel:${CONSULT_TEL}`} onClick={() => setOpen(false)}>
               {CONSULT_DISPLAY}
             </a>
-            <a href={FD_URL} className="btn btn-primary" onClick={() => setOpen(false)}>
-              {FD_NAME}
+            <a href={PICKS_PATH} className="btn btn-primary" onClick={() => setOpen(false)}>
+              Shop Picks
             </a>
           </div>
         ) : null}
@@ -105,7 +110,7 @@ export default function Layout() {
             <p>
               {BRAND_NAME} · {LEGAL_NAME}
               <br />
-              AI consultant shop. {ADDRESS_LINE}.
+              Done-for-you AI operator. {ADDRESS_LINE}.
               <br />
               {FOOTER_LINE}
               <br />
@@ -129,7 +134,6 @@ export default function Layout() {
             <Link to="/consult/ai-audit-cost">AI audit cost</Link>
             <Link to="/concierge">AI Concierge</Link>
             <Link to="/about">About</Link>
-            <Link to="/build">Custom Builds</Link>
           </div>
           <div>
             <strong>Start</strong>
@@ -153,6 +157,15 @@ export default function Layout() {
             </a>
             <a href="/llms.txt">llms.txt</a>
             <Link to={DISCLOSURE_PATH}>Disclosure</Link>
+          </div>
+          <div className="footer-partners">
+            <strong>Tools we use</strong>
+            {PARTNER_LINKS.map((tool) => (
+              <a key={tool.href} href={tool.href} target="_blank" rel="sponsored noopener">
+                {tool.name}
+              </a>
+            ))}
+            <a href={PICKS_PATH}>All picks</a>
           </div>
         </div>
         <p className="container footer-products">
@@ -179,7 +192,8 @@ export default function Layout() {
           )}
         </div>
         <p className="container footer-disclosure">
-          {DISCLOSURE_LINE} <Link to={DISCLOSURE_PATH}>Disclosure</Link> ·{" "}
+          {DISCLOSURE_LINE} Partner links are marked sponsored; we may earn a fee at no extra cost to you.{" "}
+          <Link to={DISCLOSURE_PATH}>Disclosure</Link> ·{" "}
           <a href="https://join.netlify.com/mn6b2zkzsv2b" target="_blank" rel="sponsored noopener">
             Hosted on Netlify
           </a>

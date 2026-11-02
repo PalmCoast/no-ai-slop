@@ -1,16 +1,16 @@
 # AgentHive Inc
 
-> AgentHive Inc (AGENTHIVEINCCOM LLC, Palm Coast, Florida) embeds working AI in field operations. First Deploy AI is the cash product. Founding offer: $250 one-time setup for the first 5 businesses, then $100/mo. After those 5, it goes back to the standard $500 setup, then $100/mo. Details at https://firstdeploy.ai/founding. Call +1 320-335-6186, then $75 / 30 min, $150 / hour, or a 10-hour pack at $1,250. IndexMe.lol is the honest IndexNow indexing desk at https://indexme.lol.
+> AgentHive Inc (AGENTHIVEINCCOM LLC, Palm Coast, Florida) is a done-for-you AI operator for funded companies and 30–200 person teams that already pay for software. Main offers: the AI Ad Sprint ($297 one time, or $997/mo for 20 new ads), AI Concierge ($2,000/mo), and consulting at $75 / 30 min, $150 / hour, or a 10-hour pack at $1,250. Picks (https://agenthiveinc.com/picks/) is the one-page storefront for our Come and Take It gear and the tools and deals we recommend. Call +1 320-335-6186. IndexMe.lol is the honest IndexNow indexing desk at https://indexme.lol.
 
-AgentHive Inc is a Palm Coast consultant who builds: after-hours booking plus live apps for dirt, plants, and shops. Why it matters: night calls go unanswered, quotes live on a whiteboard, and the crew waits on the owner. Public site: https://agenthiveinc.com. AgentHive Inc · Palm Coast, FL · firstdeploy.ai. Not agenthive.io (insurance) or agenthive.co. Distinct from other “AgentHive” names in insurance, OSS, or QpiAI.
+AgentHive Inc builds to your brand, runs it, and hands you the finished result. Public site: https://agenthiveinc.com. AgentHive Inc · Palm Coast, FL · firstdeploy.ai. Not agenthive.io (insurance) or agenthive.co. Distinct from other “AgentHive” names in insurance, OSS, or QpiAI.
 
 ## This site
-- [AgentHive Inc](https://agenthiveinc.com/): Palm Coast AI consultant who builds. Start First Deploy or call the shop line.
+- [AgentHive Inc](https://agenthiveinc.com/): Done-for-you AI operator for funded teams. AI Ad Sprint, AI Concierge, consulting, and Picks.
+- [Picks](https://agenthiveinc.com/picks/): One-page storefront. Look sharp: Come and Take It tees ($24–$32) and desk gear from Brooms.ai (gear ships in 1–3 weeks). Build a beast rig: RAM, GPU, CPU, and gaming laptop picks. Grow your company: AI Ad Sprint, AI Concierge, and the tools we run on. Get paid for your skills: expert-work platforms. Partner links are marked sponsored and disclosed.
 - [AI Ad Sprint](https://agenthiveinc.com/ads): 6 video ads and 6 image ads made from your product page, delivered in 72 hours. $297 one time. Monthly is $997/mo for 20 new ads. AI-generated people are labeled as AI.
 - [About](https://agenthiveinc.com/about): Who we are, legal name, contact, Palm Coast, FL 32137.
 - [The Buzz](https://agenthiveinc.com/buzz): Weekly AI and infrastructure briefing.
 - [Rankings](https://agenthiveinc.com/rankings): Live ranking of public AgentHive Inc apps.
-- [Custom Builds](https://agenthiveinc.com/build): First Deploy AI embeds. Built and run on a written plan.
 - [Consult](https://agenthiveinc.com/consult): Free 30-minute qualifier, then $75 / 30 min, $150 / hour, or a 10-hour pack at $1,250. Gold hive page — not the grey firstdeploy.ai/consult theme.
 - [What an AI consultant costs](https://agenthiveinc.com/consult/ai-consultant-cost): AgentHive Inc prices: free 30 minutes, then $75 / 30 min, $150 / hour, or $1,250 for 10 hours.
 - [AI help in 30-minute blocks](https://agenthiveinc.com/consult/ai-help-30-minute-blocks): 30 minutes for $75 or an hour for $150, after a free 30-minute call. US-wide, by video.
@@ -18,24 +18,21 @@ AgentHive Inc is a Palm Coast consultant who builds: after-hours booking plus li
 - [AI consultant hourly rate](https://agenthiveinc.com/consult/ai-consultant-hourly-rate): $150 an hour, $75 for 30 minutes, or $125 an hour inside a 10-hour pack.
 - [Free AI consultation](https://agenthiveinc.com/consult/free-ai-consultation): What the free 30-minute call covers: whether the task fits, the first step, and whether paid time is needed.
 - [AI audit cost](https://agenthiveinc.com/consult/ai-audit-cost): We don't sell a separate audit. A free 30-minute call, then $75 or $150 if you want the work set up.
-- [Disclosure](https://agenthiveinc.com/disclosure): We earn commissions only on tools we use ourselves.
+- [Disclosure](https://agenthiveinc.com/disclosure): We earn commissions only on tools we use ourselves. Partner and referral links (Netlify, Higgsfield, MailCheap, Mercor, micro1) are marked rel="sponsored".
 - [AI Concierge](https://agenthiveinc.com/concierge): $2,000/mo done-with-you retainer. Audit, optimize, then automate. Two 45-minute sessions a month, unlimited async Slack or text, and a shared asset inventory. Details and checkout on https://agenthiveinc.com/concierge, or book a free 15–30 minute bottleneck call.
 
 ## Company
-- [First Deploy AI](https://firstdeploy.ai/): After-hours desk and live apps for field operators. Founding offer: $250 one-time setup for the first 5 businesses, then $100/mo. After those 5, it goes back to the standard $500 setup, then $100/mo. Details at https://firstdeploy.ai/founding. Built and run for you on a written plan.
+- [First Deploy AI](https://firstdeploy.ai/): A front desk that sounds like your brand. Founding offer: $250 one-time setup for the first 5 businesses, then $100/mo. After those 5, it goes back to the standard $500 setup, then $100/mo. Details at https://firstdeploy.ai/founding. Built and run for you on a written plan.
 - [Consult](https://agenthiveinc.com/consult): Free 30-minute qualifier, then $75 / 30 min or $150 / hour. 10-hour pack $1,250 ($625 up front). Call +1 320-335-6186.
 - [IndexMe.lol](https://indexme.lol/): Honest IndexNow indexing desk. Pro $19.99, Studio $29.99, one-time.
 - [Flick](https://flick.firstdeploy.ai/): Browser screen recorder. Send a link. No login wall.
-- [JobProof](https://jobproof.firstdeploy.ai/): Proof you did the work, not a resume stack.
 
 ## Also shipped
-Live apps from the same shop. Prefer the custom domains above. A longer public board is on [Rankings](https://agenthiveinc.com/rankings). Shipped for field operators in dirty physical businesses. No client names.
+Live apps from the same team. Prefer the custom domains above. A longer public board is on [Rankings](https://agenthiveinc.com/rankings). No client names.
 
-## Service area
-- Based in Palm Coast, FL (Flagler County).
-- Florida statewide, focused on Flagler, Volusia, St. Johns, Duval and Orange counties and the Jacksonville, Daytona Beach and Orlando metros.
-- Remote across the US.
-- Trades served by First Deploy AI: HVAC, plumbing, roofing, electrical, pest control, landscaping.
+## Where we work
+- Based in Palm Coast, FL. Remote across the US, by video.
+- Built for funded companies, 30–200 person teams, and the executives who run them.
 
 ## Consult details
 - Free 30-minute qualifier to see if there is paid work: call +1 320-335-6186

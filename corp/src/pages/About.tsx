@@ -37,7 +37,7 @@ export default function About() {
             </h1>
             <p className="lede">{DANIEL_BIO}</p>
             <p className="muted">
-              {BRAND_NAME} is a Palm Coast AI consultant shop. {FD_NAME} is the product. Consulting is how you buy time
+              {BRAND_NAME} is a done-for-you AI operator based in Palm Coast. {FD_NAME} is the product. Consulting is how you buy time
               in the room. The portrait is a brand illustration, not a photograph of Daniel Graham.
             </p>
             <p className="muted">
@@ -139,7 +139,7 @@ export default function About() {
           <div>
             <h2>The hive, off the money page</h2>
             <p className="muted" style={{ margin: "0.8rem 0 1rem" }}>
-              The Buzz and the live-app board stay here, off the homepage a field owner uses to buy. {FD_NAME} is
+              The Buzz and the live-app board stay here, off the homepage a buyer uses to decide. {FD_NAME} is
               the cash product. HiveBriefcase and Bot Lock are infra, listed on Rankings.
             </p>
             <div className="hero-actions">
