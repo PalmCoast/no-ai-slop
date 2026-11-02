@@ -39,7 +39,6 @@ export const BOOK_HREF = `tel:${CONSULT_TEL}`;
 export const SEAT_CIRCUIT_NAME = "Seat & Circuit";
 export const SEAT_CIRCUIT_URL = "https://infrastructure.agenthiveinc.com/";
 export const FLICK_URL = "https://flick.firstdeploy.ai/";
-export const JOBPROOF_URL = "https://jobproof.firstdeploy.ai/";
 
 /** Picks storefront: the one place for everything we sell or earn a fee on. */
 export const PICKS_PATH = "/picks/";
