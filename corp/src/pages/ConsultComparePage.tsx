@@ -129,7 +129,7 @@ export default function ConsultComparePage() {
           <h2 style={{ marginTop: "2rem" }}>More on AI consulting costs</h2>
           <ul>
             <li>
-              <Link to={CONSULT_COST_PATH}>What an AI consultant costs a small business</Link>
+              <Link to={CONSULT_COST_PATH}>What an AI consultant costs a growing company</Link>
             </li>
             {others.map((p) => (
               <li key={p.path}>

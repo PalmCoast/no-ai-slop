@@ -40,7 +40,7 @@ export const CONSULT_FAQS: Faq[] = [
 
 export const CONSULT_COST_FAQS: Faq[] = [
   {
-    q: "How much does an AI consultant cost for a small business?",
+    q: "How much does an AI consultant cost for a growing company?",
     a: "AgentHive Inc charges $75 for 30 minutes, $150 an hour, or $1,250 for 10 hours, after a free 30-minute call. This answer does not quote another firm's rate.",
   },
   {
