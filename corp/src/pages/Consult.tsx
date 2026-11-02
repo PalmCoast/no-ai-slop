@@ -8,7 +8,7 @@ import {
   CONSULT_DISPLAY,
   CONSULT_TEL,
   FD_NAME,
-  FD_PRICE,
+  FD_OFFER,
   FD_URL,
 } from "../../shared/brand";
 import { CONSULT_COST_PATH, CONSULT_STRIPE_RATES } from "../../shared/consult";
@@ -171,7 +171,7 @@ export default function Consult() {
           <div className="continuity-bridge">
             <p>
               Need someone every month? <Link to={CONCIERGE_PATH}>{CONCIERGE_NAME}</Link> is the {CONCIERGE_PRICE}{" "}
-              retainer. Need an after-hours phone desk instead? <a href={FD_URL}>{FD_NAME}</a> is {FD_PRICE}.
+              retainer. Need an after-hours phone desk instead? <a href={FD_URL}>{FD_NAME}</a> founding offer: {FD_OFFER}
             </p>
             <Link className="btn btn-outline" to={CONCIERGE_PATH}>
               See the monthly retainer

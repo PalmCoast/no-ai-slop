@@ -98,8 +98,8 @@ describe("per-route SEO", () => {
     const ids = pages.map((html) => html.match(/id="route-[a-z]+"/)?.[0]);
     expect(new Set(hashes).size).toBe(PAGE_SEO.length);
     expect(new Set(ids).size).toBe(PAGE_SEO.length);
-    expect(pages[0]).toContain("$500 setup, $100/mo");
-    expect(pages[0]).toContain("https://firstdeploy.ai/go/founding?from=agenthive");
+    expect(pages[0]).toContain("$250 one-time setup for the first 5 businesses, then $100/mo");
+    expect(pages[0]).toContain("https://firstdeploy.ai/founding");
     expect(pages[0]).not.toContain("1" + ",750");
     expect(pages[0]).not.toContain("$" + "250/mo");
     expect(pages.join("")).not.toMatch(/\$2,?500|\$1,?500\s*\/\s*mo|firstdeploy\.dev/);
@@ -152,8 +152,8 @@ describe("per-route SEO", () => {
     expect(txt).not.toContain("$" + "250/mo");
     expect(txt).toContain("IndexNow");
     expect(txt).toContain("field operations");
-    expect(txt).toContain("$500 setup, $100/mo");
-    expect(txt).toContain("https://firstdeploy.ai/go/founding?from=agenthive");
+    expect(txt).toContain("$250 one-time setup for the first 5 businesses, then $100/mo");
+    expect(txt).toContain("https://firstdeploy.ai/founding");
     expect(txt).toContain("https://firstdeploy.ai");
     expect(txt).toContain("https://agenthiveinc.com/consult");
     expect(txt).toContain("agenthive.io");
