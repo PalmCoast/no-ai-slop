@@ -39,6 +39,15 @@ describe("/picks storefront", () => {
     }
   });
 
+  it("shows the guide-page disclosure line near the top, linking to /disclosure", () => {
+    const guide = readFileSync(join(corpRoot, "public/founder-stack/index.html"), "utf8");
+    const line = guide.match(/<p class="pk-disc">.*?<\/p>/)?.[0];
+    expect(line).toBeTruthy();
+    expect(line).toContain('href="/disclosure"');
+    expect(page).toContain(line!);
+    expect(page.indexOf(line!)).toBeLessThan(page.indexOf('id="brooms-tees"'));
+  });
+
   it("keeps the deep-link anchors other pages use", () => {
     for (const id of ["netlify", "mailcheap", "higgsfield", "ad-sprint", "brooms-tees", "brooms-gear", "ram-deals"]) {
       expect(page.match(new RegExp(`id="${id}"`, "g"))?.length, id).toBe(1);
