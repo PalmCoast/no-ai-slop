@@ -3,7 +3,9 @@ import { FD_NAME, INDEXME_NAME } from "../../shared/brand";
 import { HIVE_SITES } from "../../shared/portfolio";
 import { rankSites, type RankedSite } from "../../shared/rank";
 
-const FILTERS = ["all", "live", "netlify", "infra", "saas", "field", "lab"] as const;
+const FILTERS = ["all", "live", "netlify", "infra", "saas", "lab"] as const;
+/** Trade-shop apps stay live at their own URLs but are not shown on this board. */
+const HIDDEN_SLUGS = new Set(["jobproof", "tonight", "ratetrap", "nfc-review", "catcher", "pilemeter"]);
 
 export default function Rankings() {
   const fallback = useMemo(
@@ -35,6 +37,7 @@ export default function Rankings() {
   }, []);
 
   const visible = sites.filter((site) => {
+    if (HIDDEN_SLUGS.has(site.slug) || site.category === "field") return false;
     if (filter === "all") return true;
     if (filter === "live") return site.statusLabel === "live" || site.statusLabel === "slow";
     if (filter === "netlify") return site.host === "netlify";

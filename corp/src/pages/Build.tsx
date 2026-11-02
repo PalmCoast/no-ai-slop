@@ -18,15 +18,15 @@ export default function Build() {
             <em>Built on a written plan.</em>
           </h1>
           <p className="lede">
-            Missed calls, dead quotes, a board that still lives on the wall. {FD_NAME} embeds, ships the after-hours desk
+            The workflow that makes your team look slow, rebuilt to your brand. {FD_NAME} embeds, ships the front desk
             plus the live apps. {FD_PRICE_LINE} Every build runs on a written plan: scope, build, go-live, the same process as our active client builds.
           </p>
           <ul className="takeaways">
             <li>90-day projects: half upfront, half at completion.</li>
-            <li>Voice line, dispatch, quotes, the board your crew actually opens.</li>
+            <li>Voice line, intake, quotes, the dashboard your team actually opens.</li>
           </ul>
           <div className="hero-actions" style={{ marginTop: 18 }}>
-            <a className="btn btn-primary" href={`${FD_URL}#check`}>
+            <a className="btn btn-primary" href={FD_URL}>
               Start {FD_NAME}
             </a>
             <a className="btn btn-outline" href={`tel:${CONSULT_TEL}`}>

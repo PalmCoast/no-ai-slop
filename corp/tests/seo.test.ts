@@ -48,14 +48,16 @@ describe("per-route SEO", () => {
     expect(about).toContain("<h1 class=\"display\">About AgentHive Inc</h1>");
     expect(about).not.toContain("@agenthiveinc.com");
     expect(home).toContain('id="route-home"');
-    expect(home).toContain("First Deploy AI");
+    expect(home).toContain("First Deploy");
     expect(home).toContain("IndexMe.lol");
     expect(home).toContain("AI consultant who builds");
-    expect(home).toContain("field operations");
+    expect(home).toContain("funded");
+    expect(home).not.toMatch(/field operations|dirt, plants|HVAC|plumb|roofing|Flagler|Volusia/i);
+    expect(home).toContain('href="/picks/"');
     expect(home).toContain("Start First Deploy");
     expect(home).toContain("Book the free 30");
     expect(home).toContain(
-      'Products: <a href="https://firstdeploy.ai">First Deploy</a> · <a href="/concierge">AI Concierge</a> · <a href="https://netyard.firstdeploy.ai">NetYard</a>',
+      'Products: <a href="/picks/">Picks</a> · <a href="/ads">AI Ad Sprint</a> · <a href="/concierge">AI Concierge</a> · <a href="https://firstdeploy.ai">First Deploy</a> · <a href="/ram-deals/">RAM &amp; rig deals</a>',
     );
     expect(home).toContain("IndexNow");
     expect(about).toContain("tel:+13203356186");
@@ -140,7 +142,8 @@ describe("per-route SEO", () => {
     expect(txt).not.toMatch(/mailto:|daniel@agenthiveinc\.com/);
     expect(txt).not.toMatch(/coltsinsider@gmail\.com/);
     expect(txt).toContain("https://flick.firstdeploy.ai/");
-    expect(txt).toContain("https://jobproof.firstdeploy.ai/");
+    expect(txt).toContain("https://agenthiveinc.com/picks/");
+    expect(txt).not.toMatch(/HVAC|plumb|roofer|roofing|electrician|landscap|Flagler|Volusia|field operations|dirt/i);
     expect(txt).not.toMatch(/askyard|claudefarm/i);
     expect(txt).not.toContain("buy.stripe.com");
     expect(txt).toContain("https://agenthiveinc.com/disclosure");
@@ -151,7 +154,7 @@ describe("per-route SEO", () => {
     expect(txt).not.toContain("1" + ",750");
     expect(txt).not.toContain("$" + "250/mo");
     expect(txt).toContain("IndexNow");
-    expect(txt).toContain("field operations");
+    expect(txt).toContain("funded companies");
     expect(txt).toContain("$250 one-time setup for the first 5 businesses, then $100/mo");
     expect(txt).toContain("https://firstdeploy.ai/founding");
     expect(txt).toContain("https://firstdeploy.ai");
@@ -269,7 +272,7 @@ describe("per-route SEO", () => {
     expect(cost).not.toMatch(/North Star|AIessentials|iternal\.ai|CloudMotiv|Pareto Talent/);
     expect(cost).not.toMatch(/href="https?:\/\/(?:www\.)?(northstarconsult\.ai|aiessentials\.us|carlosansonetti\.com|iternal\.ai|cloudmotiv\.ai|paretotalent\.com|richnashawaty\.com)/);
     const hrefs = [...cost.matchAll(/href="(https?:[^"]+)"/g)].map((m) => m[1]);
-    for (const h of hrefs) expect(h).toMatch(/^(tel:\+13203356186|https:\/\/((\w+\.)?agenthiveinc\.com|ainexus360\.com|firstdeploy\.ai|netyard\.firstdeploy\.ai|www\.linkedin\.com|twelve\.tools|fazier\.com|launchaf\.com|join\.netlify\.com))/);
+    for (const h of hrefs) expect(h).toMatch(/^(tel:\+13203356186|https:\/\/((\w+\.)?agenthiveinc\.com|ainexus360\.com|firstdeploy\.ai|netyard\.firstdeploy\.ai|www\.linkedin\.com|twelve\.tools|fazier\.com|launchaf\.com|join\.netlify\.com|higgsfield\.ai|mailcheap\.ai|t\.mercor\.com|refer\.micro1\.ai))/);
     expect(cost).toContain("Where do these prices come from?");
     expect(cost).not.toContain("Where do the comparison numbers come from?");
     expect(cost).toContain("October 19, 2026");

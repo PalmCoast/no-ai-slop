@@ -25,10 +25,10 @@ export const BOOK_CTA_LABEL = "Book the free 30";
 export const FREE_30_LABEL = "Free 30";
 export const FD_CHECK_LABEL = "2-minute check";
 export const CONSULT_RATES = "$75 / 30 min · $150 / hour";
-export const HERO_H1 = "AgentHive Inc embeds working AI in field operations.";
+export const HERO_H1 = "A done-for-you AI operator for teams that move fast.";
 export const HERO_WHAT =
-  "Start with First Deploy AI: after-hours booking + live apps for dirt, plants, and shops.";
-export const HERO_WHY = "Night calls go unanswered. Quotes live on a whiteboard. The crew waits on the owner.";
+  "For funded companies and 30–200 person teams that already pay for software. We build it to your brand, run it, and hand you the finished result.";
+export const HERO_WHY = "New ads every week. A senior operator on call. Your brand looking finished everywhere a buyer sees it.";
 export const FOOTER_LINE = "AgentHive Inc · Palm Coast, FL · firstdeploy.ai";
 export const OTHER_HIVES = "Not agenthive.io (insurance) or agenthive.co.";
 export const INDEXME_NAME = "IndexMe.lol";
@@ -41,13 +41,18 @@ export const SEAT_CIRCUIT_URL = "https://infrastructure.agenthiveinc.com/";
 export const FLICK_URL = "https://flick.firstdeploy.ai/";
 export const JOBPROOF_URL = "https://jobproof.firstdeploy.ai/";
 
-/** AgentHiveInc.com footer money path: FD-first, max 5, no product catalog. */
+/** Picks storefront: the one place for everything we sell or earn a fee on. */
+export const PICKS_PATH = "/picks/";
+export const PICKS_URL = `${BRAND_URL}/picks/`;
+export const PICKS_LABEL = "Picks";
+
+/** AgentHiveInc.com footer money path: /picks first, max 5. */
 export const MONEY_FOOTER_LINKS = [
-  { href: FD_URL, label: FD_NAME },
-  { href: FD_CHECK_URL, label: FD_CHECK_LABEL },
-  { href: BOOK_HREF, label: FREE_30_LABEL },
+  { href: PICKS_PATH, label: PICKS_LABEL },
+  { href: "/ads", label: "AI Ad Sprint" },
+  { href: "/concierge", label: "AI Concierge" },
   { href: HIVE_CONSULT_PATH, label: "Consult" },
-  { href: SEAT_CIRCUIT_URL, label: SEAT_CIRCUIT_NAME },
+  { href: BOOK_HREF, label: FREE_30_LABEL },
 ] as const;
 
 /**
@@ -73,9 +78,11 @@ export const FEATURED_ON = [
 
 /** Product names on their own footer row. Money links above stay unchanged. */
 export const PRODUCT_FOOTER_LINKS = [
-  { href: "https://firstdeploy.ai", label: "First Deploy" },
+  { href: PICKS_PATH, label: "Picks" },
+  { href: "/ads", label: "AI Ad Sprint" },
   { href: "/concierge", label: "AI Concierge" },
-  { href: "https://netyard.firstdeploy.ai", label: "NetYard" },
+  { href: "https://firstdeploy.ai", label: "First Deploy" },
+  { href: "/ram-deals/", label: "RAM & rig deals" },
 ] as const;
 
 export const LINKEDIN_URL = "https://www.linkedin.com/company/agenthiveinc";
