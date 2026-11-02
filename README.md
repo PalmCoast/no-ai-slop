@@ -71,13 +71,13 @@ MIT
 
 [corp/](corp/README.md) is the flagship site for [agenthiveinc.com](https://agenthiveinc.com): AgentHive Inc (AGENTHIVEINCCOM LLC, Palm Coast) AI consultant shop, First Deploy AI, IndexMe.lol, The Buzz, and a live ranking of the public Netlify portfolio. See [corp/README.md](corp/README.md).
 
-## AskYard
+## AskYard (retired)
 
-[AskYard](askyard/README.md) is a First Deploy AI product at [askyard.firstdeploy.ai](https://askyard.firstdeploy.ai): free AI answers for plumbers, teachers, receptionists, earth movers, and anyone else with a question. Ranked by how often people ask. Reputation meter on `/rep`. Marquee lights on the same site at [marquee.firstdeploy.ai](https://marquee.firstdeploy.ai/). Apps for sale on the same site. See [askyard/README.md](askyard/README.md).
+[askyard/](askyard/README.md) holds the source of AskYard, a question-and-answer site that ran at askyard.firstdeploy.ai and marquee.firstdeploy.ai. It was retired on November 2, 2026. Both hostnames now redirect to [firstdeploy.ai](https://firstdeploy.ai/). The code stays here for reference only.
 
-## NetYard
+## NetYard (retired)
 
-[NetYard](netyard/README.md) is a First Deploy AI product that stands up a small-business network without Microsoft Server. Six questions produce addressing, Samba on Debian, guest Wi-Fi, a shopping list, and install scripts. See [netyard/README.md](netyard/README.md).
+[netyard/](netyard/README.md) holds the source of NetYard, an office-network planner that generated addressing, Samba on Debian, guest Wi-Fi settings, and install scripts. It was retired on November 2, 2026. netyard.firstdeploy.ai now redirects to [firstdeploy.ai](https://firstdeploy.ai/). The code stays here for reference only.
 
 ## Braid
 

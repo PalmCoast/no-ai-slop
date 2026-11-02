@@ -4,7 +4,7 @@ import { HIVE_SITES } from "../../shared/portfolio";
 import { rankSites, type RankedSite } from "../../shared/rank";
 
 const FILTERS = ["all", "live", "netlify", "infra", "saas", "lab"] as const;
-/** Trade-shop apps stay live at their own URLs but are not shown on this board. */
+/** Retired or lab apps that are never shown on this board. */
 const HIDDEN_SLUGS = new Set(["jobproof", "tonight", "ratetrap", "nfc-review", "catcher", "pilemeter"]);
 
 export default function Rankings() {

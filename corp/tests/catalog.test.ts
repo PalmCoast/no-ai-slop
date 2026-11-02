@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { HIVE_SITES } from "../shared/portfolio";
+import { GO_LINKS } from "../shared/go-links";
 import { HIVE_BOTS } from "../shared/bots";
 import { BUZZ_SEED, scrubBuzzEdition, type BuzzEdition } from "../shared/buzz-seed";
 import { CONSULT_STRIPE_RATES } from "../shared/consult";
@@ -21,13 +22,18 @@ describe("portfolio catalog", () => {
     expect(HIVE_SITES.find((s) => s.slug === "first-deploy")?.price).toBe("$250 one-time setup for the first 5 businesses, then $100/mo");
     expect(HIVE_SITES.find((s) => s.slug === "first-deploy")?.name).toBe("First Deploy AI");
     expect(urls).toContain("https://flick.firstdeploy.ai/");
-    expect(urls).toContain("https://jobproof.firstdeploy.ai/");
-    expect(urls).toContain("https://netyard.firstdeploy.ai/");
     expect(urls).toContain("https://writehive.netlify.app/");
     expect(urls).toContain("https://bot-lock.netlify.app/");
     expect(urls).toContain("https://hivebriefcase.netlify.app/");
     expect(urls).toContain("https://stateside-jobs.netlify.app/");
-    expect(HIVE_SITES.filter((s) => s.host === "netlify").length).toBeGreaterThanOrEqual(11);
+    expect(HIVE_SITES.filter((s) => s.host === "netlify").length).toBeGreaterThanOrEqual(10);
+  });
+
+  it("does not link the retired trade sites", () => {
+    const text = JSON.stringify(HIVE_SITES) + JSON.stringify(GO_LINKS);
+    for (const host of ["send-tonight", "check.firstdeploy.ai", "desk-check-fd", "firstdeploy-noshows", "firstdeploy-quotes", "firstdeploy-quiz", "jobproof", "askyard", "marquee.firstdeploy.ai", "netyard", "hillmirror"]) {
+      expect(text.toLowerCase()).not.toContain(host);
+    }
   });
 
   it("does not include known-dead guessed hostnames", () => {
