@@ -21,7 +21,7 @@ describe("free creative planner at /ads/creative-calculator/", () => {
   it("is a fixed sitemap entry next to /ram-deals, not a PAGE_SEO route", () => {
     const xml = sitemapXml();
     expect(xml).toContain(`<loc>${CREATIVE_CALCULATOR_URL}</loc>`);
-    expect(xml.match(/<loc>/g)?.length).toBe(17);
+    expect(xml.match(/<loc>/g)?.length).toBe(22);
     expect(xml.indexOf("/ram-deals/</loc>")).toBeLessThan(xml.indexOf(`${CREATIVE_CALCULATOR_URL}</loc>`));
     expect(PAGE_SEO.some((page) => page.path.startsWith("/ads/creative-calculator"))).toBe(false);
   });
