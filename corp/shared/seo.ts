@@ -196,7 +196,17 @@ export function sitemapXml(): string {
   const picks = `  <url>\n    <loc>${PICKS_URL}</loc>\n    <lastmod>2026-11-02</lastmod>\n    <image:image>\n      <image:loc>${PICKS_URL}og.png</image:loc>\n    </image:image>\n  </url>`;
   // Static file in public/ads/creative-calculator/. Same pattern as /ram-deals: not a PAGE_SEO route.
   const creativeCalculator = `  <url>\n    <loc>${CREATIVE_CALCULATOR_URL}</loc>\n    <lastmod>2026-11-01</lastmod>\n  </url>`;
-  return `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">\n${urls}\n${ramDeals}\n${creativeCalculator}\n${picks}\n</urlset>\n`;
+  // Static guide pages in public/<slug>/ (same pattern as /ram-deals). Not PAGE_SEO routes.
+  const guides = [
+    "https://agenthiveinc.com/founder-stack/",
+    "https://agenthiveinc.com/gifts-for-tech-founders/",
+    "https://agenthiveinc.com/ads/ai-video-ads-for-shopify/",
+    "https://agenthiveinc.com/startup-website-hosting/",
+    "https://agenthiveinc.com/business-email-new-domain/",
+  ]
+    .map((loc) => `  <url>\n    <loc>${loc}</loc>\n    <lastmod>2026-11-02</lastmod>\n  </url>`)
+    .join("\n");
+  return `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">\n${urls}\n${ramDeals}\n${creativeCalculator}\n${picks}\n${guides}\n</urlset>\n`;
 }
 
 export function sitemapIndexXml(): string {
