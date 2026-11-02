@@ -25,7 +25,7 @@ export default function ConsultCost() {
             <span className="dot" /> Pricing guide · checked {CONSULT_COST_CHECKED}
           </div>
           <h1 className="display" style={{ fontSize: "clamp(2.2rem, 5vw, 3.6rem)" }}>
-            What an AI consultant costs a small business
+            What an AI consultant costs a growing company
           </h1>
           <p className="lede">
             AgentHive Inc charges $75 for 30 minutes, $150 an hour, or $1,250 for a 10-hour pack, after a free

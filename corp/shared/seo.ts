@@ -112,10 +112,10 @@ export const PAGE_SEO: SeoPage[] = [
   },
   {
     path: "/consult/ai-consultant-cost",
-    title: "What an AI consultant costs a small business (2026) | AgentHive Inc",
+    title: "What an AI consultant costs a growing company (2026) | AgentHive Inc",
     description: "AgentHive Inc prices: free 30 min, then $75 / 30 min, $150 / hour, or $1,250 for 10 hours.",
-    h1: "What an AI consultant costs a small business",
-    bodyHtml: `<main id="route-consultcost" class="section"><div class="container"><h1 class="display">What an AI consultant costs a small business</h1><p class="lede">AgentHive Inc charges $75 for 30 minutes, $150 an hour, or $1,250 for a 10-hour pack, after a free 30-minute call. This page lists those prices and does not quote another firm.</p><p>Checked ${CONSULT_COST_CHECKED}. <a href="${HIVE_CONSULT_URL}">Book the free 30</a> or call ${CONSULT_DISPLAY}.</p></div></main>`,
+    h1: "What an AI consultant costs a growing company",
+    bodyHtml: `<main id="route-consultcost" class="section"><div class="container"><h1 class="display">What an AI consultant costs a growing company</h1><p class="lede">AgentHive Inc charges $75 for 30 minutes, $150 an hour, or $1,250 for a 10-hour pack, after a free 30-minute call. This page lists those prices and does not quote another firm.</p><p>Checked ${CONSULT_COST_CHECKED}. <a href="${HIVE_CONSULT_URL}">Book the free 30</a> or call ${CONSULT_DISPLAY}.</p></div></main>`,
   },
   ...CONSULT_COMPARE_PAGES.map((page) => ({
     path: page.path,
@@ -371,7 +371,7 @@ export function jsonLdFor(page: SeoPage): object | null {
         danielPerson(),
         {
           "@type": "Article",
-          headline: "What an AI consultant costs a small business",
+          headline: "What an AI consultant costs a growing company",
           author: { "@id": DANIEL_ID },
           publisher: { "@id": `${BRAND_URL}/#organization` },
           datePublished: CONSULT_COST_CHECKED_ISO,

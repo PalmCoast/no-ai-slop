@@ -268,7 +268,7 @@ describe("per-route SEO", () => {
       "https://buy.stripe.com/7sY9ATenabXd7mJ7ea2ZO1i",
     ]) expect(consult).toContain(href);
     const cost = render("/consult/ai-consultant-cost");
-    expect(cost).toContain("What an AI consultant costs a small business");
+    expect(cost).toContain("What an AI consultant costs a growing company");
     expect(cost).not.toMatch(/North Star|AIessentials|iternal\.ai|CloudMotiv|Pareto Talent/);
     expect(cost).not.toMatch(/href="https?:\/\/(?:www\.)?(northstarconsult\.ai|aiessentials\.us|carlosansonetti\.com|iternal\.ai|cloudmotiv\.ai|paretotalent\.com|richnashawaty\.com)/);
     const hrefs = [...cost.matchAll(/href="(https?:[^"]+)"/g)].map((m) => m[1]);
