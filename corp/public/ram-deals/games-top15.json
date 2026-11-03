@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-01",
+ "updated": "2026-11-03",
  "source_list_name": "Steam top sellers (US) + Steam concurrent players",
  "source_list_url": "https://store.steampowered.com/charts/topsellers/US",
  "games": [
@@ -14,7 +14,7 @@
    "requirements_checked": "2026-11-01",
    "price_usd": 69.99,
    "price_source_url": "https://store.steampowered.com/api/appdetails?appids=4435490&cc=us",
-   "price_checked": "2026-11-01"
+   "price_checked": "2026-11-03"
   },
   {
    "rank": 2,
@@ -27,7 +27,7 @@
    "requirements_checked": "2026-11-01",
    "price_usd": 59.99,
    "price_source_url": "https://store.steampowered.com/api/appdetails?appids=4115450&cc=us",
-   "price_checked": "2026-11-01"
+   "price_checked": "2026-11-03"
   },
   {
    "rank": 3,
@@ -40,7 +40,7 @@
    "requirements_checked": "2026-11-01",
    "price_usd": 17.99,
    "price_source_url": "https://store.steampowered.com/api/appdetails?appids=4348910&cc=us",
-   "price_checked": "2026-11-01"
+   "price_checked": "2026-11-03"
   },
   {
    "rank": 4,
@@ -53,7 +53,7 @@
    "requirements_checked": "2026-11-01",
    "price_usd": 59.99,
    "price_source_url": "https://store.steampowered.com/api/appdetails?appids=1091500&cc=us",
-   "price_checked": "2026-11-01"
+   "price_checked": "2026-11-03"
   },
   {
    "rank": 5,
@@ -66,7 +66,7 @@
    "requirements_checked": "2026-11-01",
    "price_usd": 8.99,
    "price_source_url": "https://store.steampowered.com/api/appdetails?appids=5335510&cc=us",
-   "price_checked": "2026-11-01"
+   "price_checked": "2026-11-03"
   },
   {
    "rank": 6,
@@ -79,7 +79,7 @@
    "requirements_checked": "2026-11-01",
    "price_usd": 39.99,
    "price_source_url": "https://store.steampowered.com/api/appdetails?appids=1867240&cc=us",
-   "price_checked": "2026-11-01"
+   "price_checked": "2026-11-03"
   },
   {
    "rank": 7,
@@ -90,9 +90,9 @@
    "min_ram_gb": 8,
    "rec_ram_gb": 8,
    "requirements_checked": "2026-11-01",
-   "price_usd": 7.99,
+   "price_usd": 19.99,
    "price_source_url": "https://store.steampowered.com/api/appdetails?appids=381210&cc=us",
-   "price_checked": "2026-11-01"
+   "price_checked": "2026-11-03"
   },
   {
    "rank": 8,
@@ -105,7 +105,7 @@
    "requirements_checked": "2026-11-01",
    "price_usd": 39.99,
    "price_source_url": "https://store.steampowered.com/api/appdetails?appids=1203620&cc=us",
-   "price_checked": "2026-11-01"
+   "price_checked": "2026-11-03"
   },
   {
    "rank": 9,
@@ -118,7 +118,7 @@
    "requirements_checked": "2026-11-01",
    "price_usd": 19.99,
    "price_source_url": "https://store.steampowered.com/api/appdetails?appids=252490&cc=us",
-   "price_checked": "2026-11-01"
+   "price_checked": "2026-11-03"
   },
   {
    "rank": 10,
@@ -131,7 +131,7 @@
    "requirements_checked": "2026-11-01",
    "price_usd": 69.99,
    "price_source_url": "https://store.steampowered.com/api/appdetails?appids=3321460&cc=us",
-   "price_checked": "2026-11-01"
+   "price_checked": "2026-11-03"
   },
   {
    "rank": 11,
@@ -144,7 +144,7 @@
    "requirements_checked": "2026-11-01",
    "price_usd": 49.99,
    "price_source_url": "https://store.steampowered.com/api/appdetails?appids=3259780&cc=us",
-   "price_checked": "2026-11-01"
+   "price_checked": "2026-11-03"
   },
   {
    "rank": 12,
@@ -157,20 +157,20 @@
    "requirements_checked": "2026-11-01",
    "price_usd": 69.99,
    "price_source_url": "https://store.steampowered.com/api/appdetails?appids=4080220&cc=us",
-   "price_checked": "2026-11-01"
+   "price_checked": "2026-11-03"
   },
   {
    "rank": 13,
-   "name": "DayZ",
-   "appid": 221100,
-   "store_url": "https://store.steampowered.com/app/221100/",
-   "requirements_url": "https://store.steampowered.com/app/221100/",
-   "min_ram_gb": 8,
-   "rec_ram_gb": 12,
-   "requirements_checked": "2026-11-01",
-   "price_usd": 24.99,
-   "price_source_url": "https://store.steampowered.com/api/appdetails?appids=221100&cc=us",
-   "price_checked": "2026-11-01"
+   "name": "Borderlands 4",
+   "appid": 1285190,
+   "store_url": "https://store.steampowered.com/app/1285190/",
+   "requirements_url": "https://store.steampowered.com/app/1285190/",
+   "min_ram_gb": 16,
+   "rec_ram_gb": 32,
+   "requirements_checked": "2026-11-03",
+   "price_usd": 34.99,
+   "price_source_url": "https://store.steampowered.com/api/appdetails?appids=1285190&cc=us",
+   "price_checked": "2026-11-03"
   },
   {
    "rank": 14,
@@ -183,7 +183,7 @@
    "requirements_checked": "2026-11-01",
    "price_usd": 39.99,
    "price_source_url": "https://store.steampowered.com/api/appdetails?appids=553850&cc=us",
-   "price_checked": "2026-11-01"
+   "price_checked": "2026-11-03"
   },
   {
    "rank": 15,
@@ -196,12 +196,12 @@
    "requirements_checked": "2026-11-01",
    "price_usd": 39.99,
    "price_source_url": "https://store.steampowered.com/api/appdetails?appids=1808500&cc=us",
-   "price_checked": "2026-11-01"
+   "price_checked": "2026-11-03"
   }
  ],
  "ram_guide": {
   "16": {
-   "text": "14 of the 15 games list a recommended RAM of 16GB or less on Steam; Probably Stolen lists only an 8GB minimum and no recommendation. Phantom Blade Zero, WARDOGS, Enshrouded and Crimson Desert Enhanced list 16GB as both minimum and recommended, so 16GB meets their requirement with nothing to spare.",
+   "text": "13 of the 15 games list a recommended RAM of 16GB or less on Steam; Probably Stolen lists only an 8GB minimum and no recommendation. Borderlands 4 needs 16GB minimum and recommends 32GB. Phantom Blade Zero, WARDOGS, Enshrouded and Crimson Desert Enhanced list 16GB as both minimum and recommended, so 16GB meets their requirement with nothing to spare.",
    "sources": [
     {
      "name": "Call of Duty: Modern Warfare 4 (Steam)",
@@ -252,8 +252,8 @@
      "url": "https://store.steampowered.com/app/4080220/"
     },
     {
-     "name": "DayZ (Steam)",
-     "url": "https://store.steampowered.com/app/221100/"
+     "name": "Borderlands 4 (Steam)",
+     "url": "https://store.steampowered.com/app/1285190/"
     },
     {
      "name": "HELLDIVERS 2 (Steam)",
@@ -266,14 +266,22 @@
    ]
   },
   "32": {
-   "text": "With 32GB you're 16GB above the highest recommended RAM of any top-15 game, and you meet the 32GB recommendation of ACE COMBAT 8: WINGS OF THEVE ($69.99), BeamNG.drive ($24.99), Where Winds Meet (free to play) and Wuthering Waves (free to play) (Steam requirements and prices checked 2026-11-01).",
+   "text": "With 32GB you meet the recommended RAM of every top-15 game, including Borderlands 4 ($34.99 on Steam, 32GB recommended), plus the 32GB recommendation of ACE COMBAT 8: WINGS OF THEVE ($69.99), BeamNG.drive ($24.99), Where Winds Meet (free to play) and Wuthering Waves (free to play) (Steam requirements and prices checked 2026-11-03).",
    "sources": [
+    {
+     "name": "Borderlands 4 requirements (Steam)",
+     "url": "https://store.steampowered.com/app/1285190/"
+    },
+    {
+     "name": "Borderlands 4 price (Steam API, checked 2026-11-03)",
+     "url": "https://store.steampowered.com/api/appdetails?appids=1285190&cc=us"
+    },
     {
      "name": "ACE COMBAT 8: WINGS OF THEVE requirements (Steam)",
      "url": "https://store.steampowered.com/app/2288340/"
     },
     {
-     "name": "ACE COMBAT 8: WINGS OF THEVE price (Steam API, checked 2026-11-01)",
+     "name": "ACE COMBAT 8: WINGS OF THEVE price (Steam API, checked 2026-11-03)",
      "url": "https://store.steampowered.com/api/appdetails?appids=2288340&cc=us"
     },
     {
@@ -281,7 +289,7 @@
      "url": "https://store.steampowered.com/app/284160/"
     },
     {
-     "name": "BeamNG.drive price (Steam API, checked 2026-11-01)",
+     "name": "BeamNG.drive price (Steam API, checked 2026-11-03)",
      "url": "https://store.steampowered.com/api/appdetails?appids=284160&cc=us"
     },
     {
@@ -346,8 +354,8 @@
      "url": "https://store.steampowered.com/app/4080220/"
     },
     {
-     "name": "DayZ (Steam)",
-     "url": "https://store.steampowered.com/app/221100/"
+     "name": "Borderlands 4 (Steam)",
+     "url": "https://store.steampowered.com/app/1285190/"
     },
     {
      "name": "HELLDIVERS 2 (Steam)",
@@ -384,10 +392,10 @@
    "requirements_url": "https://store.steampowered.com/app/2288340/",
    "min_ram_gb": 16,
    "rec_ram_gb": 32,
-   "requirements_checked": "2026-11-01",
+   "requirements_checked": "2026-11-03",
    "price_usd": 69.99,
    "price_source_url": "https://store.steampowered.com/api/appdetails?appids=2288340&cc=us",
-   "price_checked": "2026-11-01"
+   "price_checked": "2026-11-03"
   },
   {
    "name": "BeamNG.drive",
@@ -396,10 +404,10 @@
    "requirements_url": "https://store.steampowered.com/app/284160/",
    "min_ram_gb": 16,
    "rec_ram_gb": 32,
-   "requirements_checked": "2026-11-01",
+   "requirements_checked": "2026-11-03",
    "price_usd": 24.99,
    "price_source_url": "https://store.steampowered.com/api/appdetails?appids=284160&cc=us",
-   "price_checked": "2026-11-01"
+   "price_checked": "2026-11-03"
   },
   {
    "name": "Where Winds Meet",
@@ -408,7 +416,7 @@
    "requirements_url": "https://store.steampowered.com/app/3564740/",
    "min_ram_gb": 16,
    "rec_ram_gb": 32,
-   "requirements_checked": "2026-11-01",
+   "requirements_checked": "2026-11-03",
    "free_to_play": true
   },
   {
@@ -418,7 +426,7 @@
    "requirements_url": "https://store.steampowered.com/app/3513350/",
    "min_ram_gb": 16,
    "rec_ram_gb": 32,
-   "requirements_checked": "2026-11-01",
+   "requirements_checked": "2026-11-03",
    "free_to_play": true
   }
  ]
