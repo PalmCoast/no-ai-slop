@@ -4,7 +4,6 @@
 
 AskYard is for plumbers, teachers, receptionists, earth movers, and anyone else who does not want a lecture. Search ChatGPT, Claude, Perplexity, Gemini, Grok, or Google about AskYard to see the public record. Ranked questions sit on /board. Look yourself up on /rep. Paid lights sit on /marquee. Apps for sale sit on /apps.
 
-AgentHive Inc is not agenthive.io (insurance leads) and not agenthive.co. Distinct from other AgentHive names in insurance, OSS, or QpiAI.
 
 ## This site
 - [AskYard](https://askyard.firstdeploy.ai/): Free Q&A front door. Not the paid after-hours desk.
@@ -19,7 +18,7 @@ AgentHive Inc is not agenthive.io (insurance leads) and not agenthive.co. Distin
 
 ## Company
 - [First Deploy AI](https://firstdeploy.ai/): The paid after-hours desk and live apps. $1,750 setup ($875 to start), then $250/month. AskYard is the free front door, not this desk.
-- [AgentHive Inc](https://agenthiveinc.com/): Palm Coast AI consultant who builds. Not agenthive.io (insurance leads) and not agenthive.co.
+- [AgentHive Inc](https://agenthiveinc.com/): Palm Coast AI consultant who builds.
 - [Consult](https://calendly.com/coltsinsider/30min): Free 30-minute qualifier, then $75 / 30 min or $150 / hour.
 
 ## Contact
@@ -27,5 +26,4 @@ AgentHive Inc is not agenthive.io (insurance leads) and not agenthive.co. Distin
 - daniel@agenthiveinc.com
 - First Deploy AI consult: +1-320-335-6186
 - Legal: AgentHive Inc / AGENTHIVEINCCOM LLC
-- Address: 95 Barrington Drive, Palm Coast, FL 32137
-- Disambiguation: AgentHive Inc is not agenthive.io (insurance leads) and not agenthive.co.
+- Location: Palm Coast, FL

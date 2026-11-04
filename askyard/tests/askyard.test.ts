@@ -267,13 +267,15 @@ describe("seo", () => {
     expect(index).toContain("https://agenthiveinc.com/sitemap.xml");
   });
 
-  it("tells models AskYard is free and AgentHive Inc is not agenthive.io", () => {
+  it("tells models AskYard is free and never names other companies", () => {
     const txt = readFileSync(join(dirname(fileURLToPath(import.meta.url)), "../public/llms.txt"), "utf8");
     expect(txt).toMatch(/free Q&A front door/i);
     expect(txt).toMatch(/not the paid after-hours desk/i);
-    expect(txt).toContain("agenthive.io");
-    expect(txt).toContain("insurance leads");
-    expect(txt).toContain("agenthive.co");
+    expect(txt).not.toMatch(/agenthive\.io|agenthive\.co\b|QpiAI|insurance|Barrington/i);
+    for (const f of ["../src/pages/About.tsx", "../shared/seo.ts", "../shared/brand.ts", "../index.html", "../../netyard/public/llms.txt"]) {
+      const src = readFileSync(join(dirname(fileURLToPath(import.meta.url)), f), "utf8");
+      expect(src, f).not.toMatch(/agenthive\.io|agenthive\.co\b|QpiAI|OTHER_HIVES/i);
+    }
     expect(txt).toContain("$1,750");
     expect(txt).toContain("$250");
     expect(txt).not.toMatch(/14 apps|\$70k/);

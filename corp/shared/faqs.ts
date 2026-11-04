@@ -30,11 +30,11 @@ export const CONSULT_FAQS: Faq[] = [
   },
   {
     q: "Is it remote or on-site?",
-    a: "Remote. Daniel Graham is based in Palm Coast, Florida, and every call and session runs by video, so owners anywhere in the US can book. This page does not sell an on-site visit.",
+    a: "Remote. Daniel Graham is based in Palm Coast, Florida, and every call and session runs by video, so leadership teams anywhere in the US can book. This page does not sell an on-site visit.",
   },
   {
     q: "What if I need help every month?",
-    a: `${CONCIERGE_NAME} is the ${CONCIERGE_PRICE} retainer: two 45-minute sessions a month, unlimited async Slack or text, and a shared asset inventory. The hourly rates stay available if you only need a few hours.`,
+    a: `${CONCIERGE_NAME} is the ${CONCIERGE_PRICE} retainer: two 45-minute sessions a month, unlimited async help, and a shared asset inventory. The hourly rates stay available if you only need a few hours.`,
   },
 ];
 
@@ -123,7 +123,7 @@ export const HIRING_FAQS: Faq[] = [
   },
   {
     q: "When is hiring in-house the better fit?",
-    a: "When you need a person on payroll who does the work every day. AI Concierge is two 45-minute sessions a month plus async Slack or text, not a full-time employee.",
+    a: "When you need a person on payroll who does the work every day. AI Concierge is two 45-minute sessions a month plus async help between them, not a full-time employee.",
   },
   {
     q: "When is a large agency the better fit?",

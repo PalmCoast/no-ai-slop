@@ -11,7 +11,6 @@ import {
   CONSULT_TEL,
   FD_PRICE_LONG,
   LEGAL_NAME,
-  OTHER_HIVES,
   PARENT_URL,
 } from "../../shared/brand";
 
@@ -29,8 +28,7 @@ export default function About() {
         <IdentityFacts />
         <p className="muted" style={{ marginTop: 12 }}>
           {BRAND_COMPANY} / {LEGAL_NAME} builds it in {BRAND_PLACE}. {BRAND_PARENT} is {FD_PRICE_LONG}. Phone{" "}
-          <a href={`tel:${CONSULT_TEL}`}>{CONSULT_DISPLAY_SEO}</a>. {OTHER_HIVES} Distinct from other AgentHive names in
-          insurance, OSS, or QpiAI.
+          <a href={`tel:${CONSULT_TEL}`}>{CONSULT_DISPLAY_SEO}</a>.
         </p>
         <div className="hero-actions" style={{ marginTop: 18 }}>
           <a className="btn btn-primary" href={PARENT_URL}>

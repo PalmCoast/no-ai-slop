@@ -24,7 +24,6 @@ import {
   HOME_TITLE,
   LEGAL_NAME,
   LINKEDIN_URL,
-  OTHER_HIVES,
   MARQUEE_NAME,
   MARQUEE_TAGLINE,
   MARQUEE_URL,
@@ -109,7 +108,7 @@ export const PAGE_SEO: SeoPage[] = [
     title: "About AskYard | Free shop-floor AI answers from First Deploy",
     description: HOME_DESCRIPTION,
     h1: "About AskYard",
-    bodyHtml: `<main id="route-about" class="section"><div class="container"><h1 class="display">About AskYard</h1><p class="lede">${BRAND_NAME} is the free Q&amp;A front door from ${BRAND_PARENT}. It is not the paid after-hours desk.</p>${identityHtml()}<p>${BRAND_COMPANY} / ${LEGAL_NAME} builds it in ${BRAND_PLACE}. ${BRAND_PARENT} is ${FD_PRICE_LONG}. Phone ${CONSULT_DISPLAY_SEO}. ${OTHER_HIVES} Distinct from other AgentHive names in insurance, OSS, or QpiAI.</p><p><a href="${PARENT_URL}">${BRAND_PARENT}</a> · <a href="${COMPANY_URL}">${BRAND_COMPANY}</a> · <a href="${CALENDLY_URL}">Book the free 30</a></p><h2>Board questions</h2>${boardQaHtml()}</div></main>`,
+    bodyHtml: `<main id="route-about" class="section"><div class="container"><h1 class="display">About AskYard</h1><p class="lede">${BRAND_NAME} is the free Q&amp;A front door from ${BRAND_PARENT}. It is not the paid after-hours desk.</p>${identityHtml()}<p>${BRAND_COMPANY} / ${LEGAL_NAME} builds it in ${BRAND_PLACE}. ${BRAND_PARENT} is ${FD_PRICE_LONG}. Phone ${CONSULT_DISPLAY_SEO}.</p><p><a href="${PARENT_URL}">${BRAND_PARENT}</a> · <a href="${COMPANY_URL}">${BRAND_COMPANY}</a> · <a href="${CALENDLY_URL}">Book the free 30</a></p><h2>Board questions</h2>${boardQaHtml()}</div></main>`,
   },
   {
     path: "/hunt",
