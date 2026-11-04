@@ -30,7 +30,6 @@ export const HERO_WHAT =
   "For funded companies and 30–200 person teams that already pay for software. We build it to your brand, run it, and hand you the finished result.";
 export const HERO_WHY = "New ads every week. A senior operator on call. Your brand looking finished everywhere a buyer sees it.";
 export const FOOTER_LINE = "AgentHive Inc · Palm Coast, FL · firstdeploy.ai";
-export const OTHER_HIVES = "Not agenthive.io (insurance) or agenthive.co.";
 export const INDEXME_NAME = "IndexMe.lol";
 export const INDEXME_URL = "https://indexme.lol/";
 export const INDEXME_BLURB = "honest IndexNow indexing desk";

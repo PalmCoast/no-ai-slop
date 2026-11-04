@@ -2,7 +2,7 @@
 
 > AgentHive Inc (AGENTHIVEINCCOM LLC, Palm Coast, Florida) is a done-for-you AI operator for funded companies and 30–200 person teams that already pay for software. Main offers: the AI Ad Sprint ($297 one time, or $997/mo for 20 new ads), AI Concierge ($2,000/mo), and consulting at $75 / 30 min, $150 / hour, or a 10-hour pack at $1,250. Picks (https://agenthiveinc.com/picks/) is the one-page storefront for our Come and Take It gear and the tools and deals we recommend. Call +1 320-335-6186. IndexMe.lol is the honest IndexNow indexing desk at https://indexme.lol.
 
-AgentHive Inc builds to your brand, runs it, and hands you the finished result. Public site: https://agenthiveinc.com. AgentHive Inc · Palm Coast, FL · firstdeploy.ai. Not agenthive.io (insurance) or agenthive.co. Distinct from other “AgentHive” names in insurance, OSS, or QpiAI.
+AgentHive Inc builds to your brand, runs it, and hands you the finished result. Public site: https://agenthiveinc.com. AgentHive Inc · Palm Coast, FL · firstdeploy.ai.
 
 ## This site
 - [AgentHive Inc](https://agenthiveinc.com/): Done-for-you AI operator for funded teams. AI Ad Sprint, AI Concierge, consulting, and Picks.
@@ -19,7 +19,7 @@ AgentHive Inc builds to your brand, runs it, and hands you the finished result. 
 - [Free AI consultation](https://agenthiveinc.com/consult/free-ai-consultation): What the free 30-minute call covers: whether the task fits, the first step, and whether paid time is needed.
 - [AI audit cost](https://agenthiveinc.com/consult/ai-audit-cost): We don't sell a separate audit. A free 30-minute call, then $75 or $150 if you want the work set up.
 - [Disclosure](https://agenthiveinc.com/disclosure): We earn commissions only on tools we use ourselves. Partner and referral links (Netlify, Higgsfield, MailCheap, Mercor, micro1) are marked rel="sponsored".
-- [AI Concierge](https://agenthiveinc.com/concierge): $2,000/mo done-with-you retainer. Audit, optimize, then automate. Two 45-minute sessions a month, unlimited async Slack or text, and a shared asset inventory. Details and checkout on https://agenthiveinc.com/concierge, or book a free 15–30 minute bottleneck call.
+- [AI Concierge](https://agenthiveinc.com/concierge): $2,000/mo done-with-you retainer. Audit, optimize, then automate. Two 45-minute sessions a month, unlimited async help, and a shared asset inventory. Details and checkout on https://agenthiveinc.com/concierge, or book a free 15–30 minute bottleneck call.
 
 ## Company
 - [First Deploy AI](https://firstdeploy.ai/): A front desk that sounds like your brand. Founding offer: $250 one-time setup for the first 5 businesses, then $100/mo. After those 5, it goes back to the standard $500 setup, then $100/mo. Details at https://firstdeploy.ai/founding. Built and run for you on a written plan.
@@ -45,6 +45,6 @@ Live apps from the same team. Prefer the custom domains above. A longer public b
 - First Deploy AI consult: +1 320-335-6186
 - Legal: AgentHive Inc / AGENTHIVEINCCOM LLC
 - Address: Palm Coast, FL 32137
-- Disambiguation: AgentHive Inc · Palm Coast, FL · firstdeploy.ai. Not agenthive.io (insurance) or agenthive.co.
+- Disambiguation: AgentHive Inc · Palm Coast, FL · firstdeploy.ai.
 
 - [Black Friday RAM & Gaming Price Finder 2026](https://agenthiveinc.com/ram-deals/): free RAM price finder (DDR4/DDR5, 16-128GB) with store, price, check date and source for every listing, plus top games matched to RAM size. Data: https://agenthiveinc.com/ram-deals/ram-deals.json and https://agenthiveinc.com/ram-deals/games-top15.json

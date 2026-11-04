@@ -75,7 +75,9 @@ describe("per-route SEO", () => {
     expect(concierge).toContain('property="og:title" content="AI Concierge: fractional AI advisor, $2,000/mo | AgentHive Inc"');
     expect(concierge).toContain("https://buy.stripe.com/6oUeVd7YM3qH0Ylbuq2ZO1u");
     expect(concierge).toContain("$2,000/mo");
-    expect(concierge).toContain("didn’t stick");
+    expect(concierge).toContain("funded teams");
+    expect(concierge).not.toMatch(/Slack|owners|didn’t stick/);
+    expect(JSON.stringify(jsonLdFor(PAGE_SEO.find((page) => page.path === "/concierge")!))).not.toMatch(/Slack|owners/);
     expect(concierge).not.toMatch(/Holistic Consulting|SmallBizStrategy|iternal\.ai/);
     expect(home).toContain('rel="canonical" href="https://agenthiveinc.com/"');
     expect(about).not.toContain('rel="canonical" href="https://agenthiveinc.com/" />');
@@ -159,8 +161,7 @@ describe("per-route SEO", () => {
     expect(txt).toContain("https://firstdeploy.ai/founding");
     expect(txt).toContain("https://firstdeploy.ai");
     expect(txt).toContain("https://agenthiveinc.com/consult");
-    expect(txt).toContain("agenthive.io");
-    expect(txt).toContain("agenthive.co");
+    expect(txt).not.toMatch(/agenthive\.io|agenthive\.co\b|insurance|QpiAI/i);
     expect(txt).toContain("AgentHive Inc · Palm Coast, FL · firstdeploy.ai");
   });
 
@@ -304,5 +305,19 @@ describe("per-route SEO", () => {
     const corp = readFileSync(join(corpRoot, "public", keyName), "utf8").trim();
     expect(netyard).toBe("40602f6b-ecf3-406b-a8e5-2e9f601462b6");
     expect(corp).toBe(netyard);
+  });
+});
+
+describe("never names other companies", () => {
+  it("keeps other AgentHive names out of every prerendered route, JSON-LD and llms.txt", () => {
+    const shell = readFileSync(join(corpRoot, "index.html"), "utf8");
+    const banned = /agenthive\.io|agenthive\.co\b|QpiAI|insurance/i;
+    for (const page of PAGE_SEO) {
+      expect(applyRouteHtml(shell, page), page.path).not.toMatch(banned);
+      expect(JSON.stringify(jsonLdFor(page)), page.path).not.toMatch(banned);
+      expect(render(page.path), page.path).not.toMatch(banned);
+    }
+    expect(readFileSync(join(corpRoot, "public/llms.txt"), "utf8")).not.toMatch(banned);
+    expect(readFileSync(join(corpRoot, "../pricing/src/site.mjs"), "utf8")).not.toMatch(/agenthive\.io|agenthive\.co\b/);
   });
 });
