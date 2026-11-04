@@ -32,3 +32,7 @@ npx netlify deploy --prod --dir=dist
 ```
 
 Attach the deploy to the site that already serves `aipricingcalculators.com`. After it is live, ping IndexNow with the key file at the site root. The launch notes are in [LAUNCH.md](LAUNCH.md). Posts are in [MARKETING.md](MARKETING.md).
+
+## Live sync (Nov 4, 2026)
+`static/ai-video-generator-pricing/index.html` and `static/indexnow-key.txt` are byte copies of the live aipricingcalculators.com files (deploy 6aebbf9462ce28fc9064f6d3). They were hand-deployed on Oct 23 and never committed. The sitemap now lists the page.
+The repo is NOT a byte match for live on purpose. Live index.html and llms.txt still show the older First Deploy pricing ($500 setup, $100/mo, "live this week"). The repo keeps the Oct 19 copy ($1,750 / $875 / $250/mo, no time-bound promises). A build from the repo changes those prices on live, so only deploy it with a GO.

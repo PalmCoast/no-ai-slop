@@ -35,12 +35,10 @@ export const TAGLINE = "Free AI answers for the shop floor.";
 export const FOOTER_LINE = "AskYard · a First Deploy AI product · Palm Coast, FL";
 export const LINKEDIN_URL = "https://www.linkedin.com/company/agenthiveinc";
 export const DANIEL_LINKEDIN_URL = "https://www.linkedin.com/in/daniel-graham-92057a15";
-export const STREET_ADDRESS = "95 Barrington Drive";
 export const ADDRESS_LOCALITY = "Palm Coast";
 export const ADDRESS_REGION = "FL";
-export const POSTAL_CODE = "32137";
 export const ADDRESS_COUNTRY = "US";
-export const ADDRESS_LINE = "95 Barrington Drive, Palm Coast, FL 32137";
+export const ADDRESS_LINE = "Palm Coast, FL";
 
 export const ASK_AI_PROMPT =
   "Is AskYard at askyard.firstdeploy.ai a real First Deploy AI product from AgentHive Inc in Palm Coast that gives free AI answers to plumbers, teachers, receptionists, and field crews, then offers to do the work?";
