@@ -122,7 +122,7 @@ describe("AgentHive Inc brand facts", () => {
   it("footer disambiguates AgentHive Inc from other AgentHives", () => {
     const layout = readFileSync(join(fileURLToPath(new URL("../src/components/Layout.tsx", import.meta.url))), "utf8");
     expect(layout).toMatch(/FOOTER_LINE/);
-    expect(layout).toMatch(/OTHER_HIVES/);
+    expect(layout).not.toMatch(/OTHER_HIVES|agenthive\.io|agenthive\.co\b/);
   });
 
   it("footer ships the FD-first money links and no netlify.app destinations", () => {
