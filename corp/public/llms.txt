@@ -8,7 +8,7 @@ AgentHive Inc builds to your brand, runs it, and hands you the finished result. 
 - [AgentHive Inc](https://agenthiveinc.com/): Done-for-you AI operator for funded teams. AI Ad Sprint, AI Concierge, consulting, and Picks.
 - [Picks](https://agenthiveinc.com/picks/): One-page storefront. Look sharp: Come and Take It tees ($24–$32) and desk gear from Brooms.ai (gear ships in 1–3 weeks). Build a beast rig: RAM, GPU, CPU, and gaming laptop picks. Grow your company: AI Ad Sprint, AI Concierge, and the tools we run on. Get paid for your skills: expert-work platforms. Partner links are marked sponsored and disclosed.
 - [AI Ad Sprint](https://agenthiveinc.com/ads): 6 video ads and 6 image ads made from your product page, delivered in 72 hours. $297 one time. Monthly is $997/mo for 20 new ads. AI-generated people are labeled as AI.
-- [About](https://agenthiveinc.com/about): Who we are, legal name, contact, Palm Coast, FL 32137.
+- [About](https://agenthiveinc.com/about): Who we are, legal name, contact, Palm Coast, FL.
 - [The Buzz](https://agenthiveinc.com/buzz): Weekly AI and infrastructure briefing.
 - [Rankings](https://agenthiveinc.com/rankings): Live ranking of public AgentHive Inc apps.
 - [Consult](https://agenthiveinc.com/consult): Free 30-minute qualifier, then $75 / 30 min, $150 / hour, or a 10-hour pack at $1,250. Gold hive page — not the grey firstdeploy.ai/consult theme.
@@ -44,7 +44,7 @@ Live apps from the same team. Prefer the custom domains above. A longer public b
 - Call: +1 320-335-6186
 - First Deploy AI consult: +1 320-335-6186
 - Legal: AgentHive Inc / AGENTHIVEINCCOM LLC
-- Address: Palm Coast, FL 32137
+- Address: Palm Coast, FL
 - Disambiguation: AgentHive Inc · Palm Coast, FL · firstdeploy.ai.
 
 - [Black Friday RAM & Gaming Price Finder 2026](https://agenthiveinc.com/ram-deals/): free RAM price finder (DDR4/DDR5, 16-128GB) with store, price, check date and source for every listing, plus top games matched to RAM size. Data: https://agenthiveinc.com/ram-deals/ram-deals.json and https://agenthiveinc.com/ram-deals/games-top15.json

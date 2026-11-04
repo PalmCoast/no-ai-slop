@@ -27,7 +27,6 @@ import {
   CONSULT_DISPLAY_SEO,
   DANIEL_LINKEDIN_URL,
   CONTENT_LASTMOD,
-  POSTAL_CODE,
   PRODUCT_FOOTER_LINKS,
   PICKS_URL,
 } from "./brand.ts";
@@ -235,7 +234,6 @@ export function organizationJsonLd() {
     "@id": addressId,
     addressLocality: ADDRESS_LOCALITY,
     addressRegion: ADDRESS_REGION,
-    postalCode: POSTAL_CODE,
     addressCountry: ADDRESS_COUNTRY,
   };
   return {
@@ -311,8 +309,7 @@ function organizationNode() {
       "@type": "PostalAddress",
       addressLocality: ADDRESS_LOCALITY,
       addressRegion: ADDRESS_REGION,
-      postalCode: POSTAL_CODE,
-      addressCountry: ADDRESS_COUNTRY,
+        addressCountry: ADDRESS_COUNTRY,
     },
     founder: { "@id": DANIEL_ID },
   };
