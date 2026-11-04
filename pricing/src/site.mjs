@@ -794,7 +794,7 @@ export function notFoundHtml() {
 }
 
 export function sitemapXml() {
-  const paths = ["/", "/models/", "/guide/", ...MODELS.map((model) => `/models/${model.id}/`)];
+  const paths = ["/", "/models/", "/guide/", "/ai-video-generator-pricing/", ...MODELS.map((model) => `/models/${model.id}/`)];
   const urls = paths.map((path) => `  <url>\n    <loc>${canonical(path)}</loc>\n    <lastmod>${UPDATED}</lastmod>\n  </url>`).join("\n");
   return `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls}\n</urlset>\n`;
 }

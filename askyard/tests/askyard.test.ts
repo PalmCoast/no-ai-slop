@@ -293,3 +293,18 @@ describe("scrubGuarantee", () => {
     expect(__scrub("Plain answer.")).toBe("Plain answer.");
   });
 });
+
+describe("no street address", () => {
+  it("keeps the street address and ZIP out of every askyard source and public file", async () => {
+    const root = join(dirname(fileURLToPath(import.meta.url)), "..");
+    const { readdirSync, statSync } = await import("node:fs");
+    const walk = (d: string): string[] =>
+      readdirSync(d).flatMap((n) => {
+        const p = join(d, n);
+        return statSync(p).isDirectory() ? walk(p) : [p];
+      });
+    const files = [...walk(join(root, "src")), ...walk(join(root, "shared")), ...walk(join(root, "public")), join(root, "index.html")].filter((f) => /\.(tsx?|html|txt|json|xml|md)$/.test(f));
+    for (const f of files) expect(readFileSync(f, "utf8"), f).not.toMatch(/Barrington|32137|streetAddress|postalCode/i);
+  });
+});
+

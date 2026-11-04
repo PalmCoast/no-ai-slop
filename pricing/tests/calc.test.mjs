@@ -108,7 +108,7 @@ test("every model has a crawlable page, a sitemap entry, and an llms line", () =
     assert.ok(full.includes(model.name));
     assert.ok(modelAnswer(model).includes(perM(model.input)));
   }
-  assert.equal(sitemap.match(/<loc>/g).length, MODELS.length + 3);
+  assert.equal(sitemap.match(/<loc>/g).length, MODELS.length + 4);
 });
 
 test("homepage answers in HTML, uses the hive theme, and does not ship the old paper ledger", () => {

@@ -28,8 +28,6 @@ import {
   MARQUEE_TAGLINE,
   MARQUEE_URL,
   PARENT_URL,
-  POSTAL_CODE,
-  STREET_ADDRESS,
   TAGLINE,
 } from "./brand.ts";
 import { SALE_APPS } from "./catalog.ts";
@@ -262,10 +260,8 @@ export function organizationJsonLd() {
           telephone: CONSULT_DISPLAY,
           address: {
             "@type": "PostalAddress",
-            streetAddress: STREET_ADDRESS,
             addressLocality: ADDRESS_LOCALITY,
             addressRegion: ADDRESS_REGION,
-            postalCode: POSTAL_CODE,
             addressCountry: ADDRESS_COUNTRY,
           },
           sameAs: [DANIEL_LINKEDIN_URL, LINKEDIN_URL, PARENT_URL, COMPANY_URL],
