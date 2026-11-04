@@ -78,7 +78,7 @@ export const PAGE_SEO: SeoPage[] = [
     title: "About AgentHive Inc — AGENTHIVEINCCOM LLC, Palm Coast",
     description: `${BRAND_NAME} is the Palm Coast AI operator behind ${FD_NAME}. Legal name ${LEGAL_NAME}. Call ${CONSULT_DISPLAY}.`,
     h1: "About AgentHive Inc",
-    bodyHtml: `<main id="route-about" class="section"><div class="container"><h1 class="display">About AgentHive Inc</h1><p class="lede">${BRAND_NAME} / ${LEGAL_NAME} is the Palm Coast AI consulting company that builds and ships. Daniel Graham builds working AI for funded teams, then leaves it running.</p><p>Contact: <a href="${BOOK_HREF}">${CONSULT_DISPLAY}</a>. ${FD_NAME} consult ${CONSULT_DISPLAY}. Shop address ${ADDRESS_LINE}.</p><p>This page is the company record for ${BRAND_NAME} at agenthiveinc.com — not QpiAI, not agenthive.io (insurance), not agenthive.co, not an OSS org with a similar name. The money homepage stays on the work.</p></div></main>`,
+    bodyHtml: `<main id="route-about" class="section"><div class="container"><h1 class="display">About AgentHive Inc</h1><p class="lede">${BRAND_NAME} / ${LEGAL_NAME} is the Palm Coast AI consulting company that builds and ships. Daniel Graham builds working AI for funded teams, then leaves it running.</p><p>Contact: <a href="${BOOK_HREF}">${CONSULT_DISPLAY}</a>. ${FD_NAME} consult ${CONSULT_DISPLAY}. Shop address ${ADDRESS_LINE}.</p><p>This page is the company record for ${BRAND_NAME} at agenthiveinc.com The money homepage stays on the work.</p></div></main>`,
   },
   {
     path: "/buzz",
@@ -128,9 +128,9 @@ export const PAGE_SEO: SeoPage[] = [
     path: "/concierge",
     title: `AI Concierge: fractional AI advisor, ${CONCIERGE_PRICE} | AgentHive Inc`,
     description:
-      "Fractional AI advisor, $2,000/mo: two 45-minute sessions, unlimited async Slack or text, and a shared asset inventory.",
+      "A senior AI operator for funded teams' leadership, $2,000/mo: two 45-minute sessions, unlimited async help and a shared asset inventory. Month to month.",
     h1: "Two sessions. The work ships.",
-    bodyHtml: `<main id="route-concierge" class="section"><div class="container"><h1 class="display">Two sessions. The work ships.</h1><p class="lede">${CONCIERGE_NAME} is a ${CONCIERGE_PRICE} done-with-you retainer. Audit the messy task, optimize the process, then automate it.</p><p>Included: 2 × 45-minute sessions a month, unlimited async Slack or text, and a shared inventory of every skill, automation, and asset we build. For owners who tried a general chat tool and it didn’t stick.</p><p>If ${FD_NAME} or hourly packs fit better, those stay open. ${CONSULT_RATES}. ${FD_PRICE_LINE}</p>    <p><a href="${CONCIERGE_STRIPE_URL}">Start ${CONCIERGE_NAME} — ${CONCIERGE_PRICE}</a> · <a href="${BOOK_HREF}">${CONCIERGE_BOOK_LABEL}</a> · ${CONSULT_DISPLAY}</p></div></main>`,
+    bodyHtml: `<main id="route-concierge" class="section"><div class="container"><h1 class="display">Two sessions. The work ships.</h1><p class="lede">A senior AI operator on retainer for your leadership team. Two working sessions a month, help between them, and finished work your team can point to. For funded teams that already pay for AI and want it to look as good as the rest of the company.</p><p>Included: 2 × 45-minute sessions a month, unlimited async help between them, and a shared inventory of every skill, automation and asset we build. ${CONCIERGE_NAME} is ${CONCIERGE_PRICE}, month to month.</p><p>If ${FD_NAME} or hourly packs fit better, those stay open. ${CONSULT_RATES}. ${FD_PRICE_LINE}</p>    <p><a href="${CONCIERGE_STRIPE_URL}">Start ${CONCIERGE_NAME} — ${CONCIERGE_PRICE}</a> · <a href="${BOOK_HREF}">${CONCIERGE_BOOK_LABEL}</a> · ${CONSULT_DISPLAY}</p></div></main>`,
   },
   {
     path: "/concierge/vs-hiring",
@@ -440,7 +440,7 @@ export function jsonLdFor(page: SeoPage): object | null {
           url: CONCIERGE_URL,
           provider: { "@id": DANIEL_ID },
           description:
-            "Fractional AI advisor. Two 45-minute sessions a month, unlimited async Slack or text, and a shared asset inventory.",
+            "A senior AI operator on retainer for the leadership of funded teams of 30 to 200. Two 45-minute working sessions a month, unlimited async help and a shared asset inventory. Month to month.",
           offers: monthlyOffer(CONCIERGE_NAME, CONCIERGE_PRICE_AMOUNT, CONCIERGE_STRIPE_URL),
         },
         faqPage(CONCIERGE_FAQS),

@@ -30,7 +30,6 @@ import {
   INDEXME_URL,
   LEGAL_NAME,
   MONEY_FOOTER_LINKS,
-  OTHER_HIVES,
   PRODUCT_FOOTER_LINKS,
   SEAT_CIRCUIT_NAME,
   SEAT_CIRCUIT_URL,
@@ -78,8 +77,6 @@ describe("AgentHive Inc brand facts", () => {
     expect(HERO_WHAT).toMatch(/funded companies and 30–200 person teams/);
     expect(`${HERO_H1} ${HERO_WHAT} ${HERO_WHY}`).not.toMatch(/field|dirt|shop|crew|whiteboard|missed/i);
     expect(FOOTER_LINE).toBe("AgentHive Inc · Palm Coast, FL · firstdeploy.ai");
-    expect(OTHER_HIVES).toMatch(/agenthive\.io/);
-    expect(OTHER_HIVES).toMatch(/agenthive\.co/);
   });
 
   it("homepage teaches the consultant shop, not the 12-bot swarm", () => {
@@ -110,8 +107,7 @@ describe("AgentHive Inc brand facts", () => {
     expect(about).not.toMatch(/calendly|grok/i);
     expect(about).toMatch(/CONSULT_DISPLAY|320-335-6186/);
     expect(about).toMatch(/LEGAL_NAME|AGENTHIVEINCCOM LLC/);
-    expect(about).toMatch(/QpiAI|insurance hive|OSS/);
-    expect(about).toMatch(/agenthive\.io|agenthive\.co|OTHER_HIVES/);
+    expect(about).not.toMatch(/QpiAI|agenthive\.io|agenthive\.co\b|insurance|OTHER_HIVES/i);
     expect(about).toMatch(/The hive/);
     expect(about).toMatch(/queen-portrait\.webp/);
     expect(about).toMatch(/\/consult/);

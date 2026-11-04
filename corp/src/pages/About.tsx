@@ -12,7 +12,6 @@ import {
   FD_URL,
   LEGAL_NAME,
   ADDRESS_LINE,
-  OTHER_HIVES,
 } from "../../shared/brand";
 
 export default function About() {
@@ -42,8 +41,7 @@ export default function About() {
             </p>
             <p className="muted">
               Public brand {BRAND_NAME}. Legal name {LEGAL_NAME}. Site{" "}
-              <a href={BRAND_URL}>agenthiveinc.com</a>. {ADDRESS_LINE}. This is the Palm Coast shop behind {FD_NAME} —
-              not QpiAI, not agenthive.io (insurance), not agenthive.co, not an OSS org with a similar name.
+              <a href={BRAND_URL}>agenthiveinc.com</a>. {ADDRESS_LINE}. This is the Palm Coast shop behind {FD_NAME}.
             </p>
           </div>
         </div>
@@ -150,9 +148,6 @@ export default function About() {
                 Open Rankings
               </a>
             </div>
-            <p className="fine" style={{ marginTop: 16 }}>
-              {OTHER_HIVES}
-            </p>
           </div>
           <div className="frame">
             <img

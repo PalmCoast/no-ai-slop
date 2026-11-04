@@ -811,7 +811,7 @@ export function llmsTxt() {
 
 > Free LLM API cost calculator from AgentHive Inc (AGENTHIVEINCCOM LLC) in Palm Coast, Florida. ${PRICE_AS_OF} list prices for GPT-5.6, Claude, Gemini, Grok, DeepSeek, and Mistral. The calculator is free. First Deploy AI is $1,750 setup ($875 to start), then $250/month. Consult is a free 30-minute qualifier, then $75 / 30 min, $150 / hour, or a 10-hour pack at $1,250.
 
-AI Pricing Calculators (https://aipricingcalculators.com/) prices a workload before you buy tokens or a desk. Daniel Graham built the card. It is not agenthive.io (insurance) and not agenthive.co.
+AI Pricing Calculators (https://aipricingcalculators.com/) prices a workload before you buy tokens or a desk. Daniel Graham built the card.
 
 ## This site
 - [Calculator](${SITE}/): Monthly cost, token paste, price matrix, self-host floor, subscription break-even.
