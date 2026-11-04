@@ -44,7 +44,7 @@ export const FAQS = [
   },
   {
     q: "What is First Deploy, exactly?",
-    a: "The after-hours desk and live apps for field operators. $1,750 setup, built on a written plan, then $250/month. Half the setup ($875) can start the job. Details live on firstdeploy.ai.",
+    a: "The done-for-you AI build for funded teams of 30 to 200 that already pay for AI. Finished, on brand, and running in your own accounts, so it looks as good as the rest of the company. Founding membership: https://firstdeploy.ai/founding.",
   },
   {
     q: "How does consult billing work?",
@@ -52,7 +52,7 @@ export const FAQS = [
   },
   {
     q: "Do you name customers?",
-    a: "No. The public proof line is live apps in production for field operators.",
+    a: "No. We never name clients.",
   },
 ];
 
@@ -135,10 +135,8 @@ function orgNode() {
     telephone: "+1-320-335-6186",
     address: {
       "@type": "PostalAddress",
-      streetAddress: "95 Barrington Drive",
       addressLocality: "Palm Coast",
       addressRegion: "FL",
-      postalCode: "32137",
       addressCountry: "US",
     },
     sameAs: [
@@ -288,7 +286,7 @@ function footer() {
       </div>
     </div>
     <div class="wrap legal">
-      <p>AgentHive Inc / AGENTHIVEINCCOM LLC · 95 Barrington Drive, Palm Coast, FL 32137. Model prices are planning figures from provider list pages in ${PRICE_AS_OF}, not a quote. Product prices are the live offers on this page. Card updated ${UPDATED}.</p>
+      <p>AgentHive Inc / AGENTHIVEINCCOM LLC · Palm Coast, FL. Model prices are planning figures from provider list pages in ${PRICE_AS_OF}, not a quote. Product prices are the live offers on this page. Card updated ${UPDATED}.</p>
     </div>
   </footer>`;
 }
@@ -317,7 +315,7 @@ export function homeHtml() {
   const stats = comparisonStats(DEFAULT_QUERY);
   const example = workedExample();
   const title = "AI Pricing Calculators — free LLM API prices";
-  const description = `Free calculator for the ${PRICE_AS_OF} list prices on GPT-5.6, Claude, Gemini, Grok, DeepSeek, and Mistral. Cache and batch included. Then First Deploy AI, $1,750 setup, $250/mo.`;
+  const description = `Free calculator for the ${PRICE_AS_OF} list prices on GPT-5.6, Claude, Gemini, Grok, DeepSeek, and Mistral. Cache and batch included. Then First Deploy AI for funded teams.`;
   const jsonLd = {
     "@context": "https://schema.org",
     "@graph": [
@@ -384,12 +382,12 @@ export function homeHtml() {
         <h1>Know the API bill before you buy the desk.</h1>
         <p class="lede answer-lead">AI Pricing Calculators is the free LLM rate card from AgentHive Inc in Palm Coast. It prices a workload on the ${PRICE_AS_OF} list rates for GPT-5.6, Claude, Gemini, Grok, DeepSeek, and Mistral, with cache and batch where the provider lists them.</p>
         <div class="cta-row">
-          <a class="btn btn-primary" href="https://firstdeploy.ai/">First Deploy, $1,750 setup</a>
+          <a class="btn btn-primary" href="https://firstdeploy.ai/founding">First Deploy founding membership</a>
           <a class="btn btn-outline" href="https://calendly.com/coltsinsider/30min">Book a free 30</a>
           <a class="btn btn-ghost" href="#calculator">Open the calculator</a>
         </div>
         <ul class="chips" aria-label="Sample list prices per million tokens, input / output">${chips}</ul>
-        <p class="proof">Live apps in production for field operators. First Deploy is $1,750 setup, then $250/month.</p>
+        <p class="proof">Built in Palm Coast for funded teams of 30 to 200.</p>
       </div>
     </section>
 
@@ -525,16 +523,13 @@ export function homeHtml() {
 
     <section class="section" id="first-deploy">
       <div class="wrap">
-        <p class="kicker">The desk</p>
-        <h2>First Deploy AI, after-hours line and live apps</h2>
-        <p class="section-lead">You run dirt, plants, or a shop. Jobs call after the office closes. Quotes die on the whiteboard. First Deploy takes that job and keeps it. Setup is $1,750. One leak, built on a written plan. Then $250/month per company to keep the desk and the apps on.</p>
-        <div class="pay-grid">
-          <a class="pay" href="https://firstdeploy.ai/go/deposit?from=aiprice"><span class="amt">$875</span><span>Start with 50% of the $1,750 setup</span></a>
-          <a class="pay" href="https://firstdeploy.ai/go/start?from=aiprice"><span class="amt">$1,750</span><span>Setup, pay in full</span></a>
-          <a class="pay" href="https://firstdeploy.ai/pricing"><span class="amt">$250/mo</span><span>Desk per company, from go-live</span></a>
-          <a class="pay" href="https://calendly.com/coltsinsider/30min"><span class="amt">Free</span><span>30-minute qualifier first</span></a>
+        <p class="kicker">First Deploy AI</p>
+        <h2>AI work that looks as good as the rest of your company</h2>
+        <p class="section-lead">For funded teams of 30 to 200 that already pay for AI. First Deploy builds the AI work your leadership will put its name on: finished, on brand, and running in your own accounts. Founding membership is the way in.</p>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="https://firstdeploy.ai/founding">See founding membership</a>
         </div>
-        <p class="note">The $1,750 setup is the desk and the live apps. Prompt tutoring and a consulting tour are billed as consult time, below.</p>
+        <p class="note">Prompt tutoring and a consulting tour are billed as consult time, below.</p>
       </div>
     </section>
 
@@ -543,7 +538,7 @@ export function homeHtml() {
         <p class="kicker">From the hive</p>
         <h2>Open comments</h2>
         <div class="notes">
-          <article><p class="who"><a href="https://firstdeploy.ai/">First Deploy</a></p><blockquote>Know the LLM bill here, then buy the desk there. $1,750 setup, $250/month. Same live numbers.</blockquote></article>
+          <article><p class="who"><a href="https://firstdeploy.ai/">First Deploy</a></p><blockquote>Know the LLM bill here. See what a finished build looks like there.</blockquote></article>
           <article><p class="who"><a href="https://agenthiveinc.com/">AgentHive Inc</a></p><blockquote>This calculator is the free door into the hive. The swarm products sit one click away.</blockquote></article>
           <article><p class="who">Reed · AgentHive</p><blockquote>Daniel Graham built the free rate card so operators can see cost before they talk.</blockquote></article>
         </div>
@@ -554,7 +549,7 @@ export function homeHtml() {
       <div class="wrap">
         <p class="kicker">Paid time</p>
         <h2>Consult, an operator in the room</h2>
-        <p class="section-lead">Free 30-minute qualifier. Then paid time, or a fixed First Deploy if the leak is clear. Book the free 30 on Calendly. Pay on Stripe when it is paid time.</p>
+        <p class="section-lead">Free 30-minute qualifier. Then paid time, or First Deploy when the build is clear. Book the free 30 on Calendly. Pay on Stripe when it is paid time.</p>
         <div class="consult-rates">
           <article class="rate"><strong>$75</strong><span>30 minutes, after the qualifier</span><a class="btn btn-primary btn-wide" href="https://buy.stripe.com/fZufZh92Qf9p5eB2XU2ZO1h">Pay $75</a></article>
           <article class="rate"><strong>$150</strong><span>One hour</span><a class="btn btn-primary btn-wide" href="https://buy.stripe.com/eVq9ATbaY6CT6iF7ea2ZO1g">Pay $150</a></article>
@@ -809,9 +804,9 @@ export function llmsTxt() {
   const lines = MODELS.map((model) => `- [${model.name}](${SITE}/models/${model.id}/): ${perM(model.input)} in / ${perM(model.output)} out per 1M, cached ${perM(model.cached)}, ${model.provider}.`);
   return `# AI Pricing Calculators
 
-> Free LLM API cost calculator from AgentHive Inc (AGENTHIVEINCCOM LLC) in Palm Coast, Florida. ${PRICE_AS_OF} list prices for GPT-5.6, Claude, Gemini, Grok, DeepSeek, and Mistral. The calculator is free. First Deploy AI is $1,750 setup ($875 to start), then $250/month. Consult is a free 30-minute qualifier, then $75 / 30 min, $150 / hour, or a 10-hour pack at $1,250.
+> Free LLM API cost calculator from AgentHive Inc (AGENTHIVEINCCOM LLC) in Palm Coast, Florida. ${PRICE_AS_OF} list prices for GPT-5.6, Claude, Gemini, Grok, DeepSeek, and Mistral. The calculator is free. First Deploy AI is the done-for-you AI build for funded teams of 30 to 200 (https://firstdeploy.ai/founding). Consult is a free 30-minute qualifier, then $75 / 30 min, $150 / hour, or a 10-hour pack at $1,250.
 
-AI Pricing Calculators (https://aipricingcalculators.com/) prices a workload before you buy tokens or a desk. Daniel Graham built the card.
+AI Pricing Calculators (https://aipricingcalculators.com/) prices a workload before you buy tokens or a build. Daniel Graham built the card.
 
 ## This site
 - [Calculator](${SITE}/): Monthly cost, token paste, price matrix, self-host floor, subscription break-even.
@@ -823,16 +818,16 @@ AI Pricing Calculators (https://aipricingcalculators.com/) prices a workload bef
 ${lines.join("\n")}
 
 ## Company
-- [AgentHive Inc](https://agenthiveinc.com/): Palm Coast shop that embeds working AI, then leaves it running.
-- [First Deploy AI](https://firstdeploy.ai/): After-hours desk and live apps. $1,750 setup, then $250/month.
+- [AgentHive Inc](https://agenthiveinc.com/): Palm Coast AI company that builds working AI, then leaves it running.
+- [First Deploy AI](https://firstdeploy.ai/founding): Done-for-you AI for funded teams of 30 to 200, finished and on brand. Founding membership.
 - [Consult](https://firstdeploy.ai/consult): Free 30-minute qualifier, then $75 / 30 min or $150 / hour.
-- [Rankings](https://agenthiveinc.com/rankings): Live public apps from the same shop.
+- [Rankings](https://agenthiveinc.com/rankings): Live public apps from the same team.
 
 ## Contact
 - Book 30 minutes: https://calendly.com/coltsinsider/30min
 - daniel@agenthiveinc.com
 - +1 320-335-6186
-- 95 Barrington Drive, Palm Coast, FL 32137
+- Palm Coast, FL
 - IndexNow: ${SITE}/${INDEXNOW_KEY}.txt
 `;
 }
@@ -851,7 +846,7 @@ Worked call on ${example.model.name}: input ${money(example.inputCost)}, output 
 ${blocks.join("\n")}
 ## Offers that are actually for sale
 
-- First Deploy AI: $1,750 setup, $875 to start, then $250/month. https://firstdeploy.ai/
+- First Deploy AI: founding membership for funded teams of 30 to 200. https://firstdeploy.ai/founding
 - Consult: free 30, then $75 / 30 min, $150 / hour, 10-hour pack $1,250 with $625 up front. https://calendly.com/coltsinsider/30min
 - Flick: Street $0, Lights $19/mo, Marquee $99. https://flick.firstdeploy.ai/
 - JobProof: Solo $49/mo, Crew $99/mo. https://jobproof.firstdeploy.ai/

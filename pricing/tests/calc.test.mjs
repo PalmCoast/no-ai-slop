@@ -125,7 +125,7 @@ test("homepage answers in HTML, uses the hive theme, and does not ship the old p
   assert.doesNotMatch(html, /Daniel@agenthiveinc\.com/);
   assert.match(html, /daniel@agenthiveinc\.com/);
   assert.match(llmsTxt(), /llms-full\.txt/);
-  assert.match(llmsTxt(), /\$1,750/);
+  assert.doesNotMatch(llmsTxt(), /\$1,750/);
   const css = readFileSync(new URL("../static/styles.css", import.meta.url), "utf8");
   assert.match(css, /--gold:\s*#e4b84a/);
   assert.match(css, /--bg:\s*#050403/);
