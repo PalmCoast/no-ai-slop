@@ -87,6 +87,5 @@ export const LINKEDIN_URL = "https://www.linkedin.com/company/agenthiveinc";
 export const DANIEL_LINKEDIN_URL = "https://www.linkedin.com/in/daniel-graham-92057a15";
 export const ADDRESS_LOCALITY = "Palm Coast";
 export const ADDRESS_REGION = "FL";
-export const POSTAL_CODE = "32137";
 export const ADDRESS_COUNTRY = "US";
-export const ADDRESS_LINE = "Palm Coast, FL 32137";
+export const ADDRESS_LINE = "Palm Coast, FL";

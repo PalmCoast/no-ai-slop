@@ -107,7 +107,8 @@ describe("per-route SEO", () => {
     expect(pages[0]).not.toContain("1" + ",750");
     expect(pages[0]).not.toContain("$" + "250/mo");
     expect(pages.join("")).not.toMatch(/\$2,?500|\$1,?500\s*\/\s*mo|firstdeploy\.dev/);
-    expect(pages[1]).toContain("Palm Coast, FL 32137");
+    expect(pages[1]).toContain("Palm Coast, FL");
+    expect(pages.join("")).not.toContain("32137");
     expect(pages.join("")).not.toContain("Barrington");
     expect(pages[2]).toContain("briefing");
     expect(pages.join("")).not.toMatch(/14 apps|\$70k|coltsinsider@gmail/i);
@@ -118,7 +119,8 @@ describe("per-route SEO", () => {
     const json = JSON.stringify(graph);
     expect(json).toContain("Organization");
     expect(json).toContain("LocalBusiness");
-    expect(json).toContain("32137");
+    expect(json).not.toContain("32137");
+    expect(json).toContain("Palm Coast");
     expect(json).not.toContain("Barrington");
     expect(json).toContain(LEGAL_NAME);
     expect(json).toContain(LINKEDIN_URL);
@@ -333,3 +335,17 @@ describe("consult and vs-hiring drop Slack/owners framing", () => {
     }
   });
 });
+
+describe("city-only address", () => {
+  it("keeps Barrington and the ZIP out of every route, schema, llms.txt and static page", () => {
+    const shell = readFileSync(join(corpRoot, "index.html"), "utf8");
+    for (const page of PAGE_SEO) {
+      expect(applyRouteHtml(shell, page), page.path).not.toMatch(/Barrington|32137/);
+      expect(JSON.stringify(jsonLdFor(page)), page.path).not.toMatch(/Barrington|32137/);
+    }
+    for (const f of ["public/llms.txt", "public/picks/index.html", "public/ram-deals/index.html"]) {
+      expect(readFileSync(join(corpRoot, f), "utf8"), f).not.toMatch(/Barrington|32137/);
+    }
+  });
+});
+
