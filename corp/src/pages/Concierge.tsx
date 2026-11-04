@@ -20,16 +20,16 @@ import {
 } from "../../shared/concierge";
 
 const STEPS = [
-  { title: "Free call", body: "15 to 30 minutes on the shop line. We find out whether a retainer, hourly time, or First Deploy AI fits." },
-  { title: "Intake", body: "Before kickoff: your time sinks, your tool stack, and the processes worth fixing first." },
-  { title: "Audit and optimize", body: "Screen-share the messy task live. Cut broken and duplicate steps before any model touches it." },
-  { title: "Automate", body: "Build the projects, skills and workflows in the sessions, and log every one in your shared inventory." },
+  { title: "Free call", body: "15 to 30 minutes by phone. We work out whether the retainer, hourly time or First Deploy AI fits your team." },
+  { title: "Intake", body: "Before kickoff: where your leadership loses time, the tools you already pay for, and what’s worth fixing first." },
+  { title: "Audit and optimize", body: "We screen-share the messy work live and cut the broken and duplicate steps first." },
+  { title: "Automate", body: "We build it together in the session and log every piece in your shared inventory, so the work stays yours." },
 ];
 
 const GOOD_FIT = [
-  "You own or run the business and a general chat tool didn’t stick.",
-  "One or two tasks eat the week: sales follow-up, quoting, scheduling, ops handoffs, reporting.",
-  "You will show up to two working sessions a month and do the work in them.",
+  "You lead a funded team that pays for AI, and it isn’t showing up in the work yet.",
+  "One or two jobs eat leadership’s week: sales follow-up, scheduling, handoffs between teams, reporting.",
+  "You’ll show up to two working sessions a month and do the work in them.",
   "You want a partner on the calls, not a PDF of prompts.",
 ];
 
@@ -62,8 +62,9 @@ export default function Concierge() {
             <em>The work ships.</em>
           </h1>
           <p className="lede">
-            A {CONCIERGE_PRICE} fractional AI advisor for owners who tried a general chat tool and it didn’t stick. We audit the
-            messy task, cut the broken steps, then automate it — with an operator in the room.
+            A senior AI operator on retainer for your leadership team. Two working sessions a month, help between them, and
+            finished work your team can point to. For funded teams that already pay for AI and want it to look as good as the
+            rest of the company.
           </p>
           <div className="hero-actions">
             <a className="btn btn-primary" href={CONCIERGE_STRIPE_URL} rel="noreferrer" target="_blank">
@@ -83,7 +84,7 @@ export default function Concierge() {
         <div className="container">
           <div className="section-head">
             <h2>How it works.</h2>
-            <p>Audit, optimize, automate. Same order every month. AI comes after the process is worth automating.</p>
+            <p>Same order every month: look at the work, clean it up, then automate it. AI goes in only once the process deserves it.</p>
           </div>
           <ol className="steps steps-4">
             {STEPS.map((step, i) => (
@@ -101,28 +102,28 @@ export default function Concierge() {
         <div className="container">
           <div className="section-head">
             <h2>What you get.</h2>
-            <p>Forced working time, a thread you can use while the work is in front of you, and a list of assets you keep.</p>
+            <p>Protected time on the calendar, a direct line between sessions, and a growing list of assets your team keeps.</p>
           </div>
           <div className="trust-grid consult-offers">
             <article className="trust">
               <p className="eyebrow">Sessions</p>
               <h3>2 × 45 minutes</h3>
-              <p className="muted">Two working sessions a month on Zoom, screen-share. You leave with something usable the same day.</p>
+              <p className="muted">Two working sessions a month by video call, screen-share. You leave with something usable the same day.</p>
             </article>
             <article className="trust">
               <p className="eyebrow">Between calls</p>
               <h3>Unlimited async</h3>
-              <p className="muted">Slack or text while the question is in front of you. Not a ticket queue.</p>
+              <p className="muted">Message or text while the question is in front of you. A direct line, not a ticket queue.</p>
             </article>
             <article className="trust">
               <p className="eyebrow">The hub</p>
               <h3>Shared asset inventory</h3>
-              <p className="muted">Notion or Drive: links, schedule, and a running list of every skill, automation, and asset we build.</p>
+              <p className="muted">One shared hub with links, the schedule and a running list of every skill, automation and asset we build.</p>
             </article>
             <article className="trust">
               <p className="eyebrow">Before kickoff</p>
               <h3>Intake</h3>
-              <p className="muted">Time sinks, tool stack, and the process inventory — so the first session starts on the real leak.</p>
+              <p className="muted">Where time goes, the tools you already pay for, and the process list, so the first session starts on what matters most.</p>
             </article>
           </div>
         </div>
@@ -138,8 +139,8 @@ export default function Concierge() {
               <em>Month to month.</em>
             </h2>
             <p className="lede">
-              You’re not buying hours. You’re buying two forced working sessions a month so the AI work actually ships —
-              and a running list of assets you’ll hate to lose at renewal. Six seats, so the sessions stay sharp.
+              You’re not buying hours. You’re buying two working sessions a month that make the AI work ship, and a running
+              list of assets your team won’t want to give up. Six seats, so every session gets full attention.
             </p>
             <div className="hero-actions">
               <a className="btn btn-primary" href={CONCIERGE_STRIPE_URL} rel="noreferrer" target="_blank">
@@ -155,8 +156,9 @@ export default function Concierge() {
             <p className="eyebrow">Who it’s for</p>
             <p className="rate-amt">{CONCIERGE_PRICE}</p>
             <p className="muted">
-              Owners and COOs who already tried a general chat tool and it didn’t stick. Stuck in sales follow-up, quoting,
-              scheduling, ops handoffs, or reporting — and want a partner on the calls, not a PDF of prompts.
+              Founders, executives and department leads at funded teams of 30 to 200 who already pay for AI and want more to
+              show for it. The work that eats the week, like sales follow-up, scheduling, handoffs between teams and reporting,
+              gets done properly. You get a partner on the calls, not a PDF of prompts.
             </p>
             <p className="muted">
               Not included: unlimited custom software, staffing your team, or a black-box agency that runs without you.
@@ -169,7 +171,7 @@ export default function Concierge() {
         <div className="container">
           <div className="section-head">
             <h2>What {CONCIERGE_PRICE} includes.</h2>
-            <p>The retainer is the monthly price on this page. We are not quoting anyone else’s rate.</p>
+            <p>One price, on this page. We don’t quote anyone else’s rate.</p>
           </div>
           <div className="table-wrap">
             <table className="cost-table">
@@ -194,7 +196,7 @@ export default function Concierge() {
                     <strong>{CONCIERGE_PRICE}</strong>
                   </td>
                   <td>
-                    2 × 45-minute working sessions, unlimited async Slack or text, a shared asset inventory. Cancel any
+                    2 × 45-minute working sessions, unlimited async help between them, a shared asset inventory. Cancel any
                     month after the first 30 days.
                   </td>
                 </tr>
@@ -244,15 +246,15 @@ export default function Concierge() {
           <div className="section-head">
             <h2>If a retainer is the wrong shape.</h2>
             <p>
-              {FD_NAME} and the hourly packs stay open. The bottleneck call is how we say which one fits — we don’t
-              force the retainer.
+              {FD_NAME} and the hourly packs stay open. The free call is where we tell you which one fits. We won’t push
+              the retainer.
             </p>
           </div>
           <div className="trust-grid bridge-grid">
             <article className="trust">
               <p className="eyebrow">{FD_NAME}</p>
               <h3>{FD_PRICE}</h3>
-              <p className="muted">After-hours desk and a fixed deploy when the audit shows calls or quotes leaking.</p>
+              <p className="muted">A front desk that answers in your brand’s name and voice and sends the details to your team.</p>
               <a className="btn btn-outline" href={FD_URL} rel="noreferrer" target="_blank">
                 {FD_NAME}
               </a>
@@ -260,7 +262,7 @@ export default function Concierge() {
             <article className="trust">
               <p className="eyebrow">Hourly consult</p>
               <h3>{CONSULT_RATES}</h3>
-              <p className="muted">Paid time, or a 10-hour pack at $1,250, when continuity is more than you need.</p>
+              <p className="muted">Paid time, or a 10-hour pack at $1,250, when you don’t need a monthly rhythm.</p>
               <Link className="btn btn-outline" to={HIVE_CONSULT_PATH}>
                 See hourly consult
               </Link>
@@ -276,7 +278,7 @@ export default function Concierge() {
           <p style={{ marginTop: 18 }}>
             Compare this retainer with a full-time hire on{" "}
             <Link to="/concierge/vs-hiring">Concierge vs hiring</Link>. Hourly time stays on{" "}
-            <Link to={HIVE_CONSULT_PATH}>consult</Link>. Shops that need the after-hours desk can start at{" "}
+            <Link to={HIVE_CONSULT_PATH}>consult</Link>. Teams that want a branded front desk can start at{" "}
             <a href={FD_URL}>{FD_NAME}</a>.
           </p>
         </div>

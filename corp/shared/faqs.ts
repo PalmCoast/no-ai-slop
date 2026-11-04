@@ -60,7 +60,7 @@ export const CONSULT_COST_FAQS: Faq[] = [
 export const CONCIERGE_FAQS: Faq[] = [
   {
     q: "What is included in AI Concierge?",
-    a: "Two 45-minute sessions a month on Zoom, screen-share. Unlimited async Slack or text. A shared inventory in Notion or Drive of every skill, automation, and asset we build. Intake before kickoff covers time sinks, the tool stack, and the process list.",
+    a: "Two 45-minute working sessions a month by video call, screen-share. Unlimited async help between them. A shared inventory of every skill, automation and asset we build. Intake before kickoff covers where time goes, the tools you already pay for, and the process list.",
   },
   {
     q: "What does AI Concierge cost?",
@@ -76,11 +76,11 @@ export const CONCIERGE_FAQS: Faq[] = [
   },
   {
     q: "Who is the fractional AI advisor for?",
-    a: "Owners and COOs who already tried a general chat tool and it didn’t stick, and want a partner on the calls rather than a PDF of prompts.",
+    a: "Founders, executives and department leads at funded teams of 30 to 200 who already pay for AI or software and want a partner on the calls, not a PDF of prompts.",
   },
   {
     q: "What does the monthly price cover?",
-    a: "AI Concierge is $2,000 a month: two 45-minute sessions, unlimited async Slack or text, and a shared asset inventory. This answer does not quote another firm's rate.",
+    a: "AI Concierge is $2,000 a month: two 45-minute sessions, unlimited async help between them, and a shared asset inventory. We don't quote another firm's rate.",
   },
   {
     q: "Why not hire someone full time?",
@@ -88,7 +88,7 @@ export const CONCIERGE_FAQS: Faq[] = [
   },
   {
     q: "What if a monthly retainer is the wrong fit?",
-    a: `Hourly consult stays open: ${CONSULT_RATES}, or a 10-hour pack for $1,250. Shops whose calls or quotes leak after hours can start with First Deploy AI. The free call is where we say which one fits.`,
+    a: `Hourly consult stays open: ${CONSULT_RATES}, or a 10-hour pack for $1,250. Teams that want a front desk in their brand’s voice can start with First Deploy AI. The free call is where we say which one fits.`,
   },
   {
     q: "How do I start?",

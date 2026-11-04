@@ -13,7 +13,6 @@ import {
   ADDRESS_LINE,
   FOOTER_LINE,
   MONEY_FOOTER_LINKS,
-  OTHER_HIVES,
   PICKS_PATH,
   PRODUCT_FOOTER_LINKS,
 } from "../../shared/brand";
@@ -113,8 +112,6 @@ export default function Layout() {
               Done-for-you AI operator. {ADDRESS_LINE}.
               <br />
               {FOOTER_LINE}
-              <br />
-              {OTHER_HIVES}
             </p>
             <p>
               Consult:{" "}
