@@ -67,7 +67,7 @@ export default function VsHiring() {
               </tr>
               <tr>
                 <th>What you get</th>
-                <td>Two 45-minute sessions a month, unlimited async Slack or text, and a shared asset inventory.</td>
+                <td>Two 45-minute sessions a month, unlimited async help, and a shared asset inventory.</td>
                 <td>BLS describes software developers as people who design computer applications or programs.</td>
                 <td>BLS describes these managers as people who plan, coordinate, and direct computer-related activities.</td>
                 <td>A bench of specialists, when that is what you hire.</td>
@@ -90,7 +90,7 @@ export default function VsHiring() {
           an AI consultant costs.”
         </p>
         <p>
-          {CONCIERGE_NAME} is {CONCIERGE_PRICE} for two 45-minute sessions a month, unlimited async Slack or text, and a
+          {CONCIERGE_NAME} is {CONCIERGE_PRICE} for two 45-minute sessions a month, unlimited async help, and a
           shared inventory of the assets we build. Cancel any month after the first 30 days. The offer is{" "}
           <Link to={CONCIERGE_PATH}>on the Concierge page</Link>.
         </p>

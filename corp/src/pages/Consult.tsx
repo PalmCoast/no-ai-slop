@@ -92,7 +92,7 @@ export default function Consult() {
         <div className="container">
           <div className="section-head">
             <h2>What you get</h2>
-            <p>Hands-on AI help for owners who want the work done, not a report about it.</p>
+            <p>Hands-on AI help for funded teams’ leadership who want the work done, not a report about it.</p>
           </div>
           <div className="trust-grid consult-get">
             {WHAT_YOU_GET.map((item) => (
@@ -183,7 +183,7 @@ export default function Consult() {
       <section className="section section-alt" id="faq">
         <div className="container">
           <div className="section-head">
-            <h2>Questions owners ask</h2>
+            <h2>Questions leadership teams ask</h2>
           </div>
           <FaqList items={CONSULT_FAQS} />
         </div>

@@ -106,7 +106,7 @@ export const PAGE_SEO: SeoPage[] = [
   {
     path: "/consult",
     title: "AI consultant for funded teams: free 30 min, then $75 | AgentHive Inc",
-    description: `Hands-on AI help for owners. Free 30-minute call, then ${CONSULT_RATES}, or a 10-hour pack for $1,250. Set up in your accounts.`,
+    description: `Hands-on AI help for funded teams’ leadership. Free 30-minute call, then ${CONSULT_RATES}, or a 10-hour pack for $1,250. Set up in your accounts.`,
     h1: "Hand over the AI job. We set it up with you.",
     bodyHtml: `<main id="route-consult" class="section"><div class="container"><h1 class="display">Hand over the AI job. We set it up with you.</h1><p class="lede">Tell Daniel Graham the task that eats your week. On a free 30-minute call you find out if AI can take it. If it can, paid hours go to building it in your own accounts until it runs.</p><p>Free 30 minutes. Then $75 / 30 minutes, $150 / hour, or a 10-hour pack for $1,250 ($625 up front). Call ${CONSULT_DISPLAY}.</p><p>Compare: <a href="${CONSULT_COST_URL}">what an AI consultant costs</a>. Need someone monthly? <a href="${CONCIERGE_URL}">${CONCIERGE_NAME}</a> is the ${CONCIERGE_PRICE} retainer.</p></div></main>`,
   },

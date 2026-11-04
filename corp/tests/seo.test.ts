@@ -321,3 +321,15 @@ describe("never names other companies", () => {
     expect(readFileSync(join(corpRoot, "../pricing/src/site.mjs"), "utf8")).not.toMatch(/agenthive\.io|agenthive\.co\b/);
   });
 });
+
+describe("consult and vs-hiring drop Slack/owners framing", () => {
+  it("keeps Slack and owners out of /consult and /concierge/vs-hiring head, schema and render", () => {
+    const shell = readFileSync(join(corpRoot, "index.html"), "utf8");
+    for (const path of ["/consult", "/concierge/vs-hiring"]) {
+      const page = PAGE_SEO.find((p) => p.path === path)!;
+      expect(applyRouteHtml(shell, page), path).not.toMatch(/Slack|owners/);
+      expect(JSON.stringify(jsonLdFor(page)), path).not.toMatch(/Slack|owners/);
+      expect(render(path), path).not.toMatch(/Slack|\bowners\b/);
+    }
+  });
+});

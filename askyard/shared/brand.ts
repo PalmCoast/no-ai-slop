@@ -23,8 +23,7 @@ export const FD_PRICE_LONG = "$1,750 setup ($875 to start), then $250/month";
 export const FD_PROMISE = "Built and run on the same written plan we run for active client builds";
 export const HOME_TITLE = "AskYard | Free shop-floor AI answers from First Deploy";
 export const HOME_DESCRIPTION =
-  "AskYard is the free shop-floor front door from First Deploy. Not agenthive.io. Built by AgentHive Inc in Palm Coast. Paid desk: firstdeploy.ai.";
-export const OTHER_HIVES = "AgentHive Inc is not agenthive.io (insurance leads) and not agenthive.co.";
+  "AskYard is the free shop-floor front door from First Deploy. Built by AgentHive Inc in Palm Coast. Paid desk: firstdeploy.ai.";
 export const NIGHT_LINE_CTA =
   "Need the night line installed? First Deploy AI — firstdeploy.ai — $1,750 setup ($875 to start), then $250/month.";
 export const CONTENT_LASTMOD = "2026-09-21";
