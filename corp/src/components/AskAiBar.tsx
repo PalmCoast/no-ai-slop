@@ -1,4 +1,4 @@
-import { ASK_AI_BRAND, ASK_AI_NOTE, ASK_AI_PROMPT, ASK_AI_SUBTITLE, askAiLinks } from "../../shared/ask-ai";
+import { ASK_AI_BRAND, ASK_AI_PROMPT, ASK_AI_SUBTITLE, askAiLinks } from "../../shared/ask-ai";
 
 function SparkIcon() {
   return (
@@ -53,7 +53,6 @@ export default function AskAiBar({ prompt = ASK_AI_PROMPT }: { prompt?: string }
               </a>
             ))}
           </div>
-          <p className="ask-ai-bar__note">{ASK_AI_NOTE}</p>
         </div>
       </div>
     </section>

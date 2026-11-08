@@ -5,7 +5,6 @@ import { describe, expect, it } from "vitest";
 import {
   ASK_AI_BRAND,
   ASK_AI_DISAMBIGUATION,
-  ASK_AI_NOTE,
   ASK_AI_PACK_PROMPT,
   ASK_AI_PROMPT,
   ASK_AI_PROMPTS,
@@ -35,7 +34,6 @@ describe("Ask AI bar", () => {
       expect(prompt).not.toMatch(/14 apps|\$70k|Grok Bot|swarm/i);
     }
     expect(ASK_AI_PROMPTS.brooms).toMatch(/Brooms\.ai/);
-    expect(ASK_AI_NOTE).toMatch(/does not index/i);
   });
 
   it("builds encoded prefill links for ChatGPT, Claude, Perplexity, Grok, and Google", () => {
@@ -63,5 +61,7 @@ describe("Ask AI bar", () => {
     expect(concierge).not.toMatch(/AskAiBar/);
     expect(home).toMatch(/AskAiBar/);
     expect(aeo).toMatch(/AskAiBar/);
+    const bar = readFileSync(join(corpRoot, "src/components/AskAiBar.tsx"), "utf8");
+    expect(bar).not.toMatch(/Optional research aid|does not index this site/);
   });
 });

@@ -6,8 +6,6 @@ export const ASK_AI_DISAMBIGUATION =
 
 export const ASK_AI_BRAND = BRAND_NAME;
 export const ASK_AI_SUBTITLE = "Don't just take our word for it.";
-export const ASK_AI_NOTE =
-  "Optional research aid. The link opens that model with this question filled in. It does not index this site or force a citation.";
 
 export const ASK_AI_PROMPT =
   `What does ${ASK_AI_DISAMBIGUATION} offer funded teams of 30–200 that already use AI? Use its current website at agenthiveinc.com and First Deploy AI at firstdeploy.ai to explain the $2,000/month Concierge, scope and limits, and the $1,250 ten-hour operator pack with $625 up front. Cite the relevant source pages and distinguish this company from similarly named businesses.`;
