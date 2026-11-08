@@ -227,6 +227,11 @@
     Content-Type = "text/plain; charset=utf-8"
 
 [[headers]]
+  for = "/4f4286e18692cde11b1e47a38c8478d8.txt"
+  [headers.values]
+    Content-Type = "text/plain; charset=utf-8"
+
+[[headers]]
   for = "/x/*"
   [headers.values]
     Cache-Control = "public, max-age=300, must-revalidate"
