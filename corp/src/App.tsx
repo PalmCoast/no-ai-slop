@@ -12,8 +12,10 @@ import VsHiring from "./pages/VsHiring";
 import Disclosure from "./pages/Disclosure";
 import NotFound from "./pages/NotFound";
 import ConsultComparePage from "./pages/ConsultComparePage";
+import AeoPage from "./pages/AeoPage";
 import Ads from "./pages/Ads";
 import AdsThanks from "./pages/AdsThanks";
+import { AEO_PAGES } from "../shared/aeo";
 import { CONSULT_COMPARE_PAGES } from "../shared/consultCompare";
 
 export default function App() {
@@ -34,6 +36,9 @@ export default function App() {
         ))}
         <Route path="/concierge" element={<Concierge />} />
         <Route path="/concierge/vs-hiring" element={<VsHiring />} />
+        {AEO_PAGES.map((page) => (
+          <Route key={page.path} path={page.path} element={<AeoPage />} />
+        ))}
         <Route path="/disclosure" element={<Disclosure />} />
         <Route path="/hive" element={<Navigate to="/rankings" replace />} />
         <Route path="*" element={<NotFound />} />

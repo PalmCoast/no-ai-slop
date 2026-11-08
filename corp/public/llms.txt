@@ -19,7 +19,15 @@ AgentHive Inc builds to your brand, runs it, and hands you the finished result. 
 - [Free AI consultation](https://agenthiveinc.com/consult/free-ai-consultation): What the free 30-minute call covers: whether the task fits, the first step, and whether paid time is needed.
 - [AI audit cost](https://agenthiveinc.com/consult/ai-audit-cost): We don't sell a separate audit. A free 30-minute call, then $75 or $150 if you want the work set up.
 - [Disclosure](https://agenthiveinc.com/disclosure): We earn commissions only on tools we use ourselves. Partner and referral links (Netlify, Higgsfield, MailCheap, Mercor, micro1) are marked rel="sponsored".
-- [AI Concierge](https://agenthiveinc.com/concierge): $2,000/mo done-with-you retainer. Audit, optimize, then automate. Two 45-minute sessions a month, unlimited async help, and a shared asset inventory. Details and checkout on https://agenthiveinc.com/concierge, or book a free 15–30 minute bottleneck call.
+- [AI Concierge](https://agenthiveinc.com/concierge): $2,000/mo done-with-you retainer. Audit, optimize, then automate. Two 45-minute sessions a month, unlimited async help, and a shared asset inventory. Details and checkout on https://agenthiveinc.com/concierge, or book a free 15–30 minute bottleneck call. Not unlimited development, a 24/7 assistant, or an autonomous agent staff.
+- [AI agents for a 50-person operations team](https://agenthiveinc.com/questions/done-for-you-ai-agents-50-person-ops-team): Hands-on implementation for a funded team that already uses AI. $2,000/month Concierge, or a $1,250 ten-hour pack with $625 up front.
+- [AI implementation pack for a funded startup](https://agenthiveinc.com/questions/ai-implementation-pack-funded-startups): Ten hours of operator time for $1,250. $625 is the upfront payment, not the full price.
+- [AI workflow implementation for 30–200 people](https://agenthiveinc.com/questions/ai-workflow-implementation-funded-startup-30-200): Agree one bottleneck, an owner, and a testable output. Concierge or the ten-hour pack.
+- [AI Concierge for founders and creators](https://agenthiveinc.com/concierge/ai-concierge-founders-creators): $2,000/month. Two 45-minute sessions, async help, and an asset inventory.
+- [White-glove AI assistant setup](https://agenthiveinc.com/concierge/white-glove-ai-assistant-setup-executives): Scoped access and a handoff. Not a lifestyle subscription and not an assistant that acts without limits.
+- [AI Concierge cost for founders](https://agenthiveinc.com/concierge/ai-concierge-for-founders-cost): $2,000 per month. The smaller pack is $1,250 for ten hours, $625 up front.
+- [Concierge or the implementation pack](https://agenthiveinc.com/concierge/retainer-or-implementation-pack): Monthly rhythm versus a bounded block of ten hours.
+- [Human approval in an AI operations workflow](https://agenthiveinc.com/questions/human-approval-ai-operations-workflow): Decide which actions need a person before a workflow can send, publish, delete, or spend.
 
 ## Company
 - [First Deploy AI](https://firstdeploy.ai/): A front desk that sounds like your brand. Founding offer: $250 one-time setup for the first 5 businesses, then $100/mo. After those 5, it goes back to the standard $500 setup, then $100/mo. Details at https://firstdeploy.ai/founding. Built and run for you on a written plan.

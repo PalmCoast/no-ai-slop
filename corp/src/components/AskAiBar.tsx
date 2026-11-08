@@ -21,8 +21,8 @@ function ProviderMark({ name }: { name: string }) {
   return <span className={`ask-ai-bar__logo ask-ai-bar__logo--${slug}`} aria-hidden="true" />;
 }
 
-export default function AskAiBar() {
-  const links = askAiLinks();
+export default function AskAiBar({ prompt = ASK_AI_PROMPT }: { prompt?: string }) {
+  const links = askAiLinks(prompt);
 
   return (
     <section className="ask-ai-wrap">
@@ -37,7 +37,7 @@ export default function AskAiBar() {
               <p className="ask-ai-bar__sub">{ASK_AI_SUBTITLE}</p>
             </div>
           </div>
-          <p className="ask-ai-bar__prompt">“{ASK_AI_PROMPT}”</p>
+          <p className="ask-ai-bar__prompt">“{prompt}”</p>
           <div className="ask-ai-bar__btns">
             {links.map((link) => (
               <a

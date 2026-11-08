@@ -36,6 +36,7 @@ import { CONCIERGE_FAQS, CONSULT_COST_FAQS, CONSULT_FAQS, HIRING_FAQS } from "./
 import { CONSULT_COST_CHECKED, CONSULT_COST_CHECKED_ISO, CONSULT_COST_URL } from "./consult.ts";
 import { CONSULT_COMPARE_CHECKED_ISO, CONSULT_COMPARE_PAGES, consultComparePageFor } from "./consultCompare.ts";
 import { AFFILIATE_TOOLS, DISCLOSURE_LINE, DISCLOSURE_UPDATED } from "./disclosure.ts";
+import { AEO_LASTMOD, AEO_PAGES, aeoBodyHtml, aeoPageFor } from "./aeo.ts";
 import {
   ADS_DESCRIPTION,
   ADS_FAQS,
@@ -61,6 +62,7 @@ export type SeoPage = {
   ogImage?: string;
   ogImageAlt?: string;
   icon?: string;
+  lastmod?: string;
 };
 
 export const PAGE_SEO: SeoPage[] = [
@@ -166,6 +168,14 @@ export const PAGE_SEO: SeoPage[] = [
     icon: ADS_ICON,
     bodyHtml: `<main id="route-adsthanks"><h1>${ADS_THANKS_H1}</h1><p>${ADS_THANKS_DESCRIPTION}</p><p>We reply by email, then the sprint starts once payment and intake are in. You get a download link within 72 hours. Files come in 9:16, 1:1 and 4:5. Any AI-generated person is labeled as AI. One round of revisions follows delivery.</p></main>`,
   },
+  ...AEO_PAGES.map((page) => ({
+    path: page.path,
+    title: page.title,
+    description: page.description,
+    h1: page.h1,
+    lastmod: AEO_LASTMOD,
+    bodyHtml: aeoBodyHtml(page),
+  })),
 ];
 
 export const NOT_FOUND_SEO: SeoPage = {
@@ -186,7 +196,7 @@ export function sitemapXml(): string {
       const image = page.ogImage
         ? `\n    <image:image>\n      <image:loc>${page.ogImage}</image:loc>\n    </image:image>`
         : "";
-      return `  <url>\n    <loc>${canonicalFor(page.path)}</loc>\n    <lastmod>${CONTENT_LASTMOD}</lastmod>${image}\n  </url>`;
+      return `  <url>\n    <loc>${canonicalFor(page.path)}</loc>\n    <lastmod>${page.lastmod ?? CONTENT_LASTMOD}</lastmod>${image}\n  </url>`;
     })
     .join("\n");
   // Static file in public/ram-deals/. Not a PAGE_SEO route, so prerender must not rewrite it.
@@ -335,6 +345,24 @@ function monthlyOffer(name: string, price: string, url: string) {
 
 export function jsonLdFor(page: SeoPage): object | null {
   if (page.noindex) return null;
+  const aeo = aeoPageFor(page.path);
+  if (aeo) {
+    const parentIsConcierge = aeo.path.startsWith("/concierge/");
+    const crumbs = parentIsConcierge
+      ? [
+          { "@type": "ListItem", position: 1, name: "AgentHive Inc", item: `${BRAND_URL}/` },
+          { "@type": "ListItem", position: 2, name: "AI Concierge", item: CONCIERGE_URL },
+          { "@type": "ListItem", position: 3, name: aeo.h1, item: canonicalFor(aeo.path) },
+        ]
+      : [
+          { "@type": "ListItem", position: 1, name: "AgentHive Inc", item: `${BRAND_URL}/` },
+          { "@type": "ListItem", position: 2, name: aeo.h1, item: canonicalFor(aeo.path) },
+        ];
+    return {
+      "@context": "https://schema.org",
+      "@graph": [organizationNode(), { "@type": "BreadcrumbList", itemListElement: crumbs }, faqPage(aeo.faqs)],
+    };
+  }
   if (page.path === "/") return organizationJsonLd();
   if (page.path === "/about") {
     return { "@context": "https://schema.org", "@graph": [organizationNode(), danielPerson()] };
