@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-08",
+ "updated": "2026-11-09",
  "currency": "USD",
  "deals": [
   {
@@ -17,6 +17,41 @@
    "form_factor": "desktop",
    "affiliate": false,
    "in_stock": true,
+   "cl": 38,
+   "price_history": [
+    {
+     "date": "2026-11-01",
+     "price": 474.99
+    },
+    {
+     "date": "2026-11-02",
+     "price": 484.99
+    },
+    {
+     "date": "2026-11-03",
+     "price": 484.99
+    },
+    {
+     "date": "2026-11-04",
+     "price": 484.99
+    },
+    {
+     "date": "2026-11-05",
+     "price": 484.99
+    },
+    {
+     "date": "2026-11-06",
+     "price": 484.99
+    },
+    {
+     "date": "2026-11-07",
+     "price": 484.99
+    },
+    {
+     "date": "2026-11-08",
+     "price": 484.99
+    }
+   ],
    "note": "Cheapest verified 32GB DDR5-6000 kit."
   },
   {
@@ -35,6 +70,41 @@
    "reference_price": "625.99 Amazon List Price",
    "affiliate": false,
    "in_stock": true,
+   "cl": 30,
+   "price_history": [
+    {
+     "date": "2026-11-01",
+     "price": 559.99
+    },
+    {
+     "date": "2026-11-02",
+     "price": 589.99
+    },
+    {
+     "date": "2026-11-03",
+     "price": 589.99
+    },
+    {
+     "date": "2026-11-04",
+     "price": 589.99
+    },
+    {
+     "date": "2026-11-05",
+     "price": 589.99
+    },
+    {
+     "date": "2026-11-06",
+     "price": 589.99
+    },
+    {
+     "date": "2026-11-07",
+     "price": 579.99
+    },
+    {
+     "date": "2026-11-08",
+     "price": 579.99
+    }
+   ],
    "note": "CL30 timings. Amazon shows a List Price of $625.99 again on 2026-11-08 (a list price, not a past sale price)."
   },
   {
@@ -54,6 +124,41 @@
    "retailer_was_price_source_url": "https://www.newegg.com/p/N82E16820982348",
    "affiliate": false,
    "in_stock": true,
+   "cl": 38,
+   "price_history": [
+    {
+     "date": "2026-11-01",
+     "price": 489.99
+    },
+    {
+     "date": "2026-11-02",
+     "price": 589.99
+    },
+    {
+     "date": "2026-11-03",
+     "price": 589.99
+    },
+    {
+     "date": "2026-11-04",
+     "price": 499.99
+    },
+    {
+     "date": "2026-11-05",
+     "price": 499.99
+    },
+    {
+     "date": "2026-11-06",
+     "price": 499.99
+    },
+    {
+     "date": "2026-11-07",
+     "price": 499.99
+    },
+    {
+     "date": "2026-11-08",
+     "price": 499.99
+    }
+   ],
    "note": "Newegg shows a struck-through $589.99 and 'Save: $90.00 (15%)' on 2026-11-04."
   },
   {
@@ -71,6 +176,41 @@
    "form_factor": "desktop",
    "affiliate": false,
    "in_stock": true,
+   "cl": 36,
+   "price_history": [
+    {
+     "date": "2026-11-01",
+     "price": 252.99
+    },
+    {
+     "date": "2026-11-02",
+     "price": 252.99
+    },
+    {
+     "date": "2026-11-03",
+     "price": 252.99
+    },
+    {
+     "date": "2026-11-04",
+     "price": 252.99
+    },
+    {
+     "date": "2026-11-05",
+     "price": 252.99
+    },
+    {
+     "date": "2026-11-06",
+     "price": 252.99
+    },
+    {
+     "date": "2026-11-07",
+     "price": 252.99
+    },
+    {
+     "date": "2026-11-08",
+     "price": 249.99
+    }
+   ],
    "note": "Cheapest verified 16GB DDR5-6000 kit."
   },
   {
@@ -90,6 +230,41 @@
    "retailer_was_price_source_url": "https://www.newegg.com/p/N82E16820985307",
    "affiliate": false,
    "in_stock": true,
+   "cl": 38,
+   "price_history": [
+    {
+     "date": "2026-11-01",
+     "price": 279.99
+    },
+    {
+     "date": "2026-11-02",
+     "price": 279.99
+    },
+    {
+     "date": "2026-11-03",
+     "price": 279.99
+    },
+    {
+     "date": "2026-11-04",
+     "price": 279.99
+    },
+    {
+     "date": "2026-11-05",
+     "price": 279.99
+    },
+    {
+     "date": "2026-11-06",
+     "price": 279.99
+    },
+    {
+     "date": "2026-11-07",
+     "price": 279.99
+    },
+    {
+     "date": "2026-11-08",
+     "price": 279.99
+    }
+   ],
    "note": "Newegg shows 'Save: $17.00 (5%)'."
   },
   {
@@ -107,6 +282,41 @@
    "form_factor": "desktop",
    "affiliate": false,
    "in_stock": true,
+   "cl": 40,
+   "price_history": [
+    {
+     "date": "2026-11-01",
+     "price": 999.99
+    },
+    {
+     "date": "2026-11-02",
+     "price": 1049.99
+    },
+    {
+     "date": "2026-11-03",
+     "price": 1049.99
+    },
+    {
+     "date": "2026-11-04",
+     "price": 1049.99
+    },
+    {
+     "date": "2026-11-05",
+     "price": 1049.99
+    },
+    {
+     "date": "2026-11-06",
+     "price": 1049.99
+    },
+    {
+     "date": "2026-11-07",
+     "price": 1049.99
+    },
+    {
+     "date": "2026-11-08",
+     "price": 1049.99
+    }
+   ],
    "note": "Sold and shipped by Amazon."
   },
   {
@@ -124,6 +334,17 @@
    "form_factor": "desktop",
    "affiliate": false,
    "in_stock": true,
+   "cl": 38,
+   "price_history": [
+    {
+     "date": "2026-11-07",
+     "price": 1109.99
+    },
+    {
+     "date": "2026-11-08",
+     "price": 1109.99
+    }
+   ],
    "note": "On 2026-11-07 the old Amazon URLs (B0D78HYL54, B0D78G94K2) opened the 32GB Black kit, so the link now points to the 64GB Red variant listing B0DXPZQSBF (model FLRD564G6000HC38JDC01, same capacity, speed, CL38 and seller). Confirmed still that listing on 2026-11-08. Price unchanged."
   },
   {
@@ -141,6 +362,41 @@
    "form_factor": "desktop",
    "affiliate": false,
    "in_stock": true,
+   "cl": 40,
+   "price_history": [
+    {
+     "date": "2026-11-01",
+     "price": 1029.99
+    },
+    {
+     "date": "2026-11-02",
+     "price": 1039.99
+    },
+    {
+     "date": "2026-11-03",
+     "price": 1039.99
+    },
+    {
+     "date": "2026-11-04",
+     "price": 1039.99
+    },
+    {
+     "date": "2026-11-05",
+     "price": 1039.99
+    },
+    {
+     "date": "2026-11-06",
+     "price": 1039.99
+    },
+    {
+     "date": "2026-11-07",
+     "price": 1039.99
+    },
+    {
+     "date": "2026-11-08",
+     "price": 1039.99
+    }
+   ],
    "note": "Cheapest verified 64GB DDR5-6000 on 2026-11-08."
   },
   {
@@ -160,6 +416,41 @@
    "retailer_was_price_source_url": "https://www.newegg.com/p/N82E16820374656",
    "affiliate": false,
    "in_stock": true,
+   "cl": 36,
+   "price_history": [
+    {
+     "date": "2026-11-01",
+     "price": 1099.99
+    },
+    {
+     "date": "2026-11-02",
+     "price": 1099.99
+    },
+    {
+     "date": "2026-11-03",
+     "price": 1099.99
+    },
+    {
+     "date": "2026-11-04",
+     "price": 1099.99
+    },
+    {
+     "date": "2026-11-05",
+     "price": 1099.99
+    },
+    {
+     "date": "2026-11-06",
+     "price": 1099.99
+    },
+    {
+     "date": "2026-11-07",
+     "price": 1099.99
+    },
+    {
+     "date": "2026-11-08",
+     "price": 1099.99
+    }
+   ],
    "note": "Newegg shows 'Save: $66.00 (5%)'."
   },
   {
@@ -177,6 +468,41 @@
    "form_factor": "desktop",
    "affiliate": false,
    "in_stock": true,
+   "cl": 30,
+   "price_history": [
+    {
+     "date": "2026-11-01",
+     "price": 1114.39
+    },
+    {
+     "date": "2026-11-02",
+     "price": 1199.99
+    },
+    {
+     "date": "2026-11-03",
+     "price": 1199.99
+    },
+    {
+     "date": "2026-11-04",
+     "price": 1199.99
+    },
+    {
+     "date": "2026-11-05",
+     "price": 1199.99
+    },
+    {
+     "date": "2026-11-06",
+     "price": 1198
+    },
+    {
+     "date": "2026-11-07",
+     "price": 1198
+    },
+    {
+     "date": "2026-11-08",
+     "price": 1198
+    }
+   ],
    "note": "Third-party seller (Super Marketplace, was RACERSPEED INC.); buy-box $1,198.00 on 2026-11-08 (no list/was shown)."
   },
   {
@@ -195,6 +521,41 @@
    "form_factor": "desktop",
    "affiliate": false,
    "in_stock": true,
+   "cl": 46,
+   "price_history": [
+    {
+     "date": "2026-11-01",
+     "price": 2599.99
+    },
+    {
+     "date": "2026-11-02",
+     "price": 2499.99
+    },
+    {
+     "date": "2026-11-03",
+     "price": 2499.99
+    },
+    {
+     "date": "2026-11-04",
+     "price": 2499.99
+    },
+    {
+     "date": "2026-11-05",
+     "price": 2599.99
+    },
+    {
+     "date": "2026-11-06",
+     "price": 2599.99
+    },
+    {
+     "date": "2026-11-07",
+     "price": 2599.99
+    },
+    {
+     "date": "2026-11-08",
+     "price": 2599.99
+    }
+   ],
    "note": "Third-party seller. Micron announced on Dec 3, 2025 that it is exiting the Crucial consumer business, with consumer shipments continuing until the end of fiscal Q2 (February 2026)."
   },
   {
@@ -211,7 +572,41 @@
    "speed_mts": 3200,
    "form_factor": "desktop",
    "affiliate": false,
-   "in_stock": true
+   "in_stock": true,
+   "price_history": [
+    {
+     "date": "2026-11-01",
+     "price": 229.99
+    },
+    {
+     "date": "2026-11-02",
+     "price": 229.99
+    },
+    {
+     "date": "2026-11-03",
+     "price": 229.99
+    },
+    {
+     "date": "2026-11-04",
+     "price": 229.99
+    },
+    {
+     "date": "2026-11-05",
+     "price": 229.99
+    },
+    {
+     "date": "2026-11-06",
+     "price": 229.99
+    },
+    {
+     "date": "2026-11-07",
+     "price": 229.99
+    },
+    {
+     "date": "2026-11-08",
+     "price": 229.99
+    }
+   ]
   },
   {
    "sku": "RAM-13",
@@ -230,6 +625,41 @@
    "retailer_was_price_source_url": "https://www.newegg.com/p/N82E16820331634",
    "affiliate": false,
    "in_stock": true,
+   "cl": 16,
+   "price_history": [
+    {
+     "date": "2026-11-01",
+     "price": 239.99
+    },
+    {
+     "date": "2026-11-02",
+     "price": 239.99
+    },
+    {
+     "date": "2026-11-03",
+     "price": 239.99
+    },
+    {
+     "date": "2026-11-04",
+     "price": 239.99
+    },
+    {
+     "date": "2026-11-05",
+     "price": 239.99
+    },
+    {
+     "date": "2026-11-06",
+     "price": 239.99
+    },
+    {
+     "date": "2026-11-07",
+     "price": 239.99
+    },
+    {
+     "date": "2026-11-08",
+     "price": 239.99
+    }
+   ],
    "note": "Newegg shows a struck-through $254.49 and 'Save: $14.50 (5%)' on 2026-11-04."
   },
   {
@@ -248,6 +678,41 @@
    "reference_price": "315.99 Amazon List Price",
    "affiliate": false,
    "in_stock": true,
+   "cl": 16,
+   "price_history": [
+    {
+     "date": "2026-11-01",
+     "price": 247.95
+    },
+    {
+     "date": "2026-11-02",
+     "price": 259.99
+    },
+    {
+     "date": "2026-11-03",
+     "price": 259.99
+    },
+    {
+     "date": "2026-11-04",
+     "price": 259.99
+    },
+    {
+     "date": "2026-11-05",
+     "price": 259.99
+    },
+    {
+     "date": "2026-11-06",
+     "price": 259.99
+    },
+    {
+     "date": "2026-11-07",
+     "price": 247.95
+    },
+    {
+     "date": "2026-11-08",
+     "price": 259.99
+    }
+   ],
    "note": "Buy box on 2026-11-08 is Amazon.com at $259.99; other offers on the same page start at $224.99 (not the published price). Amazon shows a List Price of $315.99 (a list price, not a past sale)."
   },
   {
@@ -267,7 +732,249 @@
    "retailer_was_price_source_url": "https://www.newegg.com/p/N82E16820331858",
    "affiliate": false,
    "in_stock": true,
+   "cl": 16,
+   "price_history": [
+    {
+     "date": "2026-11-01",
+     "price": 149.99
+    },
+    {
+     "date": "2026-11-02",
+     "price": 164.99
+    },
+    {
+     "date": "2026-11-03",
+     "price": 164.99
+    },
+    {
+     "date": "2026-11-04",
+     "price": 164.99
+    },
+    {
+     "date": "2026-11-05",
+     "price": 164.99
+    },
+    {
+     "date": "2026-11-06",
+     "price": 164.99
+    },
+    {
+     "date": "2026-11-07",
+     "price": 164.99
+    },
+    {
+     "date": "2026-11-08",
+     "price": 164.99
+    }
+   ],
    "note": "Newegg shows a struck-through $169.99 next to $164.99 on 2026-11-04 (no 'Save' line)."
+  },
+  {
+   "sku": "RAM-16",
+   "item": "KLEVV CRAS V RGB DDR5 64GB (2x32GB) 6000MHz CL30 White (KD5BGUA80-60A300J)",
+   "retailer": "Amazon",
+   "seller": "KLEVV",
+   "price_usd": 1049.99,
+   "price_source_url": "https://www.amazon.com/dp/B0D6XT9VSL",
+   "date_checked": "2026-11-09",
+   "link_out_url": "https://www.amazon.com/dp/B0D6XT9VSL",
+   "ddr": "DDR5",
+   "capacity_gb": 64,
+   "speed_mts": 6000,
+   "form_factor": "desktop",
+   "affiliate": false,
+   "in_stock": true,
+   "cl": 30,
+   "price_history": [
+    {
+     "date": "2026-11-09",
+     "price": 1049.99
+    }
+   ]
+  },
+  {
+   "sku": "RAM-17",
+   "item": "CORSAIR Vengeance DDR5 64GB (2x32GB) 6000MHz CL30 (CMK64GX5M2B6000Z30)",
+   "retailer": "Amazon",
+   "seller": "Amazon.com",
+   "price_usd": 1274,
+   "price_source_url": "https://www.amazon.com/dp/B0C5M7J967",
+   "date_checked": "2026-11-09",
+   "link_out_url": "https://www.amazon.com/dp/B0C5M7J967",
+   "ddr": "DDR5",
+   "capacity_gb": 64,
+   "speed_mts": 6000,
+   "form_factor": "desktop",
+   "affiliate": false,
+   "in_stock": true,
+   "cl": 30,
+   "price_history": [
+    {
+     "date": "2026-11-09",
+     "price": 1274
+    }
+   ]
+  },
+  {
+   "sku": "RAM-18",
+   "item": "G.SKILL Trident Z5 Neo RGB DDR5 64GB (2x32GB) 6000MT/s CL30-40-40-96 (F5-6000J3040G32GX2-TZ5NR)",
+   "retailer": "Amazon",
+   "seller": "AsanteEnterprise",
+   "price_usd": 1279.99,
+   "price_source_url": "https://www.amazon.com/dp/B0BJNTLJ5X",
+   "date_checked": "2026-11-09",
+   "link_out_url": "https://www.amazon.com/dp/B0BJNTLJ5X",
+   "ddr": "DDR5",
+   "capacity_gb": 64,
+   "speed_mts": 6000,
+   "form_factor": "desktop",
+   "affiliate": false,
+   "in_stock": true,
+   "cl": 30,
+   "price_history": [
+    {
+     "date": "2026-11-09",
+     "price": 1279.99
+    }
+   ]
+  },
+  {
+   "sku": "RAM-19",
+   "item": "TEAMGROUP T-Create Expert DDR5 96GB (2x48GB) 6400MHz CL32 (CTCWD596G6400HC32ADC01)",
+   "retailer": "Amazon",
+   "seller": "TEAMGROUP Inc.",
+   "price_usd": 1949.99,
+   "price_source_url": "https://www.amazon.com/dp/B0CQP4KQ36",
+   "date_checked": "2026-11-09",
+   "link_out_url": "https://www.amazon.com/dp/B0CQP4KQ36",
+   "ddr": "DDR5",
+   "capacity_gb": 96,
+   "speed_mts": 6400,
+   "form_factor": "desktop",
+   "affiliate": false,
+   "in_stock": true,
+   "cl": 32,
+   "price_history": [
+    {
+     "date": "2026-11-09",
+     "price": 1949.99
+    }
+   ]
+  },
+  {
+   "sku": "RAM-20",
+   "item": "G.SKILL Flare X5 DDR5 96GB (2x48GB) 6000MT/s CL30-36-36-96 (F5-6000J3036F48GX2-FX5W)",
+   "retailer": "Amazon",
+   "seller": "RACERSPEED INC.",
+   "price_usd": 2049.99,
+   "price_source_url": "https://www.amazon.com/dp/B0DX51K339",
+   "date_checked": "2026-11-09",
+   "link_out_url": "https://www.amazon.com/dp/B0DX51K339",
+   "ddr": "DDR5",
+   "capacity_gb": 96,
+   "speed_mts": 6000,
+   "form_factor": "desktop",
+   "affiliate": false,
+   "in_stock": true,
+   "cl": 30,
+   "price_history": [
+    {
+     "date": "2026-11-09",
+     "price": 2049.99
+    }
+   ]
+  },
+  {
+   "sku": "RAM-21",
+   "item": "TEAMGROUP T-Create Expert DDR5 128GB (2x64GB) 6000MHz CL40 (CTCED5128G6000HC40FDC01)",
+   "retailer": "Amazon",
+   "seller": "Bleepbox US",
+   "price_usd": 2803.99,
+   "price_source_url": "https://www.amazon.com/dp/B0FX8WCPXK",
+   "date_checked": "2026-11-09",
+   "link_out_url": "https://www.amazon.com/dp/B0FX8WCPXK",
+   "ddr": "DDR5",
+   "capacity_gb": 128,
+   "speed_mts": 6000,
+   "form_factor": "desktop",
+   "affiliate": false,
+   "in_stock": true,
+   "cl": 40,
+   "price_history": [
+    {
+     "date": "2026-11-09",
+     "price": 2803.99
+    }
+   ]
+  },
+  {
+   "sku": "RAM-22",
+   "item": "G.SKILL Flare X5 DDR5 128GB (2x64GB) 6000MT/s CL34-44-44-96 (F5-6000J3444F64GX2-FX5)",
+   "retailer": "Amazon",
+   "seller": "AsanteEnterprise",
+   "price_usd": 3799.99,
+   "price_source_url": "https://www.amazon.com/dp/B0FFKGXTG8",
+   "date_checked": "2026-11-09",
+   "link_out_url": "https://www.amazon.com/dp/B0FFKGXTG8",
+   "ddr": "DDR5",
+   "capacity_gb": 128,
+   "speed_mts": 6000,
+   "form_factor": "desktop",
+   "affiliate": false,
+   "in_stock": true,
+   "cl": 34,
+   "price_history": [
+    {
+     "date": "2026-11-09",
+     "price": 3799.99
+    }
+   ]
+  },
+  {
+   "sku": "RAM-23",
+   "item": "TEAMGROUP T-Force Delta RGB DDR5 48GB (2x24GB) 8000MHz CL38 (FF3D548G8000HC38EDC01)",
+   "retailer": "Amazon",
+   "seller": "TEAMGROUP Inc.",
+   "price_usd": 859.99,
+   "price_source_url": "https://www.amazon.com/dp/B0CNVXWZ55",
+   "date_checked": "2026-11-09",
+   "link_out_url": "https://www.amazon.com/dp/B0CNVXWZ55",
+   "ddr": "DDR5",
+   "capacity_gb": 48,
+   "speed_mts": 8000,
+   "form_factor": "desktop",
+   "affiliate": false,
+   "in_stock": true,
+   "cl": 38,
+   "price_history": [
+    {
+     "date": "2026-11-09",
+     "price": 859.99
+    }
+   ]
+  },
+  {
+   "sku": "RAM-24",
+   "item": "G.SKILL Trident Z5 RGB DDR5 48GB (2x24GB) 8000MT/s CL40-48-48-128 Intel XMP (F5-8000J4048F24GX2-TZ5RK)",
+   "retailer": "Amazon",
+   "seller": "Northeast Distributions LLC",
+   "price_usd": 949,
+   "price_source_url": "https://www.amazon.com/dp/B0C2B41VTH",
+   "date_checked": "2026-11-09",
+   "link_out_url": "https://www.amazon.com/dp/B0C2B41VTH",
+   "ddr": "DDR5",
+   "capacity_gb": 48,
+   "speed_mts": 8000,
+   "form_factor": "desktop",
+   "affiliate": false,
+   "in_stock": true,
+   "cl": 40,
+   "price_history": [
+    {
+     "date": "2026-11-09",
+     "price": 949
+    }
+   ]
   }
  ]
 }
