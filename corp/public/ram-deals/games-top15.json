@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-08",
+ "updated": "2026-11-09",
  "source_list_name": "Steam top sellers (US) + Steam concurrent players",
  "source_list_url": "https://store.steampowered.com/charts/topsellers/US",
  "games": [
@@ -14,7 +14,7 @@
    "requirements_checked": "2026-11-01",
    "price_usd": 69.99,
    "price_source_url": "https://store.steampowered.com/api/appdetails?appids=4435490&cc=us",
-   "price_checked": "2026-11-08"
+   "price_checked": "2026-11-09"
   },
   {
    "rank": 2,
@@ -27,36 +27,10 @@
    "requirements_checked": "2026-11-01",
    "price_usd": 59.99,
    "price_source_url": "https://store.steampowered.com/api/appdetails?appids=4115450&cc=us",
-   "price_checked": "2026-11-08"
+   "price_checked": "2026-11-09"
   },
   {
    "rank": 3,
-   "name": "Probably Stolen - Cyberpunk Shopkeeper Sim",
-   "appid": 4348910,
-   "store_url": "https://store.steampowered.com/app/4348910/",
-   "requirements_url": "https://store.steampowered.com/app/4348910/",
-   "min_ram_gb": 8,
-   "rec_ram_gb": null,
-   "requirements_checked": "2026-11-01",
-   "price_usd": 17.99,
-   "price_source_url": "https://store.steampowered.com/api/appdetails?appids=4348910&cc=us",
-   "price_checked": "2026-11-08"
-  },
-  {
-   "rank": 4,
-   "name": "Cyberpunk 2077",
-   "appid": 1091500,
-   "store_url": "https://store.steampowered.com/app/1091500/",
-   "requirements_url": "https://store.steampowered.com/app/1091500/",
-   "min_ram_gb": 12,
-   "rec_ram_gb": 16,
-   "requirements_checked": "2026-11-01",
-   "price_usd": 59.99,
-   "price_source_url": "https://store.steampowered.com/api/appdetails?appids=1091500&cc=us",
-   "price_checked": "2026-11-08"
-  },
-  {
-   "rank": 5,
    "name": "Moon Sweepers",
    "appid": 5335510,
    "store_url": "https://store.steampowered.com/app/5335510/",
@@ -66,62 +40,23 @@
    "requirements_checked": "2026-11-01",
    "price_usd": 8.99,
    "price_source_url": "https://store.steampowered.com/api/appdetails?appids=5335510&cc=us",
-   "price_checked": "2026-11-08"
+   "price_checked": "2026-11-09"
   },
   {
-   "rank": 6,
-   "name": "WARDOGS",
-   "appid": 1867240,
-   "store_url": "https://store.steampowered.com/app/1867240/",
-   "requirements_url": "https://store.steampowered.com/app/1867240/",
-   "min_ram_gb": 16,
-   "rec_ram_gb": 16,
-   "requirements_checked": "2026-11-01",
-   "price_usd": 39.99,
-   "price_source_url": "https://store.steampowered.com/api/appdetails?appids=1867240&cc=us",
-   "price_checked": "2026-11-08"
-  },
-  {
-   "rank": 7,
-   "name": "Dead by Daylight",
-   "appid": 381210,
-   "store_url": "https://store.steampowered.com/app/381210/",
-   "requirements_url": "https://store.steampowered.com/app/381210/",
+   "rank": 4,
+   "name": "Probably Stolen - Cyberpunk Shopkeeper Sim",
+   "appid": 4348910,
+   "store_url": "https://store.steampowered.com/app/4348910/",
+   "requirements_url": "https://store.steampowered.com/app/4348910/",
    "min_ram_gb": 8,
-   "rec_ram_gb": 8,
+   "rec_ram_gb": null,
    "requirements_checked": "2026-11-01",
-   "price_usd": 19.99,
-   "price_source_url": "https://store.steampowered.com/api/appdetails?appids=381210&cc=us",
-   "price_checked": "2026-11-08"
+   "price_usd": 17.99,
+   "price_source_url": "https://store.steampowered.com/api/appdetails?appids=4348910&cc=us",
+   "price_checked": "2026-11-09"
   },
   {
-   "rank": 8,
-   "name": "Enshrouded",
-   "appid": 1203620,
-   "store_url": "https://store.steampowered.com/app/1203620/",
-   "requirements_url": "https://store.steampowered.com/app/1203620/",
-   "min_ram_gb": 16,
-   "rec_ram_gb": 16,
-   "requirements_checked": "2026-11-01",
-   "price_usd": 39.99,
-   "price_source_url": "https://store.steampowered.com/api/appdetails?appids=1203620&cc=us",
-   "price_checked": "2026-11-08"
-  },
-  {
-   "rank": 9,
-   "name": "Rust",
-   "appid": 252490,
-   "store_url": "https://store.steampowered.com/app/252490/",
-   "requirements_url": "https://store.steampowered.com/app/252490/",
-   "min_ram_gb": 12,
-   "rec_ram_gb": 16,
-   "requirements_checked": "2026-11-01",
-   "price_usd": 19.99,
-   "price_source_url": "https://store.steampowered.com/api/appdetails?appids=252490&cc=us",
-   "price_checked": "2026-11-08"
-  },
-  {
-   "rank": 10,
+   "rank": 5,
    "name": "Crimson Desert Enhanced",
    "appid": 3321460,
    "store_url": "https://store.steampowered.com/app/3321460/",
@@ -131,10 +66,23 @@
    "requirements_checked": "2026-11-01",
    "price_usd": 69.99,
    "price_source_url": "https://store.steampowered.com/api/appdetails?appids=3321460&cc=us",
-   "price_checked": "2026-11-08"
+   "price_checked": "2026-11-09"
   },
   {
-   "rank": 11,
+   "rank": 6,
+   "name": "Dead by Daylight",
+   "appid": 381210,
+   "store_url": "https://store.steampowered.com/app/381210/",
+   "requirements_url": "https://store.steampowered.com/app/381210/",
+   "min_ram_gb": 8,
+   "rec_ram_gb": 8,
+   "requirements_checked": "2026-11-01",
+   "price_usd": 19.99,
+   "price_source_url": "https://store.steampowered.com/api/appdetails?appids=381210&cc=us",
+   "price_checked": "2026-11-09"
+  },
+  {
+   "rank": 7,
    "name": "FINAL FANTASY RESONANCE",
    "appid": 3259780,
    "store_url": "https://store.steampowered.com/app/3259780/",
@@ -144,23 +92,62 @@
    "requirements_checked": "2026-11-01",
    "price_usd": 49.99,
    "price_source_url": "https://store.steampowered.com/api/appdetails?appids=3259780&cc=us",
-   "price_checked": "2026-11-08"
+   "price_checked": "2026-11-09"
+  },
+  {
+   "rank": 8,
+   "name": "Cyberpunk 2077",
+   "appid": 1091500,
+   "store_url": "https://store.steampowered.com/app/1091500/",
+   "requirements_url": "https://store.steampowered.com/app/1091500/",
+   "min_ram_gb": 12,
+   "rec_ram_gb": 16,
+   "requirements_checked": "2026-11-01",
+   "price_usd": 59.99,
+   "price_source_url": "https://store.steampowered.com/api/appdetails?appids=1091500&cc=us",
+   "price_checked": "2026-11-09"
+  },
+  {
+   "rank": 9,
+   "name": "WARDOGS",
+   "appid": 1867240,
+   "store_url": "https://store.steampowered.com/app/1867240/",
+   "requirements_url": "https://store.steampowered.com/app/1867240/",
+   "min_ram_gb": 16,
+   "rec_ram_gb": 16,
+   "requirements_checked": "2026-11-01",
+   "price_usd": 39.99,
+   "price_source_url": "https://store.steampowered.com/api/appdetails?appids=1867240&cc=us",
+   "price_checked": "2026-11-09"
+  },
+  {
+   "rank": 10,
+   "name": "Rust",
+   "appid": 252490,
+   "store_url": "https://store.steampowered.com/app/252490/",
+   "requirements_url": "https://store.steampowered.com/app/252490/",
+   "min_ram_gb": 12,
+   "rec_ram_gb": 16,
+   "requirements_checked": "2026-11-01",
+   "price_usd": 19.99,
+   "price_source_url": "https://store.steampowered.com/api/appdetails?appids=252490&cc=us",
+   "price_checked": "2026-11-09"
+  },
+  {
+   "rank": 11,
+   "name": "Enshrouded",
+   "appid": 1203620,
+   "store_url": "https://store.steampowered.com/app/1203620/",
+   "requirements_url": "https://store.steampowered.com/app/1203620/",
+   "min_ram_gb": 16,
+   "rec_ram_gb": 16,
+   "requirements_checked": "2026-11-01",
+   "price_usd": 39.99,
+   "price_source_url": "https://store.steampowered.com/api/appdetails?appids=1203620&cc=us",
+   "price_checked": "2026-11-09"
   },
   {
    "rank": 12,
-   "name": "EA SPORTS FC 27",
-   "appid": 4080220,
-   "store_url": "https://store.steampowered.com/app/4080220/",
-   "requirements_url": "https://store.steampowered.com/app/4080220/",
-   "min_ram_gb": 8,
-   "rec_ram_gb": 12,
-   "requirements_checked": "2026-11-01",
-   "price_usd": 69.99,
-   "price_source_url": "https://store.steampowered.com/api/appdetails?appids=4080220&cc=us",
-   "price_checked": "2026-11-08"
-  },
-  {
-   "rank": 13,
    "name": "Borderlands 4",
    "appid": 1285190,
    "store_url": "https://store.steampowered.com/app/1285190/",
@@ -170,10 +157,10 @@
    "requirements_checked": "2026-11-03",
    "price_usd": 34.99,
    "price_source_url": "https://store.steampowered.com/api/appdetails?appids=1285190&cc=us",
-   "price_checked": "2026-11-08"
+   "price_checked": "2026-11-09"
   },
   {
-   "rank": 14,
+   "rank": 13,
    "name": "HELLDIVERS 2",
    "appid": 553850,
    "store_url": "https://store.steampowered.com/app/553850/",
@@ -183,10 +170,10 @@
    "requirements_checked": "2026-11-01",
    "price_usd": 39.99,
    "price_source_url": "https://store.steampowered.com/api/appdetails?appids=553850&cc=us",
-   "price_checked": "2026-11-08"
+   "price_checked": "2026-11-09"
   },
   {
-   "rank": 15,
+   "rank": 14,
    "name": "Valheim",
    "appid": 892970,
    "store_url": "https://store.steampowered.com/app/892970/",
@@ -196,7 +183,20 @@
    "requirements_checked": "2026-11-06",
    "price_usd": 29.99,
    "price_source_url": "https://store.steampowered.com/api/appdetails?appids=892970&cc=us",
-   "price_checked": "2026-11-08"
+   "price_checked": "2026-11-09"
+  },
+  {
+   "rank": 15,
+   "name": "EA SPORTS FC 27",
+   "appid": 4080220,
+   "store_url": "https://store.steampowered.com/app/4080220/",
+   "requirements_url": "https://store.steampowered.com/app/4080220/",
+   "min_ram_gb": 8,
+   "rec_ram_gb": 12,
+   "requirements_checked": "2026-11-01",
+   "price_usd": 69.99,
+   "price_source_url": "https://store.steampowered.com/api/appdetails?appids=4080220&cc=us",
+   "price_checked": "2026-11-09"
   }
  ],
  "ram_guide": {
@@ -395,7 +395,7 @@
    "requirements_checked": "2026-11-03",
    "price_usd": 69.99,
    "price_source_url": "https://store.steampowered.com/api/appdetails?appids=2288340&cc=us",
-   "price_checked": "2026-11-08"
+   "price_checked": "2026-11-09"
   },
   {
    "name": "BeamNG.drive",
@@ -407,7 +407,7 @@
    "requirements_checked": "2026-11-03",
    "price_usd": 24.99,
    "price_source_url": "https://store.steampowered.com/api/appdetails?appids=284160&cc=us",
-   "price_checked": "2026-11-08"
+   "price_checked": "2026-11-09"
   },
   {
    "name": "Where Winds Meet",
