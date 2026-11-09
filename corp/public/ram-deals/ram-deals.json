@@ -9,7 +9,7 @@
    "seller": "Amazon.com",
    "price_usd": 484.99,
    "price_source_url": "https://www.amazon.com/dp/B0HC887B5X",
-   "date_checked": "2026-11-08",
+   "date_checked": "2026-11-09",
    "link_out_url": "https://www.amazon.com/dp/B0HC887B5X",
    "ddr": "DDR5",
    "capacity_gb": 32,
@@ -50,6 +50,10 @@
     {
      "date": "2026-11-08",
      "price": 484.99
+    },
+    {
+     "date": "2026-11-09",
+     "price": 484.99
     }
    ],
    "note": "Cheapest verified 32GB DDR5-6000 kit."
@@ -61,7 +65,7 @@
    "seller": "Amazon.com",
    "price_usd": 579.99,
    "price_source_url": "https://www.amazon.com/dp/B0CBRJ63RT",
-   "date_checked": "2026-11-08",
+   "date_checked": "2026-11-09",
    "link_out_url": "https://www.amazon.com/dp/B0CBRJ63RT",
    "ddr": "DDR5",
    "capacity_gb": 32,
@@ -103,6 +107,10 @@
     {
      "date": "2026-11-08",
      "price": 579.99
+    },
+    {
+     "date": "2026-11-09",
+     "price": 579.99
     }
    ],
    "note": "CL30 timings. Amazon shows a List Price of $625.99 again on 2026-11-08 (a list price, not a past sale price)."
@@ -114,7 +122,7 @@
    "seller": "Newegg",
    "price_usd": 499.99,
    "price_source_url": "https://www.newegg.com/p/N82E16820982348",
-   "date_checked": "2026-11-08",
+   "date_checked": "2026-11-09",
    "link_out_url": "https://www.newegg.com/p/N82E16820982348",
    "ddr": "DDR5",
    "capacity_gb": 32,
@@ -157,6 +165,10 @@
     {
      "date": "2026-11-08",
      "price": 499.99
+    },
+    {
+     "date": "2026-11-09",
+     "price": 499.99
     }
    ],
    "note": "Newegg shows a struck-through $589.99 and 'Save: $90.00 (15%)' on 2026-11-04."
@@ -168,7 +180,7 @@
    "seller": "Official Patriot Memory Store (Amazon marketplace)",
    "price_usd": 249.99,
    "price_source_url": "https://www.amazon.com/dp/B0GJ81P1YP",
-   "date_checked": "2026-11-08",
+   "date_checked": "2026-11-09",
    "link_out_url": "https://www.amazon.com/dp/B0GJ81P1YP",
    "ddr": "DDR5",
    "capacity_gb": 16,
@@ -209,6 +221,10 @@
     {
      "date": "2026-11-08",
      "price": 249.99
+    },
+    {
+     "date": "2026-11-09",
+     "price": 249.99
     }
    ],
    "note": "Cheapest verified 16GB DDR5-6000 kit."
@@ -220,7 +236,7 @@
    "seller": "Newegg",
    "price_usd": 279.99,
    "price_source_url": "https://www.newegg.com/p/N82E16820985307",
-   "date_checked": "2026-11-08",
+   "date_checked": "2026-11-09",
    "link_out_url": "https://www.newegg.com/p/N82E16820985307",
    "ddr": "DDR5",
    "capacity_gb": 16,
@@ -263,6 +279,10 @@
     {
      "date": "2026-11-08",
      "price": 279.99
+    },
+    {
+     "date": "2026-11-09",
+     "price": 279.99
     }
    ],
    "note": "Newegg shows 'Save: $17.00 (5%)'."
@@ -274,7 +294,7 @@
    "seller": "Amazon.com",
    "price_usd": 1049.99,
    "price_source_url": "https://www.amazon.com/dp/B0GGJ9YH2D",
-   "date_checked": "2026-11-08",
+   "date_checked": "2026-11-09",
    "link_out_url": "https://www.amazon.com/dp/B0GGJ9YH2D",
    "ddr": "DDR5",
    "capacity_gb": 64,
@@ -315,6 +335,10 @@
     {
      "date": "2026-11-08",
      "price": 1049.99
+    },
+    {
+     "date": "2026-11-09",
+     "price": 1049.99
     }
    ],
    "note": "Sold and shipped by Amazon."
@@ -326,7 +350,7 @@
    "seller": "TEAMGROUP Inc. (Amazon marketplace)",
    "price_usd": 1109.99,
    "price_source_url": "https://www.amazon.com/dp/B0DXPZQSBF",
-   "date_checked": "2026-11-08",
+   "date_checked": "2026-11-09",
    "link_out_url": "https://www.amazon.com/dp/B0DXPZQSBF",
    "ddr": "DDR5",
    "capacity_gb": 64,
@@ -343,6 +367,10 @@
     {
      "date": "2026-11-08",
      "price": 1109.99
+    },
+    {
+     "date": "2026-11-09",
+     "price": 1109.99
     }
    ],
    "note": "On 2026-11-07 the old Amazon URLs (B0D78HYL54, B0D78G94K2) opened the 32GB Black kit, so the link now points to the 64GB Red variant listing B0DXPZQSBF (model FLRD564G6000HC38JDC01, same capacity, speed, CL38 and seller). Confirmed still that listing on 2026-11-08. Price unchanged."
@@ -354,7 +382,7 @@
    "seller": "Newegg",
    "price_usd": 1039.99,
    "price_source_url": "https://www.newegg.com/p/N82E16820982288",
-   "date_checked": "2026-11-08",
+   "date_checked": "2026-11-09",
    "link_out_url": "https://www.newegg.com/p/N82E16820982288",
    "ddr": "DDR5",
    "capacity_gb": 64,
@@ -395,6 +423,10 @@
     {
      "date": "2026-11-08",
      "price": 1039.99
+    },
+    {
+     "date": "2026-11-09",
+     "price": 1039.99
     }
    ],
    "note": "Cheapest verified 64GB DDR5-6000 on 2026-11-08."
@@ -406,7 +438,7 @@
    "seller": "Newegg",
    "price_usd": 1099.99,
    "price_source_url": "https://www.newegg.com/p/N82E16820374656",
-   "date_checked": "2026-11-08",
+   "date_checked": "2026-11-09",
    "link_out_url": "https://www.newegg.com/p/N82E16820374656",
    "ddr": "DDR5",
    "capacity_gb": 64,
@@ -449,6 +481,10 @@
     {
      "date": "2026-11-08",
      "price": 1099.99
+    },
+    {
+     "date": "2026-11-09",
+     "price": 1099.99
     }
    ],
    "note": "Newegg shows 'Save: $66.00 (5%)'."
@@ -460,7 +496,7 @@
    "seller": "Super Marketplace (S/N Recorded) (Amazon marketplace)",
    "price_usd": 1198,
    "price_source_url": "https://www.amazon.com/dp/B0B2X1QBYW",
-   "date_checked": "2026-11-08",
+   "date_checked": "2026-11-09",
    "link_out_url": "https://www.amazon.com/dp/B0B2X1QBYW",
    "ddr": "DDR5",
    "capacity_gb": 64,
@@ -501,6 +537,10 @@
     {
      "date": "2026-11-08",
      "price": 1198
+    },
+    {
+     "date": "2026-11-09",
+     "price": 1198
     }
    ],
    "note": "Third-party seller (Super Marketplace, was RACERSPEED INC.); buy-box $1,198.00 on 2026-11-08 (no list/was shown)."
@@ -512,7 +552,7 @@
    "seller": "ROKC Electronics (Amazon marketplace)",
    "price_usd": 2599.99,
    "price_source_url": "https://www.amazon.com/dp/B0DSQWFYPP",
-   "date_checked": "2026-11-08",
+   "date_checked": "2026-11-09",
    "link_out_url": "https://www.amazon.com/dp/B0DSQWFYPP",
    "note_source_url": "https://investors.micron.com/news/press-release/2025/Micron-Announces-Exit-from-Crucial-Consumer-Business-12-03-2025/default.aspx",
    "ddr": "DDR5",
@@ -554,6 +594,10 @@
     {
      "date": "2026-11-08",
      "price": 2599.99
+    },
+    {
+     "date": "2026-11-09",
+     "price": 2599.99
     }
    ],
    "note": "Third-party seller. Micron announced on Dec 3, 2025 that it is exiting the Crucial consumer business, with consumer shipments continuing until the end of fiscal Q2 (February 2026)."
@@ -565,7 +609,7 @@
    "seller": "Newegg Business (Amazon marketplace)",
    "price_usd": 229.99,
    "price_source_url": "https://www.amazon.com/dp/B0C29R9LNL",
-   "date_checked": "2026-11-08",
+   "date_checked": "2026-11-09",
    "link_out_url": "https://www.amazon.com/dp/B0C29R9LNL",
    "ddr": "DDR4",
    "capacity_gb": 32,
@@ -605,6 +649,10 @@
     {
      "date": "2026-11-08",
      "price": 229.99
+    },
+    {
+     "date": "2026-11-09",
+     "price": 229.99
     }
    ]
   },
@@ -615,7 +663,7 @@
    "seller": "Newegg",
    "price_usd": 239.99,
    "price_source_url": "https://www.newegg.com/p/N82E16820331634",
-   "date_checked": "2026-11-08",
+   "date_checked": "2026-11-09",
    "link_out_url": "https://www.newegg.com/p/N82E16820331634",
    "ddr": "DDR4",
    "capacity_gb": 32,
@@ -658,6 +706,10 @@
     {
      "date": "2026-11-08",
      "price": 239.99
+    },
+    {
+     "date": "2026-11-09",
+     "price": 239.99
     }
    ],
    "note": "Newegg shows a struck-through $254.49 and 'Save: $14.50 (5%)' on 2026-11-04."
@@ -667,9 +719,9 @@
    "item": "CORSAIR Vengeance LPX DDR4 32GB (2x16GB) 3200MHz CL16 (CMK32GX4M2E3200C16)",
    "retailer": "Amazon",
    "seller": "Amazon.com",
-   "price_usd": 259.99,
+   "price_usd": 269.99,
    "price_source_url": "https://www.amazon.com/dp/B07RW6Z692",
-   "date_checked": "2026-11-08",
+   "date_checked": "2026-11-09",
    "link_out_url": "https://www.amazon.com/dp/B07RW6Z692",
    "ddr": "DDR4",
    "capacity_gb": 32,
@@ -711,9 +763,13 @@
     {
      "date": "2026-11-08",
      "price": 259.99
+    },
+    {
+     "date": "2026-11-09",
+     "price": 269.99
     }
    ],
-   "note": "Buy box on 2026-11-08 is Amazon.com at $259.99; other offers on the same page start at $224.99 (not the published price). Amazon shows a List Price of $315.99 (a list price, not a past sale)."
+   "note": "Buy box is Amazon.com at $269.99 on 2026-11-09 (up from $259.99 on 2026-11-08). Amazon shows a List Price of $315.99 (a list price, not a past sale price)."
   },
   {
    "sku": "RAM-15",
@@ -722,7 +778,7 @@
    "seller": "Newegg",
    "price_usd": 164.99,
    "price_source_url": "https://www.newegg.com/p/N82E16820331858",
-   "date_checked": "2026-11-08",
+   "date_checked": "2026-11-09",
    "link_out_url": "https://www.newegg.com/p/N82E16820331858",
    "ddr": "DDR4",
    "capacity_gb": 16,
@@ -764,6 +820,10 @@
     },
     {
      "date": "2026-11-08",
+     "price": 164.99
+    },
+    {
+     "date": "2026-11-09",
      "price": 164.99
     }
    ],
