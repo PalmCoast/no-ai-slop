@@ -54,6 +54,7 @@ export function Home() {
           <p className="hero-links">
             <Link to="/book">Open the book</Link>
             <Link to="/method">Read the arithmetic</Link>
+            <Link to="/sales">Sales sheet</Link>
           </p>
         </div>
         <aside className="offer" aria-label="Board packet">

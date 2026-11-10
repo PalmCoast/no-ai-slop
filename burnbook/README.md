@@ -40,4 +40,17 @@ This folder is its own Netlify site. Do not attach it to the site that serves fi
 6. `SITE_URL=https://burnbook.firstdeploy.ai`
 7. Webhook `https://burnbook.firstdeploy.ai/api/stripe-webhook` for `checkout.session.completed`
 
-Brand notes are in [BRAND.md](BRAND.md). The launch handoff is in [GROK-LAUNCH.md](GROK-LAUNCH.md).
+Brand notes are in [BRAND.md](BRAND.md). The launch handoff is in [GROK-LAUNCH.md](GROK-LAUNCH.md). The buyer note is at `/sales`.
+
+## Indexing
+
+`public/sitemap.xml` lists `/`, `/book`, `/packet`, `/method`, and `/sales`. `public/robots.txt` points at it. `index.html` carries Product and WebSite JSON-LD. The IndexNow key file is `public/b7e4c1a90f2d6e83.txt`.
+
+After the host answers on HTTPS, submit the sitemap:
+
+```bash
+cd burnbook
+npm run indexnow
+```
+
+IndexNow fetches `https://burnbook.firstdeploy.ai/b7e4c1a90f2d6e83.txt` before it accepts the list. A ping before DNS exists is refused. The sales tracker on agenthiveinc.com is `/go/burn-book`, which redirects to the $750 payment link.

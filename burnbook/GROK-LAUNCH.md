@@ -38,4 +38,20 @@ The payment link already charges $750 and returns to `https://burnbook.firstdepl
 - After a paid return, `/packet` enables download and print.
 - firstdeploy.ai still serves First Deploy, not this folder.
 
-When the host returns 200, set the Burn Book row in `corp/shared/portfolio.ts` from `lab` to `live`.
+When the host returns 200, set the Burn Book row in `corp/shared/portfolio.ts` from `lab` to `live`, then run `npm run indexnow` from `burnbook/`. That posts the sitemap to IndexNow. The key file is `public/b7e4c1a90f2d6e83.txt`. Leave the portfolio row on `lab` until the host returns 200, because the corp live-link test fetches every live URL.
+
+## Sales
+
+- Buyer note: `https://burnbook.firstdeploy.ai/sales`
+- Click tracker, after the corp site deploys: `https://agenthiveinc.com/go/burn-book`
+- Card on the X hub: `corp/public/x/index.html` (`#burn-book`)
+
+Post from @FirstDeployAI, with `public/og.jpg`. The live destination is the payment link, because the subdomain still needs the NS1 records above.
+
+```
+Burn Book prices last month's AI bill against the jobs it finished. Idle seats, a second tool on the same job, and the hours spent fixing the output.
+
+The ledger stays in the browser. The board packet is $750, paid in full.
+
+https://buy.stripe.com/7sYcN5a6Ud1hcH3eGC2ZO1O
+```

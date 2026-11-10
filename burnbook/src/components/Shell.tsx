@@ -18,6 +18,7 @@ export function Shell({ children }: { children: ReactNode }) {
           <NavLink to="/book">Book</NavLink>
           <NavLink to="/packet">Packet</NavLink>
           <NavLink to="/method">Method</NavLink>
+          <NavLink to="/sales">Sales</NavLink>
         </nav>
         <BuyLink className="buy buy-small">Buy the packet, $750</BuyLink>
       </header>
@@ -26,7 +27,8 @@ export function Shell({ children }: { children: ReactNode }) {
         <p>
           {BRAND_NAME} is a {PARENT_NAME} product from{" "}
           <a href={COMPANY_URL}>{COMPANY}</a>, {PLACE}. The ledger stays in this browser.{" "}
-          <a href={PARENT_URL}>{PARENT_NAME}</a> is the desk if you want the cuts made.
+          <a href={PARENT_URL}>{PARENT_NAME}</a> is the desk if you want the cuts made.{" "}
+          <Link to="/sales">Sales sheet</Link>.
         </p>
       </footer>
     </>

@@ -4,6 +4,7 @@ import { BookPage } from "./pages/BookPage.tsx";
 import { Home } from "./pages/Home.tsx";
 import { MethodPage } from "./pages/MethodPage.tsx";
 import { PacketPage } from "./pages/PacketPage.tsx";
+import { SalesPage } from "./pages/SalesPage.tsx";
 import { ThanksPage } from "./pages/ThanksPage.tsx";
 
 export function App() {
@@ -14,6 +15,7 @@ export function App() {
         <Route path="/book" element={<BookPage />} />
         <Route path="/packet" element={<PacketPage />} />
         <Route path="/method" element={<MethodPage />} />
+        <Route path="/sales" element={<SalesPage />} />
         <Route path="/thanks" element={<ThanksPage />} />
         <Route path="*" element={<Home />} />
       </Routes>

@@ -10,6 +10,7 @@
     "preview": "vite preview",
     "typecheck": "tsc --noEmit -p tsconfig.json",
     "test": "vitest run",
+    "indexnow": "node scripts/indexnow.mjs",
     "test:watch": "vitest",
     "dev:netlify": "netlify dev"
   },
