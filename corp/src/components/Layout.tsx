@@ -17,8 +17,11 @@ import {
 } from "../../shared/brand";
 import { AFFILIATE_TOOLS, DISCLOSURE_LINE, DISCLOSURE_PATH } from "../../shared/disclosure";
 
+/** micro1's referral URL returns HTTP 404 (checked 2026-11-10), so it stays on /disclosure but out of the footer. */
+const FOOTER_PARTNER_SKIP = new Set(["micro1"]);
 const PARTNER_LINKS = AFFILIATE_TOOLS.filter(
-  (tool): tool is (typeof AFFILIATE_TOOLS)[number] & { href: string } => "href" in tool && Boolean(tool.href),
+  (tool): tool is (typeof AFFILIATE_TOOLS)[number] & { href: string } =>
+    "href" in tool && Boolean(tool.href) && !FOOTER_PARTNER_SKIP.has(tool.name),
 );
 
 /** Primary nav. Picks lives on the gold button (PICKS_PATH is a static page, so it is a plain link). */
