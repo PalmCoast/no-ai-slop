@@ -104,7 +104,7 @@ export const PAGE_SEO: SeoPage[] = [
     description: `${FD_NAME} custom embeds: ${FD_PRICE}. ${FD_PROMISE}.`,
     h1: "One leak. Built on a written plan.",
     noindex: true,
-    bodyHtml: `<main id="route-build" class="section"><div class="container"><h1 class="display">One leak. Built on a written plan.</h1><p class="lede">${FD_NAME} embeds, ships the fix on a written plan. ${FD_PRICE_LINE_HTML}</p><p>90-day projects: half upfront, half at completion. ${FD_PROMISE}. Consult ${CONSULT_DISPLAY} or start at ${FD_URL.replace("https://", "")}.</p></div></main>`,
+    bodyHtml: `<main id="route-build" class="section"><div class="container"><h1 class="display">One leak. Built on a written plan.</h1><p class="lede">${FD_NAME} embeds, finds what’s burning your team’s AI agent spend and fixes it. ${FD_PRICE_LINE_HTML}</p><p>90-day projects: half upfront, half at completion. ${FD_PROMISE}. Consult ${CONSULT_DISPLAY} or start at ${FD_URL.replace("https://", "")}.</p></div></main>`,
   },
   {
     path: "/consult",
@@ -125,7 +125,7 @@ export const PAGE_SEO: SeoPage[] = [
     title: page.title,
     description: page.description,
     h1: page.h1,
-    bodyHtml: `<main id="route-${page.path.split("/").pop()!.replace(/[^a-z]/g, "")}" class="section"><div class="container"><h1 class="display">${page.h1}</h1><p class="lede">${page.lede}</p><p><a href="${HIVE_CONSULT_URL}">Book the free 30</a> or call ${CONSULT_DISPLAY}.</p></div></main>`,
+    bodyHtml: `<main id="route-${page.path.split("/").pop()!.replace(/[^a-z]/g, "")}" class="section"><div class="container"><h1 class="display">${page.h1}</h1><p class="lede">${page.lede}</p><p>${page.actions ? page.actions.map((a) => `<a href="${a.href}">${a.label}</a>`).join(" · ") : `<a href="${HIVE_CONSULT_URL}">Book the free 30</a> or call ${CONSULT_DISPLAY}.`}</p></div></main>`,
   })),
   {
     path: "/concierge",

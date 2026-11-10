@@ -25,15 +25,31 @@ export default function ConsultComparePage() {
           </h1>
           <p className="lede">{page.lede}</p>
           <div className="hero-actions">
-            <a className="btn btn-primary" href={BOOK_HREF}>
-              {BOOK_CTA_LABEL}
-            </a>
-            <Link className="btn btn-outline" to={`${HIVE_CONSULT_PATH}#pricing`}>
-              See our pricing
-            </Link>
-            <a className="btn btn-outline" href={`tel:${CONSULT_TEL}`}>
-              Call {CONSULT_DISPLAY}
-            </a>
+            {page.actions ? (
+              page.actions.map((action, i) =>
+                action.href.startsWith("/") ? (
+                  <Link key={action.href} className={i === 0 ? "btn btn-primary" : "btn btn-outline"} to={action.href}>
+                    {action.label}
+                  </Link>
+                ) : (
+                  <a key={action.href} className={i === 0 ? "btn btn-primary" : "btn btn-outline"} href={action.href} rel="noopener">
+                    {action.label}
+                  </a>
+                ),
+              )
+            ) : (
+              <>
+                <a className="btn btn-primary" href={BOOK_HREF}>
+                  {BOOK_CTA_LABEL}
+                </a>
+                <Link className="btn btn-outline" to={`${HIVE_CONSULT_PATH}#pricing`}>
+                  See our pricing
+                </Link>
+                <a className="btn btn-outline" href={`tel:${CONSULT_TEL}`}>
+                  Call {CONSULT_DISPLAY}
+                </a>
+              </>
+            )}
           </div>
         </div>
       </section>

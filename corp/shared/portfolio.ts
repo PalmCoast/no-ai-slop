@@ -40,7 +40,7 @@ export const HIVE_SITES: HiveSite[] = [
     name: FD_NAME,
     url: FD_URL,
     github: "https://github.com/PalmCoast/FirstDeploy",
-    description: "A front desk that sounds like your brand. Built and run on a written plan.",
+    description: "A $150 burn-audit hour that finds what’s burning your team’s AI agent spend, then a fix on a written plan.",
     price: FD_PRICE,
     category: "ops",
     host: "custom",
