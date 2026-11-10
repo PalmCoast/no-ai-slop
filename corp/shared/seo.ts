@@ -191,6 +191,12 @@ export const NOT_FOUND_SEO: SeoPage = {
 /** Static free planner page shipped from public/ads/creative-calculator/index.html. */
 export const CREATIVE_CALCULATOR_URL = "https://agenthiveinc.com/ads/creative-calculator/";
 
+/** Static Grok Bot template pages shipped from public/<slug>/index.html (sold on Whop). */
+export const TEMPLATE_PAGE_URLS = [
+  "https://agenthiveinc.com/muscle-memory-bot-template/",
+  "https://agenthiveinc.com/github-repo-to-windows-exe/",
+] as const;
+
 export function sitemapXml(): string {
   const urls = PAGE_SEO.filter((page) => !page.noindex)
     .map((page) => {
@@ -216,7 +222,9 @@ export function sitemapXml(): string {
   ]
     .map((loc) => `  <url>\n    <loc>${loc}</loc>\n    <lastmod>2026-11-02</lastmod>\n  </url>`)
     .join("\n");
-  return `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">\n${urls}\n${ramDeals}\n${creativeCalculator}\n${picks}\n${guides}\n</urlset>\n`;
+  // Static Grok Bot template pages in public/<slug>/ (same pattern as the guides above).
+  const templates = TEMPLATE_PAGE_URLS.map((loc) => `  <url>\n    <loc>${loc}</loc>\n    <lastmod>2026-11-10</lastmod>\n  </url>`).join("\n");
+  return `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">\n${urls}\n${ramDeals}\n${creativeCalculator}\n${picks}\n${guides}\n${templates}\n</urlset>\n`;
 }
 
 export function sitemapIndexXml(): string {
