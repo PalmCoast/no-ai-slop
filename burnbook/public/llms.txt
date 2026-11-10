@@ -1,0 +1,27 @@
+# Burn Book
+
+> Burn Book (burnbook.firstdeploy.ai) is a First Deploy AI product from AgentHive Inc in Palm Coast, Florida. It is a ledger for a team that already pays for AI agents. You type the vendors, the seats, the jobs finished, and the hours spent fixing the output. The book prices idle seats, duplicate tools on the same job, and rework, then writes the cuts. The ledger stays in the browser. The board packet is $750, paid in full on Stripe.
+
+The packet is the memo, one letter per cut, a twelve-month repeat of this month (labeled as this month times twelve, not a prediction), and plain-text plus JSON files. Checkout charges $750. It does not receive the rows you typed.
+
+## This site
+
+- [Burn Book](https://burnbook.firstdeploy.ai/): the offer and the market figures, with sources.
+- [Book](https://burnbook.firstdeploy.ai/book): the ledger.
+- [Packet](https://burnbook.firstdeploy.ai/packet): the memo. Download and print unlock after Stripe confirms payment.
+- [Method](https://burnbook.firstdeploy.ai/method): the arithmetic and the cited market figures.
+- [Sales](https://burnbook.firstdeploy.ai/sales): the note to send a buyer, and the $750 checkout.
+- [Sitemap](https://burnbook.firstdeploy.ai/sitemap.xml): the pages to index. /thanks is a receipt and is left out.
+- [Buy](https://buy.stripe.com/7sYcN5a6Ud1hcH3eGC2ZO1O): $750, paid in full, Palm Coast AI.
+
+## Company
+
+- [First Deploy AI](https://firstdeploy.ai/): the paid desk. The $750 packet does not include someone making the cuts.
+- [AgentHive Inc](https://agenthiveinc.com/): Palm Coast.
+
+## Price
+
+- Product: Burn Book board packet
+- Stripe product: prod_VbW6VdFl9ZxAni
+- Stripe price: price_1UaJ40FJWYd4pYuxxNJ078sT
+- Amount: $750 once. One checkout. No monthly fee.

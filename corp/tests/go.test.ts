@@ -34,4 +34,13 @@ describe("/go tracker", () => {
     expect(GO_LINKS["ads-sprint"].kind).toBe("stripe");
     expect(GO_LINKS["ads-engine"].kind).toBe("stripe");
   });
+
+  it("sends Burn Book to the $750 packet checkout", () => {
+    const packet = new URL(goTarget("burn-book", "x")!);
+    expect(packet.origin + packet.pathname).toBe("https://buy.stripe.com/7sYcN5a6Ud1hcH3eGC2ZO1O");
+    expect(packet.searchParams.get("client_reference_id")).toBe("ah_x_burn-book");
+    expect(packet.searchParams.get("utm_campaign")).toBe("burn-book");
+    expect(GO_LINKS["burn-book"].kind).toBe("stripe");
+    expect(GO_LINKS["burn-book"].label).toContain("$750");
+  });
 });

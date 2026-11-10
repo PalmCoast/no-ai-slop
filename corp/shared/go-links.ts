@@ -17,6 +17,8 @@ export const GO_LINKS: Record<string, GoLink> = {
   // Supplied for the AI Ad Sprint page. Tests check the redirect target only; do not fetch these URLs.
   "ads-sprint": { url: "https://buy.stripe.com/5kQ00j0wke5layVbuq2ZO1L", kind: "stripe", label: "AI Ad Sprint — $297 one time" },
   "ads-engine": { url: "https://buy.stripe.com/4gM9ATa6U2mD36tbuq2ZO1M", kind: "stripe", label: "AI Ad Sprint monthly — $997/mo" },
+  // Live on Palm Coast AI, 2026-11-10: price_1UaJ40FJWYd4pYuxxNJ078sT, unit_amount 75000.
+  "burn-book": { url: "https://buy.stripe.com/7sYcN5a6Ud1hcH3eGC2ZO1O", kind: "stripe", label: "Burn Book board packet — $750 once" },
 };
 
 export const cleanToken = (s: unknown, max = 40): string =>

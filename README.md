@@ -87,6 +87,10 @@ MIT
 
 [Sonaris](sonaris/README.md) is a separate product in this repo: a real-time voice layer for an AI assistant with live captions, turn-taking that never talks over you, persona voices, a memory file per license, and a paid skill hosted behind a paywall. See [sonaris/README.md](sonaris/README.md) for setup and [sonaris/BRAND.md](sonaris/BRAND.md) for the brand.
 
+## Burn Book
+
+[Burn Book](burnbook/README.md) is a ledger for a team that already pays for AI agents. You type the vendors, the seats, the jobs finished, and the hours spent fixing the output. The book prices idle seats, a second tool on the same job, and rework. The ledger stays in the browser. The board packet is $750, paid in full. It lives at burnbook.firstdeploy.ai. See [burnbook/README.md](burnbook/README.md).
+
 ## Latch
 
 [Latch](latch/README.md) is a next-hour tool for AuDHD (autism and ADHD together) and for CPTSD. One task on the screen, a timer you can see coming, a place to park the other thought, and a stop when it is too much. The timer is free. The record of time on task is $29 once. No streak, and the list stays in the browser. See [latch/README.md](latch/README.md).
