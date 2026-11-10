@@ -18,8 +18,8 @@ export default function Build() {
             <em>Built on a written plan.</em>
           </h1>
           <p className="lede">
-            The workflow that makes your team look slow, rebuilt to your brand. {FD_NAME} embeds, ships the front desk
-            plus the live apps. <FdPath /> Every build runs on a written plan: scope, build, go-live, the same process as our active client builds.
+            The workflow that makes your team look slow, rebuilt to your brand. {FD_NAME} finds what’s burning your
+            team’s AI agent spend and fixes it. <FdPath /> Every build runs on a written plan: scope, build, go-live, the same process as our active client builds.
           </p>
           <ul className="takeaways">
             <li>90-day projects: half upfront, half at completion.</li>

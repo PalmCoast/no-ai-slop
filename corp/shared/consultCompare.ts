@@ -29,6 +29,8 @@ export type ConsultComparePage = {
   checked?: string;
   /** Article dateModified (ISO). Defaults to CONSULT_COMPARE_CHECKED_ISO. datePublished stays the shared ISO. */
   dateModified?: string;
+  /** Hero buttons. Defaults to the free 30, pricing and call buttons. */
+  actions?: { label: string; href: string }[];
 };
 
 const C = CONSULT_COMPARE_CHECKED;
@@ -225,32 +227,69 @@ export const CONSULT_COMPARE_PAGES: ConsultComparePage[] = [
   }),
   page({
     path: "/consult/ai-audit-cost",
-    neutral: "A paid hour instead of a named audit",
-    crumb: "A paid hour",
-    title: "What we charge instead of a separate AI audit | AgentHive Inc",
-    description: "AgentHive Inc does not sell a separate audit fee. A free 30-minute call, then $75 or $150 if you want the work set up.",
-    h1: "We do not sell a separate audit fee",
-    lede: "There is no standalone audit price on this page. We start with a free 30-minute call. If you want the work done, paid time is $75 for 30 minutes or $150 an hour.",
+    neutral: "A $150 burn-audit hour",
+    crumb: "AI audit cost",
+    title: "AI audit cost: the $150 burn-audit hour | AgentHive Inc",
+    description:
+      "A one-hour burn audit to find what’s burning your team’s AI agent spend, $150. Then a $1,250 operator pack ($625 deposit) or AI Concierge at $2,000/mo.",
+    h1: "The AI audit is a $150 burn-audit hour",
+    lede: "A one-hour burn audit maps the jobs, the tokens, and the flows that are costing you. Then we fix them on a 10-hour operator pack, or we stay on as Concierge and run the work to your standard. You approve what ships.",
+    checked: "November 10, 2026",
+    dateModified: "2026-11-10",
+    actions: [
+      { label: "Book the $150 burn-audit hour", href: "https://buy.stripe.com/eVq9ATbaY6CT6iF7ea2ZO1g" },
+      { label: "Operator pack, $625 to start", href: "https://buy.stripe.com/7sY9ATenabXd7mJ7ea2ZO1i" },
+      { label: "See AI Concierge", href: "/concierge" },
+    ],
     sections: [
       {
-        h2: "What you can buy",
+        h2: "Start with the hour",
         bullets: [
-          "Free 30-minute call: fit, first step, and an hour estimate",
-          "$75 for 30 minutes or $150 for an hour of setup in your accounts",
-          "$1,250 for 10 hours when the job needs more than one session",
+          "Burn-audit hour, $150: a one-hour session to find what’s burning your team’s AI agent spend. You leave with a written map of the jobs, tokens, and flows to cut or rebuild.",
+          "Operator pack, $1,250: ten hours of build and fix work on the flows from the audit. Checkout is the $625 deposit; the balance is due as the work is scheduled.",
+          "AI Concierge, $2,000/mo: if you want us to keep running it.",
         ],
       },
-      { h2: "The prices", table: PRICE_TABLE },
+      {
+        h2: "How it moves",
+        paras: [
+          "Start with the hour. If the map is clear, move to the pack. Stay on with Concierge when you want us to keep running it. You sign off before fix work starts.",
+          "The audit and the pack open a secure Stripe checkout. Concierge is billed from the Concierge page.",
+        ],
+      },
     ],
+    pickThem: {
+      h2: "The free 30-minute call is enough when",
+      bullets: [
+        "You have one question and want a yes or no",
+        "You want to know whether an audit fits before you pay",
+        "You want the price before any paid time",
+      ],
+    },
+    pickUs: {
+      h2: "Book the burn-audit hour when",
+      bullets: [
+        "Your team’s AI agent spend is climbing and you don’t know why",
+        "You want a written map of what to cut or rebuild",
+        "You want to sign off before any fix work starts",
+      ],
+    },
     faqs: [
       {
-        q: "Do you charge an audit fee?",
-        a: "No. The first 30 minutes are free. Paid time after that is $75 per 30 minutes or $150 an hour.",
+        q: "What does the AI audit cost?",
+        a: "$150 for the burn-audit hour. Pay the hour, then we schedule the session.",
       },
       {
-        q: "Can I get a written plan?",
-        a: "Yes. Paid work comes with notes you keep. A 10-hour pack is $1,250 when the job needs several sessions.",
+        q: "What do I get from the hour?",
+        a: "A written map of what’s burning, what to cut, and what to rebuild. You sign off before fix work starts.",
       },
+      {
+        q: "What happens after the audit?",
+        a: "The operator pack fixes the work: ten hours for $1,250, with a $625 deposit to start. AI Concierge at $2,000/mo keeps it running.",
+      },
+    ],
+    sources: [
+      "AgentHive Inc and First Deploy AI prices on agenthiveinc.com and firstdeploy.ai, checked November 10, 2026.",
     ],
   }),
 ];

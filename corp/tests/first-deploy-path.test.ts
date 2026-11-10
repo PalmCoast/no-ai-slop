@@ -32,3 +32,19 @@ describe("shared footer", () => {
     expect(footer).not.toContain("join.netlify.com");
   });
 });
+
+describe("AI audit cost page", () => {
+  it("matches the $150 burn-audit hour path, not 'no separate audit'", async () => {
+    const { consultComparePageFor } = await import("../shared/consultCompare");
+    const page = consultComparePageFor("/consult/ai-audit-cost")!;
+    const text = JSON.stringify(page);
+    expect(page.h1).toContain("$150 burn-audit hour");
+    expect(text).toContain("https://buy.stripe.com/eVq9ATbaY6CT6iF7ea2ZO1g");
+    expect(text).toContain("https://buy.stripe.com/7sY9ATenabXd7mJ7ea2ZO1i");
+    expect(text).toContain("$625 deposit");
+    expect(text).toContain("$2,000/mo");
+    for (const f of files) {
+      expect(readFileSync(f, "utf8"), f).not.toMatch(/(do not|don't|does not) sell a separate audit|no standalone audit|charge an audit fee\?"[^}]*No\./i);
+    }
+  });
+});

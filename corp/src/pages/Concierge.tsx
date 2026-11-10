@@ -281,8 +281,8 @@ export default function Concierge() {
           <p style={{ marginTop: 18 }}>
             Compare this retainer with a full-time hire on{" "}
             <Link to="/concierge/vs-hiring">Concierge vs hiring</Link>. Hourly time stays on{" "}
-            <Link to={HIVE_CONSULT_PATH}>consult</Link>. Teams that want a branded front desk can start at{" "}
-            <a href={FD_URL}>{FD_NAME}</a>.
+            <Link to={HIVE_CONSULT_PATH}>consult</Link>. Want to find what’s burning your AI agent spend first? Start with the{" "}
+            <a href={FD_URL}>{FD_NAME}</a> $150 burn-audit hour.
           </p>
         </div>
       </section>

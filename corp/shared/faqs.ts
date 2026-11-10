@@ -88,7 +88,7 @@ export const CONCIERGE_FAQS: Faq[] = [
   },
   {
     q: "What if a monthly retainer is the wrong fit?",
-    a: `Hourly consult stays open: ${CONSULT_RATES}, or a 10-hour pack for $1,250. Teams that want a front desk in their brand’s voice can start with First Deploy AI. The free call is where we say which one fits.`,
+    a: `Hourly consult stays open: ${CONSULT_RATES}, or a 10-hour pack for $1,250. Teams that want to find what’s burning their AI agent spend first can start with the First Deploy AI $150 burn-audit hour. The free call is where we say which one fits.`,
   },
   {
     q: "How do I start?",
