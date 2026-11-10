@@ -265,6 +265,7 @@ describe("per-route SEO", () => {
     expect(redirects).toContain("status = 301");
     expect(consult).not.toMatch(/live this week|or you don.t pay|guarantee/i);
     for (const href of [
+      "https://calendly.com/coltsinsider/30min",
       "tel:+13203356186",
       "https://buy.stripe.com/fZufZh92Qf9p5eB2XU2ZO1h",
       "https://buy.stripe.com/eVq9ATbaY6CT6iF7ea2ZO1g",
@@ -275,7 +276,7 @@ describe("per-route SEO", () => {
     expect(cost).not.toMatch(/North Star|AIessentials|iternal\.ai|CloudMotiv|Pareto Talent/);
     expect(cost).not.toMatch(/href="https?:\/\/(?:www\.)?(northstarconsult\.ai|aiessentials\.us|carlosansonetti\.com|iternal\.ai|cloudmotiv\.ai|paretotalent\.com|richnashawaty\.com)/);
     const hrefs = [...cost.matchAll(/href="(https?:[^"]+)"/g)].map((m) => m[1]);
-    for (const h of hrefs) expect(h).toMatch(/^(tel:\+13203356186|https:\/\/((\w+\.)?agenthiveinc\.com|ainexus360\.com|firstdeploy\.ai|netyard\.firstdeploy\.ai|www\.linkedin\.com|twelve\.tools|fazier\.com|launchaf\.com|join\.netlify\.com|higgsfield\.ai|mailcheap\.ai|t\.mercor\.com|refer\.micro1\.ai))/);
+    for (const h of hrefs) expect(h).toMatch(/^(tel:\+13203356186|https:\/\/((\w+\.)?agenthiveinc\.com|calendly\.com|ainexus360\.com|firstdeploy\.ai|netyard\.firstdeploy\.ai|www\.linkedin\.com|twelve\.tools|fazier\.com|launchaf\.com|join\.netlify\.com|higgsfield\.ai|mailcheap\.ai|t\.mercor\.com|refer\.micro1\.ai))/);
     expect(cost).toContain("Where do these prices come from?");
     expect(cost).not.toContain("Where do the comparison numbers come from?");
     expect(cost).toContain("October 19, 2026");

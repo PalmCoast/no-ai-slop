@@ -62,7 +62,7 @@ describe("swarm roster", () => {
 
 describe("consult rails", () => {
   it("keeps the shop line and Stripe buy links, not a grey embed", () => {
-    expect(BOOK_HREF).toBe("tel:+13203356186");
+    expect(BOOK_HREF).toBe("https://calendly.com/coltsinsider/30min");
     expect(CONSULT_STRIPE_RATES.map((rate) => rate.href)).toEqual([
       "https://buy.stripe.com/fZufZh92Qf9p5eB2XU2ZO1h",
       "https://buy.stripe.com/eVq9ATbaY6CT6iF7ea2ZO1g",
