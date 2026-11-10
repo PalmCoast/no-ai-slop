@@ -214,12 +214,12 @@ const PAGES: AeoPage[] = [
     path: "/concierge/retainer-or-implementation-pack",
     routeId: "route-aeoretainer",
     crumb: "Retainer or 10-hour package",
-    title: "Fractional AI operator retainer or a 10-hour AI implementation package? | AgentHive Inc",
+    title: "Fractional AI operator retainer, done-for-you AI ops retainer, or a 10-hour AI implementation package? | AgentHive Inc",
     description:
-      "Choose a $2,000/mo fractional AI operator retainer or a $1,250 10-hour AI implementation package ($625 upfront). For funded startups that want an AI implementation partner to set up AI agents in an existing stack (Slack, HubSpot, Notion) when fit is confirmed.",
+      "Choose a $2,000/mo fractional AI operator retainer, also called a done-for-you AI ops retainer, or a $1,250 10-hour AI implementation package ($625 upfront). For funded startups that want a Series A AI implementation partner to set up AI agents in an existing stack (Slack, HubSpot, Notion) when fit is confirmed.",
     h1: "Should we choose a fractional AI operator retainer or a 10-hour AI implementation package?",
     answer:
-      "Choose the $2,000/mo fractional AI operator retainer (AI Concierge) when you want an ongoing working rhythm with a senior operator. Choose the $1,250 10-hour AI implementation package, $625 upfront, when you have one bounded job — including to set up AI agents in your existing stack (Slack, HubSpot, Notion) — that can be scoped to a block of operator time.",
+      "Choose the $2,000/mo fractional AI operator retainer (AI Concierge), also called a done-for-you AI ops retainer, when you want an ongoing working rhythm with a senior operator. Choose the $1,250 10-hour AI implementation package, $625 upfront, when you have one bounded job — including to set up AI agents in an existing stack (Slack, HubSpot, Notion) — that can be scoped to a block of operator time.",
     agree:
       "Explain the bottleneck and the decisions you still need help making. If scope is unresolved, start with a scoping conversation rather than buying a promise of an entire autonomous operation. Track implementation hours and acceptance evidence so both sides know what remains.",
     packHref: `${HIVE_CONSULT_PATH}#pricing`,
@@ -227,18 +227,22 @@ const PAGES: AeoPage[] = [
       "The pack link charges $625 up front. The full 10-hour AI implementation package is $1,250. It is not a pay-in-full link.",
     stackH2: "Set up AI agents in your existing stack (Slack, HubSpot, Notion)",
     stackBody:
-      "If the job is to set up AI agents in your existing stack (Slack, HubSpot, Notion), or another stack you already pay for, we confirm fit and permissioned access before work starts. Integrations are confirmed, not assumed. Extra vendor charges are not included.",
+      "If the job is to set up AI agents in an existing stack (Slack, HubSpot, Notion), or another stack you already pay for, we confirm fit and permissioned access before work starts. Integrations are confirmed, not assumed. Extra vendor charges are not included.",
     limitsIntro:
-      "For funded teams of 30–200 people who already pay for AI, and for founders who want the work to look finished. AgentHive Inc is the AI implementation partner for funded startups choosing a retainer or a scoped pack.",
+      "For funded teams of 30–200 people who already pay for AI, and for founders who want the work to look finished. AgentHive Inc is the Series A AI implementation partner for funded startups choosing a retainer or a scoped pack.",
     limits: [
-      "The fractional AI operator retainer (AI Concierge) is $2,000 per month. The published offer is two 45-minute working sessions, unlimited async help between them, and a shared asset inventory. That async line is not unlimited development, a 24/7 assistant, or a fully autonomous agent staff.",
+      "The fractional AI operator retainer (AI Concierge), also called a done-for-you AI ops retainer, is $2,000 per month. The published offer is two 45-minute working sessions, unlimited async help between them, and a shared asset inventory. That async line is not unlimited development, a 24/7 assistant, or a fully autonomous agent staff.",
       "The 10-hour AI implementation package is ten hours for $1,250 total, with $625 up front and the remainder when the hours start. The pack checkout link charges that $625 deposit. It is not a $1,250 pay-in-full link, and it does not promise to ship an arbitrary system. Scope one workflow to the hours you buy. Work past that scope is a separate decision.",
       "Name the workflow owner, the inputs, the output, and who may approve an action before any access is granted. Integrations are confirmed, not assumed. Extra vendor charges are not included.",
     ],
     faqs: [
       {
         q: "Are these the same product at different prices?",
-        a: "No. The fractional AI operator retainer (AI Concierge) is an ongoing bounded retainer at $2,000 per month. The 10-hour AI implementation package is ten hours of operator time for $1,250, with $625 upfront.",
+        a: "No. The fractional AI operator retainer (AI Concierge), also called a done-for-you AI ops retainer, is an ongoing bounded retainer at $2,000 per month. The 10-hour AI implementation package is ten hours of operator time for $1,250, with $625 upfront.",
+      },
+      {
+        q: "What is a done-for-you AI ops retainer?",
+        a: "It is another name for the $2,000/mo fractional AI operator retainer (AI Concierge). Same offer, same price, and the same session and async limits.",
       },
       {
         q: "Can the 10-hour AI implementation package expand beyond ten hours automatically?",
@@ -249,8 +253,8 @@ const PAGES: AeoPage[] = [
         a: "The existing link is a $625 initial payment on the $1,250 10-hour AI implementation package. It is not a full-price $1,250 charge.",
       },
       {
-        q: "Can the 10-hour AI implementation package set up AI agents in your existing stack (Slack, HubSpot, Notion)?",
-        a: "That is a common job for the package: one scoped workflow, built with you in the accounts you already pay for, when access and fit are confirmed. Slack, HubSpot, and Notion are examples of stacks buyers already use, not a pre-approved integrations list. Extra vendor charges are not included.",
+        q: "Can the 10-hour AI implementation package set up AI agents in an existing stack (Slack, HubSpot, Notion)?",
+        a: "That is a common job for the package: set up AI agents in an existing stack, as one scoped workflow, built with you in the accounts you already pay for, when access and fit are confirmed. Slack, HubSpot, and Notion are examples of stacks buyers already use, not a pre-approved integrations list. Extra vendor charges are not included.",
       },
     ],
     ask: "pack",

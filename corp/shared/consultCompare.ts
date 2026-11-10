@@ -103,19 +103,19 @@ export const CONSULT_COMPARE_PAGES: ConsultComparePage[] = [
     path: "/consult/ai-consultant-vs-agency-vs-fractional",
     neutral: "Retainer or 10-hour package",
     crumb: "Retainer or 10-hour package",
-    title: "Fractional AI operator retainer or a 10-hour AI implementation package | AgentHive Inc",
+    title: "Series A AI implementation partner: fractional AI operator retainer or a 10-hour AI implementation package | AgentHive Inc",
     description:
-      "AgentHive Inc is an AI implementation partner for funded startups. A $2,000/mo fractional AI operator retainer, or a 10-hour AI implementation package at $1,250 ($625 upfront) to set up AI agents in your existing stack (Slack, HubSpot, Notion) when fit is confirmed.",
-    h1: "A fractional AI operator retainer, or a 10-hour AI implementation package",
-    lede: "For funded teams already paying for tools, and for founders who want one scoped job done in their own accounts. AI Concierge is the $2,000/mo fractional AI operator retainer. The 10-hour AI implementation package is $1,250, with $625 upfront. The prices below are ours, checked November 10, 2026.",
+      "AgentHive Inc is a Series A AI implementation partner for funded startups. A $2,000/mo fractional AI operator retainer, also called a done-for-you AI ops retainer, or a 10-hour AI implementation package at $1,250 ($625 upfront) to set up AI agents in an existing stack (Slack, HubSpot, Notion) when fit is confirmed.",
+    h1: "A fractional AI operator retainer (a done-for-you AI ops retainer), or a 10-hour AI implementation package",
+    lede: "For funded teams already paying for tools, and for founders who want one scoped job done in their own accounts. AI Concierge is the $2,000/mo fractional AI operator retainer. It is also a done-for-you AI ops retainer. The 10-hour AI implementation package is $1,250, with $625 upfront. The prices below are ours, checked November 10, 2026.",
     checked: "November 10, 2026",
     dateModified: "2026-11-10",
     sections: [
       {
-        h2: "AI implementation partner for funded startups",
+        h2: "Series A AI implementation partner for funded startups",
         bullets: [
-          "AI Concierge, a $2,000/mo fractional AI operator retainer: two 45-minute working sessions a month, async help, and a shared inventory of work you keep. Month to month; cancel any month after the first 30 days.",
-          "A 10-hour AI implementation package for $1,250, with $625 upfront and the remaining $625 due when the hours start. Built with you in the accounts you already pay for.",
+          "AI Concierge, a $2,000/mo fractional AI operator retainer, also called a done-for-you AI ops retainer: two 45-minute working sessions a month, async help, and a shared inventory of work you keep. Month to month; cancel any month after the first 30 days.",
+          "A 10-hour AI implementation package for $1,250, with $625 upfront and the remaining $625 due when the hours start. Built with you in the accounts you already pay for, including to set up AI agents in an existing stack.",
           "Or a short call first: 30 minutes for $75, or an hour for $150, after a free 30-minute call.",
         ],
       },
@@ -145,19 +145,19 @@ export const CONSULT_COMPARE_PAGES: ConsultComparePage[] = [
     faqs: [
       {
         q: "What is a fractional AI operator retainer?",
-        a: "AI Concierge is our $2,000/mo fractional AI operator retainer for funded teams already paying for tools. Two 45-minute working sessions each month, async help between them, and a shared asset inventory of work you keep. Month to month; cancel any month after the first 30 days. You attend the sessions. Async help is not unlimited build capacity.",
+        a: "AI Concierge is our $2,000/mo fractional AI operator retainer for funded teams already paying for tools. It is also called a done-for-you AI ops retainer. Two 45-minute working sessions each month, async help between them, and a shared asset inventory of work you keep. Month to month; cancel any month after the first 30 days. You attend the sessions. Async help is not unlimited build capacity.",
       },
       {
         q: "What is the 10-hour AI implementation package?",
         a: "Ten hours of operator implementation for $1,250 total. $625 upfront; the remaining $625 is due when the hours start. Agree one workflow, its acceptance checks, and a delivery window before paid work. Further work needs a separate agreement.",
       },
       {
-        q: "Can you set up AI agents in your existing stack (Slack, HubSpot, Notion)?",
-        a: "The 10-hour AI implementation package is for one scoped job in the tools you already pay for, including stacks such as Slack, HubSpot, or Notion, when fit and permissioned access are confirmed before work starts. Integrations are confirmed, not assumed. Extra vendor charges are not included.",
+        q: "Can you set up AI agents in an existing stack (Slack, HubSpot, Notion)?",
+        a: "The 10-hour AI implementation package is for one scoped job in the tools you already pay for, including to set up AI agents in an existing stack such as Slack, HubSpot, or Notion, when fit and permissioned access are confirmed before work starts. Integrations are confirmed, not assumed. Extra vendor charges are not included.",
       },
       {
-        q: "Who is the AI implementation partner for funded startups?",
-        a: "AgentHive Inc works with funded teams of 30–200 already paying for software, and with AI-literate founders who know what they want working. This is implementation alongside an operator, not beginner education. Buy the $2,000/mo fractional AI operator retainer, or the $1,250 10-hour AI implementation package ($625 upfront).",
+        q: "Who is the Series A AI implementation partner for funded startups?",
+        a: "AgentHive Inc is a Series A AI implementation partner. We work with funded teams of 30–200 already paying for software, and with AI-literate founders who know what they want working. This is implementation alongside an operator, not beginner education. Buy the $2,000/mo fractional AI operator retainer, also called a done-for-you AI ops retainer, or the $1,250 10-hour AI implementation package ($625 upfront).",
       },
     ],
     sources: ["AgentHive Inc prices on agenthiveinc.com/consult, checked November 10, 2026."],
