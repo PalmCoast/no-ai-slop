@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-09",
+ "updated": "2026-11-10",
  "source_list_name": "Steam top sellers (US) + Steam concurrent players",
  "source_list_url": "https://store.steampowered.com/charts/topsellers/US",
  "games": [
@@ -14,7 +14,7 @@
    "requirements_checked": "2026-11-01",
    "price_usd": 69.99,
    "price_source_url": "https://store.steampowered.com/api/appdetails?appids=4435490&cc=us",
-   "price_checked": "2026-11-09"
+   "price_checked": "2026-11-10"
   },
   {
    "rank": 2,
@@ -27,7 +27,7 @@
    "requirements_checked": "2026-11-01",
    "price_usd": 59.99,
    "price_source_url": "https://store.steampowered.com/api/appdetails?appids=4115450&cc=us",
-   "price_checked": "2026-11-09"
+   "price_checked": "2026-11-10"
   },
   {
    "rank": 3,
@@ -40,7 +40,7 @@
    "requirements_checked": "2026-11-01",
    "price_usd": 8.99,
    "price_source_url": "https://store.steampowered.com/api/appdetails?appids=5335510&cc=us",
-   "price_checked": "2026-11-09"
+   "price_checked": "2026-11-10"
   },
   {
    "rank": 4,
@@ -53,7 +53,7 @@
    "requirements_checked": "2026-11-01",
    "price_usd": 17.99,
    "price_source_url": "https://store.steampowered.com/api/appdetails?appids=4348910&cc=us",
-   "price_checked": "2026-11-09"
+   "price_checked": "2026-11-10"
   },
   {
    "rank": 5,
@@ -66,7 +66,7 @@
    "requirements_checked": "2026-11-01",
    "price_usd": 69.99,
    "price_source_url": "https://store.steampowered.com/api/appdetails?appids=3321460&cc=us",
-   "price_checked": "2026-11-09"
+   "price_checked": "2026-11-10"
   },
   {
    "rank": 6,
@@ -79,7 +79,7 @@
    "requirements_checked": "2026-11-01",
    "price_usd": 19.99,
    "price_source_url": "https://store.steampowered.com/api/appdetails?appids=381210&cc=us",
-   "price_checked": "2026-11-09"
+   "price_checked": "2026-11-10"
   },
   {
    "rank": 7,
@@ -92,7 +92,7 @@
    "requirements_checked": "2026-11-01",
    "price_usd": 49.99,
    "price_source_url": "https://store.steampowered.com/api/appdetails?appids=3259780&cc=us",
-   "price_checked": "2026-11-09"
+   "price_checked": "2026-11-10"
   },
   {
    "rank": 8,
@@ -105,7 +105,7 @@
    "requirements_checked": "2026-11-01",
    "price_usd": 59.99,
    "price_source_url": "https://store.steampowered.com/api/appdetails?appids=1091500&cc=us",
-   "price_checked": "2026-11-09"
+   "price_checked": "2026-11-10"
   },
   {
    "rank": 9,
@@ -118,7 +118,7 @@
    "requirements_checked": "2026-11-01",
    "price_usd": 39.99,
    "price_source_url": "https://store.steampowered.com/api/appdetails?appids=1867240&cc=us",
-   "price_checked": "2026-11-09"
+   "price_checked": "2026-11-10"
   },
   {
    "rank": 10,
@@ -129,9 +129,9 @@
    "min_ram_gb": 12,
    "rec_ram_gb": 16,
    "requirements_checked": "2026-11-01",
-   "price_usd": 19.99,
+   "price_usd": 39.99,
    "price_source_url": "https://store.steampowered.com/api/appdetails?appids=252490&cc=us",
-   "price_checked": "2026-11-09"
+   "price_checked": "2026-11-10"
   },
   {
    "rank": 11,
@@ -144,7 +144,7 @@
    "requirements_checked": "2026-11-01",
    "price_usd": 39.99,
    "price_source_url": "https://store.steampowered.com/api/appdetails?appids=1203620&cc=us",
-   "price_checked": "2026-11-09"
+   "price_checked": "2026-11-10"
   },
   {
    "rank": 12,
@@ -157,7 +157,7 @@
    "requirements_checked": "2026-11-03",
    "price_usd": 34.99,
    "price_source_url": "https://store.steampowered.com/api/appdetails?appids=1285190&cc=us",
-   "price_checked": "2026-11-09"
+   "price_checked": "2026-11-10"
   },
   {
    "rank": 13,
@@ -170,7 +170,7 @@
    "requirements_checked": "2026-11-01",
    "price_usd": 39.99,
    "price_source_url": "https://store.steampowered.com/api/appdetails?appids=553850&cc=us",
-   "price_checked": "2026-11-09"
+   "price_checked": "2026-11-10"
   },
   {
    "rank": 14,
@@ -181,9 +181,9 @@
    "min_ram_gb": 8,
    "rec_ram_gb": 16,
    "requirements_checked": "2026-11-06",
-   "price_usd": 29.99,
+   "price_usd": 26.99,
    "price_source_url": "https://store.steampowered.com/api/appdetails?appids=892970&cc=us",
-   "price_checked": "2026-11-09"
+   "price_checked": "2026-11-10"
   },
   {
    "rank": 15,
@@ -196,7 +196,7 @@
    "requirements_checked": "2026-11-01",
    "price_usd": 69.99,
    "price_source_url": "https://store.steampowered.com/api/appdetails?appids=4080220&cc=us",
-   "price_checked": "2026-11-09"
+   "price_checked": "2026-11-10"
   }
  ],
  "ram_guide": {
@@ -395,7 +395,7 @@
    "requirements_checked": "2026-11-03",
    "price_usd": 69.99,
    "price_source_url": "https://store.steampowered.com/api/appdetails?appids=2288340&cc=us",
-   "price_checked": "2026-11-09"
+   "price_checked": "2026-11-10"
   },
   {
    "name": "BeamNG.drive",
@@ -407,7 +407,7 @@
    "requirements_checked": "2026-11-03",
    "price_usd": 24.99,
    "price_source_url": "https://store.steampowered.com/api/appdetails?appids=284160&cc=us",
-   "price_checked": "2026-11-09"
+   "price_checked": "2026-11-10"
   },
   {
    "name": "Where Winds Meet",
