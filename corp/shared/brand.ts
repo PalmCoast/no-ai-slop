@@ -5,6 +5,8 @@ export const BRAND_URL = "https://agenthiveinc.com";
 export const CONTACT_EMAIL = "daniel@agenthiveinc.com";
 export const CONSULT_TEL = "+13203356186";
 export const CONSULT_DISPLAY = "+1 320-335-6186";
+/** Header/footer display format, matching firstdeploy.ai. Always labeled as the live AI demo line. */
+export const PHONE_DISPLAY = "(320) 335-6186";
 export const CONSULT_DISPLAY_SEO = "+1-320-335-6186";
 export const CONTENT_LASTMOD = "2026-11-01";
 export const FD_NAME = "First Deploy AI";
