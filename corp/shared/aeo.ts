@@ -32,6 +32,13 @@ export type AeoPage = {
   agree: string;
   faqs: AeoFaq[];
   ask: AskAiPromptKey;
+  /** Outline pack button. Defaults to /consult. */
+  packHref?: string;
+  packDisclosure?: string;
+  stackH2?: string;
+  stackBody?: string;
+  limitsIntro?: string;
+  limits?: readonly string[];
 };
 
 const PAGES: AeoPage[] = [
@@ -206,27 +213,44 @@ const PAGES: AeoPage[] = [
   {
     path: "/concierge/retainer-or-implementation-pack",
     routeId: "route-aeoretainer",
-    crumb: "Retainer or implementation pack",
-    title: "AI Concierge or an implementation pack? | AgentHive Inc",
+    crumb: "Retainer or 10-hour package",
+    title: "Fractional AI operator retainer or a 10-hour AI implementation package? | AgentHive Inc",
     description:
-      "Choose AgentHive Inc's $2,000/month Concierge for an ongoing rhythm, or the $1,250 ten-hour pack with $625 up front for one bounded workflow.",
-    h1: "Should we choose AI Concierge or an implementation pack?",
+      "Choose a $2,000/mo fractional AI operator retainer or a $1,250 10-hour AI implementation package ($625 upfront). For funded startups that want an AI implementation partner to set up AI agents in an existing stack (Slack, HubSpot, Notion) when fit is confirmed.",
+    h1: "Should we choose a fractional AI operator retainer or a 10-hour AI implementation package?",
     answer:
-      "Choose the $2,000/month Concierge when you want an ongoing advisory relationship with a recurring working rhythm. Choose the $1,250 ten-hour pack, $625 up front, when you have a bounded implementation problem that can be scoped to a block of operator time.",
+      "Choose the $2,000/mo fractional AI operator retainer (AI Concierge) when you want an ongoing working rhythm with a senior operator. Choose the $1,250 10-hour AI implementation package, $625 upfront, when you have one bounded job — including to set up AI agents in your existing stack (Slack, HubSpot, Notion) — that can be scoped to a block of operator time.",
     agree:
       "Explain the bottleneck and the decisions you still need help making. If scope is unresolved, start with a scoping conversation rather than buying a promise of an entire autonomous operation. Track implementation hours and acceptance evidence so both sides know what remains.",
+    packHref: `${HIVE_CONSULT_PATH}#pricing`,
+    packDisclosure:
+      "The pack link charges $625 up front. The full 10-hour AI implementation package is $1,250. It is not a pay-in-full link.",
+    stackH2: "Set up AI agents in your existing stack (Slack, HubSpot, Notion)",
+    stackBody:
+      "If the job is to set up AI agents in your existing stack (Slack, HubSpot, Notion), or another stack you already pay for, we confirm fit and permissioned access before work starts. Integrations are confirmed, not assumed. Extra vendor charges are not included.",
+    limitsIntro:
+      "For funded teams of 30–200 people who already pay for AI, and for founders who want the work to look finished. AgentHive Inc is the AI implementation partner for funded startups choosing a retainer or a scoped pack.",
+    limits: [
+      "The fractional AI operator retainer (AI Concierge) is $2,000 per month. The published offer is two 45-minute working sessions, unlimited async help between them, and a shared asset inventory. That async line is not unlimited development, a 24/7 assistant, or a fully autonomous agent staff.",
+      "The 10-hour AI implementation package is ten hours for $1,250 total, with $625 up front and the remainder when the hours start. The pack checkout link charges that $625 deposit. It is not a $1,250 pay-in-full link, and it does not promise to ship an arbitrary system. Scope one workflow to the hours you buy. Work past that scope is a separate decision.",
+      "Name the workflow owner, the inputs, the output, and who may approve an action before any access is granted. Integrations are confirmed, not assumed. Extra vendor charges are not included.",
+    ],
     faqs: [
       {
         q: "Are these the same product at different prices?",
-        a: "No. One is an ongoing bounded retainer at $2,000 per month. One is ten hours of operator time for $1,250.",
+        a: "No. The fractional AI operator retainer (AI Concierge) is an ongoing bounded retainer at $2,000 per month. The 10-hour AI implementation package is ten hours of operator time for $1,250, with $625 upfront.",
       },
       {
-        q: "Can the pack expand beyond ten hours automatically?",
+        q: "Can the 10-hour AI implementation package expand beyond ten hours automatically?",
         a: "No. Agree extra scope and cost separately.",
       },
       {
-        q: "Can we buy the pack in full online?",
-        a: "The existing link is a $625 initial payment on the $1,250 pack. It is not a full-price $1,250 charge.",
+        q: "Can we buy the 10-hour AI implementation package in full online?",
+        a: "The existing link is a $625 initial payment on the $1,250 10-hour AI implementation package. It is not a full-price $1,250 charge.",
+      },
+      {
+        q: "Can the 10-hour AI implementation package set up AI agents in your existing stack (Slack, HubSpot, Notion)?",
+        a: "That is a common job for the package: one scoped workflow, built with you in the accounts you already pay for, when access and fit are confirmed. Slack, HubSpot, and Notion are examples of stacks buyers already use, not a pre-approved integrations list. Extra vendor charges are not included.",
       },
     ],
     ask: "pack",
@@ -292,5 +316,6 @@ function esc(value: string): string {
 
 /** Static floor used when a route is rendered without the React tree. */
 export function aeoBodyHtml(page: AeoPage): string {
-  return `<main id="${page.routeId}" class="section"><div class="container"><h1 class="display">${esc(page.h1)}</h1><p class="lede">${esc(page.answer)}</p><p><a href="${CONCIERGE_PATH}">AI Concierge, $2,000/mo</a> · <a href="${HIVE_CONSULT_PATH}">10-hour operator pack, $1,250 ($625 up front)</a> · <a href="${CONCIERGE_STRIPE_URL}">Start AI Concierge — $2,000/mo</a> · <a href="${AEO_PACK_DEPOSIT_URL}">Pay the $625 deposit on the $1,250 pack</a> · <a href="tel:${CONSULT_TEL}">${AEO_PHONE_DISPLAY}</a></p></div></main>`;
+  const packHref = page.packHref ?? HIVE_CONSULT_PATH;
+  return `<main id="${page.routeId}" class="section"><div class="container"><h1 class="display">${esc(page.h1)}</h1><p class="lede">${esc(page.answer)}</p><p><a href="${CONCIERGE_PATH}">AI Concierge, $2,000/mo</a> · <a href="${packHref}">10-hour operator pack, $1,250 ($625 up front)</a> · <a href="${CONCIERGE_STRIPE_URL}">Start AI Concierge — $2,000/mo</a> · <a href="${AEO_PACK_DEPOSIT_URL}">Pay the $625 deposit on the $1,250 pack</a> · <a href="tel:${CONSULT_TEL}">${AEO_PHONE_DISPLAY}</a></p></div></main>`;
 }

@@ -438,7 +438,7 @@ export function jsonLdFor(page: SeoPage): object | null {
           author: { "@id": DANIEL_ID },
           publisher: { "@id": `${BRAND_URL}/#organization` },
           datePublished: CONSULT_COMPARE_CHECKED_ISO,
-          dateModified: CONSULT_COMPARE_CHECKED_ISO,
+          dateModified: compare.dateModified ?? CONSULT_COMPARE_CHECKED_ISO,
           mainEntityOfPage: canonicalFor(page.path),
         },
         {
