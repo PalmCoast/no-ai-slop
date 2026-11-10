@@ -150,6 +150,8 @@ describe("AgentHive Inc brand facts", () => {
       "/concierge",
       "https://firstdeploy.ai/deploy-agent/",
       "https://firstdeploy.ai",
+      "https://burnbook.firstdeploy.ai/",
+      "https://cardbutler.firstdeploy.ai/",
       "/ram-deals/",
     ]);
     expect(PRODUCT_FOOTER_LINKS.map((link) => link.label)).toEqual([
@@ -158,6 +160,8 @@ describe("AgentHive Inc brand facts", () => {
       "AI Concierge",
       "Deploy Agent",
       "First Deploy",
+      "Burn Book",
+      "Card Butler",
       "RAM & rig deals",
     ]);
   });
