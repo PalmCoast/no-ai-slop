@@ -88,6 +88,8 @@ export const PRODUCT_FOOTER_LINKS = [
   { href: "/ads", label: "AI Ad Sprint" },
   { href: "/concierge", label: "AI Concierge" },
   { href: "https://firstdeploy.ai", label: "First Deploy" },
+  { href: "https://burnbook.firstdeploy.ai/", label: "Burn Book" },
+  { href: "https://cardbutler.firstdeploy.ai/", label: "Card Butler" },
   { href: "/ram-deals/", label: "RAM & rig deals" },
 ] as const;
 
