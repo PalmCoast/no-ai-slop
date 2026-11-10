@@ -57,7 +57,7 @@ describe("per-route SEO", () => {
     expect(home).toContain("Start First Deploy");
     expect(home).toContain("Book the free 30");
     expect(home).toContain(
-      'Products: <a href="/picks/">Picks</a> · <a href="/ads">AI Ad Sprint</a> · <a href="/concierge">AI Concierge</a> · <a href="https://firstdeploy.ai">First Deploy</a> · <a href="/ram-deals/">RAM &amp; rig deals</a>',
+      'Products: <a href="/picks/">Picks</a> · <a href="/ads">AI Ad Sprint</a> · <a href="/concierge">AI Concierge</a> · <a href="https://firstdeploy.ai">First Deploy</a> · <a href="https://burnbook.firstdeploy.ai/">Burn Book</a> · <a href="https://cardbutler.firstdeploy.ai/">Card Butler</a> · <a href="/ram-deals/">RAM &amp; rig deals</a>',
     );
     expect(home).toContain("IndexNow");
     expect(about).toContain("tel:+13203356186");
@@ -283,7 +283,7 @@ describe("per-route SEO", () => {
     expect(cost).not.toMatch(/North Star|AIessentials|iternal\.ai|CloudMotiv|Pareto Talent/);
     expect(cost).not.toMatch(/href="https?:\/\/(?:www\.)?(northstarconsult\.ai|aiessentials\.us|carlosansonetti\.com|iternal\.ai|cloudmotiv\.ai|paretotalent\.com|richnashawaty\.com)/);
     const hrefs = [...cost.matchAll(/href="(https?:[^"]+)"/g)].map((m) => m[1]);
-    for (const h of hrefs) expect(h).toMatch(/^(tel:\+13203356186|https:\/\/((\w+\.)?agenthiveinc\.com|calendly\.com|ainexus360\.com|firstdeploy\.ai|netyard\.firstdeploy\.ai|www\.linkedin\.com|twelve\.tools|fazier\.com|launchaf\.com|join\.netlify\.com|higgsfield\.ai|mailcheap\.ai|t\.mercor\.com|refer\.micro1\.ai))/);
+    for (const h of hrefs) expect(h).toMatch(/^(tel:\+13203356186|https:\/\/((\w+\.)?agenthiveinc\.com|calendly\.com|ainexus360\.com|(\w+\.)?firstdeploy\.ai|www\.linkedin\.com|twelve\.tools|fazier\.com|launchaf\.com|join\.netlify\.com|higgsfield\.ai|mailcheap\.ai|t\.mercor\.com|refer\.micro1\.ai))/);
     expect(cost).toContain("Where do these prices come from?");
     expect(cost).not.toContain("Where do the comparison numbers come from?");
     expect(cost).toContain("October 19, 2026");
