@@ -1,14 +1,15 @@
+import FdPath from "../components/FdPath";
 import AskAiBar from "../components/AskAiBar";
 import {
   BOOK_CTA_LABEL,
   BRAND_NAME,
   BOOK_HREF,
-  FD_PRICE_LINE,
   CONSULT_DISPLAY,
   CONSULT_RATES,
   CONSULT_TEL,
   FD_CTA_LABEL,
   FD_NAME,
+  FD_WHAT,
   FD_PROMISE,
   FD_URL,
   HERO_H1,
@@ -129,7 +130,7 @@ export default function Home() {
             </article>
           </div>
           <p className="fine" style={{ marginTop: 18 }}>
-            Also live: <a href={FD_URL}>{FD_NAME}</a>, a front desk that sounds like your brand. {FD_PRICE_LINE}{" "}
+            Also live: <a href={FD_URL}>{FD_NAME}</a>, {FD_WHAT}. <FdPath />{" "}
             {FD_PROMISE}. <a href={FD_URL}>{FD_CTA_LABEL}</a>.
           </p>
         </div>

@@ -9,7 +9,7 @@ export type GoLink = { url: string; kind: "stripe" | "page"; label: string };
 
 export const GO_LINKS: Record<string, GoLink> = {
   // First Deploy has its own tracker; /go/first-deploy hands off to it.
-  "first-deploy": { url: "https://firstdeploy.ai/go/start", kind: "page", label: "First Deploy — $500 setup, $100/mo" },
+  "first-deploy": { url: "https://firstdeploy.ai/go/start", kind: "page", label: "First Deploy — $150 burn-audit hour" },
   concierge: { url: "https://buy.stripe.com/6oUeVd7YM3qH0Ylbuq2ZO1u", kind: "stripe", label: "AI Concierge — $2,000/mo" },
   "indexme-pro": { url: "https://buy.stripe.com/4gMcN52Ese5ldL7cyu2ZO1a", kind: "stripe", label: "IndexMe Pro — $19.99 once" },
   "indexme-studio": { url: "https://buy.stripe.com/aFa00jfre2mD8qN5622ZO1b", kind: "stripe", label: "IndexMe Studio — $29.99 once" },

@@ -8,6 +8,7 @@ import {
   BOOK_CTA_LABEL,
   BOOK_HREF,
   FD_PRICE_LINE,
+  FD_PRICE_LINE_HTML,
   CONSULT_DISPLAY,
   CONSULT_TEL,
   CONSULT_RATES,
@@ -73,7 +74,7 @@ export const PAGE_SEO: SeoPage[] = [
     description:
       "Done-for-you AI for funded companies and 30–200 person teams: AI Ad Sprint, AI Concierge, and Picks. Free 30-minute call, then $75/30 min or $150/hr.",
     h1: HERO_H1,
-    bodyHtml: `<main id="route-home" class="section"><div class="container"><h1 class="display">${HERO_H1}</h1><p class="lede">${BRAND_NAME} is a Palm Coast AI consultant who builds. ${HERO_WHAT}</p><p>${HERO_WHY}</p><p>${FD_PRICE_LINE} ${FD_PROMISE}. ${INDEXME_NAME} is the ${INDEXME_BLURB} at indexme.lol.</p><p><a href="/ads">AI Ad Sprint</a> · <a href="/concierge">AI Concierge</a> · <a href="/picks/">Picks</a> · <a href="${FD_URL}">${FD_CTA_LABEL}</a> · <a href="${BOOK_HREF}">${BOOK_CTA_LABEL}</a> · Consult ${CONSULT_DISPLAY}</p></div></main>`,
+    bodyHtml: `<main id="route-home" class="section"><div class="container"><h1 class="display">${HERO_H1}</h1><p class="lede">${BRAND_NAME} is a Palm Coast AI consultant who builds. ${HERO_WHAT}</p><p>${HERO_WHY}</p><p>${FD_PRICE_LINE_HTML} ${FD_PROMISE}. ${INDEXME_NAME} is the ${INDEXME_BLURB} at indexme.lol.</p><p><a href="/ads">AI Ad Sprint</a> · <a href="/concierge">AI Concierge</a> · <a href="/picks/">Picks</a> · <a href="${FD_URL}">${FD_CTA_LABEL}</a> · <a href="${BOOK_HREF}">${BOOK_CTA_LABEL}</a> · Consult ${CONSULT_DISPLAY}</p></div></main>`,
   },
   {
     path: "/about",
@@ -103,7 +104,7 @@ export const PAGE_SEO: SeoPage[] = [
     description: `${FD_NAME} custom embeds: ${FD_PRICE}. ${FD_PROMISE}.`,
     h1: "One leak. Built on a written plan.",
     noindex: true,
-    bodyHtml: `<main id="route-build" class="section"><div class="container"><h1 class="display">One leak. Built on a written plan.</h1><p class="lede">${FD_NAME} embeds, ships the front desk plus the live apps. ${FD_PRICE_LINE}</p><p>90-day projects: half upfront, half at completion. ${FD_PROMISE}. Consult ${CONSULT_DISPLAY} or start at ${FD_URL.replace("https://", "")}.</p></div></main>`,
+    bodyHtml: `<main id="route-build" class="section"><div class="container"><h1 class="display">One leak. Built on a written plan.</h1><p class="lede">${FD_NAME} embeds, ships the fix on a written plan. ${FD_PRICE_LINE_HTML}</p><p>90-day projects: half upfront, half at completion. ${FD_PROMISE}. Consult ${CONSULT_DISPLAY} or start at ${FD_URL.replace("https://", "")}.</p></div></main>`,
   },
   {
     path: "/consult",

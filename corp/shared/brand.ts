@@ -15,12 +15,18 @@ export const FD_CHECK_URL = "https://firstdeploy.ai/#check";
 export const FD_CONSULT_URL = "https://firstdeploy.ai/consult";
 export const HIVE_CONSULT_PATH = "/consult";
 export const HIVE_CONSULT_URL = "https://agenthiveinc.com/consult";
-export const FD_FOUNDING_URL = "https://firstdeploy.ai/founding";
-export const FD_PRICE = "$250 one-time setup for the first 5 businesses, then $100/mo";
+/** Current First Deploy path (2026-11-10): $150 audit -> $1,250 pack ($625 deposit) -> $2,000/mo Concierge. */
+export const FD_AUDIT_URL = "https://buy.stripe.com/eVq9ATbaY6CT6iF7ea2ZO1g";
+export const FD_PACK_URL = "https://buy.stripe.com/7sY9ATenabXd7mJ7ea2ZO1i";
+export const FD_CONCIERGE_URL = "https://agenthiveinc.com/concierge";
+export const FD_WHAT = "a $150 burn-audit hour that finds what\u2019s burning your team\u2019s AI agent spend";
+export const FD_PRICE = "$150 burn-audit hour, then a $1,250 operator pack ($625 deposit) or Concierge at $2,000/mo";
 export const FD_OFFER =
-  "$250 one-time setup for the first 5 businesses, then $100/mo. After those 5, it goes back to the standard $500 setup, then $100/mo.";
+  "Start with the $150 burn-audit hour. Then fix it with the $1,250 operator pack ($625 deposit), or keep it running with Concierge at $2,000/mo.";
 export const FD_PRICE_LINE =
-  "First Deploy founding offer: $250 one-time setup for the first 5 businesses, then $100/mo. After those 5, it goes back to the standard $500 setup, then $100/mo. Details at https://firstdeploy.ai/founding.";
+  "First Deploy AI path: a $150 burn-audit hour, then the $1,250 operator pack ($625 deposit), then Concierge at $2,000/mo.";
+/** Same path as HTML with the live checkout links, for prerendered bodies. */
+export const FD_PRICE_LINE_HTML = `First Deploy AI path: a <a href="${FD_AUDIT_URL}">$150 burn-audit hour</a>, then the <a href="${FD_PACK_URL}">$1,250 operator pack ($625 deposit)</a>, then <a href="/concierge">Concierge at $2,000/mo</a>.`;
 export const FD_PROMISE = "Built and run for you on a written plan";
 export const FD_CTA_LABEL = "Start First Deploy";
 export const BOOK_CTA_LABEL = "Book the free 30";

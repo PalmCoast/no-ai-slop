@@ -102,8 +102,9 @@ describe("per-route SEO", () => {
     const ids = pages.map((html) => html.match(/id="route-[a-z]+"/)?.[0]);
     expect(new Set(hashes).size).toBe(PAGE_SEO.length);
     expect(new Set(ids).size).toBe(PAGE_SEO.length);
-    expect(pages[0]).toContain("$250 one-time setup for the first 5 businesses, then $100/mo");
-    expect(pages[0]).toContain("https://firstdeploy.ai/founding");
+    expect(pages[0]).toContain("$150 burn-audit hour");
+    expect(pages[0]).toContain("https://buy.stripe.com/eVq9ATbaY6CT6iF7ea2ZO1g");
+    expect(pages.join("")).not.toMatch(/founding|first 5 businesses|\$250 one-time/i);
     expect(pages[0]).not.toContain("1" + ",750");
     expect(pages[0]).not.toContain("$" + "250/mo");
     expect(pages.join("")).not.toMatch(/\$2,?500|\$1,?500\s*\/\s*mo|firstdeploy\.dev/);
@@ -149,7 +150,9 @@ describe("per-route SEO", () => {
     expect(txt).toContain("https://agenthiveinc.com/picks/");
     expect(txt).not.toMatch(/HVAC|plumb|roofer|roofing|electrician|landscap|Flagler|Volusia|field operations|dirt/i);
     expect(txt).not.toMatch(/askyard|claudefarm/i);
-    expect(txt).not.toContain("buy.stripe.com");
+    // Only the two First Deploy path checkouts (audit, pack) may appear in llms.txt.
+    const stripe = txt.match(/https:\/\/buy\.stripe\.com\/[A-Za-z0-9]+/g) ?? [];
+    expect(new Set(stripe)).toEqual(new Set(["https://buy.stripe.com/eVq9ATbaY6CT6iF7ea2ZO1g", "https://buy.stripe.com/7sY9ATenabXd7mJ7ea2ZO1i"]));
     expect(txt).toContain("https://agenthiveinc.com/disclosure");
     expect(txt).toContain("https://firstdeploy.ai/");
     expect(txt).toContain("https://agenthiveinc.com/ads");
@@ -159,8 +162,12 @@ describe("per-route SEO", () => {
     expect(txt).not.toContain("$" + "250/mo");
     expect(txt).toContain("IndexNow");
     expect(txt).toContain("funded companies");
-    expect(txt).toContain("$250 one-time setup for the first 5 businesses, then $100/mo");
-    expect(txt).toContain("https://firstdeploy.ai/founding");
+    expect(txt).toContain("$150 burn-audit hour (https://buy.stripe.com/eVq9ATbaY6CT6iF7ea2ZO1g)");
+    expect(txt).toContain("$625 deposit (https://buy.stripe.com/7sY9ATenabXd7mJ7ea2ZO1i)");
+    expect(txt).toContain("https://agenthiveinc.com/concierge");
+    expect(txt).toContain("https://agenthiveinc.com/muscle-memory-bot-template/");
+    expect(txt).toContain("https://agenthiveinc.com/github-repo-to-windows-exe/");
+    expect(txt).not.toMatch(/founding|first 5|\$250/i);
     expect(txt).toContain("https://firstdeploy.ai");
     expect(txt).toContain("https://agenthiveinc.com/consult");
     expect(txt).not.toMatch(/agenthive\.io|agenthive\.co\b|insurance|QpiAI/i);
