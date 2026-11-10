@@ -69,6 +69,19 @@ export const HIVE_SITES: HiveSite[] = [
     featured: true,
   },
   {
+    slug: "burn-book",
+    name: "Burn Book",
+    url: "https://burnbook.firstdeploy.ai/",
+    github: "https://github.com/PalmCoast/no-ai-slop/tree/main/burnbook",
+    description:
+      "Ledger for a team's AI bill. Idle seats, duplicate tools, and rework, priced from the numbers you type. Board packet paid in full.",
+    price: "$750 once",
+    category: "saas",
+    host: "custom",
+    statusHint: "lab",
+    featured: true,
+  },
+  {
     slug: "latch",
     name: "Latch",
     url: "https://latch.agenthiveinc.com/",
