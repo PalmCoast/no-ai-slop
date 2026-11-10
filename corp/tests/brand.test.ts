@@ -65,7 +65,7 @@ describe("AgentHive Inc brand facts", () => {
     expect(INDEXME_NAME).toBe("IndexMe.lol");
     expect(INDEXME_URL).toBe("https://indexme.lol/");
     expect(INDEXME_BLURB).toMatch(/IndexNow/);
-    expect(BOOK_HREF).toBe("tel:+13203356186");
+    expect(BOOK_HREF).toBe("https://calendly.com/coltsinsider/30min");
     expect(FD_CTA_LABEL).toBe("Start First Deploy");
     expect(BOOK_CTA_LABEL).toBe("Book the free 30");
     expect(FREE_30_LABEL).toBe("Free 30");
@@ -132,7 +132,7 @@ describe("AgentHive Inc brand facts", () => {
       "/ads",
       "/concierge",
       "/consult",
-      "tel:+13203356186",
+      "https://calendly.com/coltsinsider/30min",
     ]);
     expect(MONEY_FOOTER_LINKS.map((link) => link.label)).toEqual([
       "Picks",

@@ -9,6 +9,7 @@ import {
   BOOK_HREF,
   FD_PRICE_LINE,
   CONSULT_DISPLAY,
+  CONSULT_TEL,
   CONSULT_RATES,
   FD_CTA_LABEL,
   FD_NAME,
@@ -79,7 +80,7 @@ export const PAGE_SEO: SeoPage[] = [
     title: "About AgentHive Inc — AGENTHIVEINCCOM LLC, Palm Coast",
     description: `${BRAND_NAME} is the Palm Coast AI operator behind ${FD_NAME}. Legal name ${LEGAL_NAME}. Call ${CONSULT_DISPLAY}.`,
     h1: "About AgentHive Inc",
-    bodyHtml: `<main id="route-about" class="section"><div class="container"><h1 class="display">About AgentHive Inc</h1><p class="lede">${BRAND_NAME} / ${LEGAL_NAME} is the Palm Coast AI consulting company that builds and ships. Daniel Graham builds working AI for funded teams, then leaves it running.</p><p>Contact: <a href="${BOOK_HREF}">${CONSULT_DISPLAY}</a>. ${FD_NAME} consult ${CONSULT_DISPLAY}. Shop address ${ADDRESS_LINE}.</p><p>This page is the company record for ${BRAND_NAME} at agenthiveinc.com The money homepage stays on the work.</p></div></main>`,
+    bodyHtml: `<main id="route-about" class="section"><div class="container"><h1 class="display">About AgentHive Inc</h1><p class="lede">${BRAND_NAME} / ${LEGAL_NAME} is the Palm Coast AI consulting company that builds and ships. Daniel Graham builds working AI for funded teams, then leaves it running.</p><p>Contact: <a href="tel:${CONSULT_TEL}">${CONSULT_DISPLAY}</a>. ${FD_NAME} consult ${CONSULT_DISPLAY}. Shop address ${ADDRESS_LINE}.</p><p>This page is the company record for ${BRAND_NAME} at agenthiveinc.com The money homepage stays on the work.</p></div></main>`,
   },
   {
     path: "/buzz",

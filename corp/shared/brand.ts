@@ -35,8 +35,8 @@ export const FOOTER_LINE = "AgentHive Inc · Palm Coast, FL · firstdeploy.ai";
 export const INDEXME_NAME = "IndexMe.lol";
 export const INDEXME_URL = "https://indexme.lol/";
 export const INDEXME_BLURB = "honest IndexNow indexing desk";
-/** Shop line. Replaces the old personal booking link. */
-export const BOOK_HREF = `tel:${CONSULT_TEL}`;
+/** Free 30-minute qualifier booking. Shop / demo line stays CONSULT_TEL. */
+export const BOOK_HREF = "https://calendly.com/coltsinsider/30min";
 export const SEAT_CIRCUIT_NAME = "Seat & Circuit";
 export const SEAT_CIRCUIT_URL = "https://infrastructure.agenthiveinc.com/";
 export const FLICK_URL = "https://flick.firstdeploy.ai/";

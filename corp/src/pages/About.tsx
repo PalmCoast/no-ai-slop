@@ -5,6 +5,7 @@ import {
   BRAND_NAME,
   BRAND_PLACE,
   BRAND_URL,
+  BOOK_CTA_LABEL,
   BOOK_HREF,
   CONSULT_DISPLAY,
   CONSULT_TEL,
@@ -59,7 +60,7 @@ export default function About() {
             <article className="trust">
               <h3>Book 30 minutes</h3>
               <p className="muted">
-                <a href={BOOK_HREF}>{CONSULT_DISPLAY}</a>
+                <a href={BOOK_HREF}>{BOOK_CTA_LABEL}</a>
               </p>
             </article>
             <article className="trust">
@@ -79,7 +80,7 @@ export default function About() {
           </div>
           <div className="hero-actions" style={{ marginTop: 22 }}>
             <a className="btn btn-primary" href={BOOK_HREF}>
-              Call {CONSULT_DISPLAY}
+              {BOOK_CTA_LABEL}
             </a>
             <a className="btn btn-outline" href={`tel:${CONSULT_TEL}`}>
               {CONSULT_DISPLAY}
@@ -117,7 +118,7 @@ export default function About() {
             </p>
             <ul className="takeaways">
               <li>
-                Call — <a href={BOOK_HREF}>{CONSULT_DISPLAY}</a>
+                Call — <a href={`tel:${CONSULT_TEL}`}>{CONSULT_DISPLAY}</a>
               </li>
               <li>
                 Daniel Graham

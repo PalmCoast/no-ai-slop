@@ -42,7 +42,7 @@ const WHAT_YOU_GET = [
 ] as const;
 
 const STEPS = [
-  { title: "Book the free 30", body: "Call the shop line. Bring the one task you most want off your plate." },
+  { title: "Book the free 30", body: "Book a 30-minute qualifier. Bring the one task you most want off your plate." },
   { title: "Get a plan on the call", body: "You hear what we would do first and roughly how many hours it takes, before you pay anything." },
   { title: "Choose your time", body: "Buy 30 minutes, an hour, or the 10-hour pack on Stripe. No contract." },
   { title: "We build it together", body: "Sessions run by video in your accounts. Keep going, add hours, or stop when the job is done." },
