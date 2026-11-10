@@ -25,6 +25,10 @@ export type ConsultComparePage = {
   pickUs: { h2: string; bullets: string[] };
   faqs: { q: string; a: string }[];
   sources: string[];
+  /** Visible "checked" date. Defaults to CONSULT_COMPARE_CHECKED. */
+  checked?: string;
+  /** Article dateModified (ISO). Defaults to CONSULT_COMPARE_CHECKED_ISO. datePublished stays the shared ISO. */
+  dateModified?: string;
 };
 
 const C = CONSULT_COMPARE_CHECKED;
@@ -47,6 +51,7 @@ const PRICE_TABLE = {
 function page(partial: Omit<ConsultComparePage, "sources" | "pickThem" | "pickUs"> & {
   pickThem?: ConsultComparePage["pickThem"];
   pickUs?: ConsultComparePage["pickUs"];
+  sources?: string[];
 }): ConsultComparePage {
   return {
     ...partial,
@@ -66,7 +71,7 @@ function page(partial: Omit<ConsultComparePage, "sources" | "pickThem" | "pickUs
         "You want a pack or a monthly retainer",
       ],
     },
-    sources: [OUR_SOURCE],
+    sources: partial.sources ?? [OUR_SOURCE],
   };
 }
 
@@ -96,33 +101,66 @@ export const CONSULT_COMPARE_PAGES: ConsultComparePage[] = [
   }),
   page({
     path: "/consult/ai-consultant-vs-agency-vs-fractional",
-    neutral: "Hourly, a pack, or monthly",
-    crumb: "Hourly, a pack, or monthly",
-    title: "Hourly AI help, a 10-hour pack, or a monthly retainer | AgentHive Inc",
-    description: "Three ways to buy time from AgentHive Inc: $75 / 30 min, a $1,250 pack, or AI Concierge at $2,000/mo.",
-    h1: "Hourly help, a pack, or a monthly retainer",
-    lede: "Pick the shape of the work. A single block, a 10-hour pack, or two sessions every month. The prices below are ours.",
+    neutral: "Retainer or 10-hour package",
+    crumb: "Retainer or 10-hour package",
+    title: "Series A AI implementation partner: fractional AI operator retainer or a 10-hour AI implementation package | AgentHive Inc",
+    description:
+      "AgentHive Inc is a Series A AI implementation partner for funded startups. A $2,000/mo fractional AI operator retainer, also called a done-for-you AI ops retainer, or a 10-hour AI implementation package at $1,250 ($625 upfront) to set up AI agents in an existing stack (Slack, HubSpot, Notion) when fit is confirmed.",
+    h1: "A fractional AI operator retainer (a done-for-you AI ops retainer), or a 10-hour AI implementation package",
+    lede: "For funded teams already paying for tools, and for founders who want one scoped job done in their own accounts. AI Concierge is the $2,000/mo fractional AI operator retainer. It is also a done-for-you AI ops retainer. The 10-hour AI implementation package is $1,250, with $625 upfront. The prices below are ours, checked November 10, 2026.",
+    checked: "November 10, 2026",
+    dateModified: "2026-11-10",
     sections: [
       {
-        h2: "Three ways to buy",
+        h2: "Series A AI implementation partner for funded startups",
         bullets: [
-          "30 minutes for $75, or an hour for $150, after a free 30-minute call",
-          "10 hours for $1,250, with $625 up front",
-          "AI Concierge at $2,000 a month: two 45-minute sessions, async notes, and a shared inventory",
+          "AI Concierge, a $2,000/mo fractional AI operator retainer, also called a done-for-you AI ops retainer: two 45-minute working sessions a month, async help, and a shared inventory of work you keep. Month to month; cancel any month after the first 30 days.",
+          "A 10-hour AI implementation package for $1,250, with $625 upfront and the remaining $625 due when the hours start. Built with you in the accounts you already pay for, including to set up AI agents in an existing stack.",
+          "Or a short call first: 30 minutes for $75, or an hour for $150, after a free 30-minute call.",
         ],
       },
-      { h2: "The prices", table: PRICE_TABLE },
+      {
+        h2: "The prices",
+        table: {
+          head: ["What you buy", "AgentHive Inc"],
+          rows: [
+            ["Fractional AI operator retainer", "AI Concierge, $2,000/mo"],
+            ["10-hour AI implementation package", "$1,250 ($625 upfront)"],
+            ["First call", "Free, 30 minutes"],
+            ["30 minutes", "$75"],
+            ["1 hour", "$150"],
+          ],
+          note: "These are our published prices, checked November 10, 2026.",
+        },
+      },
     ],
+    pickUs: {
+      h2: "Book paid time when",
+      bullets: [
+        "The task needs setup in your own accounts",
+        "You want notes you keep after the call",
+        "You want the 10-hour AI implementation package, or the fractional AI operator retainer",
+      ],
+    },
     faqs: [
       {
-        q: "Which option is for a one-off task?",
-        a: "The free 30-minute call, then $75 or $150 if the task needs paid time.",
+        q: "What is a fractional AI operator retainer?",
+        a: "AI Concierge is our $2,000/mo fractional AI operator retainer for funded teams already paying for tools. It is also called a done-for-you AI ops retainer. Two 45-minute working sessions each month, async help between them, and a shared asset inventory of work you keep. Month to month; cancel any month after the first 30 days. You attend the sessions. Async help is not unlimited build capacity.",
       },
       {
-        q: "Which option is for every month?",
-        a: "AI Concierge is $2,000 a month. Hourly time stays open if you only need a few hours.",
+        q: "What is the 10-hour AI implementation package?",
+        a: "Ten hours of operator implementation for $1,250 total. $625 upfront; the remaining $625 is due when the hours start. Agree one workflow, its acceptance checks, and a delivery window before paid work. Further work needs a separate agreement.",
+      },
+      {
+        q: "Can you set up AI agents in an existing stack (Slack, HubSpot, Notion)?",
+        a: "The 10-hour AI implementation package is for one scoped job in the tools you already pay for, including to set up AI agents in an existing stack such as Slack, HubSpot, or Notion, when fit and permissioned access are confirmed before work starts. Integrations are confirmed, not assumed. Extra vendor charges are not included.",
+      },
+      {
+        q: "Who is the Series A AI implementation partner for funded startups?",
+        a: "AgentHive Inc is a Series A AI implementation partner. We work with funded teams of 30–200 already paying for software, and with AI-literate founders who know what they want working. This is implementation alongside an operator, not beginner education. Buy the $2,000/mo fractional AI operator retainer, also called a done-for-you AI ops retainer, or the $1,250 10-hour AI implementation package ($625 upfront).",
       },
     ],
+    sources: ["AgentHive Inc prices on agenthiveinc.com/consult, checked November 10, 2026."],
   }),
   page({
     path: "/consult/ai-consultant-hourly-rate",

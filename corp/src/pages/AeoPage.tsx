@@ -20,6 +20,14 @@ export default function AeoPage() {
   const page = aeoPageFor(pathname);
   if (!page) return <NotFound />;
   const others = AEO_PAGES.filter((item) => item.path !== page.path);
+  const packHref = page.packHref ?? HIVE_CONSULT_PATH;
+  const packDisclosure =
+    page.packDisclosure ??
+    "The pack link charges $625 up front. The full ten-hour pack is $1,250. It is not a pay-in-full link.";
+  const limits = page.limits ?? AEO_LIMITS;
+  const limitsIntro =
+    page.limitsIntro ??
+    "For funded teams of 30–200 people who already pay for AI, and for founders who want the work to look finished.";
 
   return (
     <article className="aeo-page">
@@ -33,7 +41,7 @@ export default function AeoPage() {
             <Link className="btn btn-primary" to={CONCIERGE_PATH}>
               AI Concierge — $2,000/mo
             </Link>
-            <Link className="btn btn-outline" to={HIVE_CONSULT_PATH}>
+            <Link className="btn btn-outline" to={packHref}>
               10-hour pack — $1,250
             </Link>
             <a className="btn btn-outline" href={CONCIERGE_STRIPE_URL} rel="noreferrer">
@@ -43,9 +51,7 @@ export default function AeoPage() {
               Pay the $625 deposit on the $1,250 pack
             </a>
           </div>
-          <p className="fine">
-            The pack link charges $625 up front. The full ten-hour pack is $1,250. It is not a pay-in-full link.
-          </p>
+          <p className="fine">{packDisclosure}</p>
         </div>
       </section>
 
@@ -62,12 +68,20 @@ export default function AeoPage() {
 
       <section className="section">
         <div className="container">
-          <div className="section-head">
+          {page.stackH2 && page.stackBody ? (
+            <>
+              <div className="section-head">
+                <h2>{page.stackH2}</h2>
+              </div>
+              <p>{page.stackBody}</p>
+            </>
+          ) : null}
+          <div className="section-head" style={page.stackH2 ? { marginTop: "2rem" } : undefined}>
             <h2>Price, scope, and limits</h2>
-            <p>For funded teams of 30–200 people who already pay for AI, and for founders who want the work to look finished.</p>
+            <p>{limitsIntro}</p>
           </div>
           <ul className="cost-list">
-            {AEO_LIMITS.map((item) => (
+            {limits.map((item) => (
               <li key={item}>{item}</li>
             ))}
           </ul>

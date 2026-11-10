@@ -18,7 +18,7 @@ export default function ConsultComparePage() {
             <Link to={HIVE_CONSULT_PATH}>Consult</Link> / {page.crumb}
           </p>
           <div className="eyebrow">
-            <span className="dot" /> Consult · checked {CONSULT_COMPARE_CHECKED}
+            <span className="dot" /> Consult · checked {page.checked ?? CONSULT_COMPARE_CHECKED}
           </div>
           <h1 className="display" style={{ fontSize: "clamp(2.2rem, 5vw, 3.4rem)" }}>
             {page.h1}
