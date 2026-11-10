@@ -8,7 +8,7 @@ import {
   CONSULT_RATES,
   CONSULT_TEL,
   FD_NAME,
-  FD_PRICE,
+  FD_AUDIT_URL,
   FD_URL,
   HIVE_CONSULT_PATH,
 } from "../../shared/brand";
@@ -253,10 +253,13 @@ export default function Concierge() {
           <div className="trust-grid bridge-grid">
             <article className="trust">
               <p className="eyebrow">{FD_NAME}</p>
-              <h3>{FD_PRICE}</h3>
-              <p className="muted">A front desk that answers in your brand’s name and voice and sends the details to your team.</p>
-              <a className="btn btn-outline" href={FD_URL} rel="noreferrer" target="_blank">
-                {FD_NAME}
+              <h3>$150 burn-audit hour</h3>
+              <p className="muted">
+                Find what’s burning your team’s AI agent spend first. Then the $1,250 operator pack ($625 deposit), or
+                this retainer.
+              </p>
+              <a className="btn btn-outline" href={FD_AUDIT_URL} rel="noopener">
+                Book the $150 hour
               </a>
             </article>
             <article className="trust">

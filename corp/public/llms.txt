@@ -28,9 +28,11 @@ AgentHive Inc builds to your brand, runs it, and hands you the finished result. 
 - [AI Concierge cost for founders](https://agenthiveinc.com/concierge/ai-concierge-for-founders-cost): $2,000 per month. The smaller pack is $1,250 for ten hours, $625 up front.
 - [Concierge or the implementation pack](https://agenthiveinc.com/concierge/retainer-or-implementation-pack): Monthly rhythm versus a bounded block of ten hours.
 - [Human approval in an AI operations workflow](https://agenthiveinc.com/questions/human-approval-ai-operations-workflow): Decide which actions need a person before a workflow can send, publish, delete, or spend.
+- [Muscle Memory bot template](https://agenthiveinc.com/muscle-memory-bot-template/): A $49 template that finds the checks your bots repeat, moves the mechanical part into a script, and wakes the bot only when something changed. Sold on Whop: https://whop.com/agenthive/muscle-memory-template/
+- [How to turn a GitHub repo into a Windows .exe](https://agenthiveinc.com/github-repo-to-windows-exe/): What builds, what doesn't, how to smoke-test it, free routes, and the $49 EXE Builder template. Sold on Whop: https://whop.com/agenthive/exe-builder/
 
 ## Company
-- [First Deploy AI](https://firstdeploy.ai/): A front desk that sounds like your brand. Founding offer: $250 one-time setup for the first 5 businesses, then $100/mo. After those 5, it goes back to the standard $500 setup, then $100/mo. Details at https://firstdeploy.ai/founding. Built and run for you on a written plan.
+- [First Deploy AI](https://firstdeploy.ai/): Finds what's burning a funded team's AI agent spend, then fixes it. The path: a $150 burn-audit hour (https://buy.stripe.com/eVq9ATbaY6CT6iF7ea2ZO1g), then the 10-hour operator pack at $1,250 with a $625 deposit (https://buy.stripe.com/7sY9ATenabXd7mJ7ea2ZO1i), then AI Concierge at $2,000/mo (https://agenthiveinc.com/concierge).
 - [Consult](https://agenthiveinc.com/consult): Free 30-minute qualifier, then $75 / 30 min or $150 / hour. 10-hour pack $1,250 ($625 up front). Call +1 320-335-6186.
 - [IndexMe.lol](https://indexme.lol/): Honest IndexNow indexing desk. Pro $19.99, Studio $29.99, one-time.
 - [Flick](https://flick.firstdeploy.ai/): Browser screen recorder. Send a link. No login wall.

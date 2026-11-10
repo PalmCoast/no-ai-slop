@@ -1,8 +1,8 @@
+import FdPath from "../components/FdPath";
 import {
   CONSULT_DISPLAY,
   CONSULT_TEL,
   FD_NAME,
-  FD_PRICE_LINE,
   FD_URL,
 } from "../../shared/brand";
 
@@ -19,7 +19,7 @@ export default function Build() {
           </h1>
           <p className="lede">
             The workflow that makes your team look slow, rebuilt to your brand. {FD_NAME} embeds, ships the front desk
-            plus the live apps. {FD_PRICE_LINE} Every build runs on a written plan: scope, build, go-live, the same process as our active client builds.
+            plus the live apps. <FdPath /> Every build runs on a written plan: scope, build, go-live, the same process as our active client builds.
           </p>
           <ul className="takeaways">
             <li>90-day projects: half upfront, half at completion.</li>

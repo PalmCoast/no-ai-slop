@@ -18,7 +18,8 @@ import {
 import { AFFILIATE_TOOLS, DISCLOSURE_LINE, DISCLOSURE_PATH } from "../../shared/disclosure";
 
 /** micro1's referral URL returns HTTP 404 (checked 2026-11-10), so it stays on /disclosure but out of the footer. */
-const FOOTER_PARTNER_SKIP = new Set(["micro1"]);
+/** Netlify's partner signup link is dead (2026-11-10), so it is out of the footer too. */
+const FOOTER_PARTNER_SKIP = new Set(["micro1", "Netlify"]);
 const PARTNER_LINKS = AFFILIATE_TOOLS.filter(
   (tool): tool is (typeof AFFILIATE_TOOLS)[number] & { href: string } =>
     "href" in tool && Boolean(tool.href) && !FOOTER_PARTNER_SKIP.has(tool.name),
@@ -234,10 +235,7 @@ export default function Layout() {
             </p>
             <p className="ah-foot-disc">
               {DISCLOSURE_LINE} Partner links are marked sponsored; we may earn a fee at no extra cost to you.{" "}
-              <Link to={DISCLOSURE_PATH}>Disclosure</Link> ·{" "}
-              <a href="https://join.netlify.com/mn6b2zkzsv2b" target="_blank" rel="sponsored noopener">
-                Hosted on Netlify
-              </a>
+              <Link to={DISCLOSURE_PATH}>Disclosure</Link>
             </p>
             <div className="ah-foot-row ah-badges" aria-label="Featured on">
               <span className="ah-foot-k">Listed on</span>

@@ -57,8 +57,8 @@ describe("AgentHive Inc brand facts", () => {
     expect(FD_CONSULT_URL).toBe("https://firstdeploy.ai/consult");
     expect(HIVE_CONSULT_PATH).toBe("/consult");
     expect(HIVE_CONSULT_URL).toBe("https://agenthiveinc.com/consult");
-    expect(FD_PRICE).toBe("$250 one-time setup for the first 5 businesses, then $100/mo");
-    expect(FD_PRICE_LINE).toContain("https://firstdeploy.ai/founding");
+    expect(FD_PRICE).toBe("$150 burn-audit hour, then a $1,250 operator pack ($625 deposit) or Concierge at $2,000/mo");
+    expect(FD_PRICE_LINE).not.toMatch(/founding|first 5|\$250/i);
     expect(FD_PRICE_LINE).not.toContain("1" + ",750");
     expect(FD_PRICE_LINE).not.toContain("$" + "250/mo");
     expect(FD_PROMISE).not.toMatch(/live this week|you don.t pay|guarantee/i);
