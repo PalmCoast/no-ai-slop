@@ -152,6 +152,9 @@ export default function Ads() {
               </article>
             </div>
             <p className="ads-small">Paid upfront by card. Monthly plan: cancel anytime before your next billing date.</p>
+            <p className="ads-small ads-deadline">
+              Send your product page by Sat Nov 22 to have your ads before Black Friday.
+            </p>
           </div>
         </section>
 
