@@ -79,6 +79,8 @@ describe("AI Ad Sprint pages", () => {
     expect(offer).not.toContain("ads-tag");
     expect(offer).not.toContain("See samples below");
     expect(offer).toContain("AI-generated people are always labeled as AI.");
+    expect(offer).toContain("Send your product page by Sat Nov 22 to have your ads before Black Friday.");
+    expect(offer.indexOf("ads-deadline")).toBeGreaterThan(offer.indexOf("Paid upfront by card."));
     expect(offer).toContain('name="bot-field"');
     expect(offer).toContain('name="name"');
     expect(offer).toContain('action="/api/ads-intake"');
