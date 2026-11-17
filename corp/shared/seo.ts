@@ -196,6 +196,15 @@ export const TEMPLATE_PAGE_URLS = [
   "https://agenthiveinc.com/github-repo-to-windows-exe/",
 ] as const;
 
+// Static RAM buying guides under /ram-deals/ (public/ram-deals/<slug>/index.html).
+export const RAM_GUIDE_URLS = [
+  "https://agenthiveinc.com/ram-deals/black-friday-ddr5-ram-deals/",
+  "https://agenthiveinc.com/ram-deals/best-32gb-ddr5-ram/",
+  "https://agenthiveinc.com/ram-deals/best-64gb-ddr5-ram/",
+  "https://agenthiveinc.com/ram-deals/ddr4-ram-deals/",
+  "https://agenthiveinc.com/ram-deals/how-much-ram-for-gaming/",
+] as const;
+
 export function sitemapXml(): string {
   const urls = PAGE_SEO.filter((page) => !page.noindex)
     .map((page) => {
@@ -206,7 +215,11 @@ export function sitemapXml(): string {
     })
     .join("\n");
   // Static file in public/ram-deals/. Not a PAGE_SEO route, so prerender must not rewrite it.
-  const ramDeals = `  <url>\n    <loc>https://agenthiveinc.com/ram-deals/</loc>\n    <lastmod>2026-11-01</lastmod>\n  </url>`;
+  const ramDeals = `  <url>\n    <loc>https://agenthiveinc.com/ram-deals/</loc>\n    <lastmod>2026-11-17</lastmod>\n  </url>`;
+  // Static RAM buying guides in public/ram-deals/<slug>/ (same pattern as /ram-deals). Not PAGE_SEO routes.
+  const ramGuides = RAM_GUIDE_URLS.map(
+    (loc) => `  <url>\n    <loc>${loc}</loc>\n    <lastmod>2026-11-17</lastmod>\n    <image:image>\n      <image:loc>${loc}og.png</image:loc>\n    </image:image>\n  </url>`,
+  ).join("\n");
   // Static file in public/picks/. Same pattern as /ram-deals: not a PAGE_SEO route.
   const picks = `  <url>\n    <loc>${PICKS_URL}</loc>\n    <lastmod>2026-11-02</lastmod>\n    <image:image>\n      <image:loc>${PICKS_URL}og.png</image:loc>\n    </image:image>\n  </url>`;
   // Static file in public/ads/creative-calculator/. Same pattern as /ram-deals: not a PAGE_SEO route.
@@ -223,7 +236,7 @@ export function sitemapXml(): string {
     .join("\n");
   // Static Grok Bot template pages in public/<slug>/ (same pattern as the guides above).
   const templates = TEMPLATE_PAGE_URLS.map((loc) => `  <url>\n    <loc>${loc}</loc>\n    <lastmod>2026-11-10</lastmod>\n  </url>`).join("\n");
-  return `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">\n${urls}\n${ramDeals}\n${creativeCalculator}\n${picks}\n${guides}\n${templates}\n</urlset>\n`;
+  return `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">\n${urls}\n${ramDeals}\n${ramGuides}\n${creativeCalculator}\n${picks}\n${guides}\n${templates}\n</urlset>\n`;
 }
 
 export function sitemapIndexXml(): string {
