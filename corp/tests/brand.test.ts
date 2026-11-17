@@ -148,6 +148,7 @@ describe("AgentHive Inc brand facts", () => {
       "/picks/",
       "/ads",
       "/concierge",
+      "https://firstdeploy.ai/deploy-agent/",
       "https://firstdeploy.ai",
       "/ram-deals/",
     ]);
@@ -155,6 +156,7 @@ describe("AgentHive Inc brand facts", () => {
       "Picks",
       "AI Ad Sprint",
       "AI Concierge",
+      "Deploy Agent",
       "First Deploy",
       "RAM & rig deals",
     ]);
