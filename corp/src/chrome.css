@@ -59,6 +59,26 @@
   font-weight: 500;
   color: var(--muted);
 }
+.ah-brand-txt {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
+  min-width: 0;
+}
+.ah-place {
+  margin-top: 3px;
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  color: var(--muted);
+}
+.ah-place > span {
+  white-space: nowrap;
+}
+.ah-word,
+.ah-nav a {
+  white-space: nowrap;
+}
 .ah-nav {
   display: flex;
   justify-content: center;
@@ -294,6 +314,9 @@ html.ah-lock body { overflow: hidden; }
 @media (max-width: 480px) {
   .ah-bar { gap: 0.5rem; }
   .ah-word { font-size: 1.05rem; }
+  .ah-brand { min-width: 0; gap: 0.5rem; }
+  .ah-brand img { width: 30px; height: 30px; }
+  .ah-place { font-size: 0.6rem; }
   .ah-cta { padding: 0 1rem; font-size: 0.85rem; }
   .ah-menu-foot .ah-cta { font-size: 1rem; }
   .ah-burger { padding: 0 0.75rem; }

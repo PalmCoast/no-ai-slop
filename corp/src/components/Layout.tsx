@@ -89,10 +89,15 @@ export default function Layout() {
       <div className="honeycomb" aria-hidden="true" />
       <header className={`ah-head${scrolled ? " is-scrolled" : ""}${open ? " is-open" : ""}`}>
         <div className="container ah-bar">
-          <Link to="/" className="ah-brand" aria-label={`${BRAND_NAME} home`}>
+          <Link to="/" className="ah-brand" aria-label={`${BRAND_NAME}, Palm Coast, FL, home`}>
             <img src="/brand/mark-bee.webp" alt="" width={36} height={36} />
-            <span className="ah-word">
-              Agent<span className="gold">Hive</span> <span className="ah-inc">Inc</span>
+            <span className="ah-brand-txt">
+              <span className="ah-word">
+                Agent<span className="gold">Hive</span> <span className="ah-inc">Inc</span>
+              </span>
+              <span className="ah-place">
+                <span>{BRAND_NAME},</span> <span>Palm Coast, FL</span>
+              </span>
             </span>
           </Link>
           <nav className="ah-nav" aria-label="Primary">

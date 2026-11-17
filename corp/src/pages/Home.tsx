@@ -53,7 +53,7 @@ export default function Home() {
               See the AI Ad Sprint
             </a>
             <a className="btn btn-primary" href="/concierge">
-              AI Concierge
+              AI Concierge, $2,000/mo
             </a>
             <a className="btn btn-ghost" href={PICKS_PATH}>
               Shop Picks
@@ -92,7 +92,7 @@ export default function Home() {
             </a>
             <a className="trust card" href="/consult">
               <h3>Operator hours</h3>
-              <p className="muted">Free 30-minute call, then {CONSULT_RATES}. 10-hour pack $1,250.</p>
+              <p className="muted">Free 30-minute call, then {CONSULT_RATES}. 10-hour pack $1,250 ($625 upfront).</p>
             </a>
           </div>
         </div>
@@ -130,7 +130,7 @@ export default function Home() {
             </article>
           </div>
           <p className="fine" style={{ marginTop: 18 }}>
-            Also live: <a href={FD_URL}>{FD_NAME}</a>, {FD_WHAT}. <FdPath />{" "}
+            Also live: <a href={FD_URL}>{FD_NAME}</a>, {FD_WHAT}. <FdPath deployAgent />{" "}
             {FD_PROMISE}. <a href={FD_URL}>{FD_CTA_LABEL}</a>.
           </p>
         </div>

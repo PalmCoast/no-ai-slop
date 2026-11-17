@@ -19,6 +19,7 @@ export const HIVE_CONSULT_URL = "https://agenthiveinc.com/consult";
 export const FD_AUDIT_URL = "https://buy.stripe.com/eVq9ATbaY6CT6iF7ea2ZO1g";
 export const FD_PACK_URL = "https://buy.stripe.com/7sY9ATenabXd7mJ7ea2ZO1i";
 export const FD_CONCIERGE_URL = "https://agenthiveinc.com/concierge";
+export const FD_DEPLOY_AGENT_URL = "https://firstdeploy.ai/deploy-agent/";
 export const FD_WHAT = "a $150 burn-audit hour that finds what\u2019s burning your team\u2019s AI agent spend";
 export const FD_PRICE = "$150 burn-audit hour, then a $1,250 operator pack ($625 deposit) or Concierge at $2,000/mo";
 export const FD_OFFER =
@@ -87,11 +88,21 @@ export const PRODUCT_FOOTER_LINKS = [
   { href: PICKS_PATH, label: "Picks" },
   { href: "/ads", label: "AI Ad Sprint" },
   { href: "/concierge", label: "AI Concierge" },
+  { href: FD_DEPLOY_AGENT_URL, label: "Deploy Agent" },
   { href: "https://firstdeploy.ai", label: "First Deploy" },
   { href: "/ram-deals/", label: "RAM & rig deals" },
 ] as const;
 
 export const LINKEDIN_URL = "https://www.linkedin.com/company/agenthiveinc";
+/** Organization sameAs (AI visibility packet 2026-11-17). Company profiles only; Daniel's personal LinkedIn stays on the Person node. */
+export const ORG_SAME_AS = [
+  "https://x.com/AgentHiveAI",
+  LINKEDIN_URL,
+  "https://clutch.co/profile/agenthive",
+  "https://www.goodfirms.co/company/agenthive-inc",
+  "https://firstdeploy.ai/",
+  "https://indexme.lol/",
+] as const;
 export const DANIEL_LINKEDIN_URL = "https://www.linkedin.com/in/daniel-graham-92057a15";
 export const ADDRESS_LOCALITY = "Palm Coast";
 export const ADDRESS_REGION = "FL";

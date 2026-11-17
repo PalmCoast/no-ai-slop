@@ -66,6 +66,7 @@ export default function Concierge() {
             finished work your team can point to. For funded teams that already pay for AI and want it to look as good as the
             rest of the company.
           </p>
+          <p className="lede lede-who">Who it's for: funded teams already paying for AI, and founders and creators.</p>
           <div className="hero-actions">
             <a className="btn btn-primary" href={CONCIERGE_STRIPE_URL} rel="noreferrer" target="_blank">
               Start {CONCIERGE_NAME} — {CONCIERGE_PRICE}

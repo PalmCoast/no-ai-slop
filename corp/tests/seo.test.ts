@@ -57,7 +57,7 @@ describe("per-route SEO", () => {
     expect(home).toContain("Start First Deploy");
     expect(home).toContain("Book the free 30");
     expect(home).toContain(
-      'Products: <a href="/picks/">Picks</a> · <a href="/ads">AI Ad Sprint</a> · <a href="/concierge">AI Concierge</a> · <a href="https://firstdeploy.ai">First Deploy</a> · <a href="/ram-deals/">RAM &amp; rig deals</a>',
+      'Products: <a href="/picks/">Picks</a> · <a href="/ads">AI Ad Sprint</a> · <a href="/concierge">AI Concierge</a> · <a href="https://firstdeploy.ai/deploy-agent/">Deploy Agent</a> · <a href="https://firstdeploy.ai">First Deploy</a> · <a href="/ram-deals/">RAM &amp; rig deals</a>',
     );
     expect(home).toContain("IndexNow");
     expect(about).toContain("tel:+13203356186");
@@ -125,10 +125,12 @@ describe("per-route SEO", () => {
     expect(json).not.toContain("Barrington");
     expect(json).toContain(LEGAL_NAME);
     expect(json).toContain(LINKEDIN_URL);
-    expect(json).toContain(DANIEL_LINKEDIN_URL);
+    expect(json).not.toContain(DANIEL_LINKEDIN_URL);
     expect(json).toContain("https://firstdeploy.ai/");
     expect(json).toContain("https://indexme.lol/");
-    expect(json).toContain("https://agenthiveinc.com/consult");
+    expect(json).toContain("https://x.com/AgentHiveAI");
+    expect(json).toContain("https://clutch.co/profile/agenthive");
+    expect(json).toContain("https://www.goodfirms.co/company/agenthive-inc");
     expect(json).not.toMatch(/USPTO|14 apps|\$70k/i);
     expect(json).not.toContain("@agenthiveinc.com");
   });
