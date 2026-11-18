@@ -107,6 +107,8 @@ writeFileSync(
     "/ads/ /ads/index.html 200!",
     "/consult/north-star-ai-consultation-alternative /consult/ai-help-30-minute-blocks 301",
     "/consult/north-star-ai-consultation-alternative/ /consult/ai-help-30-minute-blocks 301",
+    "/audit /consult/ai-audit-cost 301",
+    "/audit/ /consult/ai-audit-cost 301",
     "/* /404.html 404",
   ].join("\n") + "\n",
 );

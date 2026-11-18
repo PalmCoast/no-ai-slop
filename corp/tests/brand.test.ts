@@ -65,7 +65,7 @@ describe("AgentHive Inc brand facts", () => {
     expect(INDEXME_NAME).toBe("IndexMe.lol");
     expect(INDEXME_URL).toBe("https://indexme.lol/");
     expect(INDEXME_BLURB).toMatch(/IndexNow/);
-    expect(BOOK_HREF).toBe("https://calendly.com/coltsinsider/30min");
+    expect(BOOK_HREF).toBe("https://calendar.google.com/calendar/appointments/schedules/AcZssZ08PSsZYPUrigPxN1Ax27CJh01QY8fjWo1mGYVhlX5vh0QUTqBzXF4NSNwDyLw487B8fNegD8JV");
     expect(FD_CTA_LABEL).toBe("Start First Deploy");
     expect(BOOK_CTA_LABEL).toBe("Book the free 30");
     expect(FREE_30_LABEL).toBe("Free 30");
@@ -132,7 +132,7 @@ describe("AgentHive Inc brand facts", () => {
       "/ads",
       "/concierge",
       "/consult",
-      "https://calendly.com/coltsinsider/30min",
+      "https://calendar.google.com/calendar/appointments/schedules/AcZssZ08PSsZYPUrigPxN1Ax27CJh01QY8fjWo1mGYVhlX5vh0QUTqBzXF4NSNwDyLw487B8fNegD8JV",
     ]);
     expect(MONEY_FOOTER_LINKS.map((link) => link.label)).toEqual([
       "Picks",
@@ -150,6 +150,8 @@ describe("AgentHive Inc brand facts", () => {
       "/concierge",
       "https://firstdeploy.ai/deploy-agent/",
       "https://firstdeploy.ai",
+      "https://burnbook.firstdeploy.ai/",
+      "https://cardbutler.firstdeploy.ai/",
       "/ram-deals/",
     ]);
     expect(PRODUCT_FOOTER_LINKS.map((link) => link.label)).toEqual([
@@ -158,6 +160,8 @@ describe("AgentHive Inc brand facts", () => {
       "AI Concierge",
       "Deploy Agent",
       "First Deploy",
+      "Burn Book",
+      "Card Butler",
       "RAM & rig deals",
     ]);
   });

@@ -11,7 +11,7 @@ import {
   AEO_SOURCES,
   aeoPageFor,
 } from "../../shared/aeo";
-import { CONSULT_TEL, HIVE_CONSULT_PATH } from "../../shared/brand";
+import { CONSULT_TEL, FD_AUDIT_URL, HIVE_CONSULT_PATH } from "../../shared/brand";
 import { CONCIERGE_PATH, CONCIERGE_STRIPE_URL } from "../../shared/concierge";
 import NotFound from "./NotFound";
 
@@ -44,10 +44,37 @@ export default function AeoPage() {
             <Link className="btn btn-outline" to={packHref}>
               10-hour pack — $1,250
             </Link>
-            <a className="btn btn-outline" href={CONCIERGE_STRIPE_URL} rel="noreferrer">
+            <a
+              className="btn btn-outline"
+              href={FD_AUDIT_URL}
+              rel="noreferrer"
+              data-product="audit150"
+              data-utm-source="dir"
+              data-utm-medium="page"
+              data-utm-content="ah-aeo-audit"
+            >
+              Start with the $150 audit
+            </a>
+            <a
+              className="btn btn-outline"
+              href={CONCIERGE_STRIPE_URL}
+              rel="noreferrer"
+              data-product="concierge2000"
+              data-utm-source="dir"
+              data-utm-medium="page"
+              data-utm-content="ah-aeo-concierge"
+            >
               Start AI Concierge — $2,000/mo
             </a>
-            <a className="btn btn-outline" href={AEO_PACK_DEPOSIT_URL} rel="noreferrer">
+            <a
+              className="btn btn-outline"
+              href={AEO_PACK_DEPOSIT_URL}
+              rel="noreferrer"
+              data-product="pack1250"
+              data-utm-source="dir"
+              data-utm-medium="page"
+              data-utm-content="ah-aeo-pack"
+            >
               Pay the $625 deposit on the $1,250 pack
             </a>
           </div>

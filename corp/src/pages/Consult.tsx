@@ -154,7 +154,17 @@ export default function Consult() {
                     <small className="muted"> {rate.note}</small>
                   </span>
                   <strong>{rate.amount}</strong>
-                  <a className="btn btn-outline" href={rate.href} rel="noreferrer" target="_blank">
+                  <a
+                    className="btn btn-outline"
+                    href={rate.href}
+                    rel="noreferrer"
+                    target="_blank"
+                    {...(rate.slug === "hour"
+                      ? { "data-product": "audit150", "data-utm-source": "dir", "data-utm-medium": "page", "data-utm-content": "ah-consult-hour" }
+                      : rate.slug === "pack"
+                        ? { "data-product": "pack1250", "data-utm-source": "dir", "data-utm-medium": "page", "data-utm-content": "ah-consult-pack" }
+                        : { "data-utm-source": "dir", "data-utm-medium": "page", "data-utm-content": `ah-consult-${rate.slug}` })}
+                  >
                     {rate.cta}
                   </a>
                 </li>

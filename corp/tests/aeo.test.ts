@@ -10,6 +10,7 @@ import {
   AEO_PHONE_DISPLAY,
 } from "../shared/aeo";
 import { CONCIERGE_STRIPE_URL } from "../shared/concierge";
+import { FD_AUDIT_URL } from "../shared/brand";
 import { render } from "../src/entry-server";
 import { jsonLdFor, PAGE_SEO, sitemapXml } from "../shared/seo";
 
@@ -56,6 +57,11 @@ describe("premium buyer pages", () => {
       expect(html, page.path).toContain('href="/consult"');
       expect(html, page.path).toContain(CONCIERGE_STRIPE_URL);
       expect(html, page.path).toContain(AEO_PACK_DEPOSIT_URL);
+      expect(html, page.path).toContain(FD_AUDIT_URL);
+      expect(html, page.path).toContain("Start with the $150 audit");
+      expect(html, page.path).toContain('data-product="audit150"');
+      expect(html, page.path).toContain('data-product="pack1250"');
+      expect(html, page.path).toContain('data-product="concierge2000"');
       expect(html, page.path).toContain("$1,250");
       expect(html, page.path).toContain("$625");
       expect(html, page.path).toContain("not a pay-in-full link");

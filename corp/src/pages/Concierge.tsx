@@ -68,7 +68,16 @@ export default function Concierge() {
           </p>
           <p className="lede lede-who">Who it's for: funded teams already paying for AI, and founders and creators.</p>
           <div className="hero-actions">
-            <a className="btn btn-primary" href={CONCIERGE_STRIPE_URL} rel="noreferrer" target="_blank">
+            <a
+              className="btn btn-primary"
+              href={CONCIERGE_STRIPE_URL}
+              rel="noreferrer"
+              target="_blank"
+              data-product="concierge2000"
+              data-utm-source="dir"
+              data-utm-medium="page"
+              data-utm-content="ah-concierge"
+            >
               Start {CONCIERGE_NAME} — {CONCIERGE_PRICE}
             </a>
             <a className="btn btn-outline" href={BOOK_HREF}>
@@ -144,7 +153,16 @@ export default function Concierge() {
               list of assets your team won’t want to give up. Six seats, so every session gets full attention.
             </p>
             <div className="hero-actions">
-              <a className="btn btn-primary" href={CONCIERGE_STRIPE_URL} rel="noreferrer" target="_blank">
+              <a
+                className="btn btn-primary"
+                href={CONCIERGE_STRIPE_URL}
+                rel="noreferrer"
+                target="_blank"
+                data-product="concierge2000"
+                data-utm-source="dir"
+                data-utm-medium="page"
+                data-utm-content="ah-concierge"
+              >
                 Start {CONCIERGE_NAME} — {CONCIERGE_PRICE}
               </a>
               <a className="btn btn-outline" href={BOOK_HREF}>
@@ -188,7 +206,15 @@ export default function Concierge() {
                   <td>
                     <strong>AgentHive Inc {CONCIERGE_NAME}</strong>
                     <small>
-                      <a href={CONCIERGE_STRIPE_URL} rel="noreferrer" target="_blank">
+                      <a
+                        href={CONCIERGE_STRIPE_URL}
+                        rel="noreferrer"
+                        target="_blank"
+                        data-product="concierge2000"
+                        data-utm-source="dir"
+                        data-utm-medium="page"
+                        data-utm-content="ah-concierge"
+                      >
                         Start {CONCIERGE_NAME}
                       </a>
                     </small>
@@ -232,7 +258,16 @@ export default function Concierge() {
             </article>
           </div>
           <div className="hero-actions" style={{ marginTop: 18 }}>
-            <a className="btn btn-primary" href={CONCIERGE_STRIPE_URL} rel="noreferrer" target="_blank">
+            <a
+              className="btn btn-primary"
+              href={CONCIERGE_STRIPE_URL}
+              rel="noreferrer"
+              target="_blank"
+              data-product="concierge2000"
+              data-utm-source="dir"
+              data-utm-medium="page"
+              data-utm-content="ah-concierge"
+            >
               Start {CONCIERGE_NAME} — {CONCIERGE_PRICE}
             </a>
             <a className="btn btn-outline" href={BOOK_HREF}>
@@ -259,7 +294,15 @@ export default function Concierge() {
                 Find what’s burning your team’s AI agent spend first. Then the $1,250 operator pack ($625 deposit), or
                 this retainer.
               </p>
-              <a className="btn btn-outline" href={FD_AUDIT_URL} rel="noopener">
+              <a
+                className="btn btn-outline"
+                href={FD_AUDIT_URL}
+                rel="noopener"
+                data-product="audit150"
+                data-utm-source="dir"
+                data-utm-medium="page"
+                data-utm-content="ah-concierge-audit"
+              >
                 Book the $150 hour
               </a>
             </article>

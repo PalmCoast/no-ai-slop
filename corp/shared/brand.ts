@@ -27,7 +27,7 @@ export const FD_OFFER =
 export const FD_PRICE_LINE =
   "First Deploy AI path: a $150 burn-audit hour, then the $1,250 operator pack ($625 deposit), then Concierge at $2,000/mo.";
 /** Same path as HTML with the live checkout links, for prerendered bodies. */
-export const FD_PRICE_LINE_HTML = `First Deploy AI path: a <a href="${FD_AUDIT_URL}">$150 burn-audit hour</a>, then the <a href="${FD_PACK_URL}">$1,250 operator pack ($625 deposit)</a>, then <a href="/concierge">Concierge at $2,000/mo</a>.`;
+export const FD_PRICE_LINE_HTML = `First Deploy AI path: a <a href="${FD_AUDIT_URL}" data-product="audit150" data-utm-source="dir" data-utm-medium="page" data-utm-content="ah-prerender-audit">$150 burn-audit hour</a>, then the <a href="${FD_PACK_URL}" data-product="pack1250" data-utm-source="dir" data-utm-medium="page" data-utm-content="ah-prerender-pack">$1,250 operator pack ($625 deposit)</a>, then <a href="/concierge">Concierge at $2,000/mo</a>.`;
 export const FD_PROMISE = "Built and run for you on a written plan";
 export const FD_CTA_LABEL = "Start First Deploy";
 export const BOOK_CTA_LABEL = "Book the free 30";
@@ -43,7 +43,7 @@ export const INDEXME_NAME = "IndexMe.lol";
 export const INDEXME_URL = "https://indexme.lol/";
 export const INDEXME_BLURB = "honest IndexNow indexing desk";
 /** Free 30-minute qualifier booking. Shop / demo line stays CONSULT_TEL. */
-export const BOOK_HREF = "https://calendly.com/coltsinsider/30min";
+export const BOOK_HREF = "https://calendar.google.com/calendar/appointments/schedules/AcZssZ08PSsZYPUrigPxN1Ax27CJh01QY8fjWo1mGYVhlX5vh0QUTqBzXF4NSNwDyLw487B8fNegD8JV";
 export const SEAT_CIRCUIT_NAME = "Seat & Circuit";
 export const SEAT_CIRCUIT_URL = "https://infrastructure.agenthiveinc.com/";
 export const FLICK_URL = "https://flick.firstdeploy.ai/";
@@ -90,6 +90,8 @@ export const PRODUCT_FOOTER_LINKS = [
   { href: "/concierge", label: "AI Concierge" },
   { href: FD_DEPLOY_AGENT_URL, label: "Deploy Agent" },
   { href: "https://firstdeploy.ai", label: "First Deploy" },
+  { href: "https://burnbook.firstdeploy.ai/", label: "Burn Book" },
+  { href: "https://cardbutler.firstdeploy.ai/", label: "Card Butler" },
   { href: "/ram-deals/", label: "RAM & rig deals" },
 ] as const;
 
