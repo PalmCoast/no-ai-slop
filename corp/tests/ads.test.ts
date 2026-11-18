@@ -60,6 +60,16 @@ describe("AI Ad Sprint pages", () => {
     expect(JSON.stringify(jsonLdFor(ads))).not.toContain("buy.stripe.com");
   });
 
+  it("keeps PostHog init and the buy-link helper on the /ads HTML shell", () => {
+    const index = readFileSync(join(corpRoot, "index.html"), "utf8");
+    expect(index).toContain('<script src="/ph.js" defer></script>');
+    expect(index).toContain('<script src="/assets/buy-link-helper.js" defer></script>');
+    const helper = readFileSync(join(corpRoot, "public/assets/buy-link-helper.js"), "utf8");
+    expect(helper).toContain("buy_click");
+    expect(helper).toContain("audit150");
+    expect(helper).toContain("https://buy.stripe.com/eVq9ATbaY6CT6iF7ea2ZO1g");
+  });
+
   it("prerenders both pages with the offer copy and no banned wording", () => {
     const offer = render("/ads");
     const done = render("/ads/thanks");

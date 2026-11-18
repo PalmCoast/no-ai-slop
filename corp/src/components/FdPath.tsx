@@ -9,11 +9,25 @@ export default function FdPath({ deployAgent = false }: { deployAgent?: boolean 
   return (
     <>
       First Deploy AI path: a{" "}
-      <a href={FD_AUDIT_URL} rel="noopener">
+      <a
+        href={FD_AUDIT_URL}
+        rel="noopener"
+        data-product="audit150"
+        data-utm-source="dir"
+        data-utm-medium="page"
+        data-utm-content="ah-fdpath-audit"
+      >
         $150 burn-audit hour
       </a>
       , then the{" "}
-      <a href={FD_PACK_URL} rel="noopener">
+      <a
+        href={FD_PACK_URL}
+        rel="noopener"
+        data-product="pack1250"
+        data-utm-source="dir"
+        data-utm-medium="page"
+        data-utm-content="ah-fdpath-pack"
+      >
         $1,250 operator pack ($625 deposit)
       </a>
       ,{" "}

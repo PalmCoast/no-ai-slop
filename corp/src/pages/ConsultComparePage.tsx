@@ -5,6 +5,23 @@ import { CONSULT_COST_PATH } from "../../shared/consult";
 import { CONSULT_COMPARE_CHECKED, CONSULT_COMPARE_PAGES, consultComparePageFor } from "../../shared/consultCompare";
 import NotFound from "./NotFound";
 
+function stripeBuyAttrs(href: string, content: string) {
+  const product = href.includes("eVq9ATbaY6CT6iF7ea2ZO1g")
+    ? "audit150"
+    : href.includes("7sY9ATenabXd7mJ7ea2ZO1i")
+      ? "pack1250"
+      : href.includes("6oUeVd7YM3qH0Ylbuq2ZO1u")
+        ? "concierge2000"
+        : undefined;
+  return {
+    ...(product ? { "data-product": product } : {}),
+    "data-utm-source": "dir",
+    "data-utm-medium": "page",
+    "data-utm-content": content,
+  };
+}
+
+
 export default function ConsultComparePage() {
   const { pathname } = useLocation();
   const page = consultComparePageFor(pathname.replace(/\/$/, ""));
@@ -32,7 +49,15 @@ export default function ConsultComparePage() {
                     {action.label}
                   </Link>
                 ) : (
-                  <a key={action.href} className={i === 0 ? "btn btn-primary" : "btn btn-outline"} href={action.href} rel="noopener">
+                  <a
+                    key={action.href}
+                    className={i === 0 ? "btn btn-primary" : "btn btn-outline"}
+                    href={action.href}
+                    rel="noopener"
+                    {...(action.href.includes("buy.stripe.com")
+                      ? stripeBuyAttrs(action.href, "ah-consult-compare")
+                      : {})}
+                  >
                     {action.label}
                   </a>
                 ),

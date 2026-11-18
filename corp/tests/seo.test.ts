@@ -272,6 +272,11 @@ describe("per-route SEO", () => {
     );
     expect(redirects).toContain('from = "/consult/north-star-ai-consultation-alternative"');
     expect(redirects).toContain("status = 301");
+    expect(redirects).toContain("/audit /consult/ai-audit-cost 301");
+    expect(redirects).toContain("/audit/ /consult/ai-audit-cost 301");
+    expect(redirects).toContain('from = "/audit"');
+    expect(redirects).toContain('from = "/audit/"');
+    expect(redirects).toContain('to = "/consult/ai-audit-cost"');
     expect(consult).not.toMatch(/live this week|or you don.t pay|guarantee/i);
     for (const href of [
       "https://calendly.com/coltsinsider/30min",

@@ -183,6 +183,17 @@
   to = "/consult/ai-help-30-minute-blocks"
   status = 301
 
+# /audit was a 404. Send it to the on-site $150 burn-audit explainer (200).
+[[redirects]]
+  from = "/audit"
+  to = "/consult/ai-audit-cost"
+  status = 301
+
+[[redirects]]
+  from = "/audit/"
+  to = "/consult/ai-audit-cost"
+  status = 301
+
 [[redirects]]
   from = "/*"
   to = "/404.html"

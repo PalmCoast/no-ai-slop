@@ -27,7 +27,7 @@ export const FD_OFFER =
 export const FD_PRICE_LINE =
   "First Deploy AI path: a $150 burn-audit hour, then the $1,250 operator pack ($625 deposit), then Concierge at $2,000/mo.";
 /** Same path as HTML with the live checkout links, for prerendered bodies. */
-export const FD_PRICE_LINE_HTML = `First Deploy AI path: a <a href="${FD_AUDIT_URL}">$150 burn-audit hour</a>, then the <a href="${FD_PACK_URL}">$1,250 operator pack ($625 deposit)</a>, then <a href="/concierge">Concierge at $2,000/mo</a>.`;
+export const FD_PRICE_LINE_HTML = `First Deploy AI path: a <a href="${FD_AUDIT_URL}" data-product="audit150" data-utm-source="dir" data-utm-medium="page" data-utm-content="ah-prerender-audit">$150 burn-audit hour</a>, then the <a href="${FD_PACK_URL}" data-product="pack1250" data-utm-source="dir" data-utm-medium="page" data-utm-content="ah-prerender-pack">$1,250 operator pack ($625 deposit)</a>, then <a href="/concierge">Concierge at $2,000/mo</a>.`;
 export const FD_PROMISE = "Built and run for you on a written plan";
 export const FD_CTA_LABEL = "Start First Deploy";
 export const BOOK_CTA_LABEL = "Book the free 30";
