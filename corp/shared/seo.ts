@@ -215,10 +215,10 @@ export function sitemapXml(): string {
     })
     .join("\n");
   // Static file in public/ram-deals/. Not a PAGE_SEO route, so prerender must not rewrite it.
-  const ramDeals = `  <url>\n    <loc>https://agenthiveinc.com/ram-deals/</loc>\n    <lastmod>2026-11-17</lastmod>\n  </url>`;
+  const ramDeals = `  <url>\n    <loc>https://agenthiveinc.com/ram-deals/</loc>\n    <lastmod>2026-11-18</lastmod>\n  </url>`;
   // Static RAM buying guides in public/ram-deals/<slug>/ (same pattern as /ram-deals). Not PAGE_SEO routes.
   const ramGuides = RAM_GUIDE_URLS.map(
-    (loc) => `  <url>\n    <loc>${loc}</loc>\n    <lastmod>2026-11-17</lastmod>\n    <image:image>\n      <image:loc>${loc}og.png</image:loc>\n    </image:image>\n  </url>`,
+    (loc) => `  <url>\n    <loc>${loc}</loc>\n    <lastmod>2026-11-18</lastmod>\n    <image:image>\n      <image:loc>${loc}og.png</image:loc>\n    </image:image>\n  </url>`,
   ).join("\n");
   // Static file in public/picks/. Same pattern as /ram-deals: not a PAGE_SEO route.
   const picks = `  <url>\n    <loc>${PICKS_URL}</loc>\n    <lastmod>2026-11-02</lastmod>\n    <image:image>\n      <image:loc>${PICKS_URL}og.png</image:loc>\n    </image:image>\n  </url>`;
