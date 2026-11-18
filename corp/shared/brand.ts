@@ -43,7 +43,7 @@ export const INDEXME_NAME = "IndexMe.lol";
 export const INDEXME_URL = "https://indexme.lol/";
 export const INDEXME_BLURB = "honest IndexNow indexing desk";
 /** Free 30-minute qualifier booking. Shop / demo line stays CONSULT_TEL. */
-export const BOOK_HREF = "https://calendly.com/coltsinsider/30min";
+export const BOOK_HREF = "https://calendar.google.com/calendar/appointments/schedules/AcZssZ08PSsZYPUrigPxN1Ax27CJh01QY8fjWo1mGYVhlX5vh0QUTqBzXF4NSNwDyLw487B8fNegD8JV";
 export const SEAT_CIRCUIT_NAME = "Seat & Circuit";
 export const SEAT_CIRCUIT_URL = "https://infrastructure.agenthiveinc.com/";
 export const FLICK_URL = "https://flick.firstdeploy.ai/";
