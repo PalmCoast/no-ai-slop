@@ -16,7 +16,7 @@ describe("static RAM buying guides under /ram-deals/", () => {
       expect(html).toContain(`<meta property="og:image" content="${url}og.png">`);
       expect(html).toContain("<strong>Picks</strong>");
       expect(html).toContain("Disclosure:");
-      expect(html).toContain('href="https://brooms.ai/collections/come-and-take-it-black-friday"');
+      expect(html).toMatch(/href="https:\/\/brooms\.ai\/collections\/come-and-take-it-black-friday\?utm_campaign=bfmerch&amp;utm_source=dir&amp;utm_medium=page&amp;utm_content=blackfriday-[^"]+"/);
       expect(html).toContain('href="/ram-deals/"');
       for (const other of RAM_GUIDE_URLS) {
         if (other !== url) expect(html).toContain(`href="${other.replace("https://agenthiveinc.com", "")}"`);
