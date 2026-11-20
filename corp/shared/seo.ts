@@ -70,9 +70,9 @@ export const PAGE_SEO: SeoPage[] = [
     path: "/",
     title: "AgentHive Inc — done-for-you AI operator for funded teams",
     description:
-      "Done-for-you AI for funded companies and 30–200 person teams: AI Ad Sprint, AI Concierge, and Picks. Free 30-minute call, then $75/30 min or $150/hr.",
+      "Done-for-you AI for funded teams: Deploy Agent go-live sprints, a $2,500 freight AI agent proof, AI Concierge and AI Ad Sprint. AgentHive Inc, Palm Coast.",
     h1: HERO_H1,
-    bodyHtml: `<main id="route-home" class="section"><div class="container"><h1 class="display">${HERO_H1}</h1><p class="lede">${BRAND_NAME} is a Palm Coast AI consultant who builds. ${HERO_WHAT}</p><p>${HERO_WHY}</p><p>${FD_PRICE_LINE_HTML} ${FD_PROMISE}. ${INDEXME_NAME} is the ${INDEXME_BLURB} at indexme.lol.</p><p><a href="/ads">AI Ad Sprint</a> · <a href="/concierge">AI Concierge</a> · <a href="/picks/">Picks</a> · <a href="${FD_URL}">${FD_CTA_LABEL}</a> · <a href="${BOOK_HREF}">${BOOK_CTA_LABEL}</a> · Consult ${CONSULT_DISPLAY}</p></div></main>`,
+    bodyHtml: `<main id="route-home" class="section"><div class="container"><h1 class="display">${HERO_H1}</h1><p class="lede">${BRAND_NAME} is a Palm Coast AI consultant who builds. ${HERO_WHAT}</p><p>${HERO_WHY}</p><p>${FD_PRICE_LINE_HTML} ${FD_PROMISE}. ${INDEXME_NAME} is the ${INDEXME_BLURB} at indexme.lol.</p><p><a href="/ads">AI Ad Sprint</a> · <a href="/concierge">AI Concierge</a> · <a href="/picks/">Picks</a> · <a href="${FD_URL}">${FD_CTA_LABEL}</a> · <a href="${BOOK_HREF}">${BOOK_CTA_LABEL}</a> · Consult ${CONSULT_DISPLAY}</p><h2>Built for operators</h2><p><strong>Deploy Agent.</strong> A $1,250 go-live sprint that gets a B2B AI product working inside a customer's systems. <a href="https://firstdeploy.ai/deploy-agent/">See Deploy Agent →</a></p><p><strong>Freight Ops AI Agent.</strong> A two-week proof of a custom AI agent for freight brokerages and 3PLs. $2,500 to start through Stripe, scoped per brokerage. <a href="https://firstdeploy.ai/freight-ops-ai-agent/">See the freight proof →</a></p></div></main>`,
   },
   {
     path: "/about",
