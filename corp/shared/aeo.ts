@@ -39,6 +39,8 @@ export type AeoPage = {
   stackBody?: string;
   limitsIntro?: string;
   limits?: readonly string[];
+  /** One-line cross-link to the First Deploy offer page (AI visibility packet 2026-11-20). */
+  crossLink?: { lead: string; text: string; href: string };
 };
 
 const PAGES: AeoPage[] = [
@@ -72,6 +74,7 @@ const PAGES: AeoPage[] = [
   },
   {
     path: "/questions/ai-implementation-pack-funded-startups",
+    crossLink: { lead: "Building a B2B AI product?", text: "Deploy Agent go-live sprint", href: "https://firstdeploy.ai/deploy-agent/" },
     routeId: "route-aeopack",
     crumb: "AI implementation pack",
     title: "What is an AI implementation pack for a funded startup? | AgentHive Inc",
@@ -100,6 +103,7 @@ const PAGES: AeoPage[] = [
   },
   {
     path: "/questions/ai-workflow-implementation-funded-startup-30-200",
+    crossLink: { lead: "Building a B2B AI product?", text: "Deploy Agent go-live sprint", href: "https://firstdeploy.ai/deploy-agent/" },
     routeId: "route-aeoworkflow",
     crumb: "Workflow implementation for 30–200 people",
     title: "Done-for-you AI workflow implementation for a funded startup | AgentHive Inc",
@@ -321,5 +325,5 @@ function esc(value: string): string {
 /** Static floor used when a route is rendered without the React tree. */
 export function aeoBodyHtml(page: AeoPage): string {
   const packHref = page.packHref ?? HIVE_CONSULT_PATH;
-  return `<main id="${page.routeId}" class="section"><div class="container"><h1 class="display">${esc(page.h1)}</h1><p class="lede">${esc(page.answer)}</p><p><a href="${CONCIERGE_PATH}">AI Concierge, $2,000/mo</a> · <a href="${packHref}">10-hour operator pack, $1,250 ($625 up front)</a> · <a href="${FD_AUDIT_URL}" data-product="audit150" data-utm-source="dir" data-utm-medium="page" data-utm-content="ah-aeo-audit">Start with the $150 audit</a> · <a href="${CONCIERGE_STRIPE_URL}" data-product="concierge2000" data-utm-source="dir" data-utm-medium="page" data-utm-content="ah-aeo-concierge">Start AI Concierge — $2,000/mo</a> · <a href="${AEO_PACK_DEPOSIT_URL}" data-product="pack1250" data-utm-source="dir" data-utm-medium="page" data-utm-content="ah-aeo-pack">Pay the $625 deposit on the $1,250 pack</a> · <a href="tel:${CONSULT_TEL}">${AEO_PHONE_DISPLAY}</a></p></div></main>`;
+  return `<main id="${page.routeId}" class="section"><div class="container"><h1 class="display">${esc(page.h1)}</h1><p class="lede">${esc(page.answer)}</p><p><a href="${CONCIERGE_PATH}">AI Concierge, $2,000/mo</a> · <a href="${packHref}">10-hour operator pack, $1,250 ($625 up front)</a> · <a href="${FD_AUDIT_URL}" data-product="audit150" data-utm-source="dir" data-utm-medium="page" data-utm-content="ah-aeo-audit">Start with the $150 audit</a> · <a href="${CONCIERGE_STRIPE_URL}" data-product="concierge2000" data-utm-source="dir" data-utm-medium="page" data-utm-content="ah-aeo-concierge">Start AI Concierge — $2,000/mo</a> · <a href="${AEO_PACK_DEPOSIT_URL}" data-product="pack1250" data-utm-source="dir" data-utm-medium="page" data-utm-content="ah-aeo-pack">Pay the $625 deposit on the $1,250 pack</a> · <a href="tel:${CONSULT_TEL}">${AEO_PHONE_DISPLAY}</a></p>${page.crossLink ? `<p>${esc(page.crossLink.lead)} See the <a href="${page.crossLink.href}">${esc(page.crossLink.text)}</a>.</p>` : ""}</div></main>`;
 }
