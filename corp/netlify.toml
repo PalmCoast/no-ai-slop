@@ -161,16 +161,19 @@
   status = 200
   force = true
 
+# /ads sold the $297 Ad Sprint. That payment link is inactive; send
+# visitors to /go/ads-sprint, which already 302s to the $150 audit checkout.
+# Leave /ads/thanks, /ads/creative-calculator/, and /ads/ai-video-ads-for-shopify/ alone.
 [[redirects]]
   from = "/ads"
-  to = "/ads/index.html"
-  status = 200
+  to = "/go/ads-sprint"
+  status = 302
   force = true
 
 [[redirects]]
   from = "/ads/"
-  to = "/ads/index.html"
-  status = 200
+  to = "/go/ads-sprint"
+  status = 302
   force = true
 
 [[redirects]]

@@ -157,7 +157,9 @@ describe("per-route SEO", () => {
     expect(new Set(stripe)).toEqual(new Set(["https://buy.stripe.com/eVq9ATbaY6CT6iF7ea2ZO1g", "https://buy.stripe.com/7sY9ATenabXd7mJ7ea2ZO1i"]));
     expect(txt).toContain("https://agenthiveinc.com/disclosure");
     expect(txt).toContain("https://firstdeploy.ai/");
-    expect(txt).toContain("https://agenthiveinc.com/ads");
+    expect(txt).toContain("https://agenthiveinc.com/go/ads-sprint");
+    expect(txt).not.toContain("https://agenthiveinc.com/ads)");
+    expect(txt).not.toContain("$297 one time");
     expect(txt).toContain("+1 320-335-6186");
     expect(txt).not.toMatch(/calendly|grok/i);
     expect(txt).not.toContain("1" + ",750");
