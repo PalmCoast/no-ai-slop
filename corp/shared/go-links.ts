@@ -14,8 +14,10 @@ export const GO_LINKS: Record<string, GoLink> = {
   "indexme-pro": { url: "https://buy.stripe.com/4gMcN52Ese5ldL7cyu2ZO1a", kind: "stripe", label: "IndexMe Pro — $19.99 once" },
   "indexme-studio": { url: "https://buy.stripe.com/aFa00jfre2mD8qN5622ZO1b", kind: "stripe", label: "IndexMe Studio — $29.99 once" },
   flick: { url: "https://flick.firstdeploy.ai/", kind: "page", label: "Flick — Lights $19/mo · Marquee $99 once" },
-  // Supplied for the AI Ad Sprint page. Tests check the redirect target only; do not fetch these URLs.
-  "ads-sprint": { url: "https://buy.stripe.com/5kQ00j0wke5layVbuq2ZO1L", kind: "stripe", label: "AI Ad Sprint — $297 one time" },
+  // /go/ads-sprint was the $297 AI Ad Sprint checkout. On 2026-11-21 that offer was retired;
+  // this route now points at the $150 burn-audit hour so existing CTAs keep UTMs and client_reference_id.
+  // Tests check the redirect target only; do not fetch these URLs.
+  "ads-sprint": { url: "https://buy.stripe.com/eVq9ATbaY6CT6iF7ea2ZO1g", kind: "stripe", label: "AI Consult — $150 burn-audit hour (Ad Sprint traffic retarget)" },
   "ads-engine": { url: "https://buy.stripe.com/4gM9ATa6U2mD36tbuq2ZO1M", kind: "stripe", label: "AI Ad Sprint monthly — $997/mo" },
   // Live on Palm Coast AI, 2026-11-10: price_1UaJ40FJWYd4pYuxxNJ078sT, unit_amount 75000.
   "burn-book": { url: "https://buy.stripe.com/7sYcN5a6Ud1hcH3eGC2ZO1O", kind: "stripe", label: "Burn Book board packet — $750 once" },
