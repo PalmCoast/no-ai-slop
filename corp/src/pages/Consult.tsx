@@ -65,13 +65,11 @@ export default function Consult() {
             <span className="dot" /> AI consulting for funded teams and their leaders
           </div>
           <h1 className="display">
-            Hand over the AI job.
-            <br />
-            <em>We set it up with you.</em>
+            An operator in the room, not another deck.
           </h1>
           <p className="lede">
-            Tell Daniel Graham the task that eats your week. On a free 30-minute call you find out if AI can take it.
-            If it can, paid hours go to building it in your own accounts until it runs.
+            Sit with Daniel Graham. The free call gives you a straight answer. Paid time leaves something working, with
+            notes your team can follow.
           </p>
           <div className="hero-actions">
             <a className="btn btn-primary" href={BOOK_HREF}>

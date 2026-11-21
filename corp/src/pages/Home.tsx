@@ -7,6 +7,7 @@ import {
   CONSULT_DISPLAY,
   CONSULT_RATES,
   CONSULT_TEL,
+  PHONE_DISPLAY,
   FD_CTA_LABEL,
   FD_NAME,
   FD_WHAT,
@@ -14,7 +15,6 @@ import {
   FD_URL,
   HERO_H1,
   HERO_WHAT,
-  HERO_WHY,
   INDEXME_BLURB,
   INDEXME_NAME,
   PICKS_PATH,
@@ -45,18 +45,15 @@ export default function Home() {
             {HERO_H1}
           </h1>
           <p className="lede">{HERO_WHAT}</p>
-          <p className="lede" style={{ marginTop: "-0.6rem" }}>
-            {HERO_WHY}
-          </p>
           <div className="hero-actions">
-            <a className="btn btn-primary" href="/ads">
-              See the AI Ad Sprint
+            <a className="btn btn-primary" href={BOOK_HREF}>
+              {BOOK_CTA_LABEL}
             </a>
             <a className="btn btn-primary" href="/concierge">
-              AI Concierge, $2,000/mo
+              See AI Concierge
             </a>
-            <a className="btn btn-ghost" href={PICKS_PATH}>
-              Shop Picks
+            <a className="btn btn-ghost" href={`tel:${CONSULT_TEL}`}>
+              Talk at {PHONE_DISPLAY}
             </a>
           </div>
           <p className="fine">

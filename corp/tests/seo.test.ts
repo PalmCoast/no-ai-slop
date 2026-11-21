@@ -65,7 +65,7 @@ describe("per-route SEO", () => {
     const consult = applyRouteHtml(shell, PAGE_SEO.find((page) => page.path === "/consult")!);
     expect(consult).toContain('id="route-consult"');
     expect(consult).toContain('rel="canonical" href="https://agenthiveinc.com/consult"');
-    expect(consult).toContain("<h1 class=\"display\">Hand over the AI job. We set it up with you.</h1>");
+    expect(consult).toContain("<h1 class=\"display\">An operator in the room, not another deck.</h1>");
     expect(consult).toContain("$75");
     expect(consult).toContain("https://agenthiveinc.com/concierge");
     const concierge = applyRouteHtml(shell, PAGE_SEO.find((page) => page.path === "/concierge")!);

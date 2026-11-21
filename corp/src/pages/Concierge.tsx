@@ -7,6 +7,7 @@ import {
   CONSULT_DISPLAY,
   CONSULT_RATES,
   CONSULT_TEL,
+  PHONE_DISPLAY,
   FD_NAME,
   FD_AUDIT_URL,
   FD_URL,
@@ -57,17 +58,18 @@ export default function Concierge() {
             <span className="dot" /> {CONCIERGE_NAME} · {CONCIERGE_PRICE}
           </div>
           <h1 className="display">
-            Two sessions.
-            <br />
-            <em>The work ships.</em>
+            A senior operator in the room, and assets your team keeps.
           </h1>
+          <p className="lede">Make the AI work look like the rest of the company.</p>
           <p className="lede">
-            A senior AI operator on retainer for your leadership team. Two working sessions a month, help between them, and
-            finished work your team can point to. For funded teams that already pay for AI and want it to look as good as the
-            rest of the company.
+            Daniel Graham works with your leadership in two sessions a month, plus a direct line between them. You leave with
+            finished work and a shared inventory, not a PDF of prompts. Start with a free 15–30 minute call.
           </p>
           <p className="lede lede-who">Who it's for: funded teams already paying for AI, and founders and creators.</p>
           <div className="hero-actions">
+            <a className="btn btn-primary" href={BOOK_HREF}>
+              Free 15–30 minute bottleneck call
+            </a>
             <a
               className="btn btn-primary"
               href={CONCIERGE_STRIPE_URL}
@@ -78,15 +80,12 @@ export default function Concierge() {
               data-utm-medium="page"
               data-utm-content="ah-concierge"
             >
-              Start {CONCIERGE_NAME} — {CONCIERGE_PRICE}
+              Start {CONCIERGE_NAME}
             </a>
-            <a className="btn btn-outline" href={BOOK_HREF}>
-              {CONCIERGE_BOOK_LABEL}
+            <a className="btn btn-outline" href={`tel:${CONSULT_TEL}`}>
+              {PHONE_DISPLAY}
             </a>
           </div>
-          <p className="fine">
-            <a href={`tel:${CONSULT_TEL}`}>{CONSULT_DISPLAY}</a>
-          </p>
         </div>
       </section>
 

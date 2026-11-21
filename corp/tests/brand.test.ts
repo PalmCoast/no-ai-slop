@@ -24,7 +24,6 @@ import {
   FREE_30_LABEL,
   HERO_H1,
   HERO_WHAT,
-  HERO_WHY,
   INDEXME_BLURB,
   INDEXME_NAME,
   INDEXME_URL,
@@ -73,9 +72,9 @@ describe("AgentHive Inc brand facts", () => {
     expect(SEAT_CIRCUIT_NAME).toBe("Seat & Circuit");
     expect(SEAT_CIRCUIT_URL).toBe("https://infrastructure.agenthiveinc.com/");
     expect(CONSULT_RATES).toBe("$75 / 30 min · $150 / hour");
-    expect(HERO_H1).toMatch(/done-for-you AI operator/);
-    expect(HERO_WHAT).toMatch(/funded companies and 30–200 person teams/);
-    expect(`${HERO_H1} ${HERO_WHAT} ${HERO_WHY}`).not.toMatch(/field|dirt|shop|crew|whiteboard|missed/i);
+    expect(HERO_H1).toBe("Finished work your leadership can point to.");
+    expect(HERO_WHAT).toMatch(/senior operator on the calls/);
+    expect(`${HERO_H1} ${HERO_WHAT}`).not.toMatch(/field|dirt|shop|crew|whiteboard|missed/i);
     expect(FOOTER_LINE).toBe("AgentHive Inc · Palm Coast, FL · firstdeploy.ai");
   });
 
