@@ -34,10 +34,10 @@ export const BOOK_CTA_LABEL = "Book the free 30";
 export const FREE_30_LABEL = "Free 30";
 export const FD_CHECK_LABEL = "2-minute check";
 export const CONSULT_RATES = "$75 / 30 min · $150 / hour";
-export const HERO_H1 = "A done-for-you AI operator for teams that move fast.";
+export const HERO_H1 = "Finished work your leadership can point to.";
 export const HERO_WHAT =
-  "For funded companies and 30–200 person teams that already pay for software. We build it to your brand, run it, and hand you the finished result.";
-export const HERO_WHY = "New ads every week. A senior operator on call. Your brand looking finished everywhere a buyer sees it.";
+  "A senior operator on the calls, not a PDF of prompts. We build it with you, in your accounts, and you keep the assets. Start with a free 30-minute call.";
+export const HERO_WHY = "";
 export const FOOTER_LINE = "AgentHive Inc · Palm Coast, FL · firstdeploy.ai";
 export const INDEXME_NAME = "IndexMe.lol";
 export const INDEXME_URL = "https://indexme.lol/";

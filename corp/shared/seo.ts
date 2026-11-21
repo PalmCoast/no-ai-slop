@@ -11,6 +11,7 @@ import {
   FD_PRICE_LINE_HTML,
   CONSULT_DISPLAY,
   CONSULT_TEL,
+  PHONE_DISPLAY,
   CONSULT_RATES,
   FD_CTA_LABEL,
   FD_NAME,
@@ -20,7 +21,6 @@ import {
   HERO_H1,
   HIVE_CONSULT_URL,
   HERO_WHAT,
-  HERO_WHY,
   INDEXME_BLURB,
   INDEXME_NAME,
   LEGAL_NAME,
@@ -31,7 +31,7 @@ import {
   PICKS_URL,
 } from "./brand.ts";
 import { DANIEL_BIO, DANIEL_ID, DANIEL_JOB_TITLE, DANIEL_NAME, DANIEL_SAME_AS, DANIEL_URL } from "./author.ts";
-import { CONCIERGE_BOOK_LABEL, CONCIERGE_NAME, CONCIERGE_PRICE, CONCIERGE_PRICE_AMOUNT, CONCIERGE_STRIPE_URL, CONCIERGE_URL } from "./concierge.ts";
+import { CONCIERGE_NAME, CONCIERGE_PRICE, CONCIERGE_PRICE_AMOUNT, CONCIERGE_STRIPE_URL, CONCIERGE_URL } from "./concierge.ts";
 import { CONCIERGE_FAQS, CONSULT_COST_FAQS, CONSULT_FAQS, HIRING_FAQS } from "./faqs.ts";
 import { CONSULT_COST_CHECKED, CONSULT_COST_CHECKED_ISO, CONSULT_COST_URL } from "./consult.ts";
 import { CONSULT_COMPARE_CHECKED_ISO, CONSULT_COMPARE_PAGES, consultComparePageFor } from "./consultCompare.ts";
@@ -72,7 +72,7 @@ export const PAGE_SEO: SeoPage[] = [
     description:
       "Done-for-you AI for funded companies and 30–200 person teams: AI Ad Sprint, AI Concierge, and Picks. Free 30-minute call, then $75/30 min or $150/hr.",
     h1: HERO_H1,
-    bodyHtml: `<main id="route-home" class="section"><div class="container"><h1 class="display">${HERO_H1}</h1><p class="lede">${BRAND_NAME} is a Palm Coast AI consultant who builds. ${HERO_WHAT}</p><p>${HERO_WHY}</p><p>${FD_PRICE_LINE_HTML} ${FD_PROMISE}. ${INDEXME_NAME} is the ${INDEXME_BLURB} at indexme.lol.</p><p><a href="/ads">AI Ad Sprint</a> · <a href="/concierge">AI Concierge</a> · <a href="/picks/">Picks</a> · <a href="${FD_URL}">${FD_CTA_LABEL}</a> · <a href="${BOOK_HREF}">${BOOK_CTA_LABEL}</a> · Consult ${CONSULT_DISPLAY}</p></div></main>`,
+    bodyHtml: `<main id="route-home" class="section"><div class="container"><h1 class="display">${HERO_H1}</h1><p class="lede">${BRAND_NAME} is a Palm Coast AI consultant who builds. ${HERO_WHAT}</p><p>${FD_PRICE_LINE_HTML} ${FD_PROMISE}. ${INDEXME_NAME} is the ${INDEXME_BLURB} at indexme.lol.</p><p><a href="/ads">AI Ad Sprint</a> · <a href="/concierge">AI Concierge</a> · <a href="/picks/">Picks</a> · <a href="${FD_URL}">${FD_CTA_LABEL}</a> · <a href="${BOOK_HREF}">${BOOK_CTA_LABEL}</a> · Consult ${CONSULT_DISPLAY}</p></div></main>`,
   },
   {
     path: "/about",
@@ -108,8 +108,8 @@ export const PAGE_SEO: SeoPage[] = [
     path: "/consult",
     title: "AI consultant for funded teams: free 30 min, then $75 | AgentHive Inc",
     description: `Hands-on AI help for funded teams’ leadership. Free 30-minute call, then ${CONSULT_RATES}, or a 10-hour pack for $1,250. Set up in your accounts.`,
-    h1: "Hand over the AI job. We set it up with you.",
-    bodyHtml: `<main id="route-consult" class="section"><div class="container"><h1 class="display">Hand over the AI job. We set it up with you.</h1><p class="lede">Tell Daniel Graham the task that eats your week. On a free 30-minute call you find out if AI can take it. If it can, paid hours go to building it in your own accounts until it runs.</p><p>Free 30 minutes. Then $75 / 30 minutes, $150 / hour, or a 10-hour pack for $1,250 ($625 up front). Call ${CONSULT_DISPLAY}.</p><p>Compare: <a href="${CONSULT_COST_URL}">what an AI consultant costs</a>. Need someone monthly? <a href="${CONCIERGE_URL}">${CONCIERGE_NAME}</a> is the ${CONCIERGE_PRICE} retainer.</p></div></main>`,
+    h1: "An operator in the room, not another deck.",
+    bodyHtml: `<main id="route-consult" class="section"><div class="container"><h1 class="display">An operator in the room, not another deck.</h1><p class="lede">Sit with Daniel Graham. The free call gives you a straight answer. Paid time leaves something working, with notes your team can follow.</p><p>Free 30 minutes. Then $75 / 30 minutes, $150 / hour, or a 10-hour pack for $1,250 ($625 up front). Call ${CONSULT_DISPLAY}.</p><p>Compare: <a href="${CONSULT_COST_URL}">what an AI consultant costs</a>. Need someone monthly? <a href="${CONCIERGE_URL}">${CONCIERGE_NAME}</a> is the ${CONCIERGE_PRICE} retainer.</p></div></main>`,
   },
   {
     path: "/consult/ai-consultant-cost",
@@ -130,8 +130,8 @@ export const PAGE_SEO: SeoPage[] = [
     title: `AI Concierge: fractional AI advisor, ${CONCIERGE_PRICE} | AgentHive Inc`,
     description:
       "A senior AI operator for funded teams' leadership, $2,000/mo: two 45-minute sessions, unlimited async help and a shared asset inventory. Month to month.",
-    h1: "Two sessions. The work ships.",
-    bodyHtml: `<main id="route-concierge" class="section"><div class="container"><h1 class="display">Two sessions. The work ships.</h1><p class="lede">A senior AI operator on retainer for your leadership team. Two working sessions a month, help between them, and finished work your team can point to. For funded teams that already pay for AI and want it to look as good as the rest of the company.</p><p>Included: 2 × 45-minute sessions a month, unlimited async help between them, and a shared inventory of every skill, automation and asset we build. ${CONCIERGE_NAME} is ${CONCIERGE_PRICE}, month to month.</p><p>If ${FD_NAME} or hourly packs fit better, those stay open. ${CONSULT_RATES}. ${FD_PRICE_LINE}</p>    <p><a href="${CONCIERGE_STRIPE_URL}">Start ${CONCIERGE_NAME} — ${CONCIERGE_PRICE}</a> · <a href="${BOOK_HREF}">${CONCIERGE_BOOK_LABEL}</a> · ${CONSULT_DISPLAY}</p></div></main>`,
+    h1: "A senior operator in the room, and assets your team keeps.",
+    bodyHtml: `<main id="route-concierge" class="section"><div class="container"><h1 class="display">A senior operator in the room, and assets your team keeps.</h1><p class="lede">Make the AI work look like the rest of the company.</p><p class="lede">Daniel Graham works with your leadership in two sessions a month, plus a direct line between them. You leave with finished work and a shared inventory, not a PDF of prompts. Start with a free 15–30 minute call.</p><p>Included: 2 × 45-minute sessions a month, unlimited async help between them, and a shared inventory of every skill, automation and asset we build. ${CONCIERGE_NAME} is ${CONCIERGE_PRICE}, month to month.</p><p>If ${FD_NAME} or hourly packs fit better, those stay open. ${CONSULT_RATES}. ${FD_PRICE_LINE}</p>    <p><a href="${BOOK_HREF}">Free 15–30 minute bottleneck call</a> · <a href="${CONCIERGE_STRIPE_URL}">Start ${CONCIERGE_NAME}</a> · <a href="tel:${CONSULT_TEL}">${PHONE_DISPLAY}</a></p></div></main>`,
   },
   {
     path: "/concierge/vs-hiring",
