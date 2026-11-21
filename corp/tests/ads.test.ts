@@ -25,15 +25,16 @@ describe("AI Ad Sprint pages", () => {
   const ads = PAGE_SEO.find((page) => page.path === "/ads")!;
   const thanks = PAGE_SEO.find((page) => page.path === "/ads/thanks")!;
 
-  it("indexes /ads with the share image and keeps /ads/thanks out of the sitemap", () => {
-    expect(ads.noindex).toBeUndefined();
+  it("keeps /ads and /ads/thanks out of the sitemap now that /ads redirects to the audit", () => {
+    expect(ads.noindex).toBe(true);
     expect(ads.ogImage).toBe(ADS_OG_IMAGE);
     expect(thanks.noindex).toBe(true);
     const xml = sitemapXml();
-    expect(xml).toContain("https://agenthiveinc.com/ads</loc>");
-    expect(xml).toContain("https://agenthiveinc.com/ads/og-ads.png");
+    expect(xml).not.toContain("https://agenthiveinc.com/ads</loc>");
+    expect(xml).not.toContain("https://agenthiveinc.com/ads/og-ads.png");
     expect(xml).not.toContain("https://agenthiveinc.com/ads/thanks");
-    expect(readFileSync(join(corpRoot, "public/sitemap.xml"), "utf8")).toContain("https://agenthiveinc.com/ads/og-ads.png");
+    expect(readFileSync(join(corpRoot, "public/sitemap.xml"), "utf8")).not.toContain("https://agenthiveinc.com/ads</loc>");
+    expect(xml).toContain("https://agenthiveinc.com/ads/creative-calculator/");
     const shell = `<!doctype html><html><head>
       <title>x</title>
       <meta name="description" content="shared" />
@@ -50,14 +51,13 @@ describe("AI Ad Sprint pages", () => {
     const adsHtml = applyRouteHtml(shell, ads);
     const thanksHtml = applyRouteHtml(shell, thanks);
     expect(adsHtml).toContain('property="og:image" content="https://agenthiveinc.com/ads/og-ads.png"');
-    expect(adsHtml).toContain('rel="canonical" href="https://agenthiveinc.com/ads"');
+    expect(adsHtml).toContain('name="robots" content="noindex, follow"');
+    expect(adsHtml).not.toContain('rel="canonical"');
     expect(adsHtml).toContain('rel="icon" href="/ads/favicon.svg"');
     expect(thanksHtml).toContain('name="robots" content="noindex, follow"');
     expect(thanksHtml).not.toContain('rel="canonical"');
     expect(jsonLdFor(thanks)).toBeNull();
-    expect(JSON.stringify(jsonLdFor(ads))).toContain("FAQPage");
-    expect(JSON.stringify(jsonLdFor(ads))).toContain("297.00");
-    expect(JSON.stringify(jsonLdFor(ads))).not.toContain("buy.stripe.com");
+    expect(jsonLdFor(ads)).toBeNull();
   });
 
   it("keeps PostHog init and the buy-link helper on the /ads HTML shell", () => {
@@ -102,7 +102,7 @@ describe("AI Ad Sprint pages", () => {
     expect(visible).not.toMatch(/\(\d{3}\)\s*\d{3}-\d{4}/);
   });
 
-  it("keeps the ads rewrites above the 404 catch-all", () => {
+  it("keeps the ads rules above the 404 catch-all and 302s /ads to /go/ads-sprint", () => {
     const files = [
       readFileSync(join(corpRoot, "scripts/write-route-html.ts"), "utf8"),
       readFileSync(join(corpRoot, "netlify.toml"), "utf8"),
@@ -116,6 +116,10 @@ describe("AI Ad Sprint pages", () => {
         expect(at).toBeLessThan(catchAll);
       }
     }
+    const toml = readFileSync(join(corpRoot, "netlify.toml"), "utf8");
+    expect(toml).toContain('from = "/ads"\n  to = "/go/ads-sprint"\n  status = 302');
+    expect(toml).toContain('from = "/ads/"\n  to = "/go/ads-sprint"\n  status = 302');
+    expect(toml).toContain('from = "/ads/thanks"\n  to = "/ads/thanks/index.html"\n  status = 200');
   });
 });
 

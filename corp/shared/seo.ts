@@ -154,6 +154,7 @@ export const PAGE_SEO: SeoPage[] = [
     title: ADS_TITLE,
     description: ADS_DESCRIPTION,
     h1: ADS_H1,
+    noindex: true,
     ogImage: ADS_OG_IMAGE,
     ogImageAlt: ADS_OG_ALT,
     icon: ADS_ICON,
