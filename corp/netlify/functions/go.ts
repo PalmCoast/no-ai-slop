@@ -1,10 +1,14 @@
 import type { Config, Context } from "@netlify/functions";
 import { getStore } from "@netlify/blobs";
 import { cleanToken, goTarget } from "../../shared/go-links.ts";
-
-const BOT_RE =
-  /bot|crawl|spider|slurp|preview|facebookexternalhit|embedly|whatsapp|telegram|discord|skype|curl|wget|python|httpx|aiohttp|go-http|java\/|okhttp|axios|node-fetch|undici|headless|phantom|puppeteer|playwright|lighthouse|pagespeed|monitor|uptime|scan|check|validator|feed|fetch|archiver|semrush|ahrefs|mj12|dotbot|petalbot|bytespider|gptbot|claude|perplexity|chatgpt|oai-search|google-extended|bingpreview/i;
-const TEST_RE = /ah-clicktest/i;
+import {
+  BOT_FORBIDDEN_BODY,
+  captureGoEvents,
+  classifyUa,
+  distinctIdFromRequest,
+  goClickProperties,
+  isPrefetch,
+} from "../../shared/go-gate.ts";
 
 function fromOf(url: URL, referer: string): string {
   const q = cleanToken(url.searchParams.get("from"));
@@ -21,6 +25,11 @@ function fromOf(url: URL, referer: string): string {
   }
 }
 
+const noStore = {
+  "cache-control": "no-store, max-age=0",
+  "x-robots-tag": "noindex, nofollow",
+};
+
 export default async (req: Request, context: Context) => {
   const url = new URL(req.url);
   const name = cleanToken(context.params?.name || url.pathname.split("/").pop(), 60);
@@ -32,12 +41,9 @@ export default async (req: Request, context: Context) => {
   }
 
   const ua = req.headers.get("user-agent") || "";
-  const test = TEST_RE.test(ua);
-  const bot = !test && (!ua || BOT_RE.test(ua));
-  const kind = test ? "test" : bot ? "bot" : "human";
-  const prefetch = /prefetch|prerender/i.test(
-    (req.headers.get("sec-purpose") || "") + (req.headers.get("purpose") || "") + (req.headers.get("x-moz") || ""),
-  );
+  const { test, bot, kind } = classifyUa(ua);
+  const prefetch = isPrefetch(req);
+  const dest = new URL(target);
 
   if (req.method === "GET" && !prefetch) {
     const ts = new Date().toISOString();
@@ -63,14 +69,39 @@ export default async (req: Request, context: Context) => {
     }
   }
 
+  if (bot) {
+    return new Response(BOT_FORBIDDEN_BODY, {
+      status: 403,
+      headers: { ...noStore, "content-type": "text/plain; charset=utf-8" },
+    });
+  }
+
+  const headers: Record<string, string> = {
+    location: target,
+    ...noStore,
+    "referrer-policy": "no-referrer-when-downgrade",
+  };
+
+  if (req.method === "GET" && !prefetch && (kind === "human" || kind === "test")) {
+    const { id, setCookie } = distinctIdFromRequest(req);
+    if (setCookie) headers["set-cookie"] = setCookie;
+    const properties = goClickProperties({
+      slug: name,
+      from,
+      dest,
+      requestUrl: url,
+      referer,
+      kind,
+      country: context.geo?.country?.code || null,
+    });
+    const send = captureGoEvents(id, properties).catch((e: unknown) => console.error("go: posthog capture failed", e));
+    if (context.waitUntil) context.waitUntil(send);
+    else await send;
+  }
+
   return new Response(null, {
     status: 302,
-    headers: {
-      location: target,
-      "cache-control": "no-store, max-age=0",
-      "x-robots-tag": "noindex, nofollow",
-      "referrer-policy": "no-referrer-when-downgrade",
-    },
+    headers,
   });
 };
 
