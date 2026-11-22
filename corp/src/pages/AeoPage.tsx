@@ -12,7 +12,7 @@ import {
   aeoPageFor,
 } from "../../shared/aeo";
 import { CONSULT_TEL, FD_AUDIT_URL, HIVE_CONSULT_PATH } from "../../shared/brand";
-import { CONCIERGE_PATH, CONCIERGE_STRIPE_URL } from "../../shared/concierge";
+import { CONCIERGE_PATH, CONCIERGE_GO_HREF } from "../../shared/concierge";
 import NotFound from "./NotFound";
 
 export default function AeoPage() {
@@ -47,7 +47,7 @@ export default function AeoPage() {
             <a
               className="btn btn-outline"
               href={FD_AUDIT_URL}
-              rel="noreferrer"
+              rel="noopener"
               data-product="audit150"
               data-utm-source="dir"
               data-utm-medium="page"
@@ -57,8 +57,8 @@ export default function AeoPage() {
             </a>
             <a
               className="btn btn-outline"
-              href={CONCIERGE_STRIPE_URL}
-              rel="noreferrer"
+              href={CONCIERGE_GO_HREF}
+              rel="noopener"
               data-product="concierge2000"
               data-utm-source="dir"
               data-utm-medium="page"

@@ -164,6 +164,15 @@
 # /ads sold the $297 Ad Sprint. That payment link is inactive; send
 # visitors to /go/ads-sprint, which already 302s to the $150 audit checkout.
 # Leave /ads/thanks, /ads/creative-calculator/, and /ads/ai-video-ads-for-shopify/ alone.
+# /ads/index.html is a leftover static file and was still 200 with $997/$297 links.
+# 301 it to /ads (which then 302s to /go/ads-sprint). force=true so a leftover
+# published file cannot win. This is not a loop: /ads/index.html -> /ads -> /go/ads-sprint.
+[[redirects]]
+  from = "/ads/index.html"
+  to = "/ads"
+  status = 301
+  force = true
+
 [[redirects]]
   from = "/ads"
   to = "/go/ads-sprint"

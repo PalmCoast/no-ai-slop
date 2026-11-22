@@ -31,7 +31,7 @@ import {
   PICKS_URL,
 } from "./brand.ts";
 import { DANIEL_BIO, DANIEL_ID, DANIEL_JOB_TITLE, DANIEL_NAME, DANIEL_SAME_AS, DANIEL_URL } from "./author.ts";
-import { CONCIERGE_NAME, CONCIERGE_PRICE, CONCIERGE_PRICE_AMOUNT, CONCIERGE_STRIPE_URL, CONCIERGE_URL } from "./concierge.ts";
+import { CONCIERGE_GO_HREF, CONCIERGE_NAME, CONCIERGE_PRICE, CONCIERGE_PRICE_AMOUNT, CONCIERGE_URL } from "./concierge.ts";
 import { CONCIERGE_FAQS, CONSULT_COST_FAQS, CONSULT_FAQS, HIRING_FAQS } from "./faqs.ts";
 import { CONSULT_COST_CHECKED, CONSULT_COST_CHECKED_ISO, CONSULT_COST_URL } from "./consult.ts";
 import { CONSULT_COMPARE_CHECKED_ISO, CONSULT_COMPARE_PAGES, consultComparePageFor } from "./consultCompare.ts";
@@ -131,7 +131,7 @@ export const PAGE_SEO: SeoPage[] = [
     description:
       "A senior AI operator for funded teams' leadership, $2,000/mo: two 45-minute sessions, unlimited async help and a shared asset inventory. Month to month.",
     h1: "A senior operator in the room, and assets your team keeps.",
-    bodyHtml: `<main id="route-concierge" class="section"><div class="container"><h1 class="display">A senior operator in the room, and assets your team keeps.</h1><p class="lede">Make the AI work look like the rest of the company.</p><p class="lede">Daniel Graham works with your leadership in two sessions a month, plus a direct line between them. You leave with finished work and a shared inventory, not a PDF of prompts. Start with a free 15–30 minute call.</p><p>Included: 2 × 45-minute sessions a month, unlimited async help between them, and a shared inventory of every skill, automation and asset we build. ${CONCIERGE_NAME} is ${CONCIERGE_PRICE}, month to month.</p><p>If ${FD_NAME} or hourly packs fit better, those stay open. ${CONSULT_RATES}. ${FD_PRICE_LINE}</p>    <p><a href="${BOOK_HREF}">Free 15–30 minute bottleneck call</a> · <a href="${CONCIERGE_STRIPE_URL}">Start ${CONCIERGE_NAME}</a> · <a href="tel:${CONSULT_TEL}">${PHONE_DISPLAY}</a></p></div></main>`,
+    bodyHtml: `<main id="route-concierge" class="section"><div class="container"><h1 class="display">A senior operator in the room, and assets your team keeps.</h1><p class="lede">Make the AI work look like the rest of the company.</p><p class="lede">Daniel Graham works with your leadership in two sessions a month, plus a direct line between them. You leave with finished work and a shared inventory, not a PDF of prompts. Start with a free 15–30 minute call.</p><p>Included: 2 × 45-minute sessions a month, unlimited async help between them, and a shared inventory of every skill, automation and asset we build. ${CONCIERGE_NAME} is ${CONCIERGE_PRICE}, month to month.</p><p>If ${FD_NAME} or hourly packs fit better, those stay open. ${CONSULT_RATES}. ${FD_PRICE_LINE}</p>    <p><a href="${BOOK_HREF}">Free 15–30 minute bottleneck call</a> · <a href="${CONCIERGE_GO_HREF}">Start ${CONCIERGE_NAME}</a> · <a href="tel:${CONSULT_TEL}">${PHONE_DISPLAY}</a></p></div></main>`,
   },
   {
     path: "/concierge/vs-hiring",

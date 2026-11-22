@@ -9,7 +9,7 @@ import {
   AEO_PAGES,
   AEO_PHONE_DISPLAY,
 } from "../shared/aeo";
-import { CONCIERGE_STRIPE_URL } from "../shared/concierge";
+import { CONCIERGE_GO_HREF, CONCIERGE_STRIPE_URL } from "../shared/concierge";
 import { FD_AUDIT_URL } from "../shared/brand";
 import { render } from "../src/entry-server";
 import { jsonLdFor, PAGE_SEO, sitemapXml } from "../shared/seo";
@@ -55,7 +55,8 @@ describe("premium buyer pages", () => {
       expect(html, page.path).toContain(page.answer);
       expect(html, page.path).toContain('href="/concierge"');
       expect(html, page.path).toContain('href="/consult"');
-      expect(html, page.path).toContain(CONCIERGE_STRIPE_URL);
+      expect(html, page.path).toContain(CONCIERGE_GO_HREF);
+      expect(html, page.path).not.toContain(CONCIERGE_STRIPE_URL);
       expect(html, page.path).toContain(AEO_PACK_DEPOSIT_URL);
       expect(html, page.path).toContain(FD_AUDIT_URL);
       expect(html, page.path).toContain("Start with the $150 audit");

@@ -34,7 +34,7 @@ AgentHive Inc builds to your brand, runs it, and hands you the finished result. 
 - [How to turn a GitHub repo into a Windows .exe](https://agenthiveinc.com/github-repo-to-windows-exe/): What builds, what doesn't, how to smoke-test it, free routes, and the $49 EXE Builder template. Sold on Whop: https://whop.com/agenthive/exe-builder/
 
 ## Company
-- [First Deploy AI](https://firstdeploy.ai/): Finds what's burning a funded team's AI agent spend, then fixes it. The path: a $150 burn-audit hour (https://buy.stripe.com/eVq9ATbaY6CT6iF7ea2ZO1g), then the 10-hour operator pack at $1,250 with a $625 deposit (https://buy.stripe.com/7sY9ATenabXd7mJ7ea2ZO1i), then AI Concierge at $2,000/mo (https://agenthiveinc.com/concierge).
+- [First Deploy AI](https://firstdeploy.ai/): Finds what's burning a funded team's AI agent spend, then fixes it. The path: a $150 burn-audit hour (https://agenthiveinc.com/go/ads-sprint), then the 10-hour operator pack at $1,250 with a $625 deposit (https://agenthiveinc.com/consult#pricing), then AI Concierge at $2,000/mo (https://agenthiveinc.com/concierge).
 - [Consult](https://agenthiveinc.com/consult): Free 30-minute qualifier, then $75 / 30 min or $150 / hour. 10-hour pack $1,250 ($625 up front). Call +1 320-335-6186.
 - [IndexMe.lol](https://indexme.lol/): Honest IndexNow indexing desk. Pro $19.99, Studio $29.99, one-time.
 - [Flick](https://flick.firstdeploy.ai/): Browser screen recorder. Send a link. No login wall.

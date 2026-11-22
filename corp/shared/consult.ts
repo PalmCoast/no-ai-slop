@@ -13,7 +13,7 @@ export const CONSULT_STRIPE_RATES = [
     amount: "$150",
     note: "One operator in the room. Not a slide deck.",
     cta: "Pay →",
-    href: "https://buy.stripe.com/eVq9ATbaY6CT6iF7ea2ZO1g",
+    href: "/go/ads-sprint",
   },
   {
     slug: "pack",

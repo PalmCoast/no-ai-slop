@@ -16,7 +16,11 @@ export const FD_CONSULT_URL = "https://firstdeploy.ai/consult";
 export const HIVE_CONSULT_PATH = "/consult";
 export const HIVE_CONSULT_URL = "https://agenthiveinc.com/consult";
 /** Current First Deploy path (2026-11-10): $150 audit -> $1,250 pack ($625 deposit) -> $2,000/mo Concierge. */
-export const FD_AUDIT_URL = "https://buy.stripe.com/eVq9ATbaY6CT6iF7ea2ZO1g";
+/** Stripe Payment Link for the $150 burn-audit hour. Destination of /go/ads-sprint. */
+export const FD_AUDIT_STRIPE_URL = "https://buy.stripe.com/eVq9ATbaY6CT6iF7ea2ZO1g";
+/** Live CTA href. /go/ads-sprint already 302s to FD_AUDIT_STRIPE_URL (same $150 audit). */
+export const FD_AUDIT_URL = "/go/ads-sprint";
+/** Stripe Payment Link for the $625 pack deposit. No /go route exists yet (needs Atlas). */
 export const FD_PACK_URL = "https://buy.stripe.com/7sY9ATenabXd7mJ7ea2ZO1i";
 export const FD_CONCIERGE_URL = "https://agenthiveinc.com/concierge";
 export const FD_DEPLOY_AGENT_URL = "https://firstdeploy.ai/deploy-agent/";
