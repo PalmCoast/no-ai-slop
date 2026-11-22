@@ -6,11 +6,11 @@ import { CONSULT_COMPARE_CHECKED, CONSULT_COMPARE_PAGES, consultComparePageFor }
 import NotFound from "./NotFound";
 
 function stripeBuyAttrs(href: string, content: string) {
-  const product = href.includes("eVq9ATbaY6CT6iF7ea2ZO1g")
+  const product = href.includes("eVq9ATbaY6CT6iF7ea2ZO1g") || href.includes("/go/ads-sprint")
     ? "audit150"
     : href.includes("7sY9ATenabXd7mJ7ea2ZO1i")
       ? "pack1250"
-      : href.includes("6oUeVd7YM3qH0Ylbuq2ZO1u")
+      : href.includes("6oUeVd7YM3qH0Ylbuq2ZO1u") || href.includes("/go/concierge")
         ? "concierge2000"
         : undefined;
   return {
@@ -19,6 +19,14 @@ function stripeBuyAttrs(href: string, content: string) {
     "data-utm-medium": "page",
     "data-utm-content": content,
   };
+}
+
+function isOnSitePage(href: string) {
+  return href.startsWith("/") && !href.startsWith("/go/");
+}
+
+function isTrackedCheckout(href: string) {
+  return href.includes("buy.stripe.com") || href.startsWith("/go/") || href.includes("/go/");
 }
 
 
@@ -44,7 +52,7 @@ export default function ConsultComparePage() {
           <div className="hero-actions">
             {page.actions ? (
               page.actions.map((action, i) =>
-                action.href.startsWith("/") ? (
+                isOnSitePage(action.href) ? (
                   <Link key={action.href} className={i === 0 ? "btn btn-primary" : "btn btn-outline"} to={action.href}>
                     {action.label}
                   </Link>
@@ -54,7 +62,7 @@ export default function ConsultComparePage() {
                     className={i === 0 ? "btn btn-primary" : "btn btn-outline"}
                     href={action.href}
                     rel="noopener"
-                    {...(action.href.includes("buy.stripe.com")
+                    {...(isTrackedCheckout(action.href)
                       ? stripeBuyAttrs(action.href, "ah-consult-compare")
                       : {})}
                   >

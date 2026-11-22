@@ -1,7 +1,9 @@
 import { BRAND_URL } from "./brand.ts";
 
-/** Live Stripe Payment Link for the $2,000/mo AI Concierge subscription. */
+/** Live Stripe Payment Link for the $2,000/mo AI Concierge subscription. Destination of /go/concierge. */
 export const CONCIERGE_STRIPE_URL = "https://buy.stripe.com/6oUeVd7YM3qH0Ylbuq2ZO1u";
+/** Live CTA href. /go/concierge already 302s to CONCIERGE_STRIPE_URL. */
+export const CONCIERGE_GO_HREF = "/go/concierge";
 export const CONCIERGE_NAME = "AI Concierge";
 export const CONCIERGE_PATH = "/concierge";
 export const CONCIERGE_URL = `${BRAND_URL}${CONCIERGE_PATH}`;

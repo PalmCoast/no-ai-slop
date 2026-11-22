@@ -155,7 +155,7 @@ export default function Consult() {
                   <a
                     className="btn btn-outline"
                     href={rate.href}
-                    rel="noreferrer"
+                    rel={rate.slug === "hour" ? "noopener" : "noreferrer"}
                     target="_blank"
                     {...(rate.slug === "hour"
                       ? { "data-product": "audit150", "data-utm-source": "dir", "data-utm-medium": "page", "data-utm-content": "ah-consult-hour" }

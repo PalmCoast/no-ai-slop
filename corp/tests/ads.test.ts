@@ -70,7 +70,7 @@ describe("AI Ad Sprint pages", () => {
     expect(helper).toContain("https://buy.stripe.com/eVq9ATbaY6CT6iF7ea2ZO1g");
   });
 
-  it("prerenders both pages with the offer copy and no banned wording", () => {
+  it("keeps the Ads component copy (the landing is no longer published; thanks still is)", () => {
     const offer = render("/ads");
     const done = render("/ads/thanks");
     expect(words(offer).length).toBeGreaterThanOrEqual(80);
@@ -102,21 +102,21 @@ describe("AI Ad Sprint pages", () => {
     expect(visible).not.toMatch(/\(\d{3}\)\s*\d{3}-\d{4}/);
   });
 
-  it("keeps the ads rules above the 404 catch-all and 302s /ads to /go/ads-sprint", () => {
-    const files = [
-      readFileSync(join(corpRoot, "scripts/write-route-html.ts"), "utf8"),
-      readFileSync(join(corpRoot, "netlify.toml"), "utf8"),
-    ];
-    for (const text of files) {
+  it("keeps the ads rules above the 404 catch-all, 301s /ads/index.html to /ads, and 302s /ads to /go/ads-sprint", () => {
+    const script = readFileSync(join(corpRoot, "scripts/write-route-html.ts"), "utf8");
+    const toml = readFileSync(join(corpRoot, "netlify.toml"), "utf8");
+    for (const text of [script, toml]) {
       const catchAll = text.lastIndexOf("/*");
       expect(catchAll).toBeGreaterThan(0);
-      for (const rule of ["/ads/thanks/", "/ads/thanks", "/ads/", "/ads"]) {
+      for (const rule of ["/ads/thanks/", "/ads/thanks", "/ads/index.html", "/ads/", "/ads"]) {
         const at = text.indexOf(rule);
-        expect(at).toBeGreaterThan(-1);
-        expect(at).toBeLessThan(catchAll);
+        expect(at, rule).toBeGreaterThan(-1);
+        expect(at, rule).toBeLessThan(catchAll);
       }
     }
-    const toml = readFileSync(join(corpRoot, "netlify.toml"), "utf8");
+    expect(script).toContain('SKIP_PRERENDER = new Set(["/ads"])');
+    expect(script).toContain('"/ads/index.html /ads 301!"');
+    expect(toml).toContain('from = "/ads/index.html"\n  to = "/ads"\n  status = 301');
     expect(toml).toContain('from = "/ads"\n  to = "/go/ads-sprint"\n  status = 302');
     expect(toml).toContain('from = "/ads/"\n  to = "/go/ads-sprint"\n  status = 302');
     expect(toml).toContain('from = "/ads/thanks"\n  to = "/ads/thanks/index.html"\n  status = 200');

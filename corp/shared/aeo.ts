@@ -1,5 +1,5 @@
 import { CONSULT_TEL, FD_AUDIT_URL, HIVE_CONSULT_PATH } from "./brand.ts";
-import { CONCIERGE_PATH, CONCIERGE_STRIPE_URL } from "./concierge.ts";
+import { CONCIERGE_PATH, CONCIERGE_GO_HREF } from "./concierge.ts";
 import { CONSULT_STRIPE_RATES } from "./consult.ts";
 import type { AskAiPromptKey } from "./ask-ai.ts";
 
@@ -321,5 +321,5 @@ function esc(value: string): string {
 /** Static floor used when a route is rendered without the React tree. */
 export function aeoBodyHtml(page: AeoPage): string {
   const packHref = page.packHref ?? HIVE_CONSULT_PATH;
-  return `<main id="${page.routeId}" class="section"><div class="container"><h1 class="display">${esc(page.h1)}</h1><p class="lede">${esc(page.answer)}</p><p><a href="${CONCIERGE_PATH}">AI Concierge, $2,000/mo</a> · <a href="${packHref}">10-hour operator pack, $1,250 ($625 up front)</a> · <a href="${FD_AUDIT_URL}" data-product="audit150" data-utm-source="dir" data-utm-medium="page" data-utm-content="ah-aeo-audit">Start with the $150 audit</a> · <a href="${CONCIERGE_STRIPE_URL}" data-product="concierge2000" data-utm-source="dir" data-utm-medium="page" data-utm-content="ah-aeo-concierge">Start AI Concierge — $2,000/mo</a> · <a href="${AEO_PACK_DEPOSIT_URL}" data-product="pack1250" data-utm-source="dir" data-utm-medium="page" data-utm-content="ah-aeo-pack">Pay the $625 deposit on the $1,250 pack</a> · <a href="tel:${CONSULT_TEL}">${AEO_PHONE_DISPLAY}</a></p></div></main>`;
+  return `<main id="${page.routeId}" class="section"><div class="container"><h1 class="display">${esc(page.h1)}</h1><p class="lede">${esc(page.answer)}</p><p><a href="${CONCIERGE_PATH}">AI Concierge, $2,000/mo</a> · <a href="${packHref}">10-hour operator pack, $1,250 ($625 up front)</a> · <a href="${FD_AUDIT_URL}" data-product="audit150" data-utm-source="dir" data-utm-medium="page" data-utm-content="ah-aeo-audit">Start with the $150 audit</a> · <a href="${CONCIERGE_GO_HREF}" data-product="concierge2000" data-utm-source="dir" data-utm-medium="page" data-utm-content="ah-aeo-concierge">Start AI Concierge — $2,000/mo</a> · <a href="${AEO_PACK_DEPOSIT_URL}" data-product="pack1250" data-utm-source="dir" data-utm-medium="page" data-utm-content="ah-aeo-pack">Pay the $625 deposit on the $1,250 pack</a> · <a href="tel:${CONSULT_TEL}">${AEO_PHONE_DISPLAY}</a></p></div></main>`;
 }

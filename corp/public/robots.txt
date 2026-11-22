@@ -1,31 +1,41 @@
 User-agent: GPTBot
 Allow: /
+Disallow: /go/
 
 User-agent: ChatGPT-User
 Allow: /
+Disallow: /go/
 
 User-agent: OAI-SearchBot
 Allow: /
+Disallow: /go/
 
 User-agent: ClaudeBot
 Allow: /
+Disallow: /go/
 
 User-agent: Claude-SearchBot
 Allow: /
+Disallow: /go/
 
 User-agent: PerplexityBot
 Allow: /
+Disallow: /go/
 
 User-agent: Google-Extended
 Allow: /
+Disallow: /go/
 
 User-agent: Googlebot
 Allow: /
+Disallow: /go/
 
 User-agent: Bingbot
 Allow: /
+Disallow: /go/
 
 User-agent: *
 Allow: /
+Disallow: /go/
 
 Sitemap: https://agenthiveinc.com/sitemap.xml

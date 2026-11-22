@@ -73,7 +73,8 @@ describe("per-route SEO", () => {
     expect(concierge).toContain('rel="canonical" href="https://agenthiveinc.com/concierge"');
     expect(concierge).toContain('property="og:url" content="https://agenthiveinc.com/concierge"');
     expect(concierge).toContain('property="og:title" content="AI Concierge: fractional AI advisor, $2,000/mo | AgentHive Inc"');
-    expect(concierge).toContain("https://buy.stripe.com/6oUeVd7YM3qH0Ylbuq2ZO1u");
+    expect(concierge).toContain("/go/concierge");
+    expect(concierge).not.toContain("https://buy.stripe.com/6oUeVd7YM3qH0Ylbuq2ZO1u");
     expect(concierge).toContain("$2,000/mo");
     expect(concierge).toContain("funded teams");
     expect(concierge).not.toMatch(/Slack|owners|didn’t stick/);
@@ -103,7 +104,8 @@ describe("per-route SEO", () => {
     expect(new Set(hashes).size).toBe(PAGE_SEO.length);
     expect(new Set(ids).size).toBe(PAGE_SEO.length);
     expect(pages[0]).toContain("$150 burn-audit hour");
-    expect(pages[0]).toContain("https://buy.stripe.com/eVq9ATbaY6CT6iF7ea2ZO1g");
+    expect(pages[0]).toContain("/go/ads-sprint");
+    expect(pages[0]).not.toContain("https://buy.stripe.com/eVq9ATbaY6CT6iF7ea2ZO1g");
     expect(pages.join("")).not.toMatch(/founding|first 5 businesses|\$250 one-time/i);
     expect(pages[0]).not.toContain("1" + ",750");
     expect(pages[0]).not.toContain("$" + "250/mo");
@@ -152,9 +154,10 @@ describe("per-route SEO", () => {
     expect(txt).toContain("https://agenthiveinc.com/picks/");
     expect(txt).not.toMatch(/HVAC|plumb|roofer|roofing|electrician|landscap|Flagler|Volusia|field operations|dirt/i);
     expect(txt).not.toMatch(/askyard|claudefarm/i);
-    // Only the two First Deploy path checkouts (audit, pack) may appear in llms.txt.
+    // Raw Payment Links stay out of llms.txt. $150 audit uses the existing /go/ads-sprint route;
+    // the $625 pack has no /go route yet, so the text points at the on-site consult pricing section.
     const stripe = txt.match(/https:\/\/buy\.stripe\.com\/[A-Za-z0-9]+/g) ?? [];
-    expect(new Set(stripe)).toEqual(new Set(["https://buy.stripe.com/eVq9ATbaY6CT6iF7ea2ZO1g", "https://buy.stripe.com/7sY9ATenabXd7mJ7ea2ZO1i"]));
+    expect(stripe).toEqual([]);
     expect(txt).toContain("https://agenthiveinc.com/disclosure");
     expect(txt).toContain("https://firstdeploy.ai/");
     expect(txt).toContain("https://agenthiveinc.com/go/ads-sprint");
@@ -166,8 +169,8 @@ describe("per-route SEO", () => {
     expect(txt).not.toContain("$" + "250/mo");
     expect(txt).toContain("IndexNow");
     expect(txt).toContain("funded companies");
-    expect(txt).toContain("$150 burn-audit hour (https://buy.stripe.com/eVq9ATbaY6CT6iF7ea2ZO1g)");
-    expect(txt).toContain("$625 deposit (https://buy.stripe.com/7sY9ATenabXd7mJ7ea2ZO1i)");
+    expect(txt).toContain("$150 burn-audit hour (https://agenthiveinc.com/go/ads-sprint)");
+    expect(txt).toContain("$625 deposit (https://agenthiveinc.com/consult#pricing)");
     expect(txt).toContain("https://agenthiveinc.com/concierge");
     expect(txt).toContain("https://agenthiveinc.com/muscle-memory-bot-template/");
     expect(txt).toContain("https://agenthiveinc.com/github-repo-to-windows-exe/");
@@ -203,8 +206,10 @@ describe("per-route SEO", () => {
     const robots = readFileSync(join(corpRoot, "public/robots.txt"), "utf8");
     expect(robots).toContain("User-agent: GPTBot");
     expect(robots).toContain("User-agent: Claude-SearchBot");
+    expect(robots).toContain("Disallow: /go/");
     expect(robots).toContain("Sitemap: https://agenthiveinc.com/sitemap.xml");
     expect(robots).not.toContain("sitemaps.xml");
+    expect(robots.split("User-agent:").length - 1).toBe((robots.match(/Disallow: \/go\//g) || []).length);
   });
 
   it("keeps home and concierge descriptions short and puts offers on the right routes", () => {
@@ -284,9 +289,10 @@ describe("per-route SEO", () => {
       "https://calendar.google.com/calendar/appointments/schedules/AcZssZ08PSsZYPUrigPxN1Ax27CJh01QY8fjWo1mGYVhlX5vh0QUTqBzXF4NSNwDyLw487B8fNegD8JV",
       "tel:+13203356186",
       "https://buy.stripe.com/fZufZh92Qf9p5eB2XU2ZO1h",
-      "https://buy.stripe.com/eVq9ATbaY6CT6iF7ea2ZO1g",
+      "/go/ads-sprint",
       "https://buy.stripe.com/7sY9ATenabXd7mJ7ea2ZO1i",
     ]) expect(consult).toContain(href);
+    expect(consult).not.toContain("https://buy.stripe.com/eVq9ATbaY6CT6iF7ea2ZO1g");
     const cost = render("/consult/ai-consultant-cost");
     expect(cost).toContain("What an AI consultant costs a growing company");
     expect(cost).not.toMatch(/North Star|AIessentials|iternal\.ai|CloudMotiv|Pareto Talent/);

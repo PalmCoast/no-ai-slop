@@ -17,7 +17,7 @@ import {
   CONCIERGE_BOOK_LABEL,
   CONCIERGE_NAME,
   CONCIERGE_PRICE,
-  CONCIERGE_STRIPE_URL,
+  CONCIERGE_GO_HREF,
 } from "../../shared/concierge";
 
 const STEPS = [
@@ -72,8 +72,8 @@ export default function Concierge() {
             </a>
             <a
               className="btn btn-primary"
-              href={CONCIERGE_STRIPE_URL}
-              rel="noreferrer"
+              href={CONCIERGE_GO_HREF}
+              rel="noopener"
               target="_blank"
               data-product="concierge2000"
               data-utm-source="dir"
@@ -154,8 +154,8 @@ export default function Concierge() {
             <div className="hero-actions">
               <a
                 className="btn btn-primary"
-                href={CONCIERGE_STRIPE_URL}
-                rel="noreferrer"
+                href={CONCIERGE_GO_HREF}
+                rel="noopener"
                 target="_blank"
                 data-product="concierge2000"
                 data-utm-source="dir"
@@ -206,8 +206,8 @@ export default function Concierge() {
                     <strong>AgentHive Inc {CONCIERGE_NAME}</strong>
                     <small>
                       <a
-                        href={CONCIERGE_STRIPE_URL}
-                        rel="noreferrer"
+                        href={CONCIERGE_GO_HREF}
+                        rel="noopener"
                         target="_blank"
                         data-product="concierge2000"
                         data-utm-source="dir"
@@ -259,8 +259,8 @@ export default function Concierge() {
           <div className="hero-actions" style={{ marginTop: 18 }}>
             <a
               className="btn btn-primary"
-              href={CONCIERGE_STRIPE_URL}
-              rel="noreferrer"
+              href={CONCIERGE_GO_HREF}
+              rel="noopener"
               target="_blank"
               data-product="concierge2000"
               data-utm-source="dir"
