@@ -40,7 +40,8 @@ describe("AI audit cost page", () => {
     const text = JSON.stringify(page);
     expect(page.h1).toContain("$150 burn-audit hour");
     expect(text).toContain("/go/ads-sprint");
-    expect(text).toContain("https://buy.stripe.com/7sY9ATenabXd7mJ7ea2ZO1i");
+    expect(text).toContain("/go/deposit");
+    expect(text).not.toContain("https://buy.stripe.com/7sY9ATenabXd7mJ7ea2ZO1i");
     expect(text).toContain("$625 deposit");
     expect(text).toContain("$2,000/mo");
     for (const f of files) {

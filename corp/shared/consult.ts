@@ -5,7 +5,7 @@ export const CONSULT_STRIPE_RATES = [
     amount: "$75",
     note: "Paid time after the qualifier.",
     cta: "Pay →",
-    href: "https://buy.stripe.com/fZufZh92Qf9p5eB2XU2ZO1h",
+    href: "/go/consult-30",
   },
   {
     slug: "hour",
@@ -21,7 +21,7 @@ export const CONSULT_STRIPE_RATES = [
     amount: "$625 of $1,250",
     note: "$125/hour. Deposit is $625. Remainder when the hours start.",
     cta: "Deposit →",
-    href: "https://buy.stripe.com/7sY9ATenabXd7mJ7ea2ZO1i",
+    href: "/go/deposit",
   },
 ] as const;
 

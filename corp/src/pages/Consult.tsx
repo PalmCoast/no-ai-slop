@@ -155,13 +155,13 @@ export default function Consult() {
                   <a
                     className="btn btn-outline"
                     href={rate.href}
-                    rel={rate.slug === "hour" ? "noopener" : "noreferrer"}
+                    rel="noopener"
                     target="_blank"
                     {...(rate.slug === "hour"
-                      ? { "data-product": "audit150", "data-utm-source": "dir", "data-utm-medium": "page", "data-utm-content": "ah-consult-hour" }
+                      ? { "data-product": "audit150", "data-utm-source": "dir", "data-utm-medium": "page", "data-utm-campaign": "audit150", "data-utm-content": "ah-consult-hour" }
                       : rate.slug === "pack"
-                        ? { "data-product": "pack1250", "data-utm-source": "dir", "data-utm-medium": "page", "data-utm-content": "ah-consult-pack" }
-                        : { "data-utm-source": "dir", "data-utm-medium": "page", "data-utm-content": `ah-consult-${rate.slug}` })}
+                        ? { "data-product": "pack1250", "data-utm-source": "dir", "data-utm-medium": "page", "data-utm-campaign": "pack1250", "data-utm-content": "ah-consult-pack" }
+                        : { "data-product": "consult75", "data-utm-source": "dir", "data-utm-medium": "page", "data-utm-campaign": "consult75", "data-utm-content": "ah-consult-half-hour" })}
                   >
                     {rate.cta}
                   </a>

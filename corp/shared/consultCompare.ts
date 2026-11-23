@@ -238,7 +238,7 @@ export const CONSULT_COMPARE_PAGES: ConsultComparePage[] = [
     dateModified: "2026-11-10",
     actions: [
       { label: "Book the $150 burn-audit hour", href: "/go/ads-sprint" },
-      { label: "Operator pack, $625 to start", href: "https://buy.stripe.com/7sY9ATenabXd7mJ7ea2ZO1i" },
+      { label: "Operator pack, $625 to start", href: "/go/deposit" },
       { label: "See AI Concierge", href: "/concierge" },
     ],
     sections: [

@@ -66,4 +66,5 @@ footer{border-top:1px solid var(--line);padding:2.4rem 0 1.4rem;color:var(--mute
 <script>(function(){var b=document.querySelector('.menu-toggle'),m=document.getElementById('mobile-nav');if(!b||!m)return;b.addEventListener('click',function(){var o=m.hidden;m.hidden=!o;b.setAttribute('aria-expanded',String(o));b.setAttribute('aria-label',o?'Close menu':'Open menu');});
 document.addEventListener('click',function(ev){var a=ev.target.closest&&ev.target.closest('a[data-ph-pick]');if(!a||!window.posthog)return;try{window.posthog.capture('pick_click',{pick:a.getAttribute('data-ph-pick'),section:a.getAttribute('data-ph-src'),href:a.href});}catch(e){}});})();</script>
 <script src="/ph.js" defer></script>
+<script src="/assets/buy-link-helper.js" defer></script>
 </body></html>

@@ -46,7 +46,7 @@ describe("premium buyer pages", () => {
     const concierge = render("/concierge");
     expect(concierge).not.toContain("ask-ai-bar");
     expect(AEO_PHONE_DISPLAY).toBe("(320) 335-6186");
-    expect(AEO_PACK_DEPOSIT_URL).toBe("https://buy.stripe.com/7sY9ATenabXd7mJ7ea2ZO1i");
+    expect(AEO_PACK_DEPOSIT_URL).toBe("/go/deposit");
     expect(CONCIERGE_STRIPE_URL).toBe("https://buy.stripe.com/6oUeVd7YM3qH0Ylbuq2ZO1u");
 
     for (const page of AEO_PAGES) {

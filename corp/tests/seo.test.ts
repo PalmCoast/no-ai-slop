@@ -289,10 +289,11 @@ describe("per-route SEO", () => {
     for (const href of [
       "https://calendar.google.com/calendar/appointments/schedules/AcZssZ08PSsZYPUrigPxN1Ax27CJh01QY8fjWo1mGYVhlX5vh0QUTqBzXF4NSNwDyLw487B8fNegD8JV",
       "tel:+13203356186",
-      "https://buy.stripe.com/fZufZh92Qf9p5eB2XU2ZO1h",
+      "/go/consult-30",
       "/go/ads-sprint",
-      "https://buy.stripe.com/7sY9ATenabXd7mJ7ea2ZO1i",
+      "/go/deposit",
     ]) expect(consult).toContain(href);
+    expect(consult).toContain('data-product="consult75"');
     expect(consult).not.toContain("https://buy.stripe.com/eVq9ATbaY6CT6iF7ea2ZO1g");
     const cost = render("/consult/ai-consultant-cost");
     expect(cost).toContain("What an AI consultant costs a growing company");
