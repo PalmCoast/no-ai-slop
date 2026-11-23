@@ -9,6 +9,7 @@ import {
   goClickProperties,
   goOkSetCookie,
   interstitialHtml,
+  isHiveHost,
   isPrefetch,
   resolveGoGate,
   sessionIdFromRequest,
@@ -19,7 +20,7 @@ function fromOf(url: URL, referer: string): string {
   if (q) return q;
   try {
     const r = new URL(referer);
-    if (/(^|\.)agenthiveinc\.com$/i.test(r.hostname)) {
+    if (isHiveHost(r.hostname)) {
       return cleanToken(r.pathname.replace(/^\/+|\/+$/g, "").replace(/\//g, "-")) || "home";
     }
     if (/(^|\.)(t\.co|x\.com|twitter\.com)$/i.test(r.hostname)) return "x";

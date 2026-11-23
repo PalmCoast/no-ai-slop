@@ -241,6 +241,24 @@ describe("/go handler bot gate and human 302", () => {
     expect(fetchMock).not.toHaveBeenCalled();
   });
 
+  it("treats a preview-host Referer as first-party when stamping from and client_reference_id", async () => {
+    const fetchMock = vi.fn().mockResolvedValue({ ok: true });
+    vi.stubGlobal("fetch", fetchMock);
+    const waits: Promise<unknown>[] = [];
+    const res = await handler(
+      new Request("https://deploy-preview-140--dashing-cascaron-ddd950.netlify.app/go/deposit", {
+        headers: {
+          "user-agent": BROWSER_UA,
+          referer: "https://deploy-preview-140--dashing-cascaron-ddd950.netlify.app/consult",
+        },
+      }),
+      context("deposit", waits) as never,
+    );
+    await Promise.all(waits);
+    expect(res.status).toBe(302);
+    expect(res.headers.get("location")).toBe(goTarget("deposit", "consult"));
+  });
+
   it("302s a browser UA with a same-site Referer to the same destination goTarget already builds", async () => {
     const fetchMock = vi.fn().mockResolvedValue({ ok: true });
     vi.stubGlobal("fetch", fetchMock);
