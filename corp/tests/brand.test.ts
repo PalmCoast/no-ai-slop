@@ -1,3 +1,4 @@
+import { stripFreightPrice } from "./freight-price";
 import { readFileSync, readdirSync, statSync } from "node:fs";
 import { join } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -43,6 +44,7 @@ function walk(dir: string, acc: string[] = []): string[] {
   }
   return acc;
 }
+
 
 describe("AgentHive Inc brand facts", () => {
   it("keeps legal name, consult contact, and First Deploy AI price", () => {
@@ -148,6 +150,7 @@ describe("AgentHive Inc brand facts", () => {
       "/ads",
       "/concierge",
       "https://firstdeploy.ai/deploy-agent/",
+      "https://firstdeploy.ai/freight-ops-ai-agent/",
       "https://firstdeploy.ai",
       "https://burnbook.firstdeploy.ai/",
       "https://cardbutler.firstdeploy.ai/",
@@ -158,6 +161,7 @@ describe("AgentHive Inc brand facts", () => {
       "AI Ad Sprint",
       "AI Concierge",
       "Deploy Agent",
+      "Freight Ops AI Agent",
       "First Deploy",
       "Burn Book",
       "Card Butler",
@@ -180,8 +184,8 @@ describe("AgentHive Inc brand facts", () => {
     const files = walk(join(fileURLToPath(new URL("..", import.meta.url))));
     const hits: string[] = [];
     for (const file of files) {
-      const text = readFileSync(file, "utf8");
       if (file.includes("/tests/")) continue;
+      const text = stripFreightPrice(readFileSync(file, "utf8"));
       if (
         /\$2,?500/.test(text) ||
         /\$1,?500\s*\/\s*mo/.test(text) ||

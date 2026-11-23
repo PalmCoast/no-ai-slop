@@ -1,6 +1,6 @@
 # AgentHive Inc
 
-> AgentHive Inc (AGENTHIVEINCCOM LLC, Palm Coast, Florida) is a done-for-you AI operator for funded companies and 30–200 person teams that already pay for software. Main offers: the $150 burn-audit hour, AI Concierge ($2,000/mo), and consulting at $75 / 30 min, $150 / hour, or a 10-hour pack at $1,250. Deploy Agent, the $1,250 go-live sprint ($625 deposit), is at https://firstdeploy.ai/deploy-agent/. Picks (https://agenthiveinc.com/picks/) is the one-page storefront for our Come and Take It gear and the tools and deals we recommend. Call +1 320-335-6186. IndexMe.lol is the honest IndexNow indexing desk at https://indexme.lol.
+> AgentHive Inc (AGENTHIVEINCCOM LLC, Palm Coast, Florida) is a done-for-you AI operator for funded companies and 30–200 person teams that already pay for software. Main offers: the $150 burn-audit hour, AI Concierge ($2,000/mo), and consulting at $75 / 30 min, $150 / hour, or a 10-hour pack at $1,250. Deploy Agent, the $1,250 go-live sprint ($625 deposit), is at https://firstdeploy.ai/deploy-agent/. Freight Ops AI Agent, a two-week proof of a custom AI agent for freight brokerages and 3PLs ($2,500 to start through Stripe, scoped per brokerage), is at https://firstdeploy.ai/freight-ops-ai-agent/. Picks (https://agenthiveinc.com/picks/) is the one-page storefront for our Come and Take It gear and the tools and deals we recommend. Call +1 320-335-6186. IndexMe.lol is the honest IndexNow indexing desk at https://indexme.lol.
 
 AgentHive Inc builds to your brand, runs it, and hands you the finished result. Public site: https://agenthiveinc.com. AgentHive Inc · Palm Coast, FL · firstdeploy.ai.
 
@@ -32,6 +32,11 @@ AgentHive Inc builds to your brand, runs it, and hands you the finished result. 
 - [Human approval in an AI operations workflow](https://agenthiveinc.com/questions/human-approval-ai-operations-workflow): Decide which actions need a person before a workflow can send, publish, delete, or spend.
 - [Muscle Memory bot template](https://agenthiveinc.com/muscle-memory-bot-template/): A $49 template that finds the checks your bots repeat, moves the mechanical part into a script, and wakes the bot only when something changed. Sold on Whop: https://whop.com/agenthive/muscle-memory-template/
 - [How to turn a GitHub repo into a Windows .exe](https://agenthiveinc.com/github-repo-to-windows-exe/): What builds, what doesn't, how to smoke-test it, free routes, and the $49 EXE Builder template. Sold on Whop: https://whop.com/agenthive/exe-builder/
+
+## Offers on First Deploy AI (firstdeploy.ai, same company)
+- [Deploy Agent](https://firstdeploy.ai/deploy-agent/): a $1,250 forward-deployed go-live sprint ($625 deposit) that gets a B2B AI product working inside a customer's systems. Measured in days-to-live; no promised timeline.
+- [Freight Ops AI Agent](https://firstdeploy.ai/freight-ops-ai-agent/): a $2,500 two-week proof of a custom AI agent for freight brokerages and 3PLs at roughly $10M to $100M, on one workflow such as check calls, track and trace, carrier sales, or load booking. $2,500 to start through Stripe, scoped per brokerage.
+- [Buyer questions](https://firstdeploy.ai/questions/): short answers about AI go-live sprints and freight AI agents.
 
 ## Company
 - [First Deploy AI](https://firstdeploy.ai/): Finds what's burning a funded team's AI agent spend, then fixes it. The path: a $150 burn-audit hour (https://agenthiveinc.com/go/ads-sprint), then the 10-hour operator pack at $1,250 with a $625 deposit (https://agenthiveinc.com/consult#pricing), then AI Concierge at $2,000/mo (https://agenthiveinc.com/concierge).
