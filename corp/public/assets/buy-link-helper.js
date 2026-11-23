@@ -25,14 +25,17 @@
       audit150: "https://buy.stripe.com/eVq9ATbaY6CT6iF7ea2ZO1g",
       pack1250: "https://buy.stripe.com/7sY9ATenabXd7mJ7ea2ZO1i",
       deploy1250: "https://buy.stripe.com/7sY9ATenabXd7mJ7ea2ZO1i",
+      consult75: "https://buy.stripe.com/fZufZh92Qf9p5eB2XU2ZO1h",
       concierge2000: "https://buy.stripe.com/6oUeVd7YM3qH0Ylbuq2ZO1u",
-      freight2500: "https://buy.stripe.com/5kQaEX1Ao4uL22p9mi2ZO1U"
+      freight2500: "https://buy.stripe.com/5kQaEX1Ao4uL22p9mi2ZO1U",
+      ainexusTier1: "https://buy.stripe.com/dRm8wPgvif9pfTfaqm2ZO0S",
+      ainexusTier2: "https://buy.stripe.com/fZueVd2EsbXd22p2XU2ZO0T"
     };
     var ALLOWED_SOURCE = { x: 1, li: 1, hn: 1, dir: 1, aisearch: 1, phone: 1, pin: 1 };
     var ALLOWED_MEDIUM = { post: 1, reply: 1, comment: 1, listing: 1, page: 1 };
     var ALLOWED_CAMPAIGN = {
-      audit150: 1, pack1250: 1, deploy1250: 1, freight2500: 1,
-      concierge2000: 1, bfmerch: 1, cardbutler: 1
+      audit150: 1, pack1250: 1, deploy1250: 1, consult75: 1, freight2500: 1,
+      concierge2000: 1, ainexusTier1: 1, ainexusTier2: 1, bfmerch: 1, cardbutler: 1
     };
 
     function cleanId(s) {
@@ -114,12 +117,19 @@
       for (var key in PRODUCT_URLS) {
         if (PRODUCT_URLS[key] && href.indexOf(PRODUCT_URLS[key].split("/").pop()) !== -1) return key;
       }
-      if (/7sY9ATenabXd7mJ7ea2ZO1i/.test(href)) return "pack1250";
-      if (/eVq9ATbaY6CT6iF7ea2ZO1g/.test(href)) return "audit150";
-      if (/6oUeVd7YM3qH0Ylbuq2ZO1u/.test(href)) return "concierge2000";
+      if (/7sY9ATenabXd7mJ7ea2ZO1i/.test(href) || /\/go\/(deposit|pack)(\?|$)/.test(href)) return "pack1250";
+      if (/eVq9ATbaY6CT6iF7ea2ZO1g/.test(href) || /\/go\/ads-sprint(\?|$)/.test(href)) return "audit150";
+      if (/fZufZh92Qf9p5eB2XU2ZO1h/.test(href) || /\/go\/consult-30(\?|$)/.test(href)) return "consult75";
+      if (/6oUeVd7YM3qH0Ylbuq2ZO1u/.test(href) || /\/go\/concierge(\?|$)/.test(href)) return "concierge2000";
       if (/5kQaEX1Ao4uL22p9mi2ZO1U/.test(href)) return "freight2500";
+      if (/dRm8wPgvif9pfTfaqm2ZO0S/.test(href) || /\/go\/ainexus-tier1(\?|$)/.test(href)) return "ainexusTier1";
+      if (/fZueVd2EsbXd22p2XU2ZO0T/.test(href) || /\/go\/ainexus-tier2(\?|$)/.test(href)) return "ainexusTier2";
       return p || "unknown";
     }
+
+    try {
+      document.cookie = "ah_go_ok=1; Path=/; Secure; SameSite=Lax; Max-Age=1800";
+    } catch (e) {}
 
     document.addEventListener(
       "click",
