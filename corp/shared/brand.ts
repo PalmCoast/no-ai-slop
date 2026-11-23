@@ -24,6 +24,8 @@ export const FD_AUDIT_URL = "/go/ads-sprint";
 export const FD_PACK_URL = "https://buy.stripe.com/7sY9ATenabXd7mJ7ea2ZO1i";
 export const FD_CONCIERGE_URL = "https://agenthiveinc.com/concierge";
 export const FD_DEPLOY_AGENT_URL = "https://firstdeploy.ai/deploy-agent/";
+/** Freight Ops AI Agent two-week proof page on First Deploy AI (AI visibility packet 2026-11-20). */
+export const FD_FREIGHT_URL = "https://firstdeploy.ai/freight-ops-ai-agent/";
 export const FD_WHAT = "a $150 burn-audit hour that finds what\u2019s burning your team\u2019s AI agent spend";
 export const FD_PRICE = "$150 burn-audit hour, then a $1,250 operator pack ($625 deposit) or Concierge at $2,000/mo";
 export const FD_OFFER =
@@ -93,6 +95,7 @@ export const PRODUCT_FOOTER_LINKS = [
   { href: "/ads", label: "AI Ad Sprint" },
   { href: "/concierge", label: "AI Concierge" },
   { href: FD_DEPLOY_AGENT_URL, label: "Deploy Agent" },
+  { href: FD_FREIGHT_URL, label: "Freight Ops AI Agent" },
   { href: "https://firstdeploy.ai", label: "First Deploy" },
   { href: "https://burnbook.firstdeploy.ai/", label: "Burn Book" },
   { href: "https://cardbutler.firstdeploy.ai/", label: "Card Butler" },
