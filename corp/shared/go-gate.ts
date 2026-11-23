@@ -6,6 +6,8 @@
 // Referer or a JS-set ah_go_ok cookie (or a POST confirm from the interstitial).
 // Otherwise the buyer gets an HTML click-through page. Bot UAs still 403.
 
+import { GO_PRODUCT } from "./go-links.ts";
+
 export const POSTHOG_KEY = "phc_y9BPZxQLpF7FviUKN6JSBqSUD7fcnwXuXzHzDQ8asLjv";
 export const POSTHOG_HOST = "https://us.i.posthog.com";
 export const POSTHOG_PROJECT = "598301";
@@ -247,7 +249,7 @@ export function goClickProperties(opts: {
     site: "agenthiveinc.com",
     project: POSTHOG_PROJECT,
     country: opts.country ?? null,
-    product: opts.slug,
+    product: GO_PRODUCT[opts.slug] || opts.slug,
     page: opts.requestUrl.pathname,
     bot_verdict: opts.kind,
     gate: opts.gate,

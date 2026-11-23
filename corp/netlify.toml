@@ -161,28 +161,26 @@
   status = 200
   force = true
 
-# /ads sold the $297 Ad Sprint. That payment link is inactive; send
-# visitors to /go/ads-sprint, which already 302s to the $150 audit checkout.
+# /ads is a short interstitial (PostHog + helper + audit150 CTA) in front of
+# /go/ads-sprint. Serve the prerendered page instead of hopping straight to Stripe.
 # Leave /ads/thanks, /ads/creative-calculator/, and /ads/ai-video-ads-for-shopify/ alone.
-# /ads/index.html is a leftover static file and was still 200 with $997/$297 links.
-# 301 it to /ads (which then 302s to /go/ads-sprint). force=true so a leftover
-# published file cannot win. This is not a loop: /ads/index.html -> /ads -> /go/ads-sprint.
-[[redirects]]
-  from = "/ads/index.html"
-  to = "/ads"
-  status = 301
-  force = true
-
 [[redirects]]
   from = "/ads"
-  to = "/go/ads-sprint"
-  status = 302
+  to = "/ads/index.html"
+  status = 200
   force = true
 
 [[redirects]]
   from = "/ads/"
-  to = "/go/ads-sprint"
-  status = 302
+  to = "/ads/index.html"
+  status = 200
+  force = true
+
+# Alias the First Deploy /assets/ph.js path so money-page snippet checks succeed.
+[[redirects]]
+  from = "/assets/ph.js"
+  to = "/ph.js"
+  status = 200
   force = true
 
 [[redirects]]

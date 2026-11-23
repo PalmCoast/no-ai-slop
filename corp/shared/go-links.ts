@@ -19,6 +19,10 @@ export const GO_LINKS: Record<string, GoLink> = {
   // this route now points at the $150 burn-audit hour so existing CTAs keep UTMs and client_reference_id.
   // Tests check the redirect target only; do not fetch these URLs.
   "ads-sprint": { url: "https://buy.stripe.com/eVq9ATbaY6CT6iF7ea2ZO1g", kind: "stripe", label: "AI Consult — $150 burn-audit hour (Ad Sprint traffic retarget)" },
+  // FLAG: still opens the live $997/mo Ad Engine Payment Link (not the approved
+  // premium path). Proposed fix (not applied here): retarget this slug to the
+  // $150 audit like ads-sprint, or deactivate plink_1UX116… after Daniel decides.
+  // Do not remove the route in this pass — existing CTAs and walks still hit it.
   "ads-engine": { url: "https://buy.stripe.com/4gM9ATa6U2mD36tbuq2ZO1M", kind: "stripe", label: "AI Ad Sprint monthly — $997/mo" },
   // Live on Palm Coast AI, 2026-11-10: price_1UaJ40FJWYd4pYuxxNJ078sT, unit_amount 75000.
   "burn-book": { url: "https://buy.stripe.com/7sYcN5a6Ud1hcH3eGC2ZO1O", kind: "stripe", label: "Burn Book board packet — $750 once" },
@@ -32,6 +36,47 @@ export const GO_LINKS: Record<string, GoLink> = {
   "ainexus-tier2": { url: "https://buy.stripe.com/fZueVd2EsbXd22p2XU2ZO0T", kind: "stripe", label: "AI Nexus 360 — Audit + 90-Day Execution Review (Tier 2) $6,500" },
 };
 
+// Official buy_click / utm_campaign keys. ads-engine is flagged: it still
+// opens the live $997/mo Payment Link and is not an approved campaign.
+export const GO_PRODUCT: Record<string, string> = {
+  "ads-sprint": "audit150",
+  "consult-30": "consult75",
+  deposit: "pack1250",
+  pack: "pack1250",
+  concierge: "concierge2000",
+  "ainexus-tier1": "ainexusTier1",
+  "ainexus-tier2": "ainexusTier2",
+  "ads-engine": "ads-engine",
+  "burn-book": "burn-book",
+  "indexme-pro": "indexme-pro",
+  "indexme-studio": "indexme-studio",
+  flick: "flick",
+  "first-deploy": "audit150",
+};
+
+export const ALLOWED_UTM_SOURCE = new Set(["x", "li", "hn", "dir", "aisearch", "phone", "pin"]);
+export const ALLOWED_UTM_MEDIUM = new Set(["post", "reply", "comment", "listing", "page"]);
+export const ALLOWED_UTM_CAMPAIGN = new Set([
+  "audit150",
+  "pack1250",
+  "deploy1250",
+  "freight2500",
+  "concierge2000",
+  "bfmerch",
+  "cardbutler",
+  "consult75",
+  "ainexusTier1",
+  "ainexusTier2",
+]);
+
+export const cleanRefId = (s: unknown, max = 200): string => {
+  const id = String(s ?? "")
+    .replace(/[^A-Za-z0-9_-]/g, "")
+    .slice(0, max);
+  if (!id || id === "undefined" || id === "ph_undefined" || id === "null") return "";
+  return id;
+};
+
 export const cleanToken = (s: unknown, max = 40): string =>
   String(s ?? "")
     .toLowerCase()
@@ -41,22 +86,43 @@ export const cleanToken = (s: unknown, max = 40): string =>
     .slice(0, max);
 
 /** Build the redirect target for a /go click. `from` is already cleaned. */
-export function goTarget(name: string, from: string): string | null {
+export function goTarget(name: string, from: string, requestUrl?: URL): string | null {
   const link = GO_LINKS[name];
   if (!link) return null;
   const dest = new URL(link.url);
-  const src = from.startsWith("x") ? "x" : "agenthiveinc.com";
+  const incoming = requestUrl?.searchParams;
+  const product = GO_PRODUCT[name] || name;
+
+  const incomingSource = cleanToken(incoming?.get("utm_source") || "", 40);
+  const incomingMedium = cleanToken(incoming?.get("utm_medium") || "", 40);
+  const incomingCampaign = (incoming?.get("utm_campaign") || "").trim();
+  const incomingContent = (incoming?.get("utm_content") || "").trim().slice(0, 150);
+  const incomingRef = cleanRefId(incoming?.get("lead_id") || incoming?.get("client_reference_id") || "");
+
+  const source = ALLOWED_UTM_SOURCE.has(incomingSource) ? incomingSource : from.startsWith("x") ? "x" : "dir";
+  const medium = ALLOWED_UTM_MEDIUM.has(incomingMedium) ? incomingMedium : "page";
+  const campaign = ALLOWED_UTM_CAMPAIGN.has(incomingCampaign)
+    ? incomingCampaign
+    : product;
+  const content = incomingContent || `ah-${from || "direct"}`;
+
   if (name === "first-deploy") {
     // firstdeploy.ai/go/start logs `from` and sets client_reference_id + UTMs itself.
     dest.searchParams.set("from", from);
+    dest.searchParams.set("utm_source", source);
+    dest.searchParams.set("utm_medium", medium);
+    dest.searchParams.set("utm_campaign", campaign);
+    dest.searchParams.set("utm_content", content);
+    if (incomingRef) dest.searchParams.set("client_reference_id", incomingRef);
     return dest.toString();
   }
   if (link.kind === "stripe") {
-    dest.searchParams.set("client_reference_id", `ah_${from}_${name}`.replace(/[^A-Za-z0-9_-]/g, "_").slice(0, 200));
+    const cref = incomingRef || `ah_${from}_${name}`.replace(/[^A-Za-z0-9_-]/g, "_").slice(0, 200);
+    dest.searchParams.set("client_reference_id", cref);
   }
-  dest.searchParams.set("utm_source", src);
-  dest.searchParams.set("utm_medium", "hub");
-  dest.searchParams.set("utm_campaign", name);
-  dest.searchParams.set("utm_content", from);
+  dest.searchParams.set("utm_source", source);
+  dest.searchParams.set("utm_medium", medium);
+  dest.searchParams.set("utm_campaign", campaign);
+  dest.searchParams.set("utm_content", content);
   return dest.toString();
 }

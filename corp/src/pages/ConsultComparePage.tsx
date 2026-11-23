@@ -8,8 +8,10 @@ import NotFound from "./NotFound";
 function stripeBuyAttrs(href: string, content: string) {
   const product = href.includes("eVq9ATbaY6CT6iF7ea2ZO1g") || href.includes("/go/ads-sprint")
     ? "audit150"
-    : href.includes("7sY9ATenabXd7mJ7ea2ZO1i")
+    : href.includes("7sY9ATenabXd7mJ7ea2ZO1i") || href.includes("/go/deposit") || href.includes("/go/pack")
       ? "pack1250"
+      : href.includes("fZufZh92Qf9p5eB2XU2ZO1h") || href.includes("/go/consult-30")
+        ? "consult75"
       : href.includes("6oUeVd7YM3qH0Ylbuq2ZO1u") || href.includes("/go/concierge")
         ? "concierge2000"
         : undefined;

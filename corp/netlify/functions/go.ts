@@ -48,7 +48,7 @@ export default async (req: Request, context: Context) => {
   const name = cleanToken(context.params?.name || url.pathname.split("/").pop(), 60);
   const referer = req.headers.get("referer") || "";
   const from = fromOf(url, referer);
-  const target = goTarget(name, from);
+  const target = goTarget(name, from, url);
   if (!target) {
     return new Response("Not found", { status: 404, headers: { "cache-control": "no-store" } });
   }

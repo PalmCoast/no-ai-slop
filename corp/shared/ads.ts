@@ -8,10 +8,10 @@ export const ADS_OG_IMAGE = "https://agenthiveinc.com/ads/og-ads.png";
 export const ADS_OG_ALT = "AI Ad Sprint: 12 new ads for your product in 72 hours. AgentHive Inc.";
 export const ADS_ICON = "/ads/favicon.svg";
 
-export const ADS_TITLE = "AI Ad Sprint — 12 product ads in 72 hours | AgentHive Inc";
+export const ADS_TITLE = "Continue to the $150 burn-audit hour | AgentHive Inc";
 export const ADS_DESCRIPTION =
-  "6 video ads and 6 image ads made from your product page, delivered in 72 hours. $297. AI-generated people are labeled as AI.";
-export const ADS_H1 = "12 new ads for your product in 72 hours.";
+  "The AI Ad Sprint checkout is retired. This page continues to the $150 burn-audit hour. One operator, paid on Stripe.";
+export const ADS_H1 = "Continue to the $150 audit";
 
 export const ADS_THANKS_TITLE = "Got it | AI Ad Sprint | AgentHive Inc";
 export const ADS_THANKS_DESCRIPTION = "Your product is in. Here is what happens next with your AI Ad Sprint.";

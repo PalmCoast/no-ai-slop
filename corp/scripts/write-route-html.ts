@@ -44,11 +44,7 @@ console.error = (...args: unknown[]) => {
 };
 
 const written: string[] = [];
-// Do not publish dist/ads/index.html. /ads and /ads/ already 302 to the $150 audit;
-// the leftover landing still advertised $997 and $297. /ads/index.html 301s to /ads.
-const SKIP_PRERENDER = new Set(["/ads"]);
 for (const page of PAGE_SEO) {
-  if (SKIP_PRERENDER.has(page.path)) continue;
   const rendered = render(page.path);
   const words = rendered.replace(/<[^>]+>/g, " ").split(/\s+/).filter(Boolean).length;
   if (words < 80) throw new Error(`Prerender for ${page.path} is only ${words} words`);
@@ -107,9 +103,8 @@ writeFileSync(
     "/x/ /x/index.html 200!",
     "/ads/thanks /ads/thanks/index.html 200!",
     "/ads/thanks/ /ads/thanks/index.html 200!",
-    "/ads/index.html /ads 301!",
-    "/ads /go/ads-sprint 302!",
-    "/ads/ /go/ads-sprint 302!",
+    "/ads /ads/index.html 200!",
+    "/ads/ /ads/index.html 200!",
     "/consult/north-star-ai-consultation-alternative /consult/ai-help-30-minute-blocks 301",
     "/consult/north-star-ai-consultation-alternative/ /consult/ai-help-30-minute-blocks 301",
     "/audit /consult/ai-audit-cost 301",

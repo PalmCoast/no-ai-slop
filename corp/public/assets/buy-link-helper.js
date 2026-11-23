@@ -39,9 +39,11 @@
     };
 
     function cleanId(s) {
-      return String(s || "")
+      var id = String(s || "")
         .replace(/[^A-Za-z0-9_-]/g, "")
         .slice(0, 200);
+      if (!id || id === "undefined" || id === "ph_undefined" || id === "null") return "";
+      return id;
     }
     function cleanUtm(s, max) {
       return String(s || "")
@@ -60,10 +62,13 @@
       var ph = "";
       try {
         if (window.posthog && typeof window.posthog.get_distinct_id === "function") {
-          ph = "ph_" + window.posthog.get_distinct_id();
+          var raw = window.posthog.get_distinct_id();
+          if (raw && String(raw) !== "undefined" && String(raw) !== "null") {
+            ph = cleanId("ph_" + raw);
+          }
         }
       } catch (e) {}
-      return cleanId(fromAttr || fromQ || stored || ph || ("anon_" + Date.now().toString(36)));
+      return cleanId(fromAttr) || cleanId(fromQ) || cleanId(stored) || ph || ("anon_" + Date.now().toString(36));
     }
     function resolveUtms(el, product) {
       var qs = q();
@@ -139,6 +144,13 @@
         var raw = a.getAttribute("href") || "";
         if (!isBuyHref(raw) && !a.getAttribute("data-product")) return;
         var product = productOf(a, raw);
+        var isGo = /\/go\//i.test(raw);
+        if (isGo) {
+          // Leave first-party /go hrefs in place so the server gate and
+          // client_reference_id stamp run. Do not fire a client buy_click;
+          // /go sends buy_click + go_click with product = campaign key.
+          return;
+        }
         var base = PRODUCT_URLS[product] || raw;
         if (!/^https?:/i.test(base)) {
           try { base = new URL(base, location.href).toString(); } catch (e) { return; }
@@ -156,8 +168,10 @@
       var nodes = document.querySelectorAll("a[data-product], a[href*='buy.stripe.com']");
       for (var i = 0; i < nodes.length; i++) {
         var a = nodes[i];
-        var product = productOf(a, a.getAttribute("href") || "");
-        var base = PRODUCT_URLS[product] || a.getAttribute("href");
+        var href = a.getAttribute("href") || "";
+        if (/\/go\//i.test(href)) continue;
+        var product = productOf(a, href);
+        var base = PRODUCT_URLS[product] || href;
         if (!base || !/buy\.stripe\.com\//i.test(base) && !PRODUCT_URLS[product]) continue;
         if (PRODUCT_URLS[product]) base = PRODUCT_URLS[product];
         var built = decorateUrl(base, product, a);

@@ -158,7 +158,7 @@ export const PAGE_SEO: SeoPage[] = [
     ogImage: ADS_OG_IMAGE,
     ogImageAlt: ADS_OG_ALT,
     icon: ADS_ICON,
-    bodyHtml: `<main id="route-ads"><h1>${ADS_H1}</h1><p>${ADS_DESCRIPTION}</p><p>AI Ad Sprint is $297 one time for 6 video ads and 6 image ads, delivered within 72 hours. Monthly is $997 a month for 20 new ads. Paid upfront by card. AI-generated people are labeled as AI.</p></main>`,
+    bodyHtml: `<main id="route-ads" class="section"><div class="container"><h1 class="display">${ADS_H1}</h1><p class="lede">${ADS_DESCRIPTION}</p><p>This used to be the AI Ad Sprint checkout. That offer is retired, and this URL now starts the $150 burn-audit hour with Daniel Graham: one operator in the room, paid on Stripe, with no contract attached. If you followed an old sprint link, you are in the right place — continue below and we will take you to the audit checkout with the standard audit150 tracking on the hop.</p><p><a class="btn btn-primary" href="/go/ads-sprint?from=ads" rel="noopener" data-product="audit150" data-utm-source="dir" data-utm-medium="page" data-utm-campaign="audit150" data-utm-content="ah-ads-hop">Continue to the $150 audit</a></p><p class="fine"><a href="/consult">See consulting rates</a> · <a href="/concierge">AI Concierge</a></p></div></main>`,
   },
   {
     path: ADS_THANKS_PATH,

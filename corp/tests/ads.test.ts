@@ -68,33 +68,29 @@ describe("AI Ad Sprint pages", () => {
     expect(helper).toContain("buy_click");
     expect(helper).toContain("audit150");
     expect(helper).toContain("https://buy.stripe.com/eVq9ATbaY6CT6iF7ea2ZO1g");
+    expect(helper).toContain('if (!id || id === "undefined" || id === "ph_undefined"');
+    const ph = readFileSync(join(corpRoot, "public/ph.js"));
+    const phAlias = readFileSync(join(corpRoot, "public/assets/ph.js"));
+    expect(phAlias.equals(ph)).toBe(true);
   });
 
-  it("keeps the Ads component copy (the landing is no longer published; thanks still is)", () => {
+  it("publishes a short /ads interstitial that points at audit150 with standard UTMs", () => {
     const offer = render("/ads");
     const done = render("/ads/thanks");
     expect(words(offer).length).toBeGreaterThanOrEqual(80);
     expect(words(done).length).toBeGreaterThanOrEqual(80);
     expect(offer).toContain('id="route-ads"');
     expect(done).toContain('id="route-adsthanks"');
-    expect(offer).toContain("Start my sprint — $297");
-    expect(offer).toContain('href="/go/ads-sprint"');
-    expect(offer).toContain('href="/go/ads-engine"');
-    expect(offer.match(/href="\/go\/ads-sprint"/g)?.length).toBe(3);
-    expect(offer.match(/href="\/go\/ads-engine"/g)?.length).toBe(1);
-    expect(offer).not.toContain("data-slot=");
-    expect(offer).not.toContain("data-hero-sample");
-    expect(offer).not.toContain('id="samples"');
-    expect(offer).not.toContain("/ads/samples/");
-    expect(offer).not.toContain("ads-tag");
-    expect(offer).not.toContain("See samples below");
-    expect(offer).toContain("AI-generated people are always labeled as AI.");
-    expect(offer).toContain("Send your product page by Sat Nov 22 to have your ads before Black Friday.");
-    expect(offer.indexOf("ads-deadline")).toBeGreaterThan(offer.indexOf("Paid upfront by card."));
-    expect(offer).toContain('name="bot-field"');
-    expect(offer).toContain('name="name"');
-    expect(offer).toContain('action="/api/ads-intake"');
-    expect(offer).not.toContain("data-netlify");
+    expect(offer).toContain("Continue to the $150 audit");
+    expect(offer).toContain('href="/go/ads-sprint?from=ads"');
+    expect(offer).toContain('data-product="audit150"');
+    expect(offer).toContain('data-utm-source="dir"');
+    expect(offer).toContain('data-utm-medium="page"');
+    expect(offer).toContain('data-utm-campaign="audit150"');
+    expect(offer).toContain('data-utm-content="ah-ads-hop"');
+    expect(offer).not.toContain("/go/ads-engine");
+    expect(offer).not.toContain("Start my sprint — $297");
+    expect(offer).not.toContain("$997");
     expect(done).toContain("Back to AI Ad Sprint");
     expect(done).toContain("one round of revisions");
     const visible = `${offer}\n${done}`.replace(/<script[\s\S]*?<\/script>/g, " ");
@@ -102,7 +98,7 @@ describe("AI Ad Sprint pages", () => {
     expect(visible).not.toMatch(/\(\d{3}\)\s*\d{3}-\d{4}/);
   });
 
-  it("keeps the ads rules above the 404 catch-all, 301s /ads/index.html to /ads, and 302s /ads to /go/ads-sprint", () => {
+  it("keeps the ads rules above the 404 catch-all and serves /ads as a prerendered interstitial", () => {
     const script = readFileSync(join(corpRoot, "scripts/write-route-html.ts"), "utf8");
     const toml = readFileSync(join(corpRoot, "netlify.toml"), "utf8");
     for (const text of [script, toml]) {
@@ -114,11 +110,10 @@ describe("AI Ad Sprint pages", () => {
         expect(at, rule).toBeLessThan(catchAll);
       }
     }
-    expect(script).toContain('SKIP_PRERENDER = new Set(["/ads"])');
-    expect(script).toContain('"/ads/index.html /ads 301!"');
-    expect(toml).toContain('from = "/ads/index.html"\n  to = "/ads"\n  status = 301');
-    expect(toml).toContain('from = "/ads"\n  to = "/go/ads-sprint"\n  status = 302');
-    expect(toml).toContain('from = "/ads/"\n  to = "/go/ads-sprint"\n  status = 302');
+    expect(script).toContain('"/ads /ads/index.html 200!"');
+    expect(toml).toContain('from = "/ads"\n  to = "/ads/index.html"\n  status = 200');
+    expect(toml).toContain('from = "/ads/"\n  to = "/ads/index.html"\n  status = 200');
+    expect(toml).toContain('from = "/assets/ph.js"\n  to = "/ph.js"\n  status = 200');
     expect(toml).toContain('from = "/ads/thanks"\n  to = "/ads/thanks/index.html"\n  status = 200');
   });
 });

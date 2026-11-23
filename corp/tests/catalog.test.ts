@@ -64,9 +64,9 @@ describe("consult rails", () => {
   it("keeps the shop line and Stripe buy links, not a grey embed", () => {
     expect(BOOK_HREF).toBe("https://calendar.google.com/calendar/appointments/schedules/AcZssZ08PSsZYPUrigPxN1Ax27CJh01QY8fjWo1mGYVhlX5vh0QUTqBzXF4NSNwDyLw487B8fNegD8JV");
     expect(CONSULT_STRIPE_RATES.map((rate) => rate.href)).toEqual([
-      "https://buy.stripe.com/fZufZh92Qf9p5eB2XU2ZO1h",
+      "/go/consult-30",
       "/go/ads-sprint",
-      "https://buy.stripe.com/7sY9ATenabXd7mJ7ea2ZO1i",
+      "/go/deposit",
     ]);
     expect(CONSULT_STRIPE_RATES.map((rate) => rate.amount)).toEqual(["$75", "$150", "$625 of $1,250"]);
     expect(CONCIERGE_PRICE).toBe("$2,000/mo");
