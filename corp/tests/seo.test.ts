@@ -1,3 +1,4 @@
+import { stripFreightPrice } from "./freight-price";
 import { createHash } from "node:crypto";
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
@@ -57,7 +58,7 @@ describe("per-route SEO", () => {
     expect(home).toContain("Start First Deploy");
     expect(home).toContain("Book the free 30");
     expect(home).toContain(
-      'Products: <a href="/picks/">Picks</a> · <a href="/ads">AI Ad Sprint</a> · <a href="/concierge">AI Concierge</a> · <a href="https://firstdeploy.ai/deploy-agent/">Deploy Agent</a> · <a href="https://firstdeploy.ai">First Deploy</a> · <a href="https://burnbook.firstdeploy.ai/">Burn Book</a> · <a href="https://cardbutler.firstdeploy.ai/">Card Butler</a> · <a href="/ram-deals/">RAM &amp; rig deals</a>',
+      'Products: <a href="/picks/">Picks</a> · <a href="/ads">AI Ad Sprint</a> · <a href="/concierge">AI Concierge</a> · <a href="https://firstdeploy.ai/deploy-agent/">Deploy Agent</a> · <a href="https://firstdeploy.ai/freight-ops-ai-agent/">Freight Ops AI Agent</a> · <a href="https://firstdeploy.ai">First Deploy</a> · <a href="https://burnbook.firstdeploy.ai/">Burn Book</a> · <a href="https://cardbutler.firstdeploy.ai/">Card Butler</a> · <a href="/ram-deals/">RAM &amp; rig deals</a>',
     );
     expect(home).toContain("IndexNow");
     expect(about).toContain("tel:+13203356186");
@@ -109,7 +110,7 @@ describe("per-route SEO", () => {
     expect(pages.join("")).not.toMatch(/founding|first 5 businesses|\$250 one-time/i);
     expect(pages[0]).not.toContain("1" + ",750");
     expect(pages[0]).not.toContain("$" + "250/mo");
-    expect(pages.join("")).not.toMatch(/\$2,?500|\$1,?500\s*\/\s*mo|firstdeploy\.dev/);
+    expect(stripFreightPrice(pages.join(""))).not.toMatch(/\$2,?500|\$1,?500\s*\/\s*mo|firstdeploy\.dev/);
     expect(pages[1]).toContain("Palm Coast, FL");
     expect(pages.join("")).not.toContain("32137");
     expect(pages.join("")).not.toContain("Barrington");

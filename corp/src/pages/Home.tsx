@@ -92,6 +92,25 @@ export default function Home() {
               <p className="muted">Free 30-minute call, then {CONSULT_RATES}. 10-hour pack $1,250 ($625 upfront).</p>
             </a>
           </div>
+          <div className="section-head" style={{ marginTop: 32 }}>
+            <h2>Built for operators</h2>
+          </div>
+          <div className="trust-grid cols-2">
+            <article className="trust card">
+              <h3>Deploy Agent</h3>
+              <p className="muted">A $1,250 go-live sprint that gets a B2B AI product working inside a customer's systems.</p>
+              <p className="muted" style={{ marginTop: 8 }}>
+                <a href="https://firstdeploy.ai/deploy-agent/">See Deploy Agent →</a>
+              </p>
+            </article>
+            <article className="trust card">
+              <h3>Freight Ops AI Agent</h3>
+              <p className="muted">A two-week proof of a custom AI agent for freight brokerages and 3PLs. $2,500 to start through Stripe, scoped per brokerage.</p>
+              <p className="muted" style={{ marginTop: 8 }}>
+                <a href="https://firstdeploy.ai/freight-ops-ai-agent/">See the freight proof →</a>
+              </p>
+            </article>
+          </div>
         </div>
       </section>
 

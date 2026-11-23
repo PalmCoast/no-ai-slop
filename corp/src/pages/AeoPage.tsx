@@ -79,6 +79,11 @@ export default function AeoPage() {
             </a>
           </div>
           <p className="fine">{packDisclosure}</p>
+          {page.crossLink ? (
+            <p className="fine">
+              {page.crossLink.lead} See the <a href={page.crossLink.href}>{page.crossLink.text}</a>.
+            </p>
+          ) : null}
         </div>
       </section>
 
