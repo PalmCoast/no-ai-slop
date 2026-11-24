@@ -37,7 +37,7 @@ const WHAT_YOU_GET = [
   },
   {
     title: "Someone who builds",
-    body: "Daniel Graham has 25 years in enterprise IT and telecom and builds and runs AgentHive Inc's own products, including First Deploy AI.",
+    body: "Daniel Graham has 10+ years in enterprise IT and telecom and builds and runs AgentHive Inc's own products, including First Deploy AI.",
   },
 ] as const;
 
