@@ -1,13 +1,18 @@
 import type { Config, Context } from "@netlify/functions";
 import { getStore } from "@netlify/blobs";
-import { cleanToken, goTarget } from "../../shared/go-links.ts";
+import { cleanToken, goTarget, GO_LINKS } from "../../shared/go-links.ts";
 import {
   BOT_FORBIDDEN_BODY,
   captureGoEvents,
   classifyUa,
   distinctIdFromRequest,
   goClickProperties,
+  goOkSetCookie,
+  interstitialHtml,
+  isHiveHost,
   isPrefetch,
+  resolveGoGate,
+  sessionIdFromRequest,
 } from "../../shared/go-gate.ts";
 
 function fromOf(url: URL, referer: string): string {
@@ -15,7 +20,7 @@ function fromOf(url: URL, referer: string): string {
   if (q) return q;
   try {
     const r = new URL(referer);
-    if (/(^|\.)agenthiveinc\.com$/i.test(r.hostname)) {
+    if (isHiveHost(r.hostname)) {
       return cleanToken(r.pathname.replace(/^\/+|\/+$/g, "").replace(/\//g, "-")) || "home";
     }
     if (/(^|\.)(t\.co|x\.com|twitter\.com)$/i.test(r.hostname)) return "x";
@@ -29,6 +34,14 @@ const noStore = {
   "cache-control": "no-store, max-age=0",
   "x-robots-tag": "noindex, nofollow",
 };
+
+function clientIp(req: Request, context: Context): string | null {
+  const forwarded = req.headers.get("x-forwarded-for") || req.headers.get("x-nf-client-connection-ip") || "";
+  const first = forwarded.split(",")[0]?.trim();
+  if (first) return first.slice(0, 80);
+  const ip = (context as Context & { ip?: string }).ip;
+  return ip ? String(ip).slice(0, 80) : null;
+}
 
 export default async (req: Request, context: Context) => {
   const url = new URL(req.url);
@@ -44,6 +57,7 @@ export default async (req: Request, context: Context) => {
   const { test, bot, kind } = classifyUa(ua);
   const prefetch = isPrefetch(req);
   const dest = new URL(target);
+  const gate = bot ? null : resolveGoGate(req, url);
 
   if (req.method === "GET" && !prefetch) {
     const ts = new Date().toISOString();
@@ -59,6 +73,7 @@ export default async (req: Request, context: Context) => {
       test,
       country: context.geo?.country?.code || null,
       target,
+      gate: gate || (bot ? "bot" : "interstitial"),
     };
     try {
       const write = getStore({ name: "go-clicks", consistency: "strong" }).setJSON(key, event);
@@ -76,36 +91,50 @@ export default async (req: Request, context: Context) => {
     });
   }
 
-  const headers: Record<string, string> = {
-    location: target,
-    ...noStore,
-    "referrer-policy": "no-referrer-when-downgrade",
-  };
-
-  if (req.method === "GET" && !prefetch && (kind === "human" || kind === "test")) {
-    const { id, setCookie } = distinctIdFromRequest(req);
-    if (setCookie) headers["set-cookie"] = setCookie;
-    const properties = goClickProperties({
-      slug: name,
-      from,
-      dest,
-      requestUrl: url,
-      referer,
-      kind,
-      country: context.geo?.country?.code || null,
-    });
-    const send = captureGoEvents(id, properties).catch((e: unknown) => console.error("go: posthog capture failed", e));
-    if (context.waitUntil) context.waitUntil(send);
-    else await send;
+  if (prefetch) {
+    return new Response(null, { status: 204, headers: noStore });
   }
+
+  if (!gate) {
+    const action = url.pathname + url.search;
+    const label = GO_LINKS[name]?.label || "checkout";
+    return new Response(interstitialHtml(action, label), {
+      status: 200,
+      headers: { ...noStore, "content-type": "text/html; charset=utf-8" },
+    });
+  }
+
+  const outHeaders = new Headers(noStore);
+  outHeaders.set("location", target);
+  outHeaders.set("referrer-policy", "no-referrer-when-downgrade");
+  outHeaders.append("set-cookie", goOkSetCookie());
+  const { id, setCookie } = distinctIdFromRequest(req);
+  if (setCookie) outHeaders.append("set-cookie", setCookie);
+
+  const properties = goClickProperties({
+    slug: name,
+    from,
+    dest,
+    requestUrl: url,
+    referer,
+    kind: kind === "test" ? "test" : "human",
+    country: context.geo?.country?.code || null,
+    gate,
+    userAgent: ua,
+    ip: clientIp(req, context),
+    sessionId: sessionIdFromRequest(req),
+  });
+  const send = captureGoEvents(id, properties).catch((e: unknown) => console.error("go: posthog capture failed", e));
+  if (context.waitUntil) context.waitUntil(send);
+  else await send;
 
   return new Response(null, {
     status: 302,
-    headers,
+    headers: outHeaders,
   });
 };
 
 export const config: Config = {
   path: "/go/:name",
-  method: "GET",
+  method: ["GET", "POST"],
 };

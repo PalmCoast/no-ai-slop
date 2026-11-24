@@ -2,7 +2,8 @@
 // Same pattern as firstdeploy.ai/go/<name>: log the click, then 302 to the
 // exact destination with tracking params appended at redirect time.
 // Stripe Payment Links: every URL below was verified active at the advertised
-// price in /workspace/buy-path-audit-2026-09-28/REPORT.md (2026-09-28).
+// price in /workspace/buy-path-audit-2026-09-28/REPORT.md (2026-09-28),
+// then rechecked with curl -sI (no browser, redirects not followed) on 2026-11-23.
 // Flick builds its Checkout server-side, so /go sends the
 // buyer to the product page that holds the working plan buttons.
 export type GoLink = { url: string; kind: "stripe" | "page"; label: string };
@@ -21,6 +22,14 @@ export const GO_LINKS: Record<string, GoLink> = {
   "ads-engine": { url: "https://buy.stripe.com/4gM9ATa6U2mD36tbuq2ZO1M", kind: "stripe", label: "AI Ad Sprint monthly — $997/mo" },
   // Live on Palm Coast AI, 2026-11-10: price_1UaJ40FJWYd4pYuxxNJ078sT, unit_amount 75000.
   "burn-book": { url: "https://buy.stripe.com/7sYcN5a6Ud1hcH3eGC2ZO1O", kind: "stripe", label: "Burn Book board packet — $750 once" },
+  // Added 2026-11-23 so Design can swap remaining raw Payment Links.
+  // /go/consult-30 = $75 30-minute consult (ZO1h). /go/deposit and /go/pack = $625 pack deposit (ZO1i).
+  "consult-30": { url: "https://buy.stripe.com/fZufZh92Qf9p5eB2XU2ZO1h", kind: "stripe", label: "AI Consult — $75 / 30 minutes" },
+  deposit: { url: "https://buy.stripe.com/7sY9ATenabXd7mJ7ea2ZO1i", kind: "stripe", label: "Implementation pack deposit — $625 ($1,250 pack)" },
+  pack: { url: "https://buy.stripe.com/7sY9ATenabXd7mJ7ea2ZO1i", kind: "stripe", label: "Implementation pack deposit — $625 ($1,250 pack)" },
+  // ainexus360.com offers. Buttons on that site should point here once approved.
+  "ainexus-tier1": { url: "https://buy.stripe.com/dRm8wPgvif9pfTfaqm2ZO0S", kind: "stripe", label: "AI Nexus 360 — AI Readiness & Waste Audit (Tier 1)" },
+  "ainexus-tier2": { url: "https://buy.stripe.com/fZueVd2EsbXd22p2XU2ZO0T", kind: "stripe", label: "AI Nexus 360 — Audit + 90-Day Execution Review (Tier 2) $6,500" },
 };
 
 export const cleanToken = (s: unknown, max = 40): string =>
