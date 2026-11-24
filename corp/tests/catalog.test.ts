@@ -19,7 +19,7 @@ describe("portfolio catalog", () => {
   it("lists every hive-map commercial site plus verified Netlify apps", () => {
     const urls = HIVE_SITES.map((s) => s.url);
     expect(urls).toContain("https://firstdeploy.ai/");
-    expect(HIVE_SITES.find((s) => s.slug === "first-deploy")?.price).toBe("$150 burn-audit hour, then a $1,250 operator pack ($625 deposit) or Concierge at $2,000/mo");
+    expect(HIVE_SITES.find((s) => s.slug === "first-deploy")?.price).toBe("a free 15-minute triage, then a $2,500 sprint delivered in 5 business days, then a $3,500/mo retainer");
     expect(HIVE_SITES.find((s) => s.slug === "first-deploy")?.name).toBe("First Deploy AI");
     expect(urls).toContain("https://flick.firstdeploy.ai/");
     expect(urls).toContain("https://writehive.netlify.app/");
@@ -63,14 +63,10 @@ describe("swarm roster", () => {
 describe("consult rails", () => {
   it("keeps the shop line and Stripe buy links, not a grey embed", () => {
     expect(BOOK_HREF).toBe("https://calendar.google.com/calendar/appointments/schedules/AcZssZ08PSsZYPUrigPxN1Ax27CJh01QY8fjWo1mGYVhlX5vh0QUTqBzXF4NSNwDyLw487B8fNegD8JV");
-    expect(CONSULT_STRIPE_RATES.map((rate) => rate.href)).toEqual([
-      "https://buy.stripe.com/fZufZh92Qf9p5eB2XU2ZO1h",
-      "/go/ads-sprint",
-      "https://buy.stripe.com/7sY9ATenabXd7mJ7ea2ZO1i",
-    ]);
-    expect(CONSULT_STRIPE_RATES.map((rate) => rate.amount)).toEqual(["$75", "$150", "$625 of $1,250"]);
-    expect(CONCIERGE_PRICE).toBe("$2,000/mo");
-    expect(CONCIERGE_STRIPE_URL).toBe("https://buy.stripe.com/6oUeVd7YM3qH0Ylbuq2ZO1u");
+    expect(CONSULT_STRIPE_RATES.map((rate) => rate.href)).toEqual(["/go/sprint", "/go/retainer"]);
+    expect(CONSULT_STRIPE_RATES.map((rate) => rate.amount)).toEqual(["$2,500", "$3,500/mo"]);
+    expect(CONCIERGE_PRICE).toBe("$3,500/mo");
+    expect(CONCIERGE_STRIPE_URL).toBe("https://buy.stripe.com/eVq5kD3Iw4uLePbfKG2ZO1W");
   });
 });
 

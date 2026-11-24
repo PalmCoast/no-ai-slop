@@ -7,13 +7,10 @@ import {
   BRAND_URL,
   BOOK_CTA_LABEL,
   BOOK_HREF,
-  FD_PRICE_LINE,
   FD_PRICE_LINE_HTML,
   CONSULT_DISPLAY,
   CONSULT_TEL,
   PHONE_DISPLAY,
-  CONSULT_RATES,
-  FD_CTA_LABEL,
   FD_NAME,
   FD_PRICE,
   FD_PROMISE,
@@ -29,12 +26,15 @@ import {
   CONTENT_LASTMOD,
   PRODUCT_FOOTER_LINKS,
   PICKS_URL,
+  SPRINT_GO_HREF,
+  SPRINT_NAME,
+  SPRINT_PRICE_AMOUNT,
 } from "./brand.ts";
 import { DANIEL_BIO, DANIEL_ID, DANIEL_JOB_TITLE, DANIEL_NAME, DANIEL_SAME_AS, DANIEL_URL } from "./author.ts";
 import { CONCIERGE_GO_HREF, CONCIERGE_NAME, CONCIERGE_PRICE, CONCIERGE_PRICE_AMOUNT, CONCIERGE_URL } from "./concierge.ts";
 import { CONCIERGE_FAQS, CONSULT_COST_FAQS, CONSULT_FAQS, HIRING_FAQS } from "./faqs.ts";
-import { CONSULT_COST_CHECKED, CONSULT_COST_CHECKED_ISO, CONSULT_COST_URL } from "./consult.ts";
-import { CONSULT_COMPARE_CHECKED_ISO, CONSULT_COMPARE_PAGES, consultComparePageFor } from "./consultCompare.ts";
+import { CONSULT_COST_CHECKED_ISO, CONSULT_COST_URL } from "./consult.ts";
+import { CONSULT_COMPARE_CHECKED_ISO, consultComparePageFor } from "./consultCompare.ts";
 import { AFFILIATE_TOOLS, DISCLOSURE_LINE, DISCLOSURE_UPDATED } from "./disclosure.ts";
 import { AEO_LASTMOD, AEO_PAGES, aeoBodyHtml, aeoPageFor } from "./aeo.ts";
 import {
@@ -68,11 +68,11 @@ export type SeoPage = {
 export const PAGE_SEO: SeoPage[] = [
   {
     path: "/",
-    title: "AgentHive Inc — done-for-you AI operator for funded teams",
+    title: "AgentHive Inc: cut AI agent spend and stop the loops in 5 business days",
     description:
-      "Done-for-you AI for funded teams: Deploy Agent go-live sprints, a $2,500 freight AI agent proof, AI Concierge and AI Ad Sprint. AgentHive Inc, Palm Coast.",
+      "Cut AI agent spend and stop loops. Free 15-minute triage, a $2,500 fixed-price sprint in 5 business days, then $3,500/mo AI ops. For teams of 30 to 200.",
     h1: HERO_H1,
-    bodyHtml: `<main id="route-home" class="section"><div class="container"><h1 class="display">${HERO_H1}</h1><p class="lede">${BRAND_NAME} is a Palm Coast AI consultant who builds. ${HERO_WHAT}</p><p>${FD_PRICE_LINE_HTML} ${FD_PROMISE}. ${INDEXME_NAME} is the ${INDEXME_BLURB} at indexme.lol.</p><p><a href="/ads">AI Ad Sprint</a> · <a href="/concierge">AI Concierge</a> · <a href="/picks/">Picks</a> · <a href="${FD_URL}">${FD_CTA_LABEL}</a> · <a href="${BOOK_HREF}">${BOOK_CTA_LABEL}</a> · Consult ${CONSULT_DISPLAY}</p><h2>Built for operators</h2><p><strong>Deploy Agent.</strong> A $1,250 go-live sprint that gets a B2B AI product working inside a customer's systems. <a href="https://firstdeploy.ai/deploy-agent/">See Deploy Agent →</a></p><p><strong>Freight Ops AI Agent.</strong> A two-week proof of a custom AI agent for freight brokerages and 3PLs. $2,500 to start through Stripe, scoped per brokerage. <a href="https://firstdeploy.ai/freight-ops-ai-agent/">See the freight proof →</a></p></div></main>`,
+    bodyHtml: `<main id="route-home" class="section"><div class="container"><h1 class="display">${HERO_H1}</h1><p class="lede">${HERO_WHAT}</p><p>${FD_PRICE_LINE_HTML}</p><p>70+ live AI apps in production, built and run by Daniel Graham, a U.S. Army veteran with 10+ years in operations.</p><h2>Where the money goes</h2><ul><li>Loops and runaway retries.</li><li>Drift and redundant scheduled runs.</li><li>The wrong model on the wrong job, with no caching.</li><li>Seats and API keys with no caps and no owner.</li></ul><p><a href="${BOOK_HREF}">${BOOK_CTA_LABEL}</a> · <a href="/consult">The $2,500 sprint</a> · <a href="/concierge">The $3,500/mo retainer</a> · Phone ${CONSULT_DISPLAY}</p><p>Also from ${BRAND_NAME}: <a href="https://firstdeploy.ai/deploy-agent/">Deploy Agent</a> and the <a href="https://firstdeploy.ai/freight-ops-ai-agent/">Freight Ops AI Agent</a> proof. ${INDEXME_NAME} is the ${INDEXME_BLURB} at indexme.lol.</p></div></main>`,
   },
   {
     path: "/about",
@@ -102,44 +102,31 @@ export const PAGE_SEO: SeoPage[] = [
     description: `${FD_NAME} custom embeds: ${FD_PRICE}. ${FD_PROMISE}.`,
     h1: "One leak. Built on a written plan.",
     noindex: true,
-    bodyHtml: `<main id="route-build" class="section"><div class="container"><h1 class="display">One leak. Built on a written plan.</h1><p class="lede">${FD_NAME} embeds, finds what’s burning your team’s AI agent spend and fixes it. ${FD_PRICE_LINE_HTML}</p><p>90-day projects: half upfront, half at completion. ${FD_PROMISE}. Consult ${CONSULT_DISPLAY} or start at ${FD_URL.replace("https://", "")}.</p></div></main>`,
+    bodyHtml: `<main id="route-build" class="section"><div class="container"><h1 class="display">One leak. Built on a written plan.</h1><p class="lede">${FD_NAME} embeds, finds what’s burning your team’s AI agent spend and fixes it. ${FD_PRICE_LINE_HTML}</p><p>${FD_PROMISE}. Consult ${CONSULT_DISPLAY} or start at ${FD_URL.replace("https://", "")}.</p></div></main>`,
   },
   {
     path: "/consult",
-    title: "AI consultant for funded teams: free 30 min, then $75 | AgentHive Inc",
-    description: `Hands-on AI help for funded teams’ leadership. Free 30-minute call, then ${CONSULT_RATES}, or a 10-hour pack for $1,250. Set up in your accounts.`,
-    h1: "An operator in the room, not another deck.",
-    bodyHtml: `<main id="route-consult" class="section"><div class="container"><h1 class="display">An operator in the room, not another deck.</h1><p class="lede">Sit with Daniel Graham. The free call gives you a straight answer. Paid time leaves something working, with notes your team can follow.</p><p>Free 30 minutes. Then $75 / 30 minutes, $150 / hour, or a 10-hour pack for $1,250 ($625 up front). Call ${CONSULT_DISPLAY}.</p><p>Compare: <a href="${CONSULT_COST_URL}">what an AI consultant costs</a>. Need someone monthly? <a href="${CONCIERGE_URL}">${CONCIERGE_NAME}</a> is the ${CONCIERGE_PRICE} retainer.</p></div></main>`,
+    title: "Agent Audit & Stabilization Sprint: $2,500, 5 business days | AgentHive Inc",
+    description:
+      "A $2,500 fixed-price sprint for funded teams of 30 to 200: we cut AI agent spend and stop loops, drift and redundant runs in 5 business days. Free 15-minute triage first.",
+    h1: "Cut agent spend and stop the loops. $2,500, 5 business days.",
+    bodyHtml: `<main id="route-consult" class="section"><div class="container"><h1 class="display">Cut agent spend and stop the loops. $2,500, 5 business days.</h1><p class="lede">A fixed-price sprint for CTOs and COOs whose AI bill keeps climbing. Daniel Graham audits your agents, routines and seats, fixes what is burning money in your accounts, and hands back a before-and-after report.</p><p>Day 1: access and inventory. Days 2 to 4: fixes, caps and alerts, with your approval on production changes. Day 5: the written report.</p><p>${FD_PRICE_LINE_HTML}</p><p><a href="${SPRINT_GO_HREF}">Start the sprint, $2,500</a> · <a href="${BOOK_HREF}">${BOOK_CTA_LABEL}</a> · <a href="${CONCIERGE_URL}">${CONCIERGE_NAME}</a>, ${CONCIERGE_PRICE} · Phone ${CONSULT_DISPLAY}</p></div></main>`,
   },
-  {
-    path: "/consult/ai-consultant-cost",
-    title: "What an AI consultant costs a growing company (2026) | AgentHive Inc",
-    description: "AgentHive Inc prices: free 30 min, then $75 / 30 min, $150 / hour, or $1,250 for 10 hours.",
-    h1: "What an AI consultant costs a growing company",
-    bodyHtml: `<main id="route-consultcost" class="section"><div class="container"><h1 class="display">What an AI consultant costs a growing company</h1><p class="lede">AgentHive Inc charges $75 for 30 minutes, $150 an hour, or $1,250 for a 10-hour pack, after a free 30-minute call. This page lists those prices and does not quote another firm.</p><p>Checked ${CONSULT_COST_CHECKED}. <a href="${HIVE_CONSULT_URL}">Book the free 30</a> or call ${CONSULT_DISPLAY}.</p></div></main>`,
-  },
-  ...CONSULT_COMPARE_PAGES.map((page) => ({
-    path: page.path,
-    title: page.title,
-    description: page.description,
-    h1: page.h1,
-    bodyHtml: `<main id="route-${page.path.split("/").pop()!.replace(/[^a-z]/g, "")}" class="section"><div class="container"><h1 class="display">${page.h1}</h1><p class="lede">${page.lede}</p><p>${page.actions ? page.actions.map((a) => `<a href="${a.href}">${a.label}</a>`).join(" · ") : `<a href="${HIVE_CONSULT_URL}">Book the free 30</a> or call ${CONSULT_DISPLAY}.`}</p></div></main>`,
-  })),
   {
     path: "/concierge",
-    title: `AI Concierge: fractional AI advisor, ${CONCIERGE_PRICE} | AgentHive Inc`,
+    title: `Fractional AI Ops Retainer, ${CONCIERGE_PRICE} | AgentHive Inc`,
     description:
-      "A senior AI operator for funded teams' leadership, $2,000/mo: two 45-minute sessions, unlimited async help and a shared asset inventory. Month to month.",
-    h1: "A senior operator in the room, and assets your team keeps.",
-    bodyHtml: `<main id="route-concierge" class="section"><div class="container"><h1 class="display">A senior operator in the room, and assets your team keeps.</h1><p class="lede">Make the AI work look like the rest of the company.</p><p class="lede">Daniel Graham works with your leadership in two sessions a month, plus a direct line between them. You leave with finished work and a shared inventory, not a PDF of prompts. Start with a free 15–30 minute call.</p><p>Included: 2 × 45-minute sessions a month, unlimited async help between them, and a shared inventory of every skill, automation and asset we build. ${CONCIERGE_NAME} is ${CONCIERGE_PRICE}, month to month.</p><p>If ${FD_NAME} or hourly packs fit better, those stay open. ${CONSULT_RATES}. ${FD_PRICE_LINE}</p>    <p><a href="${BOOK_HREF}">Free 15–30 minute bottleneck call</a> · <a href="${CONCIERGE_GO_HREF}">Start ${CONCIERGE_NAME}</a> · <a href="tel:${CONSULT_TEL}">${PHONE_DISPLAY}</a></p></div></main>`,
+      "Fractional AI ops, $3,500/mo: monitoring of agent spend and failures, a 1-business-day response time, a monthly report and async help. Teams of 30 to 200.",
+    h1: "Someone watching your AI spend and failures, every business day.",
+    bodyHtml: `<main id="route-concierge" class="section"><div class="container"><h1 class="display">Someone watching your AI spend and failures, every business day.</h1><p class="lede">For CTOs and COOs at funded teams of 30 to 200. Daniel Graham monitors your agents, routines and keys, answers within 1 business day, and sends a monthly report.</p><p>Included: active monitoring of agent spend and failures, a 1-business-day response time, a monthly spend and reliability report, and async help. ${CONCIERGE_NAME} is ${CONCIERGE_PRICE}, month to month.</p><p>${FD_PRICE_LINE_HTML}</p><p><a href="${CONCIERGE_GO_HREF}">Start the retainer, ${CONCIERGE_PRICE}</a> · <a href="${BOOK_HREF}">${BOOK_CTA_LABEL}</a> · <a href="tel:${CONSULT_TEL}">${PHONE_DISPLAY}</a></p></div></main>`,
   },
   {
     path: "/concierge/vs-hiring",
-    title: "AI Concierge vs hiring an in-house AI person | AgentHive Inc",
+    title: "Fractional AI ops retainer vs hiring an in-house AI ops person | AgentHive Inc",
     description:
-      "AI Concierge is $2,000/mo. BLS May 2025 median wages: software developers $135,980, IT managers $175,140. No agency price quoted.",
-    h1: "Concierge vs hiring an in-house AI person",
-    bodyHtml: `<main id="route-hiring" class="section"><div class="container"><h1 class="display">Concierge vs hiring an in-house AI person</h1><p class="lede">${CONCIERGE_NAME} is ${CONCIERGE_PRICE}. Twelve months is $24,000. The Bureau of Labor Statistics median annual wage for software developers was $135,980 in May 2025, and for computer and information systems managers $175,140. Both are wages, not benefits. Checked October 4, 2026. This page does not quote an agency price.</p><p>${DANIEL_BIO}</p><p><a href="${BRAND_URL}/consult">Consult</a> · <a href="${CONCIERGE_URL}">${CONCIERGE_NAME}</a> · <a href="${DANIEL_URL}">About Daniel Graham</a></p></div></main>`,
+      "The Fractional AI Ops Retainer is $3,500/mo. BLS May 2025 median wages: software developers $135,980, IT managers $175,140. No agency price quoted.",
+    h1: "The retainer vs hiring an in-house AI ops person",
+    bodyHtml: `<main id="route-hiring" class="section"><div class="container"><h1 class="display">The retainer vs hiring an in-house AI ops person</h1><p class="lede">The ${CONCIERGE_NAME} is ${CONCIERGE_PRICE}. Twelve months is $42,000. The Bureau of Labor Statistics median annual wage for software developers was $135,980 in May 2025, and for computer and information systems managers $175,140. Both are wages, not benefits. Checked October 4, 2026. This page does not quote an agency price.</p><p>${DANIEL_BIO}</p><p><a href="${BRAND_URL}/consult">The $2,500 sprint</a> · <a href="${CONCIERGE_URL}">${CONCIERGE_NAME}</a> · <a href="${DANIEL_URL}">About Daniel Graham</a></p></div></main>`,
   },
   {
     path: "/disclosure",
@@ -182,9 +169,9 @@ export const PAGE_SEO: SeoPage[] = [
 export const NOT_FOUND_SEO: SeoPage = {
   path: "/404",
   title: "Page not found | AgentHive Inc",
-  description: `That path is not an AgentHive Inc page. Home, About, The Buzz, Rankings, Custom Builds, Consult, and AI Concierge are live on agenthiveinc.com.`,
+  description: `That path is not an AgentHive Inc page. Home, the $2,500 Sprint, the $3,500/mo Retainer, About, The Buzz and Rankings are live on agenthiveinc.com.`,
   h1: "This page is not on agenthiveinc.com",
-  bodyHtml: `<main id="route-404" class="section"><div class="container"><h1 class="display">This page is not on agenthiveinc.com</h1><p>Home, About, The Buzz, Rankings, Custom Builds, Consult, and AI Concierge are the live AgentHive Inc pages.</p></div></main>`,
+  bodyHtml: `<main id="route-404" class="section"><div class="container"><h1 class="display">This page is not on agenthiveinc.com</h1><p>Home, the $2,500 Sprint, the $3,500/mo Retainer, About, The Buzz and Rankings are the live AgentHive Inc pages.</p></div></main>`,
   noindex: true,
 };
 
@@ -280,6 +267,15 @@ export function organizationJsonLd() {
         telephone: CONSULT_DISPLAY,
         address,
         sameAs: [...ORG_SAME_AS],
+        hasOfferCatalog: {
+          "@type": "OfferCatalog",
+          name: "AI ops for funded teams",
+          itemListElement: [
+            { "@type": "Offer", name: "Free 15-minute Architecture & Spend Triage", price: "0.00", priceCurrency: "USD", url: BOOK_HREF },
+            { "@type": "Offer", name: SPRINT_NAME, description: "Fixed price, delivered in 5 business days. Cut AI agent spend and stop loops, drift and redundant runs.", price: SPRINT_PRICE_AMOUNT, priceCurrency: "USD", url: `${BRAND_URL}/consult` },
+            monthlyOffer(CONCIERGE_NAME, CONCIERGE_PRICE_AMOUNT, CONCIERGE_URL),
+          ],
+        },
       },
       {
         "@type": "LocalBusiness",
@@ -292,7 +288,7 @@ export function organizationJsonLd() {
         address,
         areaServed: "US",
         parentOrganization: { "@id": orgId },
-        description: `${BRAND_NAME} is a done-for-you AI operator for funded teams: AI Ad Sprint, AI Concierge, and Picks. ${ADDRESS_LINE}.`,
+        description: `${BRAND_NAME} is AI ops for funded teams of 30 to 200: a free 15-minute triage, a $2,500 Agent Audit & Stabilization Sprint delivered in 5 business days, and a $3,500/mo Fractional AI Ops retainer. ${ADDRESS_LINE}.`,
       },
     ],
   };
@@ -374,7 +370,7 @@ export function jsonLdFor(page: SeoPage): object | null {
     const crumbs = parentIsConcierge
       ? [
           { "@type": "ListItem", position: 1, name: "AgentHive Inc", item: `${BRAND_URL}/` },
-          { "@type": "ListItem", position: 2, name: "AI Concierge", item: CONCIERGE_URL },
+          { "@type": "ListItem", position: 2, name: "Fractional AI Ops Retainer", item: CONCIERGE_URL },
           { "@type": "ListItem", position: 3, name: aeo.h1, item: canonicalFor(aeo.path) },
         ]
       : [
@@ -398,7 +394,7 @@ export function jsonLdFor(page: SeoPage): object | null {
         danielPerson(),
         {
           "@type": "ProfessionalService",
-          name: `${BRAND_NAME} AI consulting`,
+          name: `${BRAND_NAME} ${SPRINT_NAME}`,
           url: HIVE_CONSULT_URL,
           provider: { "@id": `${BRAND_URL}/#organization` },
           founder: { "@id": DANIEL_ID },
@@ -409,12 +405,11 @@ export function jsonLdFor(page: SeoPage): object | null {
             addressRegion: ADDRESS_REGION,
             addressCountry: ADDRESS_COUNTRY,
           },
-          description: `Hands-on AI consulting for funded teams and their leaders. Free 30-minute call, then ${CONSULT_RATES}, or a 10-hour pack at $1,250 ($625 up front).`,
+          description: "A $2,500 fixed-price Agent Audit & Stabilization Sprint for funded teams of 30 to 200, delivered in 5 business days: cut AI agent spend and stop loops, drift and redundant runs. Free 15-minute triage first; $3,500/mo Fractional AI Ops retainer after.",
           offers: [
-            { "@type": "Offer", name: "Free 30-minute call", price: "0.00", priceCurrency: "USD" },
-            { "@type": "Offer", name: "30 minutes", price: "75.00", priceCurrency: "USD" },
-            { "@type": "Offer", name: "1 hour", price: "150.00", priceCurrency: "USD" },
-            { "@type": "Offer", name: "10-hour pack", price: "1250.00", priceCurrency: "USD" },
+            { "@type": "Offer", name: "Free 15-minute Architecture & Spend Triage", price: "0.00", priceCurrency: "USD", url: BOOK_HREF },
+            { "@type": "Offer", name: SPRINT_NAME, price: SPRINT_PRICE_AMOUNT, priceCurrency: "USD", url: `${BRAND_URL}${SPRINT_GO_HREF}` },
+            monthlyOffer(CONCIERGE_NAME, CONCIERGE_PRICE_AMOUNT, CONCIERGE_URL),
           ],
         },
         faqPage(CONSULT_FAQS),
@@ -484,12 +479,12 @@ export function jsonLdFor(page: SeoPage): object | null {
         {
           "@type": "Service",
           name: `${BRAND_NAME} ${CONCIERGE_NAME}`,
-          serviceType: "Fractional AI advisor",
+          serviceType: "Fractional AI operations",
           url: CONCIERGE_URL,
           provider: { "@id": `${BRAND_URL}/#organization` },
           areaServed: { "@type": "Country", name: "United States" },
           description:
-            "A senior AI operator on retainer for funded teams already paying for AI, and for founders and creators. Two 45-minute working sessions a month, unlimited async help and a shared asset inventory. Month to month.",
+            "Fractional AI ops for funded teams of 30 to 200: active monitoring of agent spend and failures, a 1-business-day response time, a monthly report and async help. Month to month.",
           offers: {
             ...monthlyOffer(CONCIERGE_NAME, CONCIERGE_PRICE_AMOUNT, CONCIERGE_URL),
             seller: { "@type": "Organization", name: BRAND_NAME, "@id": `${BRAND_URL}/#organization` },
@@ -534,7 +529,7 @@ export function jsonLdFor(page: SeoPage): object | null {
         danielPerson(),
         {
           "@type": "Article",
-          headline: "Concierge vs hiring an in-house AI person",
+          headline: "The retainer vs hiring an in-house AI ops person",
           author: { "@id": DANIEL_ID },
           publisher: { "@id": `${BRAND_URL}/#organization` },
           datePublished: "2026-10-04",

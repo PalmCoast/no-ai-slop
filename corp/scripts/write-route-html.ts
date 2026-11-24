@@ -7,8 +7,8 @@ import { ViteNodeRunner } from "vite-node/client";
 import { installSourcemapsSupport } from "vite-node/source-map";
 import { ViteNodeServer } from "vite-node/server";
 import { applyRouteHtml, NOT_FOUND_SEO, PAGE_SEO, sitemapIndexXml, sitemapXml } from "../shared/seo.ts";
-import { AEO_PAGES } from "../shared/aeo.ts";
-import { CONSULT_COMPARE_PAGES } from "../shared/consultCompare.ts";
+import { AEO_PAGES, RETIRED_AEO_PAGES } from "../shared/aeo.ts";
+import { CONSULT_COMPARE_PAGES, RETIRED_CONSULT_PATHS } from "../shared/consultCompare.ts";
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 const dist = join(root, "dist");
@@ -88,8 +88,9 @@ writeFileSync(
     "/build/ /build/index.html 200!",
     "/consult /consult/index.html 200!",
     "/consult/ /consult/index.html 200!",
-    "/consult/ai-consultant-cost /consult/ai-consultant-cost/index.html 200!",
-    "/consult/ai-consultant-cost/ /consult/ai-consultant-cost/index.html 200!",
+    // B2B reset 2026-11-24: retired old-ladder pages 301 to the new offer pages.
+    ...RETIRED_CONSULT_PATHS.flatMap((path) => [`${path} /consult 301!`, `${path}/ /consult 301!`]),
+    ...RETIRED_AEO_PAGES.flatMap((r) => [`${r.path} ${r.to} 301!`, `${r.path}/ ${r.to} 301!`]),
     ...CONSULT_COMPARE_PAGES.flatMap((page) => [`${page.path} ${page.path}/index.html 200!`, `${page.path}/ ${page.path}/index.html 200!`]),
     "/concierge /concierge/index.html 200!",
     "/concierge/ /concierge/index.html 200!",
@@ -108,12 +109,12 @@ writeFileSync(
     "/ads/thanks /ads/thanks/index.html 200!",
     "/ads/thanks/ /ads/thanks/index.html 200!",
     "/ads/index.html /ads 301!",
-    "/ads /go/ads-sprint 302!",
-    "/ads/ /go/ads-sprint 302!",
-    "/consult/north-star-ai-consultation-alternative /consult/ai-help-30-minute-blocks 301",
-    "/consult/north-star-ai-consultation-alternative/ /consult/ai-help-30-minute-blocks 301",
-    "/audit /consult/ai-audit-cost 301",
-    "/audit/ /consult/ai-audit-cost 301",
+    "/ads /consult 302!",
+    "/ads/ /consult 302!",
+    "/consult/north-star-ai-consultation-alternative /consult 301!",
+    "/consult/north-star-ai-consultation-alternative/ /consult 301!",
+    "/audit /consult 301!",
+    "/audit/ /consult 301!",
     "/* /404.html 404",
   ].join("\n") + "\n",
 );

@@ -2,26 +2,30 @@ import FdPath from "../components/FdPath";
 import AskAiBar from "../components/AskAiBar";
 import {
   BOOK_CTA_LABEL,
-  BRAND_NAME,
   BOOK_HREF,
   CONSULT_DISPLAY,
-  CONSULT_RATES,
   CONSULT_TEL,
-  PHONE_DISPLAY,
-  FD_CTA_LABEL,
+  FD_DEPLOY_AGENT_URL,
+  FD_FREIGHT_URL,
   FD_NAME,
-  FD_WHAT,
-  FD_PROMISE,
   FD_URL,
   HERO_H1,
   HERO_WHAT,
   INDEXME_BLURB,
   INDEXME_NAME,
-  PICKS_PATH,
+  SPRINT_GO_HREF,
 } from "../../shared/brand";
+import { CONCIERGE_GO_HREF } from "../../shared/concierge";
 import { HIVE_SITES } from "../../shared/portfolio";
 
 const PROOF_SLUGS = ["flick", "indexme", "bot-lock", "sonaris"];
+
+const FIXES = [
+  { h: "Loops and retries", p: "Agents that retry a failing call all night, or routines that keep triggering each other." },
+  { h: "Drift and redundant runs", p: "Scheduled jobs nobody owns anymore, and three bots doing the same check." },
+  { h: "Wrong model, no caching", p: "Frontier models on sorting work, and context that grows on every run." },
+  { h: "No caps, no owner", p: "Seats and API keys with no limits, no alerts, and nobody watching the bill." },
+];
 
 export default function Home() {
   const proof = HIVE_SITES.filter((site) => PROOF_SLUGS.includes(site.slug));
@@ -39,7 +43,7 @@ export default function Home() {
         </div>
         <div className="hero-copy">
           <div className="eyebrow">
-            <span className="dot" /> {BRAND_NAME} · AI consultant who builds · for funded teams
+            <span className="dot" /> AI ops for funded teams of 30 to 200
           </div>
           <h1 className="display" style={{ fontSize: "clamp(1.85rem, 4.2vw, 3.1rem)", lineHeight: 1.12 }}>
             {HERO_H1}
@@ -49,114 +53,86 @@ export default function Home() {
             <a className="btn btn-primary" href={BOOK_HREF}>
               {BOOK_CTA_LABEL}
             </a>
-            <a className="btn btn-primary" href="/concierge">
-              See AI Concierge
-            </a>
-            <a className="btn btn-ghost" href={`tel:${CONSULT_TEL}`}>
-              Talk at {PHONE_DISPLAY}
+            <a className="btn btn-outline" href="/consult">
+              See the $2,500 sprint
             </a>
           </div>
           <p className="fine">
-            {BOOK_CTA_LABEL}: a free 30-minute call, then {CONSULT_RATES}. Phone{" "}
-            <a href={`tel:${CONSULT_TEL}`}>{CONSULT_DISPLAY}</a>.
+            70+ live AI apps in production, built and run by Daniel Graham, a U.S. Army veteran with 10+ years in operations.
+          </p>
+        </div>
+      </section>
+
+      <section className="section" id="work">
+        <div className="container">
+          <div className="section-head">
+            <h2>Where the money goes</h2>
+            <p>The AI bill rarely climbs because of one big mistake. It climbs because of a handful of small ones nobody owns.</p>
+          </div>
+          <div className="trust-grid cols-2">
+            {FIXES.map((f) => (
+              <article key={f.h} className="trust card">
+                <h3>{f.h}</h3>
+                <p className="muted">{f.p}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="section section-alt" id="pricing">
+        <div className="container">
+          <div className="section-head">
+            <h2>Three steps, one price each</h2>
+            <p>
+              <FdPath />
+            </p>
+          </div>
+          <div className="trust-grid cols-3">
+            <article className="trust card">
+              <p className="eyebrow">01 · Free</p>
+              <h3>Architecture &amp; Spend Triage</h3>
+              <p className="muted">15 minutes. Bring last month’s bill. We tell you where the waste most likely is and whether the sprint pays for itself.</p>
+              <p style={{ marginTop: 12 }}>
+                <a className="btn btn-primary" href={BOOK_HREF}>
+                  Book the triage
+                </a>
+              </p>
+            </article>
+            <article className="trust card">
+              <p className="eyebrow">02 · $2,500 fixed</p>
+              <h3>Agent Audit &amp; Stabilization Sprint</h3>
+              <p className="muted">Delivered in 5 business days. We inventory every agent, routine and key, fix the loops, drift and redundant runs in your accounts, set caps, and hand back before-and-after numbers.</p>
+              <p style={{ marginTop: 12 }}>
+                <a className="btn btn-primary" href={SPRINT_GO_HREF} data-product="sprint2500" data-utm-source="dir" data-utm-medium="page" data-utm-content="ah-home-pricing">
+                  Start the sprint
+                </a>
+              </p>
+            </article>
+            <article className="trust card">
+              <p className="eyebrow">03 · $3,500/mo</p>
+              <h3>Fractional AI Ops Retainer</h3>
+              <p className="muted">Active monitoring of agent spend and failures, a 1-business-day response time, a monthly report, and async help. Month to month.</p>
+              <p style={{ marginTop: 12 }}>
+                <a className="btn btn-outline" href={CONCIERGE_GO_HREF} data-product="retainer3500" data-utm-source="dir" data-utm-medium="page" data-utm-content="ah-home-pricing">
+                  Start the retainer
+                </a>
+              </p>
+            </article>
+          </div>
+          <p className="fine" style={{ marginTop: 18 }}>
+            Same offer on <a href={FD_URL}>{FD_NAME}</a>. Building a B2B AI product? See <a href={FD_DEPLOY_AGENT_URL}>Deploy Agent</a>. Freight brokerage? See the <a href={FD_FREIGHT_URL}>freight ops proof</a>.
           </p>
         </div>
       </section>
 
       <AskAiBar />
 
-      <section className="section" id="work">
-        <div className="container">
-          <div className="section-head">
-            <h2>What funded teams buy</h2>
-            <p>
-              Done for you, to your brand. You see the finished work. The AI stays in the background where it belongs.
-            </p>
-          </div>
-          <div className="trust-grid cols-3">
-            <a className="trust card" href="/ads">
-              <h3>AI Ad Sprint</h3>
-              <p className="muted">
-                6 video ads and 6 image ads made from your product page, delivered in 72 hours. $297 one time, or $997/mo
-                for 20 new ads.
-              </p>
-            </a>
-            <a className="trust card" href="/concierge">
-              <h3>AI Concierge</h3>
-              <p className="muted">
-                A senior AI operator on retainer for your leadership team. $2,000/mo.
-              </p>
-            </a>
-            <a className="trust card" href="/consult">
-              <h3>Operator hours</h3>
-              <p className="muted">Free 30-minute call, then {CONSULT_RATES}. 10-hour pack $1,250 ($625 upfront).</p>
-            </a>
-          </div>
-          <div className="section-head" style={{ marginTop: 32 }}>
-            <h2>Built for operators</h2>
-          </div>
-          <div className="trust-grid cols-2">
-            <article className="trust card">
-              <h3>Deploy Agent</h3>
-              <p className="muted">A $1,250 go-live sprint that gets a B2B AI product working inside a customer's systems.</p>
-              <p className="muted" style={{ marginTop: 8 }}>
-                <a href="https://firstdeploy.ai/deploy-agent/">See Deploy Agent →</a>
-              </p>
-            </article>
-            <article className="trust card">
-              <h3>Freight Ops AI Agent</h3>
-              <p className="muted">A two-week proof of a custom AI agent for freight brokerages and 3PLs. $2,500 to start through Stripe, scoped per brokerage.</p>
-              <p className="muted" style={{ marginTop: 8 }}>
-                <a href="https://firstdeploy.ai/freight-ops-ai-agent/">See the freight proof →</a>
-              </p>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section className="section section-alt" id="buy">
-        <div className="container">
-          <div className="section-head">
-            <h2>Picks: look sharp, build a beast rig</h2>
-            <p>
-              Our Come and Take It tees and desk gear, plus the RAM, GPU, and gaming builds we would buy ourselves. One
-              page.
-            </p>
-          </div>
-          <div className="cta-split">
-            <article className="panel">
-              <p className="eyebrow">Look sharp</p>
-              <h2>Come and Take It</h2>
-              <p style={{ marginTop: 12 }}>
-                Tees from $24 and desk gear from Brooms.ai. Gear ships in 1–3 weeks.
-              </p>
-              <p className="muted" style={{ marginTop: 12 }}>
-                <a href={PICKS_PATH}>Shop Picks</a>
-              </p>
-            </article>
-            <article className="panel">
-              <p className="eyebrow">Build a beast rig</p>
-              <h2>RAM and rig deals</h2>
-              <p style={{ marginTop: 12 }}>
-                DDR5 and DDR4 kits with the store, price, and date checked, plus GPUs, CPUs, and gaming laptops.
-              </p>
-              <p className="muted" style={{ marginTop: 12 }}>
-                <a href="/ram-deals/">See RAM deals</a> · <a href={PICKS_PATH}>All picks</a>
-              </p>
-            </article>
-          </div>
-          <p className="fine" style={{ marginTop: 18 }}>
-            Also live: <a href={FD_URL}>{FD_NAME}</a>, {FD_WHAT}. <FdPath deployAgent />{" "}
-            {FD_PROMISE}. <a href={FD_URL}>{FD_CTA_LABEL}</a>.
-          </p>
-        </div>
-      </section>
-
       <section className="section" id="proof">
         <div className="container">
           <div className="section-head">
             <h2>Shipped and public</h2>
-            <p>Public apps we built and run. {INDEXME_NAME} is the {INDEXME_BLURB}. No client names.</p>
+            <p>A few of the 70+ live AI apps we built and run. {INDEXME_NAME} is the {INDEXME_BLURB}. No client names.</p>
           </div>
           <div className="card-grid cols-2">
             {proof.map((site) => (
@@ -175,14 +151,14 @@ export default function Home() {
       <section className="section section-alt">
         <div className="container">
           <div className="cta-box">
-            <h2>Start with a free 30-minute call</h2>
-            <p>Tell us what has to look finished this quarter. We tell you what we would build first and what it costs.</p>
+            <h2>Bring last month’s AI bill</h2>
+            <p>15 minutes, free. You leave knowing where the money most likely goes and whether the sprint is worth it.</p>
             <div className="hero-actions" style={{ justifyContent: "center", marginTop: 18, marginBottom: 0 }}>
               <a className="btn btn-primary" href={BOOK_HREF}>
                 {BOOK_CTA_LABEL}
               </a>
-              <a className="btn btn-primary" href={PICKS_PATH}>
-                Shop Picks
+              <a className="btn btn-outline" href="/consult">
+                See the $2,500 sprint
               </a>
             </div>
             <p className="fine" style={{ marginTop: 16 }}>

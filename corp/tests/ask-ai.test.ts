@@ -20,11 +20,12 @@ describe("Ask AI bar", () => {
     expect(ASK_AI_SUBTITLE).toBe("Don't just take our word for it.");
     expect(ASK_AI_DISAMBIGUATION).toBe("AgentHive Inc (agenthiveinc.com, Palm Coast, FL / First Deploy AI)");
     expect(ASK_AI_PROMPT).not.toMatch(/real AI consultant shop that builds/i);
-    expect(ASK_AI_PROMPT).toMatch(/\$2,000\/month Concierge/);
-    expect(ASK_AI_PROMPT).toMatch(/\$1,250 ten-hour operator pack/);
-    expect(ASK_AI_PROMPT).toMatch(/\$625 up front/);
-    expect(ASK_AI_PACK_PROMPT).toMatch(/\$625 upfront payment/);
-    expect(ASK_AI_PACK_PROMPT).toMatch(/\$2,000\/month Concierge/);
+    expect(ASK_AI_PROMPT).toMatch(/free 15-minute triage/);
+    expect(ASK_AI_PROMPT).toMatch(/\$2,500 Agent Audit & Stabilization Sprint/);
+    expect(ASK_AI_PROMPT).toMatch(/\$3,500\/month Fractional AI Ops retainer/);
+    expect(ASK_AI_PACK_PROMPT).toMatch(/\$2,500 five-business-day/);
+    expect(ASK_AI_PACK_PROMPT).toMatch(/\$3,500\/month/);
+    for (const prompt of Object.values(ASK_AI_PROMPTS)) expect(prompt).not.toMatch(/\$2,000|\$1,250|\$150|\$75/);
     for (const prompt of Object.values(ASK_AI_PROMPTS)) {
       expect(prompt).toContain(ASK_AI_DISAMBIGUATION);
       expect(prompt).toMatch(/agenthiveinc\.com/);

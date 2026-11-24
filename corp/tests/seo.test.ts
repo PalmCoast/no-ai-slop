@@ -7,6 +7,7 @@ import { describe, expect, it } from "vitest";
 import { DANIEL_LINKEDIN_URL, LEGAL_NAME, LINKEDIN_URL } from "../shared/brand";
 import { render } from "../src/entry-server";
 import { applyRouteHtml, canonicalFor, jsonLdFor, organizationJsonLd, PAGE_SEO, sitemapIndexXml, sitemapXml } from "../shared/seo";
+import { RETIRED_CONSULT_PATHS } from "../shared/consultCompare";
 
 const corpRoot = fileURLToPath(new URL("..", import.meta.url));
 
@@ -51,14 +52,15 @@ describe("per-route SEO", () => {
     expect(home).toContain('id="route-home"');
     expect(home).toContain("First Deploy");
     expect(home).toContain("IndexMe.lol");
-    expect(home).toContain("AI consultant who builds");
+    expect(home).toContain("70+ live AI apps in production");
     expect(home).toContain("funded");
     expect(home).not.toMatch(/field operations|dirt, plants|HVAC|plumb|roofing|Flagler|Volusia/i);
-    expect(home).toContain('href="/picks/"');
-    expect(home).toContain("Start First Deploy");
-    expect(home).toContain("Book the free 30");
+    expect(home).not.toMatch(/href="\/picks\/"|AI Ad Sprint|RAM &amp; rig|\$75|\$150 |\$2,000|whop/i);
+    expect(home).toContain("Book the free 15-minute triage");
+    expect(home).toContain("$2,500");
+    expect(home).toContain("$3,500/mo");
     expect(home).toContain(
-      'Products: <a href="/picks/">Picks</a> · <a href="/ads">AI Ad Sprint</a> · <a href="/concierge">AI Concierge</a> · <a href="https://firstdeploy.ai/deploy-agent/">Deploy Agent</a> · <a href="https://firstdeploy.ai/freight-ops-ai-agent/">Freight Ops AI Agent</a> · <a href="https://firstdeploy.ai">First Deploy</a> · <a href="https://burnbook.firstdeploy.ai/">Burn Book</a> · <a href="https://cardbutler.firstdeploy.ai/">Card Butler</a> · <a href="/ram-deals/">RAM &amp; rig deals</a>',
+      'Products: <a href="https://firstdeploy.ai">First Deploy AI</a> · <a href="/consult">Agent Audit &amp; Stabilization Sprint</a> · <a href="/concierge">Fractional AI Ops Retainer</a> · <a href="https://firstdeploy.ai/deploy-agent/">Deploy Agent</a> · <a href="https://firstdeploy.ai/freight-ops-ai-agent/">Freight Ops AI Agent</a> · <a href="https://burnbook.firstdeploy.ai/">Burn Book</a> · <a href="https://cardbutler.firstdeploy.ai/">Card Butler</a>',
     );
     expect(home).toContain("IndexNow");
     expect(about).toContain("tel:+13203356186");
@@ -66,17 +68,19 @@ describe("per-route SEO", () => {
     const consult = applyRouteHtml(shell, PAGE_SEO.find((page) => page.path === "/consult")!);
     expect(consult).toContain('id="route-consult"');
     expect(consult).toContain('rel="canonical" href="https://agenthiveinc.com/consult"');
-    expect(consult).toContain("<h1 class=\"display\">An operator in the room, not another deck.</h1>");
-    expect(consult).toContain("$75");
+    expect(consult).toContain("<h1 class=\"display\">Cut agent spend and stop the loops. $2,500, 5 business days.</h1>");
+    expect(consult).toContain("/go/sprint");
+    expect(consult).not.toMatch(/\$75|\$150|\$1,250/);
     expect(consult).toContain("https://agenthiveinc.com/concierge");
     const concierge = applyRouteHtml(shell, PAGE_SEO.find((page) => page.path === "/concierge")!);
     expect(concierge).toContain('id="route-concierge"');
     expect(concierge).toContain('rel="canonical" href="https://agenthiveinc.com/concierge"');
     expect(concierge).toContain('property="og:url" content="https://agenthiveinc.com/concierge"');
-    expect(concierge).toContain('property="og:title" content="AI Concierge: fractional AI advisor, $2,000/mo | AgentHive Inc"');
-    expect(concierge).toContain("/go/concierge");
+    expect(concierge).toContain('property="og:title" content="Fractional AI Ops Retainer, $3,500/mo | AgentHive Inc"');
+    expect(concierge).toContain("/go/retainer");
     expect(concierge).not.toContain("https://buy.stripe.com/6oUeVd7YM3qH0Ylbuq2ZO1u");
-    expect(concierge).toContain("$2,000/mo");
+    expect(concierge).toContain("$3,500/mo");
+    expect(concierge).not.toContain("$2,000");
     expect(concierge).toContain("funded teams");
     expect(concierge).not.toMatch(/Slack|owners|didn’t stick/);
     expect(JSON.stringify(jsonLdFor(PAGE_SEO.find((page) => page.path === "/concierge")!))).not.toMatch(/Slack|owners/);
@@ -104,13 +108,14 @@ describe("per-route SEO", () => {
     const ids = pages.map((html) => html.match(/id="route-[a-z]+"/)?.[0]);
     expect(new Set(hashes).size).toBe(PAGE_SEO.length);
     expect(new Set(ids).size).toBe(PAGE_SEO.length);
-    expect(pages[0]).toContain("$150 burn-audit hour");
-    expect(pages[0]).toContain("/go/ads-sprint");
+    expect(pages[0]).toContain("$2,500 Agent Audit &amp; Stabilization Sprint");
+    expect(pages[0]).toContain("/go/sprint");
     expect(pages[0]).not.toContain("https://buy.stripe.com/eVq9ATbaY6CT6iF7ea2ZO1g");
+    expect(pages.filter((html) => !html.includes('id="route-ads')).join("")).not.toMatch(/\$75 |\$150 |\$2,000|10-hour pack|burn-audit hour/);
     expect(pages.join("")).not.toMatch(/founding|first 5 businesses|\$250 one-time/i);
     expect(pages[0]).not.toContain("1" + ",750");
     expect(pages[0]).not.toContain("$" + "250/mo");
-    expect(stripFreightPrice(pages.join(""))).not.toMatch(/\$2,?500|\$1,?500\s*\/\s*mo|firstdeploy\.dev/);
+    expect(stripFreightPrice(pages.join(""))).not.toMatch(/\$1,?500\s*\/\s*mo|firstdeploy\.dev/);
     expect(pages[1]).toContain("Palm Coast, FL");
     expect(pages.join("")).not.toContain("32137");
     expect(pages.join("")).not.toContain("Barrington");
@@ -152,7 +157,7 @@ describe("per-route SEO", () => {
     expect(txt).not.toMatch(/mailto:|daniel@agenthiveinc\.com/);
     expect(txt).not.toMatch(/coltsinsider@gmail\.com/);
     expect(txt).toContain("https://flick.firstdeploy.ai/");
-    expect(txt).toContain("https://agenthiveinc.com/picks/");
+    expect(txt).not.toContain("https://agenthiveinc.com/picks/");
     expect(txt).not.toMatch(/HVAC|plumb|roofer|roofing|electrician|landscap|Flagler|Volusia|field operations|dirt/i);
     expect(txt).not.toMatch(/askyard|claudefarm/i);
     // Raw Payment Links stay out of llms.txt. $150 audit uses the existing /go/ads-sprint route;
@@ -161,7 +166,8 @@ describe("per-route SEO", () => {
     expect(stripe).toEqual([]);
     expect(txt).toContain("https://agenthiveinc.com/disclosure");
     expect(txt).toContain("https://firstdeploy.ai/");
-    expect(txt).toContain("https://agenthiveinc.com/go/ads-sprint");
+    expect(txt).toContain("https://agenthiveinc.com/go/sprint");
+    expect(txt).toContain("https://agenthiveinc.com/go/retainer");
     expect(txt).not.toContain("https://agenthiveinc.com/ads)");
     expect(txt).not.toContain("$297 one time");
     expect(txt).toContain("+1 320-335-6186");
@@ -169,12 +175,11 @@ describe("per-route SEO", () => {
     expect(txt).not.toContain("1" + ",750");
     expect(txt).not.toContain("$" + "250/mo");
     expect(txt).toContain("IndexNow");
-    expect(txt).toContain("funded companies");
-    expect(txt).toContain("$150 burn-audit hour (https://agenthiveinc.com/go/ads-sprint)");
-    expect(txt).toContain("$625 deposit (https://agenthiveinc.com/consult#pricing)");
+    expect(txt).toContain("funded teams of 30 to 200");
+    expect(txt).toContain("70+ live AI apps in production");
+    expect(txt).not.toMatch(/\$75|\$150|\$2,000|10-hour pack|burn-audit/);
     expect(txt).toContain("https://agenthiveinc.com/concierge");
-    expect(txt).toContain("https://agenthiveinc.com/muscle-memory-bot-template/");
-    expect(txt).toContain("https://agenthiveinc.com/github-repo-to-windows-exe/");
+    expect(txt).not.toMatch(/whop\.com/i);
     expect(txt).not.toMatch(/founding|first 5|\$250/i);
     expect(txt).toContain("https://firstdeploy.ai");
     expect(txt).toContain("https://agenthiveinc.com/consult");
@@ -221,23 +226,28 @@ describe("per-route SEO", () => {
     expect(home.description.length).toBeLessThanOrEqual(155);
     expect(about.description.length).toBeLessThanOrEqual(155);
     expect(concierge.description.length).toBeLessThanOrEqual(155);
-    expect(consult.description).toContain("$1,250");
+    expect(consult.description).toContain("$2,500");
+    expect(consult.description.length).toBeLessThanOrEqual(175);
     expect(PAGE_SEO.find((page) => page.path === "/rankings")?.noindex).toBe(true);
     expect(PAGE_SEO.find((page) => page.path === "/build")?.noindex).toBe(true);
     const consultLd = JSON.stringify(jsonLdFor(consult));
     expect(consultLd).toContain("ProfessionalService");
-    expect(consultLd).toContain('"price":"75.00"');
-    expect(consultLd).toContain('"price":"150.00"');
-    expect(consultLd).toContain('"price":"1250.00"');
+    expect(consultLd).toContain('"price":"0.00"');
+    expect(consultLd).toContain('"price":"2500.00"');
+    expect(consultLd).toContain('"price":"3500.00"');
+    expect(consultLd).not.toMatch(/"price":"(75|150|1250|2000)\.00"/);
     expect(consultLd).toContain("Daniel Graham");
     expect(consultLd).not.toContain("LocalBusiness");
     const conciergeLd = JSON.stringify(jsonLdFor(concierge));
     expect(conciergeLd).toContain("UnitPriceSpecification");
-    expect(conciergeLd).toContain("2000.00");
+    expect(conciergeLd).toContain("3500.00");
     expect(conciergeLd).toContain("FAQPage");
     const homeLd = JSON.stringify(jsonLdFor(home));
     expect(homeLd).toContain("Organization");
     expect(homeLd).toContain("Palm Coast");
+    expect(homeLd).toContain("OfferCatalog");
+    expect(homeLd).toContain("2500.00");
+    expect(homeLd).toContain("3500.00");
   });
 
   it("prerenders the main copy into static HTML", () => {
@@ -247,80 +257,46 @@ describe("per-route SEO", () => {
       expect(words.length).toBeGreaterThan(250);
     }
     const consult = render("/consult");
-    expect(consult).toContain("What you get");
-    expect(consult).toContain("How it works");
-    expect(consult).toContain("what an AI consultant costs");
-    expect(consult).toContain("/consult/ai-consultant-cost");
-    for (const path of [
-      "/consult/ai-help-30-minute-blocks",
-      "/consult/ai-consultant-vs-agency-vs-fractional",
-      "/consult/ai-consultant-hourly-rate",
-      "/consult/free-ai-consultation",
-      "/consult/ai-audit-cost",
-    ]) {
-      expect(consult).toContain(`href="${path}"`);
+    expect(consult).toContain("What we fix");
+    expect(consult).toContain("How the 5 days run");
+    expect(consult).toContain("Pricing");
+    for (const path of RETIRED_CONSULT_PATHS) {
+      expect(consult).not.toContain(`href="${path}"`);
+      expect(sitemapXml()).not.toContain(`https://agenthiveinc.com${path}<`);
+      expect(PAGE_SEO.some((page) => page.path === path)).toBe(false);
     }
-    expect(consult).not.toContain("north-star-ai-consultation-alternative");
-    const blocks = PAGE_SEO.find((page) => page.path === "/consult/ai-help-30-minute-blocks")!;
-    expect(canonicalFor(blocks.path)).toBe("https://agenthiveinc.com/consult/ai-help-30-minute-blocks");
-    expect(sitemapXml()).toContain("https://agenthiveinc.com/consult/ai-help-30-minute-blocks");
-    expect(sitemapXml()).not.toContain("north-star-ai-consultation-alternative");
-    expect(readFileSync(join(corpRoot, "public/sitemap.xml"), "utf8")).toContain(
-      "https://agenthiveinc.com/consult/ai-help-30-minute-blocks",
-    );
-    expect(readFileSync(join(corpRoot, "public/llms.txt"), "utf8")).toContain(
-      "https://agenthiveinc.com/consult/ai-help-30-minute-blocks",
-    );
+    expect(readFileSync(join(corpRoot, "public/llms.txt"), "utf8")).not.toContain("/consult/ai-");
     const redirects = [
       readFileSync(join(corpRoot, "scripts/write-route-html.ts"), "utf8"),
       readFileSync(join(corpRoot, "netlify.toml"), "utf8"),
     ].join("\n");
-    expect(redirects).toContain(
-      "/consult/north-star-ai-consultation-alternative /consult/ai-help-30-minute-blocks 301",
-    );
-    expect(redirects).toContain('from = "/consult/north-star-ai-consultation-alternative"');
-    expect(redirects).toContain("status = 301");
-    expect(redirects).toContain("/audit /consult/ai-audit-cost 301");
-    expect(redirects).toContain("/audit/ /consult/ai-audit-cost 301");
+    expect(redirects).toContain("RETIRED_CONSULT_PATHS.flatMap");
+    expect(redirects).toContain("/audit /consult 301!");
     expect(redirects).toContain('from = "/audit"');
-    expect(redirects).toContain('from = "/audit/"');
-    expect(redirects).toContain('to = "/consult/ai-audit-cost"');
+    expect(redirects).toContain('to = "/consult"');
     expect(consult).not.toMatch(/live this week|or you don.t pay|guarantee/i);
     for (const href of [
       "https://calendar.google.com/calendar/appointments/schedules/AcZssZ08PSsZYPUrigPxN1Ax27CJh01QY8fjWo1mGYVhlX5vh0QUTqBzXF4NSNwDyLw487B8fNegD8JV",
       "tel:+13203356186",
-      "https://buy.stripe.com/fZufZh92Qf9p5eB2XU2ZO1h",
-      "/go/ads-sprint",
-      "https://buy.stripe.com/7sY9ATenabXd7mJ7ea2ZO1i",
+      "/go/sprint",
+      "/go/retainer",
     ]) expect(consult).toContain(href);
-    expect(consult).not.toContain("https://buy.stripe.com/eVq9ATbaY6CT6iF7ea2ZO1g");
-    const cost = render("/consult/ai-consultant-cost");
-    expect(cost).toContain("What an AI consultant costs a growing company");
-    expect(cost).not.toMatch(/North Star|AIessentials|iternal\.ai|CloudMotiv|Pareto Talent/);
-    expect(cost).not.toMatch(/href="https?:\/\/(?:www\.)?(northstarconsult\.ai|aiessentials\.us|carlosansonetti\.com|iternal\.ai|cloudmotiv\.ai|paretotalent\.com|richnashawaty\.com)/);
-    const hrefs = [...cost.matchAll(/href="(https?:[^"]+)"/g)].map((m) => m[1]);
-    for (const h of hrefs) expect(h).toMatch(/^(tel:\+13203356186|https:\/\/((\w+\.)?agenthiveinc\.com|calendar\.google\.com|ainexus360\.com|(\w+\.)?firstdeploy\.ai|www\.linkedin\.com|twelve\.tools|fazier\.com|launchaf\.com|join\.netlify\.com|higgsfield\.ai|mailcheap\.ai|t\.mercor\.com|refer\.micro1\.ai))/);
-    expect(cost).toContain("Where do these prices come from?");
-    expect(cost).not.toContain("Where do the comparison numbers come from?");
-    expect(cost).toContain("October 19, 2026");
-    expect(cost).toContain("$1,250");
-    expect(cost).not.toMatch(/live this week|or you don.t pay/i);
-    const costLd = JSON.stringify(jsonLdFor(PAGE_SEO.find((page) => page.path === "/consult/ai-consultant-cost")!));
-    expect(costLd).toContain("FAQPage");
-    expect(costLd).toContain("BreadcrumbList");
-    expect(consult).toContain("AI consulting");
-    expect(consult).toContain("$1,250");
-    expect(consult).toContain("ainexus360.com");
-    expect(consult).toContain("infrastructure.agenthiveinc.com");
+    for (const old of ["https://buy.stripe.com/fZufZh92Qf9p5eB2XU2ZO1h", "https://buy.stripe.com/eVq9ATbaY6CT6iF7ea2ZO1g", "https://buy.stripe.com/7sY9ATenabXd7mJ7ea2ZO1i", "/go/ads-sprint"]) {
+      expect(consult).not.toContain(old);
+    }
+    expect(consult).toContain("$2,500");
+    expect(consult).toContain("5 business days");
     expect(consult).toContain("Illustration: gold honeycomb boardroom");
     const concierge = render("/concierge");
-    expect(concierge).toContain("fractional AI advisor");
-    expect(concierge).toContain("$2,000/mo");
+    expect(concierge).toContain("1 business day");
+    expect(concierge).toContain("$3,500/mo");
+    expect(concierge).not.toContain("$2,000");
     expect(concierge).toContain("Daniel Graham");
     expect(concierge).not.toContain("consult-operator.jpg");
     const hiring = render("/concierge/vs-hiring");
     expect(hiring).toContain("$135,980");
     expect(hiring).toContain("$175,140");
+    expect(hiring).toContain("$42,000");
     expect(hiring).toContain("bls.gov");
     expect(hiring).toContain("does not quote an agency price");
   });

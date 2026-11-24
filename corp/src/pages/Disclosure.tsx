@@ -65,7 +65,7 @@ export default function Disclosure() {
 
         <h2>Client work</h2>
         <p>
-          On {FD_NAME} builds, consults and AI Concierge work we pick tools for the job. If we suggest a tool where we
+          On {FD_NAME} builds, sprints and retainer work we pick tools for the job. If we suggest a tool where we
           hold an affiliate link, we tell you before you sign up.
         </p>
 

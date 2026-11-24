@@ -1,6 +1,4 @@
-import FdPath from "../components/FdPath";
 import { Link } from "react-router-dom";
-import { CONSULT_COMPARE_PAGES } from "../../shared/consultCompare";
 import FaqList from "../components/FaqList";
 import { CONSULT_FAQS } from "../../shared/faqs";
 import {
@@ -10,42 +8,42 @@ import {
   CONSULT_TEL,
   FD_NAME,
   FD_URL,
+  SPRINT_GO_HREF,
 } from "../../shared/brand";
-import { CONSULT_COST_PATH, CONSULT_STRIPE_RATES } from "../../shared/consult";
-import { CONCIERGE_NAME, CONCIERGE_PATH, CONCIERGE_PRICE } from "../../shared/concierge";
+import { CONCIERGE_GO_HREF, CONCIERGE_NAME, CONCIERGE_PATH, CONCIERGE_PRICE } from "../../shared/concierge";
 
-const WHAT_YOU_GET = [
+const FIXES = [
   {
-    title: "A straight answer, free",
-    body: "Thirty minutes on the task that eats your week. You hear whether AI fits it, what would come first, and about how many hours it takes. If it does not fit, you hear that too.",
+    title: "Loops and runaway retries",
+    body: "An agent that retries a failing tool call all night, or two routines that trigger each other. We find them in the run logs and stop them.",
   },
   {
-    title: "The work, done with you",
-    body: "Paid hours go to setting things up, not to slides. Daniel builds on a shared screen while you watch, so you see how it works as it comes together.",
+    title: "Drift and redundant runs",
+    body: "Scheduled jobs that kept running after the project ended, or three bots doing the same check. We cut them and write down what each one is for.",
   },
   {
-    title: "Everything in your accounts",
-    body: "Tools, automations and assistants live under your logins. Any subscription is in your name, with the monthly cost known before you sign up.",
+    title: "The wrong model on the wrong job",
+    body: "Frontier models doing sorting work with no caching. We route the cheap work to cheap models and keep the hard work where it belongs.",
   },
   {
-    title: "One task at a time",
-    body: "We finish and test one job before starting the next, so every session leaves something working behind.",
+    title: "Context that grows every run",
+    body: "Agents that re-read long histories, whole documents and old tool output on every call. We trim what they carry.",
   },
   {
-    title: "Notes you keep",
-    body: "What was set up, where it lives, and the next step, written in plain language so your team can follow it.",
+    title: "No caps, no owner",
+    body: "Seats and API keys with no limits and nobody watching. We set caps and alerts and name an owner for each one.",
   },
   {
-    title: "Someone who builds",
-    body: "Daniel Graham has 10+ years in enterprise IT and telecom and builds and runs AgentHive Inc's own products, including First Deploy AI.",
+    title: "A report you can hand up",
+    body: "What we changed, before and after spend, and what still needs an owner, in plain language your CFO can read.",
   },
 ] as const;
 
-const STEPS = [
-  { title: "Book the free 30", body: "Book a 30-minute qualifier. Bring the one task you most want off your plate." },
-  { title: "Get a plan on the call", body: "You hear what we would do first and roughly how many hours it takes, before you pay anything." },
-  { title: "Choose your time", body: "Buy 30 minutes, an hour, or the 10-hour pack on Stripe. No contract." },
-  { title: "We build it together", body: "Sessions run by video in your accounts. Keep going, add hours, or stop when the job is done." },
+const DAYS = [
+  { title: "Day 1: access and inventory", body: "Kickoff call, scoped access you grant and can revoke, and an inventory of every agent, routine, seat and API key: owner, schedule, model, cost." },
+  { title: "Days 2 to 4: fixes", body: "We fix what is burning money in your accounts, with your approval on anything that changes production. Caps and alerts go in." },
+  { title: "Day 5: the report", body: "A written report with before and after spend, what we changed, what we left running, and what to watch next." },
+  { title: "After: keep it fixed", body: `Stop there, or move to the ${CONCIERGE_PRICE} retainer and we watch spend and failures every business day.` },
 ] as const;
 
 export default function Consult() {
@@ -53,35 +51,27 @@ export default function Consult() {
     <>
       <section className="hero consult-hero">
         <div className="hero-media">
-          <img
-            src="/brand/consult-operator.webp"
-            alt="Illustration: gold honeycomb boardroom"
-            width={1400}
-            height={930}
-          />
+          <img src="/brand/consult-operator.webp" alt="Illustration: gold honeycomb boardroom" width={1400} height={930} />
         </div>
         <div className="hero-copy">
           <div className="eyebrow">
-            <span className="dot" /> AI consulting for funded teams and their leaders
+            <span className="dot" /> Agent Audit &amp; Stabilization Sprint
           </div>
-          <h1 className="display">
-            An operator in the room, not another deck.
-          </h1>
+          <h1 className="display" style={{ fontSize: "clamp(1.85rem, 4.2vw, 3.1rem)", lineHeight: 1.12 }}>Cut agent spend and stop the loops. $2,500, 5 business days.</h1>
           <p className="lede">
-            Sit with Daniel Graham. The free call gives you a straight answer. Paid time leaves something working, with
-            notes your team can follow.
+            A fixed-price sprint for CTOs and COOs whose AI bill keeps climbing. Daniel Graham audits your agents, routines
+            and seats, fixes what is burning money in your accounts, and hands back a before-and-after report.
           </p>
           <div className="hero-actions">
-            <a className="btn btn-primary" href={BOOK_HREF}>
-              {BOOK_CTA_LABEL}
+            <a className="btn btn-primary" href={SPRINT_GO_HREF} data-product="sprint2500" data-utm-source="dir" data-utm-medium="page" data-utm-content="ah-consult-hero">
+              Start the sprint, $2,500
             </a>
-            <a className="btn btn-outline" href={`tel:${CONSULT_TEL}`}>
-              Call {CONSULT_DISPLAY}
+            <a className="btn btn-outline" href={BOOK_HREF}>
+              {BOOK_CTA_LABEL}
             </a>
           </div>
           <p className="fine">
-            Free 30 minutes · then $75 / 30 min · $150 / hour · 10-hour pack $1,250 ($625 up front).{" "}
-            <a href="#pricing">See pricing</a>
+            70+ live AI apps in production. Not sure yet? The 15-minute triage is free. <a href="#pricing">See pricing</a>
           </p>
         </div>
       </section>
@@ -89,11 +79,11 @@ export default function Consult() {
       <section className="section" id="what-you-get">
         <div className="container">
           <div className="section-head">
-            <h2>What you get</h2>
-            <p>Hands-on AI help for funded teams’ leadership who want the work done, not a report about it.</p>
+            <h2>What we fix</h2>
+            <p>The same handful of problems show up in almost every team’s AI stack. They are cheap to fix once someone looks.</p>
           </div>
           <div className="trust-grid consult-get">
-            {WHAT_YOU_GET.map((item) => (
+            {FIXES.map((item) => (
               <article key={item.title} className="trust">
                 <h3>{item.title}</h3>
                 <p className="muted">{item.body}</p>
@@ -106,11 +96,11 @@ export default function Consult() {
       <section className="section section-alt" id="how-it-works">
         <div className="container">
           <div className="section-head">
-            <h2>How it works</h2>
-            <p>Four steps. You can stop after any of them.</p>
+            <h2>How the 5 days run</h2>
+            <p>The clock starts at kickoff. You approve anything that touches production.</p>
           </div>
           <ol className="steps steps-4">
-            {STEPS.map((step, i) => (
+            {DAYS.map((step, i) => (
               <li key={step.title} className="trust">
                 <p className="step-num">{i + 1}</p>
                 <h3>{step.title}</h3>
@@ -118,11 +108,6 @@ export default function Consult() {
               </li>
             ))}
           </ol>
-          <div className="hero-actions" style={{ marginTop: 22 }}>
-            <a className="btn btn-primary" href={BOOK_HREF}>
-              {BOOK_CTA_LABEL}
-            </a>
-          </div>
         </div>
       </section>
 
@@ -130,59 +115,54 @@ export default function Consult() {
         <div className="container">
           <div className="section-head">
             <h2>Pricing</h2>
-            <p>Start free. Pay only for the time you use.</p>
+            <p>Three steps, one price each. No hours to track.</p>
           </div>
           <article className="price-card" id="rates">
-            <p className="eyebrow">AI consulting with Daniel Graham</p>
+            <p className="eyebrow">Work with Daniel Graham</p>
             <p className="price-card__lead">
-              <span className="rate-amt">Free</span> first 30 minutes
+              <span className="rate-amt">$2,500</span> fixed, 5 business days
             </p>
             <ul className="price-card__rows">
               <li>
-                <span>Free 30-minute call</span>
-                <strong>$0</strong>
-                <a className="btn btn-primary" href={BOOK_HREF}>
-                  {BOOK_CTA_LABEL}
+                <span>
+                  Architecture &amp; Spend Triage
+                  <small className="muted"> 15 minutes. Where the money is most likely going, and whether the sprint pays for itself.</small>
+                </span>
+                <strong>Free</strong>
+                <a className="btn btn-outline" href={BOOK_HREF}>
+                  Book →
                 </a>
               </li>
-              {CONSULT_STRIPE_RATES.map((rate) => (
-                <li key={rate.slug}>
-                  <span>
-                    {rate.name}
-                    <small className="muted"> {rate.note}</small>
-                  </span>
-                  <strong>{rate.amount}</strong>
-                  <a
-                    className="btn btn-outline"
-                    href={rate.href}
-                    rel={rate.slug === "hour" ? "noopener" : "noreferrer"}
-                    target="_blank"
-                    {...(rate.slug === "hour"
-                      ? { "data-product": "audit150", "data-utm-source": "dir", "data-utm-medium": "page", "data-utm-content": "ah-consult-hour" }
-                      : rate.slug === "pack"
-                        ? { "data-product": "pack1250", "data-utm-source": "dir", "data-utm-medium": "page", "data-utm-content": "ah-consult-pack" }
-                        : { "data-utm-source": "dir", "data-utm-medium": "page", "data-utm-content": `ah-consult-${rate.slug}` })}
-                  >
-                    {rate.cta}
-                  </a>
-                </li>
-              ))}
+              <li>
+                <span>
+                  Agent Audit &amp; Stabilization Sprint
+                  <small className="muted"> Inventory, fixes in your accounts, caps and alerts, before-and-after report.</small>
+                </span>
+                <strong>$2,500</strong>
+                <a className="btn btn-primary" href={SPRINT_GO_HREF} data-product="sprint2500" data-utm-source="dir" data-utm-medium="page" data-utm-content="ah-consult-pricing">
+                  Start →
+                </a>
+              </li>
+              <li>
+                <span>
+                  {CONCIERGE_NAME}
+                  <small className="muted"> Monitoring of spend and failures, 1-business-day response, monthly report, async help.</small>
+                </span>
+                <strong>{CONCIERGE_PRICE}</strong>
+                <a className="btn btn-outline" href={CONCIERGE_GO_HREF} data-product="retainer3500" data-utm-source="dir" data-utm-medium="page" data-utm-content="ah-consult-pricing">
+                  Start →
+                </a>
+              </li>
             </ul>
-            <p className="fine">
-              Paid on Stripe. No contract. The 10-hour pack works out to $125 an hour.
-            </p>
+            <p className="fine">Paid on Stripe. The sprint is paid up front; the retainer is month to month.</p>
           </article>
-          <p className="fine" style={{ marginTop: 18 }}>
-            How do these rates compare? See{" "}
-            <Link to={CONSULT_COST_PATH}>what an AI consultant costs</Link>, with the ranges other firms publish.
-          </p>
           <div className="continuity-bridge">
             <p>
-              Need someone every month? <Link to={CONCIERGE_PATH}>{CONCIERGE_NAME}</Link> is the {CONCIERGE_PRICE}{" "}
-              retainer. Want to find what’s burning your AI agent spend first? <a href={FD_URL}>{FD_NAME}</a>: <FdPath />
+              Want someone watching it every month? See the <Link to={CONCIERGE_PATH}>{CONCIERGE_NAME}</Link>. The same
+              ladder runs on <a href={FD_URL}>{FD_NAME}</a>.
             </p>
             <Link className="btn btn-outline" to={CONCIERGE_PATH}>
-              See the monthly retainer
+              See the retainer
             </Link>
           </div>
         </div>
@@ -191,46 +171,24 @@ export default function Consult() {
       <section className="section section-alt" id="faq">
         <div className="container">
           <div className="section-head">
-            <h2>Questions leadership teams ask</h2>
+            <h2>Questions CTOs and COOs ask</h2>
           </div>
           <FaqList items={CONSULT_FAQS} />
-        </div>
-      </section>
-
-      <section className="section" id="ai-consultant-cost">
-        <div className="container">
-          <p>
-            AI consulting from Palm Coast, Florida, by video for leaders anywhere in the US. Read{" "}
-            <Link to={CONSULT_COST_PATH}>what an AI consultant costs</Link> before you book. Related:{" "}
-            <Link to={CONCIERGE_PATH}>{CONCIERGE_NAME}</Link>, a{" "}
-            <a href="https://ainexus360.com/">fixed-fee audit</a> at AI Nexus 360,{" "}
-            <a href="https://infrastructure.agenthiveinc.com/">telco and network work</a> at Seat &amp; Circuit, and{" "}
-            <Link to="/concierge/vs-hiring">Concierge vs hiring</Link>.
-          </p>
-          <p>
-            Comparisons:{" "}
-            {CONSULT_COMPARE_PAGES.map((page, i) => (
-              <span key={page.path}>
-                {i > 0 ? " · " : ""}
-                <Link to={page.path}>{page.neutral}</Link>
-              </span>
-            ))}
-            .
-          </p>
         </div>
       </section>
 
       <section className="section">
         <div className="container cta-split">
           <div>
-            <div className="eyebrow">{BOOK_CTA_LABEL}</div>
+            <div className="eyebrow">Free, 15 minutes</div>
             <h2 className="display" style={{ fontSize: "clamp(2.2rem, 5vw, 3.6rem)" }}>
-              Bring one task.
+              Bring last month’s bill.
               <br />
-              <em>Leave with a plan.</em>
+              <em>Leave knowing where it went.</em>
             </h2>
             <p className="lede">
-              Thirty minutes, free. If AI can take the job, you will know what it costs to set up before you pay.
+              We look at your bill and your stack and tell you where the waste most likely is, and whether the sprint will pay
+              for itself. If it won’t, we say so.
             </p>
             <div className="hero-actions">
               <a className="btn btn-primary" href={BOOK_HREF}>
@@ -242,13 +200,7 @@ export default function Consult() {
             </div>
           </div>
           <div className="frame consult-frame">
-            <img
-              src="/brand/consult-operator.webp"
-              alt="Illustration: gold honeycomb boardroom"
-              width={1400}
-              height={930}
-              loading="lazy"
-            />
+            <img src="/brand/consult-operator.webp" alt="Illustration: gold honeycomb boardroom" width={1400} height={930} loading="lazy" />
           </div>
         </div>
       </section>

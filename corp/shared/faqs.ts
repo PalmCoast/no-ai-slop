@@ -1,98 +1,71 @@
 import { CONCIERGE_NAME, CONCIERGE_PRICE } from "./concierge.ts";
-import { CONSULT_RATES } from "./brand.ts";
 
 export type Faq = { q: string; a: string };
 
+/** /consult is the $2,500 Agent Audit & Stabilization Sprint page (B2B reset 2026-11-24). */
 export const CONSULT_FAQS: Faq[] = [
   {
-    q: "What happens on the free 30-minute call?",
-    a: "You describe the task that eats your week. Daniel Graham tells you plainly whether AI is a good fit for it, what he would do first, and roughly how many paid hours it takes. If it is not a fit, he says so and you owe nothing.",
+    q: "What happens on the free 15-minute triage?",
+    a: "You bring last month’s AI bill and a rough picture of your stack. Daniel Graham tells you where the waste most likely is and whether the $2,500 sprint will pay for itself. If it won’t, he says so and you owe nothing.",
   },
   {
-    q: "Do I need to be technical?",
-    a: "No. You know the business; Daniel handles the setup. Sessions are in plain language, on a shared screen, inside the tools you already use.",
+    q: "What does the $2,500 sprint include?",
+    a: "An inventory of every agent, routine, seat and API key; fixes for loops, drift, redundant runs and oversized models in your accounts; spend caps and alerts; and a written before-and-after report. Fixed price, delivered in 5 business days from kickoff.",
   },
   {
-    q: "What kind of work fits paid hours?",
-    a: "One clear task at a time: drafting quotes or replies, sorting an inbox, turning notes into documents, connecting two apps, setting up an AI assistant for your team, or picking which tools are worth paying for. Bigger builds are scoped on the call before any money changes hands.",
+    q: "What access do you need?",
+    a: "Scoped, read-first access you grant and can revoke: the billing views and the agent or routine configs in question. Anything that changes production waits for your approval.",
   },
   {
-    q: "Who owns what gets built?",
-    a: "You do. Work is set up in your accounts with your logins, and any tool subscription is in your name. If we stop working together, everything stays with you.",
-  },
-  {
-    q: "Is my customer data safe?",
-    a: "We decide together which data goes into which tool before anything is connected, and private details stay out of tools that are not approved for them. You keep the admin access.",
+    q: "Who owns the work?",
+    a: "You do. Changes are made in your accounts, the report is yours, and nothing runs on our infrastructure.",
   },
   {
     q: "How does billing work?",
-    a: `The first 30 minutes are free. After that, paid time is ${CONSULT_RATES}, paid on Stripe after the free call. The 10-hour pack is $1,250 ($125 an hour): $625 up front, the remainder when the hours start.`,
+    a: "The triage is free. The sprint is $2,500, paid up front on Stripe. The Fractional AI Ops retainer is $3,500 a month, month to month.",
   },
   {
-    q: "Is it remote or on-site?",
-    a: "Remote. Daniel Graham is based in Palm Coast, Florida, and every call and session runs by video, so leadership teams anywhere in the US can book. This page does not sell an on-site visit.",
+    q: "Is it remote?",
+    a: "Yes. Daniel Graham is based in Palm Coast, Florida, and works with teams anywhere in the US by video, message and email.",
   },
   {
-    q: "What if I need help every month?",
-    a: `${CONCIERGE_NAME} is the ${CONCIERGE_PRICE} retainer: two 45-minute sessions a month, unlimited async help, and a shared asset inventory. The hourly rates stay available if you only need a few hours.`,
+    q: "What happens after the sprint?",
+    a: `Stop there and keep the report, or move to the ${CONCIERGE_NAME} at ${CONCIERGE_PRICE}: monitoring of spend and failures, a 1-business-day response time, a monthly report and async help.`,
   },
 ];
 
+/** Kept for the retired /consult/ai-consultant-cost page source (route now 301s to /consult). */
 export const CONSULT_COST_FAQS: Faq[] = [
   {
-    q: "How much does an AI consultant cost for a growing company?",
-    a: "AgentHive Inc charges $75 for 30 minutes, $150 an hour, or $1,250 for 10 hours, after a free 30-minute call. This answer does not quote another firm's rate.",
-  },
-  {
-    q: "Is hourly or a fixed project better?",
-    a: "Hourly fits when the task is small or you want to learn alongside the work. A fixed project fits one defined build with a clear finish line. If you are not sure, the free 30-minute call is where that gets decided.",
-  },
-  {
-    q: "Why does the 10-hour pack cost less per hour?",
-    a: "The pack is $1,250 for 10 hours, which works out to $125 an hour instead of $150. You pay $625 up front and the remainder when the hours start.",
-  },
-  {
-    q: "Where do these prices come from?",
-    a: "The numbers on this page are AgentHive Inc prices published on the consult page. We are not quoting another firm.",
+    q: "What does AgentHive Inc charge?",
+    a: "A free 15-minute triage, a $2,500 fixed-price Agent Audit & Stabilization Sprint delivered in 5 business days, and a $3,500/mo Fractional AI Ops retainer.",
   },
 ];
 
 export const CONCIERGE_FAQS: Faq[] = [
   {
-    q: "What is included in AI Concierge?",
-    a: "Two 45-minute working sessions a month by video call, screen-share. Unlimited async help between them. A shared inventory of every skill, automation and asset we build. Intake before kickoff covers where time goes, the tools you already pay for, and the process list.",
+    q: "What is included in the Fractional AI Ops Retainer?",
+    a: "Active monitoring of agent spend and failures, a 1-business-day response time on anything we flag or you send, a monthly spend and reliability report, and async help by message or email.",
   },
   {
-    q: "What does AI Concierge cost?",
-    a: `${CONCIERGE_PRICE}, billed monthly. You’re not buying hours. The retainer is month to month.`,
+    q: "What does it cost?",
+    a: `${CONCIERGE_PRICE}, billed monthly on Stripe. Month to month.`,
   },
   {
-    q: "How does cancellation work?",
-    a: "Cancel any month after the first 30 days.",
+    q: "Do I need the sprint first?",
+    a: "Most teams start with the $2,500 sprint so monitoring starts on a clean, inventoried stack. If your stack is already tidy, the free triage is where we decide.",
+  },
+  {
+    q: "What is the response time?",
+    a: "1 business day. Spend spikes and broken production jobs go to the front. It is not a 24/7 pager.",
   },
   {
     q: "What is not included?",
-    a: "Unlimited custom software, staffing your team, or a black-box agency that runs without you.",
-  },
-  {
-    q: "Who is the fractional AI advisor for?",
-    a: "Founders, executives and department leads at funded teams of 30 to 200 who already pay for AI or software and want a partner on the calls, not a PDF of prompts.",
-  },
-  {
-    q: "What does the monthly price cover?",
-    a: "AI Concierge is $2,000 a month: two 45-minute sessions, unlimited async help between them, and a shared asset inventory. We don't quote another firm's rate.",
-  },
-  {
-    q: "Why not hire someone full time?",
-    a: "Twelve months of AI Concierge is $24,000. The Bureau of Labor Statistics median annual wage for software developers was $135,980 in May 2025, wages only. The Concierge vs hiring page has the full comparison.",
-  },
-  {
-    q: "What if a monthly retainer is the wrong fit?",
-    a: `Hourly consult stays open: ${CONSULT_RATES}, or a 10-hour pack for $1,250. Teams that want to find what’s burning their AI agent spend first can start with the First Deploy AI $150 burn-audit hour. The free call is where we say which one fits.`,
+    a: "Unlimited custom software, a 24/7 on-call pager, or staffing your team. Bigger builds are scoped separately.",
   },
   {
     q: "How do I start?",
-    a: "Call +1 320-335-6186 for a free 15 to 30 minute call, or start the subscription. Intake comes before the first session so it starts on the real problem.",
+    a: "Book the free 15-minute triage, or start the subscription and we send intake the same business day.",
   },
 ];
 
@@ -102,7 +75,7 @@ export const SOFTWARE_DEVELOPER_SOURCE =
   "https://www.bls.gov/ooh/computer-and-information-technology/software-developers.htm";
 export const IT_MANAGER_WAGE = 175_140;
 export const IT_MANAGER_SOURCE = "https://www.bls.gov/ooh/management/computer-and-information-systems-managers.htm";
-export const CONCIERGE_TWELVE_MONTHS = 24_000;
+export const CONCIERGE_TWELVE_MONTHS = 42_000;
 
 const developerWage = SOFTWARE_DEVELOPER_WAGE.toLocaleString("en-US");
 const managerWage = IT_MANAGER_WAGE.toLocaleString("en-US");
@@ -110,20 +83,20 @@ const year = CONCIERGE_TWELVE_MONTHS.toLocaleString("en-US");
 
 export const HIRING_FAQS: Faq[] = [
   {
-    q: "How much does AI Concierge cost for a year?",
-    a: `${CONCIERGE_NAME} is ${CONCIERGE_PRICE}. Twelve months at that rate is $${year}. It is month to month. Cancel any month after the first 30 days.`,
+    q: "How much does the retainer cost for a year?",
+    a: `The ${CONCIERGE_NAME} is ${CONCIERGE_PRICE}. Twelve months at that rate is $${year}. It is month to month.`,
   },
   {
     q: "What wage does the Bureau of Labor Statistics publish for a software developer?",
     a: `The median annual wage for software developers was $${developerWage} in May 2025. That figure is wages, not benefits, tools, or recruiting. Source: ${SOFTWARE_DEVELOPER_SOURCE} — checked ${BLS_CHECKED}.`,
   },
   {
-    q: "Is there a BLS wage for an AI consultant?",
-    a: `These BLS pages do not list an occupation named AI consultant. The closest published medians cited here are software developers ($${developerWage}) and computer and information systems managers ($${managerWage}), both May 2025.`,
+    q: "Is there a BLS wage for an AI ops lead?",
+    a: `These BLS pages do not list an occupation named AI ops. The closest published medians cited here are software developers ($${developerWage}) and computer and information systems managers ($${managerWage}), both May 2025.`,
   },
   {
     q: "When is hiring in-house the better fit?",
-    a: "When you need a person on payroll who does the work every day. AI Concierge is two 45-minute sessions a month plus async help between them, not a full-time employee.",
+    a: "When you need a person on payroll building AI every day. The retainer is monitoring, a 1-business-day response, a monthly report and async help, not a full-time employee.",
   },
   {
     q: "When is a large agency the better fit?",

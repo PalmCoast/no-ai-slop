@@ -58,31 +58,41 @@ describe("/go tracker", () => {
     expect(config.method).toEqual(["GET", "POST"]);
   });
 
-  it("hands First Deploy to the firstdeploy.ai tracker with from=x", () => {
-    expect(goTarget("first-deploy", "x")).toBe("https://firstdeploy.ai/go/start?from=x");
+  it("sends First Deploy to its pricing section", () => {
+    const u = new URL(goTarget("first-deploy", "x")!);
+    expect(u.origin + u.pathname + u.hash).toBe("https://firstdeploy.ai/#pay");
   });
 
-  it("tags Stripe links with client_reference_id and utm_source=x", () => {
-    const u = new URL(goTarget("concierge", "x")!);
-    expect(u.origin + u.pathname).toBe(GO_LINKS.concierge.url);
-    expect(u.searchParams.get("client_reference_id")).toBe("ah_x_concierge");
-    expect(u.searchParams.get("utm_source")).toBe("x");
+  it("tags the new sprint and retainer Stripe links with client_reference_id and utm_source=x", () => {
+    const sprint = new URL(goTarget("sprint", "x")!);
+    expect(sprint.origin + sprint.pathname).toBe("https://buy.stripe.com/6oU14n2Es6CTfTf7ea2ZO1V");
+    expect(sprint.searchParams.get("client_reference_id")).toBe("ah_x_sprint");
+    expect(sprint.searchParams.get("utm_source")).toBe("x");
+    const retainer = new URL(goTarget("retainer", "x")!);
+    expect(retainer.origin + retainer.pathname).toBe("https://buy.stripe.com/eVq5kD3Iw4uLePbfKG2ZO1W");
+    expect(retainer.searchParams.get("client_reference_id")).toBe("ah_x_retainer");
+    expect(GO_LINKS.sprint.kind).toBe("stripe");
+    expect(GO_LINKS.retainer.kind).toBe("stripe");
+    expect(GO_LINKS.sprint.label).toContain("$2,500");
+    expect(GO_LINKS.retainer.label).toContain("$3,500/mo");
+  });
+
+  it("lands retired offer links ($2,000 Concierge, $150 audit, $75 consult) on the new offer pages", () => {
+    for (const [name, page] of [["concierge", "https://agenthiveinc.com/concierge"], ["ads-sprint", "https://agenthiveinc.com/consult"], ["consult-30", "https://agenthiveinc.com/consult"]] as const) {
+      const u = new URL(goTarget(name, "x")!);
+      expect(u.origin + u.pathname).toBe(page);
+      expect(GO_LINKS[name].kind).toBe("page");
+    }
   });
 
   it("404s unknown names", () => {
     expect(goTarget("nope", "x")).toBeNull();
   });
 
-  it("sends the ad sprint buttons to the retargeted $150 audit checkout, and keeps the monthly engine link", () => {
-    const sprint = new URL(goTarget("ads-sprint", "ads")!);
+  it("keeps the monthly ad engine link", () => {
     const monthly = new URL(goTarget("ads-engine", "ads")!);
-    expect(sprint.origin + sprint.pathname).toBe("https://buy.stripe.com/eVq9ATbaY6CT6iF7ea2ZO1g");
-    expect(sprint.searchParams.get("client_reference_id")).toBe("ah_ads_ads-sprint");
-    expect(sprint.searchParams.get("utm_campaign")).toBe("ads-sprint");
     expect(monthly.origin + monthly.pathname).toBe("https://buy.stripe.com/4gM9ATa6U2mD36tbuq2ZO1M");
     expect(monthly.searchParams.get("client_reference_id")).toBe("ah_ads_ads-engine");
-    expect(monthly.searchParams.get("utm_source")).toBe("agenthiveinc.com");
-    expect(GO_LINKS["ads-sprint"].kind).toBe("stripe");
     expect(GO_LINKS["ads-engine"].kind).toBe("stripe");
   });
 
@@ -95,11 +105,7 @@ describe("/go tracker", () => {
     expect(GO_LINKS["burn-book"].label).toContain("$750");
   });
 
-  it("adds /go routes for the $75 consult, $625 pack, and ainexus $2,500 / $6,500 offers", () => {
-    const consult = new URL(goTarget("consult-30", "consult")!);
-    expect(consult.origin + consult.pathname).toBe("https://buy.stripe.com/fZufZh92Qf9p5eB2XU2ZO1h");
-    expect(consult.searchParams.get("client_reference_id")).toBe("ah_consult_consult-30");
-    expect(consult.searchParams.get("utm_campaign")).toBe("consult-30");
+  it("keeps /go routes for the Deploy Agent $625 deposit and ainexus $2,500 / $6,500 offers", () => {
 
     const deposit = new URL(goTarget("deposit", "home")!);
     const pack = new URL(goTarget("pack", "home")!);
@@ -114,7 +120,6 @@ describe("/go tracker", () => {
     expect(tier2.origin + tier2.pathname).toBe("https://buy.stripe.com/fZueVd2EsbXd22p2XU2ZO0T");
     expect(tier1.searchParams.get("client_reference_id")).toBe("ah_ext-ainexus360-com_ainexus-tier1");
     expect(tier2.searchParams.get("client_reference_id")).toBe("ah_ext-ainexus360-com_ainexus-tier2");
-    expect(GO_LINKS["consult-30"].kind).toBe("stripe");
     expect(GO_LINKS.deposit.kind).toBe("stripe");
     expect(GO_LINKS.pack.kind).toBe("stripe");
     expect(GO_LINKS["ainexus-tier1"].kind).toBe("stripe");

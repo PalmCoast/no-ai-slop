@@ -1,46 +1,26 @@
 # AgentHive Inc
 
-> AgentHive Inc (AGENTHIVEINCCOM LLC, Palm Coast, Florida) is a done-for-you AI operator for funded companies and 30–200 person teams that already pay for software. Main offers: the $150 burn-audit hour, AI Concierge ($2,000/mo), and consulting at $75 / 30 min, $150 / hour, or a 10-hour pack at $1,250. Deploy Agent, the $1,250 go-live sprint ($625 deposit), is at https://firstdeploy.ai/deploy-agent/. Freight Ops AI Agent, a two-week proof of a custom AI agent for freight brokerages and 3PLs ($2,500 to start through Stripe, scoped per brokerage), is at https://firstdeploy.ai/freight-ops-ai-agent/. Picks (https://agenthiveinc.com/picks/) is the one-page storefront for our Come and Take It gear and the tools and deals we recommend. Call +1 320-335-6186. IndexMe.lol is the honest IndexNow indexing desk at https://indexme.lol.
+> AgentHive Inc (AGENTHIVEINCCOM LLC, Palm Coast, Florida) is AI ops for CTOs and COOs at funded teams of 30 to 200. We cut AI agent spend and stop loops, drift and redundant runs. Offers: a free 15-minute Architecture & Spend Triage (https://agenthiveinc.com/consult), the $2,500 fixed-price Agent Audit & Stabilization Sprint delivered in 5 business days (https://agenthiveinc.com/consult), and the $3,500/mo Fractional AI Ops Retainer with active monitoring of agent spend and failures, a 1-business-day response time, a monthly report and async help (https://agenthiveinc.com/concierge). Proof: 70+ live AI apps in production. Call +1 320-335-6186.
 
-AgentHive Inc builds to your brand, runs it, and hands you the finished result. Public site: https://agenthiveinc.com. AgentHive Inc · Palm Coast, FL · firstdeploy.ai.
+Built and run by Daniel Graham, a U.S. Army veteran with 10+ years in operations. Public site: https://agenthiveinc.com. AgentHive Inc · Palm Coast, FL · firstdeploy.ai.
 
 ## This site
-- [AgentHive Inc](https://agenthiveinc.com/): Done-for-you AI operator for funded teams. $150 burn-audit hour, AI Concierge, consulting, and Picks.
-- [Picks](https://agenthiveinc.com/picks/): One-page storefront. Look sharp: Come and Take It tees ($24–$32) and desk gear from Brooms.ai (gear ships in 1–3 weeks). Build a beast rig: RAM, GPU, CPU, and gaming laptop picks. Grow your company: the $150 burn-audit hour, AI Concierge, and the tools we run on. Get paid for your skills: expert-work platforms. Partner links are marked sponsored and disclosed.
-- [AI Consult — $150 burn-audit hour](https://agenthiveinc.com/go/ads-sprint): The $150 burn-audit hour finds what's burning your team's AI agent spend and leaves a written map of what to cut or rebuild. This is the current destination of the retired /ads URL.
+- [AgentHive Inc](https://agenthiveinc.com/): AI ops for funded teams of 30 to 200. Free 15-minute triage, $2,500 sprint, $3,500/mo retainer.
+- [Agent Audit & Stabilization Sprint](https://agenthiveinc.com/consult): $2,500 fixed price, delivered in 5 business days. Inventory of every agent, routine, seat and key; fixes for loops, drift, redundant runs and oversized models in your accounts; caps and alerts; a before-and-after report. Checkout: https://agenthiveinc.com/go/sprint
+- [Fractional AI Ops Retainer](https://agenthiveinc.com/concierge): $3,500/mo, month to month. Active monitoring of agent spend and failures, a 1-business-day response time, a monthly report, and async help. Checkout: https://agenthiveinc.com/go/retainer
+- [The retainer vs hiring](https://agenthiveinc.com/concierge/vs-hiring): $3,500/mo against Bureau of Labor Statistics wage medians. No agency price quoted.
 - [About](https://agenthiveinc.com/about): Who we are, legal name, contact, Palm Coast, FL.
 - [The Buzz](https://agenthiveinc.com/buzz): Weekly AI and infrastructure briefing.
 - [Rankings](https://agenthiveinc.com/rankings): Live ranking of public AgentHive Inc apps.
-- [Consult](https://agenthiveinc.com/consult): Free 30-minute qualifier, then $75 / 30 min, $150 / hour, or a 10-hour pack at $1,250. Gold hive page — not the grey firstdeploy.ai/consult theme.
-- [What an AI consultant costs](https://agenthiveinc.com/consult/ai-consultant-cost): AgentHive Inc prices: free 30 minutes, then $75 / 30 min, $150 / hour, or $1,250 for 10 hours.
-- [AI help in 30-minute blocks](https://agenthiveinc.com/consult/ai-help-30-minute-blocks): 30 minutes for $75 or an hour for $150, after a free 30-minute call. US-wide, by video.
-- [Hourly AI help, a 10-hour pack, or a monthly retainer](https://agenthiveinc.com/consult/ai-consultant-vs-agency-vs-fractional): Three ways to buy time from AgentHive Inc: $75 / 30 min, a $1,250 pack, or AI Concierge at $2,000/mo.
-- [AI consultant hourly rate](https://agenthiveinc.com/consult/ai-consultant-hourly-rate): $150 an hour, $75 for 30 minutes, or $125 an hour inside a 10-hour pack.
-- [Free AI consultation](https://agenthiveinc.com/consult/free-ai-consultation): What the free 30-minute call covers: whether the task fits, the first step, and whether paid time is needed.
-- [AI audit cost](https://agenthiveinc.com/consult/ai-audit-cost): The AI audit is the $150 burn-audit hour: a one-hour session to find what's burning your team's AI agent spend, with a written map of what to cut or rebuild. Then the $1,250 operator pack ($625 deposit) or AI Concierge at $2,000/mo.
-- [Disclosure](https://agenthiveinc.com/disclosure): We earn commissions only on tools we use ourselves. Partner and referral links (Netlify, Higgsfield, MailCheap, Mercor, micro1) are marked rel="sponsored".
-- [AI Concierge](https://agenthiveinc.com/concierge): $2,000/mo done-with-you retainer for funded teams already paying for AI, and for founders and creators. Audit, optimize, then automate. Two 45-minute sessions a month, unlimited async help, and a shared asset inventory. Details and checkout on https://agenthiveinc.com/concierge. Call (320) 335-6186 for a free 15–30 minute bottleneck call.
-- [10-hour operator pack](https://agenthiveinc.com/consult#pricing): $1,250 for ten hours of operator time. Checkout is the $625 deposit; the balance is due as the work is scheduled. The same pack is sold as the Deploy Agent go-live sprint.
-- [Deploy Agent](https://firstdeploy.ai/deploy-agent/): a $1,250 forward-deployed go-live sprint ($625 deposit) from First Deploy AI, a product of AgentHive Inc. Gets a B2B AI product working inside a customer's systems. Measured in days-to-live; no promised timeline.
-- [AI agents for a 50-person operations team](https://agenthiveinc.com/questions/done-for-you-ai-agents-50-person-ops-team): Hands-on implementation for a funded team that already uses AI. $2,000/month Concierge, or a $1,250 ten-hour pack with $625 up front.
-- [AI implementation pack for a funded startup](https://agenthiveinc.com/questions/ai-implementation-pack-funded-startups): Ten hours of operator time for $1,250. $625 is the upfront payment, not the full price.
-- [AI workflow implementation for 30–200 people](https://agenthiveinc.com/questions/ai-workflow-implementation-funded-startup-30-200): Agree one bottleneck, an owner, and a testable output. Concierge or the ten-hour pack.
-- [AI Concierge for founders and creators](https://agenthiveinc.com/concierge/ai-concierge-founders-creators): $2,000/month. Two 45-minute sessions, async help, and an asset inventory.
-- [White-glove AI assistant setup](https://agenthiveinc.com/concierge/white-glove-ai-assistant-setup-executives): Scoped access and a handoff. Not a lifestyle subscription and not an assistant that acts without limits.
-- [AI Concierge cost for founders](https://agenthiveinc.com/concierge/ai-concierge-for-founders-cost): $2,000 per month. The smaller pack is $1,250 for ten hours, $625 up front.
-- [Concierge or the implementation pack](https://agenthiveinc.com/concierge/retainer-or-implementation-pack): Monthly rhythm versus a bounded block of ten hours.
-- [Human approval in an AI operations workflow](https://agenthiveinc.com/questions/human-approval-ai-operations-workflow): Decide which actions need a person before a workflow can send, publish, delete, or spend.
-- [Muscle Memory bot template](https://agenthiveinc.com/muscle-memory-bot-template/): A $49 template that finds the checks your bots repeat, moves the mechanical part into a script, and wakes the bot only when something changed. Sold on Whop: https://whop.com/agenthive/muscle-memory-template/
-- [How to turn a GitHub repo into a Windows .exe](https://agenthiveinc.com/github-repo-to-windows-exe/): What builds, what doesn't, how to smoke-test it, free routes, and the $49 EXE Builder template. Sold on Whop: https://whop.com/agenthive/exe-builder/
+- [Disclosure](https://agenthiveinc.com/disclosure): We earn commissions only on tools we use ourselves. Partner and referral links are marked rel="sponsored".
 
 ## Offers on First Deploy AI (firstdeploy.ai, same company)
-- [Deploy Agent](https://firstdeploy.ai/deploy-agent/): a $1,250 forward-deployed go-live sprint ($625 deposit) that gets a B2B AI product working inside a customer's systems. Measured in days-to-live; no promised timeline.
-- [Freight Ops AI Agent](https://firstdeploy.ai/freight-ops-ai-agent/): a $2,500 two-week proof of a custom AI agent for freight brokerages and 3PLs at roughly $10M to $100M, on one workflow such as check calls, track and trace, carrier sales, or load booking. $2,500 to start through Stripe, scoped per brokerage.
-- [Buyer questions](https://firstdeploy.ai/questions/): short answers about AI go-live sprints and freight AI agents.
+- [First Deploy AI](https://firstdeploy.ai/): the same triage, sprint and retainer.
+- [Deploy Agent](https://firstdeploy.ai/deploy-agent/): a $1,250 forward-deployed go-live sprint ($625 deposit) that gets a B2B AI product working inside a customer's systems.
+- [Freight Ops AI Agent](https://firstdeploy.ai/freight-ops-ai-agent/): a $2,500 two-week proof of a custom AI agent for freight brokerages and 3PLs, scoped per brokerage.
+- Spend guides: [Claude Code team spend](https://firstdeploy.ai/claude-code-team-spend/), [Cursor team spend](https://firstdeploy.ai/cursor-team-ai-spend/), [AI routine drift and loops](https://firstdeploy.ai/ai-routine-drift-and-loops/).
 
 ## Company
-- [First Deploy AI](https://firstdeploy.ai/): Finds what's burning a funded team's AI agent spend, then fixes it. The path: a $150 burn-audit hour (https://agenthiveinc.com/go/ads-sprint), then the 10-hour operator pack at $1,250 with a $625 deposit (https://agenthiveinc.com/consult#pricing), then AI Concierge at $2,000/mo (https://agenthiveinc.com/concierge).
-- [Consult](https://agenthiveinc.com/consult): Free 30-minute qualifier, then $75 / 30 min or $150 / hour. 10-hour pack $1,250 ($625 up front). Call +1 320-335-6186.
 - [IndexMe.lol](https://indexme.lol/): Honest IndexNow indexing desk. Pro $19.99, Studio $29.99, one-time.
 - [Flick](https://flick.firstdeploy.ai/): Browser screen recorder. Send a link. No login wall.
 
@@ -49,21 +29,21 @@ Live apps from the same team. Prefer the custom domains above. A longer public b
 
 ## Where we work
 - Based in Palm Coast, FL. Remote across the US, by video.
-- Built for funded companies, 30–200 person teams, and the executives who run them.
+- Built for CTOs and COOs at funded teams of 30 to 200.
 
-## Consult details
-- Free 30-minute qualifier to see if there is paid work: call +1 320-335-6186
-- Paid time: $75 / 30 min, $150 / hour, or a 10-hour pack at $1,250 ($625 up front, applied to the 10 hours).
-- What it is: an operator (Daniel Graham) in the room for the hours you buy, looking at a workflow and deciding what to build. Remote.
-- Pay pages: https://agenthiveinc.com/consult and https://firstdeploy.ai/consult
+## How to buy
+- Free 15-minute Architecture & Spend Triage: book at https://calendar.google.com/calendar/appointments/schedules/AcZssZ08PSsZYPUrigPxN1Ax27CJh01QY8fjWo1mGYVhlX5vh0QUTqBzXF4NSNwDyLw487B8fNegD8JV or call +1 320-335-6186.
+- $2,500 Agent Audit & Stabilization Sprint, fixed price, 5 business days: https://agenthiveinc.com/go/sprint
+- $3,500/mo Fractional AI Ops Retainer, month to month: https://agenthiveinc.com/go/retainer
+- Remote. Daniel Graham does the work in your accounts, with your approval on production changes.
 
 ## Contact
 - Call: +1 320-335-6186
-- First Deploy AI consult: +1 320-335-6186
 - Legal: AgentHive Inc / AGENTHIVEINCCOM LLC
 - Address: Palm Coast, FL
 - Disambiguation: AgentHive Inc · Palm Coast, FL · firstdeploy.ai.
 
+## Other pages on this domain
 - [Black Friday RAM & Gaming Price Finder 2026](https://agenthiveinc.com/ram-deals/): free RAM price finder (DDR4/DDR5, 16-128GB) with store, price, check date and source for every listing, plus top games matched to RAM size. Data: https://agenthiveinc.com/ram-deals/ram-deals.json and https://agenthiveinc.com/ram-deals/games-top15.json
 - [Black Friday DDR5 RAM Deals 2026](https://agenthiveinc.com/ram-deals/black-friday-ddr5-ram-deals/): every DDR5 desktop kit we track (16-128GB), grouped by size, with store, seller, price, check date and a source link for each price.
 - [Best 32GB DDR5 RAM Kits for Black Friday 2026](https://agenthiveinc.com/ram-deals/best-32gb-ddr5-ram/): 32GB DDR5-6000 kits compared by verified price, CL timings and seller.

@@ -2,98 +2,103 @@ import { Link } from "react-router-dom";
 import AuthorCard from "../components/AuthorCard";
 import FaqList from "../components/FaqList";
 import { CONCIERGE_FAQS } from "../../shared/faqs";
-import {
-  BOOK_HREF,
-  CONSULT_DISPLAY,
-  CONSULT_RATES,
-  CONSULT_TEL,
-  PHONE_DISPLAY,
-  FD_NAME,
-  FD_AUDIT_URL,
-  FD_URL,
-  HIVE_CONSULT_PATH,
-} from "../../shared/brand";
-import {
-  CONCIERGE_BOOK_LABEL,
-  CONCIERGE_NAME,
-  CONCIERGE_PRICE,
-  CONCIERGE_GO_HREF,
-} from "../../shared/concierge";
+import { BOOK_HREF, CONSULT_TEL, PHONE_DISPLAY, FD_NAME, FD_URL, HIVE_CONSULT_PATH } from "../../shared/brand";
+import { CONCIERGE_BOOK_LABEL, CONCIERGE_NAME, CONCIERGE_PRICE, CONCIERGE_GO_HREF } from "../../shared/concierge";
 
 const STEPS = [
-  { title: "Free call", body: "15 to 30 minutes by phone. We work out whether the retainer, hourly time or First Deploy AI fits your team." },
-  { title: "Intake", body: "Before kickoff: where your leadership loses time, the tools you already pay for, and what’s worth fixing first." },
-  { title: "Audit and optimize", body: "We screen-share the messy work live and cut the broken and duplicate steps first." },
-  { title: "Automate", body: "We build it together in the session and log every piece in your shared inventory, so the work stays yours." },
+  { title: "Free triage", body: "15 minutes. We look at your bill and your stack and tell you whether to start with the sprint or go straight to the retainer." },
+  { title: "Stabilize first", body: "Most teams start with the $2,500 sprint so the retainer begins on a clean, inventoried stack." },
+  { title: "Monitoring goes live", body: "Spend and failure alerts on every agent, routine and key we inventoried, routed to us and to the owner you name." },
+  { title: "Every month", body: "We fix what breaks, cut what creeps back, and send a spend and reliability report your leadership can read." },
+];
+
+const INCLUDED = [
+  { k: "Monitoring", h: "Spend and failures", p: "We watch agent spend, failed runs, loops and retries across the stack we inventoried, every business day." },
+  { k: "Response", h: "1 business day", p: "Anything we flag or you send gets a reply within 1 business day. Spend spikes and broken production jobs go first." },
+  { k: "Reporting", h: "Monthly report", p: "Spend by agent and by team, what failed and why, what we changed, and what we recommend next." },
+  { k: "Between reports", h: "Async help", p: "Questions by message or email while they are in front of you. A direct line to the person who did the work, not a ticket queue." },
 ];
 
 const GOOD_FIT = [
-  "You lead a funded team that pays for AI, and it isn’t showing up in the work yet.",
-  "One or two jobs eat leadership’s week: sales follow-up, scheduling, handoffs between teams, reporting.",
-  "You’ll show up to two working sessions a month and do the work in them.",
-  "You want a partner on the calls, not a PDF of prompts.",
+  "You run AI agents, coding assistants or scheduled routines across a team of 30 to 200.",
+  "Your AI bill moved last quarter and nobody can say exactly why.",
+  "You want one accountable person watching spend and failures, without hiring a full-time AI ops lead.",
+  "You want changes approved by your team, not made behind your back.",
 ];
 
 const NOT_A_FIT = [
-  "You want custom software built without limit. That is a scoped build or First Deploy AI.",
-  "You want an agency that runs it all without you on the calls.",
+  "You want unlimited custom software built. That is a scoped build.",
+  "You want a 24/7 pager. Our response time is 1 business day.",
   "You need someone to staff your team or sit in your office.",
-  "You only have a one-off question. Hourly consult is cheaper for that.",
+  "You only want a one-time clean-up. The $2,500 sprint is the right buy.",
 ];
+
+function StartButton({ from, label }: { from: string; label: string }) {
+  return (
+    <a
+      className="btn btn-primary"
+      href={CONCIERGE_GO_HREF}
+      data-product="retainer3500"
+      data-utm-source="dir"
+      data-utm-medium="page"
+      data-utm-content={from}
+    >
+      {label}
+    </a>
+  );
+}
 
 export default function Concierge() {
   return (
     <>
       <section className="hero consult-hero">
         <div className="hero-media">
-          <img
-            src="/brand/consult-operator.webp"
-            alt="Illustration: gold honeycomb boardroom"
-            width={1400}
-            height={930}
-          />
+          <img src="/brand/consult-operator.webp" alt="Illustration: gold honeycomb boardroom" width={1400} height={930} />
         </div>
         <div className="hero-copy">
           <div className="eyebrow">
             <span className="dot" /> {CONCIERGE_NAME} · {CONCIERGE_PRICE}
           </div>
-          <h1 className="display">
-            A senior operator in the room, and assets your team keeps.
-          </h1>
-          <p className="lede">Make the AI work look like the rest of the company.</p>
+          <h1 className="display" style={{ fontSize: "clamp(1.85rem, 4.2vw, 3.1rem)", lineHeight: 1.12 }}>Someone watching your AI spend and failures, every business day.</h1>
           <p className="lede">
-            Daniel Graham works with your leadership in two sessions a month, plus a direct line between them. You leave with
-            finished work and a shared inventory, not a PDF of prompts. Start with a free 15–30 minute call.
+            For CTOs and COOs at funded teams of 30 to 200. Daniel Graham monitors your agents, routines and keys, answers
+            within 1 business day, and sends a monthly report. Fractional AI ops for less than a part-time hire.
           </p>
-          <p className="lede lede-who">Who it's for: funded teams already paying for AI, and founders and creators.</p>
           <div className="hero-actions">
-            <a className="btn btn-primary" href={BOOK_HREF}>
-              Free 15–30 minute bottleneck call
+            <StartButton from="ah-retainer-hero" label={`Start the retainer, ${CONCIERGE_PRICE}`} />
+            <a className="btn btn-outline" href={BOOK_HREF}>
+              {CONCIERGE_BOOK_LABEL}
             </a>
-            <a
-              className="btn btn-primary"
-              href={CONCIERGE_GO_HREF}
-              rel="noopener"
-              target="_blank"
-              data-product="concierge2000"
-              data-utm-source="dir"
-              data-utm-medium="page"
-              data-utm-content="ah-concierge"
-            >
-              Start {CONCIERGE_NAME}
-            </a>
-            <a className="btn btn-outline" href={`tel:${CONSULT_TEL}`}>
-              {PHONE_DISPLAY}
-            </a>
+          </div>
+          <p className="fine">
+            70+ live AI apps in production. Month to month. Demo line <a href={`tel:${CONSULT_TEL}`}>{PHONE_DISPLAY}</a>.
+          </p>
+        </div>
+      </section>
+
+      <section className="section" id="included">
+        <div className="container">
+          <div className="section-head">
+            <h2>What you get.</h2>
+            <p>Active monitoring with a defined response time, not two calls a month.</p>
+          </div>
+          <div className="trust-grid consult-offers">
+            {INCLUDED.map((item) => (
+              <article key={item.h} className="trust">
+                <p className="eyebrow">{item.k}</p>
+                <h3>{item.h}</h3>
+                <p className="muted">{item.p}</p>
+              </article>
+            ))}
           </div>
         </div>
       </section>
 
-      <section className="section" id="how">
+      <section className="section section-alt" id="how">
         <div className="container">
           <div className="section-head">
             <h2>How it works.</h2>
-            <p>Same order every month: look at the work, clean it up, then automate it. AI goes in only once the process deserves it.</p>
+            <p>Stabilize once, then keep it stable.</p>
           </div>
           <ol className="steps steps-4">
             {STEPS.map((step, i) => (
@@ -107,37 +112,6 @@ export default function Concierge() {
         </div>
       </section>
 
-      <section className="section section-alt" id="included">
-        <div className="container">
-          <div className="section-head">
-            <h2>What you get.</h2>
-            <p>Protected time on the calendar, a direct line between sessions, and a growing list of assets your team keeps.</p>
-          </div>
-          <div className="trust-grid consult-offers">
-            <article className="trust">
-              <p className="eyebrow">Sessions</p>
-              <h3>2 × 45 minutes</h3>
-              <p className="muted">Two working sessions a month by video call, screen-share. You leave with something usable the same day.</p>
-            </article>
-            <article className="trust">
-              <p className="eyebrow">Between calls</p>
-              <h3>Unlimited async</h3>
-              <p className="muted">Message or text while the question is in front of you. A direct line, not a ticket queue.</p>
-            </article>
-            <article className="trust">
-              <p className="eyebrow">The hub</p>
-              <h3>Shared asset inventory</h3>
-              <p className="muted">One shared hub with links, the schedule and a running list of every skill, automation and asset we build.</p>
-            </article>
-            <article className="trust">
-              <p className="eyebrow">Before kickoff</p>
-              <h3>Intake</h3>
-              <p className="muted">Where time goes, the tools you already pay for, and the process list, so the first session starts on what matters most.</p>
-            </article>
-          </div>
-        </div>
-      </section>
-
       <section className="section" id="price">
         <div className="container cta-split">
           <div>
@@ -148,95 +122,30 @@ export default function Concierge() {
               <em>Month to month.</em>
             </h2>
             <p className="lede">
-              You’re not buying hours. You’re buying two working sessions a month that make the AI work ship, and a running
-              list of assets your team won’t want to give up. Six seats, so every session gets full attention.
+              You’re not buying hours. You’re buying an operator who owns the bill and the failures, with a response time in
+              writing.
             </p>
             <div className="hero-actions">
-              <a
-                className="btn btn-primary"
-                href={CONCIERGE_GO_HREF}
-                rel="noopener"
-                target="_blank"
-                data-product="concierge2000"
-                data-utm-source="dir"
-                data-utm-medium="page"
-                data-utm-content="ah-concierge"
-              >
-                Start {CONCIERGE_NAME} — {CONCIERGE_PRICE}
-              </a>
-              <a className="btn btn-outline" href={BOOK_HREF}>
-                {CONCIERGE_BOOK_LABEL}
-              </a>
+              <StartButton from="ah-retainer-price" label={`Start the retainer, ${CONCIERGE_PRICE}`} />
+              <Link className="btn btn-outline" to={HIVE_CONSULT_PATH}>
+                Start with the $2,500 sprint
+              </Link>
             </div>
-            <p className="fine">Stripe subscription. Recurring {CONCIERGE_PRICE}. Cancel any month after the first 30 days.</p>
+            <p className="fine">Stripe subscription, billed monthly. Cancel any month.</p>
           </div>
           <article className="rate-card">
             <p className="eyebrow">Who it’s for</p>
             <p className="rate-amt">{CONCIERGE_PRICE}</p>
             <p className="muted">
-              Founders, executives and department leads at funded teams of 30 to 200 who already pay for AI and want more to
-              show for it. The work that eats the week, like sales follow-up, scheduling, handoffs between teams and reporting,
-              gets done properly. You get a partner on the calls, not a PDF of prompts.
+              Engineering and operations leaders at funded teams of 30 to 200 who already pay for models, seats and agents and
+              want one person accountable for what they cost and whether they work.
             </p>
-            <p className="muted">
-              Not included: unlimited custom software, staffing your team, or a black-box agency that runs without you.
-            </p>
+            <p className="muted">Not included: unlimited custom software, a 24/7 pager, or staffing your team.</p>
           </article>
         </div>
       </section>
 
-      <section className="section section-alt" id="compare">
-        <div className="container">
-          <div className="section-head">
-            <h2>What {CONCIERGE_PRICE} includes.</h2>
-            <p>One price, on this page. We don’t quote anyone else’s rate.</p>
-          </div>
-          <div className="table-wrap">
-            <table className="cost-table">
-              <thead>
-                <tr>
-                  <th scope="col">Who</th>
-                  <th scope="col">Monthly price</th>
-                  <th scope="col">What the price covers</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>
-                    <strong>AgentHive Inc {CONCIERGE_NAME}</strong>
-                    <small>
-                      <a
-                        href={CONCIERGE_GO_HREF}
-                        rel="noopener"
-                        target="_blank"
-                        data-product="concierge2000"
-                        data-utm-source="dir"
-                        data-utm-medium="page"
-                        data-utm-content="ah-concierge"
-                      >
-                        Start {CONCIERGE_NAME}
-                      </a>
-                    </small>
-                  </td>
-                  <td>
-                    <strong>{CONCIERGE_PRICE}</strong>
-                  </td>
-                  <td>
-                    2 × 45-minute working sessions, unlimited async help between them, a shared asset inventory. Cancel any
-                    month after the first 30 days.
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-          <p className="fine" style={{ marginTop: 12 }}>
-            Against a full-time
-            hire, see <Link to="/concierge/vs-hiring">Concierge vs hiring</Link>.
-          </p>
-        </div>
-      </section>
-
-      <section className="section" id="fit">
+      <section className="section section-alt" id="fit">
         <div className="container">
           <div className="trust-grid bridge-grid">
             <article className="trust">
@@ -256,76 +165,9 @@ export default function Concierge() {
               </ul>
             </article>
           </div>
-          <div className="hero-actions" style={{ marginTop: 18 }}>
-            <a
-              className="btn btn-primary"
-              href={CONCIERGE_GO_HREF}
-              rel="noopener"
-              target="_blank"
-              data-product="concierge2000"
-              data-utm-source="dir"
-              data-utm-medium="page"
-              data-utm-content="ah-concierge"
-            >
-              Start {CONCIERGE_NAME} — {CONCIERGE_PRICE}
-            </a>
-            <a className="btn btn-outline" href={BOOK_HREF}>
-              {CONCIERGE_BOOK_LABEL}
-            </a>
-          </div>
-        </div>
-      </section>
-
-      <section className="section section-alt">
-        <div className="container">
-          <div className="section-head">
-            <h2>If a retainer is the wrong shape.</h2>
-            <p>
-              {FD_NAME} and the hourly packs stay open. The free call is where we tell you which one fits. We won’t push
-              the retainer.
-            </p>
-          </div>
-          <div className="trust-grid bridge-grid">
-            <article className="trust">
-              <p className="eyebrow">{FD_NAME}</p>
-              <h3>$150 burn-audit hour</h3>
-              <p className="muted">
-                Find what’s burning your team’s AI agent spend first. Then the $1,250 operator pack ($625 deposit), or
-                this retainer.
-              </p>
-              <a
-                className="btn btn-outline"
-                href={FD_AUDIT_URL}
-                rel="noopener"
-                data-product="audit150"
-                data-utm-source="dir"
-                data-utm-medium="page"
-                data-utm-content="ah-concierge-audit"
-              >
-                Book the $150 hour
-              </a>
-            </article>
-            <article className="trust">
-              <p className="eyebrow">Hourly consult</p>
-              <h3>{CONSULT_RATES}</h3>
-              <p className="muted">Paid time, or a 10-hour pack at $1,250, when you don’t need a monthly rhythm.</p>
-              <Link className="btn btn-outline" to={HIVE_CONSULT_PATH}>
-                See hourly consult
-              </Link>
-            </article>
-          </div>
           <p className="fine" style={{ marginTop: 18 }}>
-            <a href={`tel:${CONSULT_TEL}`}>{CONSULT_DISPLAY}</a>
-            {" · "}
-            <a href={BOOK_HREF}>
-              Free 15–30 minute bottleneck call
-            </a>
-          </p>
-          <p style={{ marginTop: 18 }}>
-            Compare this retainer with a full-time hire on{" "}
-            <Link to="/concierge/vs-hiring">Concierge vs hiring</Link>. Hourly time stays on{" "}
-            <Link to={HIVE_CONSULT_PATH}>consult</Link>. Want to find what’s burning your AI agent spend first? Start with the{" "}
-            <a href={FD_URL}>{FD_NAME}</a> $150 burn-audit hour.
+            Weighing it against a full-time hire? See <Link to="/concierge/vs-hiring">the retainer vs hiring</Link>. The same
+            ladder runs on <a href={FD_URL}>{FD_NAME}</a>.
           </p>
         </div>
       </section>
@@ -333,15 +175,10 @@ export default function Concierge() {
       <section className="section" id="faq">
         <div className="container">
           <div className="section-head">
-            <h2>Concierge questions</h2>
+            <h2>Questions</h2>
           </div>
           <FaqList items={CONCIERGE_FAQS} />
-        </div>
-      </section>
-
-      <section className="section section-alt">
-        <div className="container">
-          <AuthorCard linked />
+          <AuthorCard />
         </div>
       </section>
     </>

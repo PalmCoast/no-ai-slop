@@ -6,17 +6,12 @@ import Buzz from "./pages/Buzz";
 import Rankings from "./pages/Rankings";
 import Build from "./pages/Build";
 import Consult from "./pages/Consult";
-import ConsultCost from "./pages/ConsultCost";
 import Concierge from "./pages/Concierge";
 import VsHiring from "./pages/VsHiring";
 import Disclosure from "./pages/Disclosure";
 import NotFound from "./pages/NotFound";
-import ConsultComparePage from "./pages/ConsultComparePage";
-import AeoPage from "./pages/AeoPage";
 import Ads from "./pages/Ads";
 import AdsThanks from "./pages/AdsThanks";
-import { AEO_PAGES } from "../shared/aeo";
-import { CONSULT_COMPARE_PAGES } from "../shared/consultCompare";
 
 export default function App() {
   return (
@@ -30,15 +25,9 @@ export default function App() {
         <Route path="/rankings" element={<Rankings />} />
         <Route path="/build" element={<Build />} />
         <Route path="/consult" element={<Consult />} />
-        <Route path="/consult/ai-consultant-cost" element={<ConsultCost />} />
-        {CONSULT_COMPARE_PAGES.map((page) => (
-          <Route key={page.path} path={page.path} element={<ConsultComparePage />} />
-        ))}
+        <Route path="/consult/ai-consultant-cost" element={<Navigate to="/consult" replace />} />
         <Route path="/concierge" element={<Concierge />} />
         <Route path="/concierge/vs-hiring" element={<VsHiring />} />
-        {AEO_PAGES.map((page) => (
-          <Route key={page.path} path={page.path} element={<AeoPage />} />
-        ))}
         <Route path="/disclosure" element={<Disclosure />} />
         <Route path="/hive" element={<Navigate to="/rankings" replace />} />
         <Route path="*" element={<NotFound />} />

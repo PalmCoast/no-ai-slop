@@ -10,10 +10,10 @@
  * Usage on a page:
  *   <script src="/assets/buy-link-helper.js" defer></script>
  *   <a href="https://buy.stripe.com/eVq9ATbaY6CT6iF7ea2ZO1g"
- *      data-product="audit150"
+ *      data-product="sprint2500"
  *      data-utm-source="li"
  *      data-utm-medium="page"
- *      data-utm-content="marketing-home">Start with the $150 audit</a>
+ *      data-utm-content="marketing-home">Start the $2,500 sprint</a>
  *
  * Defaults: utm_campaign = data-product; client_reference_id from
  * ?lead_id= / data-lead-id / PostHog distinct_id / sessionStorage fd_lead.
@@ -22,6 +22,8 @@
   "use strict";
   try {
     var PRODUCT_URLS = {
+      sprint2500: "https://buy.stripe.com/6oU14n2Es6CTfTf7ea2ZO1V",
+      retainer3500: "https://buy.stripe.com/eVq5kD3Iw4uLePbfKG2ZO1W",
       audit150: "https://buy.stripe.com/eVq9ATbaY6CT6iF7ea2ZO1g",
       pack1250: "https://buy.stripe.com/7sY9ATenabXd7mJ7ea2ZO1i",
       deploy1250: "https://buy.stripe.com/7sY9ATenabXd7mJ7ea2ZO1i",
@@ -34,7 +36,7 @@
     var ALLOWED_SOURCE = { x: 1, li: 1, hn: 1, dir: 1, aisearch: 1, phone: 1, pin: 1 };
     var ALLOWED_MEDIUM = { post: 1, reply: 1, comment: 1, listing: 1, page: 1 };
     var ALLOWED_CAMPAIGN = {
-      audit150: 1, pack1250: 1, deploy1250: 1, consult75: 1, freight2500: 1,
+      sprint2500: 1, retainer3500: 1, audit150: 1, pack1250: 1, deploy1250: 1, consult75: 1, freight2500: 1,
       concierge2000: 1, ainexusTier1: 1, ainexusTier2: 1, bfmerch: 1, cardbutler: 1
     };
 
@@ -117,6 +119,8 @@
       for (var key in PRODUCT_URLS) {
         if (PRODUCT_URLS[key] && href.indexOf(PRODUCT_URLS[key].split("/").pop()) !== -1) return key;
       }
+      if (/6oU14n2Es6CTfTf7ea2ZO1V/.test(href) || /\/go\/sprint(\?|$)/.test(href)) return "sprint2500";
+      if (/eVq5kD3Iw4uLePbfKG2ZO1W/.test(href) || /\/go\/retainer(\?|$)/.test(href)) return "retainer3500";
       if (/7sY9ATenabXd7mJ7ea2ZO1i/.test(href) || /\/go\/(deposit|pack)(\?|$)/.test(href)) return "pack1250";
       if (/eVq9ATbaY6CT6iF7ea2ZO1g/.test(href) || /\/go\/ads-sprint(\?|$)/.test(href)) return "audit150";
       if (/fZufZh92Qf9p5eB2XU2ZO1h/.test(href) || /\/go\/consult-30(\?|$)/.test(href)) return "consult75";

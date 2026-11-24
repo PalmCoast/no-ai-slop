@@ -1,42 +1,30 @@
 import { Link } from "react-router-dom";
-import { FD_AUDIT_URL, FD_DEPLOY_AGENT_URL, FD_PACK_URL } from "../../shared/brand";
+import { BOOK_HREF, FD_DEPLOY_AGENT_URL, SPRINT_GO_HREF } from "../../shared/brand";
 
 /**
- * Current First Deploy path with live checkout links: $150 audit, $1,250 pack ($625 deposit), $2,000/mo Concierge.
- * `deployAgent` adds the Deploy Agent go-live sprint link after the pack (homepage, AI visibility packet 2026-11-17).
+ * Current path (B2B reset 2026-11-24): free 15-minute triage, $2,500 sprint, $3,500/mo retainer.
+ * `deployAgent` adds the Deploy Agent go-live sprint link at the end.
  */
 export default function FdPath({ deployAgent = false }: { deployAgent?: boolean }) {
   return (
     <>
-      First Deploy AI path: a{" "}
+      Start with a <a href={BOOK_HREF}>free 15-minute triage</a>, then the{" "}
       <a
-        href={FD_AUDIT_URL}
-        rel="noopener"
-        data-product="audit150"
+        href={SPRINT_GO_HREF}
+        data-product="sprint2500"
         data-utm-source="dir"
         data-utm-medium="page"
-        data-utm-content="ah-fdpath-audit"
+        data-utm-content="ah-fdpath-sprint"
       >
-        $150 burn-audit hour
-      </a>
-      , then the{" "}
-      <a
-        href={FD_PACK_URL}
-        rel="noopener"
-        data-product="pack1250"
-        data-utm-source="dir"
-        data-utm-medium="page"
-        data-utm-content="ah-fdpath-pack"
-      >
-        $1,250 operator pack ($625 deposit)
-      </a>
-      ,{" "}
+        $2,500 Agent Audit &amp; Stabilization Sprint
+      </a>{" "}
+      (5 business days), then the <Link to="/concierge">$3,500/mo Fractional AI Ops retainer</Link>
       {deployAgent ? (
         <>
-          the <a href={FD_DEPLOY_AGENT_URL}>Deploy Agent go-live sprint</a>,{" "}
+          . Building a B2B AI product? See <a href={FD_DEPLOY_AGENT_URL}>Deploy Agent</a>
         </>
       ) : null}
-      then <Link to="/concierge">Concierge at $2,000/mo</Link>.
+      .
     </>
   );
 }

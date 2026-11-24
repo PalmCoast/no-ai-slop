@@ -58,7 +58,7 @@ describe("AgentHive Inc brand facts", () => {
     expect(FD_CONSULT_URL).toBe("https://firstdeploy.ai/consult");
     expect(HIVE_CONSULT_PATH).toBe("/consult");
     expect(HIVE_CONSULT_URL).toBe("https://agenthiveinc.com/consult");
-    expect(FD_PRICE).toBe("$150 burn-audit hour, then a $1,250 operator pack ($625 deposit) or Concierge at $2,000/mo");
+    expect(FD_PRICE).toBe("a free 15-minute triage, then a $2,500 sprint delivered in 5 business days, then a $3,500/mo retainer");
     expect(FD_PRICE_LINE).not.toMatch(/founding|first 5|\$250/i);
     expect(FD_PRICE_LINE).not.toContain("1" + ",750");
     expect(FD_PRICE_LINE).not.toContain("$" + "250/mo");
@@ -67,30 +67,33 @@ describe("AgentHive Inc brand facts", () => {
     expect(INDEXME_URL).toBe("https://indexme.lol/");
     expect(INDEXME_BLURB).toMatch(/IndexNow/);
     expect(BOOK_HREF).toBe("https://calendar.google.com/calendar/appointments/schedules/AcZssZ08PSsZYPUrigPxN1Ax27CJh01QY8fjWo1mGYVhlX5vh0QUTqBzXF4NSNwDyLw487B8fNegD8JV");
-    expect(FD_CTA_LABEL).toBe("Start First Deploy");
-    expect(BOOK_CTA_LABEL).toBe("Book the free 30");
-    expect(FREE_30_LABEL).toBe("Free 30");
+    expect(FD_CTA_LABEL).toBe("See First Deploy AI");
+    expect(BOOK_CTA_LABEL).toBe("Book the free 15-minute triage");
+    expect(FREE_30_LABEL).toBe("Free triage");
     expect(FD_CHECK_LABEL).toBe("2-minute check");
     expect(SEAT_CIRCUIT_NAME).toBe("Seat & Circuit");
     expect(SEAT_CIRCUIT_URL).toBe("https://infrastructure.agenthiveinc.com/");
-    expect(CONSULT_RATES).toBe("$75 / 30 min · $150 / hour");
-    expect(HERO_H1).toBe("Finished work your leadership can point to.");
-    expect(HERO_WHAT).toMatch(/senior operator on the calls/);
+    expect(CONSULT_RATES).toBe("free 15-minute triage · $2,500 sprint · $3,500/mo retainer");
+    expect(`${FD_PRICE} ${FD_PRICE_LINE} ${CONSULT_RATES}`).not.toMatch(/\$75|\$150|\$1,250|\$2,000/);
+    expect(HERO_H1).toBe("Cut AI agent spend and stop the loops in 5 business days.");
+    expect(HERO_WHAT).toMatch(/CTOs and COOs at funded teams of 30 to 200/);
     expect(`${HERO_H1} ${HERO_WHAT}`).not.toMatch(/field|dirt|shop|crew|whiteboard|missed/i);
     expect(FOOTER_LINE).toBe("AgentHive Inc · Palm Coast, FL · firstdeploy.ai");
   });
 
   it("homepage teaches the consultant shop, not the 12-bot swarm", () => {
     const home = readFileSync(join(fileURLToPath(new URL("../src/pages/Home.tsx", import.meta.url))), "utf8");
-    expect(home).toMatch(/AI consultant who builds/);
+    expect(home).toMatch(/70\+ live AI apps in production/);
+    expect(home).toMatch(/U\.S\. Army veteran with 10\+ years/);
+    expect(home).not.toMatch(/PICKS_PATH|Shop Picks|Ad Sprint|\/ads"|ram-deals|\$297|\$997|\$75|\$150|\$2,000|whop/i);
     expect(home).toMatch(/HERO_H1/);
     expect(home).toMatch(/FD_NAME|First Deploy AI/);
-    expect(home).toMatch(/FD_CTA_LABEL|Start First Deploy/);
-    expect(home).toMatch(/BOOK_CTA_LABEL|Book the free 30/);
+    expect(home).toMatch(/BOOK_CTA_LABEL/);
     expect(home).toMatch(/INDEXME_NAME|IndexMe/);
     expect(home).toMatch(/INDEXME_BLURB|IndexNow/);
     expect(home).toMatch(/FD_URL|firstdeploy\.ai/);
-    expect(home).toMatch(/PICKS_PATH/);
+    expect(home).toMatch(/SPRINT_GO_HREF/);
+    expect(home).toMatch(/CONCIERGE_GO_HREF/);
     expect(home).not.toMatch(/commercial earth mover|dirty physical businesses|field owners|crew|whiteboard/i);
     expect(home).toMatch(/AskAiBar/);
     expect(home).toMatch(/queen-full\.webp/);
@@ -99,7 +102,7 @@ describe("AgentHive Inc brand facts", () => {
     expect(home).not.toMatch(/14 apps|\$70k/i);
     expect(home).not.toMatch(/netlify\.app/);
     const primaryHrefs = [...home.matchAll(/className="btn btn-primary"[^>]*href=\{([^}]+)\}/g)].map((m) => m[1]);
-    expect(new Set(primaryHrefs)).toEqual(new Set(["BOOK_HREF", "PICKS_PATH"]));
+    expect(new Set(primaryHrefs)).toEqual(new Set(["BOOK_HREF", "SPRINT_GO_HREF"]));
   });
 
   it("About keeps Inc vs LLC, the shop line, and the 320 consult line", () => {
@@ -127,45 +130,42 @@ describe("AgentHive Inc brand facts", () => {
     expect(layout).toMatch(/MONEY_FOOTER_LINKS/);
     expect(layout).not.toMatch(/netlify\.app/);
     expect(layout).not.toMatch(/INDEXME_|Live work|WriteHive|Bot Lock/);
-    expect(MONEY_FOOTER_LINKS).toHaveLength(5);
+    expect(MONEY_FOOTER_LINKS).toHaveLength(4);
     expect(MONEY_FOOTER_LINKS.map((link) => link.href)).toEqual([
-      "/picks/",
-      "/ads",
-      "/concierge",
-      "/consult",
       "https://calendar.google.com/calendar/appointments/schedules/AcZssZ08PSsZYPUrigPxN1Ax27CJh01QY8fjWo1mGYVhlX5vh0QUTqBzXF4NSNwDyLw487B8fNegD8JV",
+      "/consult",
+      "/concierge",
+      "https://firstdeploy.ai/",
     ]);
     expect(MONEY_FOOTER_LINKS.map((link) => link.label)).toEqual([
-      "Picks",
-      "AI Ad Sprint",
-      "AI Concierge",
-      "Consult",
-      "Free 30",
+      "Free triage",
+      "Sprint, $2,500",
+      "Retainer, $3,500/mo",
+      "First Deploy AI",
     ]);
+    // B2B reset 2026-11-24: no consumer links in nav, header button or footer except one Brooms.ai link.
+    expect(layout).not.toMatch(/PICKS_PATH|Shop Picks|AI Ad Sprint|to="\/ads"|ram-deals/);
+    expect(layout.match(/BROOMS_URL/g)).toHaveLength(2);
     expect(MONEY_FOOTER_LINKS.every((link) => !link.href.includes("netlify.app"))).toBe(true);
     expect(layout).toMatch(/footer-products/);
     expect(layout).toMatch(/PRODUCT_FOOTER_LINKS/);
     expect(PRODUCT_FOOTER_LINKS.map((link) => link.href)).toEqual([
-      "/picks/",
-      "/ads",
+      "https://firstdeploy.ai",
+      "/consult",
       "/concierge",
       "https://firstdeploy.ai/deploy-agent/",
       "https://firstdeploy.ai/freight-ops-ai-agent/",
-      "https://firstdeploy.ai",
       "https://burnbook.firstdeploy.ai/",
       "https://cardbutler.firstdeploy.ai/",
-      "/ram-deals/",
     ]);
     expect(PRODUCT_FOOTER_LINKS.map((link) => link.label)).toEqual([
-      "Picks",
-      "AI Ad Sprint",
-      "AI Concierge",
+      "First Deploy AI",
+      "Agent Audit & Stabilization Sprint",
+      "Fractional AI Ops Retainer",
       "Deploy Agent",
       "Freight Ops AI Agent",
-      "First Deploy",
       "Burn Book",
       "Card Butler",
-      "RAM & rig deals",
     ]);
   });
 
@@ -187,7 +187,6 @@ describe("AgentHive Inc brand facts", () => {
       if (file.includes("/tests/")) continue;
       const text = stripFreightPrice(readFileSync(file, "utf8"));
       if (
-        /\$2,?500/.test(text) ||
         /\$1,?500\s*\/\s*mo/.test(text) ||
         /firstdeploy\.dev/.test(text)
       ) {

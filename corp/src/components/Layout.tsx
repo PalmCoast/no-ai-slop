@@ -12,7 +12,9 @@ import {
   FOOTER_LINE,
   MONEY_FOOTER_LINKS,
   PHONE_DISPLAY,
-  PICKS_PATH,
+  BOOK_HREF,
+  BOOK_CTA_LABEL,
+  BROOMS_URL,
   PRODUCT_FOOTER_LINKS,
 } from "../../shared/brand";
 import { AFFILIATE_TOOLS, DISCLOSURE_LINE, DISCLOSURE_PATH } from "../../shared/disclosure";
@@ -25,11 +27,10 @@ const PARTNER_LINKS = AFFILIATE_TOOLS.filter(
     "href" in tool && Boolean(tool.href) && !FOOTER_PARTNER_SKIP.has(tool.name),
 );
 
-/** Primary nav. Picks lives on the gold button (PICKS_PATH is a static page, so it is a plain link). */
+/** Primary nav (B2B reset 2026-11-24). The gold button books the free 15-minute triage. */
 const NAV = [
-  { to: "/ads", label: "AI Ad Sprint" },
-  { to: "/concierge", label: "AI Concierge" },
-  { to: "/consult", label: "Consult" },
+  { to: "/consult", label: "Sprint" },
+  { to: "/concierge", label: "Retainer" },
   { to: "/buzz", label: "The Buzz" },
   { to: "/about", label: "About" },
 ];
@@ -41,10 +42,11 @@ const HIVE_LINKS = [
   { to: "/about", label: "About" },
 ];
 
+/** Spend guides live on First Deploy AI. */
 const GUIDE_LINKS = [
-  { to: "/consult/ai-consultant-cost", label: "AI consultant cost" },
-  { to: "/consult/ai-consultant-hourly-rate", label: "AI consultant hourly rate" },
-  { to: "/consult/ai-audit-cost", label: "AI audit cost" },
+  { href: "https://firstdeploy.ai/claude-code-team-spend/", label: "Claude Code team spend" },
+  { href: "https://firstdeploy.ai/cursor-team-ai-spend/", label: "Cursor team spend" },
+  { href: "https://firstdeploy.ai/ai-routine-drift-and-loops/", label: "Routine drift and loops" },
 ];
 
 function LiveDemo({ className = "" }: { className?: string }) {
@@ -109,8 +111,8 @@ export default function Layout() {
           </nav>
           <div className="ah-actions">
             <LiveDemo className="ah-call--bar" />
-            <a href={PICKS_PATH} className="ah-cta">
-              Shop Picks
+            <a href={BOOK_HREF} className="ah-cta">
+              Free triage
             </a>
             <button
               type="button"
@@ -138,8 +140,8 @@ export default function Layout() {
               </NavLink>
             ))}
             <div className="ah-menu-foot">
-              <a href={PICKS_PATH} className="ah-cta ah-cta--lg" onClick={() => setOpen(false)}>
-                Shop Picks {ARROW}
+              <a href={BOOK_HREF} className="ah-cta ah-cta--lg" onClick={() => setOpen(false)}>
+                {BOOK_CTA_LABEL} {ARROW}
               </a>
               <LiveDemo className="ah-call--lg" />
             </div>
@@ -153,14 +155,14 @@ export default function Layout() {
         <div className="container">
           <div className="ah-foot-top">
             <p className="ah-foot-line">
-              Built to your brand. <em>Run for you.</em>
+              Cut the spend. <em>Stop the loops.</em>
             </p>
             <div className="ah-foot-act">
-              <Link to="/ads" className="ah-cta ah-cta--lg">
-                See the AI Ad Sprint {ARROW}
-              </Link>
+              <a href={BOOK_HREF} className="ah-cta ah-cta--lg">
+                {BOOK_CTA_LABEL} {ARROW}
+              </a>
               <Link to="/consult" className="ah-ghost">
-                Talk to an operator
+                See the $2,500 sprint
               </Link>
             </div>
           </div>
@@ -173,7 +175,7 @@ export default function Layout() {
                   Agent<span className="gold">Hive</span> <span className="ah-inc">Inc</span>
                 </span>
               </Link>
-              <p>A done-for-you AI operator for funded teams. We build it to your brand, run it, and hand you the finished result.</p>
+              <p>AI ops for funded teams of 30 to 200. We cut agent spend, stop loops and drift, and keep watch after.</p>
               <LiveDemo />
             </div>
             <nav className="ah-foot-cols" aria-label="Footer">
@@ -196,9 +198,9 @@ export default function Layout() {
               <div>
                 <p className="ah-foot-h">Guides</p>
                 {GUIDE_LINKS.map((link) => (
-                  <Link key={link.to} to={link.to}>
+                  <a key={link.href} href={link.href}>
                     {link.label}
-                  </Link>
+                  </a>
                 ))}
               </div>
               <div>
@@ -236,7 +238,7 @@ export default function Layout() {
                   {tool.name}
                 </a>
               ))}
-              <a href={PICKS_PATH}>All picks</a>
+              <a href={BROOMS_URL}>Brooms.ai</a>
             </p>
             <p className="ah-foot-disc">
               {DISCLOSURE_LINE} Partner links are marked sponsored; we may earn a fee at no extra cost to you.{" "}

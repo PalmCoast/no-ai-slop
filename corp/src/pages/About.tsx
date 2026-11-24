@@ -58,19 +58,19 @@ export default function About() {
           </div>
           <div className="trust-grid">
             <article className="trust">
-              <h3>Book 30 minutes</h3>
+              <h3>Book the free 15-minute triage</h3>
               <p className="muted">
                 <a href={BOOK_HREF}>{BOOK_CTA_LABEL}</a>
               </p>
             </article>
             <article className="trust">
               <h3>
-                <a href="/consult">Consult</a> and <a href="/concierge">AI Concierge</a>
+                <a href="/consult">The $2,500 sprint</a> and <a href="/concierge">the $3,500/mo retainer</a>
               </h3>
               <p className="muted">
                 {FD_NAME}{" "}
                 <a href={`tel:${CONSULT_TEL}`}>{CONSULT_DISPLAY}</a>
-                . Rates on <a href="/consult">/consult</a>. The monthly retainer is <a href="/concierge">/concierge</a>.
+                . The sprint is on <a href="/consult">/consult</a>. The monthly retainer is on <a href="/concierge">/concierge</a>.
               </p>
             </article>
             <article className="trust">

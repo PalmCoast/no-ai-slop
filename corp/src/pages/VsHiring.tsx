@@ -11,7 +11,7 @@ import {
   SOFTWARE_DEVELOPER_SOURCE,
   SOFTWARE_DEVELOPER_WAGE,
 } from "../../shared/faqs";
-import { CONSULT_RATES, HIVE_CONSULT_PATH } from "../../shared/brand";
+import { HIVE_CONSULT_PATH } from "../../shared/brand";
 
 const developer = SOFTWARE_DEVELOPER_WAGE.toLocaleString("en-US");
 const manager = IT_MANAGER_WAGE.toLocaleString("en-US");
@@ -25,7 +25,7 @@ export default function VsHiring() {
           <span className="dot" /> {CONCIERGE_NAME} · compared with a hire
         </div>
         <h1 className="display" style={{ fontSize: "clamp(2.2rem, 5vw, 3.6rem)" }}>
-          Concierge vs hiring an in-house AI person
+          The retainer vs hiring an in-house AI ops person
         </h1>
         <p className="lede">
           {CONCIERGE_NAME} is {CONCIERGE_PRICE}. Twelve months at that published rate is ${year}. An in-house hire is a
@@ -67,7 +67,7 @@ export default function VsHiring() {
               </tr>
               <tr>
                 <th>What you get</th>
-                <td>Two 45-minute sessions a month, unlimited async help, and a shared asset inventory.</td>
+                <td>Monitoring of agent spend and failures, a 1-business-day response time, a monthly report, and async help.</td>
                 <td>BLS describes software developers as people who design computer applications or programs.</td>
                 <td>BLS describes these managers as people who plan, coordinate, and direct computer-related activities.</td>
                 <td>A bench of specialists, when that is what you hire.</td>
@@ -76,7 +76,7 @@ export default function VsHiring() {
                 <th>When it is the better fit</th>
                 <td>You want that scope and you do not need a full-time employee.</td>
                 <td>You need someone on payroll writing software every day.</td>
-                <td>You need someone directing an IT group, not two sessions a month.</td>
+                <td>You need someone directing an IT group, not monitoring and a monthly report.</td>
                 <td>You need several specialists at once and a statement of work.</td>
               </tr>
             </tbody>
@@ -85,14 +85,13 @@ export default function VsHiring() {
 
         <h2>Our prices</h2>
         <p>
-          Hourly consult stays open if a retainer is more than you need: {CONSULT_RATES}. A 10-hour pack is $1,250, with
-          $625 up front. Those prices are on <Link to={HIVE_CONSULT_PATH}>the consult page</Link>, in the section “What
-          an AI consultant costs.”
+          If a retainer is more than you need, the $2,500 Agent Audit &amp; Stabilization Sprint is a one-time fix in 5
+          business days, and the 15-minute triage is free. Both are on <Link to={HIVE_CONSULT_PATH}>the sprint page</Link>.
         </p>
         <p>
-          {CONCIERGE_NAME} is {CONCIERGE_PRICE} for two 45-minute sessions a month, unlimited async help, and a
-          shared inventory of the assets we build. Cancel any month after the first 30 days. The offer is{" "}
-          <Link to={CONCIERGE_PATH}>on the Concierge page</Link>.
+          The {CONCIERGE_NAME} is {CONCIERGE_PRICE} for monitoring of agent spend and failures, a 1-business-day
+          response time, a monthly report and async help. Month to month. The offer is{" "}
+          <Link to={CONCIERGE_PATH}>on the retainer page</Link>.
         </p>
 
         <h2>The hire</h2>
@@ -139,7 +138,7 @@ export default function VsHiring() {
             <a href={IT_MANAGER_SOURCE}>{IT_MANAGER_SOURCE}</a>. Checked {BLS_CHECKED}.
           </li>
           <li>
-            {CONCIERGE_NAME} {CONCIERGE_PRICE}, and consult {CONSULT_RATES} plus the $1,250 pack, are the prices published
+            The {CONCIERGE_NAME} at {CONCIERGE_PRICE} and the $2,500 sprint are the prices published
             on agenthiveinc.com.
           </li>
         </ul>

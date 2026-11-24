@@ -61,10 +61,10 @@ describe("/picks storefront", () => {
     expect(page).not.toMatch(/SpaceX|KloudStax|Colts/i);
   });
 
-  it("is the hub: sitemap, llms.txt, nav, footer, ram-deals and a rewrite all point to it", () => {
+  it("stays live (sitemap, ram-deals, rewrite) but is off the B2B nav and footer", () => {
     expect(sitemapXml()).toContain("<loc>https://agenthiveinc.com/picks/</loc>");
-    expect(llms).toContain("https://agenthiveinc.com/picks/");
-    expect(layout).toMatch(/PICKS_PATH/);
+    expect(llms).not.toContain("https://agenthiveinc.com/picks/");
+    expect(layout).not.toMatch(/PICKS_PATH/);
     expect(layout).toContain('rel="sponsored noopener"');
     expect(ram).toContain('href="/picks/"');
     expect(routes).toContain('"/picks /picks/index.html 200!"');

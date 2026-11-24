@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
 import { DANIEL_BIO, DANIEL_JOB_TITLE, DANIEL_NAME } from "../../shared/author";
-import { CONSULT_DISPLAY, CONSULT_TEL, FD_NAME, FD_URL, FLICK_URL, INDEXME_URL, PICKS_PATH } from "../../shared/brand";
+import { CONSULT_DISPLAY, CONSULT_TEL, FD_NAME, FD_URL, FLICK_URL, INDEXME_URL } from "../../shared/brand";
 
 const PRODUCTS = [
-  { href: PICKS_PATH, label: "Picks" },
-  { href: "/ads", label: "AI Ad Sprint" },
+  { href: "/consult", label: "Agent Audit & Stabilization Sprint" },
+  { href: "/concierge", label: "Fractional AI Ops Retainer" },
   { href: FD_URL, label: FD_NAME },
   { href: INDEXME_URL, label: "IndexMe" },
   { href: FLICK_URL, label: "Flick" },

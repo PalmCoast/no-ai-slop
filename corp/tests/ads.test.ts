@@ -102,7 +102,7 @@ describe("AI Ad Sprint pages", () => {
     expect(visible).not.toMatch(/\(\d{3}\)\s*\d{3}-\d{4}/);
   });
 
-  it("keeps the ads rules above the 404 catch-all, 301s /ads/index.html to /ads, and 302s /ads to /go/ads-sprint", () => {
+  it("keeps the ads rules above the 404 catch-all, 301s /ads/index.html to /ads, and 302s /ads to the /consult sprint page", () => {
     const script = readFileSync(join(corpRoot, "scripts/write-route-html.ts"), "utf8");
     const toml = readFileSync(join(corpRoot, "netlify.toml"), "utf8");
     for (const text of [script, toml]) {
@@ -117,8 +117,9 @@ describe("AI Ad Sprint pages", () => {
     expect(script).toContain('SKIP_PRERENDER = new Set(["/ads"])');
     expect(script).toContain('"/ads/index.html /ads 301!"');
     expect(toml).toContain('from = "/ads/index.html"\n  to = "/ads"\n  status = 301');
-    expect(toml).toContain('from = "/ads"\n  to = "/go/ads-sprint"\n  status = 302');
-    expect(toml).toContain('from = "/ads/"\n  to = "/go/ads-sprint"\n  status = 302');
+    expect(toml).toContain('from = "/ads"\n  to = "/consult"\n  status = 302');
+    expect(toml).toContain('from = "/ads/"\n  to = "/consult"\n  status = 302');
+    expect(script).toContain('"/ads /consult 302!"');
     expect(toml).toContain('from = "/ads/thanks"\n  to = "/ads/thanks/index.html"\n  status = 200');
   });
 });
