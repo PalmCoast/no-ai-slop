@@ -16,7 +16,7 @@ Built and run by Daniel Graham, a U.S. Army veteran with 10+ years in operations
 
 ## Offers on First Deploy AI (firstdeploy.ai, same company)
 - [First Deploy AI](https://firstdeploy.ai/): the same triage, sprint and retainer.
-- [Deploy Agent](https://firstdeploy.ai/deploy-agent/): a $1,250 forward-deployed go-live sprint ($625 deposit) that gets a B2B AI product working inside a customer's systems.
+- [Deploy Agent](https://firstdeploy.ai/deploy-agent/): go-live work for B2B AI vendors whose deals stall after the signature. Start with the free 15-minute triage, or the $2,500 Agent Audit & Stabilization Sprint.
 - [Freight Ops AI Agent](https://firstdeploy.ai/freight-ops-ai-agent/): a $2,500 two-week proof of a custom AI agent for freight brokerages and 3PLs, scoped per brokerage.
 - Spend guides: [Claude Code team spend](https://firstdeploy.ai/claude-code-team-spend/), [Cursor team spend](https://firstdeploy.ai/cursor-team-ai-spend/), [AI routine drift and loops](https://firstdeploy.ai/ai-routine-drift-and-loops/).
 

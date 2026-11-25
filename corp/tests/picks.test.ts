@@ -28,7 +28,8 @@ describe("/picks storefront", () => {
     for (const id of ["look-sharp", "beast-rig", "grow", "get-paid"]) expect(page).toContain(`id="${id}"`);
     expect(page).toContain("Come and Take It");
     expect(page).toContain("https://brooms.ai/products/come-and-take-it-tee");
-    expect(page).toContain('href="/ads"');
+    expect(page).toContain('href="/go/sprint"');
+    expect(page).toContain('href="/go/retainer"');
     expect(page).toContain("https://whop.com/agenthive/ai-receptionist-kit/");
     expect(page).toContain('href="/ram-deals/"');
     expect(page).toMatch(/Disclosure\.<\/strong>/);
