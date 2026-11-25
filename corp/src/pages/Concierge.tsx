@@ -6,7 +6,7 @@ import { BOOK_HREF, CONSULT_TEL, PHONE_DISPLAY, FD_NAME, FD_URL, HIVE_CONSULT_PA
 import { CONCIERGE_BOOK_LABEL, CONCIERGE_NAME, CONCIERGE_PRICE, CONCIERGE_GO_HREF } from "../../shared/concierge";
 
 const STEPS = [
-  { title: "Free triage", body: "15 minutes. We look at your bill and your stack and tell you whether to start with the sprint or go straight to the retainer." },
+  { title: "Free triage", body: "30 minutes. We look at your bill and your stack and tell you whether to start with the sprint or go straight to the retainer." },
   { title: "Stabilize first", body: "Most teams start with the $2,500 sprint so the retainer begins on a clean, inventoried stack." },
   { title: "Monitoring goes live", body: "Spend and failure alerts on every agent, routine and key we inventoried, routed to us and to the owner you name." },
   { title: "Every month", body: "We fix what breaks, cut what creeps back, and send a spend and reliability report your leadership can read." },

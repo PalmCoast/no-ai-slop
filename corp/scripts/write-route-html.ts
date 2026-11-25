@@ -115,6 +115,8 @@ writeFileSync(
     "/consult/north-star-ai-consultation-alternative/ /consult 301!",
     "/audit /consult 301!",
     "/audit/ /consult 301!",
+    "/triage https://calendar.google.com/calendar/appointments/schedules/AcZssZ08PSsZYPUrigPxN1Ax27CJh01QY8fjWo1mGYVhlX5vh0QUTqBzXF4NSNwDyLw487B8fNegD8JV 302!",
+    "/triage/ https://calendar.google.com/calendar/appointments/schedules/AcZssZ08PSsZYPUrigPxN1Ax27CJh01QY8fjWo1mGYVhlX5vh0QUTqBzXF4NSNwDyLw487B8fNegD8JV 302!",
     "/* /404.html 404",
   ].join("\n") + "\n",
 );

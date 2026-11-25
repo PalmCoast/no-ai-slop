@@ -206,6 +206,19 @@
   to = "/consult"
   status = 301
 
+# 2026-11-25: same 30-minute Architecture & Spend Triage booking as firstdeploy.ai/triage.
+[[redirects]]
+  from = "/triage"
+  to = "https://calendar.google.com/calendar/appointments/schedules/AcZssZ08PSsZYPUrigPxN1Ax27CJh01QY8fjWo1mGYVhlX5vh0QUTqBzXF4NSNwDyLw487B8fNegD8JV"
+  status = 302
+  force = true
+
+[[redirects]]
+  from = "/triage/"
+  to = "https://calendar.google.com/calendar/appointments/schedules/AcZssZ08PSsZYPUrigPxN1Ax27CJh01QY8fjWo1mGYVhlX5vh0QUTqBzXF4NSNwDyLw487B8fNegD8JV"
+  status = 302
+  force = true
+
 [[redirects]]
   from = "/*"
   to = "/404.html"

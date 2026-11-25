@@ -20,7 +20,7 @@ describe("Ask AI bar", () => {
     expect(ASK_AI_SUBTITLE).toBe("Don't just take our word for it.");
     expect(ASK_AI_DISAMBIGUATION).toBe("AgentHive Inc (agenthiveinc.com, Palm Coast, FL / First Deploy AI)");
     expect(ASK_AI_PROMPT).not.toMatch(/real AI consultant shop that builds/i);
-    expect(ASK_AI_PROMPT).toMatch(/free 15-minute triage/);
+    expect(ASK_AI_PROMPT).toMatch(/free 30-minute Architecture & Spend Triage/);
     expect(ASK_AI_PROMPT).toMatch(/\$2,500 Agent Audit & Stabilization Sprint/);
     expect(ASK_AI_PROMPT).toMatch(/\$3,500\/month Fractional AI Ops retainer/);
     expect(ASK_AI_PACK_PROMPT).toMatch(/\$2,500 five-business-day/);

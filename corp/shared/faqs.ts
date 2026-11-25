@@ -5,7 +5,7 @@ export type Faq = { q: string; a: string };
 /** /consult is the $2,500 Agent Audit & Stabilization Sprint page (B2B reset 2026-11-24). */
 export const CONSULT_FAQS: Faq[] = [
   {
-    q: "What happens on the free 15-minute triage?",
+    q: "What happens on the free 30-minute Architecture & Spend Triage?",
     a: "You bring last month’s AI bill and a rough picture of your stack. Daniel Graham tells you where the waste most likely is and whether the $2,500 sprint will pay for itself. If it won’t, he says so and you owe nothing.",
   },
   {
@@ -38,7 +38,7 @@ export const CONSULT_FAQS: Faq[] = [
 export const CONSULT_COST_FAQS: Faq[] = [
   {
     q: "What does AgentHive Inc charge?",
-    a: "A free 15-minute triage, a $2,500 fixed-price Agent Audit & Stabilization Sprint delivered in 5 business days, and a $3,500/mo Fractional AI Ops retainer.",
+    a: "A free 30-minute Architecture & Spend Triage, a $2,500 fixed-price Agent Audit & Stabilization Sprint delivered in 5 business days, and a $3,500/mo Fractional AI Ops retainer.",
   },
 ];
 
@@ -65,7 +65,7 @@ export const CONCIERGE_FAQS: Faq[] = [
   },
   {
     q: "How do I start?",
-    a: "Book the free 15-minute triage, or start the subscription and we send intake the same business day.",
+    a: "Book the free 30-minute Architecture & Spend Triage, or start the subscription and we send intake the same business day.",
   },
 ];
 

@@ -51,7 +51,7 @@ export const HIVE_SITES: HiveSite[] = [
     slug: "consult",
     name: "Agent Audit & Stabilization Sprint",
     url: FD_CONSULT_URL,
-    description: "Free 15-minute triage, then a fixed-price sprint delivered in 5 business days.",
+    description: "Free 30-minute Architecture & Spend Triage, then a fixed-price sprint delivered in 5 business days.",
     price: "$2,500 fixed",
     category: "ops",
     host: "custom",

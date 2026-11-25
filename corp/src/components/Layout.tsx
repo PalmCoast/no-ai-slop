@@ -27,7 +27,7 @@ const PARTNER_LINKS = AFFILIATE_TOOLS.filter(
     "href" in tool && Boolean(tool.href) && !FOOTER_PARTNER_SKIP.has(tool.name),
 );
 
-/** Primary nav (B2B reset 2026-11-24). The gold button books the free 15-minute triage. */
+/** Primary nav (B2B reset 2026-11-24). The gold button books the free 30-minute Architecture & Spend Triage. */
 const NAV = [
   { to: "/consult", label: "Sprint" },
   { to: "/concierge", label: "Retainer" },

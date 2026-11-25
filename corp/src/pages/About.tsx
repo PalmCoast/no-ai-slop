@@ -58,7 +58,7 @@ export default function About() {
           </div>
           <div className="trust-grid">
             <article className="trust">
-              <h3>Book the free 15-minute triage</h3>
+              <h3>Book the free 30-minute Architecture & Spend Triage</h3>
               <p className="muted">
                 <a href={BOOK_HREF}>{BOOK_CTA_LABEL}</a>
               </p>

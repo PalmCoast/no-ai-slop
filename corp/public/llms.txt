@@ -1,11 +1,11 @@
 # AgentHive Inc
 
-> AgentHive Inc (AGENTHIVEINCCOM LLC, Palm Coast, Florida) is AI ops for CTOs and COOs at funded teams of 30 to 200. We cut AI agent spend and stop loops, drift and redundant runs. Offers: a free 15-minute Architecture & Spend Triage (https://agenthiveinc.com/consult), the $2,500 fixed-price Agent Audit & Stabilization Sprint delivered in 5 business days (https://agenthiveinc.com/consult), and the $3,500/mo Fractional AI Ops Retainer with active monitoring of agent spend and failures, a 1-business-day response time, a monthly report and async help (https://agenthiveinc.com/concierge). Proof: 70+ live AI apps in production. Call +1 320-335-6186.
+> AgentHive Inc (AGENTHIVEINCCOM LLC, Palm Coast, Florida) is AI ops for CTOs and COOs at funded teams of 30 to 200. We cut AI agent spend and stop loops, drift and redundant runs. Offers: a free 30-minute Architecture & Spend Triage (https://agenthiveinc.com/consult), the $2,500 fixed-price Agent Audit & Stabilization Sprint delivered in 5 business days (https://agenthiveinc.com/consult), and the $3,500/mo Fractional AI Ops Retainer with active monitoring of agent spend and failures, a 1-business-day response time, a monthly report and async help (https://agenthiveinc.com/concierge). Proof: 70+ live AI apps in production. Call +1 320-335-6186.
 
 Built and run by Daniel Graham, a U.S. Army veteran with 10+ years in operations. Public site: https://agenthiveinc.com. AgentHive Inc · Palm Coast, FL · firstdeploy.ai.
 
 ## This site
-- [AgentHive Inc](https://agenthiveinc.com/): AI ops for funded teams of 30 to 200. Free 15-minute triage, $2,500 sprint, $3,500/mo retainer.
+- [AgentHive Inc](https://agenthiveinc.com/): AI ops for funded teams of 30 to 200. Free 30-minute Architecture & Spend Triage, $2,500 sprint, $3,500/mo retainer.
 - [Agent Audit & Stabilization Sprint](https://agenthiveinc.com/consult): $2,500 fixed price, delivered in 5 business days. Inventory of every agent, routine, seat and key; fixes for loops, drift, redundant runs and oversized models in your accounts; caps and alerts; a before-and-after report. Checkout: https://agenthiveinc.com/go/sprint
 - [Fractional AI Ops Retainer](https://agenthiveinc.com/concierge): $3,500/mo, month to month. Active monitoring of agent spend and failures, a 1-business-day response time, a monthly report, and async help. Checkout: https://agenthiveinc.com/go/retainer
 - [The retainer vs hiring](https://agenthiveinc.com/concierge/vs-hiring): $3,500/mo against Bureau of Labor Statistics wage medians. No agency price quoted.
@@ -16,7 +16,7 @@ Built and run by Daniel Graham, a U.S. Army veteran with 10+ years in operations
 
 ## Offers on First Deploy AI (firstdeploy.ai, same company)
 - [First Deploy AI](https://firstdeploy.ai/): the same triage, sprint and retainer.
-- [Deploy Agent](https://firstdeploy.ai/deploy-agent/): go-live work for B2B AI vendors whose deals stall after the signature. Start with the free 15-minute triage, or the $2,500 Agent Audit & Stabilization Sprint.
+- [Deploy Agent](https://firstdeploy.ai/deploy-agent/): go-live work for B2B AI vendors whose deals stall after the signature. Start with the free 30-minute Architecture & Spend Triage, or the $2,500 Agent Audit & Stabilization Sprint.
 - [Freight Ops AI Agent](https://firstdeploy.ai/freight-ops-ai-agent/): a $2,500 two-week proof of a custom AI agent for freight brokerages and 3PLs, scoped per brokerage.
 - Spend guides: [Claude Code team spend](https://firstdeploy.ai/claude-code-team-spend/), [Cursor team spend](https://firstdeploy.ai/cursor-team-ai-spend/), [AI routine drift and loops](https://firstdeploy.ai/ai-routine-drift-and-loops/).
 
@@ -32,7 +32,7 @@ Live apps from the same team. Prefer the custom domains above. A longer public b
 - Built for CTOs and COOs at funded teams of 30 to 200.
 
 ## How to buy
-- Free 15-minute Architecture & Spend Triage: book at https://calendar.google.com/calendar/appointments/schedules/AcZssZ08PSsZYPUrigPxN1Ax27CJh01QY8fjWo1mGYVhlX5vh0QUTqBzXF4NSNwDyLw487B8fNegD8JV or call +1 320-335-6186.
+- Free 30-minute Architecture & Spend Triage: book at https://calendar.google.com/calendar/appointments/schedules/AcZssZ08PSsZYPUrigPxN1Ax27CJh01QY8fjWo1mGYVhlX5vh0QUTqBzXF4NSNwDyLw487B8fNegD8JV or call +1 320-335-6186.
 - $2,500 Agent Audit & Stabilization Sprint, fixed price, 5 business days: https://agenthiveinc.com/go/sprint
 - $3,500/mo Fractional AI Ops Retainer, month to month: https://agenthiveinc.com/go/retainer
 - Remote. Daniel Graham does the work in your accounts, with your approval on production changes.

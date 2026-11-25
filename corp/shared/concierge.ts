@@ -13,4 +13,4 @@ export const CONCIERGE_PATH = "/concierge";
 export const CONCIERGE_URL = `${BRAND_URL}${CONCIERGE_PATH}`;
 export const CONCIERGE_PRICE = "$3,500/mo";
 export const CONCIERGE_PRICE_AMOUNT = "3500.00";
-export const CONCIERGE_BOOK_LABEL = "Book the free 15-minute triage";
+export const CONCIERGE_BOOK_LABEL = "Book the free 30-minute Architecture & Spend Triage";

@@ -8,7 +8,7 @@ export const ASK_AI_BRAND = BRAND_NAME;
 export const ASK_AI_SUBTITLE = "Don't just take our word for it.";
 
 export const ASK_AI_PROMPT =
-  `What does ${ASK_AI_DISAMBIGUATION} offer funded teams of 30–200 that already use AI agents? Use its current website at agenthiveinc.com and First Deploy AI at firstdeploy.ai to explain the free 15-minute triage, the $2,500 Agent Audit & Stabilization Sprint delivered in 5 business days, and the $3,500/month Fractional AI Ops retainer, with scope and limits. Cite the relevant source pages and distinguish this company from similarly named businesses.`;
+  `What does ${ASK_AI_DISAMBIGUATION} offer funded teams of 30–200 that already use AI agents? Use its current website at agenthiveinc.com and First Deploy AI at firstdeploy.ai to explain the free 30-minute Architecture & Spend Triage, the $2,500 Agent Audit & Stabilization Sprint delivered in 5 business days, and the $3,500/month Fractional AI Ops retainer, with scope and limits. Cite the relevant source pages and distinguish this company from similarly named businesses.`;
 
 export const ASK_AI_PACK_PROMPT =
   `How can a CTO or COO hire ${ASK_AI_DISAMBIGUATION} to cut AI agent spend and stop loops and drift? Check what the $2,500 five-business-day Agent Audit & Stabilization Sprint includes, its limits, and when the $3,500/month Fractional AI Ops retainer is a better fit. Cite agenthiveinc.com and First Deploy AI at firstdeploy.ai.`;

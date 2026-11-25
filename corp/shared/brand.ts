@@ -15,8 +15,8 @@ export const FD_CHECK_URL = "https://firstdeploy.ai/#check";
 export const FD_CONSULT_URL = "https://firstdeploy.ai/consult";
 export const HIVE_CONSULT_PATH = "/consult";
 export const HIVE_CONSULT_URL = "https://agenthiveinc.com/consult";
-/** B2B reset 2026-11-24: free 15-minute triage -> $2,500 sprint (5 business days) -> $3,500/mo retainer. */
-/** Free 15-minute Architecture & Spend Triage booking (Google Calendar appointment page). */
+/** B2B reset 2026-11-24: free 30-minute Architecture & Spend Triage -> $2,500 sprint (5 business days) -> $3,500/mo retainer. */
+/** Free 30-minute Architecture & Spend Triage booking (Google Calendar appointment page). */
 export const TRIAGE_NAME = "Architecture & Spend Triage";
 /** Stripe Payment Link for the $2,500 Agent Audit & Stabilization Sprint. Destination of /go/sprint. */
 export const SPRINT_STRIPE_URL = "https://buy.stripe.com/6oU14n2Es6CTfTf7ea2ZO1V";
@@ -34,28 +34,28 @@ export const FD_DEPLOY_AGENT_URL = "https://firstdeploy.ai/deploy-agent/";
 /** Freight Ops AI Agent two-week proof page on First Deploy AI (AI visibility packet 2026-11-20). */
 export const FD_FREIGHT_URL = "https://firstdeploy.ai/freight-ops-ai-agent/";
 export const FD_WHAT = "a $2,500 fixed-price sprint that cuts AI agent spend and stops loops, drift and redundant runs in 5 business days";
-export const FD_PRICE = "a free 15-minute triage, then a $2,500 sprint delivered in 5 business days, then a $3,500/mo retainer";
+export const FD_PRICE = "a free 30-minute Architecture & Spend Triage, then a $2,500 sprint delivered in 5 business days, then a $3,500/mo retainer";
 export const FD_OFFER =
-  "Start with a free 15-minute triage. The $2,500 Agent Audit & Stabilization Sprint fixes it in 5 business days. The $3,500/mo Fractional AI Ops retainer keeps it fixed.";
+  "Start with a free 30-minute Architecture & Spend Triage. The $2,500 Agent Audit & Stabilization Sprint fixes it in 5 business days. The $3,500/mo Fractional AI Ops retainer keeps it fixed.";
 export const FD_PRICE_LINE =
-  "The path: a free 15-minute triage, then the $2,500 Agent Audit & Stabilization Sprint (5 business days), then the $3,500/mo Fractional AI Ops retainer.";
+  "The path: a free 30-minute Architecture & Spend Triage, then the $2,500 Agent Audit & Stabilization Sprint (5 business days), then the $3,500/mo Fractional AI Ops retainer.";
 /** Same path as HTML with the live links, for prerendered bodies. */
-export const FD_PRICE_LINE_HTML = `The path: a <a href="${"https://calendar.google.com/calendar/appointments/schedules/AcZssZ08PSsZYPUrigPxN1Ax27CJh01QY8fjWo1mGYVhlX5vh0QUTqBzXF4NSNwDyLw487B8fNegD8JV"}">free 15-minute triage</a>, then the <a href="${SPRINT_GO_HREF}" data-product="sprint2500" data-utm-source="dir" data-utm-medium="page" data-utm-content="ah-prerender-sprint">$2,500 Agent Audit &amp; Stabilization Sprint</a> (5 business days), then the <a href="/concierge">$3,500/mo Fractional AI Ops retainer</a>.`;
+export const FD_PRICE_LINE_HTML = `The path: a <a href="${"https://calendar.google.com/calendar/appointments/schedules/AcZssZ08PSsZYPUrigPxN1Ax27CJh01QY8fjWo1mGYVhlX5vh0QUTqBzXF4NSNwDyLw487B8fNegD8JV"}">free 30-minute Architecture & Spend Triage</a>, then the <a href="${SPRINT_GO_HREF}" data-product="sprint2500" data-utm-source="dir" data-utm-medium="page" data-utm-content="ah-prerender-sprint">$2,500 Agent Audit &amp; Stabilization Sprint</a> (5 business days), then the <a href="/concierge">$3,500/mo Fractional AI Ops retainer</a>.`;
 export const FD_PROMISE = "Fixed price, done in your accounts, with before and after numbers";
 export const FD_CTA_LABEL = "See First Deploy AI";
-export const BOOK_CTA_LABEL = "Book the free 15-minute triage";
+export const BOOK_CTA_LABEL = "Book the free 30-minute Architecture & Spend Triage";
 export const FREE_30_LABEL = "Free triage";
 export const FD_CHECK_LABEL = "2-minute check";
-export const CONSULT_RATES = "free 15-minute triage · $2,500 sprint · $3,500/mo retainer";
+export const CONSULT_RATES = "free 30-minute Architecture & Spend Triage · $2,500 sprint · $3,500/mo retainer";
 export const HERO_H1 = "Cut AI agent spend and stop the loops in 5 business days.";
 export const HERO_WHAT =
-  "For CTOs and COOs at funded teams of 30 to 200. A fixed-price $2,500 sprint: we audit your agents, routines and seats, fix the loops, drift and redundant runs in your accounts, and hand back the before and after numbers. Start with a free 15-minute triage.";
+  "For CTOs and COOs at funded teams of 30 to 200. A fixed-price $2,500 sprint: we audit your agents, routines and seats, fix the loops, drift and redundant runs in your accounts, and hand back the before and after numbers. Start with a free 30-minute Architecture & Spend Triage.";
 export const HERO_WHY = "";
 export const FOOTER_LINE = "AgentHive Inc · Palm Coast, FL · firstdeploy.ai";
 export const INDEXME_NAME = "IndexMe.lol";
 export const INDEXME_URL = "https://indexme.lol/";
 export const INDEXME_BLURB = "honest IndexNow indexing desk";
-/** Free 15-minute triage booking. Demo line stays CONSULT_TEL. */
+/** Free 30-minute Architecture & Spend Triage booking. Demo line stays CONSULT_TEL. */
 export const BOOK_HREF = "https://calendar.google.com/calendar/appointments/schedules/AcZssZ08PSsZYPUrigPxN1Ax27CJh01QY8fjWo1mGYVhlX5vh0QUTqBzXF4NSNwDyLw487B8fNegD8JV";
 export const SEAT_CIRCUIT_NAME = "Seat & Circuit";
 export const SEAT_CIRCUIT_URL = "https://infrastructure.agenthiveinc.com/";

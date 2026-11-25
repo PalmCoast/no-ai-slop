@@ -58,7 +58,7 @@ describe("AgentHive Inc brand facts", () => {
     expect(FD_CONSULT_URL).toBe("https://firstdeploy.ai/consult");
     expect(HIVE_CONSULT_PATH).toBe("/consult");
     expect(HIVE_CONSULT_URL).toBe("https://agenthiveinc.com/consult");
-    expect(FD_PRICE).toBe("a free 15-minute triage, then a $2,500 sprint delivered in 5 business days, then a $3,500/mo retainer");
+    expect(FD_PRICE).toBe("a free 30-minute Architecture & Spend Triage, then a $2,500 sprint delivered in 5 business days, then a $3,500/mo retainer");
     expect(FD_PRICE_LINE).not.toMatch(/founding|first 5|\$250/i);
     expect(FD_PRICE_LINE).not.toContain("1" + ",750");
     expect(FD_PRICE_LINE).not.toContain("$" + "250/mo");
@@ -68,12 +68,12 @@ describe("AgentHive Inc brand facts", () => {
     expect(INDEXME_BLURB).toMatch(/IndexNow/);
     expect(BOOK_HREF).toBe("https://calendar.google.com/calendar/appointments/schedules/AcZssZ08PSsZYPUrigPxN1Ax27CJh01QY8fjWo1mGYVhlX5vh0QUTqBzXF4NSNwDyLw487B8fNegD8JV");
     expect(FD_CTA_LABEL).toBe("See First Deploy AI");
-    expect(BOOK_CTA_LABEL).toBe("Book the free 15-minute triage");
+    expect(BOOK_CTA_LABEL).toBe("Book the free 30-minute Architecture & Spend Triage");
     expect(FREE_30_LABEL).toBe("Free triage");
     expect(FD_CHECK_LABEL).toBe("2-minute check");
     expect(SEAT_CIRCUIT_NAME).toBe("Seat & Circuit");
     expect(SEAT_CIRCUIT_URL).toBe("https://infrastructure.agenthiveinc.com/");
-    expect(CONSULT_RATES).toBe("free 15-minute triage · $2,500 sprint · $3,500/mo retainer");
+    expect(CONSULT_RATES).toBe("free 30-minute Architecture & Spend Triage · $2,500 sprint · $3,500/mo retainer");
     expect(`${FD_PRICE} ${FD_PRICE_LINE} ${CONSULT_RATES}`).not.toMatch(/\$75|\$150|\$1,250|\$2,000/);
     expect(HERO_H1).toBe("Cut AI agent spend and stop the loops in 5 business days.");
     expect(HERO_WHAT).toMatch(/CTOs and COOs at funded teams of 30 to 200/);

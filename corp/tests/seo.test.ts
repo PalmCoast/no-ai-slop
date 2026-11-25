@@ -56,7 +56,7 @@ describe("per-route SEO", () => {
     expect(home).toContain("funded");
     expect(home).not.toMatch(/field operations|dirt, plants|HVAC|plumb|roofing|Flagler|Volusia/i);
     expect(home).not.toMatch(/href="\/picks\/"|AI Ad Sprint|RAM &amp; rig|\$75|\$150 |\$2,000|whop/i);
-    expect(home).toContain("Book the free 15-minute triage");
+    expect(home).toContain("Book the free 30-minute Architecture & Spend Triage");
     expect(home).toContain("$2,500");
     expect(home).toContain("$3,500/mo");
     expect(home).toContain(
@@ -274,6 +274,8 @@ describe("per-route SEO", () => {
     expect(redirects).toContain("/audit /consult 301!");
     expect(redirects).toContain('from = "/audit"');
     expect(redirects).toContain('to = "/consult"');
+    expect(redirects).toContain('from = "/triage"');
+    expect(redirects).toContain("/triage https://calendar.google.com/calendar/appointments/schedules/AcZssZ08PSsZYPUrigPxN1Ax27CJh01QY8fjWo1mGYVhlX5vh0QUTqBzXF4NSNwDyLw487B8fNegD8JV 302!");
     expect(consult).not.toMatch(/live this week|or you don.t pay|guarantee/i);
     for (const href of [
       "https://calendar.google.com/calendar/appointments/schedules/AcZssZ08PSsZYPUrigPxN1Ax27CJh01QY8fjWo1mGYVhlX5vh0QUTqBzXF4NSNwDyLw487B8fNegD8JV",

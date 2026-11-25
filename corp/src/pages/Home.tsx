@@ -92,7 +92,7 @@ export default function Home() {
             <article className="trust card">
               <p className="eyebrow">01 · Free</p>
               <h3>Architecture &amp; Spend Triage</h3>
-              <p className="muted">15 minutes. Bring last month’s bill. We tell you where the waste most likely is and whether the sprint pays for itself.</p>
+              <p className="muted">30 minutes. Bring last month’s bill. We tell you where the waste most likely is and whether the sprint pays for itself.</p>
               <p style={{ marginTop: 12 }}>
                 <a className="btn btn-primary" href={BOOK_HREF}>
                   Book the triage
@@ -152,7 +152,7 @@ export default function Home() {
         <div className="container">
           <div className="cta-box">
             <h2>Bring last month’s AI bill</h2>
-            <p>15 minutes, free. You leave knowing where the money most likely goes and whether the sprint is worth it.</p>
+            <p>30 minutes, free. You leave knowing where the money most likely goes and whether the sprint is worth it.</p>
             <div className="hero-actions" style={{ justifyContent: "center", marginTop: 18, marginBottom: 0 }}>
               <a className="btn btn-primary" href={BOOK_HREF}>
                 {BOOK_CTA_LABEL}

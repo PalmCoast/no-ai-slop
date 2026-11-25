@@ -86,7 +86,7 @@ export default function VsHiring() {
         <h2>Our prices</h2>
         <p>
           If a retainer is more than you need, the $2,500 Agent Audit &amp; Stabilization Sprint is a one-time fix in 5
-          business days, and the 15-minute triage is free. Both are on <Link to={HIVE_CONSULT_PATH}>the sprint page</Link>.
+          business days, and the 30-minute Architecture & Spend Triage is free. Both are on <Link to={HIVE_CONSULT_PATH}>the sprint page</Link>.
         </p>
         <p>
           The {CONCIERGE_NAME} is {CONCIERGE_PRICE} for monitoring of agent spend and failures, a 1-business-day

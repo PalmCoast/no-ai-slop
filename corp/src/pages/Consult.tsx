@@ -71,7 +71,7 @@ export default function Consult() {
             </a>
           </div>
           <p className="fine">
-            70+ live AI apps in production. Not sure yet? The 15-minute triage is free. <a href="#pricing">See pricing</a>
+            70+ live AI apps in production. Not sure yet? The 30-minute Architecture & Spend Triage is free. <a href="#pricing">See pricing</a>
           </p>
         </div>
       </section>
@@ -126,7 +126,7 @@ export default function Consult() {
               <li>
                 <span>
                   Architecture &amp; Spend Triage
-                  <small className="muted"> 15 minutes. Where the money is most likely going, and whether the sprint pays for itself.</small>
+                  <small className="muted"> 30 minutes. Where the money is most likely going, and whether the sprint pays for itself.</small>
                 </span>
                 <strong>Free</strong>
                 <a className="btn btn-outline" href={BOOK_HREF}>
@@ -180,7 +180,7 @@ export default function Consult() {
       <section className="section">
         <div className="container cta-split">
           <div>
-            <div className="eyebrow">Free, 15 minutes</div>
+            <div className="eyebrow">Free, 30 minutes</div>
             <h2 className="display" style={{ fontSize: "clamp(2.2rem, 5vw, 3.6rem)" }}>
               Bring last month’s bill.
               <br />

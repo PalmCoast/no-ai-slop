@@ -19,7 +19,7 @@ describe("portfolio catalog", () => {
   it("lists every hive-map commercial site plus verified Netlify apps", () => {
     const urls = HIVE_SITES.map((s) => s.url);
     expect(urls).toContain("https://firstdeploy.ai/");
-    expect(HIVE_SITES.find((s) => s.slug === "first-deploy")?.price).toBe("a free 15-minute triage, then a $2,500 sprint delivered in 5 business days, then a $3,500/mo retainer");
+    expect(HIVE_SITES.find((s) => s.slug === "first-deploy")?.price).toBe("a free 30-minute Architecture & Spend Triage, then a $2,500 sprint delivered in 5 business days, then a $3,500/mo retainer");
     expect(HIVE_SITES.find((s) => s.slug === "first-deploy")?.name).toBe("First Deploy AI");
     expect(urls).toContain("https://flick.firstdeploy.ai/");
     expect(urls).toContain("https://writehive.netlify.app/");
