@@ -10,6 +10,8 @@ import {
   CONSULT_RATES,
   CONTACT_EMAIL,
   BOOK_HREF,
+  TRIAGE_SCHEDULE_URL,
+  TRIAGE_URL,
   FD_CHECK_LABEL,
   FD_CHECK_URL,
   FD_CONSULT_URL,
@@ -66,7 +68,9 @@ describe("AgentHive Inc brand facts", () => {
     expect(INDEXME_NAME).toBe("IndexMe.lol");
     expect(INDEXME_URL).toBe("https://indexme.lol/");
     expect(INDEXME_BLURB).toMatch(/IndexNow/);
-    expect(BOOK_HREF).toBe("https://calendar.google.com/calendar/appointments/schedules/AcZssZ08PSsZYPUrigPxN1Ax27CJh01QY8fjWo1mGYVhlX5vh0QUTqBzXF4NSNwDyLw487B8fNegD8JV");
+    expect(BOOK_HREF).toBe("/triage");
+    expect(TRIAGE_SCHEDULE_URL).toBe("https://calendar.google.com/calendar/appointments/schedules/AcZssZ08PSsZYPUrigPxN1Ax27CJh01QY8fjWo1mGYVhlX5vh0QUTqBzXF4NSNwDyLw487B8fNegD8JV");
+    expect(TRIAGE_URL).toBe("https://agenthiveinc.com/triage");
     expect(FD_CTA_LABEL).toBe("See First Deploy AI");
     expect(BOOK_CTA_LABEL).toBe("Book the free 30-minute Architecture & Spend Triage");
     expect(FREE_30_LABEL).toBe("Free triage");
@@ -102,12 +106,14 @@ describe("AgentHive Inc brand facts", () => {
     expect(home).not.toMatch(/14 apps|\$70k/i);
     expect(home).not.toMatch(/netlify\.app/);
     const primaryHrefs = [...home.matchAll(/className="btn btn-primary"[^>]*href=\{([^}]+)\}/g)].map((m) => m[1]);
-    expect(new Set(primaryHrefs)).toEqual(new Set(["BOOK_HREF", "SPRINT_GO_HREF"]));
+    const primaryTriage = [...home.matchAll(/className="btn btn-primary"[^>]*\{\.\.\.triageLinkProps\("([^"]+)"\)\}/g)].map((m) => m[1]);
+    expect(new Set(primaryHrefs)).toEqual(new Set(["SPRINT_GO_HREF"]));
+    expect(new Set(primaryTriage)).toEqual(new Set(["home-hero", "home-offers", "home-contact"]));
   });
 
   it("About keeps Inc vs LLC, the shop line, and the 320 consult line", () => {
     const about = readFileSync(join(fileURLToPath(new URL("../src/pages/About.tsx", import.meta.url))), "utf8");
-    expect(about).toMatch(/BOOK_HREF|tel:/);
+    expect(about).toMatch(/triageLinkProps|tel:/);
     expect(about).not.toMatch(/calendly|grok/i);
     expect(about).toMatch(/CONSULT_DISPLAY|320-335-6186/);
     expect(about).toMatch(/LEGAL_NAME|AGENTHIVEINCCOM LLC/);
@@ -132,7 +138,7 @@ describe("AgentHive Inc brand facts", () => {
     expect(layout).not.toMatch(/INDEXME_|Live work|WriteHive|Bot Lock/);
     expect(MONEY_FOOTER_LINKS).toHaveLength(4);
     expect(MONEY_FOOTER_LINKS.map((link) => link.href)).toEqual([
-      "https://calendar.google.com/calendar/appointments/schedules/AcZssZ08PSsZYPUrigPxN1Ax27CJh01QY8fjWo1mGYVhlX5vh0QUTqBzXF4NSNwDyLw487B8fNegD8JV",
+      "/triage",
       "/consult",
       "/concierge",
       "https://firstdeploy.ai/",
@@ -153,7 +159,6 @@ describe("AgentHive Inc brand facts", () => {
       "https://firstdeploy.ai",
       "/consult",
       "/concierge",
-      "https://firstdeploy.ai/deploy-agent/",
       "https://firstdeploy.ai/freight-ops-ai-agent/",
       "https://burnbook.firstdeploy.ai/",
       "https://cardbutler.firstdeploy.ai/",
@@ -162,7 +167,6 @@ describe("AgentHive Inc brand facts", () => {
       "First Deploy AI",
       "Agent Audit & Stabilization Sprint",
       "Fractional AI Ops Retainer",
-      "Deploy Agent",
       "Freight Ops AI Agent",
       "Burn Book",
       "Card Butler",

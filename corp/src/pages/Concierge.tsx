@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import AuthorCard from "../components/AuthorCard";
 import FaqList from "../components/FaqList";
 import { CONCIERGE_FAQS } from "../../shared/faqs";
-import { BOOK_HREF, CONSULT_TEL, PHONE_DISPLAY, FD_NAME, FD_URL, HIVE_CONSULT_PATH } from "../../shared/brand";
+import { triageLinkProps, CONSULT_TEL, PHONE_DISPLAY, FD_NAME, FD_URL, HIVE_CONSULT_PATH } from "../../shared/brand";
 import { CONCIERGE_BOOK_LABEL, CONCIERGE_NAME, CONCIERGE_PRICE, CONCIERGE_GO_HREF } from "../../shared/concierge";
 
 const STEPS = [
@@ -66,7 +66,7 @@ export default function Concierge() {
           </p>
           <div className="hero-actions">
             <StartButton from="ah-retainer-hero" label={`Start the retainer, ${CONCIERGE_PRICE}`} />
-            <a className="btn btn-outline" href={BOOK_HREF}>
+            <a className="btn btn-outline" {...triageLinkProps("concierge-hero")}>
               {CONCIERGE_BOOK_LABEL}
             </a>
           </div>

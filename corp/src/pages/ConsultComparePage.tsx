@@ -1,6 +1,6 @@
 import { Link, useLocation } from "react-router-dom";
 import FaqList from "../components/FaqList";
-import { BOOK_CTA_LABEL, BOOK_HREF, CONSULT_DISPLAY, CONSULT_TEL, HIVE_CONSULT_PATH } from "../../shared/brand";
+import { BOOK_CTA_LABEL, triageLinkProps, CONSULT_DISPLAY, CONSULT_TEL, HIVE_CONSULT_PATH } from "../../shared/brand";
 import { CONSULT_COST_PATH } from "../../shared/consult";
 import { CONSULT_COMPARE_CHECKED, CONSULT_COMPARE_PAGES, consultComparePageFor } from "../../shared/consultCompare";
 import NotFound from "./NotFound";
@@ -72,7 +72,7 @@ export default function ConsultComparePage() {
               )
             ) : (
               <>
-                <a className="btn btn-primary" href={BOOK_HREF}>
+                <a className="btn btn-primary" {...triageLinkProps("consult-compare-hero")}>
                   {BOOK_CTA_LABEL}
                 </a>
                 <Link className="btn btn-outline" to={`${HIVE_CONSULT_PATH}#pricing`}>
@@ -187,7 +187,7 @@ export default function ConsultComparePage() {
             ))}
           </ul>
           <div className="hero-actions">
-            <a className="btn btn-primary" href={BOOK_HREF}>
+            <a className="btn btn-primary" {...triageLinkProps("consult-compare-final")}>
               {BOOK_CTA_LABEL}
             </a>
             <Link className="btn btn-outline" to={`${HIVE_CONSULT_PATH}#pricing`}>

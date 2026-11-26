@@ -219,6 +219,32 @@
   status = 302
   force = true
 
+# 2026-11-26: send exact AH /questions and /freight-ops-ai-agent 404s to the live First Deploy pages.
+# Retired /questions/* slugs already 301 to /consult via generated dist/_redirects (more specific paths).
+[[redirects]]
+  from = "/questions"
+  to = "https://firstdeploy.ai/questions/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/questions/"
+  to = "https://firstdeploy.ai/questions/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/freight-ops-ai-agent"
+  to = "https://firstdeploy.ai/freight-ops-ai-agent/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/freight-ops-ai-agent/"
+  to = "https://firstdeploy.ai/freight-ops-ai-agent/"
+  status = 301
+  force = true
+
 [[redirects]]
   from = "/*"
   to = "/404.html"

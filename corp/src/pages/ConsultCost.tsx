@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import FaqList from "../components/FaqList";
 import { CONSULT_COST_FAQS } from "../../shared/faqs";
-import { BOOK_CTA_LABEL, BOOK_HREF, CONSULT_DISPLAY, CONSULT_TEL, HIVE_CONSULT_PATH } from "../../shared/brand";
+import { BOOK_CTA_LABEL, triageLinkProps, CONSULT_DISPLAY, CONSULT_TEL, HIVE_CONSULT_PATH } from "../../shared/brand";
 import { CONSULT_COST_CHECKED } from "../../shared/consult";
 import { CONCIERGE_NAME, CONCIERGE_PATH, CONCIERGE_PRICE } from "../../shared/concierge";
 
@@ -32,7 +32,7 @@ export default function ConsultCost() {
             30-minute call. This page lists those prices. It does not quote another firm.
           </p>
           <div className="hero-actions">
-            <a className="btn btn-primary" href={BOOK_HREF}>
+            <a className="btn btn-primary" {...triageLinkProps("consult-cost-hero")}>
               {BOOK_CTA_LABEL}
             </a>
             <Link className="btn btn-outline" to={`${HIVE_CONSULT_PATH}#pricing`}>
@@ -123,7 +123,7 @@ export default function ConsultCost() {
               takes.
             </p>
             <div className="hero-actions" style={{ justifyContent: "center" }}>
-              <a className="btn btn-primary" href={BOOK_HREF}>
+              <a className="btn btn-primary" {...triageLinkProps("consult-cost-final")}>
                 {BOOK_CTA_LABEL}
               </a>
               <a className="btn btn-outline" href={`tel:${CONSULT_TEL}`}>

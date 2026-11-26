@@ -6,7 +6,7 @@ import {
   BRAND_PLACE,
   BRAND_URL,
   BOOK_CTA_LABEL,
-  BOOK_HREF,
+  triageLinkProps,
   CONSULT_DISPLAY,
   CONSULT_TEL,
   FD_NAME,
@@ -60,7 +60,7 @@ export default function About() {
             <article className="trust">
               <h3>Book the free 30-minute Architecture & Spend Triage</h3>
               <p className="muted">
-                <a href={BOOK_HREF}>{BOOK_CTA_LABEL}</a>
+                <a {...triageLinkProps("about-body")}>{BOOK_CTA_LABEL}</a>
               </p>
             </article>
             <article className="trust">
@@ -79,7 +79,7 @@ export default function About() {
             </article>
           </div>
           <div className="hero-actions" style={{ marginTop: 22 }}>
-            <a className="btn btn-primary" href={BOOK_HREF}>
+            <a className="btn btn-primary" {...triageLinkProps("about-hero")}>
               {BOOK_CTA_LABEL}
             </a>
             <a className="btn btn-outline" href={`tel:${CONSULT_TEL}`}>

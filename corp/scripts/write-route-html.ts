@@ -117,6 +117,11 @@ writeFileSync(
     "/audit/ /consult 301!",
     "/triage https://calendar.google.com/calendar/appointments/schedules/AcZssZ08PSsZYPUrigPxN1Ax27CJh01QY8fjWo1mGYVhlX5vh0QUTqBzXF4NSNwDyLw487B8fNegD8JV 302!",
     "/triage/ https://calendar.google.com/calendar/appointments/schedules/AcZssZ08PSsZYPUrigPxN1Ax27CJh01QY8fjWo1mGYVhlX5vh0QUTqBzXF4NSNwDyLw487B8fNegD8JV 302!",
+    // 2026-11-26: exact /questions and freight paths only. Retired /questions/* slugs above stay 301 to /consult.
+    "/questions https://firstdeploy.ai/questions/ 301!",
+    "/questions/ https://firstdeploy.ai/questions/ 301!",
+    "/freight-ops-ai-agent https://firstdeploy.ai/freight-ops-ai-agent/ 301!",
+    "/freight-ops-ai-agent/ https://firstdeploy.ai/freight-ops-ai-agent/ 301!",
     "/* /404.html 404",
   ].join("\n") + "\n",
 );

@@ -18,6 +18,18 @@ export const HIVE_CONSULT_URL = "https://agenthiveinc.com/consult";
 /** B2B reset 2026-11-24: free 30-minute Architecture & Spend Triage -> $2,500 sprint (5 business days) -> $3,500/mo retainer. */
 /** Free 30-minute Architecture & Spend Triage booking (Google Calendar appointment page). */
 export const TRIAGE_NAME = "Architecture & Spend Triage";
+/** Google Appointment Schedule. Only used as the /triage 302 target, not as a public CTA href. */
+export const TRIAGE_SCHEDULE_URL = "https://calendar.google.com/calendar/appointments/schedules/AcZssZ08PSsZYPUrigPxN1Ax27CJh01QY8fjWo1mGYVhlX5vh0QUTqBzXF4NSNwDyLw487B8fNegD8JV";
+/** Public booking CTA path. /triage 302s to TRIAGE_SCHEDULE_URL so clicks can be attributed in PostHog. */
+export const BOOK_HREF = "/triage";
+export const TRIAGE_URL = `${BRAND_URL}/triage`;
+export function triageFrom(pathname: string, slot: string): string {
+  const page = pathname === "/" ? "home" : pathname.replace(/^\/+|\/+$/g, "").replace(/\//g, "-") || "home";
+  return `${page}-${slot}`;
+}
+export function triageLinkProps(from: string) {
+  return { href: BOOK_HREF, "data-ph-cta": "triage" as const, "data-ph-from": from };
+}
 /** Stripe Payment Link for the $2,500 Agent Audit & Stabilization Sprint. Destination of /go/sprint. */
 export const SPRINT_STRIPE_URL = "https://buy.stripe.com/6oU14n2Es6CTfTf7ea2ZO1V";
 export const SPRINT_GO_HREF = "/go/sprint";
@@ -30,7 +42,8 @@ export const FD_AUDIT_URL = SPRINT_GO_HREF;
 /** $625 deposit link for the Deploy Agent go-live sprint (Deploy Agent keeps its own price). */
 export const FD_PACK_URL = "https://buy.stripe.com/7sY9ATenabXd7mJ7ea2ZO1i";
 export const FD_CONCIERGE_URL = "https://agenthiveinc.com/concierge";
-export const FD_DEPLOY_AGENT_URL = "https://firstdeploy.ai/deploy-agent/";
+/** Retired 2026-11-26: firstdeploy.ai/deploy-agent/ 301s to /consult. Kept name so older imports compile. */
+export const FD_DEPLOY_AGENT_URL = FD_CONSULT_URL;
 /** Freight Ops AI Agent two-week proof page on First Deploy AI (AI visibility packet 2026-11-20). */
 export const FD_FREIGHT_URL = "https://firstdeploy.ai/freight-ops-ai-agent/";
 export const FD_WHAT = "a $2,500 fixed-price sprint that cuts AI agent spend and stops loops, drift and redundant runs in 5 business days";
@@ -40,7 +53,7 @@ export const FD_OFFER =
 export const FD_PRICE_LINE =
   "The path: a free 30-minute Architecture & Spend Triage, then the $2,500 Agent Audit & Stabilization Sprint (5 business days), then the $3,500/mo Fractional AI Ops retainer.";
 /** Same path as HTML with the live links, for prerendered bodies. */
-export const FD_PRICE_LINE_HTML = `The path: a <a href="${"https://calendar.google.com/calendar/appointments/schedules/AcZssZ08PSsZYPUrigPxN1Ax27CJh01QY8fjWo1mGYVhlX5vh0QUTqBzXF4NSNwDyLw487B8fNegD8JV"}">free 30-minute Architecture & Spend Triage</a>, then the <a href="${SPRINT_GO_HREF}" data-product="sprint2500" data-utm-source="dir" data-utm-medium="page" data-utm-content="ah-prerender-sprint">$2,500 Agent Audit &amp; Stabilization Sprint</a> (5 business days), then the <a href="/concierge">$3,500/mo Fractional AI Ops retainer</a>.`;
+export const FD_PRICE_LINE_HTML = `The path: a <a href="${BOOK_HREF}" data-ph-cta="triage" data-ph-from="prerender">free 30-minute Architecture & Spend Triage</a>, then the <a href="${SPRINT_GO_HREF}" data-product="sprint2500" data-utm-source="dir" data-utm-medium="page" data-utm-content="ah-prerender-sprint">$2,500 Agent Audit &amp; Stabilization Sprint</a> (5 business days), then the <a href="/concierge">$3,500/mo Fractional AI Ops retainer</a>.`;
 export const FD_PROMISE = "Fixed price, done in your accounts, with before and after numbers";
 export const FD_CTA_LABEL = "See First Deploy AI";
 export const BOOK_CTA_LABEL = "Book the free 30-minute Architecture & Spend Triage";
@@ -55,8 +68,7 @@ export const FOOTER_LINE = "AgentHive Inc · Palm Coast, FL · firstdeploy.ai";
 export const INDEXME_NAME = "IndexMe.lol";
 export const INDEXME_URL = "https://indexme.lol/";
 export const INDEXME_BLURB = "honest IndexNow indexing desk";
-/** Free 30-minute Architecture & Spend Triage booking. Demo line stays CONSULT_TEL. */
-export const BOOK_HREF = "https://calendar.google.com/calendar/appointments/schedules/AcZssZ08PSsZYPUrigPxN1Ax27CJh01QY8fjWo1mGYVhlX5vh0QUTqBzXF4NSNwDyLw487B8fNegD8JV";
+
 export const SEAT_CIRCUIT_NAME = "Seat & Circuit";
 export const SEAT_CIRCUIT_URL = "https://infrastructure.agenthiveinc.com/";
 export const FLICK_URL = "https://flick.firstdeploy.ai/";
@@ -100,7 +112,6 @@ export const PRODUCT_FOOTER_LINKS = [
   { href: "https://firstdeploy.ai", label: "First Deploy AI" },
   { href: HIVE_CONSULT_PATH, label: "Agent Audit & Stabilization Sprint" },
   { href: "/concierge", label: "Fractional AI Ops Retainer" },
-  { href: FD_DEPLOY_AGENT_URL, label: "Deploy Agent" },
   { href: FD_FREIGHT_URL, label: "Freight Ops AI Agent" },
   { href: "https://burnbook.firstdeploy.ai/", label: "Burn Book" },
   { href: "https://cardbutler.firstdeploy.ai/", label: "Card Butler" },

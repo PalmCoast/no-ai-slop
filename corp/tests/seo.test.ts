@@ -60,7 +60,7 @@ describe("per-route SEO", () => {
     expect(home).toContain("$2,500");
     expect(home).toContain("$3,500/mo");
     expect(home).toContain(
-      'Products: <a href="https://firstdeploy.ai">First Deploy AI</a> · <a href="/consult">Agent Audit &amp; Stabilization Sprint</a> · <a href="/concierge">Fractional AI Ops Retainer</a> · <a href="https://firstdeploy.ai/deploy-agent/">Deploy Agent</a> · <a href="https://firstdeploy.ai/freight-ops-ai-agent/">Freight Ops AI Agent</a> · <a href="https://burnbook.firstdeploy.ai/">Burn Book</a> · <a href="https://cardbutler.firstdeploy.ai/">Card Butler</a>',
+      'Products: <a href="https://firstdeploy.ai">First Deploy AI</a> · <a href="/consult">Agent Audit &amp; Stabilization Sprint</a> · <a href="/concierge">Fractional AI Ops Retainer</a> · <a href="https://firstdeploy.ai/freight-ops-ai-agent/">Freight Ops AI Agent</a> · <a href="https://burnbook.firstdeploy.ai/">Burn Book</a> · <a href="https://cardbutler.firstdeploy.ai/">Card Butler</a>',
     );
     expect(home).toContain("IndexNow");
     expect(about).toContain("tel:+13203356186");
@@ -276,13 +276,19 @@ describe("per-route SEO", () => {
     expect(redirects).toContain('to = "/consult"');
     expect(redirects).toContain('from = "/triage"');
     expect(redirects).toContain("/triage https://calendar.google.com/calendar/appointments/schedules/AcZssZ08PSsZYPUrigPxN1Ax27CJh01QY8fjWo1mGYVhlX5vh0QUTqBzXF4NSNwDyLw487B8fNegD8JV 302!");
+    expect(redirects).toContain("/questions https://firstdeploy.ai/questions/ 301!");
+    expect(redirects).toContain("/freight-ops-ai-agent https://firstdeploy.ai/freight-ops-ai-agent/ 301!");
+    expect(redirects).toContain('from = "/questions"');
+    expect(redirects).toContain('from = "/freight-ops-ai-agent"');
     expect(consult).not.toMatch(/live this week|or you don.t pay|guarantee/i);
     for (const href of [
-      "https://calendar.google.com/calendar/appointments/schedules/AcZssZ08PSsZYPUrigPxN1Ax27CJh01QY8fjWo1mGYVhlX5vh0QUTqBzXF4NSNwDyLw487B8fNegD8JV",
+      "/triage",
       "tel:+13203356186",
       "/go/sprint",
       "/go/retainer",
     ]) expect(consult).toContain(href);
+    expect(consult).toContain('data-ph-cta="triage"');
+    expect(consult).not.toContain("https://calendar.google.com/calendar/appointments/");
     for (const old of ["https://buy.stripe.com/fZufZh92Qf9p5eB2XU2ZO1h", "https://buy.stripe.com/eVq9ATbaY6CT6iF7ea2ZO1g", "https://buy.stripe.com/7sY9ATenabXd7mJ7ea2ZO1i", "/go/ads-sprint"]) {
       expect(consult).not.toContain(old);
     }

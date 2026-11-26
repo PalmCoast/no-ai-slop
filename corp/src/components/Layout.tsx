@@ -16,6 +16,8 @@ import {
   BOOK_CTA_LABEL,
   BROOMS_URL,
   PRODUCT_FOOTER_LINKS,
+  triageFrom,
+  triageLinkProps,
 } from "../../shared/brand";
 import { AFFILIATE_TOOLS, DISCLOSURE_LINE, DISCLOSURE_PATH } from "../../shared/disclosure";
 
@@ -111,7 +113,7 @@ export default function Layout() {
           </nav>
           <div className="ah-actions">
             <LiveDemo className="ah-call--bar" />
-            <a href={BOOK_HREF} className="ah-cta">
+            <a className="ah-cta" {...triageLinkProps(triageFrom(pathname, "nav"))}>
               Free triage
             </a>
             <button
@@ -140,7 +142,7 @@ export default function Layout() {
               </NavLink>
             ))}
             <div className="ah-menu-foot">
-              <a href={BOOK_HREF} className="ah-cta ah-cta--lg" onClick={() => setOpen(false)}>
+              <a className="ah-cta ah-cta--lg" onClick={() => setOpen(false)} {...triageLinkProps(triageFrom(pathname, "nav-menu"))}>
                 {BOOK_CTA_LABEL} {ARROW}
               </a>
               <LiveDemo className="ah-call--lg" />
@@ -158,7 +160,7 @@ export default function Layout() {
               Cut the spend. <em>Stop the loops.</em>
             </p>
             <div className="ah-foot-act">
-              <a href={BOOK_HREF} className="ah-cta ah-cta--lg">
+              <a className="ah-cta ah-cta--lg" {...triageLinkProps(triageFrom(pathname, "footer"))}>
                 {BOOK_CTA_LABEL} {ARROW}
               </a>
               <Link to="/consult" className="ah-ghost">
@@ -182,7 +184,12 @@ export default function Layout() {
               <div>
                 <p className="ah-foot-h">Start</p>
                 {MONEY_FOOTER_LINKS.map((link) => (
-                  <a key={link.href} href={link.href}>
+                  <a
+                    key={link.label}
+                    {...(link.href === BOOK_HREF
+                      ? triageLinkProps(triageFrom(pathname, "footer-start"))
+                      : { href: link.href })}
+                  >
                     {link.label}
                   </a>
                 ))}

@@ -3,7 +3,7 @@ import FaqList from "../components/FaqList";
 import { CONSULT_FAQS } from "../../shared/faqs";
 import {
   BOOK_CTA_LABEL,
-  BOOK_HREF,
+  triageLinkProps,
   CONSULT_DISPLAY,
   CONSULT_TEL,
   FD_NAME,
@@ -66,7 +66,7 @@ export default function Consult() {
             <a className="btn btn-primary" href={SPRINT_GO_HREF} data-product="sprint2500" data-utm-source="dir" data-utm-medium="page" data-utm-content="ah-consult-hero">
               Start the sprint, $2,500
             </a>
-            <a className="btn btn-outline" href={BOOK_HREF}>
+            <a className="btn btn-outline" {...triageLinkProps("consult-hero")}>
               {BOOK_CTA_LABEL}
             </a>
           </div>
@@ -129,7 +129,7 @@ export default function Consult() {
                   <small className="muted"> 30 minutes. Where the money is most likely going, and whether the sprint pays for itself.</small>
                 </span>
                 <strong>Free</strong>
-                <a className="btn btn-outline" href={BOOK_HREF}>
+                <a className="btn btn-outline" {...triageLinkProps("consult-offers")}>
                   Book →
                 </a>
               </li>
@@ -191,7 +191,7 @@ export default function Consult() {
               for itself. If it won’t, we say so.
             </p>
             <div className="hero-actions">
-              <a className="btn btn-primary" href={BOOK_HREF}>
+              <a className="btn btn-primary" {...triageLinkProps("consult-final")}>
                 {BOOK_CTA_LABEL}
               </a>
               <a className="btn btn-outline" href={`tel:${CONSULT_TEL}`}>
