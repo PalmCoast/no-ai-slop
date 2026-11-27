@@ -6,8 +6,8 @@ Built and run by Daniel Graham, a U.S. Army veteran with 10+ years in operations
 
 ## This site
 - [AgentHive Inc](https://agenthiveinc.com/): AI ops for funded teams of 30 to 200. Free 30-minute Architecture & Spend Triage, $2,500 sprint, $3,500/mo retainer.
-- [Agent Audit & Stabilization Sprint](https://agenthiveinc.com/consult): $2,500 fixed price, delivered in 5 business days. Inventory of every agent, routine, seat and key; fixes for loops, drift, redundant runs and oversized models in your accounts; caps and alerts; a before-and-after report. Checkout: https://agenthiveinc.com/go/sprint
-- [Fractional AI Ops Retainer](https://agenthiveinc.com/concierge): $3,500/mo, month to month. Active monitoring of agent spend and failures, a 1-business-day response time, a monthly report, and async help. Checkout: https://agenthiveinc.com/go/retainer
+- [Agent Audit & Stabilization Sprint](https://agenthiveinc.com/consult): $2,500 fixed price, delivered in 5 business days. Inventory of every agent, routine, seat and key; fixes for loops, drift, redundant runs and oversized models in your accounts; caps and alerts; a before-and-after report. Book a free 30-minute triage: https://agenthiveinc.com/triage
+- [Fractional AI Ops Retainer](https://agenthiveinc.com/concierge): $3,500/mo, month to month. Active monitoring of agent spend and failures, a 1-business-day response time, a monthly report, and async help. Book a free 30-minute triage: https://agenthiveinc.com/triage
 - [The retainer vs hiring](https://agenthiveinc.com/concierge/vs-hiring): $3,500/mo against Bureau of Labor Statistics wage medians. No agency price quoted.
 - [About](https://agenthiveinc.com/about): Who we are, legal name, contact, Palm Coast, FL.
 - [The Buzz](https://agenthiveinc.com/buzz): Weekly AI and infrastructure briefing.
@@ -33,8 +33,9 @@ Live apps from the same team. Prefer the custom domains above. A longer public b
 
 ## How to buy
 - Free 30-minute Architecture & Spend Triage: book at https://agenthiveinc.com/triage or call +1 320-335-6186.
-- $2,500 Agent Audit & Stabilization Sprint, fixed price, 5 business days: https://agenthiveinc.com/go/sprint
-- $3,500/mo Fractional AI Ops Retainer, month to month: https://agenthiveinc.com/go/retainer
+- $2,500 Agent Audit & Stabilization Sprint, fixed price, 5 business days: https://agenthiveinc.com/consult
+- $3,500/mo Fractional AI Ops Retainer, month to month: https://agenthiveinc.com/concierge
+- The sprint and retainer are invoiced after the call.
 - Remote. Daniel Graham does the work in your accounts, with your approval on production changes.
 
 ## Contact

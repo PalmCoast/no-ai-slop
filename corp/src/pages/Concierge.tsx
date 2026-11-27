@@ -2,8 +2,8 @@ import { Link } from "react-router-dom";
 import AuthorCard from "../components/AuthorCard";
 import FaqList from "../components/FaqList";
 import { CONCIERGE_FAQS } from "../../shared/faqs";
-import { triageLinkProps, CONSULT_TEL, PHONE_DISPLAY, FD_NAME, FD_URL, HIVE_CONSULT_PATH } from "../../shared/brand";
-import { CONCIERGE_BOOK_LABEL, CONCIERGE_NAME, CONCIERGE_PRICE, CONCIERGE_GO_HREF } from "../../shared/concierge";
+import { triageLinkProps, triageGoLinkProps, TRIAGE_CTA_LABEL, INVOICE_LINE, CONSULT_TEL, PHONE_DISPLAY, FD_NAME, FD_URL, HIVE_CONSULT_PATH } from "../../shared/brand";
+import { CONCIERGE_BOOK_LABEL, CONCIERGE_NAME, CONCIERGE_PRICE } from "../../shared/concierge";
 
 const STEPS = [
   { title: "Free triage", body: "30 minutes. We look at your bill and your stack and tell you whether to start with the sprint or go straight to the retainer." },
@@ -33,17 +33,10 @@ const NOT_A_FIT = [
   "You only want a one-time clean-up. The $2,500 sprint is the right buy.",
 ];
 
-function StartButton({ from, label }: { from: string; label: string }) {
+function StartButton({ from }: { from: string; label?: string }) {
   return (
-    <a
-      className="btn btn-primary"
-      href={CONCIERGE_GO_HREF}
-      data-product="retainer3500"
-      data-utm-source="dir"
-      data-utm-medium="page"
-      data-utm-content={from}
-    >
-      {label}
+    <a className="btn btn-primary" {...triageGoLinkProps(from)}>
+      {TRIAGE_CTA_LABEL}
     </a>
   );
 }
@@ -131,7 +124,7 @@ export default function Concierge() {
                 Start with the $2,500 sprint
               </Link>
             </div>
-            <p className="fine">Stripe subscription, billed monthly. Cancel any month.</p>
+            <p className="fine">{INVOICE_LINE} Cancel any month.</p>
           </div>
           <article className="rate-card">
             <p className="eyebrow">Who it’s for</p>

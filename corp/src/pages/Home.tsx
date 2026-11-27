@@ -1,5 +1,6 @@
 import FdPath from "../components/FdPath";
 import AskAiBar from "../components/AskAiBar";
+import BillForm from "../components/BillForm";
 import {
   BOOK_CTA_LABEL,
   CONSULT_DISPLAY,
@@ -13,9 +14,9 @@ import {
   HERO_WHAT,
   INDEXME_BLURB,
   INDEXME_NAME,
-  SPRINT_GO_HREF,
+  INVOICE_LINE,
+  TRIAGE_CTA_LABEL,
 } from "../../shared/brand";
-import { CONCIERGE_GO_HREF } from "../../shared/concierge";
 import { HIVE_SITES } from "../../shared/portfolio";
 
 const PROOF_SLUGS = ["flick", "indexme", "bot-lock", "sonaris"];
@@ -57,6 +58,7 @@ export default function Home() {
               See the $2,500 sprint
             </a>
           </div>
+          <BillForm from="home-hero" />
           <p className="fine">
             70+ live AI apps in production, built and run by Daniel Graham, a U.S. Army veteran with 10+ years in operations.
           </p>
@@ -104,8 +106,8 @@ export default function Home() {
               <h3>Agent Audit &amp; Stabilization Sprint</h3>
               <p className="muted">Delivered in 5 business days. We inventory every agent, routine and key, fix the loops, drift and redundant runs in your accounts, set caps, and hand back before-and-after numbers.</p>
               <p style={{ marginTop: 12 }}>
-                <a className="btn btn-primary" href={SPRINT_GO_HREF} data-product="sprint2500" data-utm-source="dir" data-utm-medium="page" data-utm-content="ah-home-pricing">
-                  Start the sprint
+                <a className="btn btn-primary" {...triageGoLinkProps("ah-home-pricing-sprint")}>
+                  {TRIAGE_CTA_LABEL}
                 </a>
               </p>
             </article>
@@ -114,13 +116,14 @@ export default function Home() {
               <h3>Fractional AI Ops Retainer</h3>
               <p className="muted">Active monitoring of agent spend and failures, a 1-business-day response time, a monthly report, and async help. Month to month.</p>
               <p style={{ marginTop: 12 }}>
-                <a className="btn btn-outline" href={CONCIERGE_GO_HREF} data-product="retainer3500" data-utm-source="dir" data-utm-medium="page" data-utm-content="ah-home-pricing">
-                  Start the retainer
+                <a className="btn btn-outline" {...triageGoLinkProps("ah-home-pricing-retainer")}>
+                  {TRIAGE_CTA_LABEL}
                 </a>
               </p>
             </article>
           </div>
-          <p className="fine" style={{ marginTop: 18 }}>
+          <p className="fine" style={{ marginTop: 18 }}>{INVOICE_LINE}</p>
+          <p className="fine" style={{ marginTop: 8 }}>
             Same offer on <a href={FD_URL}>{FD_NAME}</a>. Building a B2B AI product? See the <a href={FD_CONSULT_URL}>$2,500 sprint</a>. Freight brokerage? See the <a href={FD_FREIGHT_URL}>freight ops proof</a>.
           </p>
         </div>

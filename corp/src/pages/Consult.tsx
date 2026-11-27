@@ -1,16 +1,19 @@
 import { Link } from "react-router-dom";
 import FaqList from "../components/FaqList";
+import BillForm from "../components/BillForm";
 import { CONSULT_FAQS } from "../../shared/faqs";
 import {
   BOOK_CTA_LABEL,
+  triageGoLinkProps,
   triageLinkProps,
   CONSULT_DISPLAY,
   CONSULT_TEL,
   FD_NAME,
   FD_URL,
-  SPRINT_GO_HREF,
+  INVOICE_LINE,
+  TRIAGE_CTA_LABEL,
 } from "../../shared/brand";
-import { CONCIERGE_GO_HREF, CONCIERGE_NAME, CONCIERGE_PATH, CONCIERGE_PRICE } from "../../shared/concierge";
+import { CONCIERGE_NAME, CONCIERGE_PATH, CONCIERGE_PRICE } from "../../shared/concierge";
 
 const FIXES = [
   {
@@ -63,13 +66,11 @@ export default function Consult() {
             and seats, fixes what is burning money in your accounts, and hands back a before-and-after report.
           </p>
           <div className="hero-actions">
-            <a className="btn btn-primary" href={SPRINT_GO_HREF} data-product="sprint2500" data-utm-source="dir" data-utm-medium="page" data-utm-content="ah-consult-hero">
-              Start the sprint, $2,500
-            </a>
-            <a className="btn btn-outline" {...triageLinkProps("consult-hero")}>
-              {BOOK_CTA_LABEL}
+            <a className="btn btn-primary" {...triageGoLinkProps("consult-hero")}>
+              {TRIAGE_CTA_LABEL}
             </a>
           </div>
+          <BillForm from="consult-hero" />
           <p className="fine">
             70+ live AI apps in production. Not sure yet? The 30-minute Architecture & Spend Triage is free. <a href="#pricing">See pricing</a>
           </p>
@@ -139,8 +140,8 @@ export default function Consult() {
                   <small className="muted"> Inventory, fixes in your accounts, caps and alerts, before-and-after report.</small>
                 </span>
                 <strong>$2,500</strong>
-                <a className="btn btn-primary" href={SPRINT_GO_HREF} data-product="sprint2500" data-utm-source="dir" data-utm-medium="page" data-utm-content="ah-consult-pricing">
-                  Start →
+                <a className="btn btn-primary" {...triageGoLinkProps("ah-consult-pricing-sprint")}>
+                  {TRIAGE_CTA_LABEL}
                 </a>
               </li>
               <li>
@@ -149,12 +150,12 @@ export default function Consult() {
                   <small className="muted"> Monitoring of spend and failures, 1-business-day response, monthly report, async help.</small>
                 </span>
                 <strong>{CONCIERGE_PRICE}</strong>
-                <a className="btn btn-outline" href={CONCIERGE_GO_HREF} data-product="retainer3500" data-utm-source="dir" data-utm-medium="page" data-utm-content="ah-consult-pricing">
-                  Start →
+                <a className="btn btn-outline" {...triageGoLinkProps("ah-consult-pricing-retainer")}>
+                  {TRIAGE_CTA_LABEL}
                 </a>
               </li>
             </ul>
-            <p className="fine">Paid on Stripe. The sprint is paid up front; the retainer is month to month.</p>
+            <p className="fine">{INVOICE_LINE} The retainer is month to month.</p>
           </article>
           <div className="continuity-bridge">
             <p>

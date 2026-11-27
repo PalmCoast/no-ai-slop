@@ -1,11 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
   <body>
-    <form name="mission" data-netlify="true" netlify-honeypot="bot-field" hidden>
-      <input type="hidden" name="form-name" value="mission" />
-      <input type="text" name="bot" />
+    <form name="ai-bill" data-netlify="true" netlify-honeypot="bot-field" enctype="multipart/form-data" hidden>
+      <input type="hidden" name="form-name" value="ai-bill" />
+      <input type="hidden" name="is_test" value="0" />
+      <input type="hidden" name="from" />
       <input type="email" name="email" />
-      <textarea name="goal"></textarea>
+      <input type="file" name="bill" />
+      <input type="checkbox" name="nda" value="yes" />
+      <input name="bot-field" />
+    </form>
+    <!-- Test submissions (?formtest=1 or @agentmail.to email): notifies hivesales@agentmail.to only. -->
+    <form name="ai-bill-test" data-netlify="true" netlify-honeypot="bot-field" enctype="multipart/form-data" hidden>
+      <input type="hidden" name="form-name" value="ai-bill-test" />
+      <input type="hidden" name="is_test" value="1" />
+      <input type="hidden" name="from" />
+      <input type="email" name="email" />
+      <input type="file" name="bill" />
+      <input type="checkbox" name="nda" value="yes" />
       <input name="bot-field" />
     </form>
   </body>

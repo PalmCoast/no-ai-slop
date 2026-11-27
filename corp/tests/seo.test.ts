@@ -69,7 +69,9 @@ describe("per-route SEO", () => {
     expect(consult).toContain('id="route-consult"');
     expect(consult).toContain('rel="canonical" href="https://agenthiveinc.com/consult"');
     expect(consult).toContain("<h1 class=\"display\">Cut agent spend and stop the loops. $2,500, 5 business days.</h1>");
-    expect(consult).toContain("/go/sprint");
+    expect(consult).not.toContain("/go/sprint");
+    expect(consult).toContain("/go/triage?from=consult-prerender-sprint");
+    expect(consult).toContain("invoiced after the call");
     expect(consult).not.toMatch(/\$75|\$150|\$1,250/);
     expect(consult).toContain("https://agenthiveinc.com/concierge");
     const concierge = applyRouteHtml(shell, PAGE_SEO.find((page) => page.path === "/concierge")!);
@@ -77,7 +79,8 @@ describe("per-route SEO", () => {
     expect(concierge).toContain('rel="canonical" href="https://agenthiveinc.com/concierge"');
     expect(concierge).toContain('property="og:url" content="https://agenthiveinc.com/concierge"');
     expect(concierge).toContain('property="og:title" content="Fractional AI Ops Retainer, $3,500/mo | AgentHive Inc"');
-    expect(concierge).toContain("/go/retainer");
+    expect(concierge).not.toContain("/go/retainer");
+    expect(concierge).toContain("/go/triage?from=concierge-prerender-retainer");
     expect(concierge).not.toContain("https://buy.stripe.com/6oUeVd7YM3qH0Ylbuq2ZO1u");
     expect(concierge).toContain("$3,500/mo");
     expect(concierge).not.toContain("$2,000");
@@ -109,7 +112,7 @@ describe("per-route SEO", () => {
     expect(new Set(hashes).size).toBe(PAGE_SEO.length);
     expect(new Set(ids).size).toBe(PAGE_SEO.length);
     expect(pages[0]).toContain("$2,500 Agent Audit &amp; Stabilization Sprint");
-    expect(pages[0]).toContain("/go/sprint");
+    expect(pages.join("")).not.toMatch(/\/go\/(sprint|retainer)/);
     expect(pages[0]).not.toContain("https://buy.stripe.com/eVq9ATbaY6CT6iF7ea2ZO1g");
     expect(pages.filter((html) => !html.includes('id="route-ads')).join("")).not.toMatch(/\$75 |\$150 |\$2,000|10-hour pack|burn-audit hour/);
     expect(pages.join("")).not.toMatch(/founding|first 5 businesses|\$250 one-time/i);
@@ -166,8 +169,8 @@ describe("per-route SEO", () => {
     expect(stripe).toEqual([]);
     expect(txt).toContain("https://agenthiveinc.com/disclosure");
     expect(txt).toContain("https://firstdeploy.ai/");
-    expect(txt).toContain("https://agenthiveinc.com/go/sprint");
-    expect(txt).toContain("https://agenthiveinc.com/go/retainer");
+    expect(txt).not.toMatch(/\/go\/(sprint|retainer)/);
+    expect(txt).toContain("invoiced after the call");
     expect(txt).not.toContain("https://agenthiveinc.com/ads)");
     expect(txt).not.toContain("$297 one time");
     expect(txt).toContain("+1 320-335-6186");
@@ -304,9 +307,9 @@ describe("per-route SEO", () => {
     for (const href of [
       "/triage",
       "tel:+13203356186",
-      "/go/sprint",
-      "/go/retainer",
+      "/go/triage",
     ]) expect(consult).toContain(href);
+    expect(consult).not.toMatch(/\/go\/(sprint|retainer)/);
     expect(consult).toContain('data-ph-cta="triage"');
     expect(consult).not.toContain("https://calendar.google.com/calendar/appointments/");
     for (const old of ["https://buy.stripe.com/fZufZh92Qf9p5eB2XU2ZO1h", "https://buy.stripe.com/eVq9ATbaY6CT6iF7ea2ZO1g", "https://buy.stripe.com/7sY9ATenabXd7mJ7ea2ZO1i", "/go/ads-sprint"]) {

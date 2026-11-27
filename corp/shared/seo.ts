@@ -28,12 +28,14 @@ import {
   CONTENT_LASTMOD,
   PRODUCT_FOOTER_LINKS,
   PICKS_URL,
-  SPRINT_GO_HREF,
+  TRIAGE_CTA_LABEL,
+  HIVE_CONSULT_PATH,
+  INVOICE_LINE,
   SPRINT_NAME,
   SPRINT_PRICE_AMOUNT,
 } from "./brand.ts";
 import { DANIEL_BIO, DANIEL_ID, DANIEL_JOB_TITLE, DANIEL_NAME, DANIEL_SAME_AS, DANIEL_URL } from "./author.ts";
-import { CONCIERGE_GO_HREF, CONCIERGE_NAME, CONCIERGE_PRICE, CONCIERGE_PRICE_AMOUNT, CONCIERGE_URL } from "./concierge.ts";
+import { CONCIERGE_NAME, CONCIERGE_PRICE, CONCIERGE_PRICE_AMOUNT, CONCIERGE_URL } from "./concierge.ts";
 import { CONCIERGE_FAQS, CONSULT_COST_FAQS, CONSULT_FAQS, HIRING_FAQS } from "./faqs.ts";
 import { CONSULT_COST_CHECKED_ISO, CONSULT_COST_URL } from "./consult.ts";
 import { CONSULT_COMPARE_CHECKED_ISO, consultComparePageFor } from "./consultCompare.ts";
@@ -112,7 +114,7 @@ export const PAGE_SEO: SeoPage[] = [
     description:
       "A $2,500 fixed-price sprint: we cut AI agent spend and stop loops, drift and redundant runs in 5 business days. Free 30-minute Architecture & Spend Triage first.",
     h1: "Cut agent spend and stop the loops. $2,500, 5 business days.",
-    bodyHtml: `<main id="route-consult" class="section"><div class="container"><h1 class="display">Cut agent spend and stop the loops. $2,500, 5 business days.</h1><p class="lede">A fixed-price sprint for CTOs and COOs whose AI bill keeps climbing. Daniel Graham audits your agents, routines and seats, fixes what is burning money in your accounts, and hands back a before-and-after report.</p><p>Day 1: access and inventory. Days 2 to 4: fixes, caps and alerts, with your approval on production changes. Day 5: the written report.</p><p>${FD_PRICE_LINE_HTML}</p><p><a href="${SPRINT_GO_HREF}">Start the sprint, $2,500</a> · <a href="${BOOK_HREF}" data-ph-cta="triage" data-ph-from="consult-prerender">${BOOK_CTA_LABEL}</a> · <a href="${CONCIERGE_URL}">${CONCIERGE_NAME}</a>, ${CONCIERGE_PRICE} · Phone ${CONSULT_DISPLAY}</p></div></main>`,
+    bodyHtml: `<main id="route-consult" class="section"><div class="container"><h1 class="display">Cut agent spend and stop the loops. $2,500, 5 business days.</h1><p class="lede">A fixed-price sprint for CTOs and COOs whose AI bill keeps climbing. Daniel Graham audits your agents, routines and seats, fixes what is burning money in your accounts, and hands back a before-and-after report.</p><p>Day 1: access and inventory. Days 2 to 4: fixes, caps and alerts, with your approval on production changes. Day 5: the written report.</p><p>${FD_PRICE_LINE_HTML}</p><p><a href="${triageGoHref("consult-prerender-sprint")}" data-ph-cta="triage" data-ph-from="consult-prerender-sprint">${TRIAGE_CTA_LABEL}</a> · ${INVOICE_LINE} · <a href="${BOOK_HREF}" data-ph-cta="triage" data-ph-from="consult-prerender">${BOOK_CTA_LABEL}</a> · <a href="${CONCIERGE_URL}">${CONCIERGE_NAME}</a>, ${CONCIERGE_PRICE} · Phone ${CONSULT_DISPLAY}</p></div></main>`,
   },
   {
     path: "/concierge",
@@ -120,7 +122,7 @@ export const PAGE_SEO: SeoPage[] = [
     description:
       "Fractional AI ops, $3,500/mo: monitoring of agent spend and failures, a 1-business-day response time, a monthly report and async help. Teams of 30 to 200.",
     h1: "Someone watching your AI spend and failures, every business day.",
-    bodyHtml: `<main id="route-concierge" class="section"><div class="container"><h1 class="display">Someone watching your AI spend and failures, every business day.</h1><p class="lede">For CTOs and COOs at funded teams of 30 to 200. Daniel Graham monitors your agents, routines and keys, answers within 1 business day, and sends a monthly report.</p><p>Included: active monitoring of agent spend and failures, a 1-business-day response time, a monthly spend and reliability report, and async help. ${CONCIERGE_NAME} is ${CONCIERGE_PRICE}, month to month.</p><p>${FD_PRICE_LINE_HTML}</p><p><a href="${CONCIERGE_GO_HREF}">Start the retainer, ${CONCIERGE_PRICE}</a> · <a href="${BOOK_HREF}" data-ph-cta="triage" data-ph-from="concierge-prerender">${BOOK_CTA_LABEL}</a> · <a href="tel:${CONSULT_TEL}">${PHONE_DISPLAY}</a></p></div></main>`,
+    bodyHtml: `<main id="route-concierge" class="section"><div class="container"><h1 class="display">Someone watching your AI spend and failures, every business day.</h1><p class="lede">For CTOs and COOs at funded teams of 30 to 200. Daniel Graham monitors your agents, routines and keys, answers within 1 business day, and sends a monthly report.</p><p>Included: active monitoring of agent spend and failures, a 1-business-day response time, a monthly spend and reliability report, and async help. ${CONCIERGE_NAME} is ${CONCIERGE_PRICE}, month to month.</p><p>${FD_PRICE_LINE_HTML}</p><p><a href="${triageGoHref("concierge-prerender-retainer")}" data-ph-cta="triage" data-ph-from="concierge-prerender-retainer">${TRIAGE_CTA_LABEL}</a> · ${INVOICE_LINE} · <a href="${BOOK_HREF}" data-ph-cta="triage" data-ph-from="concierge-prerender">${BOOK_CTA_LABEL}</a> · <a href="tel:${CONSULT_TEL}">${PHONE_DISPLAY}</a></p></div></main>`,
   },
   {
     path: "/concierge/vs-hiring",
@@ -414,7 +416,7 @@ export function jsonLdFor(page: SeoPage): object | null {
           description: "A $2,500 fixed-price Agent Audit & Stabilization Sprint for funded teams of 30 to 200, delivered in 5 business days: cut AI agent spend and stop loops, drift and redundant runs. Free 30-minute Architecture & Spend Triage first; $3,500/mo Fractional AI Ops retainer after.",
           offers: [
             { "@type": "Offer", name: "Free 30-minute Architecture & Spend Triage", price: "0.00", priceCurrency: "USD", url: TRIAGE_URL },
-            { "@type": "Offer", name: SPRINT_NAME, price: SPRINT_PRICE_AMOUNT, priceCurrency: "USD", url: `${BRAND_URL}${SPRINT_GO_HREF}` },
+            { "@type": "Offer", name: SPRINT_NAME, price: SPRINT_PRICE_AMOUNT, priceCurrency: "USD", url: `${BRAND_URL}${HIVE_CONSULT_PATH}` },
             monthlyOffer(CONCIERGE_NAME, CONCIERGE_PRICE_AMOUNT, CONCIERGE_URL),
           ],
         },

@@ -1,5 +1,5 @@
-import { CONSULT_TEL, FD_AUDIT_URL, HIVE_CONSULT_PATH } from "./brand.ts";
-import { CONCIERGE_PATH, CONCIERGE_GO_HREF } from "./concierge.ts";
+import { CONSULT_TEL, HIVE_CONSULT_PATH, INVOICE_LINE, TRIAGE_CTA_LABEL, triageGoHref } from "./brand.ts";
+import { CONCIERGE_PATH } from "./concierge.ts";
 import { CONSULT_STRIPE_RATES } from "./consult.ts";
 import type { AskAiPromptKey } from "./ask-ai.ts";
 
@@ -81,5 +81,5 @@ function esc(value: string): string {
 
 /** Static floor used when a route is rendered without the React tree. */
 export function aeoBodyHtml(page: AeoPage): string {
-  return `<main id="${page.routeId}" class="section"><div class="container"><h1 class="display">${esc(page.h1)}</h1><p class="lede">${esc(page.answer)}</p><p><a href="${HIVE_CONSULT_PATH}">Agent Audit &amp; Stabilization Sprint, $2,500</a> · <a href="${CONCIERGE_PATH}">Fractional AI Ops Retainer, $3,500/mo</a> · <a href="${FD_AUDIT_URL}" data-product="sprint2500">Start the sprint</a> · <a href="${CONCIERGE_GO_HREF}" data-product="retainer3500">Start the retainer</a> · <a href="tel:${CONSULT_TEL}">${AEO_PHONE_DISPLAY}</a></p>${page.crossLink ? `<p>${esc(page.crossLink.lead)} See the <a href="${page.crossLink.href}">${esc(page.crossLink.text)}</a>.</p>` : ""}</div></main>`;
+  return `<main id="${page.routeId}" class="section"><div class="container"><h1 class="display">${esc(page.h1)}</h1><p class="lede">${esc(page.answer)}</p><p><a href="${HIVE_CONSULT_PATH}">Agent Audit &amp; Stabilization Sprint, $2,500</a> · <a href="${CONCIERGE_PATH}">Fractional AI Ops Retainer, $3,500/mo</a> · <a href="${triageGoHref(`${page.routeId}-prerender`)}" data-ph-cta="triage" data-ph-from="${page.routeId}-prerender">${TRIAGE_CTA_LABEL}</a> · ${INVOICE_LINE} · <a href="tel:${CONSULT_TEL}">${AEO_PHONE_DISPLAY}</a></p>${page.crossLink ? `<p>${esc(page.crossLink.lead)} See the <a href="${page.crossLink.href}">${esc(page.crossLink.text)}</a>.</p>` : ""}</div></main>`;
 }

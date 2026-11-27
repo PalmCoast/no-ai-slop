@@ -48,7 +48,10 @@ export const SPRINT_PRICE = "$2,500";
 export const SPRINT_PRICE_AMOUNT = "2500.00";
 /** Legacy names kept so older imports compile; they now point at the sprint. */
 export const FD_AUDIT_STRIPE_URL = SPRINT_STRIPE_URL;
-export const FD_AUDIT_URL = SPRINT_GO_HREF;
+export const FD_AUDIT_URL = HIVE_CONSULT_PATH;
+/** B2B invoice swap 2026-11-27: no self-serve checkout; every buy CTA books the free triage. */
+export const TRIAGE_CTA_LABEL = "Book a free 30-minute triage";
+export const INVOICE_LINE = "The sprint and retainer are invoiced after the call.";
 /** $625 deposit link for the Deploy Agent go-live sprint (Deploy Agent keeps its own price). */
 export const FD_PACK_URL = "https://buy.stripe.com/7sY9ATenabXd7mJ7ea2ZO1i";
 export const FD_CONCIERGE_URL = "https://agenthiveinc.com/concierge";
@@ -63,7 +66,7 @@ export const FD_OFFER =
 export const FD_PRICE_LINE =
   "The path: a free 30-minute Architecture & Spend Triage, then the $2,500 Agent Audit & Stabilization Sprint (5 business days), then the $3,500/mo Fractional AI Ops retainer.";
 /** Same path as HTML with the live links, for prerendered bodies. */
-export const FD_PRICE_LINE_HTML = `The path: a <a href="${BOOK_HREF}" data-ph-cta="triage" data-ph-from="prerender">free 30-minute Architecture & Spend Triage</a>, then the <a href="${SPRINT_GO_HREF}" data-product="sprint2500" data-utm-source="dir" data-utm-medium="page" data-utm-content="ah-prerender-sprint">$2,500 Agent Audit &amp; Stabilization Sprint</a> (5 business days), then the <a href="/concierge">$3,500/mo Fractional AI Ops retainer</a>.`;
+export const FD_PRICE_LINE_HTML = `The path: a <a href="${BOOK_HREF}" data-ph-cta="triage" data-ph-from="prerender">free 30-minute Architecture & Spend Triage</a>, then the <a href="${HIVE_CONSULT_PATH}">$2,500 Agent Audit &amp; Stabilization Sprint</a> (5 business days), then the <a href="/concierge">$3,500/mo Fractional AI Ops retainer</a>.`;
 export const FD_PROMISE = "Fixed price, done in your accounts, with before and after numbers";
 export const FD_CTA_LABEL = "See First Deploy AI";
 export const BOOK_CTA_LABEL = "Book the free 30-minute Architecture & Spend Triage";

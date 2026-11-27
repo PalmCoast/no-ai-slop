@@ -5,16 +5,16 @@ export const CONSULT_STRIPE_RATES = [
     name: "Agent Audit & Stabilization Sprint",
     amount: "$2,500",
     note: "Fixed price, delivered in 5 business days.",
-    cta: "Start the sprint →",
-    href: "/go/sprint",
+    cta: "Book a free 30-minute triage →",
+    href: "/go/triage?from=consult-rates-sprint",
   },
   {
     slug: "retainer",
     name: "Fractional AI Ops Retainer",
     amount: "$3,500/mo",
     note: "Monitoring, 1-business-day response, monthly report.",
-    cta: "Start the retainer →",
-    href: "/go/retainer",
+    cta: "Book a free 30-minute triage →",
+    href: "/go/triage?from=consult-rates-retainer",
   },
 ] as const;
 

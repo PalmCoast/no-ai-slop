@@ -96,8 +96,10 @@ describe("AgentHive Inc brand facts", () => {
     expect(home).toMatch(/INDEXME_NAME|IndexMe/);
     expect(home).toMatch(/INDEXME_BLURB|IndexNow/);
     expect(home).toMatch(/FD_URL|firstdeploy\.ai/);
-    expect(home).toMatch(/SPRINT_GO_HREF/);
-    expect(home).toMatch(/CONCIERGE_GO_HREF/);
+    // B2B invoice swap 2026-11-27: no self-serve checkout on the homepage; buy CTAs book the triage.
+    expect(home).not.toMatch(/SPRINT_GO_HREF|CONCIERGE_GO_HREF|data-product="(sprint2500|retainer3500)"/);
+    expect(home).toMatch(/INVOICE_LINE/);
+    expect(home).toMatch(/<BillForm from="home-hero"/);
     expect(home).not.toMatch(/commercial earth mover|dirty physical businesses|field owners|crew|whiteboard/i);
     expect(home).toMatch(/AskAiBar/);
     expect(home).toMatch(/queen-full\.webp/);
@@ -107,8 +109,8 @@ describe("AgentHive Inc brand facts", () => {
     expect(home).not.toMatch(/netlify\.app/);
     const primaryHrefs = [...home.matchAll(/className="btn btn-primary"[^>]*href=\{([^}]+)\}/g)].map((m) => m[1]);
     const primaryTriage = [...home.matchAll(/className="btn btn-primary"[^>]*\{\.\.\.triageGoLinkProps\("([^"]+)"\)\}/g)].map((m) => m[1]);
-    expect(new Set(primaryHrefs)).toEqual(new Set(["SPRINT_GO_HREF"]));
-    expect(new Set(primaryTriage)).toEqual(new Set(["home-hero", "home-offers", "home-contact"]));
+    expect(primaryHrefs).toEqual([]);
+    expect(new Set(primaryTriage)).toEqual(new Set(["home-hero", "home-offers", "ah-home-pricing-sprint", "home-contact"]));
   });
 
   it("About keeps Inc vs LLC, the shop line, and the 320 consult line", () => {

@@ -3,7 +3,9 @@
 (function () {
   try {
     // 2026-11-27: our own QA browsers (shipcheck, headless, clicktest) never send PostHog events.
-    if (/shipcheck|HeadlessChrome|clicktest/i.test((navigator && navigator.userAgent) || "")) return;
+    // 2026-11-27: the edge filter (analytics-filter.ts) marks our own IPs, scripted clients and crawlers with
+    // window.__PH_SKIP and sets ah_noanalytics=1 for internal browsers; webdriver catches spoofed-UA automation.
+    if (window.__PH_SKIP || /(?:^|;\s*)ah_noanalytics=1(?:;|$)/.test(document.cookie || "") || navigator.webdriver || /shipcheck|HeadlessChrome|clicktest/i.test((navigator && navigator.userAgent) || "")) return;
     !function (t, e) {
       var o, n, p, r;
       if (e.__SV) return;

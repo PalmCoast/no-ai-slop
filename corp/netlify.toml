@@ -2,6 +2,9 @@
   command = "npm run build"
   publish = "dist"
   functions = "netlify/functions"
+  # Edge functions (2026-11-27): analytics-filter.ts registers itself via `export const config` (path "/*").
+  # Do not also add an [[edge_functions]] block for it, or Netlify applies both declarations.
+  edge_functions = "netlify/edge-functions"
 
 [build.environment]
   NODE_VERSION = "22"

@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { FD_CONSULT_URL, SPRINT_GO_HREF, triageLinkProps } from "../../shared/brand";
+import { FD_CONSULT_URL, HIVE_CONSULT_PATH, triageLinkProps } from "../../shared/brand";
 
 /**
  * Current path (B2B reset 2026-11-24): free 30-minute Architecture & Spend Triage, $2,500 sprint, $3,500/mo retainer.
@@ -9,13 +9,7 @@ export default function FdPath({ deployAgent = false, from = "fd-path" }: { depl
   return (
     <>
       Start with a <a {...triageLinkProps(from)}>free 30-minute Architecture & Spend Triage</a>, then the{" "}
-      <a
-        href={SPRINT_GO_HREF}
-        data-product="sprint2500"
-        data-utm-source="dir"
-        data-utm-medium="page"
-        data-utm-content="ah-fdpath-sprint"
-      >
+      <a href={HIVE_CONSULT_PATH}>
         $2,500 Agent Audit &amp; Stabilization Sprint
       </a>{" "}
       (5 business days), then the <Link to="/concierge">$3,500/mo Fractional AI Ops retainer</Link>

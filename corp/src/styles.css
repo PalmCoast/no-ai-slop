@@ -607,3 +607,13 @@ button, input, textarea { font: inherit; }
   .price-card__rows li { grid-template-columns: 1fr auto; }
   .price-card__rows li .btn { grid-column: 1 / -1; justify-self: start; }
 }
+
+/* AI-bill form (B2B invoice swap 2026-11-27) */
+.billform{display:grid;gap:.6rem;max-width:30rem;margin-top:1.25rem;padding:1rem 1.1rem;border:1px solid rgba(127,127,127,.35);border-radius:12px;font-size:.95rem;text-align:left}
+.billform label{display:grid;gap:.3rem;font-weight:600}
+.billform input[type=email],.billform input[type=file]{font:inherit;font-weight:400;padding:.55rem .65rem;border:1px solid rgba(127,127,127,.5);border-radius:8px;background:#fff;color:#0b1b2b;width:100%;box-sizing:border-box}
+.billform .bf-check{display:flex;gap:.5rem;align-items:center;font-weight:500}
+.billform .bf-fine{margin:0;font-size:.85rem;opacity:.8}
+.billform button{justify-self:start;cursor:pointer}
+.billform .bf-ok{margin:0;font-weight:600}
+.billform .bf-err{margin:0;color:#b42318}

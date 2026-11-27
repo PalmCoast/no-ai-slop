@@ -46,7 +46,7 @@ export default function ConsultCost() {
         <div className="container">
           <div className="section-head">
             <h2>Our prices</h2>
-            <p>The same prices as the consult page. Paid on Stripe, no contract.</p>
+            <p>The same prices as the consult page. Invoiced after your triage call. No contract.</p>
           </div>
           <div className="table-wrap">
             <table className="cost-table">

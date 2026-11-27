@@ -63,7 +63,7 @@ describe("swarm roster", () => {
 describe("consult rails", () => {
   it("keeps the shop line and Stripe buy links, not a grey embed", () => {
     expect(BOOK_HREF).toBe("/triage");
-    expect(CONSULT_STRIPE_RATES.map((rate) => rate.href)).toEqual(["/go/sprint", "/go/retainer"]);
+    expect(CONSULT_STRIPE_RATES.map((rate) => rate.href)).toEqual(["/go/triage?from=consult-rates-sprint", "/go/triage?from=consult-rates-retainer"]);
     expect(CONSULT_STRIPE_RATES.map((rate) => rate.amount)).toEqual(["$2,500", "$3,500/mo"]);
     expect(CONCIERGE_PRICE).toBe("$3,500/mo");
     expect(CONCIERGE_STRIPE_URL).toBe("https://buy.stripe.com/eVq5kD3Iw4uLePbfKG2ZO1W");
