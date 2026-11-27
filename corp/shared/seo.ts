@@ -7,6 +7,7 @@ import {
   BRAND_URL,
   BOOK_CTA_LABEL,
   BOOK_HREF,
+  triageGoHref,
   TRIAGE_URL,
   FD_PRICE_LINE_HTML,
   CONSULT_DISPLAY,
@@ -73,7 +74,7 @@ export const PAGE_SEO: SeoPage[] = [
     description:
       "Cut AI agent spend and stop loops. Free 30-minute Architecture & Spend Triage, a $2,500 sprint in 5 business days, then $3,500/mo AI ops.",
     h1: HERO_H1,
-    bodyHtml: `<main id="route-home" class="section"><div class="container"><h1 class="display">${HERO_H1}</h1><p class="lede">${HERO_WHAT}</p><p>${FD_PRICE_LINE_HTML}</p><p>70+ live AI apps in production, built and run by Daniel Graham, a U.S. Army veteran with 10+ years in operations.</p><h2>Where the money goes</h2><ul><li>Loops and runaway retries.</li><li>Drift and redundant scheduled runs.</li><li>The wrong model on the wrong job, with no caching.</li><li>Seats and API keys with no caps and no owner.</li></ul><p><a href="${BOOK_HREF}" data-ph-cta="triage" data-ph-from="home-prerender">${BOOK_CTA_LABEL}</a> · <a href="/consult">The $2,500 sprint</a> · <a href="/concierge">The $3,500/mo retainer</a> · Phone ${CONSULT_DISPLAY}</p><p>Also from ${BRAND_NAME}: the <a href="https://firstdeploy.ai/consult">$2,500 sprint</a> and the <a href="https://firstdeploy.ai/freight-ops-ai-agent/">Freight Ops AI Agent</a> proof. ${INDEXME_NAME} is the ${INDEXME_BLURB} at indexme.lol.</p></div></main>`,
+    bodyHtml: `<main id="route-home" class="section"><div class="container"><h1 class="display">${HERO_H1}</h1><p class="lede">${HERO_WHAT}</p><p>${FD_PRICE_LINE_HTML}</p><p>70+ live AI apps in production, built and run by Daniel Graham, a U.S. Army veteran with 10+ years in operations.</p><h2>Where the money goes</h2><ul><li>Loops and runaway retries.</li><li>Drift and redundant scheduled runs.</li><li>The wrong model on the wrong job, with no caching.</li><li>Seats and API keys with no caps and no owner.</li></ul><p><a href="${triageGoHref("home-prerender")}" data-ph-cta="triage" data-ph-from="home-prerender">${BOOK_CTA_LABEL}</a> · <a href="/consult">The $2,500 sprint</a> · <a href="/concierge">The $3,500/mo retainer</a> · Phone ${CONSULT_DISPLAY}</p><p>Also from ${BRAND_NAME}: the <a href="https://firstdeploy.ai/consult">$2,500 sprint</a> and the <a href="https://firstdeploy.ai/freight-ops-ai-agent/">Freight Ops AI Agent</a> proof. ${INDEXME_NAME} is the ${INDEXME_BLURB} at indexme.lol.</p></div></main>`,
   },
   {
     path: "/about",
@@ -225,7 +226,11 @@ export function sitemapXml(): string {
     .join("\n");
   // Static Grok Bot template pages in public/<slug>/ (same pattern as the guides above).
   const templates = TEMPLATE_PAGE_URLS.map((loc) => `  <url>\n    <loc>${loc}</loc>\n    <lastmod>2026-11-10</lastmod>\n  </url>`).join("\n");
-  return `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">\n${urls}\n${ramDeals}\n${ramGuides}\n${creativeCalculator}\n${picks}\n${guides}\n${templates}\n</urlset>\n`;
+  // 2026-11-27: /ram-deals/* and /picks/ moved to brooms.ai (301). They stay out of AH's sitemap.
+  void ramDeals;
+  void ramGuides;
+  void picks;
+  return `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">\n${urls}\n${creativeCalculator}\n${guides}\n${templates}\n</urlset>\n`;
 }
 
 export function sitemapIndexXml(): string {

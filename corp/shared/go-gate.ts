@@ -15,7 +15,7 @@ export const GO_OK_COOKIE = "ah_go_ok";
 export const GO_OK_COOKIE_VALUE = "1";
 export const POSTHOG_TIMEOUT_MS = 500;
 export const GO_LIB = "agenthive-go";
-export const GO_LIB_VERSION = "2026-11-23";
+export const GO_LIB_VERSION = "2026-11-27";
 
 // Same regex as firstdeploy.ai netlify/functions/go.mjs, including "quora link".
 export const BOT_RE =
@@ -24,7 +24,7 @@ export const TEST_RE = /ah-clicktest/i;
 
 export const BOT_FORBIDDEN_BODY = "Checkout links open for people, not bots.";
 
-export type GoGate = "referer" | "cookie" | "confirm";
+export type GoGate = "referer" | "cookie" | "confirm" | "direct";
 
 export function isPrefetch(req: Request): boolean {
   return /prefetch|prerender/i.test(
@@ -37,6 +37,32 @@ export function classifyUa(ua: string): { test: boolean; bot: boolean; kind: "te
   const bot = !test && (!ua || BOT_RE.test(ua));
   const kind = test ? "test" : bot ? "bot" : "human";
   return { test, bot, kind };
+}
+
+// 2026-11-27: our own traffic (box WARP egress + QA user agents) never goes to PostHog.
+export const INTERNAL_UA_RE = /shipcheck|headlesschrome|fd-clicktest|ah-clicktest|curl\//i;
+export function isInternalTraffic(ip: string | null | undefined, ua: string): boolean {
+  const addr = String(ip || "").trim().toLowerCase();
+  if (addr.startsWith("104.28.") || addr.startsWith("2a09:bac")) return true;
+  return INTERNAL_UA_RE.test(ua || "");
+}
+
+// 2026-11-27: people who open /go/sprint straight from X or an email skip the
+// "Continue to checkout" page (bots are still 403'd before this runs).
+export const DIRECT_SKIP_SLUGS = new Set(["sprint"]);
+const DIRECT_UTM_SOURCES = new Set(["x", "twitter", "email", "e-mail", "newsletter"]);
+const DIRECT_REFERER_RE =
+  /(^|\.)(t\.co|x\.com|twitter\.com|mail\.google\.com|outlook\.live\.com|outlook\.office\.com|outlook\.office365\.com|mail\.yahoo\.com|mail\.aol\.com|mail\.proton\.me|mail\.zoho\.com|fastmail\.com|mail\.superhuman\.com|icloud\.com)$/i;
+export function isDirectFromXOrEmail(requestUrl: URL, referer: string): boolean {
+  const utm = (requestUrl.searchParams.get("utm_source") || "").trim().toLowerCase();
+  if (DIRECT_UTM_SOURCES.has(utm)) return true;
+  if (!referer) return false;
+  try {
+    const r = new URL(referer);
+    return DIRECT_REFERER_RE.test(r.hostname.replace(/\.$/, ""));
+  } catch {
+    return false;
+  }
 }
 
 function cookieValue(header: string, name: string): string {
@@ -80,10 +106,12 @@ export function isSameSiteReferer(referer: string, requestUrl: URL): boolean {
   }
 }
 
-export function resolveGoGate(req: Request, requestUrl: URL): GoGate | null {
+export function resolveGoGate(req: Request, requestUrl: URL, slug = ""): GoGate | null {
   if (req.method === "POST") return "confirm";
   if (hasGoOkCookie(req)) return "cookie";
-  if (isSameSiteReferer(req.headers.get("referer") || "", requestUrl)) return "referer";
+  const referer = req.headers.get("referer") || "";
+  if (isSameSiteReferer(referer, requestUrl)) return "referer";
+  if (DIRECT_SKIP_SLUGS.has(slug) && isDirectFromXOrEmail(requestUrl, referer)) return "direct";
   return null;
 }
 
@@ -204,7 +232,7 @@ export type GoClickProperties = {
   project: string;
   country?: string | null;
   bot_verdict: "human" | "test";
-  gate: GoGate;
+  gate: GoGate | "triage";
   $lib: string;
   $lib_version: string;
   $source: string;
@@ -226,7 +254,7 @@ export function goClickProperties(opts: {
   referer: string;
   kind: "human" | "test";
   country?: string | null;
-  gate: GoGate;
+  gate: GoGate | "triage";
   userAgent?: string;
   ip?: string | null;
   sessionId?: string | null;
@@ -269,11 +297,21 @@ export function goClickProperties(opts: {
 
 type CaptureFetch = (input: string, init: RequestInit) => Promise<unknown>;
 
+/**
+ * 2026-11-27: buy_click only for the real confirm click (POST from the
+ * "Continue to checkout" page). Every other server hit is go_click only.
+ */
+export function goEventNames(gate: GoGate | "triage"): string[] {
+  if (gate === "triage") return ["go_click", "triage_click"];
+  return gate === "confirm" ? ["buy_click", "go_click"] : ["go_click"];
+}
+
 export async function captureGoEvents(
   distinctId: string,
   properties: GoClickProperties,
   fetchImpl: CaptureFetch = fetch,
   timeoutMs = POSTHOG_TIMEOUT_MS,
+  events: string[] = goEventNames(properties.gate),
 ): Promise<void> {
   const ctrl = new AbortController();
   const timer = setTimeout(() => ctrl.abort(), timeoutMs);
@@ -304,10 +342,7 @@ export async function captureGoEvents(
       },
       body: JSON.stringify({
         api_key: POSTHOG_KEY,
-        batch: [
-          { event: "buy_click", ...shared },
-          { event: "go_click", ...shared },
-        ],
+        batch: events.map((event) => ({ event, ...shared })),
       }),
       signal: ctrl.signal,
     });

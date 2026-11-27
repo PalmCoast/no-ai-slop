@@ -106,7 +106,7 @@ describe("AgentHive Inc brand facts", () => {
     expect(home).not.toMatch(/14 apps|\$70k/i);
     expect(home).not.toMatch(/netlify\.app/);
     const primaryHrefs = [...home.matchAll(/className="btn btn-primary"[^>]*href=\{([^}]+)\}/g)].map((m) => m[1]);
-    const primaryTriage = [...home.matchAll(/className="btn btn-primary"[^>]*\{\.\.\.triageLinkProps\("([^"]+)"\)\}/g)].map((m) => m[1]);
+    const primaryTriage = [...home.matchAll(/className="btn btn-primary"[^>]*\{\.\.\.triageGoLinkProps\("([^"]+)"\)\}/g)].map((m) => m[1]);
     expect(new Set(primaryHrefs)).toEqual(new Set(["SPRINT_GO_HREF"]));
     expect(new Set(primaryTriage)).toEqual(new Set(["home-hero", "home-offers", "home-contact"]));
   });

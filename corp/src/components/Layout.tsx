@@ -17,6 +17,7 @@ import {
   BROOMS_URL,
   PRODUCT_FOOTER_LINKS,
   triageFrom,
+  triageGoLinkProps,
   triageLinkProps,
 } from "../../shared/brand";
 import { AFFILIATE_TOOLS, DISCLOSURE_LINE, DISCLOSURE_PATH } from "../../shared/disclosure";
@@ -67,6 +68,11 @@ const ARROW = (
   </svg>
 );
 
+/** 2026-11-27: on the homepage, triage CTAs route through /go/triage (tracked); elsewhere they keep /triage. */
+function homeTriageProps(from: string) {
+  return from.startsWith("home-") ? triageGoLinkProps(from) : triageLinkProps(from);
+}
+
 export default function Layout() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -113,7 +119,7 @@ export default function Layout() {
           </nav>
           <div className="ah-actions">
             <LiveDemo className="ah-call--bar" />
-            <a className="ah-cta" {...triageLinkProps(triageFrom(pathname, "nav"))}>
+            <a className="ah-cta" {...homeTriageProps(triageFrom(pathname, "nav"))}>
               Free triage
             </a>
             <button
@@ -142,7 +148,7 @@ export default function Layout() {
               </NavLink>
             ))}
             <div className="ah-menu-foot">
-              <a className="ah-cta ah-cta--lg" onClick={() => setOpen(false)} {...triageLinkProps(triageFrom(pathname, "nav-menu"))}>
+              <a className="ah-cta ah-cta--lg" onClick={() => setOpen(false)} {...homeTriageProps(triageFrom(pathname, "nav-menu"))}>
                 {BOOK_CTA_LABEL} {ARROW}
               </a>
               <LiveDemo className="ah-call--lg" />
@@ -160,7 +166,7 @@ export default function Layout() {
               Cut the spend. <em>Stop the loops.</em>
             </p>
             <div className="ah-foot-act">
-              <a className="ah-cta ah-cta--lg" {...triageLinkProps(triageFrom(pathname, "footer"))}>
+              <a className="ah-cta ah-cta--lg" {...homeTriageProps(triageFrom(pathname, "footer"))}>
                 {BOOK_CTA_LABEL} {ARROW}
               </a>
               <Link to="/consult" className="ah-ghost">
@@ -187,7 +193,7 @@ export default function Layout() {
                   <a
                     key={link.label}
                     {...(link.href === BOOK_HREF
-                      ? triageLinkProps(triageFrom(pathname, "footer-start"))
+                      ? homeTriageProps(triageFrom(pathname, "footer-start"))
                       : { href: link.href })}
                   >
                     {link.label}

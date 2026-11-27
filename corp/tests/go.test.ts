@@ -20,8 +20,12 @@ import {
   hasGoOkCookie,
   isHiveHost,
   isSameSiteReferer,
+  goEventNames,
+  isDirectFromXOrEmail,
+  isInternalTraffic,
   resolveGoGate,
 } from "../shared/go-gate";
+import { TRIAGE_SCHEDULE_URL } from "../shared/brand";
 
 const BROWSER_UA =
   "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36";
@@ -341,7 +345,7 @@ describe("/go handler bot gate and human 302", () => {
     }
   });
 
-  it("fires buy_click and go_click for a human hit, not for a bot, with bot_verdict and client distinct_id", async () => {
+  it("fires go_click only (no buy_click) for a same-site referer hit, with bot_verdict and client distinct_id", async () => {
     const fetchMock = vi.fn().mockResolvedValue({ ok: true });
     vi.stubGlobal("fetch", fetchMock);
     const waits: Promise<unknown>[] = [];
@@ -365,7 +369,7 @@ describe("/go handler bot gate and human 302", () => {
       batch: Array<{ event: string; distinct_id: string; properties: Record<string, unknown> }>;
     };
     expect(body.api_key).toBe(POSTHOG_KEY);
-    expect(body.batch.map((e) => e.event).sort()).toEqual(["buy_click", "go_click"]);
+    expect(body.batch.map((e) => e.event).sort()).toEqual(["go_click"]);
     for (const ev of body.batch) {
       expect(ev.distinct_id).toBe("ph-test-123");
       expect(ev.properties.distinct_id).toBe("ph-test-123");
@@ -443,5 +447,134 @@ describe("go analytics helpers", () => {
       ),
     ).rejects.toThrow();
     expect(hung).toHaveBeenCalledTimes(1);
+  });
+});
+
+describe("2026-11-27 traffic fixes", () => {
+  afterEach(() => {
+    vi.unstubAllGlobals();
+    vi.restoreAllMocks();
+  });
+
+  function postedEvents(fetchMock: ReturnType<typeof vi.fn>): string[] {
+    if (!fetchMock.mock.calls.length) return [];
+    const [, init] = fetchMock.mock.calls[0] as [string, RequestInit];
+    return (JSON.parse(String(init.body)) as { batch: Array<{ event: string }> }).batch.map((e) => e.event).sort();
+  }
+
+  it("buy_click only on the confirm POST", () => {
+    expect(goEventNames("confirm")).toEqual(["buy_click", "go_click"]);
+    expect(goEventNames("referer")).toEqual(["go_click"]);
+    expect(goEventNames("cookie")).toEqual(["go_click"]);
+    expect(goEventNames("direct")).toEqual(["go_click"]);
+    expect(goEventNames("triage")).toEqual(["go_click", "triage_click"]);
+  });
+
+  it("sends buy_click + go_click for the interstitial confirm POST", async () => {
+    const fetchMock = vi.fn().mockResolvedValue({ ok: true });
+    vi.stubGlobal("fetch", fetchMock);
+    const waits: Promise<unknown>[] = [];
+    const res = await handler(req("/go/sprint", { method: "POST", headers: { "user-agent": BROWSER_UA } }), context("sprint", waits) as never);
+    await Promise.all(waits);
+    expect(res.status).toBe(302);
+    expect(res.headers.get("location")).toBe(goTarget("sprint", "direct"));
+    expect(postedEvents(fetchMock)).toEqual(["buy_click", "go_click"]);
+  });
+
+  it("detects X and email arrivals", () => {
+    const u = (q: string) => new URL(`https://agenthiveinc.com/go/sprint${q}`);
+    expect(isDirectFromXOrEmail(u("?utm_source=x"), "")).toBe(true);
+    expect(isDirectFromXOrEmail(u("?utm_source=email"), "")).toBe(true);
+    expect(isDirectFromXOrEmail(u(""), "https://t.co/abc")).toBe(true);
+    expect(isDirectFromXOrEmail(u(""), "https://mail.google.com/")).toBe(true);
+    expect(isDirectFromXOrEmail(u(""), "https://outlook.live.com/mail/0/")).toBe(true);
+    expect(isDirectFromXOrEmail(u(""), "")).toBe(false);
+    expect(isDirectFromXOrEmail(u("?utm_source=li"), "https://ainexus360.com/")).toBe(false);
+  });
+
+  it.each([
+    ["utm_source=x", "/go/sprint?utm_source=x", {}],
+    ["utm_source=email", "/go/sprint?utm_source=email", {}],
+    ["t.co referer", "/go/sprint", { referer: "https://t.co/xyz" }],
+    ["gmail referer", "/go/sprint", { referer: "https://mail.google.com/" }],
+  ])("302s /go/sprint straight to Stripe for %s, same client_reference_id", async (_l, path, extra) => {
+    const fetchMock = vi.fn().mockResolvedValue({ ok: true });
+    vi.stubGlobal("fetch", fetchMock);
+    const waits: Promise<unknown>[] = [];
+    const headers = { "user-agent": BROWSER_UA, ...(extra as Record<string, string>) };
+    const res = await handler(req(path, { headers }), context("sprint", waits) as never);
+    await Promise.all(waits);
+    expect(res.status).toBe(302);
+    const loc = new URL(res.headers.get("location")!);
+    expect(loc.host).toBe("buy.stripe.com");
+    const url = new URL(`https://agenthiveinc.com${path}`);
+    const referer = (extra as Record<string, string>).referer || "";
+    const from = referer.includes("t.co") ? "x" : referer ? "ext-mail-google-com" : "direct";
+    expect(res.headers.get("location")).toBe(goTarget("sprint", from));
+    expect(loc.searchParams.get("client_reference_id")).toBe(`ah_${from}_sprint`);
+    expect(url.pathname).toBe("/go/sprint");
+    expect(postedEvents(fetchMock)).toEqual(["go_click"]);
+  });
+
+  it("still shows the interstitial for retainer from X, and 403s bots from X", async () => {
+    vi.stubGlobal("fetch", vi.fn());
+    const r1 = await handler(req("/go/retainer?utm_source=x", { headers: { "user-agent": BROWSER_UA } }), context("retainer") as never);
+    expect(r1.status).toBe(200);
+    const r2 = await handler(req("/go/sprint?utm_source=x", { headers: { "user-agent": "curl/8.14.1", referer: "https://t.co/x" } }), context("sprint") as never);
+    expect(r2.status).toBe(403);
+    expect(r2.headers.get("location")).toBeNull();
+    const r3 = await handler(req("/go/sprint?utm_source=x", { headers: { "user-agent": "Twitterbot/1.0" } }), context("sprint") as never);
+    expect(r3.status).toBe(403);
+  });
+
+  it("flags box WARP IPs and QA user agents as internal", () => {
+    expect(isInternalTraffic("104.28.12.9", BROWSER_UA)).toBe(true);
+    expect(isInternalTraffic("2a09:bac5:1234::1", BROWSER_UA)).toBe(true);
+    expect(isInternalTraffic("8.8.8.8", "shipcheck/1.0")).toBe(true);
+    expect(isInternalTraffic("8.8.8.8", "Mozilla/5.0 HeadlessChrome/131")).toBe(true);
+    expect(isInternalTraffic("8.8.8.8", BROWSER_UA)).toBe(false);
+    expect(isInternalTraffic(null, BROWSER_UA)).toBe(false);
+  });
+
+  it("does not send internal or test traffic to PostHog but still redirects", async () => {
+    const fetchMock = vi.fn().mockResolvedValue({ ok: true });
+    vi.stubGlobal("fetch", fetchMock);
+    const waits: Promise<unknown>[] = [];
+    const a = await handler(
+      req("/go/sprint", { method: "POST", headers: { "user-agent": BROWSER_UA, "x-forwarded-for": "104.28.33.1" } }),
+      context("sprint", waits) as never,
+    );
+    const b = await handler(req("/go/sprint", { method: "POST", headers: { "user-agent": "ah-clicktest" } }), context("sprint", waits) as never);
+    await Promise.all(waits);
+    expect(a.status).toBe(302);
+    expect(b.status).toBe(302);
+    expect(fetchMock).not.toHaveBeenCalled();
+  });
+
+  it("/go/triage logs go_click + triage_click and 302s to the calendar unchanged", async () => {
+    const fetchMock = vi.fn().mockResolvedValue({ ok: true });
+    vi.stubGlobal("fetch", fetchMock);
+    const waits: Promise<unknown>[] = [];
+    const res = await handler(req("/go/triage?from=home-hero", { headers: { "user-agent": BROWSER_UA } }), context("triage", waits) as never);
+    await Promise.all(waits);
+    expect(res.status).toBe(302);
+    expect(res.headers.get("location")).toBe(TRIAGE_SCHEDULE_URL);
+    expect(postedEvents(fetchMock)).toEqual(["go_click", "triage_click"]);
+    const [, init] = fetchMock.mock.calls[0] as [string, RequestInit];
+    const ev = (JSON.parse(String(init.body)) as { batch: Array<{ properties: Record<string, unknown> }> }).batch[0];
+    expect(ev.properties.from).toBe("home-hero");
+    expect(ev.properties.slug).toBe("triage");
+    expect(ev.properties.cta).toBe("triage");
+  });
+
+  it("/go/triage 302s bots and internal hits without PostHog", async () => {
+    const fetchMock = vi.fn();
+    vi.stubGlobal("fetch", fetchMock);
+    const a = await handler(req("/go/triage", { headers: { "user-agent": "curl/8.14.1" } }), context("triage") as never);
+    const b = await handler(req("/go/triage", { headers: { "user-agent": BROWSER_UA, "x-forwarded-for": "104.28.1.2" } }), context("triage") as never);
+    expect(a.status).toBe(302);
+    expect(b.status).toBe(302);
+    expect(a.headers.get("location")).toBe(TRIAGE_SCHEDULE_URL);
+    expect(fetchMock).not.toHaveBeenCalled();
   });
 });

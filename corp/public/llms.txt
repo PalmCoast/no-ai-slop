@@ -43,10 +43,3 @@ Live apps from the same team. Prefer the custom domains above. A longer public b
 - Address: Palm Coast, FL
 - Disambiguation: AgentHive Inc · Palm Coast, FL · firstdeploy.ai.
 
-## Other pages on this domain
-- [Black Friday RAM & Gaming Price Finder 2026](https://agenthiveinc.com/ram-deals/): free RAM price finder (DDR4/DDR5, 16-128GB) with store, price, check date and source for every listing, plus top games matched to RAM size. Data: https://agenthiveinc.com/ram-deals/ram-deals.json and https://agenthiveinc.com/ram-deals/games-top15.json
-- [Black Friday DDR5 RAM Deals 2026](https://agenthiveinc.com/ram-deals/black-friday-ddr5-ram-deals/): every DDR5 desktop kit we track (16-128GB), grouped by size, with store, seller, price, check date and a source link for each price.
-- [Best 32GB DDR5 RAM Kits for Black Friday 2026](https://agenthiveinc.com/ram-deals/best-32gb-ddr5-ram/): 32GB DDR5-6000 kits compared by verified price, CL timings and seller.
-- [Best 64GB DDR5 RAM Kits for Creators and Heavy Multitaskers](https://agenthiveinc.com/ram-deals/best-64gb-ddr5-ram/): 64GB DDR5-6000 kits plus 96GB and 128GB two-stick kits, with verified prices.
-- [DDR4 RAM Deals for Older PCs](https://agenthiveinc.com/ram-deals/ddr4-ram-deals/): DDR4-3200 desktop kits with verified prices, and what to check before upgrading an older PC.
-- [How Much RAM for Gaming in 2026](https://agenthiveinc.com/ram-deals/how-much-ram-for-gaming/): minimum and recommended RAM of the top 15 Steam games from their Steam requirements, plus the lowest verified kit price for each size.

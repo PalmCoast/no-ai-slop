@@ -6,7 +6,7 @@ import {
   CONSULT_TEL,
   FD_CONSULT_URL,
   FD_FREIGHT_URL,
-  triageLinkProps,
+  triageGoLinkProps,
   FD_NAME,
   FD_URL,
   HERO_H1,
@@ -50,7 +50,7 @@ export default function Home() {
           </h1>
           <p className="lede">{HERO_WHAT}</p>
           <div className="hero-actions">
-            <a className="btn btn-primary" {...triageLinkProps("home-hero")}>
+            <a className="btn btn-primary" {...triageGoLinkProps("home-hero")}>
               {BOOK_CTA_LABEL}
             </a>
             <a className="btn btn-outline" href="/consult">
@@ -94,7 +94,7 @@ export default function Home() {
               <h3>Architecture &amp; Spend Triage</h3>
               <p className="muted">30 minutes. Bring last month’s bill. We tell you where the waste most likely is and whether the sprint pays for itself.</p>
               <p style={{ marginTop: 12 }}>
-                <a className="btn btn-primary" {...triageLinkProps("home-offers")}>
+                <a className="btn btn-primary" {...triageGoLinkProps("home-offers")}>
                   Book the triage
                 </a>
               </p>
@@ -154,7 +154,7 @@ export default function Home() {
             <h2>Bring last month’s AI bill</h2>
             <p>30 minutes, free. You leave knowing where the money most likely goes and whether the sprint is worth it.</p>
             <div className="hero-actions" style={{ justifyContent: "center", marginTop: 18, marginBottom: 0 }}>
-              <a className="btn btn-primary" {...triageLinkProps("home-contact")}>
+              <a className="btn btn-primary" {...triageGoLinkProps("home-contact")}>
                 {BOOK_CTA_LABEL}
               </a>
               <a className="btn btn-outline" href="/consult">

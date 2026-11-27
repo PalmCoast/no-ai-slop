@@ -27,8 +27,8 @@ describe("static RAM buying guides under /ram-deals/", () => {
       expect(graph.map((n) => n["@type"])).toEqual(expect.arrayContaining(["WebPage", "BreadcrumbList", "FAQPage"]));
       expect(html).not.toMatch(/AggregateRating|"Review"|only \d+ left|order soon|hurry|guarantee|selfish|spacex|\borange\b/i);
       expect(html).not.toMatch(new RegExp(String.fromCharCode(71, 114, 111, 107), "i"));
-      expect(sitemapXml()).toContain(`<loc>${url}</loc>`);
-      expect(llms).toContain(url);
+      expect(sitemapXml()).not.toContain(`<loc>${url}</loc>`); // 2026-11-27: moved to brooms.ai
+      expect(llms).not.toContain(url); // 2026-11-27: moved to brooms.ai
       expect(finder).toContain(`href="${url.replace("https://agenthiveinc.com", "")}"`);
     });
   }

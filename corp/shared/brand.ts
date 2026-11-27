@@ -31,6 +31,15 @@ export function triageFrom(pathname: string, slot: string): string {
 export function triageLinkProps(from: string) {
   return { href: BOOK_HREF, "data-ph-cta": "triage" as const, "data-ph-from": from };
 }
+/** Tracked booking path (2026-11-27): /go/triage logs go_click + triage_click server-side, then 302s to TRIAGE_SCHEDULE_URL. */
+export const TRIAGE_GO_HREF = "/go/triage";
+export function triageGoHref(from: string): string {
+  return `${TRIAGE_GO_HREF}?from=${encodeURIComponent(from)}`;
+}
+/** Homepage triage buttons route through /go/triage. Other pages keep /triage. */
+export function triageGoLinkProps(from: string) {
+  return { href: triageGoHref(from), "data-ph-cta": "triage" as const, "data-ph-from": from };
+}
 /** Stripe Payment Link for the $2,500 Agent Audit & Stabilization Sprint. Destination of /go/sprint. */
 export const SPRINT_STRIPE_URL = "https://buy.stripe.com/6oU14n2Es6CTfTf7ea2ZO1V";
 export const SPRINT_GO_HREF = "/go/sprint";

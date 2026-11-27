@@ -62,12 +62,14 @@ describe("/picks storefront", () => {
     expect(page).not.toMatch(/SpaceX|KloudStax|Colts/i);
   });
 
-  it("stays live (sitemap, ram-deals, rewrite) but is off the B2B nav and footer", () => {
-    expect(sitemapXml()).toContain("<loc>https://agenthiveinc.com/picks/</loc>");
+  it("moved to brooms.ai on 2026-11-27: 301, out of the sitemap, off the B2B nav and footer", () => {
+    expect(sitemapXml()).not.toContain("<loc>https://agenthiveinc.com/picks/</loc>");
     expect(llms).not.toContain("https://agenthiveinc.com/picks/");
     expect(layout).not.toMatch(/PICKS_PATH/);
     expect(layout).toContain('rel="sponsored noopener"');
     expect(ram).toContain('href="/picks/"');
-    expect(routes).toContain('"/picks /picks/index.html 200!"');
+    expect(routes).not.toContain('"/picks /picks/index.html 200!"');
+    expect(routes).toContain('["/picks", "https://brooms.ai/collections/black-friday"]');
+    expect(routes).toContain('["/ram-deals", BROOMS_RAM]');
   });
 });

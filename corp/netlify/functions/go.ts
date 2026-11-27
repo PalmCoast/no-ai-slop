@@ -1,6 +1,7 @@
 import type { Config, Context } from "@netlify/functions";
 import { getStore } from "@netlify/blobs";
 import { cleanToken, goTarget, GO_LINKS } from "../../shared/go-links.ts";
+import { TRIAGE_SCHEDULE_URL } from "../../shared/brand.ts";
 import {
   BOT_FORBIDDEN_BODY,
   captureGoEvents,
@@ -10,6 +11,7 @@ import {
   goOkSetCookie,
   interstitialHtml,
   isHiveHost,
+  isInternalTraffic,
   isPrefetch,
   resolveGoGate,
   sessionIdFromRequest,
@@ -48,6 +50,14 @@ export default async (req: Request, context: Context) => {
   const name = cleanToken(context.params?.name || url.pathname.split("/").pop(), 60);
   const referer = req.headers.get("referer") || "";
   const from = fromOf(url, referer);
+
+  // 2026-11-27: /go/triage logs the free-triage click server-side, then 302s to the
+  // same Google appointment schedule /triage uses. Nothing to protect, so bots get
+  // the 302 too, but only non-internal human hits are sent to PostHog.
+  if (name === "triage") {
+    return triage(req, context, url, referer, from);
+  }
+
   const target = goTarget(name, from);
   if (!target) {
     return new Response("Not found", { status: 404, headers: { "cache-control": "no-store" } });
@@ -57,7 +67,7 @@ export default async (req: Request, context: Context) => {
   const { test, bot, kind } = classifyUa(ua);
   const prefetch = isPrefetch(req);
   const dest = new URL(target);
-  const gate = bot ? null : resolveGoGate(req, url);
+  const gate = bot ? null : resolveGoGate(req, url, name);
 
   if (req.method === "GET" && !prefetch) {
     const ts = new Date().toISOString();
@@ -124,15 +134,49 @@ export default async (req: Request, context: Context) => {
     ip: clientIp(req, context),
     sessionId: sessionIdFromRequest(req),
   });
-  const send = captureGoEvents(id, properties).catch((e: unknown) => console.error("go: posthog capture failed", e));
-  if (context.waitUntil) context.waitUntil(send);
-  else await send;
+  if (kind === "human" && !isInternalTraffic(properties.$ip, ua)) {
+    const send = captureGoEvents(id, properties).catch((e: unknown) => console.error("go: posthog capture failed", e));
+    if (context.waitUntil) context.waitUntil(send);
+    else await send;
+  }
 
   return new Response(null, {
     status: 302,
     headers: outHeaders,
   });
 };
+
+async function triage(req: Request, context: Context, url: URL, referer: string, from: string): Promise<Response> {
+  const ua = req.headers.get("user-agent") || "";
+  const { kind } = classifyUa(ua);
+  const headers = new Headers(noStore);
+  headers.set("location", TRIAGE_SCHEDULE_URL);
+  if (req.method === "GET" && !isPrefetch(req) && kind === "human") {
+    const ip = clientIp(req, context);
+    if (!isInternalTraffic(ip, ua)) {
+      const { id, setCookie } = distinctIdFromRequest(req);
+      if (setCookie) headers.append("set-cookie", setCookie);
+      const properties = goClickProperties({
+        slug: "triage",
+        from,
+        dest: new URL(TRIAGE_SCHEDULE_URL),
+        requestUrl: url,
+        referer,
+        kind: "human",
+        country: context.geo?.country?.code || null,
+        gate: "triage",
+        userAgent: ua,
+        ip,
+        sessionId: sessionIdFromRequest(req),
+      });
+      properties.cta = "triage";
+      const send = captureGoEvents(id, properties).catch((e: unknown) => console.error("go: posthog capture failed", e));
+      if (context.waitUntil) context.waitUntil(send);
+      else await send;
+    }
+  }
+  return new Response(null, { status: 302, headers });
+}
 
 export const config: Config = {
   path: "/go/:name",

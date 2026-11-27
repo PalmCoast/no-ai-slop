@@ -70,6 +70,21 @@ if (hashes.size !== written.length) {
 writeFileSync(join(dist, "404.html"), applyRouteHtml(template, NOT_FOUND_SEO));
 writeFileSync(join(dist, "sitemap.xml"), sitemapXml());
 writeFileSync(join(dist, "sitemaps.xml"), sitemapIndexXml());
+const BROOMS_RAM = "https://brooms.ai/collections/come-and-take-it-black-friday";
+const BROOMS_DDR5 = "https://brooms.ai/pages/ddr5-ram-black-friday-deals";
+const CONSUMER_MOVES: Array<[string, string]> = [
+  ["/ram-deals/black-friday-ddr5-ram-deals", BROOMS_DDR5],
+  ["/ram-deals/best-32gb-ddr5-ram", BROOMS_DDR5],
+  ["/ram-deals/best-64gb-ddr5-ram", BROOMS_DDR5],
+  ["/ram-deals/ddr4-ram-deals", BROOMS_RAM],
+  ["/ram-deals/how-much-ram-for-gaming", BROOMS_RAM],
+  ["/ram-deals", BROOMS_RAM],
+  ["/picks", "https://brooms.ai/collections/black-friday"],
+];
+const SCANNER_PATHS = [
+  "/wp-admin", "/wp-admin/*", "/wp-login.php", "/wp-includes/*", "/wp-content/*", "/wordpress/*", "/wp/*",
+  "/xmlrpc.php", "/.env", "/.env.local", "/.env.production", "/.git/*", "/phpmyadmin/*", "/vendor/phpunit/*",
+];
 writeFileSync(
   join(dist, "_redirects"),
   [
@@ -99,11 +114,12 @@ writeFileSync(
     ...AEO_PAGES.flatMap((page) => [`${page.path} ${page.path}/index.html 200!`, `${page.path}/ ${page.path}/index.html 200!`]),
     "/disclosure /disclosure/index.html 200!",
     "/disclosure/ /disclosure/index.html 200!",
-    // Static storefront in public/picks/ (not a PAGE_SEO route).
-    "/picks /picks/index.html 200!",
-    "/picks/ /picks/index.html 200!",
-    "/shop /picks/ 301!",
-    "/partners /picks/ 301!",
+    // 2026-11-27: consumer RAM-deal guides and /picks moved to brooms.ai (AH stays B2B only).
+    ...CONSUMER_MOVES.flatMap(([path, to]) => [`${path} ${to} 301!`, `${path}/ ${to} 301!`, `${path}/index.html ${to} 301!`]),
+    "/shop https://brooms.ai/collections/black-friday 301!",
+    "/partners https://brooms.ai/collections/black-friday 301!",
+    // 2026-11-27: scanner probes get a tiny 410 instead of the full 404 page.
+    ...SCANNER_PATHS.map((path) => `${path} /gone.txt 410!`),
     "/x /x/index.html 200!",
     "/x/ /x/index.html 200!",
     "/ads/thanks /ads/thanks/index.html 200!",

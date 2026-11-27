@@ -2,6 +2,8 @@
 // The token can send events. It cannot read data.
 (function () {
   try {
+    // 2026-11-27: our own QA browsers (shipcheck, headless, clicktest) never send PostHog events.
+    if (/shipcheck|HeadlessChrome|clicktest/i.test((navigator && navigator.userAgent) || "")) return;
     !function (t, e) {
       var o, n, p, r;
       if (e.__SV) return;
