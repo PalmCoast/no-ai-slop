@@ -22,7 +22,7 @@ export default function Build() {
             team’s AI agent spend and fixes it. <FdPath /> Every build runs on a written plan: scope, build, go-live, the same process as our active client builds.
           </p>
           <ul className="takeaways">
-            <li>90-day projects: half upfront, half at completion.</li>
+            <li>90-day projects: invoiced half at kickoff, half at completion.</li>
             <li>Voice line, intake, quotes, the dashboard your team actually opens.</li>
           </ul>
           <div className="hero-actions" style={{ marginTop: 18 }}>

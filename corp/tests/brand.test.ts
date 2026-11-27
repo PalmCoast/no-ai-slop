@@ -1,3 +1,4 @@
+import { B2B_TRUST_LINE } from "../shared/b2bCopy";
 import { stripFreightPrice } from "./freight-price";
 import { readFileSync, readdirSync, statSync } from "node:fs";
 import { join } from "node:path";
@@ -79,16 +80,17 @@ describe("AgentHive Inc brand facts", () => {
     expect(SEAT_CIRCUIT_URL).toBe("https://infrastructure.agenthiveinc.com/");
     expect(CONSULT_RATES).toBe("free 30-minute Architecture & Spend Triage · $2,500 sprint · $3,500/mo retainer");
     expect(`${FD_PRICE} ${FD_PRICE_LINE} ${CONSULT_RATES}`).not.toMatch(/\$75|\$150|\$1,250|\$2,000/);
-    expect(HERO_H1).toBe("Cut AI agent spend and stop the loops in 5 business days.");
-    expect(HERO_WHAT).toMatch(/CTOs and COOs at funded teams of 30 to 200/);
+    expect(HERO_H1).toBe("Your agents are spending money while you sleep.");
+    expect(HERO_WHAT).toMatch(/Start with a free bill teardown\./);
     expect(`${HERO_H1} ${HERO_WHAT}`).not.toMatch(/field|dirt|shop|crew|whiteboard|missed/i);
     expect(FOOTER_LINE).toBe("AgentHive Inc · Palm Coast, FL · firstdeploy.ai");
   });
 
   it("homepage teaches the consultant shop, not the 12-bot swarm", () => {
     const home = readFileSync(join(fileURLToPath(new URL("../src/pages/Home.tsx", import.meta.url))), "utf8");
-    expect(home).toMatch(/70\+ live AI apps in production/);
-    expect(home).toMatch(/U\.S\. Army veteran with 10\+ years/);
+    expect(home).toMatch(/B2B_TRUST_LINE/);
+    expect(B2B_TRUST_LINE).toMatch(/70\+ live AI apps in production/);
+    expect(B2B_TRUST_LINE).toMatch(/20\+ years in enterprise IT and telecom/);
     expect(home).not.toMatch(/PICKS_PATH|Shop Picks|Ad Sprint|\/ads"|ram-deals|\$297|\$997|\$75|\$150|\$2,000|whop/i);
     expect(home).toMatch(/HERO_H1/);
     expect(home).toMatch(/FD_NAME|First Deploy AI/);
@@ -138,15 +140,17 @@ describe("AgentHive Inc brand facts", () => {
     expect(layout).toMatch(/MONEY_FOOTER_LINKS/);
     expect(layout).not.toMatch(/netlify\.app/);
     expect(layout).not.toMatch(/INDEXME_|Live work|WriteHive|Bot Lock/);
-    expect(MONEY_FOOTER_LINKS).toHaveLength(4);
+    expect(MONEY_FOOTER_LINKS).toHaveLength(5);
     expect(MONEY_FOOTER_LINKS.map((link) => link.href)).toEqual([
       "/triage",
+      "/send-your-bill",
       "/consult",
       "/concierge",
       "https://firstdeploy.ai/",
     ]);
     expect(MONEY_FOOTER_LINKS.map((link) => link.label)).toEqual([
       "Free triage",
+      "Send your AI bill",
       "Sprint, $2,500",
       "Retainer, $3,500/mo",
       "First Deploy AI",

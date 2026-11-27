@@ -13,6 +13,7 @@ import {
   INVOICE_LINE,
   TRIAGE_CTA_LABEL,
 } from "../../shared/brand";
+import { LADDER_HTML } from "../../shared/b2bCopy";
 import { CONCIERGE_NAME, CONCIERGE_PATH, CONCIERGE_PRICE } from "../../shared/concierge";
 
 const FIXES = [
@@ -166,6 +167,17 @@ export default function Consult() {
               See the retainer
             </Link>
           </div>
+        </div>
+      </section>
+
+      <section className="section" id="ladder">
+        <div className="container cx">
+          <div dangerouslySetInnerHTML={{ __html: LADDER_HTML }} />
+          <p>
+            <a href="/send-your-bill" data-ph-cta="send-bill" data-ph-from="consult-ladder">
+              Send your AI bill for a free teardown
+            </a>
+          </p>
         </div>
       </section>
 

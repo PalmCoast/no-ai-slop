@@ -5,5 +5,5 @@ export const DANIEL_NAME = "Daniel Graham";
 export const DANIEL_JOB_TITLE = `Founder, ${BRAND_NAME}`;
 export const DANIEL_URL = `${BRAND_URL}/about`;
 export const DANIEL_ID = `${DANIEL_URL}#daniel-graham`;
-export const DANIEL_BIO = `${DANIEL_NAME} is the founder of ${BRAND_NAME} (${LEGAL_NAME}) in Palm Coast, Florida. He has 10+ years in enterprise IT and telecom.`;
+export const DANIEL_BIO = `${DANIEL_NAME} is the founder of ${BRAND_NAME} (${LEGAL_NAME}) in Palm Coast, Florida. He has 20+ years in enterprise IT and telecom.`;
 export const DANIEL_SAME_AS = [DANIEL_LINKEDIN_URL] as const;

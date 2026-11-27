@@ -114,7 +114,8 @@ describe("per-route SEO", () => {
     expect(pages[0]).toContain("$2,500 Agent Audit &amp; Stabilization Sprint");
     expect(pages.join("")).not.toMatch(/\/go\/(sprint|retainer)/);
     expect(pages[0]).not.toContain("https://buy.stripe.com/eVq9ATbaY6CT6iF7ea2ZO1g");
-    expect(pages.filter((html) => !html.includes('id="route-ads')).join("")).not.toMatch(/\$75 |\$150 |\$2,000|10-hour pack|burn-audit hour/);
+    // COPY.md FAQ "If you spend under about $2,000 a month on AI" is a spend threshold, not the retired $2,000 offer.
+    expect(pages.filter((html) => !html.includes('id="route-ads')).join("").replaceAll("under about $2,000 a month", "")).not.toMatch(/\$75 |\$150 |\$2,000|10-hour pack|burn-audit hour/);
     expect(pages.join("")).not.toMatch(/founding|first 5 businesses|\$250 one-time/i);
     expect(pages[0]).not.toContain("1" + ",750");
     expect(pages[0]).not.toContain("$" + "250/mo");

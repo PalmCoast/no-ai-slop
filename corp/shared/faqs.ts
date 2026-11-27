@@ -22,7 +22,7 @@ export const CONSULT_FAQS: Faq[] = [
   },
   {
     q: "How does billing work?",
-    a: "The triage is free. The sprint is $2,500, paid up front on Stripe. The Fractional AI Ops retainer is $3,500 a month, month to month.",
+    a: "The triage is free. The sprint is $2,500, invoiced after your triage call (Stripe invoice or ACH). The Fractional AI Ops retainer is $3,500 a month, month to month after the first 3 months.",
   },
   {
     q: "Is it remote?",

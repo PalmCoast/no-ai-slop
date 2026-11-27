@@ -9,7 +9,7 @@ const OURS = [
   { item: "First call", price: "Free (30 minutes)" },
   { item: "30 minutes", price: "$75" },
   { item: "1 hour", price: "$150" },
-  { item: "10-hour pack", price: "$1,250 ($125 an hour, $625 up front)" },
+  { item: "10-hour pack", price: "$1,250 ($125 an hour, $625 deposit)" },
   { item: "Monthly retainer", price: `${CONCIERGE_PRICE} (${CONCIERGE_NAME})` },
 ] as const;
 
@@ -90,7 +90,7 @@ export default function ConsultCost() {
             <article className="trust">
               <h3>The pack</h3>
               <p className="muted">
-                Ten hours for $1,250 is $125 an hour, with $625 up front, for a defined build you want to work through
+                Ten hours for $1,250 is $125 an hour, with a $625 deposit, for a defined build you want to work through
                 in one block.
               </p>
             </article>

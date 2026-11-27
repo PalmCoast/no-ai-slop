@@ -73,9 +73,9 @@ export const BOOK_CTA_LABEL = "Book the free 30-minute Architecture & Spend Tria
 export const FREE_30_LABEL = "Free triage";
 export const FD_CHECK_LABEL = "2-minute check";
 export const CONSULT_RATES = "free 30-minute Architecture & Spend Triage · $2,500 sprint · $3,500/mo retainer";
-export const HERO_H1 = "Cut AI agent spend and stop the loops in 5 business days.";
+export const HERO_H1 = "Your agents are spending money while you sleep.";
 export const HERO_WHAT =
-  "For CTOs and COOs at funded teams of 30 to 200. A fixed-price $2,500 sprint: we audit your agents, routines and seats, fix the loops, drift and redundant runs in your accounts, and hand back the before and after numbers. Start with a free 30-minute Architecture & Spend Triage.";
+  "We find the loops, repeat calls and drift in your Claude, Cursor or custom agent stack, then fix them in 5 days. Start with a free bill teardown.";
 export const HERO_WHY = "";
 export const FOOTER_LINE = "AgentHive Inc · Palm Coast, FL · firstdeploy.ai";
 export const INDEXME_NAME = "IndexMe.lol";
@@ -92,8 +92,11 @@ export const PICKS_URL = `${BRAND_URL}/picks/`;
 export const PICKS_LABEL = "Picks";
 
 /** AgentHiveInc.com footer money path (B2B reset 2026-11-24). */
+export const BILL_PAGE_PATH = "/send-your-bill";
+
 export const MONEY_FOOTER_LINKS = [
   { href: BOOK_HREF, label: FREE_30_LABEL },
+  { href: BILL_PAGE_PATH, label: "Send your AI bill" },
   { href: HIVE_CONSULT_PATH, label: "Sprint, $2,500" },
   { href: "/concierge", label: "Retainer, $3,500/mo" },
   { href: FD_URL, label: FD_NAME },

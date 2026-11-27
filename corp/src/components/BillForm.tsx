@@ -1,14 +1,16 @@
 import { useState, type FormEvent } from "react";
+import { BILL_NDA_LABEL, BILL_SUBMIT } from "../../shared/b2bCopy";
 
 /**
  * AI-bill form (B2B invoice swap 2026-11-27). Netlify Forms "ai-bill" (declared statically in
  * public/__forms.html so Netlify detects it); notifications go to hivesales@agentmail.to.
  * Fires PostHog bill_form_submit on success. ph.js skips our own traffic (edge __PH_SKIP, QA UAs).
- * Wording stays minimal on purpose until the reviewed copy ships.
+ * Labels follow COPY.md (approved 2026-11-27).
  */
 export default function BillForm({ from }: { from: string }) {
   const [state, setState] = useState<"idle" | "sending" | "sent" | "error">("idle");
   const [err, setErr] = useState("");
+  const [sentTo, setSentTo] = useState("");
 
   async function onSubmit(ev: FormEvent<HTMLFormElement>) {
     ev.preventDefault();
@@ -32,6 +34,7 @@ export default function BillForm({ from }: { from: string }) {
     try {
       const res = await fetch("/", { method: "POST", body: data });
       if (!res.ok) throw new Error(String(res.status));
+      setSentTo(String(data.get("email") || "").trim());
       setState("sent");
       try {
         const ph = (window as unknown as { posthog?: { capture?: (e: string, p: object, o?: object) => void } }).posthog;
@@ -48,7 +51,13 @@ export default function BillForm({ from }: { from: string }) {
   if (state === "sent") {
     return (
       <div className="billform" id="bill" data-ph-from={from}>
-        <p className="bf-ok" role="status">Got it. We’ll reply by email.</p>
+        <p className="bf-ok" role="status">
+          Got it. Your teardown video and savings estimate will arrive at {sentTo || "your email"} within 48 hours. If we need
+          anything else, we will ask within one business day. Want to talk it through?{" "}
+          <a href="/go/triage?from=bill-confirm" data-ph-cta="triage" data-ph-from="bill-confirm">
+            Book a Free Triage
+          </a>
+        </p>
       </div>
     );
   }
@@ -81,11 +90,11 @@ export default function BillForm({ from }: { from: string }) {
         <input type="file" name="bill" required accept=".pdf,.csv,.txt,.png,.jpg,.jpeg,.xlsx" />
       </label>
       <label className="bf-check">
-        <input type="checkbox" name="nda" value="yes" required /> Covered by a mutual NDA
+        <input type="checkbox" name="nda" value="yes" required /> {BILL_NDA_LABEL}
       </label>
-      <p className="bf-fine">Redact org IDs, API keys and account numbers first. We delete the bill after review.</p>
+      <p className="bf-fine">Redact org IDs, API keys and account numbers first. Used only for your teardown and deleted within 7 days of delivery.</p>
       <button type="submit" className="btn btn-primary" disabled={state === "sending"}>
-        Send the bill
+        {BILL_SUBMIT}
       </button>
       {state === "error" ? (
         <p className="bf-err" role="alert">

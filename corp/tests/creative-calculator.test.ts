@@ -22,7 +22,7 @@ describe("free creative planner at /ads/creative-calculator/", () => {
     const xml = sitemapXml();
     expect(xml).toContain(`<loc>${CREATIVE_CALCULATOR_URL}</loc>`);
     // 22 after the B2B reset; 2026-11-27 minus 6 RAM-deal pages and /picks/ (moved to brooms.ai).
-    expect(xml.match(/<loc>/g)?.length).toBe(15);
+    expect(xml.match(/<loc>/g)?.length).toBe(16);
     expect(xml).not.toContain("/ram-deals/");
     expect(PAGE_SEO.some((page) => page.path.startsWith("/ads/creative-calculator"))).toBe(false);
   });

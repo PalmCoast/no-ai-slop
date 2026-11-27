@@ -617,3 +617,21 @@ button, input, textarea { font: inherit; }
 .billform button{justify-self:start;cursor:pointer}
 .billform .bf-ok{margin:0;font-weight:600}
 .billform .bf-err{margin:0;color:#b42318}
+
+/* COPY.md sections (ladder, case study, AI bill page) 2026-11-27 */
+.cx { max-width: 62rem; }
+.cx h2 { margin-top: 0; }
+.cx h3 { margin: 2rem 0 .6rem; }
+.cx h4 { margin: 1.3rem 0 .4rem; }
+.cx p, .cx li { line-height: 1.6; }
+.cx ul, .cx ol { padding-left: 1.3rem; }
+.cx-label { display: block; padding: .7rem .9rem; border-left: 4px solid var(--gold, #c8902e); background: rgba(200, 144, 46, .12); border-radius: 6px; margin: 0 0 1rem; }
+.cx-sub { font-size: 1.08rem; opacity: .9; }
+.cx-table { width: 100%; border-collapse: collapse; margin: 1rem 0 1.4rem; font-size: .95rem; display: block; overflow-x: auto; }
+.cx-table caption { caption-side: top; text-align: left; font-weight: 700; padding: .3rem 0; font-size: .9rem; }
+.cx-table th, .cx-table td { border: 1px solid rgba(127, 127, 127, .35); padding: .5rem .6rem; text-align: left; vertical-align: top; }
+.cx-table th { background: rgba(127, 127, 127, .1); }
+.cx-ctas { display: flex; flex-wrap: wrap; gap: .6rem; margin: 1.2rem 0; }
+.cx blockquote { margin: 1rem 0; padding: .8rem 1rem; border-left: 3px solid rgba(127, 127, 127, .5); background: rgba(127, 127, 127, .07); }
+.cx details { border-top: 1px solid rgba(127, 127, 127, .3); padding: .7rem 0; }
+.cx summary { cursor: pointer; font-weight: 700; }

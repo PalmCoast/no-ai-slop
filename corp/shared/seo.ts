@@ -38,6 +38,7 @@ import { DANIEL_BIO, DANIEL_ID, DANIEL_JOB_TITLE, DANIEL_NAME, DANIEL_SAME_AS, D
 import { CONCIERGE_NAME, CONCIERGE_PRICE, CONCIERGE_PRICE_AMOUNT, CONCIERGE_URL } from "./concierge.ts";
 import { CONCIERGE_FAQS, CONSULT_COST_FAQS, CONSULT_FAQS, HIRING_FAQS } from "./faqs.ts";
 import { CONSULT_COST_CHECKED_ISO, CONSULT_COST_URL } from "./consult.ts";
+import { BILL_CLOSE_BODY, BILL_CLOSE_H, BILL_FAQ, BILL_FAQ_HTML, BILL_FORM_TITLE, BILL_H1, BILL_NDA_CLAUSE, BILL_NDA_LABEL, BILL_REDACT_HTML, BILL_RETENTION_HTML, BILL_SMALL, BILL_SUB, BILL_TOP_HTML } from "./b2bCopy.ts";
 import { CONSULT_COMPARE_CHECKED_ISO, consultComparePageFor } from "./consultCompare.ts";
 import { AFFILIATE_TOOLS, DISCLOSURE_LINE, DISCLOSURE_UPDATED } from "./disclosure.ts";
 import { AEO_LASTMOD, AEO_PAGES, aeoBodyHtml, aeoPageFor } from "./aeo.ts";
@@ -76,7 +77,7 @@ export const PAGE_SEO: SeoPage[] = [
     description:
       "Cut AI agent spend and stop loops. Free 30-minute Architecture & Spend Triage, a $2,500 sprint in 5 business days, then $3,500/mo AI ops.",
     h1: HERO_H1,
-    bodyHtml: `<main id="route-home" class="section"><div class="container"><h1 class="display">${HERO_H1}</h1><p class="lede">${HERO_WHAT}</p><p>${FD_PRICE_LINE_HTML}</p><p>70+ live AI apps in production, built and run by Daniel Graham, a U.S. Army veteran with 10+ years in operations.</p><h2>Where the money goes</h2><ul><li>Loops and runaway retries.</li><li>Drift and redundant scheduled runs.</li><li>The wrong model on the wrong job, with no caching.</li><li>Seats and API keys with no caps and no owner.</li></ul><p><a href="${triageGoHref("home-prerender")}" data-ph-cta="triage" data-ph-from="home-prerender">${BOOK_CTA_LABEL}</a> · <a href="/consult">The $2,500 sprint</a> · <a href="/concierge">The $3,500/mo retainer</a> · Phone ${CONSULT_DISPLAY}</p><p>Also from ${BRAND_NAME}: the <a href="https://firstdeploy.ai/consult">$2,500 sprint</a> and the <a href="https://firstdeploy.ai/freight-ops-ai-agent/">Freight Ops AI Agent</a> proof. ${INDEXME_NAME} is the ${INDEXME_BLURB} at indexme.lol.</p></div></main>`,
+    bodyHtml: `<main id="route-home" class="section"><div class="container"><h1 class="display">${HERO_H1}</h1><p class="lede">${HERO_WHAT}</p><p>${FD_PRICE_LINE_HTML}</p><p>70+ live AI apps in production, built and run by Daniel Graham, a U.S. Army veteran with 20+ years in operations.</p><h2>Where the money goes</h2><ul><li>Loops and runaway retries.</li><li>Drift and redundant scheduled runs.</li><li>The wrong model on the wrong job, with no caching.</li><li>Seats and API keys with no caps and no owner.</li></ul><p><a href="${triageGoHref("home-prerender")}" data-ph-cta="triage" data-ph-from="home-prerender">${BOOK_CTA_LABEL}</a> · <a href="/consult">The $2,500 sprint</a> · <a href="/concierge">The $3,500/mo retainer</a> · Phone ${CONSULT_DISPLAY}</p><p>Also from ${BRAND_NAME}: the <a href="https://firstdeploy.ai/consult">$2,500 sprint</a> and the <a href="https://firstdeploy.ai/freight-ops-ai-agent/">Freight Ops AI Agent</a> proof. ${INDEXME_NAME} is the ${INDEXME_BLURB} at indexme.lol.</p></div></main>`,
   },
   {
     path: "/about",
@@ -117,12 +118,21 @@ export const PAGE_SEO: SeoPage[] = [
     bodyHtml: `<main id="route-consult" class="section"><div class="container"><h1 class="display">Cut agent spend and stop the loops. $2,500, 5 business days.</h1><p class="lede">A fixed-price sprint for CTOs and COOs whose AI bill keeps climbing. Daniel Graham audits your agents, routines and seats, fixes what is burning money in your accounts, and hands back a before-and-after report.</p><p>Day 1: access and inventory. Days 2 to 4: fixes, caps and alerts, with your approval on production changes. Day 5: the written report.</p><p>${FD_PRICE_LINE_HTML}</p><p><a href="${triageGoHref("consult-prerender-sprint")}" data-ph-cta="triage" data-ph-from="consult-prerender-sprint">${TRIAGE_CTA_LABEL}</a> · ${INVOICE_LINE} · <a href="${BOOK_HREF}" data-ph-cta="triage" data-ph-from="consult-prerender">${BOOK_CTA_LABEL}</a> · <a href="${CONCIERGE_URL}">${CONCIERGE_NAME}</a>, ${CONCIERGE_PRICE} · Phone ${CONSULT_DISPLAY}</p></div></main>`,
   },
   {
+    path: "/send-your-bill",
+    title: "Send Your AI Bill: Free 48-Hour Teardown | AgentHive Inc",
+    description:
+      "Send a redacted AI bill. Get back a teardown video and a dollar figure in 48 hours. Mutual NDA in one click. Deleted within 7 days of delivery.",
+    h1: BILL_H1,
+    lastmod: "2026-11-27",
+    bodyHtml: `<main id="route-send-your-bill" class="section"><div class="container"><h1 class="display">${BILL_H1}</h1><p class="lede">${BILL_SUB}</p><p>${BILL_SMALL}</p>${BILL_TOP_HTML.join("")}<h2>${BILL_FORM_TITLE}</h2><p><strong>${BILL_NDA_LABEL}</strong> ${BILL_NDA_CLAUSE}</p>${BILL_RETENTION_HTML}${BILL_REDACT_HTML}${BILL_FAQ_HTML}<h2>${BILL_CLOSE_H}</h2><p>${BILL_CLOSE_BODY}</p></div></main>`,
+  },
+  {
     path: "/concierge",
     title: `Fractional AI Ops Retainer, ${CONCIERGE_PRICE} | AgentHive Inc`,
     description:
       "Fractional AI ops, $3,500/mo: monitoring of agent spend and failures, a 1-business-day response time, a monthly report and async help. Teams of 30 to 200.",
     h1: "Someone watching your AI spend and failures, every business day.",
-    bodyHtml: `<main id="route-concierge" class="section"><div class="container"><h1 class="display">Someone watching your AI spend and failures, every business day.</h1><p class="lede">For CTOs and COOs at funded teams of 30 to 200. Daniel Graham monitors your agents, routines and keys, answers within 1 business day, and sends a monthly report.</p><p>Included: active monitoring of agent spend and failures, a 1-business-day response time, a monthly spend and reliability report, and async help. ${CONCIERGE_NAME} is ${CONCIERGE_PRICE}, month to month.</p><p>${FD_PRICE_LINE_HTML}</p><p><a href="${triageGoHref("concierge-prerender-retainer")}" data-ph-cta="triage" data-ph-from="concierge-prerender-retainer">${TRIAGE_CTA_LABEL}</a> · ${INVOICE_LINE} · <a href="${BOOK_HREF}" data-ph-cta="triage" data-ph-from="concierge-prerender">${BOOK_CTA_LABEL}</a> · <a href="tel:${CONSULT_TEL}">${PHONE_DISPLAY}</a></p></div></main>`,
+    bodyHtml: `<main id="route-concierge" class="section"><div class="container"><h1 class="display">Someone watching your AI spend and failures, every business day.</h1><p class="lede">For CTOs and COOs at funded teams of 30 to 200. Daniel Graham monitors your agents, routines and keys, answers within 1 business day, and sends a monthly report.</p><p>Included: active monitoring of agent spend and failures, a 1-business-day response time, a monthly spend and reliability report, and async help. ${CONCIERGE_NAME} is ${CONCIERGE_PRICE}, month to month after the first 3 months.</p><p>${FD_PRICE_LINE_HTML}</p><p><a href="${triageGoHref("concierge-prerender-retainer")}" data-ph-cta="triage" data-ph-from="concierge-prerender-retainer">${TRIAGE_CTA_LABEL}</a> · ${INVOICE_LINE} · <a href="${BOOK_HREF}" data-ph-cta="triage" data-ph-from="concierge-prerender">${BOOK_CTA_LABEL}</a> · <a href="tel:${CONSULT_TEL}">${PHONE_DISPLAY}</a></p></div></main>`,
   },
   {
     path: "/concierge/vs-hiring",
@@ -393,6 +403,23 @@ export function jsonLdFor(page: SeoPage): object | null {
   if (page.path === "/") return organizationJsonLd();
   if (page.path === "/about") {
     return { "@context": "https://schema.org", "@graph": [organizationNode(), danielPerson()] };
+  }
+  if (page.path === "/send-your-bill") {
+    return {
+      "@context": "https://schema.org",
+      "@graph": [
+        organizationNode(),
+        {
+          "@type": "Service",
+          name: "Free AI Bill Teardown",
+          url: `${BRAND_URL}/send-your-bill`,
+          provider: { "@id": `${BRAND_URL}/#organization` },
+          areaServed: "US",
+          offers: { "@type": "Offer", price: "0.00", priceCurrency: "USD", url: `${BRAND_URL}/send-your-bill` },
+        },
+        faqPage(BILL_FAQ.map((f) => ({ q: f.q, a: f.a }))),
+      ],
+    };
   }
   if (page.path === "/consult") {
     return {

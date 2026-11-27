@@ -23,7 +23,7 @@ export default function AeoPage() {
   const packHref = page.packHref ?? HIVE_CONSULT_PATH;
   const packDisclosure =
     page.packDisclosure ??
-    "The pack link charges $625 up front. The full ten-hour pack is $1,250. It is not a pay-in-full link.";
+    "The full ten-hour pack is $1,250, with a $625 deposit invoiced after your triage call.";
   const limits = page.limits ?? AEO_LIMITS;
   const limitsIntro =
     page.limitsIntro ??

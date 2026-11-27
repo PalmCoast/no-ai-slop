@@ -1,6 +1,7 @@
 import FdPath from "../components/FdPath";
 import AskAiBar from "../components/AskAiBar";
 import BillForm from "../components/BillForm";
+import { B2B_CTA_PRIMARY, B2B_CTA_SECONDARY, B2B_TRUST_LINE, CASE_STUDY_HTML } from "../../shared/b2bCopy";
 import {
   BOOK_CTA_LABEL,
   CONSULT_DISPLAY,
@@ -52,15 +53,15 @@ export default function Home() {
           <p className="lede">{HERO_WHAT}</p>
           <div className="hero-actions">
             <a className="btn btn-primary" {...triageGoLinkProps("home-hero")}>
-              {BOOK_CTA_LABEL}
+              {B2B_CTA_PRIMARY}
             </a>
-            <a className="btn btn-outline" href="/consult">
-              See the $2,500 sprint
+            <a className="btn btn-outline" href="/send-your-bill" data-ph-cta="send-bill" data-ph-from="home-hero">
+              {B2B_CTA_SECONDARY}
             </a>
           </div>
           <BillForm from="home-hero" />
           <p className="fine">
-            70+ live AI apps in production, built and run by Daniel Graham, a U.S. Army veteran with 10+ years in operations.
+            {B2B_TRUST_LINE}
           </p>
         </div>
       </section>
@@ -130,6 +131,10 @@ export default function Home() {
       </section>
 
       <AskAiBar />
+
+      <section className="section" id="example">
+        <div className="container cx" dangerouslySetInnerHTML={{ __html: CASE_STUDY_HTML }} />
+      </section>
 
       <section className="section" id="proof">
         <div className="container">

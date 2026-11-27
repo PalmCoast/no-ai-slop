@@ -6,6 +6,7 @@ import Buzz from "./pages/Buzz";
 import Rankings from "./pages/Rankings";
 import Build from "./pages/Build";
 import Consult from "./pages/Consult";
+import SendYourBill from "./pages/SendYourBill";
 import Concierge from "./pages/Concierge";
 import VsHiring from "./pages/VsHiring";
 import Disclosure from "./pages/Disclosure";
@@ -25,6 +26,7 @@ export default function App() {
         <Route path="/rankings" element={<Rankings />} />
         <Route path="/build" element={<Build />} />
         <Route path="/consult" element={<Consult />} />
+        <Route path="/send-your-bill" element={<SendYourBill />} />
         <Route path="/consult/ai-consultant-cost" element={<Navigate to="/consult" replace />} />
         <Route path="/concierge" element={<Concierge />} />
         <Route path="/concierge/vs-hiring" element={<VsHiring />} />
