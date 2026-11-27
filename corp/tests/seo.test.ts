@@ -189,7 +189,8 @@ describe("per-route SEO", () => {
 
   it("keeps sitemap.xml to agenthiveinc.com HTML routes only", () => {
     const xml = sitemapXml();
-    expect(readFileSync(join(corpRoot, "public/sitemap.xml"), "utf8")).toContain("https://agenthiveinc.com/about");
+    const publicXml = readFileSync(join(corpRoot, "public/sitemap.xml"), "utf8");
+    expect(publicXml).toBe(xml);
     expect(xml).toContain("https://agenthiveinc.com/</loc>");
     expect(xml).toContain("https://agenthiveinc.com/about");
     expect(xml).toContain("https://agenthiveinc.com/buzz");
@@ -199,16 +200,35 @@ describe("per-route SEO", () => {
     expect(xml).toContain("https://agenthiveinc.com/concierge");
     expect(xml).toContain("https://agenthiveinc.com/concierge/vs-hiring");
     expect(xml).toContain("https://agenthiveinc.com/disclosure");
-    expect(readFileSync(join(corpRoot, "public/sitemap.xml"), "utf8")).toContain("https://agenthiveinc.com/concierge");
     expect(xml).not.toContain("firstdeploy.ai");
     expect(xml).not.toContain("llms.txt");
-    expect(xml).toContain("<lastmod>");
+    expect(xml).toContain("<lastmod>2026-11-27</lastmod>");
+    // Redirecting, 404, and noindex URLs must stay out of the sitemap (GSC 2026-11-26 404 report).
+    const banned = [
+      "https://agenthiveinc.com/questions</loc>",
+      "https://agenthiveinc.com/questions/</loc>",
+      "https://agenthiveinc.com/freight-ops-ai-agent",
+      "https://agenthiveinc.com/audit</loc>",
+      "https://agenthiveinc.com/audit/</loc>",
+      "https://agenthiveinc.com/triage",
+      "https://agenthiveinc.com/ads</loc>",
+      "https://agenthiveinc.com/ads/</loc>",
+      "https://agenthiveinc.com/ads/thanks",
+      "https://agenthiveinc.com/premium",
+      "https://agenthiveinc.com/switch",
+      "https://agenthiveinc.com/deploy-agent",
+      "https://agenthiveinc.com/404",
+    ];
+    for (const loc of banned) {
+      expect(xml).not.toContain(loc);
+    }
     const index = sitemapIndexXml();
     expect(index).toContain("<sitemapindex");
     expect(index).toContain("https://agenthiveinc.com/sitemap.xml");
+    expect(index).toContain("<lastmod>2026-11-27</lastmod>");
     expect(index).not.toContain("askyard.firstdeploy.ai");
     expect(index).not.toContain("https://firstdeploy.ai/sitemap.xml");
-    expect(readFileSync(join(corpRoot, "public/sitemaps.xml"), "utf8")).not.toContain("askyard.firstdeploy.ai");
+    expect(readFileSync(join(corpRoot, "public/sitemaps.xml"), "utf8")).toBe(index);
     const robots = readFileSync(join(corpRoot, "public/robots.txt"), "utf8");
     expect(robots).toContain("User-agent: GPTBot");
     expect(robots).toContain("User-agent: Claude-SearchBot");

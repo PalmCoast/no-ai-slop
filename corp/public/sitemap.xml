@@ -2,30 +2,108 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://agenthiveinc.com/</loc>
-    <lastmod>2026-11-01</lastmod>
+    <lastmod>2026-11-27</lastmod>
   </url>
   <url>
     <loc>https://agenthiveinc.com/about</loc>
-    <lastmod>2026-11-01</lastmod>
+    <lastmod>2026-11-27</lastmod>
   </url>
   <url>
     <loc>https://agenthiveinc.com/buzz</loc>
-    <lastmod>2026-11-01</lastmod>
+    <lastmod>2026-11-27</lastmod>
   </url>
   <url>
     <loc>https://agenthiveinc.com/consult</loc>
-    <lastmod>2026-11-01</lastmod>
+    <lastmod>2026-11-27</lastmod>
   </url>
   <url>
     <loc>https://agenthiveinc.com/concierge</loc>
-    <lastmod>2026-11-01</lastmod>
+    <lastmod>2026-11-27</lastmod>
   </url>
   <url>
     <loc>https://agenthiveinc.com/concierge/vs-hiring</loc>
-    <lastmod>2026-11-01</lastmod>
+    <lastmod>2026-11-27</lastmod>
   </url>
   <url>
     <loc>https://agenthiveinc.com/disclosure</loc>
+    <lastmod>2026-11-27</lastmod>
+  </url>
+  <url>
+    <loc>https://agenthiveinc.com/ram-deals/</loc>
+    <lastmod>2026-11-19</lastmod>
+  </url>
+  <url>
+    <loc>https://agenthiveinc.com/ram-deals/black-friday-ddr5-ram-deals/</loc>
+    <lastmod>2026-11-19</lastmod>
+    <image:image>
+      <image:loc>https://agenthiveinc.com/ram-deals/black-friday-ddr5-ram-deals/og.png</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://agenthiveinc.com/ram-deals/best-32gb-ddr5-ram/</loc>
+    <lastmod>2026-11-19</lastmod>
+    <image:image>
+      <image:loc>https://agenthiveinc.com/ram-deals/best-32gb-ddr5-ram/og.png</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://agenthiveinc.com/ram-deals/best-64gb-ddr5-ram/</loc>
+    <lastmod>2026-11-19</lastmod>
+    <image:image>
+      <image:loc>https://agenthiveinc.com/ram-deals/best-64gb-ddr5-ram/og.png</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://agenthiveinc.com/ram-deals/ddr4-ram-deals/</loc>
+    <lastmod>2026-11-19</lastmod>
+    <image:image>
+      <image:loc>https://agenthiveinc.com/ram-deals/ddr4-ram-deals/og.png</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://agenthiveinc.com/ram-deals/how-much-ram-for-gaming/</loc>
+    <lastmod>2026-11-19</lastmod>
+    <image:image>
+      <image:loc>https://agenthiveinc.com/ram-deals/how-much-ram-for-gaming/og.png</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://agenthiveinc.com/ads/creative-calculator/</loc>
     <lastmod>2026-11-01</lastmod>
+  </url>
+  <url>
+    <loc>https://agenthiveinc.com/picks/</loc>
+    <lastmod>2026-11-02</lastmod>
+    <image:image>
+      <image:loc>https://agenthiveinc.com/picks/og.png</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://agenthiveinc.com/founder-stack/</loc>
+    <lastmod>2026-11-02</lastmod>
+  </url>
+  <url>
+    <loc>https://agenthiveinc.com/gifts-for-tech-founders/</loc>
+    <lastmod>2026-11-02</lastmod>
+  </url>
+  <url>
+    <loc>https://agenthiveinc.com/ads/ai-video-ads-for-shopify/</loc>
+    <lastmod>2026-11-02</lastmod>
+  </url>
+  <url>
+    <loc>https://agenthiveinc.com/startup-website-hosting/</loc>
+    <lastmod>2026-11-02</lastmod>
+  </url>
+  <url>
+    <loc>https://agenthiveinc.com/business-email-new-domain/</loc>
+    <lastmod>2026-11-02</lastmod>
+  </url>
+  <url>
+    <loc>https://agenthiveinc.com/muscle-memory-bot-template/</loc>
+    <lastmod>2026-11-10</lastmod>
+  </url>
+  <url>
+    <loc>https://agenthiveinc.com/github-repo-to-windows-exe/</loc>
+    <lastmod>2026-11-10</lastmod>
   </url>
 </urlset>

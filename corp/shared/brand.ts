@@ -8,7 +8,8 @@ export const CONSULT_DISPLAY = "+1 320-335-6186";
 /** Header/footer display format, matching firstdeploy.ai. Always labeled as the live AI demo line. */
 export const PHONE_DISPLAY = "(320) 335-6186";
 export const CONSULT_DISPLAY_SEO = "+1-320-335-6186";
-export const CONTENT_LASTMOD = "2026-11-01";
+/** Sitemap lastmod for PAGE_SEO routes and sitemaps.xml. Not shown in page copy. */
+export const CONTENT_LASTMOD = "2026-11-27";
 export const FD_NAME = "First Deploy AI";
 export const FD_URL = "https://firstdeploy.ai/";
 export const FD_CHECK_URL = "https://firstdeploy.ai/#check";
